@@ -1,0 +1,1020 @@
+.auto-listings .container > .content {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+/* apply a natural box layout model to all elements, but allowing components to change 
+should fix up some theme issues
+*/
+[class^="auto-listings-"],
+[class*=" auto-listings-"] {
+    box-sizing: border-box;
+}
+[class^="auto-listings-"]:before,
+[class*=" auto-listings-"]:before,
+[class^="auto-listings-"]:after,
+[class*=" auto-listings-"]:after {
+    box-sizing: inherit;
+}
+/* ======================================== SOME DEFAULTS ========================================
+*/
+.auto-listings .full-width {
+  display: inline-block;
+  width: 100%;
+}
+.auto-listings .has-sidebar {
+    width: 66.6667%;
+    float: left;
+}
+.auto-listings .sidebar {
+    width: 28%;
+    float: right;
+}
+.auto-listings-single .content {
+    display: inline-block;
+    width: 100%;
+}
+.auto-listings-single img {
+    height: auto;
+    max-width: 100%;
+}
+.auto-listings-single .title, .auto-listings-items .title, .auto-listings-single .auto-listings-tabs table {
+    text-align: left;
+}
+.auto-listings-single .contact {
+  list-style: outside none none;
+  margin: 0;
+  padding: 0;
+  line-height: 28px;
+}
+.auto-listings-single .contact i {
+  color: #337ab7;
+  float: left;
+  margin: 6px 10px 0 0;
+  width: 20px;
+}
+.auto-listings .price {
+    color: #337ab7;
+}
+.auto-listings .al-button, .auto-listings .contact-form .button-primary, .auto-listings .cmb2-upload-button, .auto-listings #wp-submit {
+  background: #337ab7 none repeat scroll 0 0;
+  border: 2px solid #337ab7;
+  border-radius: 0;
+  box-shadow: none;
+  color: #fff;
+  display: inline-block;
+  font-size: 14px;
+  height: auto;
+  line-height: unset;
+  margin: 0;
+  padding: 7px 26px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.auto-listings .al-button:hover, .auto-listings .contact-form .button-primary:hover, .auto-listings #wp-submit:hover {
+  background: #fff;
+  color: #337ab7;
+  text-decoration: none;
+}
+.auto-listings span.status {
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 12px;
+  padding: 5px 10px;
+}
+.auto-listings span.status i:before {
+  display: inline-block;
+  float: left;
+  font-size: 14px;
+  height: auto;
+  line-height: 12px;
+  margin: 0 5px -2px 0;
+  padding: 0;
+}
+.auto-listings .highlight-new {
+  border-radius: 4px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 200;
+  padding: 3px 10px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 999;
+  background: red;
+}
+.auto-listings span.condition {
+  color: #888;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 12px;
+  margin: 0;
+  padding: 0;
+  text-transform: capitalize;
+}
+
+/* ======================================== SINGLE LISTING ========================================
+*/
+
+/**
+ * Image gallery ==============================================
+ */
+.auto-listings-single .title {
+  display: inline-block;
+}
+.auto-listings-single .upper span.status {
+  display: inline;
+  margin: 0 0 0 20px;
+}
+.auto-listings-single .image-gallery {
+    margin-bottom: 30px;
+}
+.auto-listings-single .image-gallery .lSPager.lSGallery li {
+    transition: 0.25s;
+    border-bottom: 3px solid transparent;
+}
+.auto-listings-single .image-gallery .lSPager.lSGallery li.active,
+.auto-listings-single .image-gallery .lSPager.lSGallery li:hover {
+    background: #fff none repeat scroll 0 0;
+    border-radius: 0;
+    border-bottom: 3px solid #337ab7;
+}
+
+.auto-listings-single .image-gallery .lSAction i.fa {
+    color: #fff;
+    font-size: 40px;
+}
+.auto-listings-single .image-gallery .prev {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+.auto-listings-single .image-gallery .lSSlideWrapper .lightSlider > * {
+    z-index: 1;
+}
+.auto-listings-single .image-gallery .active {
+    z-index: 2;
+}
+.lg-icon, .lg-icon:before, .lg-icon:after {
+    font-family: FontAwesome;
+}
+.lg-actions .lg-next:before {
+    content: "\f105";
+    font-size: 30px;
+    color: #fff;
+}
+.lg-actions .lg-prev:after {
+    content: "\f104";
+    font-size: 30px;
+    color: #fff;
+}
+.lg-toolbar .lg-close:after {
+  content: "\f00d";
+}
+.lg-toolbar .lg-download:after {
+  content: "\f019";
+}
+
+.auto-listings-single .gallery-wrap {
+  position: relative;
+}
+
+.auto-listings .auto-listings-tabs ul.tabs {
+    list-style: none;
+    padding: 0 0 0 10px;
+    margin: 0 0 1.618em;
+    overflow: hidden;
+    position: relative
+}
+
+.auto-listings .auto-listings-tabs ul.tabs li {
+    border: 1px solid #dddddd;
+    background-color: #f4f4f4;
+    display: inline-block;
+    position: relative;
+    z-index: 0;
+    margin: 0px;
+    padding: 0 1em
+}
+
+.auto-listings .auto-listings-tabs ul.tabs li a {
+    display: inline-block;
+    padding: .5em 0;
+    font-weight: 700;
+    color: #444444;
+    text-decoration: none
+}
+
+.auto-listings .auto-listings-tabs ul.tabs li a:hover {
+    text-decoration: none;
+    color: #444444;
+}
+
+.auto-listings .auto-listings-tabs ul.tabs li.active {
+    background: #fff;
+    z-index: 2;
+    border-bottom-color: #fff;
+    box-shadow: 0 3px 0 #337ab7 inset;
+}
+
+.auto-listings .auto-listings-tabs ul.tabs li.active a {
+    color: inherit;
+    text-shadow: inherit
+}
+.auto-listings .auto-listings-tabs ul.tabs::before {
+    position: absolute;
+    content: ' ';
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    border-bottom: 1px solid #dddddd;
+    z-index: 1
+}
+
+.auto-listings .auto-listings-tabs .panel {
+    margin: 0 0 2em;
+    padding: 0
+}
+
+
+/**
+ * Sidebar ==============================================
+ */
+
+.auto-listings-single .sidebar > div {
+  clear: both;
+  display: inline-block;
+  margin-bottom: 25px;
+  width: 100%;
+}
+.auto-listings-single .sidebar > div.address, .auto-listings-single .sidebar > div.price {
+    margin-bottom: 5px;
+}
+.auto-listings-single .at-a-glance ul {
+  list-style: outside none none;
+  margin: 0;
+  padding: 0;
+}
+.auto-listings-single .at-a-glance ul li {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 36px;
+  width: 100%;
+}
+.auto-listings-single .at-a-glance ul i {
+  margin: 0 15px 0 0;
+  color: #999;
+}
+.auto-listings-single .at-a-glance ul i::before {
+  font-size: 24px;
+}
+
+
+.auto-listings-single .contact-form {
+  background: #eee none repeat scroll 0 0;
+  padding: 15px 20px;
+}
+/* anti-spam fields - x 2 */
+.auto-listings-single .contact-form .cmb2-id-url {
+    display: none;
+    visibility: hidden;
+}
+.auto-listings-single .contact-form .cmb2-id-comment {
+    display: none;
+    visibility: hidden;
+}
+.auto-listings-single .contact-form .form-table {
+    margin-bottom: 5px;
+}
+.auto-listings-single .contact-form > h4 {
+  margin: 0 0 12px;
+}
+.auto-listings-single .contact-form input:not(.button-primary), .auto-listings-single .contact-form textarea {
+  border: 1px solid #eaeaea;
+  font-size: 14px;
+  margin: 0 0 5px;
+  padding: 8px;
+  width: 100%;
+  color: #888;
+}
+.auto-listings-single .contact-form input.button-primary {
+  display: inline-block;
+  width: 100%;
+}
+.auto-listings-single .address {
+  margin: 0;
+  padding: 5px 0;
+}
+.auto-listings-single .map {
+    background: #fff none repeat scroll 0 0;
+    height: 300px;
+    overflow: visible;
+    width: 100%;
+}
+
+.auto-listings-single .tagline {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.auto-listings-single .description {
+    margin-bottom: 30px;
+}
+
+/* ======================================== LOOP LISTINGs ========================================
+*/
+
+.auto-listings-items * {
+    transition: 0.3s
+}
+.auto-listings-items {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+}
+.auto-listings-items.list-view {
+    margin: 0;
+}
+.auto-listings-items > li {
+    display: inline-block;
+    margin: 0 0 25px;
+    padding: 0;
+    width: 100%;
+    position: relative;
+    box-shadow: 0px 1px 4px rgba(0,0,0,0.18);
+    background: #fff;
+    -moz-box-flex: 0;
+    flex: 0;
+    max-width: 100%;
+}
+.auto-listings-items li .image {
+    float: left;
+    width: 25%;
+    transition: 0s;
+    position: relative;
+}
+.auto-listings-items li .image img {
+    display: block;
+    max-width: 100%;
+    width: 100%;
+}
+.auto-listings-items li .status {
+  background: rgba(255, 255, 255, 0.9) none repeat scroll 0 0;
+  color: #222;
+  position: absolute;
+  bottom: 0;
+}
+.auto-listings-items li .summary {
+    float: right;
+    width: 70%;
+    text-align: left;
+}
+.auto-listings-items li .title {
+    margin-bottom: 0;
+    margin-top: 10px;
+    padding: 0 15px 0 0;
+}
+.auto-listings-items li .at-a-glance {
+  border-bottom: 1px solid #ddd;
+  padding: 3px 0 8px;
+  margin: 0 0 6px;
+}
+.auto-listings-items li .price {
+    margin-bottom: 4px;
+}
+.auto-listings-items li .address {
+    margin: 0 0 5px;
+    padding: 0;
+}
+.auto-listings-items li .at-a-glance {
+  display: inline-block;
+  margin: 5px 0 5px;
+  padding: 3px 0 5px;
+  width: 100%;
+}
+.auto-listings-items .at-a-glance ul {
+  list-style: outside none none;
+  margin: 0;
+  padding: 0;
+}
+.auto-listings-items .at-a-glance ul li {
+  display: inline;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 26px;
+  margin: 0 20px 0 0;
+  width: auto;
+}
+.auto-listings-items .at-a-glance ul i {
+  margin: 0 5px 0 0;
+  color: #999;
+}
+.auto-listings-items .at-a-glance ul i:before {
+  font-size: 18px;
+  line-height: unset;
+}
+.auto-listings-items .description {
+  padding-right: 15px;
+  margin: 0;
+}
+.auto-listings-items .bottom-wrap {
+  display: inline-block;
+  margin: 20px 0 0 0;
+}
+.auto-listings-items .bottom-wrap a.al-button {
+  margin: 0 14px 0 0;
+  padding: 5px 12px;
+  font-size: 13px;
+  text-transform: none;
+}
+
+/* With sidebar */
+.auto-listings-items li .summary {
+  padding-bottom: 15px;
+}
+.has-sidebar .auto-listings-items .bottom-wrap {
+  float: right;
+}
+.has-sidebar .auto-listings-items .bottom-wrap a.al-button {
+  margin: 0;
+}
+.has-sidebar .auto-listings-items span.condition {
+  float: left;
+  margin: 4px 15px 0 0;
+}
+
+/* Grid view */
+.auto-listings-items.grid-view {
+    display: inline-block;
+    width: 100%;
+}
+.auto-listings-items.grid-view li {
+    display: inline-block;
+    margin: 0 0 30px;
+    overflow: hidden;
+    padding: 0;
+    float: left;
+}
+.auto-listings-items.grid-view li .image {
+    float: none;
+    margin-bottom: 15px;
+    width: 100%;
+}
+.auto-listings-items.grid-view li .summary {
+  float: none;
+  width: auto;
+  padding: 0 15px 15px;
+}
+.auto-listings-items.grid-view li .summary .title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.auto-listings-items.grid-view li.col-2 {
+    width: 48%;
+    margin-right: 4%;
+}
+.auto-listings-items.grid-view li.col-3 {
+    width: 31.3333%;
+    margin-right: 3%;
+}
+.auto-listings-items.grid-view li.col-4 {
+    width: 23%;
+    margin-right: 2.6666%;
+}
+.auto-listings-items.grid-view li:last-child {
+    margin-right: 0 !important;
+}
+
+
+.auto-listings-items.grid-view li.col-4 .title {
+  font-size: 19px
+}
+
+/* Grid View With sidebar */
+.has-sidebar .auto-listings-items.grid-view .bottom-wrap {
+  float: unset;
+}
+.has-sidebar .auto-listings-items.grid-view .bottom-wrap a.al-button {
+  display: block;
+  float: none;
+  line-height: 24px;
+  margin: 0 0 5px;
+}
+
+/* ======================================== SORTING, SWITCHING & PAGINATION ========================================
+*/
+
+.auto-listings-ordering {
+    float: left;
+    margin-bottom: 40px;
+}
+.auto-listings-ordering .SumoSelect > .CaptionCont {
+  border: 2px solid #ddd;
+}
+.auto-listings-view-switcher {
+    float: left;
+    margin: 0 0 40px 30px;
+}
+.auto-listings-view-switcher > div {
+  cursor: pointer;
+  float: left;
+  margin: 4px 10px 0 0;
+}
+.auto-listings-view-switcher i:before {
+    font-size: 26px;
+    color: #444;
+}
+.auto-listings-pagination {
+    float: right;
+    margin-bottom: 40px;
+}
+.auto-listings-pagination ul {
+  display: inline-block;
+  list-style: outside none none;
+  margin: 5px 0 0 0;
+  padding: 0;
+}
+.auto-listings-pagination ul li {
+    float: left;
+    margin: 0 0 0 -2px;
+}
+.auto-listings-pagination ul li span.current {
+    cursor: not-allowed;
+}
+.auto-listings-pagination ul li span,
+.auto-listings-pagination ul li a {
+    font-size: 100% !important;
+    line-height: 1;
+    padding: 0.5em 0.75em;
+    border: 2px solid #ddd;
+}
+.auto-listings-pagination ul li a.prev,
+.auto-listings-pagination ul li a.next {
+    border-radius: 0px;
+    font-size: 100%;
+    line-height: 1;
+    padding: 0.5em 0.6em;
+}
+/* ======================================== SEARCH ========================================
+*/
+
+.auto-listings-search {
+    margin: 0 0 30px;
+    width: 100%;
+    padding: 0;
+    background: transparent;
+    display: inline-block;
+    text-align: center;
+}
+.auto-listings-search .row {
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 15px;
+    color: #444;
+}
+.auto-listings-search .row .field {
+    line-height: unset;
+    position: relative;
+    vertical-align: middle;
+    display: inline;
+    font-size: 15px;
+    font-weight: 300;
+}
+.auto-listings-search .condition .prefix {
+    font-size: 36px;
+    font-weight: 700;
+}
+.auto-listings-search .price-wrap > div {
+    display: inline-block;
+}
+.auto-listings-search .price-wrap .prefix {
+    font-size: 20px;
+    font-weight: 200;
+}
+.auto-listings-search .area-wrap .field, .auto-listings-search .area-wrap button {
+    display: inline-block;
+}
+.auto-listings-search .area-wrap .prefix {
+    font-size: 20px;
+    font-weight: 200;
+}
+.auto-listings-search .area {
+  border: 1px solid #aaa;
+  border-radius: 4px 0 0 4px;
+  height: 40px;
+  line-height: 30px;
+  padding: 5px 15px;
+  width: 300px;
+  margin: -3px -4px 0 0;
+  background: #fff;
+  outline: none;
+  text-transform: none;
+  font-size: 15px;
+  font-weight: 300;
+  color: #444;
+}
+.auto-listings-search .area-wrap .area::placeholder {
+  text-transform: none;
+  font-size: 15px;
+  font-weight: 300;
+  color: #666;
+}
+.auto-listings-search .area-wrap .area:focus, .auto-listings-search .area-wrap .area:active {
+  border: none;
+  border-bottom: 2px solid #337ab7;
+  border-radius: 0;
+}
+.auto-listings-search .area-wrap button {
+  border-radius: 0 4px 4px 0;
+  z-index: 9;
+  position: relative;
+}
+.auto-listings-search .area-wrap button:hover,.auto-listings-search .area-wrap button:focus {
+  border: 2px solid transparent;
+}
+.auto-listings-search .extras-wrap {
+  display: none;
+  margin-top: 15px;
+}
+.auto-listings-search a.refine {
+  cursor: pointer;
+  text-decoration: none;
+}
+.auto-listings-search a.refine.shown i {
+   -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+/* sumoselect fixups */
+.auto-listings-search .SumoSelect > .CaptionCont {
+  background-color: transparent;
+  border: 2px solid #a4a4a4;
+  border-radius: 4px;
+  height: 40px;
+  max-height: 40px;
+  line-height: 24px;
+  margin: 0;
+}
+.auto-listings-search .SumoSelect > .CaptionCont > span {
+  padding-right: 10px;
+}
+.auto-listings-search .SumoSelect > .CaptionCont > span.placeholder {
+  color: inherit;
+  font-style: normal;
+}
+.auto-listings-search  .price-wrap .SumoSelect > .optWrapper {
+  width: 115%;
+}
+.auto-listings-search label {
+  text-align: left;
+  font-weight: 300;
+}
+.auto-listings-search .SumoSelect > .CaptionCont > label > i {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  height: auto;
+  top: 20%;
+}
+.auto-listings-search .SumoSelect > .CaptionCont > label > i::before {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  color: #444;
+  content: "\f107";
+  font-family: "FontAwesome";
+  font-style: normal;
+}
+.auto-listings-search .SumoSelect {
+  margin: 0;
+  padding: 0;
+}
+.auto-listings-search .condition-wrap .SumoSelect {
+  margin-left: 15px;
+  width: 140px;
+}
+.auto-listings-search .price-wrap .SumoSelect {
+  width: 100px;
+  margin: 0 10px;
+}
+.auto-listings-search .area-wrap .SumoSelect {
+  margin-right: 15px;
+  width: 140px;
+}
+
+
+/* ======================================== SEARCH STYLE 2 ========================================
+*/
+.auto-listings-search.s-2 .field {
+  color: #fff;
+  text-shadow: 0 0 6px rgba(0,0,0,0.5);
+}
+.auto-listings-search.s-2 .area-wrap .area {
+  text-shadow: none;
+  border-color: #fff;
+}
+.auto-listings-search.s-2 .SumoSelect > .CaptionCont {
+  border: 2px solid #fff;
+}
+.auto-listings-search.s-2 .SumoSelect > .CaptionCont > label > i::before {
+  color: #fff;
+}
+.auto-listings-search.s-2 a.refine, .auto-listings-search.s-2 a.refine:hover {
+  color: #fff;
+}
+
+/* ======================================== SEARCH STYLE 3 ========================================
+*/
+.auto-listings-search.s-3  {
+  background: #eee;
+}
+
+/* ======================================== SEARCH STYLE 4 ========================================
+*/
+.auto-listings-search.s-4 {
+  text-align: left;
+  padding: 0;
+}
+.auto-listings-search.s-4 .field .prefix {
+  font-size: inherit;
+  font-weight: 300;
+}
+.auto-listings-search.s-4 .field .SumoSelect {
+  display: block;
+  margin: 0;
+  width: 100%;
+}
+.auto-listings-search.s-4 .price-wrap .field {
+  display: inline-block;
+  float: left;
+  margin: 0;
+  width: 50%;
+}
+.auto-listings-search.s-4 .price-wrap .SumoSelect.sumo_min_price {
+  padding: 0 10px 0 0;
+}
+.auto-listings-search.s-4 .price-wrap .SumoSelect > .optWrapper {
+  width: 100%;
+}
+.auto-listings-search.s-4 .area-wrap .within {
+  width: 40%;
+}
+.auto-listings-search.s-4 .area-wrap .area {
+  border-radius: 4px;
+  margin: 0;
+  width: 55%;
+  float: right;
+}
+.auto-listings-search.s-4 .area-wrap button {
+  display: block;
+  width: 100%;
+  margin-top: 15px;
+  border-radius: 4px;
+}
+.auto-listings-search.s-4 a.refine {
+  display: inline-block;
+  text-align: right;
+  width: 100%;
+}
+.auto-listings-search.s-4 .extras-wrap .field {
+  display: inline-block;
+  margin: 0 0 5px;
+  width: 100%;
+}
+
+
+/* ======================================== STANDARD SEARCH LAYOUT ========================================
+*/
+.auto-listings-search.standard .field {
+    margin: 0 0 10px;
+}
+.auto-listings-search.standard .area {
+  border-radius: 4px;
+  width: auto;
+}
+
+/* ======================================== LISTINGS COMPACT MODE ========================================
+*/
+
+.auto-listings-items li.compact, .auto-listings-items.grid-view li.compact {
+    width: 100%;
+    margin-right: 0;
+}
+.auto-listings-items li.compact .image, .auto-listings-items.grid-view li.compact .image {
+  margin: 0 5% 0 0;
+  position: absolute;
+  width: 20%;
+}
+.auto-listings-items li.compact .status, .auto-listings-items.grid-view li.compact .status, .auto-listings-items li.compact .highlight-new, .auto-listings-items.grid-view li.compact .highlight-new {
+    display: none;
+}
+.auto-listings-items li.compact .summary, .auto-listings-items.grid-view li.compact .summary {
+    float: left;
+    width: 100%;
+    padding: 0;
+}
+.auto-listings-items li.compact .at-a-glance, .auto-listings-items.grid-view li.compact .at-a-glance {
+  margin: 5px 0 0;
+  padding: 0 10px;
+}
+.auto-listings-items li.compact .at-a-glance li, .auto-listings-items.grid-view li.compact .at-a-glance li {
+  font-size: 13px;
+}
+.auto-listings-items li.compact .title, .auto-listings-items.grid-view li.compact .title {
+  font-size: 18px;
+  margin-bottom: 0;
+  overflow: hidden;
+  padding: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-left: 23%;
+}
+.auto-listings-items li.compact .address, .auto-listings-items.grid-view li.compact .address {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.auto-listings-items li.compact .price, .auto-listings-items.grid-view li.compact .price {
+  font-size: 14px;
+  padding: 2px 10px;
+}
+.auto-listings-items li.compact .address, .auto-listings-items.grid-view li.compact .address {
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 13px;
+  margin: 0;
+  padding: 5px 10px 0;
+}
+.auto-listings-items li.compact .bottom-wrap, .auto-listings-items.grid-view li.compact .bottom-wrap {
+  display: none;
+}
+
+/* ======================================== SINGLE AGENT ========================================
+*/
+
+.auto-listings-single.seller .avatar-wrap {
+    background: #eee none repeat scroll 0 0;
+    float: left;
+    margin: 5px 30px 30px 0;
+    padding: 4px;
+}
+.auto-listings-single.seller .avatar-wrap img {
+  display: block;
+}
+.auto-listings-single.seller .name {
+    display: inline-block;
+}
+.auto-listings-single.seller .position {
+  font-weight: 600;
+  margin: 0 0 5px;
+}
+.auto-listings-single.seller .social {
+    list-style: none;
+    padding: 5px 0 0 0;
+    margin: 0;
+    display: block;
+}
+.auto-listings-single.seller .social li {
+    float: left;
+    margin: 0 10px 0 0;
+}
+.auto-listings-single.seller .social .facebook i {
+    color: #3b5998;
+}
+.auto-listings-single.seller .social .google i {
+    color: #dd4b39;
+}
+.auto-listings-single.seller .social .twitter i {
+    color: #00aced;
+}
+.auto-listings-single.seller .social .skype i {
+    color: #00AFF0;
+}
+.auto-listings-single.seller .social .linkedin i {
+    color: #007bb6;
+}
+.auto-listings-single.seller .social .youtube i {
+    color: #bb0000;
+}
+
+/* ======================================== MEDIA QUERIES ========================================
+*/
+
+/* Tiny devices */
+@media (max-width: 650px) {
+  .auto-listings .has-sidebar {
+    float: none;
+    width: auto;
+  }
+  .auto-listings .sidebar {
+    float: none;
+    width: auto;
+  }
+  .auto-listings-search {
+    text-align: left;
+    padding: 0;
+  }
+  .auto-listings-search.s-3 {
+    padding: 10px;
+  }
+  .auto-listings-search .field .prefix {
+    font-size: inherit;
+    font-weight: 300;
+  }
+  .auto-listings-search .field .SumoSelect {
+    display: block;
+    margin: 0;
+    width: 100%;
+  }
+  .auto-listings-search .price-wrap .field {
+    display: inline-block;
+    float: left;
+    margin: 0;
+    width: 50%;
+  }
+  .auto-listings-search .price-wrap .SumoSelect.sumo_min_price {
+    padding: 0 10px 0 0;
+  }
+  .auto-listings-search .price-wrap .SumoSelect > .optWrapper {
+    width: 100%;
+  }
+  .auto-listings-search .area-wrap .within {
+    width: 40%;
+  }
+  .auto-listings-search .area-wrap .area {
+    border-radius: 4px;
+    margin: 0;
+    width: 55%;
+    float: right;
+  }
+  .auto-listings-search .area-wrap button {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    border-radius: 4px;
+  }
+  .auto-listings-search a.refine {
+    display: inline-block;
+    text-align: right;
+    width: 100%;
+  }
+  .auto-listings-search .extras-wrap .field {
+    display: inline-block;
+    margin: 0 0 5px;
+    width: 100%;
+  }
+
+  .auto-listings-items li.auto-listing.type-auto-listing {
+    margin-right: 0;
+    width: 100%;
+  }
+ 
+    .auto-listings-items li .image {
+      float: none;
+      margin-bottom: 15px;
+      width: 100%;
+  }
+  .auto-listings-items li .summary {
+    float: none;
+    width: auto;
+    padding: 0 15px 15px;
+  }
+  .auto-listings-items li .summary .title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .auto-listings-items li .summary .bottom-wrap {
+    float: unset;
+  }
+  .auto-listings-items li .summary .bottom-wrap span.condition {
+    float: right;
+    margin-left: 15px;
+  }
+  .auto-listings-view-switcher {
+    display: none;
+  }
+
+}
+
+/* Extra small devices */
+@media (max-width: 768px) {
+  .auto-listings .has-sidebar {
+    float: none;
+    width: auto;
+  }
+  .auto-listings .sidebar {
+    float: none;
+    width: auto;
+  }
+
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+
+}

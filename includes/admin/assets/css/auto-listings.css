@@ -1,0 +1,387 @@
+/*
+ * CMB2 Overrides & General stuff
+ */
+
+.auto-listings input::placeholder,
+.auto_listings_options input::placeholder {
+    color: #ccc;
+}
+.iris-picker,
+.iris-picker * {
+    box-sizing: content-box !important;
+}
+.auto-listings .column-logo img {
+  border: medium none;
+  height: auto;
+  max-width: 100%;
+}
+
+.auto-listings #cmb2-metabox-auto_listings_contact_form .cmb2-id-url,
+.auto-listings #cmb2-metabox-auto_listings_contact_form .cmb2-id-comment {
+    display: none;
+    visibility: hidden;
+}
+.auto-listings h2.hndle .dashicons {
+    color: #78a3d2;
+    font-size: 22px;
+    margin: -1px 8px 0 0;
+}
+.auto-listings p.cmb2-metabox-description,
+.auto_listings_options p.cmb2-metabox-description,
+.auto-listings span.light {
+    color: #888;
+    font-size: 12px;
+    font-style: normal;
+    margin-top: 3px;
+}
+.auto-listings span.light {
+    font-size: 13px;
+    display: block;
+    color: #aaa;
+}
+.auto-listings .cmb-type-group .cmb2-wrap > .cmb-field-list > .cmb-row,
+.auto-listings .postbox-container .cmb2-wrap > .cmb-field-list > .cmb-row {
+    padding: 1.2em 0 0;
+}
+.postbox.cmb-row.cmb-repeatable-grouping {
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
+    margin: 25px 0;
+}
+.auto-listings .cmbhandle-title {
+    cursor: pointer;
+}
+.auto-listings #side-sortables {
+    padding-top: 0;
+}
+.auto-listings #side-sortables .cmb-th {
+    padding-bottom: 5px;
+}
+.auto-listings #side-sortables .cmb-th label {
+    padding: 0;
+}
+.auto-listings #side-sortables .cmb-th label::after {
+    border-bottom: medium none;
+    padding-top: 0;
+}
+.auto-listings #side-sortables .cmb2-wrap > .cmb-field-list > .cmb-row {
+    padding: 0;
+}
+.auto-listings #side-sortables .cmb2-wrap > .cmb-field-list > .cmb-row:not(:last-of-type) {
+    border: none;
+}
+.auto-listings #side-sortables .cmb-td .cmb2_select {
+    width: 100%;
+}
+.auto-listings #side-sortables .cmb-row .cmb2-metabox-description {
+  padding: 0;
+}
+.auto-listings .cmb2-wrap input[type="email"],
+.auto-listings .cmb2-wrap input[type="number"] {
+    width: 100%;
+}
+.auto-listings .cmb2-wrap input.cmb2-upload-file {
+    width: 65% !important;
+}
+.cmb2-postbox .cmb-row:not(:last-of-type) {
+    border: none;
+}
+.auto-listings .cmb2-element.ui-datepicker .ui-datepicker-header,
+.auto-listings .cmb2-element.ui-datepicker .ui-timepicker-div .ui-widget-header {
+    background: #78a3d2;
+}
+.auto-listings .ui-datepicker .ui-datepicker-buttonpane button {
+    box-shadow: 0 1px 0 #ddd;
+    text-shadow: none;
+}
+.auto-listings #ui-datepicker-div {
+    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.2);
+    border: 1px solid #bbb;
+}
+
+/*
+ * Listing Status
+ */
+#cmb2-metabox-_al_listing_settings a {
+  text-decoration: none;
+}
+#cmb2-metabox-_al_listing_settings .most-recent {
+    margin-top: 0;
+    padding-top: 0;
+}
+#archive-item.button {
+  margin: 15px 0 10px;
+}
+.auto-listings .archived-text{
+  margin: 15px 0 10px;
+  padding: 4px 10px;
+  border-left: 4px solid transparent;
+  background: #fff none repeat scroll 0 0;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+  font-size: 12px;
+}
+.auto-listings .archived-text.warning {
+  border-color: #ffb900;
+}
+.auto-listings .archived-text.error {
+  border-color: #dc3232;
+}
+.auto-listings .archived-text.success {
+  border-color: #46b450;
+}
+
+/*
+ * Listing Vehicle select
+ */
+.auto-listings .cmb-row.cmb2-id-select-model-button, .auto-listings .cmb-row.cmb2-id-populate-button {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.auto-listings #cq-select-model {
+  margin: 5px 0;
+}
+.auto-listings #cq-show-data {
+  margin: 5px 0;
+}
+
+/*
+ * Listing Address
+ */
+.auto-listings .cmb-row.cmb2-id-al-geocomplete {
+  margin: 0;
+}
+.auto-listings #al-find {
+    margin: -10px 10px 0 0;
+    width: 120px;
+    float: left;
+}
+.auto-listings #al-reset {
+    margin: -10px 0 0 0;
+    width: 120px;
+    float: left;
+}
+.auto-listings .al-admin-map {
+    display: inline-block;
+    margin: 0 auto 0;
+    width: 100%;
+    border: 2px solid #eee;
+}
+.auto-listings .cmb2-metabox-description.map-desc {
+    margin: 0 auto 15px !important;
+    padding: 0 !important;
+}
+
+/*
+ * Listings Columns
+ */
+
+.post-type-auto-listing .enquiries a {
+    display: inline-block;
+    vertical-align: top;
+}
+.post-type-auto-listing .enquiries a:after {
+    border-right: 5px solid transparent;
+    border-top: 5px solid #72777c;
+    content: "";
+    display: block;
+    height: 0;
+    margin-left: 8px;
+    width: 0;
+}
+.post-type-auto-listing .enquiries span {
+    background-color: #72777c;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #fff;
+    display: block;
+    font-size: 11px;
+    height: 2em;
+    line-height: 21px;
+    min-width: 24px;
+    padding: 0 8px;
+    text-align: center;
+}
+/*
+ * Options 
+ */
+
+.auto_listings_options .inside .cmb-th label {
+    display: block;
+    font-size: 13px;
+    padding: 0;
+}
+.auto_listings_options .cmb-type-labels .cmb-th {
+    padding: 10px 10px 20px 0;
+}
+.auto_listings_options .cmb-type-labels .cmb-td {
+    padding: 0 10px;
+}
+.auto_listings_options .license-active {
+    border-top: 1px solid #46b450;
+    display: block;
+    padding: 5px 10px;
+    width: 95%;
+}
+.auto_listings_options .cmb-repeat .cmb-td {
+    padding: 10px 0 0;
+}
+.auto_listings_options .cmb2-wrap .cmb-row.cmb-repeat-row {
+    padding: 0;
+}
+.auto_listings_options .cmb-repeat .cmb-th + .cmb-td {
+    margin-left: 10px;
+}
+.auto_listings_options .cmb-add-row {
+    margin: 20px 0 15px;
+}
+.auto_listings_options .postbox.cmb-row.cmb-repeatable-grouping {
+  margin: 5px 0 10px;
+}
+
+.auto_listings_options .cmb-row.cmb-repeat-group-field {
+  padding: 8px 0;
+  border: none !important;
+}
+.auto_listings_options .cmb-repeatable-group .cmb-td {
+  padding: 0;
+}
+.auto_listings_options .cmb-repeatable-group .cmb-row.cmb-remove-field-row {
+  margin: 0;
+  padding: 0 0 10px 0;
+}
+.auto_listings_options .cmb2-radio-list {
+  float: left;
+  width: 100%;
+}
+.auto_listings_options .cmb2-radio-list li {
+  float: left;
+  width: 33%;
+  height: 40px;
+}
+.auto_listings_options .cmb2-radio-list i:before {
+  display: inline-block;
+  margin: 0;
+  line-height: 20px;
+}
+
+
+/* seller profile image */
+
+#profile-page #current_img{
+  position: relative;
+  width: 160px;
+  height: auto;
+  text-align: right;
+  margin-bottom: 10px;
+}
+#profile-page .button.auto_listings_wpmu_button {
+  margin: 10px 0;
+}
+
+#profile-page .auto-listings-current-img{
+  display: block;
+  max-width: 150px;
+  max-height: 150px;
+  width: 100%;
+  height: auto;
+  padding: 4px;
+  background: #fefefe;
+  border: 1px solid #e5e5e5;
+}
+
+/* #profile-page .auto-listings-current-img.placeholder{
+  width: 1px;
+  height: 1px;
+  border: 0;
+  background: transparent;
+} */
+
+#profile-page .edit_options{
+  display: block;
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 160px;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+#profile-page .edit_options .remove_img, #profile-page .edit_options .edit_img{
+  float: left;
+  position: relative;
+  color: #444;
+  font-size: 13px;
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+#profile-page .edit_options span{
+  display: block;
+  position: relative;
+  top: 50%;
+  margin-top: -10px;
+}
+
+#profile-page .edit_options .remove_img{
+  color: #fff;
+  background-color: rgb(214, 14, 14);
+  background-color: rgba(214, 14, 14, 0.50);
+}
+
+#profile-page .edit_options.single .remove_img{
+  width: 100%;
+}
+
+#profile-page .edit_options .remove_img:hover, #profile-page .edit_options .remove_img:focus{
+  background-color: #ff0000;
+  background-color: rgba(214, 14, 14, 0.75);
+}
+
+#profile-page .edit_options .edit_img{
+  color: #fff;
+  background-color: rgb(50, 50, 50);
+  background-color: rgba(50, 50, 50, 0.50);
+}
+
+#profile-page .edit_options .edit_img:hover, #profile-page .edit_options .edit_img:focus{
+  background-color: rgb(25, 25, 25);
+  background-color: rgba(50, 50, 50, 0.75);
+}
+
+/* Radio Button Styles */
+#profile-page #auto_listings_options{
+  margin-bottom: 10px;
+}
+
+#profile-page #auto_listings_external{
+  display: none;
+}
+
+
+.settings_page_auto_listings_options #side_metabox {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+.settings_page_auto_listings_options #side_metabox .ui-sortable-handle {
+  background: #fff;
+
+}
+.settings_page_auto_listings_options .cmb-row.cmb-type-options-save-button{
+  background: #fff;
+}
+.settings_page_auto_listings_options #side_metabox .inside {
+  padding: 0;
+}
+.settings_page_auto_listings_options #side_metabox img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  margin: 20px 0 10px;
+  border: 2px solid #444;
+}

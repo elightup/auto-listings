@@ -1,0 +1,60 @@
+@font-face {
+  font-family: "autolistings";
+  src: url("../fonts/icons.eot");
+  src: url("../fonts/icons.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/icons.woff") format("woff"),
+       url("../fonts/icons.ttf") format("truetype"),
+       url("../fonts/icons.svg#icons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "autolistings";
+    src: url("../fonts/icons.svg#icons") format("svg");
+  }
+}
+
+[class^="auto-icon-"]:before, [class*=" auto-icon-"]:before,
+[class^="auto-icon-"]:after, [class*=" auto-icon-"]:after {   
+  font-family: autolistings;
+  font-size: 20px;
+  font-style: normal;
+  vertical-align: bottom;
+  line-height: unset;
+}
+[class^="auto-icon-"], [class*=" auto-icon-"] {   
+  display: inline-block;
+}
+
+
+.auto-icon-window-up:before { content: "\f100"; }
+.auto-icon-window-down:before { content: "\f101"; }
+.auto-icon-exhaust:before { content: "\f102"; }
+.auto-icon-wipers:before { content: "\f103"; }
+.auto-icon-aircon:before { content: "\f104"; }
+.auto-icon-aircon-down:before { content: "\f105"; }
+.auto-icon-speedometer:before { content: "\f106"; }
+.auto-icon-suspension:before { content: "\f107"; }
+.auto-icon-oil:before { content: "\f108"; }
+.auto-icon-airbag:before { content: "\f109"; }
+.auto-icon-temperature:before { content: "\f10a"; }
+.auto-icon-keys:before { content: "\f10b"; }
+.auto-icon-headlights:before { content: "\f10c"; }
+.auto-icon-keyless:before { content: "\f10d"; }
+.auto-icon-trunk:before { content: "\f10e"; }
+.auto-icon-brakes:before { content: "\f10f"; }
+.auto-icon-wheel-1:before { content: "\f110"; }
+.auto-icon-transmission:before { content: "\f111"; }
+.auto-icon-gasoline:before { content: "\f112"; }
+.auto-icon-odometer:before { content: "\f113"; }
+.auto-icon-battery:before { content: "\f114"; }
+.auto-icon-safety:before { content: "\f115"; }
+.auto-icon-gasoline-1:before { content: "\f116"; }
+.auto-icon-signs:before { content: "\f117"; }
+.auto-icon-maintenance:before { content: "\f118"; }
+.auto-icon-steering-wheel:before { content: "\f119"; }
+.auto-icon-fanbelt:before { content: "\f11a"; }
+.auto-icon-engine:before { content: "\f11b"; }
+.auto-icon-wheel-2:before { content: "\f11c"; }

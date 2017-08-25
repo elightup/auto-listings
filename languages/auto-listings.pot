@@ -1,0 +1,1929 @@
+# Copyright (C) 2017 Auto Listings
+# This file is distributed under the same license as the Auto Listings package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Auto Listings 1.1.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/auto-listings\n"
+"POT-Creation-Date: 2017-06-26 23:51:38+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: auto-listings.php:60 auto-listings.php:64
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#: auto-listings.php:204
+msgid "View Documentation"
+msgstr ""
+
+#: auto-listings.php:204
+msgid "Help"
+msgstr ""
+
+#: includes/admin/class-al-admin-enquiry-columns.php:72
+#: includes/admin/class-al-admin-options.php:9
+#: includes/class-al-post-types.php:67
+#: includes/metaboxes/class-al-metaboxes-listing.php:37
+msgid "Listing"
+msgstr ""
+
+#: includes/admin/class-al-admin-enquiry-columns.php:73
+#: includes/admin/class-al-admin-listing-columns.php:61
+#: includes/metaboxes/class-al-metaboxes-listing.php:523
+msgid "Seller"
+msgstr ""
+
+#: includes/admin/class-al-admin-enquiry-columns.php:74
+msgid "From Name"
+msgstr ""
+
+#: includes/admin/class-al-admin-enquiry-columns.php:75
+msgid "From Email"
+msgstr ""
+
+#: includes/admin/class-al-admin-enquiry-columns.php:89
+msgid "Edit Listing"
+msgstr ""
+
+#: includes/admin/class-al-admin-enquiry-columns.php:193
+msgid "Show all %s"
+msgstr ""
+
+#: includes/admin/class-al-admin-listing-columns.php:57
+#: includes/functions-listing.php:29
+#: templates/single-listing/tabs/details.php:18
+msgid "Vehicle"
+msgstr ""
+
+#: includes/admin/class-al-admin-listing-columns.php:58
+#: includes/admin/class-al-admin-options.php:472
+#: includes/metaboxes/class-al-metaboxes-listing.php:307
+#: includes/metaboxes/class-al-metaboxes-listing.php:538
+#: templates/single-listing/tabs/details.php:19
+msgid "Price"
+msgstr ""
+
+#: includes/admin/class-al-admin-listing-columns.php:59
+#: includes/admin/class-al-admin-options.php:241
+#: includes/metaboxes/class-al-metaboxes-listing.php:356
+msgid "Condition"
+msgstr ""
+
+#: includes/admin/class-al-admin-listing-columns.php:60
+#: includes/admin/class-al-admin-options.php:310
+#: includes/metaboxes/class-al-metaboxes-listing.php:348
+msgid "Status"
+msgstr ""
+
+#: includes/admin/class-al-admin-listing-columns.php:62
+#: includes/metaboxes/class-al-metaboxes-listing.php:541
+msgid "Address"
+msgstr ""
+
+#: includes/admin/class-al-admin-listing-columns.php:64
+#: includes/class-al-post-types.php:109
+msgid "Enquiries"
+msgstr ""
+
+#: includes/admin/class-al-admin-listing-columns.php:223
+msgid "All %s"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:10
+#: includes/admin/class-al-admin-seller-columns.php:41
+#: includes/class-al-post-types.php:67
+msgid "Listings"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:39
+msgid "%s"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:105
+msgid "Measurements"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:109
+msgid "Metric or Imperial"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:114
+msgid "Metric"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:115
+msgid "Imperial"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:127
+msgid "Maps & Search"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:131
+msgid "Google API Key"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:132
+msgid ""
+"A Google Maps API Key is required for Radius Searching and to show the maps "
+"on individual listing pages.<br>You can get yours %s."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:133
+msgid ""
+"If you don't add an API Key, the \"within x miles\" field will be disabled "
+"for search and the search query will default to a keyword based location "
+"search, meaning that it will only search address fields within each listing "
+"for the keyword that the user has entered. Maps on the listing page will "
+"also be disabled."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:134
+msgid "Your users will have a better search experience by adding an API key."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:139
+#: includes/functions-listing.php:259
+#: includes/metaboxes/class-al-metaboxes-listing.php:458
+msgid "Country"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:140
+msgid "This will help return more relevant results within search."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:140
+msgid "Country name or two letter %s country code."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:145
+msgid "Map Zoom"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:155
+msgid "Map Height"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:172
+msgid "Price Format"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:176
+msgid "Currency Position"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:181
+msgid "Left ($100)"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:182
+msgid "Right (100$)"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:183
+msgid "Left with space ($ 100)"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:184
+msgid "Right with space (100 $)"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:188
+msgid "Currency Symbol"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:195
+msgid "Thousand Separator"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:202
+msgid "Include Decimals"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:207
+msgid "No, do not include decimals in price"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:208
+msgid "Yes, include decimals in price"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:213
+msgid "Decimal Separator"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:220
+msgid "Number of Decimals"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:237
+msgid "Listing Setup"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:242
+msgid "What type of condition vehicles are you selling?"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:246
+msgid "New"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:247
+msgid "Used"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:248
+msgid "Certified"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:253
+msgid "Highlight New Listings"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:254
+msgid ""
+"How many days to highlight new listings for? Leave blank for no highlight."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:259
+msgid "Highlight Color"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:260
+msgid ""
+"The background color of the new listing highlight. (Icon & text are white)"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:266
+msgid "Listings Page"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:267
+msgid "The main page to display your listings (not the front page)."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:268
+#: includes/admin/class-al-admin-options.php:277
+msgid "Please visit %s if this options is changed."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:275
+msgid "Single Listing URL"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:276
+msgid "The single listing URL (or slug)."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:289
+msgid "%s Statuses"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:297
+msgid ""
+"Once Statuses have been added here, they are then available in the Status "
+"dropdown field when adding or editing a listing."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:297
+msgid ""
+"Statuses appear in a styled box over the listing's image and are used "
+"primarily to attract attention."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:301
+msgid "Status {#}"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:302
+msgid "Add Another Status"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:303
+msgid "Remove Status"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:315
+msgid "Background Color"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:320
+msgid "Text Color"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:325
+msgid "Icon Class"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:331
+msgid "Add icon class to display an icon. See %s for available icons."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:331
+msgid "Can also use FontAwesome icon classes such as \"fa fa-caret-left\"."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:346
+msgid "Listing Spec Fields"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:350
+msgid "Spec Fields to Display"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:351
+msgid ""
+"The specification fields you would like to display in the admin and frontend."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:367
+msgid "Columns"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:371
+msgid "Number of Columns"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:372
+msgid ""
+"The number of columns to display on the archive page, when viewing listings "
+"in grid mode."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:377
+msgid "2 Column"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:378
+msgid "3 Column"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:379
+msgid "4 Column"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:389
+msgid "Gallery Settings"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:394
+msgid "Auto Slide Images"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:395
+msgid "Should images start to slide automatically?"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:405
+msgid "Transition Delay"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:406
+msgid "The time (in ms) between each auto transition"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:416
+msgid "Transition Duration"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:417
+msgid "Transition duration (in ms)"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:427
+msgid "Thumbnails Shown"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:428
+msgid "Number of thumbnails shown below main image"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:438
+msgid "Transition Type"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:439
+msgid "Should images slide or fade?"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:456
+msgid "Colors"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:460
+msgid "Button Background"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:461
+msgid ""
+"Background color for buttons. Also used as highlight color in search field, "
+"tabs and image gallery."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:466
+msgid "Button Text"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:478
+msgid "Contact Icons"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:484
+msgid "Listing Icons"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:500
+msgid "Contact Form Settings"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:505
+msgid "Email From"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:506
+msgid "The \"from\" address for all enquiry emails that are sent to Sellers."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:510
+msgid ""
+"Contact form enquiries are sent directly to the selected Seller on that "
+"listing."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:510
+msgid "Therefore, it is important to include the seller on each listing."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:513
+msgid "Email From Name"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:514
+msgid "The \"from\" name for all enquiry emails that are sent to Sellers."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:520
+msgid "CC"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:521
+msgid "Extra email addresses that are CC'd on every enquiry (comma separated)."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:529
+msgid "BCC"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:530
+msgid ""
+"Extra email addresses that are BCC'd on every enquiry (comma separated)."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:546
+msgid "Contact Form Email"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:552
+msgid "Email Type"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:557
+msgid "HTML"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:558
+msgid "Plain Text"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:563
+msgid "Email Subject"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:567
+#: includes/class-al-contact-form.php:379
+msgid "New enquiry on listing #{listing_id}"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:570
+msgid "Email Message"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:581
+#: includes/class-al-contact-form.php:390
+msgid "Hi {seller_name},"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:582
+#: includes/class-al-contact-form.php:391
+msgid "There has been a new enquiry on <strong>{listing_title}</strong>"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:584
+#: includes/class-al-contact-form.php:392
+msgid "Name: {enquiry_name}"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:585
+#: includes/class-al-contact-form.php:393
+msgid "Email: {enquiry_email}"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:586
+#: includes/class-al-contact-form.php:394
+msgid "Phone: {enquiry_phone}"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:587
+#: includes/class-al-contact-form.php:395
+msgid "Message: {enquiry_message}"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:600
+msgid "Contact Form Messages"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:606
+msgid "Success Message"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:607
+msgid ""
+"The message that is displayed to users upon successfully sending a message."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:610
+msgid "Thank you, we will be in touch with you soon."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:613
+msgid "Error Message"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:614
+msgid "The message that is displayed if there is an error sending the message."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:617
+msgid "There was an error. Please try again."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:620
+msgid "Include Error Code"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:621
+msgid ""
+"Should the error code be shown with the error. Can be helpful for "
+"troubleshooting."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:625
+#: includes/admin/class-al-admin-options.php:677
+#: includes/admin/class-al-admin-options.php:698
+msgid "Yes"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:626
+#: includes/admin/class-al-admin-options.php:676
+#: includes/admin/class-al-admin-options.php:699
+msgid "No"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:641
+msgid "Theme Compatibility"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:646
+msgid "Opening HTML Tag(s)"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:647
+msgid "Override the opening HTML tags for all Listings pages."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:648
+#: includes/admin/class-al-admin-options.php:660
+msgid "This can help you to match the HTML with your current theme."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:658
+msgid "Closing HTML Tag(s)"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:659
+msgid "Override the closing HTML tags for all Listings pages."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:670
+msgid "Force Listings Page Title"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:671
+msgid ""
+"Some themes may be using incorrect template tags to display the archive page "
+"title."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:671
+msgid ""
+"If your page title is not displaying on the listings page, you can force the "
+"page title here."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:687
+msgid "Uninstall"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:692
+msgid "Delete Data"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:693
+msgid "Should all plugin data be deleted upon uninstalling this plugin?"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:712
+msgid "Extensions"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:717
+msgid ""
+"There are a number of premium extensions available at <a href=\"http://"
+"wpautolistings.com/documentation?"
+"utm_source=plugin&utm_medium=settings_page&utm_content=extensions\" target="
+"\"_blank\">www.wpautolistings.com</a> that will take your automotive website "
+"to the next level."
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:727
+msgid "Save Options"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:732
+msgid "Publish?"
+msgstr ""
+
+#: includes/admin/class-al-admin-options.php:733
+msgid "Save These Options"
+msgstr ""
+
+#. #-#-#-#-#  auto-listings.pot (Auto Listings 1.1.1)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: includes/admin/class-al-admin-options.php:747
+#: includes/functions-sidebars.php:11
+msgid "Auto Listings"
+msgstr ""
+
+#: includes/admin/class-al-admin-seller-columns.php:42
+msgid "Mobile"
+msgstr ""
+
+#: includes/admin/class-al-admin-seller-columns.php:43
+msgid "Office Phone"
+msgstr ""
+
+#: includes/class-al-contact-form.php:73
+#: includes/metaboxes/class-al-metaboxes-listing.php:539
+msgid "Contact Form"
+msgstr ""
+
+#: includes/class-al-contact-form.php:111
+msgid "Name"
+msgstr ""
+
+#: includes/class-al-contact-form.php:122
+msgid "Email"
+msgstr ""
+
+#: includes/class-al-contact-form.php:132
+msgid "Phone"
+msgstr ""
+
+#: includes/class-al-contact-form.php:142
+msgid "Message"
+msgstr ""
+
+#: includes/class-al-contact-form.php:190
+msgid "Enquiry on listing #%s"
+msgstr ""
+
+#: includes/class-al-contact-form.php:231
+msgid "Send Enquiry"
+msgstr ""
+
+#: includes/class-al-contact-form.php:276
+msgid "Security check failed."
+msgstr ""
+
+#: includes/class-al-post-status.php:25
+msgctxt "post"
+msgid "Archive"
+msgstr ""
+
+#: includes/class-al-post-status.php:31
+msgid "Archive <span class=\"count\">(%s)</span>"
+msgid_plural "Archived <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-al-post-status.php:48 includes/class-al-post-status.php:60
+#: includes/class-al-post-status.php:81 includes/metaboxes/functions.php:224
+msgid "Archived"
+msgstr ""
+
+#: includes/class-al-post-types.php:48
+msgctxt "listing post type name"
+msgid "%2$s"
+msgstr ""
+
+#: includes/class-al-post-types.php:49
+msgctxt "singular listing post type name"
+msgid "%1$s"
+msgstr ""
+
+#: includes/class-al-post-types.php:50 includes/class-al-post-types.php:92
+#: includes/class-al-post-types.php:145
+msgid "New %1s"
+msgstr ""
+
+#: includes/class-al-post-types.php:51 includes/class-al-post-types.php:93
+#: includes/class-al-post-types.php:146
+msgid "Add New %1$s"
+msgstr ""
+
+#: includes/class-al-post-types.php:52 includes/class-al-post-types.php:94
+#: includes/class-al-post-types.php:147
+msgid "Edit %1$s"
+msgstr ""
+
+#: includes/class-al-post-types.php:53 includes/class-al-post-types.php:95
+#: includes/class-al-post-types.php:148
+msgid "New %1$s"
+msgstr ""
+
+#: includes/class-al-post-types.php:54 includes/class-al-post-types.php:96
+#: includes/class-al-post-types.php:149
+msgid "%2$s"
+msgstr ""
+
+#: includes/class-al-post-types.php:55 includes/class-al-post-types.php:97
+#: includes/class-al-post-types.php:150
+msgid "View %1$s"
+msgstr ""
+
+#: includes/class-al-post-types.php:56 includes/class-al-post-types.php:98
+#: includes/class-al-post-types.php:151
+msgid "Search %2$s"
+msgstr ""
+
+#: includes/class-al-post-types.php:57 includes/class-al-post-types.php:99
+#: includes/class-al-post-types.php:152
+msgid "No %2$s found"
+msgstr ""
+
+#: includes/class-al-post-types.php:58 includes/class-al-post-types.php:100
+#: includes/class-al-post-types.php:153
+msgid "No %2$s found in Trash"
+msgstr ""
+
+#: includes/class-al-post-types.php:60
+msgctxt "listing post type menu name"
+msgid "%2$s"
+msgstr ""
+
+#: includes/class-al-post-types.php:61 includes/class-al-post-types.php:103
+#: includes/class-al-post-types.php:156
+msgid "Filter %2$s list"
+msgstr ""
+
+#: includes/class-al-post-types.php:62 includes/class-al-post-types.php:104
+#: includes/class-al-post-types.php:157
+msgid "%2$s list navigation"
+msgstr ""
+
+#: includes/class-al-post-types.php:63 includes/class-al-post-types.php:105
+#: includes/class-al-post-types.php:158
+msgid "%2$s list"
+msgstr ""
+
+#: includes/class-al-post-types.php:90
+msgctxt "enquiry post type name"
+msgid "%2$s"
+msgstr ""
+
+#: includes/class-al-post-types.php:91
+msgctxt "singular enquiry post type name"
+msgid "%1$s"
+msgstr ""
+
+#: includes/class-al-post-types.php:102
+msgctxt "enquiry post type menu name"
+msgid "%2$s"
+msgstr ""
+
+#: includes/class-al-post-types.php:109
+#: includes/metaboxes/class-al-metaboxes-listing-enquiry.php:37
+msgid "Enquiry"
+msgstr ""
+
+#: includes/class-al-post-types.php:143
+msgctxt "body-type general name"
+msgid "%2s"
+msgstr ""
+
+#: includes/class-al-post-types.php:144
+msgctxt "body-type singular name"
+msgid "%1s"
+msgstr ""
+
+#: includes/class-al-post-types.php:155
+msgctxt "body-type menu name"
+msgid "%2$s"
+msgstr ""
+
+#: includes/class-al-post-types.php:162 includes/class-al-search-form.php:134
+msgid "Body Type"
+msgstr ""
+
+#: includes/class-al-post-types.php:162
+msgid "Body Types"
+msgstr ""
+
+#: includes/class-al-roles.php:26
+msgid "Auto Listings Seller"
+msgstr ""
+
+#: includes/class-al-search-form.php:67
+msgid "condition"
+msgstr ""
+
+#: includes/class-al-search-form.php:68
+msgid "I'm looking for "
+msgstr ""
+
+#: includes/class-al-search-form.php:81
+msgid "min"
+msgstr ""
+
+#: includes/class-al-search-form.php:82
+msgid "priced from"
+msgstr ""
+
+#: includes/class-al-search-form.php:94
+msgid "max"
+msgstr ""
+
+#: includes/class-al-search-form.php:95
+msgid "to"
+msgstr ""
+
+#: includes/class-al-search-form.php:110
+msgid "within"
+msgstr ""
+
+#: includes/class-al-search-form.php:146
+msgid "Max Mileage"
+msgstr ""
+
+#: includes/class-al-search-form.php:160
+msgid "State, Zip, Town"
+msgstr ""
+
+#: includes/class-al-search-form.php:161
+msgid "Find My Car"
+msgstr ""
+
+#: includes/class-al-search-form.php:162
+msgid "More Refinements"
+msgstr ""
+
+#: includes/frontend/template-tags.php:180
+#: templates/single-listing/tabs/details.php:14
+msgid "Details"
+msgstr ""
+
+#: includes/frontend/template-tags.php:188
+#: templates/single-listing/tabs/specifications.php:17
+msgid "Specifications"
+msgstr ""
+
+#: includes/frontend/template-tags.php:249
+msgid "Search Results %s"
+msgstr ""
+
+#: includes/frontend/template-tags.php:252
+msgid "&nbsp;&ndash; Page %s"
+msgstr ""
+
+#: includes/functions-formatting.php:14
+msgid "Miles"
+msgstr ""
+
+#: includes/functions-formatting.php:14
+msgid "Kilometers"
+msgstr ""
+
+#: includes/functions-formatting.php:18
+msgid "mi"
+msgstr ""
+
+#: includes/functions-formatting.php:18
+msgid "km"
+msgstr ""
+
+#: includes/functions-formatting.php:22
+msgid "mph"
+msgstr ""
+
+#: includes/functions-formatting.php:22
+msgid "kph"
+msgstr ""
+
+#: includes/functions-general.php:211
+msgid "%1s %2s or less"
+msgstr ""
+
+#: includes/functions-general.php:236
+msgid "%1s %2s of"
+msgstr ""
+
+#: includes/functions-listing.php:14
+msgid "Year"
+msgstr ""
+
+#: includes/functions-listing.php:16 includes/functions-listing.php:21
+#: includes/functions-listing.php:26 includes/functions-listing.php:31
+#: includes/functions-listing.php:36 includes/functions-listing.php:41
+#: includes/functions-listing.php:48 includes/functions-listing.php:53
+#: includes/functions-listing.php:60 includes/functions-listing.php:193
+#: includes/functions-listing.php:198 includes/functions-listing.php:203
+msgid " (Recommended)"
+msgstr ""
+
+#: includes/functions-listing.php:19
+msgid "Make"
+msgstr ""
+
+#: includes/functions-listing.php:24
+msgid "Model"
+msgstr ""
+
+#: includes/functions-listing.php:34
+msgid "Seats"
+msgstr ""
+
+#: includes/functions-listing.php:39
+msgid "Doors"
+msgstr ""
+
+#: includes/functions-listing.php:46
+#: templates/single-listing/tabs/details.php:25
+msgid "Drive Type"
+msgstr ""
+
+#: includes/functions-listing.php:51
+msgid "Transmission Type"
+msgstr ""
+
+#: includes/functions-listing.php:58
+msgid "Fuel Type"
+msgstr ""
+
+#: includes/functions-listing.php:68
+msgid "Fuel Economy Highway (l/100km)"
+msgstr ""
+
+#: includes/functions-listing.php:72
+msgid "Fuel Economy Mixed (l/100km)"
+msgstr ""
+
+#: includes/functions-listing.php:76
+msgid "Fuel Economy City (l/100km)"
+msgstr ""
+
+#: includes/functions-listing.php:80
+msgid "Fuel Capacity (l):"
+msgstr ""
+
+#: includes/functions-listing.php:86
+msgid "Weight (kg)"
+msgstr ""
+
+#: includes/functions-listing.php:90
+msgid "Length (mm)"
+msgstr ""
+
+#: includes/functions-listing.php:94
+msgid "Width (mm)"
+msgstr ""
+
+#: includes/functions-listing.php:98
+msgid "Height (mm)"
+msgstr ""
+
+#: includes/functions-listing.php:102
+msgid "Wheelbase (mm)"
+msgstr ""
+
+#: includes/functions-listing.php:108
+msgid "0-100 kph"
+msgstr ""
+
+#: includes/functions-listing.php:112
+msgid "Top Speed (KPH)"
+msgstr ""
+
+#: includes/functions-listing.php:118
+msgid "Engine Displacement (cc)"
+msgstr ""
+
+#: includes/functions-listing.php:128
+msgid "Fuel Economy Highway (mpg)"
+msgstr ""
+
+#: includes/functions-listing.php:132
+msgid "Fuel Economy City (mpg)"
+msgstr ""
+
+#: includes/functions-listing.php:136
+msgid "Fuel Economy Mixed (mpg)"
+msgstr ""
+
+#: includes/functions-listing.php:140
+msgid "Fuel Capacity (g)"
+msgstr ""
+
+#: includes/functions-listing.php:146
+msgid "Weight (lbs)"
+msgstr ""
+
+#: includes/functions-listing.php:150
+msgid "Length (in)"
+msgstr ""
+
+#: includes/functions-listing.php:154
+msgid "Width (in)"
+msgstr ""
+
+#: includes/functions-listing.php:158
+msgid "Height (in)"
+msgstr ""
+
+#: includes/functions-listing.php:162
+msgid "Wheelbase (in)"
+msgstr ""
+
+#: includes/functions-listing.php:168
+msgid "0-62 mph"
+msgstr ""
+
+#: includes/functions-listing.php:172
+msgid "Top Speed (mph)"
+msgstr ""
+
+#: includes/functions-listing.php:178
+msgid "Engine Displacement (ci)"
+msgstr ""
+
+#: includes/functions-listing.php:187
+msgid "Engine Location"
+msgstr ""
+
+#: includes/functions-listing.php:191
+msgid "Engine Type"
+msgstr ""
+
+#: includes/functions-listing.php:193 includes/functions-listing.php:198
+#: includes/functions-listing.php:203
+msgid "Data from this field is used for the \"Engine\" icon text"
+msgstr ""
+
+#: includes/functions-listing.php:196
+msgid "Engine (l)"
+msgstr ""
+
+#: includes/functions-listing.php:201
+msgid "Engine Cylinders"
+msgstr ""
+
+#: includes/functions-listing.php:206
+msgid "Engine Valves"
+msgstr ""
+
+#: includes/functions-listing.php:210
+msgid "Engine Valves Per Cyl"
+msgstr ""
+
+#: includes/functions-listing.php:214
+msgid "Engine Max Power (HP)"
+msgstr ""
+
+#: includes/functions-listing.php:218
+msgid "Engine Max Power (kW)"
+msgstr ""
+
+#: includes/functions-listing.php:222
+msgid "Engine Max Power (PS)"
+msgstr ""
+
+#: includes/functions-listing.php:226
+msgid "Engine Max Power RPM"
+msgstr ""
+
+#: includes/functions-listing.php:230
+msgid "Engine Max Torque (NM)"
+msgstr ""
+
+#: includes/functions-listing.php:234
+msgid "Engine Max Torque (Lb-Ft)"
+msgstr ""
+
+#: includes/functions-listing.php:238
+msgid "Engine Max Torque (kgf-m)"
+msgstr ""
+
+#: includes/functions-listing.php:242
+msgid "Engine Max Torque RPM"
+msgstr ""
+
+#: includes/functions-listing.php:246
+msgid "Engine Bore (mm)"
+msgstr ""
+
+#: includes/functions-listing.php:250
+msgid "Engine Stroke (mm)"
+msgstr ""
+
+#: includes/functions-listing.php:254
+msgid "Engine Compression Ratio"
+msgstr ""
+
+#: includes/functions-listing.php:455
+msgid " cylinder "
+msgstr ""
+
+#: includes/functions-listing.php:472
+msgid "L/km"
+msgstr ""
+
+#: includes/functions-listing.php:474
+msgid "mpg"
+msgstr ""
+
+#: includes/functions-listing.php:485
+msgid "n/a"
+msgstr ""
+
+#: includes/functions-sidebars.php:13
+msgid "Widgets in this area will be shown on all listings pages."
+msgstr ""
+
+#: includes/install.php:342
+msgid "Success!"
+msgstr ""
+
+#: includes/install.php:342
+msgid " A sample listing has been created: "
+msgstr ""
+
+#: includes/install.php:343
+msgid "View First Listing"
+msgstr ""
+
+#: includes/install.php:344
+msgid ""
+"Step 1. Please go through each tab below, configure the options and "
+"<strong>hit the save button</strong>."
+msgstr ""
+
+#: includes/install.php:345
+msgid ""
+"Step 2. Add your first Listing by navigating to <strong>Listings > New "
+"Listing</strong>"
+msgstr ""
+
+#: includes/install.php:346
+msgid ""
+"<em><strong>Please Note</strong>: When viewing listings, if things aren't "
+"looking quiet right, don't panic. <br>It is likely just a small theme "
+"compatibility issue which is easily resolved. <a href=\"%s\">Contact us "
+"here</a> and we will be happy to help and make it look great with your theme."
+"</em>"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2.php:143
+msgid "Metabox configuration is required to have an ID parameter."
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2.php:493
+msgid "Click to toggle"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_Ajax.php:75
+msgid "Please Try Again"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_Ajax.php:179
+msgid "Remove Embed"
+msgstr ""
+
+#. translators: 1: results for. 2: link to codex.wordpress.org/Embeds
+#: includes/libraries/cmb2/includes/CMB2_Ajax.php:187
+#: includes/libraries/cmb2/includes/helper-functions.php:105
+msgid "No oEmbed Results Found for %1$s. View more info at %2$s."
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_Base.php:406
+msgid ""
+"The \"%1$s\" field parameter has been deprecated in favor of the \"%1$s\" "
+"parameter."
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_Base.php:410
+msgid ""
+"Using the \"%1$s\" field parameter as a callback has been deprecated in "
+"favor of the \"%1$s\" parameter."
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_Base.php:440
+msgid ""
+"%1$s was called with a parameter that is <strong>deprecated</strong> since "
+"version %2$s! %3$s"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_Base.php:442
+msgid ""
+"%1$s was called with a parameter that is <strong>deprecated</strong> since "
+"version %2$s with no alternative available."
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_Base.php:475
+#: includes/libraries/cmb2/includes/types/CMB2_Type_Base.php:149
+msgid "Invalid %1$s property: %2$s"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_Base.php:490
+#: includes/libraries/cmb2/includes/types/CMB2_Type_Base.php:133
+msgid "Invalid %1$s method: %2$s"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_Field.php:1156
+msgid "Add Group"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_Field.php:1157
+msgid "Remove Group"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_Field.php:1179
+#: includes/libraries/cmb2/includes/CMB2_Field.php:1183
+msgid "None"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_Field.php:1244
+msgid "Sorry, this field does not have a cmb_id specified."
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_Field_Display.php:428
+#: includes/libraries/cmb2/includes/CMB2_JS.php:165
+#: includes/libraries/cmb2/includes/types/CMB2_Type_File_Base.php:78
+msgid "File:"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_JS.php:105
+#: includes/libraries/cmb2/includes/CMB2_JS.php:145
+msgid "Clear"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_JS.php:106
+msgid "Default"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_JS.php:107
+msgid "Select Color"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_JS.php:108
+msgid "Current Color"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_JS.php:135
+msgctxt "Valid formatDate string for jquery-ui datepicker"
+msgid "mm/dd/yy"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_JS.php:136
+msgid "Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_JS.php:137
+msgid "Su, Mo, Tu, We, Th, Fr, Sa"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_JS.php:138
+msgid "Sun, Mon, Tue, Wed, Thu, Fri, Sat"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_JS.php:139
+msgid ""
+"January, February, March, April, May, June, July, August, September, "
+"October, November, December"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_JS.php:140
+msgid "Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_JS.php:141
+msgid "Next"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_JS.php:142
+msgid "Prev"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_JS.php:143
+msgid "Today"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_JS.php:144
+#: includes/libraries/cmb2/includes/CMB2_JS.php:154
+msgid "Done"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_JS.php:148
+msgid "Choose Time"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_JS.php:149
+msgid "Time"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_JS.php:150
+msgid "Hour"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_JS.php:151
+msgid "Minute"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_JS.php:152
+msgid "Second"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_JS.php:153
+msgid "Now"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_JS.php:155
+msgctxt ""
+"Valid formatting string, as per http://trentrichardson.com/examples/"
+"timepicker/"
+msgid "hh:mm TT"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_JS.php:161
+msgid "Use this file"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_JS.php:162
+msgid "Use these files"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_JS.php:163
+#: includes/libraries/cmb2/includes/types/CMB2_Type_File_Base.php:63
+msgid "Remove Image"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_JS.php:164
+#: includes/libraries/cmb2/includes/CMB2_Types.php:411
+#: includes/libraries/cmb2/includes/types/CMB2_Type_File_Base.php:83
+msgid "Remove"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_JS.php:166
+#: includes/libraries/cmb2/includes/types/CMB2_Type_File_Base.php:81
+msgid "Download"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_JS.php:167
+msgid "Select / Deselect All"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_Types.php:230
+msgid "Custom CMB2 field type classes must extend CMB2_Type_Base."
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_Types.php:346
+msgid "Add Row"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_hookup.php:153
+msgid ""
+"Term Metadata is a WordPress 4.4+ feature. Please upgrade your WordPress "
+"install."
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_hookup.php:157
+msgid "Term metaboxes configuration requires a \"taxonomies\" parameter."
+msgstr ""
+
+#: includes/libraries/cmb2/includes/CMB2_hookup.php:404
+msgid "Toggle panel: %s"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/helper-functions.php:303
+msgid "Save"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller.php:257
+msgid "This box does not have read permissions."
+msgstr ""
+
+#: includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller.php:275
+msgid "This box does not have write permissions."
+msgstr ""
+
+#: includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller.php:296
+msgid ""
+"No box found by that id. A box needs to be registered with the \"show_in_rest"
+"\" parameter configured."
+msgstr ""
+
+#: includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller.php:372
+msgid "A human-readable description of the object."
+msgstr ""
+
+#: includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller.php:379
+msgid "The id for the object."
+msgstr ""
+
+#: includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller.php:386
+msgid "The title for the object."
+msgstr ""
+
+#: includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller_Boxes.php:51
+msgid "Includes the registered fields for the box in the response."
+msgstr ""
+
+#: includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller_Boxes.php:72
+msgid ""
+"Includes the fully rendered attributes, 'form_open', 'form_close', as well "
+"as the enqueued 'js_dependencies' script handles, and 'css_dependencies' "
+"stylesheet handles."
+msgstr ""
+
+#: includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller_Boxes.php:122
+msgid "No boxes found."
+msgstr ""
+
+#: includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:27
+msgid ""
+"Includes the box object which the fields are registered to in the response."
+msgstr ""
+
+#: includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:30
+msgid ""
+"When the '_rendered' argument is passed, the renderable field attributes "
+"will be returned fully rendered. By default, the names of the callback "
+"handers for the renderable attributes will be returned."
+msgstr ""
+
+#: includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:33
+#: includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:36
+msgid ""
+"To view or modify the field's value, the 'object_id' and 'object_type' "
+"arguments are required."
+msgstr ""
+
+#: includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:236
+msgid ""
+"CMB2 Field value cannot be updated without the value parameter specified."
+msgstr ""
+
+#: includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:295
+msgid ""
+"CMB2 Field value cannot be modified without the object_id and object_type "
+"parameters specified."
+msgstr ""
+
+#: includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:308
+#: includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:335
+msgid "No field found by that id."
+msgstr ""
+
+#: includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:407
+msgid "Value Error for %s"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:24
+msgid "The register_routes() method must be overriden"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:34
+#: includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:44
+#: includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:54
+#: includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:64
+#: includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:74
+#: includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:84
+#: includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:94
+#: includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:104
+#: includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:114
+#: includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:124
+#: includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:134
+#: includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:145
+msgid "Method '%s' not implemented. Must be over-ridden in subclass."
+msgstr ""
+
+#: includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:248
+msgid "Current page of the collection."
+msgstr ""
+
+#: includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:256
+msgid "Maximum number of items to be returned in result set."
+msgstr ""
+
+#: includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:265
+msgid "Limit results to those matching a string."
+msgstr ""
+
+#: includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:283
+msgid ""
+"Scope under which the request is made; determines fields present in response."
+msgstr ""
+
+#: includes/libraries/cmb2/includes/types/CMB2_Type_File.php:40
+msgid "Add or Upload File"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/types/CMB2_Type_File_List.php:41
+msgid "Add or Upload Files"
+msgstr ""
+
+#: includes/libraries/cmb2/includes/types/CMB2_Type_Taxonomy_Multicheck.php:28
+#: includes/libraries/cmb2/includes/types/CMB2_Type_Taxonomy_Radio.php:25
+msgid "No terms"
+msgstr ""
+
+#: includes/libraries/cmb2-grid/Test/Test.php:27
+msgid "Repeating Field Group using a Grid"
+msgstr ""
+
+#: includes/libraries/cmb2-grid/Test/Test.php:31
+#: includes/libraries/cmb2-grid/Test/Test.php:105
+msgid "Test Text"
+msgstr ""
+
+#: includes/libraries/cmb2-grid/Test/Test.php:32
+#: includes/libraries/cmb2-grid/Test/Test.php:38
+#: includes/libraries/cmb2-grid/Test/Test.php:106
+#: includes/libraries/cmb2-grid/Test/Test.php:112
+#: includes/libraries/cmb2-grid/Test/Test.php:118
+#: includes/libraries/cmb2-grid/Test/Test.php:124
+#: includes/libraries/cmb2-grid/Test/Test.php:130
+msgid "field description (optional)"
+msgstr ""
+
+#: includes/libraries/cmb2-grid/Test/Test.php:37
+#: includes/libraries/cmb2-grid/Test/Test.php:111
+msgid "Test Text Small"
+msgstr ""
+
+#: includes/libraries/cmb2-grid/Test/Test.php:48
+msgid "Entry {#}"
+msgstr ""
+
+#: includes/libraries/cmb2-grid/Test/Test.php:49
+msgid "Add Another Entry"
+msgstr ""
+
+#: includes/libraries/cmb2-grid/Test/Test.php:50
+msgid "Remove Entry"
+msgstr ""
+
+#: includes/libraries/cmb2-grid/Test/Test.php:55
+msgid "Entry Title"
+msgstr ""
+
+#: includes/libraries/cmb2-grid/Test/Test.php:60
+msgid "Description"
+msgstr ""
+
+#: includes/libraries/cmb2-grid/Test/Test.php:61
+msgid "Write a short description for this entry"
+msgstr ""
+
+#: includes/libraries/cmb2-grid/Test/Test.php:101
+msgid "Test Metabox using a Grid"
+msgstr ""
+
+#: includes/libraries/cmb2-grid/Test/Test.php:117
+msgid "Test Text Medium"
+msgstr ""
+
+#: includes/libraries/cmb2-grid/Test/Test.php:123
+msgid "Website URL"
+msgstr ""
+
+#: includes/libraries/cmb2-grid/Test/Test.php:129
+msgid "Test Text Email"
+msgstr ""
+
+#: includes/libraries/cmb2-metatabs/code/cmb2_metatabs_options.php:1007
+msgid "Settings updated."
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing-enquiry.php:61
+#: includes/metaboxes/class-al-metaboxes-listing.php:507
+msgid "%s Settings"
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:69
+msgid "%s Description"
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:77
+msgid "Tagline"
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:84
+msgid "Main Description"
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:120
+msgid "Vehicle Select"
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:132
+msgid "Years"
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:137
+msgid "Makes"
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:142
+msgid "Models"
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:147
+msgid "Trims"
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:204
+msgid "%s Specifications"
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:256
+msgid "Images"
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:263
+msgid "Image Gallery"
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:264
+msgid ""
+"The first image will be used as the main feature image. Drag and drop to re-"
+"order."
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:269
+msgid "Add Images"
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:298
+msgid "%s Details"
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:318
+msgid "Suffix"
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:319
+msgid "Optional text after price."
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:336
+#: templates/single-listing/tabs/details.php:21
+msgid "Color"
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:342
+#: templates/single-listing/tabs/details.php:22
+msgid "Registration"
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:385
+msgid "%s Address"
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:393
+msgid "Vehicle Location"
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:400
+msgid "Start typing address..."
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:404
+msgid "Displayed Address"
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:405
+msgid "The address that will be displayed."
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:405
+msgid "Fields below used for search purposes only."
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:431
+msgid "City / Town / Locality"
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:440
+msgid "Zip / Postal Code"
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:449
+msgid "State"
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:467
+msgid "Latitude"
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:476
+msgid "Longitude"
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:524
+msgid ""
+"Adding a Seller will automatically insert the Contact Form on the listing "
+"and all enquiries will be sent to this seller."
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:532
+msgid "Hide Items"
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:533
+msgid "Hide items on the front, even if filled in."
+msgstr ""
+
+#: includes/metaboxes/class-al-metaboxes-listing.php:540
+msgid "Map"
+msgstr ""
+
+#: includes/metaboxes/functions.php:71
+msgid "No Seller"
+msgstr ""
+
+#: includes/metaboxes/functions.php:129
+msgid "No Google Maps API key found.<br>Please %s"
+msgstr ""
+
+#: includes/metaboxes/functions.php:147
+msgid "Find"
+msgstr ""
+
+#: includes/metaboxes/functions.php:148
+msgid "Reset"
+msgstr ""
+
+#: includes/metaboxes/functions.php:156
+msgid "Modify the marker's position by dragging it."
+msgstr ""
+
+#: includes/metaboxes/functions.php:182
+msgid "%s Enquiry"
+msgid_plural "%s Enquiries"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/metaboxes/functions.php:185
+msgid "Most Recent:"
+msgstr ""
+
+#: includes/metaboxes/functions.php:185
+msgctxt "%s = human-readable time difference"
+msgid "%s ago"
+msgstr ""
+
+#: includes/metaboxes/functions.php:193
+msgid "Archive This %s"
+msgstr ""
+
+#: includes/metaboxes/functions.php:198
+msgid "This %s is archived."
+msgstr ""
+
+#: includes/metaboxes/functions.php:198
+msgid "Hit the Publish button to un-archive it."
+msgstr ""
+
+#: includes/metaboxes/functions.php:265
+msgid "This %s is now archived."
+msgstr ""
+
+#: includes/metaboxes/functions.php:270
+msgid "There was an error archiving this %s"
+msgstr ""
+
+#: includes/metaboxes/functions.php:287
+msgid "Load Makes & Models"
+msgstr ""
+
+#: includes/metaboxes/functions.php:289
+msgid "Click the button to load Make & Model data into the dropdowns."
+msgstr ""
+
+#: includes/metaboxes/functions.php:297
+msgid "Populate The Fields"
+msgstr ""
+
+#: includes/metaboxes/functions.php:299
+msgid ""
+"Once your vehicle is selected, hit the button to automatically populate the "
+"fields below."
+msgstr ""
+
+#: templates/archive-listing.php:69
+msgid "Sorry, no listings were found."
+msgstr ""
+
+#: templates/loop/bottom.php:15
+msgid "View"
+msgstr ""
+
+#: templates/loop/bottom.php:15
+msgid "More Details"
+msgstr ""
+
+#: templates/loop/bottom.php:17 templates/single-listing/price.php:19
+msgid " Vehicle"
+msgstr ""
+
+#: templates/loop/image.php:31 templates/single-listing/gallery.php:22
+msgid "New Listing"
+msgstr ""
+
+#: templates/loop/orderby.php:20
+msgid "Newest Listings"
+msgstr ""
+
+#: templates/loop/orderby.php:21
+msgid "Oldest Listings"
+msgstr ""
+
+#: templates/loop/orderby.php:22
+msgid "Price (Low to High)"
+msgstr ""
+
+#: templates/loop/orderby.php:23
+msgid "Price (High to Low)"
+msgstr ""
+
+#: templates/single-listing/address.php:18
+msgid "Listing Location:"
+msgstr ""
+
+#: templates/single-listing/contact-form.php:14
+msgid "Quick Contact"
+msgstr ""
+
+#: templates/single-listing/tabs/details.php:23
+msgid "Transmission"
+msgstr ""
+
+#: templates/single-listing/tabs/details.php:24
+msgid "Body"
+msgstr ""
+
+#: templates/single-listing/tabs/details.php:26
+msgid "Engine"
+msgstr ""
+
+#: templates/single-listing/tabs/details.php:27
+msgid "Fuel Economy Combined"
+msgstr ""
+
+#. #-#-#-#-#  auto-listings.pot (Auto Listings 1.1.1)  #-#-#-#-#
+#. Plugin URI of the plugin/theme
+#. #-#-#-#-#  auto-listings.pot (Auto Listings 1.1.1)  #-#-#-#-#
+#. Author URI of the plugin/theme
+msgid "http://wpautolistings.com"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "An Automotive Listings plugin for WordPress."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "WP Auto Listings"
+msgstr ""
