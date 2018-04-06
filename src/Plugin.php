@@ -47,9 +47,7 @@ class Plugin {
 		require AUTO_LISTINGS_DIR . 'includes/libraries/cmb2-grid/Cmb2GridPlugin.php';
 		require AUTO_LISTINGS_DIR . 'includes/libraries/cmb2-metatabs/cmb2_metatabs_options.php';
 
-		require AUTO_LISTINGS_DIR . 'includes/install.php';
 		require AUTO_LISTINGS_DIR . 'includes/class-al-roles.php';
-		require AUTO_LISTINGS_DIR . 'includes/class-al-post-types.php';
 		require AUTO_LISTINGS_DIR . 'includes/class-al-post-status.php';
 		require AUTO_LISTINGS_DIR . 'includes/class-al-shortcodes.php';
 		require AUTO_LISTINGS_DIR . 'includes/class-al-query.php';

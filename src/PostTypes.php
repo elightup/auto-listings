@@ -1,47 +1,12 @@
 <?php
-
-// Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
-
-/**
- * The main class
- *
- * @since 1.0.0
- */
-class Auto_Listings_Post_Types {
-
-	/**
-	 * Main constructor
-	 *
-	 * @since 1.0.0
-	 *
-	 */
+namespace AutoListings;
+class PostTypes {
 	public function __construct() {
-
-		// Hook into actions & filters
-		$this->hooks();
-
+		add_action( 'init', array( $this, 'register_post_types' ) );
+		add_action( 'init', array( $this, 'register_taxonomies' ) );
 	}
 
-	/**
-	 * Hook in to actions & filters
-	 *
-	 * @since 1.0.0
-	 */
-	public function hooks() {
-		add_action( 'init', array( $this, 'register_post_type' ) );
-		add_action( 'init', array( $this, 'register_taxonomy' ) );
-	}
-
-	/**
-	 * Registers and sets up the custom post types
-	 *
-	 * @since 1.0
-	 * @return void
-	 */
-	public function register_post_type() {
-
-		// get the slug for a single listing
+	public function register_post_types() {
 		$listing_slug = auto_listings_option( 'single_url' ) ? auto_listings_option( 'single_url' ) : 'listing';
 
 		$listing_labels = apply_filters( 'auto_listings_listing_labels', array(
@@ -132,13 +97,9 @@ class Auto_Listings_Post_Types {
 			'supports'           => apply_filters( 'auto_listings_enquiry_supports', array( 'title', 'revisions' ) ),
 		);
 		register_post_type( 'listing-enquiry', apply_filters( 'auto_listings_enquiry_post_type_args', $enquiry_args ) );
-
 	}
 
-
-
-	function register_taxonomy() {
-
+	public function register_taxonomies() {
 		$tax_labels = apply_filters( 'auto_listings_listing_labels', array(
 			'name'    				=> _x( '%2s', 'body-type general name', 'auto-listings' ),
 			'singular_name' 		=> _x( '%1s', 'body-type singular name', 'auto-listings' ),
@@ -176,8 +137,4 @@ class Auto_Listings_Post_Types {
 			)
 		);
 	}
-
-
 }
-
-return new Auto_Listings_Post_Types();
