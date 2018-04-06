@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * screen.
  *
  * @since 1.0
- */ 
+ */
 function auto_listings_install( $network_wide = false ) {
 	global $wpdb;
 
@@ -30,7 +30,7 @@ function auto_listings_install( $network_wide = false ) {
 	}
 
 }
-register_activation_hook( AUTOLISTINGS_PLUGIN_FILE, 'auto_listings_install' );
+register_activation_hook( AUTO_LISTINGS_FILE, 'auto_listings_install' );
 
 
 
@@ -225,7 +225,7 @@ function auto_listings_install_data() {
  * @return void
  */
 function auto_listings_run_install() {
-	
+
 	global $wpdb, $wp_version;
 
 	// Setup the Listings Custom Post Type
@@ -245,7 +245,7 @@ function auto_listings_run_install() {
 		update_option( 'auto_listings_version_upgraded_from', $current_version );
 	}
 
-	update_option( 'auto_listings_version', AUTOLISTINGS_VERSION );
+	update_option( 'auto_listings_version', AUTO_LISTINGS_VERSION );
 
 	// Create Auto_Listings roles
 	$roles = new Auto_Listings_Roles;
@@ -284,7 +284,7 @@ function auto_listings_run_install() {
  */
 function auto_listings_new_blog_created( $blog_id, $user_id, $domain, $path, $site_id, $meta ) {
 
-	if ( is_plugin_active_for_network( plugin_basename( AUTOLISTINGS_PLUGIN_FILE ) ) ) {
+	if ( is_plugin_active_for_network( plugin_basename( AUTO_LISTINGS_FILE ) ) ) {
 		switch_to_blog( $blog_id );
 		auto_listings_install();
 		restore_current_blog();
@@ -345,7 +345,7 @@ function auto_listings_install_success_notice() {
 		$message .= __( 'Step 2. Add your first Listing by navigating to <strong>Listings > New Listing</strong>', 'auto-listings' ) . '<br><br>';
 		$message .= sprintf( __( '<em><strong>Please Note</strong>: When viewing listings, if things aren\'t looking quiet right, don\'t panic. <br>It is likely just a small theme compatibility issue which is easily resolved. <a href="%s">Contact us here</a> and we will be happy to help and make it look great with your theme.</em>', 'auto-listings' ), 'http://wpautolistings.com/submit-ticket/' ) . '<br>';
 
-		printf( '<div class="%1$s"><p>%2$s</p></div>', $class, $message ); 
+		printf( '<div class="%1$s"><p>%2$s</p></div>', $class, $message );
 	}
 }
 add_action( 'admin_notices', 'auto_listings_install_success_notice' );

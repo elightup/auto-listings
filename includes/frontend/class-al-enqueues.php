@@ -50,8 +50,8 @@ class Auto_Listings_Enqueues {
 		
 		global $post;
 
-		$url = AUTOLISTINGS_PLUGIN_URL;
-		$ver = AUTOLISTINGS_VERSION;
+		$url = AUTO_LISTINGS_URL;
+		$ver = AUTO_LISTINGS_VERSION;
 
 		$css_dir 	= 'assets/css/';
 		$js_dir 	= 'assets/js/';
@@ -63,8 +63,8 @@ class Auto_Listings_Enqueues {
 			/*
 			 * Enqueue styles
 			 */
-			wp_enqueue_style( 'auto-listings-icons', AUTOLISTINGS_PLUGIN_URL . 'assets/css/auto-listings-icons.css', array(), $ver, 'all' );
-			wp_enqueue_style( 'auto-listings-fontawesome', AUTOLISTINGS_PLUGIN_URL . 'assets/css/font-awesome.min.css', array(), $ver, 'all' );
+			wp_enqueue_style( 'auto-listings-icons', AUTO_LISTINGS_URL . 'assets/css/auto-listings-icons.css', array(), $ver, 'all' );
+			wp_enqueue_style( 'auto-listings-fontawesome', AUTO_LISTINGS_URL . 'assets/css/font-awesome.min.css', array(), $ver, 'all' );
 		    wp_enqueue_style( 'auto-listings-sumoselect', $url . $css_dir . 'sumoselect.min.css', array(), $ver, 'all' );
 
 

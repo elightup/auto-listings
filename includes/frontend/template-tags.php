@@ -9,14 +9,14 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 function auto_listings_get_theme() {
 
     if( function_exists('et_divi_fonts_url') ) {
-		$theme = 'divi'; 
+		$theme = 'divi';
 	} else if( function_exists('genesis_constants') ) {
 		$theme = 'genesis';
 	} else {
 		$theme = get_option( 'template' );
 	}
 	return $theme;
-	
+
 }
 
 /*=================================== Global ===================================
@@ -223,7 +223,7 @@ function auto_listings_listing_display_theme_title( $title ) {
 
 
 if ( ! function_exists( 'auto_listings_listing_archive_title' ) ) {
-	
+
 	function auto_listings_listing_archive_title() {
 
 		$force = auto_listings_force_page_title();
@@ -244,7 +244,7 @@ function auto_listings_listing_archive_get_title() {
 
 	// get the title we need (search page or not)
 	if ( is_search() ) {
-		
+
 		$query = isset( $_GET['s'] ) && ! empty( $_GET['s'] ) ? ' - ' . esc_html( $_GET['s'] ) : '';
 		$page_title = sprintf( __( 'Search Results %s', 'auto-listings' ), esc_html( $query ) );
 
@@ -277,7 +277,7 @@ if ( ! function_exists( 'auto_listings_page_title' ) ) {
 	    $page_title = auto_listings_listing_archive_get_title();
 	    return $page_title;
 	}
-	
+
 }
 
 /**
@@ -415,7 +415,7 @@ function auto_listings_template_path() {
 
 
 function auto_listings_get_part( $part, $id = null ) {
-	
+
 	if ( $part ) {
 
 		// Look within passed path within the theme - this is priority.
@@ -430,7 +430,7 @@ function auto_listings_get_part( $part, $id = null ) {
 		if ( ! $template ) {
 
 			$check_dirs = apply_filters( 'auto_listings_template_directory', array(
-				AUTOLISTINGS_PLUGIN_DIR . 'templates/',
+				AUTO_LISTINGS_DIR . 'templates/',
 			));
 			foreach ( $check_dirs as $dir ) {
 				if ( file_exists( trailingslashit( $dir ) . $part ) ) {
@@ -442,6 +442,6 @@ function auto_listings_get_part( $part, $id = null ) {
 
 		include( $template );
 
-	}	
+	}
 
 }

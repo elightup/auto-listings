@@ -10,51 +10,51 @@ function auto_listings_spec_fields() {
 
 	$spec_fields = array(
 
-		'model_year' => array( 
+		'model_year' => array(
 			'label' => __( 'Year', 'auto-listings' ),
 			'type' => 'model',
 			'desc' => __( ' (Recommended)', 'auto-listings' ),
 		),
-		'make_display' => array( 
+		'make_display' => array(
 			'label' => __( 'Make', 'auto-listings' ),
 			'type' => 'general',
 			'desc' => __( ' (Recommended)', 'auto-listings' ),
 		),
-		'model_name' => array( 
+		'model_name' => array(
 			'label' => __( 'Model', 'auto-listings' ),
 			'type' => 'model',
 			'desc' => __( ' (Recommended)', 'auto-listings' ),
 		),
-		'model_vehicle' => array( 
+		'model_vehicle' => array(
 			'label' => __( 'Vehicle', 'auto-listings' ),
 			'type' 	=> 'model',
 			'desc' => __( ' (Recommended)', 'auto-listings' ),
 		),
-		'model_seats' => array( 
+		'model_seats' => array(
 			'label' => __( 'Seats', 'auto-listings' ),
 			'type' => 'general',
 			'desc' => __( ' (Recommended)', 'auto-listings' ),
 		),
-		'model_doors' => array( 
+		'model_doors' => array(
 			'label' => __( 'Doors', 'auto-listings' ),
 			'type' => 'general',
 			'desc' => __( ' (Recommended)', 'auto-listings' ),
 		),
 
 		// transmission
-		'model_drive' => array( 
+		'model_drive' => array(
 			'label' => __( 'Drive Type', 'auto-listings' ),
 			'type' => 'transmission',
 			'desc' => __( ' (Recommended)', 'auto-listings' ),
 		),
-		'model_transmission_type' => array( 
+		'model_transmission_type' => array(
 			'label' => __( 'Transmission Type', 'auto-listings' ),
 			'type' => 'transmission',
 			'desc' => __( ' (Recommended)', 'auto-listings' ),
 		),
 
 		// fuel
-		'model_engine_fuel' => array( 
+		'model_engine_fuel' => array(
 			'label' => __( 'Fuel Type', 'auto-listings' ),
 			'type' => 'fuel',
 			'desc' => __( ' (Recommended)', 'auto-listings' ),
@@ -64,117 +64,117 @@ function auto_listings_spec_fields() {
 
 	$metric_fields = array(
 		// fuel
-		'model_lkm_hwy' => array( 
+		'model_lkm_hwy' => array(
 			'label' => __( 'Fuel Economy Highway (l/100km)', 'auto-listings' ),
 			'type' => 'fuel',
 		),
-		'model_lkm_mixed' => array( 
+		'model_lkm_mixed' => array(
 			'label' => __( 'Fuel Economy Mixed (l/100km)', 'auto-listings' ),
 			'type' => 'fuel',
 		),
-		'model_lkm_city' => array( 
+		'model_lkm_city' => array(
 			'label' => __( 'Fuel Economy City (l/100km)', 'auto-listings' ),
 			'type' => 'fuel',
 		),
-		'model_fuel_cap_l' => array( 
+		'model_fuel_cap_l' => array(
 			'label' => __( 'Fuel Capacity (l):', 'auto-listings' ),
 			'type' => 'fuel',
 		),
 
 		// dimensions
-		'model_weight_kg' => array( 
+		'model_weight_kg' => array(
 			'label' => __( 'Weight (kg)', 'auto-listings' ),
 			'type' => 'weight_dimensions',
 		),
-		'model_length_mm' => array( 
+		'model_length_mm' => array(
 			'label' => __( 'Length (mm)', 'auto-listings' ),
 			'type' => 'weight_dimensions',
 		),
-		'model_width_mm' => array( 
+		'model_width_mm' => array(
 			'label' => __( 'Width (mm)', 'auto-listings' ),
 			'type' => 'weight_dimensions',
 		),
-		'model_height_mm' => array( 
+		'model_height_mm' => array(
 			'label' => __( 'Height (mm)', 'auto-listings' ),
 			'type' => 'weight_dimensions',
 		),
-		'model_wheelbase_mm' => array( 
+		'model_wheelbase_mm' => array(
 			'label' => __( 'Wheelbase (mm)', 'auto-listings' ),
 			'type' => 'weight_dimensions',
 		),
 
 		// performance
-		'model_0_to_100_kph' => array( 
+		'model_0_to_100_kph' => array(
 			'label' => __( '0-100 kph', 'auto-listings' ),
 			'type' => 'performance',
 		),
-		'model_top_speed_kph' => array( 
+		'model_top_speed_kph' => array(
 			'label' => __( 'Top Speed (KPH)', 'auto-listings' ),
 			'type' => 'performance',
 		),
 
 		// engine
-		'model_engine_cc' => array( 
+		'model_engine_cc' => array(
 			'label' => __( 'Engine Displacement (cc)', 'auto-listings' ),
 			'type' => 'engine',
 		),
-		
-		
+
+
 	);
 
 	$imperial_fields = array(
 		// fuel
-		'model_mpg_hwy' => array( 
+		'model_mpg_hwy' => array(
 			'label' => __( 'Fuel Economy Highway (mpg)', 'auto-listings' ),
 			'type' => 'fuel',
 		),
-		'model_mpg_city' => array( 
+		'model_mpg_city' => array(
 			'label' => __( 'Fuel Economy City (mpg)', 'auto-listings' ),
 			'type' => 'fuel',
 		),
-		'model_mpg_mixed' => array( 
+		'model_mpg_mixed' => array(
 			'label' => __( 'Fuel Economy Mixed (mpg)', 'auto-listings' ),
 			'type' => 'fuel',
 		),
-		'model_fuel_cap_g' => array( 
+		'model_fuel_cap_g' => array(
 			'label' => __( 'Fuel Capacity (g)', 'auto-listings' ),
 			'type' => 'fuel',
 		),
 
 		// dimensions
-		'model_weight_lbs' => array( 
+		'model_weight_lbs' => array(
 			'label' => __( 'Weight (lbs)', 'auto-listings' ),
 			'type' => 'weight_dimensions',
 		),
-		'model_length_in' => array( 
+		'model_length_in' => array(
 			'label' => __( 'Length (in)', 'auto-listings' ),
 			'type' => 'weight_dimensions',
 		),
-		'model_width_in' => array( 
+		'model_width_in' => array(
 			'label' => __( 'Width (in)', 'auto-listings' ),
 			'type' => 'weight_dimensions',
 		),
-		'model_height_in' => array( 
+		'model_height_in' => array(
 			'label' => __( 'Height (in)', 'auto-listings' ),
 			'type' => 'weight_dimensions',
 		),
-		'model_wheelbase_in' => array( 
+		'model_wheelbase_in' => array(
 			'label' => __( 'Wheelbase (in)', 'auto-listings' ),
 			'type' => 'weight_dimensions',
 		),
 
 		// performance
-		'model_0_to_100_kph' => array( 
+		'model_0_to_100_kph' => array(
 			'label' => __( '0-62 mph', 'auto-listings' ),
 			'type' => 'performance',
 		),
-		'model_top_speed_mph' => array( 
+		'model_top_speed_mph' => array(
 			'label' => __( 'Top Speed (mph)', 'auto-listings' ),
 			'type' => 'performance',
 		),
 
 		// engine
-		'model_engine_ci' => array( 
+		'model_engine_ci' => array(
 			'label' => __( 'Engine Displacement (ci)', 'auto-listings' ),
 			'type' => 'engine',
 		),
@@ -183,79 +183,79 @@ function auto_listings_spec_fields() {
 	$engine_fields = array(
 
 		// engine
-		'model_engine_position' => array( 
+		'model_engine_position' => array(
 			'label' => __( 'Engine Location', 'auto-listings' ),
 			'type' => 'engine',
 		),
-		'model_engine_type' => array( 
+		'model_engine_type' => array(
 			'label' => __( 'Engine Type', 'auto-listings' ),
-			'type' => 'engine',	
+			'type' => 'engine',
 			'desc' => __( ' (Recommended)', 'auto-listings' ) . '<br>' . __( 'Data from this field is used for the "Engine" icon text', 'auto-listings' ),
 		),
-		'model_engine_l' => array( 
+		'model_engine_l' => array(
 			'label' => __( 'Engine (l)', 'auto-listings' ),
 			'type' => 'engine',
 			'desc' => __( ' (Recommended)', 'auto-listings' ) . '<br>' . __( 'Data from this field is used for the "Engine" icon text', 'auto-listings' ),
 		),
-		'model_engine_cyl' => array( 
+		'model_engine_cyl' => array(
 			'label' => __( 'Engine Cylinders', 'auto-listings' ),
 			'type' => 'engine',
 			'desc' => __( ' (Recommended)', 'auto-listings' ) . '<br>' . __( 'Data from this field is used for the "Engine" icon text', 'auto-listings' ),
 		),
-		'model_engine_valves' => array( 
+		'model_engine_valves' => array(
 			'label' => __( 'Engine Valves', 'auto-listings' ),
 			'type' => 'engine',
 		),
-		'model_engine_valves_per_cyl' => array( 
+		'model_engine_valves_per_cyl' => array(
 			'label' => __( 'Engine Valves Per Cyl', 'auto-listings' ),
 			'type' => 'engine',
 		),
-		'model_engine_power_hp' => array( 
+		'model_engine_power_hp' => array(
 			'label' => __( 'Engine Max Power (HP)', 'auto-listings' ),
 			'type' => 'engine',
 		),
-		'model_engine_power_kw' => array( 
+		'model_engine_power_kw' => array(
 			'label' => __( 'Engine Max Power (kW)', 'auto-listings' ),
 			'type' => 'engine',
 		),
-		'model_engine_power_ps' => array( 
+		'model_engine_power_ps' => array(
 			'label' => __( 'Engine Max Power (PS)', 'auto-listings' ),
 			'type' => 'engine',
 		),
-		'model_engine_power_rpm' => array( 
+		'model_engine_power_rpm' => array(
 			'label' => __( 'Engine Max Power RPM', 'auto-listings' ),
 			'type' => 'engine',
 		),
-		'model_engine_torque_nm' => array( 
+		'model_engine_torque_nm' => array(
 			'label' => __( 'Engine Max Torque (NM)', 'auto-listings' ),
 			'type' => 'engine',
 		),
-		'model_engine_torque_lbft' => array( 
+		'model_engine_torque_lbft' => array(
 			'label' => __( 'Engine Max Torque (Lb-Ft)', 'auto-listings' ),
 			'type' => 'engine',
 		),
-		'model_engine_torque_kgm' => array( 
+		'model_engine_torque_kgm' => array(
 			'label' => __( 'Engine Max Torque (kgf-m)', 'auto-listings' ),
 			'type' => 'engine',
 		),
-		'model_engine_torque_rpm' => array( 
+		'model_engine_torque_rpm' => array(
 			'label' => __( 'Engine Max Torque RPM', 'auto-listings' ),
 			'type' => 'engine',
 		),
-		'model_engine_bore_mm' => array( 
+		'model_engine_bore_mm' => array(
 			'label' => __( 'Engine Bore (mm)', 'auto-listings' ),
 			'type' => 'engine',
 		),
-		'model_engine_stroke_mm' => array( 
+		'model_engine_stroke_mm' => array(
 			'label' => __( 'Engine Stroke (mm)', 'auto-listings' ),
 			'type' => 'engine',
 		),
-		'model_engine_compression' => array( 
+		'model_engine_compression' => array(
 			'label' => __( 'Engine Compression Ratio', 'auto-listings' ),
 			'type' => 'engine',
 		),
-		
-		'make_country' => array( 
+
+		'make_country' => array(
 			'label' => __( 'Country', 'auto-listings' ),
 			'type' => 'general',
 		),
@@ -287,7 +287,7 @@ function auto_listings_get_specs_for_output(){
 		$label = str_replace( ' *', '', $value['label']);
 		$fields[ $label ] = $val;
 	}
-	
+
 	return $fields;
 
 }
@@ -296,7 +296,7 @@ function auto_listings_get_specs_for_output(){
  * Post classes for listings.
  */
 function auto_listings_listing_post_class( $classes, $class = '', $post_id = '' ) {
-	
+
 	if ( ! $post_id || 'auto-listing' !== get_post_type( $post_id ) ) {
 		return $classes;
 	}
@@ -338,17 +338,17 @@ function auto_listings_force_page_title() {
  * Get the URL of the first image of a listing
  */
 function auto_listings_get_first_image() {
-	
+
 	$gallery = auto_listings_meta( 'image_gallery' );
 
 	if( empty( $gallery ) ) {
-		$sml 	= apply_filters( 'auto_listings_default_no_image', AUTOLISTINGS_PLUGIN_URL . 'assets/images/no-image.jpg' );
+		$sml 	= apply_filters( 'auto_listings_default_no_image', AUTO_LISTINGS_URL . 'assets/images/no-image.jpg' );
 		$alt 	= '';
 	} else {
 		$id 	= key( $gallery );
 		$sml 	= wp_get_attachment_image_url( $id, 'al-sml' );
 		$alt 	= get_post_meta( $id, '_wp_attachment_image_alt', true );
-	}	
+	}
 
 	return array(
 		'alt' => $alt,
@@ -360,7 +360,7 @@ function auto_listings_get_first_image() {
  * Get the listing status
  */
 function auto_listings_get_status() {
-	
+
 	$listing_status = auto_listings_meta( 'status' );
 	$option_status 	= auto_listings_option( 'listing_status' );
 
@@ -398,7 +398,7 @@ function auto_listings_get_status() {
  * Highlight new
  */
 function auto_listings_highlight_new() {
-	
+
 	$days = auto_listings_option( 'highlight_new_days' );
 	if( ! $days )
 		return;
@@ -523,7 +523,7 @@ function auto_listings_filter_the_content( $content ) {
 	if( is_listing() ) {
 		$description = auto_listings_meta( 'main_description' );
 		$content .= wp_kses_post( wpautop( $description ) );
-	}	
+	}
 	return $content;
 }
 add_filter('the_content', 'auto_listings_filter_the_content', 99 );

@@ -768,9 +768,9 @@ function auto_listings_options_page() {
 
 
 function auto_listings_show_options_banners() {
-    echo '<a target="_blank" href="http://wpautolistings.com/submit-ticket?utm_source=plugin&utm_medium=banner&utm_content=support"><img src="' . AUTOLISTINGS_PLUGIN_URL . '/includes/admin/assets/images/support-banner.jpg" class="banner1" /></a>';
+    echo '<a target="_blank" href="http://wpautolistings.com/submit-ticket?utm_source=plugin&utm_medium=banner&utm_content=support"><img src="' . AUTO_LISTINGS_URL . '/includes/admin/assets/images/support-banner.jpg" class="banner1" /></a>';
 
-    echo '<a target="_blank" href="https://wordpress.org/support/plugin/auto-listings/reviews/?filter=5"><img src="' . AUTOLISTINGS_PLUGIN_URL . '/includes/admin/assets/images/review-banner.jpg" class="banner2" /></a>';
+    echo '<a target="_blank" href="https://wordpress.org/support/plugin/auto-listings/reviews/?filter=5"><img src="' . AUTO_LISTINGS_URL . '/includes/admin/assets/images/review-banner.jpg" class="banner2" /></a>';
 
-    echo '<a target="_blank" href="http://wpautolistings.com/extensions?utm_source=plugin&utm_medium=banner&utm_content=extensions"><img src="' . AUTOLISTINGS_PLUGIN_URL . '/includes/admin/assets/images/extensions-banner.jpg" class="banner3" /></a>';
+    echo '<a target="_blank" href="http://wpautolistings.com/extensions?utm_source=plugin&utm_medium=banner&utm_content=extensions"><img src="' . AUTO_LISTINGS_URL . '/includes/admin/assets/images/extensions-banner.jpg" class="banner3" /></a>';
 }
