@@ -48,33 +48,11 @@ class Plugin {
 		require AUTO_LISTINGS_DIR . 'includes/libraries/cmb2-metatabs/cmb2_metatabs_options.php';
 
 		require AUTO_LISTINGS_DIR . 'includes/class-al-contact-form.php';
-
-		if ( $this->is_request( 'admin' ) ) {
-			require AUTO_LISTINGS_DIR . 'includes/admin/class-al-admin.php';
-		}
 	}
 
 	protected function init_hooks() {
 		add_action( 'init', [ $this, 'init' ], 0 );
 		add_filter( 'plugin_row_meta', [ $this, 'plugin_row_meta' ], 10, 2 );
-	}
-
-	/**
-	 * Check if a request is in admin or frontend.
-	 *
-	 * @param string $type Request type
-	 *
-	 * @return bool
-	 */
-	protected function is_request( $type ) {
-		switch ( $type ) {
-			case 'admin' :
-				return is_admin();
-			case 'frontend' :
-				return ( ! is_admin() || wp_doing_ajax() ) && ! wp_doing_cron();
-		}
-
-		return false;
 	}
 
 	/**
@@ -95,6 +73,11 @@ class Plugin {
 
 	/**
 	 * Add plugin extra links on the plugin screen.
+	 *
+	 * @param array  $links List of plugin actions.
+	 * @param string $file  Plugin file.
+	 *
+	 * @return array
 	 */
 	public function plugin_row_meta( $links, $file ) {
 		if ( $file !== AUTO_LISTINGS_BASENAME ) {

@@ -9,18 +9,24 @@ use AutoListings\Shortcodes;
 use AutoListings\Query;
 use AutoListings\SearchForm;
 use AutoListings\SearchQuery;
-use AutoListings\Frontend\Main;
+use AutoListings\Admin\Main as AdminMain;
+use AutoListings\Admin\Menu;
+use AutoListings\Admin\Assets as AdminAssets;
+use AutoListings\Admin\ListingColumns;
+use AutoListings\Admin\SellerColumns;
+use AutoListings\Admin\EnquiryColumns;
+use AutoListings\Frontend\Main as FrontendMain;
 use AutoListings\Frontend\TemplateLoader;
-use AutoListings\Frontend\Assets;
+use AutoListings\Frontend\Assets as FrontendAssets;
 
-$plugin        = new Plugin( __DIR__ . '/auto-listings.php' );
-$installer     = new Installer();
-$post_types    = new PostTypes();
-$post_statuses = new PostStatuses();
-$shortcodes    = new Shortcodes();
-$query         = new Query();
-$search_form   = new SearchForm();
-$search_query  = new SearchQuery();
+$al_plugin        = new Plugin( __DIR__ . '/auto-listings.php' );
+$al_installer     = new Installer();
+$al_post_types    = new PostTypes();
+$al_post_statuses = new PostStatuses();
+$al_shortcodes    = new Shortcodes();
+$al_query         = new Query();
+$al_search_form   = new SearchForm();
+$al_search_query  = new SearchQuery();
 
 require 'src/functions-conditionals.php';
 require 'src/functions-enquiry.php';
@@ -30,12 +36,18 @@ require 'src/functions-listing.php';
 require 'src/functions-sidebars.php';
 
 if ( is_admin() ) {
-
+	$al_admin            = new AdminMain();
+	$al_menu             = new Menu();
+	$al_admin_assets     = new AdminAssets();
+	$al_listings_columns = new ListingColumns();
+	$al_seller_columns   = new SellerColumns();
+	$al_enquiry_columns   = new EnquiryColumns();
+	require 'src/Admin/Settings.php';
 }
 if ( ( ! is_admin() || wp_doing_ajax() ) && ! wp_doing_cron() ) {
-	$main = new Main();
-	$template_loader = new TemplateLoader();
-	$assets = new Assets();
+	$al_frontend        = new FrontendMain();
+	$al_template_loader = new TemplateLoader();
+	$al_frontend_assets = new FrontendAssets();
 
 	require 'src/Frontend/template-hooks.php';
 	require 'src/Frontend/template-tags.php';
