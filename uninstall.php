@@ -36,7 +36,7 @@ if( $remove == 'yes' ) {
 	delete_option( 'auto_listings_version_upgraded_from' );
 
 	/** Delete Capabilities */
-	$roles = new Auto_Listings_Roles;
+	$roles = new AutoListings\Roles();
 	$roles->remove_caps();
 
 	/** Delete the Roles */

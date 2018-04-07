@@ -47,11 +47,6 @@ class Plugin {
 		require AUTO_LISTINGS_DIR . 'includes/libraries/cmb2-grid/Cmb2GridPlugin.php';
 		require AUTO_LISTINGS_DIR . 'includes/libraries/cmb2-metatabs/cmb2_metatabs_options.php';
 
-		require AUTO_LISTINGS_DIR . 'includes/class-al-roles.php';
-		require AUTO_LISTINGS_DIR . 'includes/class-al-post-status.php';
-		require AUTO_LISTINGS_DIR . 'includes/class-al-shortcodes.php';
-		require AUTO_LISTINGS_DIR . 'includes/class-al-query.php';
-		require AUTO_LISTINGS_DIR . 'includes/class-al-search-form.php';
 		require AUTO_LISTINGS_DIR . 'includes/class-al-search-query.php';
 		require AUTO_LISTINGS_DIR . 'includes/class-al-contact-form.php';
 
@@ -102,9 +97,6 @@ class Plugin {
 		do_action( 'before_auto_listings_init' );
 
 		$this->load_plugin_textdomain();
-
-		// Load class instances.
-		$this->query = new \Auto_Listings_Query();
 
 		do_action( 'auto_listings_init' );
 	}

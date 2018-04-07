@@ -32,7 +32,7 @@ class Installer {
 		update_option( 'auto_listings_version', AUTO_LISTINGS_VERSION );
 
 		// Create Auto_Listings roles
-		$roles = new \Auto_Listings_Roles;
+		$roles = new Roles();
 		$roles->add_roles();
 		$roles->add_caps();
 
