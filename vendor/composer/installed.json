@@ -1,5 +1,48 @@
 [
     {
+        "name": "metabox/mb-settings-page",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "git@bitbucket.org:metabox/mb-settings-page.git",
+            "reference": "5967e24fb7f21d3c034b54221deb2040cdb1757e"
+        },
+        "time": "2018-01-29T04:31:48+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "files": [
+                "mb-settings-page.php"
+            ]
+        },
+        "license": [
+            "GPL-2.0"
+        ],
+        "authors": [
+            {
+                "name": "Tran Ngoc Tuan Anh",
+                "email": "anhtnt@elightup.com",
+                "homepage": "https://metabox.io",
+                "role": "Developer"
+            }
+        ],
+        "description": "Create settings pages for WordPress",
+        "homepage": "https://metabox.io",
+        "keywords": [
+            "custom-field",
+            "meta-box",
+            "options-framework",
+            "select2",
+            "settings-page",
+            "theme-options",
+            "ui",
+            "wordpress",
+            "wordpress-plugin",
+            "wp-admin"
+        ]
+    },
+    {
         "name": "tgmpa/tgm-plugin-activation",
         "version": "2.6.1",
         "version_normalized": "2.6.1.0",

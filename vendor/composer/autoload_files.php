@@ -6,5 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'eaf2739b3da977df72a7bf0e4918ce51' => $vendorDir . '/metabox/mb-settings-page/mb-settings-page.php',
     'a5f882d89ab791a139cd2d37e50cdd80' => $vendorDir . '/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php',
 );

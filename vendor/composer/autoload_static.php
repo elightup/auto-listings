@@ -7,6 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInit1b55fbb64066c1e0d7d16e208ee7c2ec
 {
     public static $files = array (
+        'eaf2739b3da977df72a7bf0e4918ce51' => __DIR__ . '/..' . '/metabox/mb-settings-page/mb-settings-page.php',
         'a5f882d89ab791a139cd2d37e50cdd80' => __DIR__ . '/..' . '/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php',
     );
 

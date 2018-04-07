@@ -4,8 +4,49 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "78d14201faa89f0f9a089c7d7480f4a8",
+    "content-hash": "a91d784baef90ae676d3e4d92546e346",
     "packages": [
+        {
+            "name": "metabox/mb-settings-page",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@bitbucket.org:metabox/mb-settings-page.git",
+                "reference": "5967e24fb7f21d3c034b54221deb2040cdb1757e"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "mb-settings-page.php"
+                ]
+            },
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Tran Ngoc Tuan Anh",
+                    "email": "anhtnt@elightup.com",
+                    "homepage": "https://metabox.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Create settings pages for WordPress",
+            "homepage": "https://metabox.io",
+            "keywords": [
+                "custom-field",
+                "meta-box",
+                "options-framework",
+                "select2",
+                "settings-page",
+                "theme-options",
+                "ui",
+                "wordpress",
+                "wordpress-plugin",
+                "wp-admin"
+            ],
+            "time": "2018-01-29T04:31:48+00:00"
+        },
         {
             "name": "tgmpa/tgm-plugin-activation",
             "version": "2.6.1",
@@ -65,7 +106,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "metabox/mb-settings-page": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

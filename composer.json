@@ -1,8 +1,15 @@
 {
   "name": "autolistings/autolistings",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@bitbucket.org:metabox/mb-settings-page.git"
+    }
+  ],
   "require": {
     "php": ">=5.4",
-    "tgmpa/tgm-plugin-activation": "^2.6"
+    "tgmpa/tgm-plugin-activation": "^2.6",
+    "metabox/mb-settings-page": "@dev"
   },
   "autoload": {
     "psr-4": {

@@ -53,6 +53,7 @@ class Plugin {
 	protected function init_hooks() {
 		add_action( 'init', [ $this, 'init' ], 0 );
 		add_filter( 'plugin_row_meta', [ $this, 'plugin_row_meta' ], 10, 2 );
+		add_action( 'tgmpa_register', [ $this, 'register_plugins' ] );
 	}
 
 	/**
@@ -87,5 +88,23 @@ class Plugin {
 		$links[] = '<a href="' . esc_url( 'http://wpautolistings.com/documentation?utm_source=plugin&utm_medium=plugins_page&utm_content=docs' ) . '" title="' . esc_attr__( 'View Documentation', 'auto-listings' ) . '">' . esc_html__( 'Documentation', 'auto-listings' ) . '</a>';
 
 		return $links;
+	}
+
+	public function register_plugins() {
+		$plugins = [
+			[
+				'name'     => 'Meta Box',
+				'slug'     => 'meta-box',
+				'required' => true,
+			],
+		];
+		$config  = [
+			'id'          => 'auto-listings',
+			'menu'        => 'tgmpa-install-plugins',
+			'parent_slug' => 'plugins.php',
+			'capability'  => 'install_plugins',
+		];
+
+		tgmpa( $plugins, $config );
 	}
 }
