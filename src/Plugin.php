@@ -47,23 +47,11 @@ class Plugin {
 		require AUTO_LISTINGS_DIR . 'includes/libraries/cmb2-grid/Cmb2GridPlugin.php';
 		require AUTO_LISTINGS_DIR . 'includes/libraries/cmb2-metatabs/cmb2_metatabs_options.php';
 
-		require AUTO_LISTINGS_DIR . 'includes/class-al-search-query.php';
 		require AUTO_LISTINGS_DIR . 'includes/class-al-contact-form.php';
 
 		if ( $this->is_request( 'admin' ) ) {
 			require AUTO_LISTINGS_DIR . 'includes/admin/class-al-admin.php';
 		}
-
-		if ( $this->is_request( 'frontend' ) ) {
-			require AUTO_LISTINGS_DIR . 'includes/frontend/class-al-frontend.php';
-		}
-
-		require AUTO_LISTINGS_DIR . 'includes/functions-conditionals.php';
-		require AUTO_LISTINGS_DIR . 'includes/functions-enquiry.php';
-		require AUTO_LISTINGS_DIR . 'includes/functions-formatting.php';
-		require AUTO_LISTINGS_DIR . 'includes/functions-general.php';
-		require AUTO_LISTINGS_DIR . 'includes/functions-listing.php';
-		require AUTO_LISTINGS_DIR . 'includes/functions-sidebars.php';
 	}
 
 	protected function init_hooks() {
