@@ -10,6 +10,7 @@ use AutoListings\Query;
 use AutoListings\SearchForm;
 use AutoListings\SearchQuery;
 use AutoListings\ListingFields;
+use AutoListings\EnquiryFields;
 use AutoListings\Admin\Main as AdminMain;
 use AutoListings\Admin\Menu;
 use AutoListings\Admin\Assets as AdminAssets;
@@ -30,6 +31,7 @@ $al_query          = new Query();
 $al_search_form    = new SearchForm();
 $al_search_query   = new SearchQuery();
 $al_listing_fields = new ListingFields();
+$al_enquiry_fields = new EnquiryFields();
 
 require 'src/functions-conditionals.php';
 require 'src/functions-enquiry.php';

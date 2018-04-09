@@ -38,8 +38,6 @@ class Plugin {
 	}
 
 	protected function includes() {
-		require AUTO_LISTINGS_DIR . 'includes/class-al-metaboxes.php';
-		require AUTO_LISTINGS_DIR . 'includes/metaboxes/class-al-metaboxes-listing-enquiry.php';
 		require AUTO_LISTINGS_DIR . 'includes/metaboxes/functions.php';
 
 		require AUTO_LISTINGS_DIR . 'includes/libraries/cmb2/init.php';
