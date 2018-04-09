@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e2222deacaed491f03a46d6619f63ea6",
+    "content-hash": "da3080f10e24d5fd73bb72414ed44216",
     "packages": [
         {
             "name": "metabox/mb-settings-page",
@@ -46,6 +46,40 @@
                 "wp-admin"
             ],
             "time": "2018-01-29T04:31:48+00:00"
+        },
+        {
+            "name": "metabox/meta-box-columns",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@bitbucket.org:metabox/meta-box-columns.git",
+                "reference": "9fc662c2ac946869c11f1cf49c179b1ac02946f3"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "meta-box-columns.php"
+                ]
+            },
+            "homepage": "https://metabox.io",
+            "time": "2018-04-09T07:32:45+00:00"
+        },
+        {
+            "name": "metabox/meta-box-geolocation",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@bitbucket.org:metabox/meta-box-geolocation.git",
+                "reference": "d57bddcf275dea1c30e6c3510d41d7429539b905"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "meta-box-geolocation.php"
+                ]
+            },
+            "homepage": "https://metabox.io",
+            "time": "2018-04-09T09:20:02+00:00"
         },
         {
             "name": "metabox/meta-box-group",
@@ -125,7 +159,9 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "metabox/mb-settings-page": 20,
-        "metabox/meta-box-group": 20
+        "metabox/meta-box-group": 20,
+        "metabox/meta-box-columns": 20,
+        "metabox/meta-box-geolocation": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

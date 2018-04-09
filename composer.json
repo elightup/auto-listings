@@ -8,13 +8,23 @@
     {
       "type": "vcs",
       "url": "git@bitbucket.org:metabox/meta-box-group.git"
+    },
+    {
+      "type": "vcs",
+      "url": "git@bitbucket.org:metabox/meta-box-columns.git"
+    },
+    {
+      "type": "vcs",
+      "url": "git@bitbucket.org:metabox/meta-box-geolocation.git"
     }
   ],
   "require": {
     "php": ">=5.4",
     "tgmpa/tgm-plugin-activation": "^2.6",
     "metabox/mb-settings-page": "@dev",
-    "metabox/meta-box-group": "@dev"
+    "metabox/meta-box-group": "@dev",
+    "metabox/meta-box-columns": "@dev",
+    "metabox/meta-box-geolocation": "@dev"
   },
   "autoload": {
     "psr-4": {

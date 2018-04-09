@@ -1,302 +1,301 @@
 <?php
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 
 function auto_listings_spec_fields() {
-
 	//$option = auto_listings_option( '' );
 
-	$spec_fields = array(
+	$spec_fields = [
 
-		'model_year' => array(
+		'model_year'              => [
 			'label' => __( 'Year', 'auto-listings' ),
-			'type' => 'model',
-			'desc' => __( ' (Recommended)', 'auto-listings' ),
-		),
-		'make_display' => array(
+			'type'  => 'model',
+			'desc'  => __( ' (Recommended)', 'auto-listings' ),
+		],
+		'make_display'            => [
 			'label' => __( 'Make', 'auto-listings' ),
-			'type' => 'general',
-			'desc' => __( ' (Recommended)', 'auto-listings' ),
-		),
-		'model_name' => array(
+			'type'  => 'general',
+			'desc'  => __( ' (Recommended)', 'auto-listings' ),
+		],
+		'model_name'              => [
 			'label' => __( 'Model', 'auto-listings' ),
-			'type' => 'model',
-			'desc' => __( ' (Recommended)', 'auto-listings' ),
-		),
-		'model_vehicle' => array(
+			'type'  => 'model',
+			'desc'  => __( ' (Recommended)', 'auto-listings' ),
+		],
+		'model_vehicle'           => [
 			'label' => __( 'Vehicle', 'auto-listings' ),
-			'type' 	=> 'model',
-			'desc' => __( ' (Recommended)', 'auto-listings' ),
-		),
-		'model_seats' => array(
+			'type'  => 'model',
+			'desc'  => __( ' (Recommended)', 'auto-listings' ),
+		],
+		'model_seats'             => [
 			'label' => __( 'Seats', 'auto-listings' ),
-			'type' => 'general',
-			'desc' => __( ' (Recommended)', 'auto-listings' ),
-		),
-		'model_doors' => array(
+			'type'  => 'general',
+			'desc'  => __( ' (Recommended)', 'auto-listings' ),
+		],
+		'model_doors'             => [
 			'label' => __( 'Doors', 'auto-listings' ),
-			'type' => 'general',
-			'desc' => __( ' (Recommended)', 'auto-listings' ),
-		),
+			'type'  => 'general',
+			'desc'  => __( ' (Recommended)', 'auto-listings' ),
+		],
 
 		// transmission
-		'model_drive' => array(
+		'model_drive'             => [
 			'label' => __( 'Drive Type', 'auto-listings' ),
-			'type' => 'transmission',
-			'desc' => __( ' (Recommended)', 'auto-listings' ),
-		),
-		'model_transmission_type' => array(
+			'type'  => 'transmission',
+			'desc'  => __( ' (Recommended)', 'auto-listings' ),
+		],
+		'model_transmission_type' => [
 			'label' => __( 'Transmission Type', 'auto-listings' ),
-			'type' => 'transmission',
-			'desc' => __( ' (Recommended)', 'auto-listings' ),
-		),
+			'type'  => 'transmission',
+			'desc'  => __( ' (Recommended)', 'auto-listings' ),
+		],
 
 		// fuel
-		'model_engine_fuel' => array(
+		'model_engine_fuel'       => [
 			'label' => __( 'Fuel Type', 'auto-listings' ),
-			'type' => 'fuel',
-			'desc' => __( ' (Recommended)', 'auto-listings' ),
-		),
+			'type'  => 'fuel',
+			'desc'  => __( ' (Recommended)', 'auto-listings' ),
+		],
 
-	);
+	];
 
-	$metric_fields = array(
+	$metric_fields = [
 		// fuel
-		'model_lkm_hwy' => array(
+		'model_lkm_hwy'       => [
 			'label' => __( 'Fuel Economy Highway (l/100km)', 'auto-listings' ),
-			'type' => 'fuel',
-		),
-		'model_lkm_mixed' => array(
+			'type'  => 'fuel',
+		],
+		'model_lkm_mixed'     => [
 			'label' => __( 'Fuel Economy Mixed (l/100km)', 'auto-listings' ),
-			'type' => 'fuel',
-		),
-		'model_lkm_city' => array(
+			'type'  => 'fuel',
+		],
+		'model_lkm_city'      => [
 			'label' => __( 'Fuel Economy City (l/100km)', 'auto-listings' ),
-			'type' => 'fuel',
-		),
-		'model_fuel_cap_l' => array(
+			'type'  => 'fuel',
+		],
+		'model_fuel_cap_l'    => [
 			'label' => __( 'Fuel Capacity (l):', 'auto-listings' ),
-			'type' => 'fuel',
-		),
+			'type'  => 'fuel',
+		],
 
 		// dimensions
-		'model_weight_kg' => array(
+		'model_weight_kg'     => [
 			'label' => __( 'Weight (kg)', 'auto-listings' ),
-			'type' => 'weight_dimensions',
-		),
-		'model_length_mm' => array(
+			'type'  => 'weight_dimensions',
+		],
+		'model_length_mm'     => [
 			'label' => __( 'Length (mm)', 'auto-listings' ),
-			'type' => 'weight_dimensions',
-		),
-		'model_width_mm' => array(
+			'type'  => 'weight_dimensions',
+		],
+		'model_width_mm'      => [
 			'label' => __( 'Width (mm)', 'auto-listings' ),
-			'type' => 'weight_dimensions',
-		),
-		'model_height_mm' => array(
+			'type'  => 'weight_dimensions',
+		],
+		'model_height_mm'     => [
 			'label' => __( 'Height (mm)', 'auto-listings' ),
-			'type' => 'weight_dimensions',
-		),
-		'model_wheelbase_mm' => array(
+			'type'  => 'weight_dimensions',
+		],
+		'model_wheelbase_mm'  => [
 			'label' => __( 'Wheelbase (mm)', 'auto-listings' ),
-			'type' => 'weight_dimensions',
-		),
+			'type'  => 'weight_dimensions',
+		],
 
 		// performance
-		'model_0_to_100_kph' => array(
+		'model_0_to_100_kph'  => [
 			'label' => __( '0-100 kph', 'auto-listings' ),
-			'type' => 'performance',
-		),
-		'model_top_speed_kph' => array(
+			'type'  => 'performance',
+		],
+		'model_top_speed_kph' => [
 			'label' => __( 'Top Speed (KPH)', 'auto-listings' ),
-			'type' => 'performance',
-		),
+			'type'  => 'performance',
+		],
 
 		// engine
-		'model_engine_cc' => array(
+		'model_engine_cc'     => [
 			'label' => __( 'Engine Displacement (cc)', 'auto-listings' ),
-			'type' => 'engine',
-		),
+			'type'  => 'engine',
+		],
 
 
-	);
+	];
 
-	$imperial_fields = array(
+	$imperial_fields = [
 		// fuel
-		'model_mpg_hwy' => array(
+		'model_mpg_hwy'       => [
 			'label' => __( 'Fuel Economy Highway (mpg)', 'auto-listings' ),
-			'type' => 'fuel',
-		),
-		'model_mpg_city' => array(
+			'type'  => 'fuel',
+		],
+		'model_mpg_city'      => [
 			'label' => __( 'Fuel Economy City (mpg)', 'auto-listings' ),
-			'type' => 'fuel',
-		),
-		'model_mpg_mixed' => array(
+			'type'  => 'fuel',
+		],
+		'model_mpg_mixed'     => [
 			'label' => __( 'Fuel Economy Mixed (mpg)', 'auto-listings' ),
-			'type' => 'fuel',
-		),
-		'model_fuel_cap_g' => array(
+			'type'  => 'fuel',
+		],
+		'model_fuel_cap_g'    => [
 			'label' => __( 'Fuel Capacity (g)', 'auto-listings' ),
-			'type' => 'fuel',
-		),
+			'type'  => 'fuel',
+		],
 
 		// dimensions
-		'model_weight_lbs' => array(
+		'model_weight_lbs'    => [
 			'label' => __( 'Weight (lbs)', 'auto-listings' ),
-			'type' => 'weight_dimensions',
-		),
-		'model_length_in' => array(
+			'type'  => 'weight_dimensions',
+		],
+		'model_length_in'     => [
 			'label' => __( 'Length (in)', 'auto-listings' ),
-			'type' => 'weight_dimensions',
-		),
-		'model_width_in' => array(
+			'type'  => 'weight_dimensions',
+		],
+		'model_width_in'      => [
 			'label' => __( 'Width (in)', 'auto-listings' ),
-			'type' => 'weight_dimensions',
-		),
-		'model_height_in' => array(
+			'type'  => 'weight_dimensions',
+		],
+		'model_height_in'     => [
 			'label' => __( 'Height (in)', 'auto-listings' ),
-			'type' => 'weight_dimensions',
-		),
-		'model_wheelbase_in' => array(
+			'type'  => 'weight_dimensions',
+		],
+		'model_wheelbase_in'  => [
 			'label' => __( 'Wheelbase (in)', 'auto-listings' ),
-			'type' => 'weight_dimensions',
-		),
+			'type'  => 'weight_dimensions',
+		],
 
 		// performance
-		'model_0_to_100_kph' => array(
+		'model_0_to_100_kph'  => [
 			'label' => __( '0-62 mph', 'auto-listings' ),
-			'type' => 'performance',
-		),
-		'model_top_speed_mph' => array(
+			'type'  => 'performance',
+		],
+		'model_top_speed_mph' => [
 			'label' => __( 'Top Speed (mph)', 'auto-listings' ),
-			'type' => 'performance',
-		),
+			'type'  => 'performance',
+		],
 
 		// engine
-		'model_engine_ci' => array(
+		'model_engine_ci'     => [
 			'label' => __( 'Engine Displacement (ci)', 'auto-listings' ),
-			'type' => 'engine',
-		),
-	);
+			'type'  => 'engine',
+		],
+	];
 
-	$engine_fields = array(
+	$engine_fields = [
 
 		// engine
-		'model_engine_position' => array(
+		'model_engine_position'       => [
 			'label' => __( 'Engine Location', 'auto-listings' ),
-			'type' => 'engine',
-		),
-		'model_engine_type' => array(
+			'type'  => 'engine',
+		],
+		'model_engine_type'           => [
 			'label' => __( 'Engine Type', 'auto-listings' ),
-			'type' => 'engine',
-			'desc' => __( ' (Recommended)', 'auto-listings' ) . '<br>' . __( 'Data from this field is used for the "Engine" icon text', 'auto-listings' ),
-		),
-		'model_engine_l' => array(
+			'type'  => 'engine',
+			'desc'  => __( ' (Recommended)', 'auto-listings' ) . '<br>' . __( 'Data from this field is used for the "Engine" icon text', 'auto-listings' ),
+		],
+		'model_engine_l'              => [
 			'label' => __( 'Engine (l)', 'auto-listings' ),
-			'type' => 'engine',
-			'desc' => __( ' (Recommended)', 'auto-listings' ) . '<br>' . __( 'Data from this field is used for the "Engine" icon text', 'auto-listings' ),
-		),
-		'model_engine_cyl' => array(
+			'type'  => 'engine',
+			'desc'  => __( ' (Recommended)', 'auto-listings' ) . '<br>' . __( 'Data from this field is used for the "Engine" icon text', 'auto-listings' ),
+		],
+		'model_engine_cyl'            => [
 			'label' => __( 'Engine Cylinders', 'auto-listings' ),
-			'type' => 'engine',
-			'desc' => __( ' (Recommended)', 'auto-listings' ) . '<br>' . __( 'Data from this field is used for the "Engine" icon text', 'auto-listings' ),
-		),
-		'model_engine_valves' => array(
+			'type'  => 'engine',
+			'desc'  => __( ' (Recommended)', 'auto-listings' ) . '<br>' . __( 'Data from this field is used for the "Engine" icon text', 'auto-listings' ),
+		],
+		'model_engine_valves'         => [
 			'label' => __( 'Engine Valves', 'auto-listings' ),
-			'type' => 'engine',
-		),
-		'model_engine_valves_per_cyl' => array(
+			'type'  => 'engine',
+		],
+		'model_engine_valves_per_cyl' => [
 			'label' => __( 'Engine Valves Per Cyl', 'auto-listings' ),
-			'type' => 'engine',
-		),
-		'model_engine_power_hp' => array(
+			'type'  => 'engine',
+		],
+		'model_engine_power_hp'       => [
 			'label' => __( 'Engine Max Power (HP)', 'auto-listings' ),
-			'type' => 'engine',
-		),
-		'model_engine_power_kw' => array(
+			'type'  => 'engine',
+		],
+		'model_engine_power_kw'       => [
 			'label' => __( 'Engine Max Power (kW)', 'auto-listings' ),
-			'type' => 'engine',
-		),
-		'model_engine_power_ps' => array(
+			'type'  => 'engine',
+		],
+		'model_engine_power_ps'       => [
 			'label' => __( 'Engine Max Power (PS)', 'auto-listings' ),
-			'type' => 'engine',
-		),
-		'model_engine_power_rpm' => array(
+			'type'  => 'engine',
+		],
+		'model_engine_power_rpm'      => [
 			'label' => __( 'Engine Max Power RPM', 'auto-listings' ),
-			'type' => 'engine',
-		),
-		'model_engine_torque_nm' => array(
+			'type'  => 'engine',
+		],
+		'model_engine_torque_nm'      => [
 			'label' => __( 'Engine Max Torque (NM)', 'auto-listings' ),
-			'type' => 'engine',
-		),
-		'model_engine_torque_lbft' => array(
+			'type'  => 'engine',
+		],
+		'model_engine_torque_lbft'    => [
 			'label' => __( 'Engine Max Torque (Lb-Ft)', 'auto-listings' ),
-			'type' => 'engine',
-		),
-		'model_engine_torque_kgm' => array(
+			'type'  => 'engine',
+		],
+		'model_engine_torque_kgm'     => [
 			'label' => __( 'Engine Max Torque (kgf-m)', 'auto-listings' ),
-			'type' => 'engine',
-		),
-		'model_engine_torque_rpm' => array(
+			'type'  => 'engine',
+		],
+		'model_engine_torque_rpm'     => [
 			'label' => __( 'Engine Max Torque RPM', 'auto-listings' ),
-			'type' => 'engine',
-		),
-		'model_engine_bore_mm' => array(
+			'type'  => 'engine',
+		],
+		'model_engine_bore_mm'        => [
 			'label' => __( 'Engine Bore (mm)', 'auto-listings' ),
-			'type' => 'engine',
-		),
-		'model_engine_stroke_mm' => array(
+			'type'  => 'engine',
+		],
+		'model_engine_stroke_mm'      => [
 			'label' => __( 'Engine Stroke (mm)', 'auto-listings' ),
-			'type' => 'engine',
-		),
-		'model_engine_compression' => array(
+			'type'  => 'engine',
+		],
+		'model_engine_compression'    => [
 			'label' => __( 'Engine Compression Ratio', 'auto-listings' ),
-			'type' => 'engine',
-		),
+			'type'  => 'engine',
+		],
 
-		'make_country' => array(
+		'make_country' => [
 			'label' => __( 'Country', 'auto-listings' ),
-			'type' => 'general',
-		),
+			'type'  => 'general',
+		],
 
-	);
+	];
 
 	$fields = array_merge( $spec_fields, $metric_fields, $imperial_fields, $engine_fields );
 
 	return $fields;
-
 }
-function auto_listings_get_specs_for_output(){
 
-	$fields 		= array();
-	$spec_fields 	= auto_listings_spec_fields();
-	$display 		= auto_listings_option( 'field_display' );
+function auto_listings_get_specs_for_output() {
+	$fields      = [];
+	$spec_fields = auto_listings_spec_fields();
+	$display     = auto_listings_option( 'field_display' );
 
 	// loop through all our fields
 	foreach ( $spec_fields as $id => $value ) {
-
 		// skip the ones we don't want to show
-		if( is_array( $display ) && ! in_array( $id, $display ) )
+		if ( is_array( $display ) && ! in_array( $id, $display ) ) {
 			continue;
+		}
 
 		$val = auto_listings_meta( $id );
-		if( ! $val )
+		if ( ! $val ) {
 			continue;
+		}
 
-		$label = str_replace( ' *', '', $value['label']);
+		$label            = str_replace( ' *', '', $value['label'] );
 		$fields[ $label ] = $val;
 	}
 
 	return $fields;
-
 }
 
 /**
  * Post classes for listings.
  */
 function auto_listings_listing_post_class( $classes, $class = '', $post_id = '' ) {
-
 	if ( ! $post_id || 'auto-listing' !== get_post_type( $post_id ) ) {
 		return $classes;
 	}
@@ -304,14 +303,13 @@ function auto_listings_listing_post_class( $classes, $class = '', $post_id = '' 
 	$listing = get_post( $post_id );
 
 	if ( $listing ) {
-
 		$classes[] = 'auto-listing';
 		$classes[] = 'auto-listing-' . $listing->ID;
 
 		$images = auto_listings_meta( 'image_gallery' );
 		if ( $images ) {
 			foreach ( $images as $key => $url ) {
-				if( ! empty( $url ) ) {
+				if ( ! empty( $url ) ) {
 					$classes[] = strtolower( 'has-thumbnail' );
 					break;
 				}
@@ -338,82 +336,80 @@ function auto_listings_force_page_title() {
  * Get the URL of the first image of a listing
  */
 function auto_listings_get_first_image() {
-
 	$gallery = auto_listings_meta( 'image_gallery' );
 
-	if( empty( $gallery ) ) {
-		$sml 	= apply_filters( 'auto_listings_default_no_image', AUTO_LISTINGS_URL . 'assets/images/no-image.jpg' );
-		$alt 	= '';
+	if ( empty( $gallery ) ) {
+		$sml = apply_filters( 'auto_listings_default_no_image', AUTO_LISTINGS_URL . 'assets/images/no-image.jpg' );
+		$alt = '';
 	} else {
-		$id 	= key( $gallery );
-		$sml 	= wp_get_attachment_image_url( $id, 'al-sml' );
-		$alt 	= get_post_meta( $id, '_wp_attachment_image_alt', true );
+		$id  = key( $gallery );
+		$sml = wp_get_attachment_image_url( $id, 'al-sml' );
+		$alt = get_post_meta( $id, '_wp_attachment_image_alt', true );
 	}
 
-	return array(
+	return [
 		'alt' => $alt,
 		'sml' => $sml,
-	);
+	];
 }
 
 /*
  * Get the listing status
  */
 function auto_listings_get_status() {
-
 	$listing_status = auto_listings_meta( 'status' );
-	$option_status 	= auto_listings_option( 'listing_status' );
+	$option_status  = auto_listings_option( 'listing_status' );
 
-	if( ! $listing_status )
+	if ( ! $listing_status ) {
 		return;
+	}
 
 	$status = null;
-	if( $option_status ) {
-		foreach ($option_status as $key => $value) {
-			if( in_array( $listing_status, $value ) ) {
-				$status 	= isset( $value['status'] ) ? $value['status'] : null;
-				$bg_color 	= isset( $value['bg_color'] ) ? $value['bg_color'] : null;
+	if ( $option_status ) {
+		foreach ( $option_status as $key => $value ) {
+			if ( in_array( $listing_status, $value ) ) {
+				$status     = isset( $value['status'] ) ? $value['status'] : null;
+				$bg_color   = isset( $value['bg_color'] ) ? $value['bg_color'] : null;
 				$text_color = isset( $value['text_color'] ) ? $value['text_color'] : null;
-				$icon 		= isset( $value['icon'] ) ? $value['icon'] : null;
+				$icon       = isset( $value['icon'] ) ? $value['icon'] : null;
 			}
 		}
 	}
 
-	if( ! $status ){
-		$status 	= $listing_status;
-		$bg_color 	= '#ffffff';
+	if ( ! $status ) {
+		$status     = $listing_status;
+		$bg_color   = '#ffffff';
 		$text_color = '#444444';
-		$icon 		= '';
+		$icon       = '';
 	}
 
-	return array(
-		'status' 		=> $status,
-		'bg_color' 		=> $bg_color,
-		'text_color' 	=> $text_color,
-		'icon' 	=> $icon,
-	);
+	return [
+		'status'     => $status,
+		'bg_color'   => $bg_color,
+		'text_color' => $text_color,
+		'icon'       => $icon,
+	];
 }
 
 /*
  * Highlight new
  */
 function auto_listings_highlight_new() {
-
 	$days = auto_listings_option( 'highlight_new_days' );
-	if( ! $days )
+	if ( ! $days ) {
 		return;
+	}
 
 	// see if it should still be displayed
-	$listed_time 	= get_the_time( 'U' );
-	$timestamp 		= strtotime( '+' . $days . ' days', $listed_time );
-	if( $timestamp < time() )
+	$listed_time = get_the_time( 'U' );
+	$timestamp   = strtotime( '+' . $days . ' days', $listed_time );
+	if ( $timestamp < time() ) {
 		return;
+	}
 
 	$color = auto_listings_option( 'highlight_new_color' );
 	return $color;
-
 }
-
 
 
 /* ======================================================================================
@@ -424,8 +420,9 @@ function auto_listings_highlight_new() {
  * Outputs the price HTML
  */
 function auto_listings_price( $price = null ) {
-	if( ! $price )
+	if ( ! $price ) {
 		$price = auto_listings_meta( 'price' );
+	}
 	$suffix = auto_listings_meta( 'price_suffix' );
 	return auto_listings_format_price( $price ) . ' ' . $suffix;
 }
@@ -442,9 +439,9 @@ function auto_listings_vehicle() {
  * Outputs the make, model & year
  */
 function auto_listings_year_make_model() {
-	$year 	= auto_listings_meta( 'model_year' );
-	$make 	= auto_listings_meta( 'make_display' );
-	$model 	= auto_listings_meta( 'model_name' );
+	$year  = auto_listings_meta( 'model_year' );
+	$make  = auto_listings_meta( 'make_display' );
+	$model = auto_listings_meta( 'model_name' );
 	return $year . ' ' . $make . ' ' . $model;
 }
 
@@ -452,11 +449,11 @@ function auto_listings_year_make_model() {
  * Outputs the engine
  */
 function auto_listings_engine() {
-	$cylinders = auto_listings_meta( 'model_engine_cyl' ) ? auto_listings_meta( 'model_engine_cyl' ) . __( ' cylinder ', 'auto-listings' ) : '';
+	$cylinders   = auto_listings_meta( 'model_engine_cyl' ) ? auto_listings_meta( 'model_engine_cyl' ) . __( ' cylinder ', 'auto-listings' ) : '';
 	$engine_type = auto_listings_meta( 'model_engine_type' ) ? auto_listings_meta( 'model_engine_type' ) . ' ' : '';
-	$engine_l = auto_listings_meta( 'model_engine_l' ) ? auto_listings_meta( 'model_engine_l' ) : '';
+	$engine_l    = auto_listings_meta( 'model_engine_l' ) ? auto_listings_meta( 'model_engine_l' ) : '';
 
-	if( $cylinders || $engine_type || $engine_l ) {
+	if ( $cylinders || $engine_type || $engine_l ) {
 		$output = $cylinders . $engine_type . $engine_l . 'L';
 	} else {
 		$output = null;
@@ -468,7 +465,7 @@ function auto_listings_engine() {
  * Outputs the fuel economy
  */
 function auto_listings_fuel_economy() {
-	if( auto_listings_metric() == 'yes' ) {
+	if ( auto_listings_metric() == 'yes' ) {
 		$output = auto_listings_meta( 'model_lkm_mixed' ) ? auto_listings_meta( 'model_lkm_mixed' ) . __( 'L/km', 'auto-listings' ) : null;
 	} else {
 		$output = auto_listings_meta( 'model_mpg_mixed' ) ? auto_listings_meta( 'model_mpg_mixed' ) . __( 'mpg', 'auto-listings' ) : null;
@@ -481,7 +478,7 @@ function auto_listings_fuel_economy() {
  */
 function auto_listings_odometer() {
 	$odometer = auto_listings_meta( 'odometer' );
-	if( ! $odometer ) {
+	if ( ! $odometer ) {
 		$output = __( 'n/a', 'auto-listings' );
 	} else {
 		$output = number_format_i18n( $odometer ) . ' ' . auto_listings_miles_kms_label_short();
@@ -496,6 +493,7 @@ function auto_listings_transmission() {
 	$output = auto_listings_meta( 'model_transmission_type' );
 	return $output;
 }
+
 /*
  * Outputs the drive type
  */
@@ -508,7 +506,7 @@ function auto_listings_drive_type() {
  * Outputs a body type link
  */
 function auto_listings_body_type() {
-	if( has_term( '', 'body-type') ) {
+	if ( has_term( '', 'body-type' ) ) {
 		return get_the_term_list( get_the_ID(), 'body-type', '', ', ' );
 	}
 }
@@ -520,10 +518,11 @@ function auto_listings_body_type() {
  * which is good to have in place for other plugins such as sharing plugins.
  */
 function auto_listings_filter_the_content( $content ) {
-	if( is_listing() ) {
+	if ( is_listing() ) {
 		$description = auto_listings_meta( 'main_description' );
-		$content .= wp_kses_post( wpautop( $description ) );
+		$content     .= wp_kses_post( wpautop( $description ) );
 	}
 	return $content;
 }
-add_filter('the_content', 'auto_listings_filter_the_content', 99 );
+
+add_filter( 'the_content', 'auto_listings_filter_the_content', 99 );

@@ -7,6 +7,8 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'eaf2739b3da977df72a7bf0e4918ce51' => $vendorDir . '/metabox/mb-settings-page/mb-settings-page.php',
+    '580fe70daaf1c3650583274f41a35bce' => $vendorDir . '/metabox/meta-box-columns/meta-box-columns.php',
+    '4beb8cd9afdffee50fe34ea29ec7af3b' => $vendorDir . '/metabox/meta-box-geolocation/meta-box-geolocation.php',
     '2b7050b46b6e65317d904a9445ab7b0f' => $vendorDir . '/metabox/meta-box-group/meta-box-group.php',
     'a5f882d89ab791a139cd2d37e50cdd80' => $vendorDir . '/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php',
 );

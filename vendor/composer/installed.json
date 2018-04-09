@@ -43,6 +43,44 @@
         ]
     },
     {
+        "name": "metabox/meta-box-columns",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "git@bitbucket.org:metabox/meta-box-columns.git",
+            "reference": "9fc662c2ac946869c11f1cf49c179b1ac02946f3"
+        },
+        "time": "2018-04-09T07:32:45+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "files": [
+                "meta-box-columns.php"
+            ]
+        },
+        "homepage": "https://metabox.io"
+    },
+    {
+        "name": "metabox/meta-box-geolocation",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "git@bitbucket.org:metabox/meta-box-geolocation.git",
+            "reference": "d57bddcf275dea1c30e6c3510d41d7429539b905"
+        },
+        "time": "2018-04-09T09:20:02+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "files": [
+                "meta-box-geolocation.php"
+            ]
+        },
+        "homepage": "https://metabox.io"
+    },
+    {
         "name": "metabox/meta-box-group",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
