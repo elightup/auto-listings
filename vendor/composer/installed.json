@@ -43,6 +43,25 @@
         ]
     },
     {
+        "name": "metabox/meta-box-group",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "git@bitbucket.org:metabox/meta-box-group.git",
+            "reference": "ba2b038cc4d83fc698411f69f014bed340de2e50"
+        },
+        "time": "2018-04-09T03:35:06+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "files": [
+                "meta-box-group.php"
+            ]
+        },
+        "homepage": "https://metabox.io"
+    },
+    {
         "name": "tgmpa/tgm-plugin-activation",
         "version": "2.6.1",
         "version_normalized": "2.6.1.0",

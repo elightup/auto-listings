@@ -15,6 +15,7 @@ use AutoListings\Admin\Assets as AdminAssets;
 use AutoListings\Admin\ListingColumns;
 use AutoListings\Admin\SellerColumns;
 use AutoListings\Admin\EnquiryColumns;
+use AutoListings\Admin\Settings;
 use AutoListings\Frontend\Main as FrontendMain;
 use AutoListings\Frontend\TemplateLoader;
 use AutoListings\Frontend\Assets as FrontendAssets;
@@ -41,8 +42,8 @@ if ( is_admin() ) {
 	$al_admin_assets     = new AdminAssets();
 	$al_listings_columns = new ListingColumns();
 	$al_seller_columns   = new SellerColumns();
-	$al_enquiry_columns   = new EnquiryColumns();
-	require 'src/Admin/Settings.php';
+	$al_enquiry_columns  = new EnquiryColumns();
+	$al_settings         = new Settings();
 }
 if ( ( ! is_admin() || wp_doing_ajax() ) && ! wp_doing_cron() ) {
 	$al_frontend        = new FrontendMain();

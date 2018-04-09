@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a91d784baef90ae676d3e4d92546e346",
+    "content-hash": "e2222deacaed491f03a46d6619f63ea6",
     "packages": [
         {
             "name": "metabox/mb-settings-page",
@@ -46,6 +46,23 @@
                 "wp-admin"
             ],
             "time": "2018-01-29T04:31:48+00:00"
+        },
+        {
+            "name": "metabox/meta-box-group",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@bitbucket.org:metabox/meta-box-group.git",
+                "reference": "ba2b038cc4d83fc698411f69f014bed340de2e50"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "meta-box-group.php"
+                ]
+            },
+            "homepage": "https://metabox.io",
+            "time": "2018-04-09T03:35:06+00:00"
         },
         {
             "name": "tgmpa/tgm-plugin-activation",
@@ -107,7 +124,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "metabox/mb-settings-page": 20
+        "metabox/mb-settings-page": 20,
+        "metabox/meta-box-group": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

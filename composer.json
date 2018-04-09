@@ -4,12 +4,17 @@
     {
       "type": "vcs",
       "url": "git@bitbucket.org:metabox/mb-settings-page.git"
+    },
+    {
+      "type": "vcs",
+      "url": "git@bitbucket.org:metabox/meta-box-group.git"
     }
   ],
   "require": {
     "php": ">=5.4",
     "tgmpa/tgm-plugin-activation": "^2.6",
-    "metabox/mb-settings-page": "@dev"
+    "metabox/mb-settings-page": "@dev",
+    "metabox/meta-box-group": "@dev"
   },
   "autoload": {
     "psr-4": {
