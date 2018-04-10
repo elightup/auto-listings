@@ -23,7 +23,6 @@ class Plugin {
 	public function __construct( $file ) {
 		$this->file = $file;
 		$this->define_constants();
-		$this->includes();
 		$this->init_hooks();
 
 		do_action( 'auto_listings_loaded' );
@@ -35,14 +34,6 @@ class Plugin {
 		define( 'AUTO_LISTINGS_URL', plugin_dir_url( $this->file ) );
 		define( 'AUTO_LISTINGS_BASENAME', plugin_basename( $this->file ) );
 		define( 'AUTO_LISTINGS_VERSION', '1.1.6' );
-	}
-
-	protected function includes() {
-		require AUTO_LISTINGS_DIR . 'includes/metaboxes/functions.php';
-
-		require AUTO_LISTINGS_DIR . 'includes/libraries/cmb2/init.php';
-		require AUTO_LISTINGS_DIR . 'includes/libraries/cmb2-grid/Cmb2GridPlugin.php';
-		require AUTO_LISTINGS_DIR . 'includes/libraries/cmb2-metatabs/cmb2_metatabs_options.php';
 	}
 
 	protected function init_hooks() {

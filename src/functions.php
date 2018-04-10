@@ -104,20 +104,6 @@ function auto_listings_get_pages() {
 	return $array;
 }
 
-
-/**
- * Check for map key
- */
-function auto_listings_admin_listing_map_key_check( $field_args, $field ) {
-	$key = auto_listings_option( 'maps_api_key' );
-	if ( ! $key ) { ?>
-
-		<div class="archived-text warning"><?php printf( __( 'No Google Maps API key found.<br>Please %s', 'auto-listings' ), '<a href="' . admin_url( '/options-general.php?page=auto_listings_options&tab=opt-tab-general#google_maps' ) . '">add one here</a>' ); ?></div>
-
-	<?php }
-}
-
-
 /**
  * Output the map on the admin edit listing
  *
@@ -248,27 +234,4 @@ function auto_listings_ajax_archive_item() {
 
 	// Always exit when doing Ajax
 	exit();
-}
-
-
-function auto_listings_select_model_button( $field_args, $field ) {
-	?>
-
-	<button id="cq-select-model" type="button" class="al-button button button-small"><?php _e( 'Load Makes & Models', 'auto-listings' ); ?></button>
-
-	<p class="cmb2-metabox-description"><?php _e( 'Click the button to load Make & Model data into the dropdowns.', 'auto-listings' ); ?></p>
-
-	<?php
-}
-
-function auto_listings_populate_button( $field_args, $field ) {
-	?>
-
-	<button id="cq-show-data" type="button" class="al-button button button-small button-primary"><?php _e( 'Populate The Fields', 'auto-listings' ); ?></button>
-
-	<p class="cmb2-metabox-description show-data-desc"><?php _e( 'Once your vehicle is selected, hit the button to automatically populate the fields below.', 'auto-listings' ); ?></p>
-
-	<div id="car-model-data"></div>
-
-	<?php
 }
