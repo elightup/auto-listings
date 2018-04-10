@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    '6960e19eea501d759f632eb4742e4bdc' => $vendorDir . '/metabox/mb-frontend-submission/mb-frontend-submission.php',
     'eaf2739b3da977df72a7bf0e4918ce51' => $vendorDir . '/metabox/mb-settings-page/mb-settings-page.php',
     '580fe70daaf1c3650583274f41a35bce' => $vendorDir . '/metabox/meta-box-columns/meta-box-columns.php',
     '4beb8cd9afdffee50fe34ea29ec7af3b' => $vendorDir . '/metabox/meta-box-geolocation/meta-box-geolocation.php',

@@ -4,8 +4,25 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "da3080f10e24d5fd73bb72414ed44216",
+    "content-hash": "3654d070d49b948f7fcb5408e0c6a20f",
     "packages": [
+        {
+            "name": "metabox/mb-frontend-submission",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@bitbucket.org:metabox/mb-frontend-submission.git",
+                "reference": "a338320ec74bf88c8485a91898b6a8508b7ca0a0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "mb-frontend-submission.php"
+                ]
+            },
+            "homepage": "https://metabox.io",
+            "time": "2018-04-09T10:25:57+00:00"
+        },
         {
             "name": "metabox/mb-settings-page",
             "version": "dev-master",
@@ -161,7 +178,8 @@
         "metabox/mb-settings-page": 20,
         "metabox/meta-box-group": 20,
         "metabox/meta-box-columns": 20,
-        "metabox/meta-box-geolocation": 20
+        "metabox/meta-box-geolocation": 20,
+        "metabox/mb-frontend-submission": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -7,6 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInit1b55fbb64066c1e0d7d16e208ee7c2ec
 {
     public static $files = array (
+        '6960e19eea501d759f632eb4742e4bdc' => __DIR__ . '/..' . '/metabox/mb-frontend-submission/mb-frontend-submission.php',
         'eaf2739b3da977df72a7bf0e4918ce51' => __DIR__ . '/..' . '/metabox/mb-settings-page/mb-settings-page.php',
         '580fe70daaf1c3650583274f41a35bce' => __DIR__ . '/..' . '/metabox/meta-box-columns/meta-box-columns.php',
         '4beb8cd9afdffee50fe34ea29ec7af3b' => __DIR__ . '/..' . '/metabox/meta-box-geolocation/meta-box-geolocation.php',

@@ -1,5 +1,24 @@
 [
     {
+        "name": "metabox/mb-frontend-submission",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "git@bitbucket.org:metabox/mb-frontend-submission.git",
+            "reference": "a338320ec74bf88c8485a91898b6a8508b7ca0a0"
+        },
+        "time": "2018-04-09T10:25:57+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "files": [
+                "mb-frontend-submission.php"
+            ]
+        },
+        "homepage": "https://metabox.io"
+    },
+    {
         "name": "metabox/mb-settings-page",
         "version": "dev-master",
         "version_normalized": "9999999-dev",

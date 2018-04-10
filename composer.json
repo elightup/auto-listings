@@ -16,6 +16,10 @@
     {
       "type": "vcs",
       "url": "git@bitbucket.org:metabox/meta-box-geolocation.git"
+    },
+    {
+      "type": "vcs",
+      "url": "git@bitbucket.org:metabox/mb-frontend-submission.git"
     }
   ],
   "require": {
@@ -24,7 +28,8 @@
     "metabox/mb-settings-page": "@dev",
     "metabox/meta-box-group": "@dev",
     "metabox/meta-box-columns": "@dev",
-    "metabox/meta-box-geolocation": "@dev"
+    "metabox/meta-box-geolocation": "@dev",
+    "metabox/mb-frontend-submission": "@dev"
   },
   "autoload": {
     "psr-4": {
