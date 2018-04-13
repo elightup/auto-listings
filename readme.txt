@@ -2,12 +2,12 @@
 Contributors: autolistings
 Tags: car dealer, sell cars, car classifieds, car sales, car listings, automotive listings, auto listings, automotive, car, car dealership
 Requires at least: 4.5
-Tested up to: 4.8.1
-Stable tag: 1.1.6
+Tested up to: 4.9.5
+Stable tag: 2.0.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-List, manage & sell cars easily. Advanced search, vehicle data from 1941, lead capture, gallery, maps. Great for car dealers. 
+List, manage & sell cars easily. Advanced search, vehicle data from 1941, lead capture, gallery, maps. Great for car dealers.
 
 == Description ==
 
@@ -44,14 +44,14 @@ The plugin is well coded, mobile friendly (responsive), SEO friendly and can be 
 * **Looks Fantastic** - users will love the easy to use design
 * **List or Grid View** - visitors choose their own style of viewing cars
 * **New Listings Highlighted** - auto highlight new listings
-* **Icons** - users see the important details at a glance 
+* **Icons** - users see the important details at a glance
 * **Image Galleries** - galleries to display multiple images
 * **Google Maps** - shows users the area the item is located
 * **Contact Form** - users can send enquiries direct from listings
 * **Detailed Specs** - detailed specs on each listing
 * **Responsive** - view on any device
 
-= Vehicle Data for car dealers = 
+= Vehicle Data for car dealers =
 Easily populate the vehicle details and specs by simply choosing the vehicle year, make and model.
 No more manually typing all of your vehicle data. **Car dealers** love this!
 
@@ -60,16 +60,16 @@ You simply need to choose the year, the make and the model of the vehicle and th
 The car data is pulled from [CarQuery](http://www.carqueryapi.com/) and the CarQuery database contains over 68,000 vehicles from over 150 manufacturers going all the way back to 1941 until today.
 
 
-= Advanced Search = 
-The search box is extremely smart and can be customized to suit your needs. 
+= Advanced Search =
+The search box is extremely smart and can be customized to suit your needs.
 
-There are tons of options and you can choose which fields you want to add to the search box. 
+There are tons of options and you can choose which fields you want to add to the search box.
 
 There is also a radius search that allows users to narrow the search results to their region. This uses a combination of Google Maps Geocoding and radius searching to deliver the relevant results.
 
 >Visit the [search box docs page](http://wpautolistings.com/docs/search?utm_source=plugin&utm_medium=readme&utm_content=search_docs) for more info.
 
-= Google Maps = 
+= Google Maps =
 Google Maps is integrated into each listing. When adding a listing, you simply need to start typing the address and Google will help you find the exact address and location. You can even move the map marker and place wherever you like.
 
 On the listing page, it will not pinpoint an exact address, it will instead show a circle of the area. Which avoids giving away any personal addresses.
@@ -77,28 +77,28 @@ On the listing page, it will not pinpoint an exact address, it will instead show
 
 >Try out our [search box](http://wpautolistings.com/auto-listings?utm_source=plugin&utm_medium=readme&utm_content=search_box) here and see how smart it is.
 
-= Shortcodes = 
+= Shortcodes =
 
     [auto_listings_listing]
     [auto_listings_listings]
     [auto_listings_search]
     [auto_listings_contact_form]
 
-The shortcodes can be easily customized, with each shortcode having many options. 
+The shortcodes can be easily customized, with each shortcode having many options.
 
 >Visit the [shortcodes docs page](http://wpautolistings.com/docs/shortcodes?utm_source=plugin&utm_medium=readme&utm_content=shortcode_docs) for more info.
 
-= Template System = 
+= Template System =
 
 A robust, flexible framework & template system gives you full control over every aspect of your automotive website, so you can customize it to fit your needs.
 
-Easily override the default HTML template files by including them into your own theme. 
+Easily override the default HTML template files by including them into your own theme.
 
-The template system used is very similar to the WooCommerce template system, so if you have used that before, this will be a breeze. 
+The template system used is very similar to the WooCommerce template system, so if you have used that before, this will be a breeze.
 
 >Visit the [template docs page](http://wpautolistings.com/docs/templates?utm_source=plugin&utm_medium=readme&utm_content=template_docs) for more info.
 
-= Premium Extensions = 
+= Premium Extensions =
 
 We have a number of premium extensions to help take your automotive website to the next level.
 
@@ -135,7 +135,7 @@ Support is provided in the [Auto Listings support forum](https://wordpress.org/s
 
 = Will Auto Listings work with my theme? =
 
-Yes, our automotive plugin works with any theme. 
+Yes, our automotive plugin works with any theme.
 
 If you find that things are not looking quiet right though, you can simply modify the HTML wrappers which is an option in the Settings > Auto Listings page.
 

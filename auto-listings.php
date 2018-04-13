@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: Auto Listings
- * Description: An Automotive Listings plugin for WordPress.
+ * Description: An automotive listings plugin for WordPress.
  * Author: WP Auto Listings
  * Author URI: https://wpautolistings.com
  * Plugin URI: https://wpautolistings.com
- * Version: 1.1.6
+ * Version: 2.0.0
  * Text Domain: auto-listings
  * Domain Path: languages
  */
