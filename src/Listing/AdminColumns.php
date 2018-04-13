@@ -32,7 +32,6 @@ class AdminColumns {
 		$columns['status']    = __( 'Status', 'auto-listings' );
 		$columns['seller']    = __( 'Seller', 'auto-listings' );
 		$columns['address']   = __( 'Address', 'auto-listings' );
-		$columns['image']     = '<span class="dashicons dashicons-images-alt2"></span>';
 		$columns['enquiries'] = __( 'Enquiries', 'auto-listings' );
 
 		return $columns;
@@ -84,18 +83,6 @@ class AdminColumns {
 				return;
 			}
 			echo esc_html( $address );
-		}
-
-		if ( $column_name == 'image' ) {
-			$images = auto_listings_meta( 'image_gallery', $post_id );
-			if ( ! $images ) {
-				return;
-			}
-			$image = array_keys( $images );
-			$img   = wp_get_attachment_image_src( $image[0], 'thumbnail' );
-			if ( $img ) {
-				echo '<img src="' . esc_url( $img[0] ) . '" width="50" height="50" />';
-			}
 		}
 
 		if ( $column_name == 'enquiries' ) {

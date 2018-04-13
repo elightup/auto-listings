@@ -46,11 +46,7 @@ class PostType {
 			'map_meta_cap'       => true,
 			'has_archive'        => ( $archive_page = auto_listings_option( 'archives_page' ) ) && get_post( $archive_page ) ? get_page_uri( $archive_page ) : 'listings',
 			'hierarchical'       => false,
-			'supports'           => [
-				'title',
-				'revisions',
-				'author',
-			],
+			'supports'           => [ 'title', 'editor', 'excerpt' ],
 		];
 		register_post_type( 'auto-listing', $args );
 	}

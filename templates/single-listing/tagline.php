@@ -9,9 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-$tagline = auto_listings_meta( 'tagline' );
-if( empty( $tagline ) )
+if ( ! has_excerpt() ) {
 	return;
+}
 ?>
 
-<h3 class="tagline"><?php echo esc_html( $tagline ); ?></h3>
+<h3 class="tagline"><?php the_excerpt(); ?></h3>

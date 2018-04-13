@@ -16,5 +16,6 @@ return [
 	'id'         => $prefix . 'images',
 	'title'      => __( 'Gallery', 'auto-listings' ),
 	'post_types' => 'auto-listing',
+	'priority'   => 'low',
 	'fields'     => $fields,
 ];

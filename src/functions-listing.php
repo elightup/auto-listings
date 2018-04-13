@@ -306,14 +306,9 @@ function auto_listings_listing_post_class( $classes, $class = '', $post_id = '' 
 		$classes[] = 'auto-listing';
 		$classes[] = 'auto-listing-' . $listing->ID;
 
-		$images = auto_listings_meta( 'image_gallery' );
+		$images = rwmb_meta( '_al_listing_image_gallery' );
 		if ( $images ) {
-			foreach ( $images as $key => $url ) {
-				if ( ! empty( $url ) ) {
-					$classes[] = strtolower( 'has-thumbnail' );
-					break;
-				}
-			}
+			$classes[] = strtolower( 'has-thumbnail' );
 		}
 	}
 
@@ -336,15 +331,15 @@ function auto_listings_force_page_title() {
  * Get the URL of the first image of a listing
  */
 function auto_listings_get_first_image() {
-	$gallery = auto_listings_meta( 'image_gallery' );
+	$gallery = rwmb_meta( '_al_listing_image_gallery', [ 'size' => 'al-sml' ] );
 
 	if ( empty( $gallery ) ) {
 		$sml = apply_filters( 'auto_listings_default_no_image', AUTO_LISTINGS_URL . 'assets/images/no-image.jpg' );
 		$alt = '';
 	} else {
-		$id  = key( $gallery );
-		$sml = wp_get_attachment_image_url( $id, 'al-sml' );
-		$alt = get_post_meta( $id, '_wp_attachment_image_alt', true );
+		$image = reset( $gallery );
+		$sml   = $image['url'];
+		$alt   = $image['alt'];
 	}
 
 	return [
@@ -510,19 +505,3 @@ function auto_listings_body_type() {
 		return get_the_term_list( get_the_ID(), 'body-type', '', ', ' );
 	}
 }
-
-
-/*
- * Filter the_content on single listing page.
- * This allows us to add the main_description meta to the_content(),
- * which is good to have in place for other plugins such as sharing plugins.
- */
-function auto_listings_filter_the_content( $content ) {
-	if ( is_listing() ) {
-		$description = auto_listings_meta( 'main_description' );
-		$content     .= wp_kses_post( wpautop( $description ) );
-	}
-	return $content;
-}
-
-add_filter( 'the_content', 'auto_listings_filter_the_content', 99 );

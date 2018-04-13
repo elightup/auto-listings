@@ -3,7 +3,7 @@ include 'vendor/autoload.php';
 
 use AutoListings\Plugin;
 use AutoListings\Installer;
-use AutoListings\Upgrade;
+use AutoListings\Upgrade\Version200;
 use AutoListings\Shortcodes;
 use AutoListings\Query;
 use AutoListings\SearchForm;
@@ -33,9 +33,9 @@ require 'src/functions-general.php';
 require 'src/functions-listing.php';
 require 'src/functions-sidebars.php';
 
-$al_plugin    = new Plugin( __DIR__ . '/auto-listings.php' );
-$al_installer = new Installer();
-$al_upgrade   = new Upgrade();
+$al_plugin     = new Plugin( __DIR__ . '/auto-listings.php' );
+$al_installer  = new Installer();
+$al_version200 = new Version200();
 
 $al_listing_post_type = new ListingPostType();
 $al_post_statuses     = new PostStatuses();

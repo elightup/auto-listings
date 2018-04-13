@@ -99,9 +99,6 @@ if ( ! function_exists( 'auto_listings_template_single_at_a_glance' ) ) {
  */
 if ( ! function_exists( 'auto_listings_template_single_gallery' ) ) {
 	function auto_listings_template_single_gallery() {
-		$images = auto_listings_meta( 'image_gallery' );
-		if( ! $images )
-			return;
 		auto_listings_get_part( 'single-listing/gallery.php' );
 	}
 }

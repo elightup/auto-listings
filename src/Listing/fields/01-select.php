@@ -5,6 +5,7 @@ return [
 	'id'         => $prefix . 'select',
 	'title'      => __( 'Vehicle Select', 'auto-listings' ),
 	'post_types' => 'auto-listing',
+	'priority'   => 'low',
 	'fields'     => [
 		[
 			'type'       => 'button',

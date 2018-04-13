@@ -26,5 +26,6 @@ return [
 	'id'         => $prefix . 'specs',
 	'title'      => __( 'Specifications', 'auto-listings' ),
 	'post_types' => 'auto-listing',
+	'priority'   => 'low',
 	'fields'     => $fields,
 ];
