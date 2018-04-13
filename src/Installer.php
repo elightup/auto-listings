@@ -13,10 +13,6 @@ class Installer {
 	 * Set up the post types, taxonomies, and creates sample data.
 	 */
 	public function install() {
-		// Setup the Listings Custom Post Type
-		$types = new PostTypes();
-		$types->register_post_types();
-
 		// install data
 		$this->install_plugin_options();
 		wp_insert_term( 'SUV', 'body_type' );

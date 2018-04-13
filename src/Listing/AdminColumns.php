@@ -1,7 +1,7 @@
 <?php
-namespace AutoListings\Admin;
+namespace AutoListings\Listing;
 
-class ListingColumns {
+class AdminColumns {
 	public $filter_fields = [
 		'status'    => 'statuses',
 		'seller'    => 'sellers',

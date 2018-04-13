@@ -1,7 +1,7 @@
 <?php
-namespace AutoListings\Admin;
+namespace AutoListings\Enquiry;
 
-class EnquiryColumns {
+class AdminColumns {
 	public $filter_fields = [
 		'listing_title'  => 'listings',
 		'listing_seller' => 'sellers',
@@ -166,7 +166,7 @@ class EnquiryColumns {
 								continue;
 							}
 							?>
-							<option value="<?php echo esc_attr( $val ) ?>" <?php isset( $_GET[ $field ] ) ? selected( $_GET[ $field ], $val ) : ''; ?>><?php echo esc_html( $text ) ?></option>
+							<option value="<?php echo esc_attr( $val ) ?>" <?php if ( isset( $_GET[ $field ] ) ) selected( $_GET[ $field ], $val ); ?>><?php echo esc_html( $text ) ?></option>
 
 							<?php
 						} ?>
@@ -174,14 +174,10 @@ class EnquiryColumns {
 					</select>
 
 					<?php
-
 					reset( $values );
 				}
-
 			}
-
 		}
-
 	}
 
 	private function build_fields() {

@@ -1,5 +1,5 @@
 <?php
-namespace AutoListings;
+namespace AutoListings\Enquiry;
 
 class ContactForm {
 	public function __construct() {

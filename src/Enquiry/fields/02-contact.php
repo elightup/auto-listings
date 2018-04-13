@@ -22,7 +22,7 @@ if ( is_admin() ) {
 	];
 	$fields[40] = [
 		'type' => 'heading',
-		'name' => __( 'Contact Form', 'auto-listings' ),
+		'name' => __( 'Contact Information', 'auto-listings' ),
 	];
 }
 

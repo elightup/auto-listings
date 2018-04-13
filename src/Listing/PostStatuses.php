@@ -1,5 +1,5 @@
 <?php
-namespace AutoListings;
+namespace AutoListings\Listing;
 
 class PostStatuses {
 	public function __construct() {
