@@ -9,7 +9,7 @@ class Settings {
 	}
 
 	public function register_settings_pages( $settings_pages ) {
-		$settings_pages[] = [
+		$settings_pages['auto-listings'] = [
 			'id'          => 'auto-listings',
 			'option_name' => 'auto_listings_options',
 			'menu_title'  => __( 'Auto Listings', 'auto-listings' ),
