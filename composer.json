@@ -1,39 +1,28 @@
 {
   "name": "auto-listings/auto-listings",
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "git@bitbucket.org:metabox/mb-settings-page.git"
-    },
-    {
-      "type": "vcs",
-      "url": "git@bitbucket.org:metabox/meta-box-group.git"
-    },
-    {
-      "type": "vcs",
-      "url": "git@bitbucket.org:metabox/meta-box-columns.git"
-    },
-    {
-      "type": "vcs",
-      "url": "git@bitbucket.org:metabox/meta-box-geolocation.git"
-    },
-    {
-      "type": "vcs",
-      "url": "git@bitbucket.org:metabox/mb-frontend-submission.git"
-    }
-  ],
+  "repositories": [{
+    "type": "composer",
+    "url": "https://packages.metabox.io/d3868083e53c57b032d27c257404e200"
+  }],
   "require": {
     "php": ">=5.4",
-    "tgmpa/tgm-plugin-activation": "^2.6",
-    "metabox/mb-settings-page": "@dev",
-    "metabox/meta-box-group": "@dev",
-    "metabox/meta-box-columns": "@dev",
-    "metabox/meta-box-geolocation": "@dev",
-    "metabox/mb-frontend-submission": "@dev"
+    "meta-box/mb-settings-page": "dev-master",
+    "meta-box/meta-box-group": "dev-master",
+    "meta-box/meta-box-columns": "dev-master",
+    "meta-box/meta-box-geolocation": "dev-master",
+    "meta-box/mb-frontend-submission": "dev-master"
   },
   "autoload": {
     "psr-4": {
       "AutoListings\\": "src/"
+    },
+    "files": [
+      "class-tgm-plugin-activation.php"
+    ]
+  },
+  "extra": {
+    "installer-paths": {
+      "meta-box/{$name}": ["vendor:meta-box"]
     }
   }
 }

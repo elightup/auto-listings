@@ -1,0 +1,5 @@
+{
+	"scripts": {
+		"update": "composer clear-cache && rm -rf extensions && composer install"
+	}
+}

@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit1b55fbb64066c1e0d7d16e208ee7c2ec
+class ComposerStaticInit3813045a124488c78f48d08193dac899
 {
     public static $files = array (
         '6960e19eea501d759f632eb4742e4bdc' => __DIR__ . '/..' . '/metabox/mb-frontend-submission/mb-frontend-submission.php',
@@ -13,6 +13,7 @@ class ComposerStaticInit1b55fbb64066c1e0d7d16e208ee7c2ec
         '4beb8cd9afdffee50fe34ea29ec7af3b' => __DIR__ . '/..' . '/metabox/meta-box-geolocation/meta-box-geolocation.php',
         '2b7050b46b6e65317d904a9445ab7b0f' => __DIR__ . '/..' . '/metabox/meta-box-group/meta-box-group.php',
         'a5f882d89ab791a139cd2d37e50cdd80' => __DIR__ . '/..' . '/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php',
+        'e1b176c4449b3c823efdeb006375b859' => __DIR__ . '/../..' . '/class-tgm-plugin-activation.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -32,8 +33,8 @@ class ComposerStaticInit1b55fbb64066c1e0d7d16e208ee7c2ec
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit1b55fbb64066c1e0d7d16e208ee7c2ec::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit1b55fbb64066c1e0d7d16e208ee7c2ec::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit3813045a124488c78f48d08193dac899::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit3813045a124488c78f48d08193dac899::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }

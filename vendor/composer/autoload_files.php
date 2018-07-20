@@ -12,4 +12,5 @@ return array(
     '4beb8cd9afdffee50fe34ea29ec7af3b' => $vendorDir . '/metabox/meta-box-geolocation/meta-box-geolocation.php',
     '2b7050b46b6e65317d904a9445ab7b0f' => $vendorDir . '/metabox/meta-box-group/meta-box-group.php',
     'a5f882d89ab791a139cd2d37e50cdd80' => $vendorDir . '/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php',
+    'e1b176c4449b3c823efdeb006375b859' => $baseDir . '/class-tgm-plugin-activation.php',
 );
