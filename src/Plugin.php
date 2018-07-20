@@ -89,6 +89,14 @@ class Plugin {
 			'menu'        => 'tgmpa-install-plugins',
 			'parent_slug' => 'plugins.php',
 			'capability'  => 'install_plugins',
+			'strings'     => [
+				'notice_can_install_required' => _n_noop(
+					/* translators: 1: plugin name(s). */
+					'The Auto Listings plugin requires the following plugin: %1$s.',
+					'The Auto Listings plugin requires the following plugins: %1$s.',
+					'auto-listings'
+				)
+			],
 		];
 
 		tgmpa( $plugins, $config );

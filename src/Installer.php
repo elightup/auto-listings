@@ -5,7 +5,6 @@ namespace AutoListings;
 class Installer {
 	public function __construct() {
 		register_activation_hook( AUTO_LISTINGS_FILE, [ $this, 'install' ] );
-		add_action( 'admin_init', [ $this, 'redirect' ] );
 		add_action( 'admin_notices', [ $this, 'notice' ] );
 	}
 
@@ -226,28 +225,6 @@ class Installer {
 		}
 
 		wp_set_object_terms( $listing_id, 'suv', 'body-type' );
-	}
-
-	/**
-	 * Redirect to plugin admin page after install.
-	 */
-	public function redirect() {
-		if ( ! is_admin() ) {
-			return;
-		}
-
-		$activated = get_transient( '_auto_listings_activation_redirect' );
-		if ( false === $activated ) {
-			return;
-		}
-		delete_transient( '_auto_listings_activation_redirect' );
-
-		if ( isset( $_GET['activate-multi'] ) ) {
-			return;
-		}
-		set_transient( '_auto_listings_redirected', true, 60 );
-		wp_safe_redirect( admin_url( 'options-general.php?page=auto_listings_options' ) );
-		exit;
 	}
 
 	public function notice() {
