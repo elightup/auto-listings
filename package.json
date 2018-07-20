@@ -1,5 +1,5 @@
 {
 	"scripts": {
-		"update": "composer clear-cache && rm -rf extensions && composer install"
+		"update": "composer clear-cache && rm -rf vendor && rm -rf composer.lock && composer install"
 	}
 }

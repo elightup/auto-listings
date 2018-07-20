@@ -6,11 +6,10 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    '6960e19eea501d759f632eb4742e4bdc' => $vendorDir . '/metabox/mb-frontend-submission/mb-frontend-submission.php',
-    'eaf2739b3da977df72a7bf0e4918ce51' => $vendorDir . '/metabox/mb-settings-page/mb-settings-page.php',
-    '580fe70daaf1c3650583274f41a35bce' => $vendorDir . '/metabox/meta-box-columns/meta-box-columns.php',
-    '4beb8cd9afdffee50fe34ea29ec7af3b' => $vendorDir . '/metabox/meta-box-geolocation/meta-box-geolocation.php',
-    '2b7050b46b6e65317d904a9445ab7b0f' => $vendorDir . '/metabox/meta-box-group/meta-box-group.php',
-    'a5f882d89ab791a139cd2d37e50cdd80' => $vendorDir . '/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php',
+    'a00b64459aff1ea3a8d32c85d06f462c' => $vendorDir . '/meta-box/mb-frontend-submission/mb-frontend-submission.php',
+    '8fac011259c59cfe81f075e6d196a73e' => $vendorDir . '/meta-box/mb-settings-page/mb-settings-page.php',
+    'ec6c6cb65bdbef10a03f18cf98b0d532' => $vendorDir . '/meta-box/meta-box-columns/meta-box-columns.php',
+    '2e6296a991d7e2e0af3c13fec2d147f1' => $vendorDir . '/meta-box/meta-box-geolocation/meta-box-geolocation.php',
+    '0c9631961cc9bea8d290a32acad0d1d2' => $vendorDir . '/meta-box/meta-box-group/meta-box-group.php',
     'e1b176c4449b3c823efdeb006375b859' => $baseDir . '/class-tgm-plugin-activation.php',
 );

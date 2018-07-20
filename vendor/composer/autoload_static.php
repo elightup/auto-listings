@@ -4,19 +4,22 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit3813045a124488c78f48d08193dac899
+class ComposerStaticInit36b033d3c5d462eda57120a890a85499
 {
     public static $files = array (
-        '6960e19eea501d759f632eb4742e4bdc' => __DIR__ . '/..' . '/metabox/mb-frontend-submission/mb-frontend-submission.php',
-        'eaf2739b3da977df72a7bf0e4918ce51' => __DIR__ . '/..' . '/metabox/mb-settings-page/mb-settings-page.php',
-        '580fe70daaf1c3650583274f41a35bce' => __DIR__ . '/..' . '/metabox/meta-box-columns/meta-box-columns.php',
-        '4beb8cd9afdffee50fe34ea29ec7af3b' => __DIR__ . '/..' . '/metabox/meta-box-geolocation/meta-box-geolocation.php',
-        '2b7050b46b6e65317d904a9445ab7b0f' => __DIR__ . '/..' . '/metabox/meta-box-group/meta-box-group.php',
-        'a5f882d89ab791a139cd2d37e50cdd80' => __DIR__ . '/..' . '/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php',
+        'a00b64459aff1ea3a8d32c85d06f462c' => __DIR__ . '/..' . '/meta-box/mb-frontend-submission/mb-frontend-submission.php',
+        '8fac011259c59cfe81f075e6d196a73e' => __DIR__ . '/..' . '/meta-box/mb-settings-page/mb-settings-page.php',
+        'ec6c6cb65bdbef10a03f18cf98b0d532' => __DIR__ . '/..' . '/meta-box/meta-box-columns/meta-box-columns.php',
+        '2e6296a991d7e2e0af3c13fec2d147f1' => __DIR__ . '/..' . '/meta-box/meta-box-geolocation/meta-box-geolocation.php',
+        '0c9631961cc9bea8d290a32acad0d1d2' => __DIR__ . '/..' . '/meta-box/meta-box-group/meta-box-group.php',
         'e1b176c4449b3c823efdeb006375b859' => __DIR__ . '/../..' . '/class-tgm-plugin-activation.php',
     );
 
     public static $prefixLengthsPsr4 = array (
+        'C' => 
+        array (
+            'Composer\\Installers\\' => 20,
+        ),
         'A' => 
         array (
             'AutoListings\\' => 13,
@@ -24,6 +27,10 @@ class ComposerStaticInit3813045a124488c78f48d08193dac899
     );
 
     public static $prefixDirsPsr4 = array (
+        'Composer\\Installers\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers',
+        ),
         'AutoListings\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
@@ -33,8 +40,8 @@ class ComposerStaticInit3813045a124488c78f48d08193dac899
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit3813045a124488c78f48d08193dac899::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit3813045a124488c78f48d08193dac899::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit36b033d3c5d462eda57120a890a85499::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit36b033d3c5d462eda57120a890a85499::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }

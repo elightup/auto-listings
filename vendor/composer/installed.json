@@ -1,178 +1,229 @@
 [
     {
-        "name": "metabox/mb-frontend-submission",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "name": "composer/installers",
+        "version": "v1.5.0",
+        "version_normalized": "1.5.0.0",
         "source": {
             "type": "git",
-            "url": "git@bitbucket.org:metabox/mb-frontend-submission.git",
-            "reference": "a338320ec74bf88c8485a91898b6a8508b7ca0a0"
+            "url": "https://github.com/composer/installers.git",
+            "reference": "049797d727261bf27f2690430d935067710049c2"
         },
-        "time": "2018-04-09T10:25:57+00:00",
-        "type": "library",
-        "installation-source": "source",
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/composer/installers/zipball/049797d727261bf27f2690430d935067710049c2",
+            "reference": "049797d727261bf27f2690430d935067710049c2",
+            "shasum": ""
+        },
+        "require": {
+            "composer-plugin-api": "^1.0"
+        },
+        "replace": {
+            "roundcube/plugin-installer": "*",
+            "shama/baton": "*"
+        },
+        "require-dev": {
+            "composer/composer": "1.0.*@dev",
+            "phpunit/phpunit": "^4.8.36"
+        },
+        "time": "2017-12-29T09:13:20+00:00",
+        "type": "composer-plugin",
+        "extra": {
+            "class": "Composer\\Installers\\Plugin",
+            "branch-alias": {
+                "dev-master": "1.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Composer\\Installers\\": "src/Composer/Installers"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Kyle Robinson Young",
+                "email": "kyle@dontkry.com",
+                "homepage": "https://github.com/shama"
+            }
+        ],
+        "description": "A multi-framework Composer library installer",
+        "homepage": "https://composer.github.io/installers/",
+        "keywords": [
+            "Craft",
+            "Dolibarr",
+            "Eliasis",
+            "Hurad",
+            "ImageCMS",
+            "Kanboard",
+            "Lan Management System",
+            "MODX Evo",
+            "Mautic",
+            "Maya",
+            "OXID",
+            "Plentymarkets",
+            "Porto",
+            "RadPHP",
+            "SMF",
+            "Thelia",
+            "WolfCMS",
+            "agl",
+            "aimeos",
+            "annotatecms",
+            "attogram",
+            "bitrix",
+            "cakephp",
+            "chef",
+            "cockpit",
+            "codeigniter",
+            "concrete5",
+            "croogo",
+            "dokuwiki",
+            "drupal",
+            "eZ Platform",
+            "elgg",
+            "expressionengine",
+            "fuelphp",
+            "grav",
+            "installer",
+            "itop",
+            "joomla",
+            "kohana",
+            "laravel",
+            "lavalite",
+            "lithium",
+            "magento",
+            "majima",
+            "mako",
+            "mediawiki",
+            "modulework",
+            "modx",
+            "moodle",
+            "osclass",
+            "phpbb",
+            "piwik",
+            "ppi",
+            "puppet",
+            "pxcms",
+            "reindex",
+            "roundcube",
+            "shopware",
+            "silverstripe",
+            "sydes",
+            "symfony",
+            "typo3",
+            "wordpress",
+            "yawik",
+            "zend",
+            "zikula"
+        ]
+    },
+    {
+        "name": "meta-box/mb-frontend-submission",
+        "version": "master",
+        "version_normalized": "9999999-dev",
+        "dist": {
+            "type": "zip",
+            "url": "https://metabox.io/?action=download&product=mb-frontend-submission&api_key=d3868083e53c57b032d27c257404e200",
+            "reference": null,
+            "shasum": null
+        },
+        "require": {
+            "composer/installers": "~1.0"
+        },
+        "type": "wordpress-plugin",
+        "installation-source": "dist",
         "autoload": {
             "files": [
                 "mb-frontend-submission.php"
             ]
-        },
-        "homepage": "https://metabox.io"
+        }
     },
     {
-        "name": "metabox/mb-settings-page",
-        "version": "dev-master",
+        "name": "meta-box/mb-settings-page",
+        "version": "master",
         "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "git@bitbucket.org:metabox/mb-settings-page.git",
-            "reference": "5967e24fb7f21d3c034b54221deb2040cdb1757e"
+        "dist": {
+            "type": "zip",
+            "url": "https://metabox.io/?action=download&product=mb-settings-page&api_key=d3868083e53c57b032d27c257404e200",
+            "reference": null,
+            "shasum": null
         },
-        "time": "2018-01-29T04:31:48+00:00",
-        "type": "library",
-        "installation-source": "source",
+        "require": {
+            "composer/installers": "~1.0"
+        },
+        "type": "wordpress-plugin",
+        "installation-source": "dist",
         "autoload": {
             "files": [
                 "mb-settings-page.php"
             ]
-        },
-        "license": [
-            "GPL-2.0"
-        ],
-        "authors": [
-            {
-                "name": "Tran Ngoc Tuan Anh",
-                "email": "anhtnt@elightup.com",
-                "homepage": "https://metabox.io",
-                "role": "Developer"
-            }
-        ],
-        "description": "Create settings pages for WordPress",
-        "homepage": "https://metabox.io",
-        "keywords": [
-            "custom-field",
-            "meta-box",
-            "options-framework",
-            "select2",
-            "settings-page",
-            "theme-options",
-            "ui",
-            "wordpress",
-            "wordpress-plugin",
-            "wp-admin"
-        ]
+        }
     },
     {
-        "name": "metabox/meta-box-columns",
-        "version": "dev-master",
+        "name": "meta-box/meta-box-columns",
+        "version": "master",
         "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "git@bitbucket.org:metabox/meta-box-columns.git",
-            "reference": "9fc662c2ac946869c11f1cf49c179b1ac02946f3"
+        "dist": {
+            "type": "zip",
+            "url": "https://metabox.io/?action=download&product=meta-box-columns&api_key=d3868083e53c57b032d27c257404e200",
+            "reference": null,
+            "shasum": null
         },
-        "time": "2018-04-09T07:32:45+00:00",
-        "type": "library",
-        "installation-source": "source",
+        "require": {
+            "composer/installers": "~1.0"
+        },
+        "type": "wordpress-plugin",
+        "installation-source": "dist",
         "autoload": {
             "files": [
                 "meta-box-columns.php"
             ]
-        },
-        "homepage": "https://metabox.io"
+        }
     },
     {
-        "name": "metabox/meta-box-geolocation",
-        "version": "dev-master",
+        "name": "meta-box/meta-box-geolocation",
+        "version": "master",
         "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "git@bitbucket.org:metabox/meta-box-geolocation.git",
-            "reference": "d57bddcf275dea1c30e6c3510d41d7429539b905"
+        "dist": {
+            "type": "zip",
+            "url": "https://metabox.io/?action=download&product=meta-box-geolocation&api_key=d3868083e53c57b032d27c257404e200",
+            "reference": null,
+            "shasum": null
         },
-        "time": "2018-04-09T09:20:02+00:00",
-        "type": "library",
-        "installation-source": "source",
+        "require": {
+            "composer/installers": "~1.0"
+        },
+        "type": "wordpress-plugin",
+        "installation-source": "dist",
         "autoload": {
             "files": [
                 "meta-box-geolocation.php"
             ]
-        },
-        "homepage": "https://metabox.io"
+        }
     },
     {
-        "name": "metabox/meta-box-group",
-        "version": "dev-master",
+        "name": "meta-box/meta-box-group",
+        "version": "master",
         "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "git@bitbucket.org:metabox/meta-box-group.git",
-            "reference": "ba2b038cc4d83fc698411f69f014bed340de2e50"
+        "dist": {
+            "type": "zip",
+            "url": "https://metabox.io/?action=download&product=meta-box-group&api_key=d3868083e53c57b032d27c257404e200",
+            "reference": null,
+            "shasum": null
         },
-        "time": "2018-04-09T03:35:06+00:00",
-        "type": "library",
-        "installation-source": "source",
+        "require": {
+            "composer/installers": "~1.0"
+        },
+        "type": "wordpress-plugin",
+        "installation-source": "dist",
         "autoload": {
             "files": [
                 "meta-box-group.php"
             ]
-        },
-        "homepage": "https://metabox.io"
-    },
-    {
-        "name": "tgmpa/tgm-plugin-activation",
-        "version": "2.6.1",
-        "version_normalized": "2.6.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/TGMPA/TGM-Plugin-Activation.git",
-            "reference": "c626d0d91fc8ef24916e809c7b79eeafab1c1cac"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/TGMPA/TGM-Plugin-Activation/zipball/c626d0d91fc8ef24916e809c7b79eeafab1c1cac",
-            "reference": "c626d0d91fc8ef24916e809c7b79eeafab1c1cac",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.2"
-        },
-        "time": "2016-05-19T15:46:51+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "class-tgm-plugin-activation.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-2.0+"
-        ],
-        "authors": [
-            {
-                "name": "Thomas Griffin",
-                "homepage": "http://thomasgriffinmedia.com",
-                "role": "Developer"
-            },
-            {
-                "name": "Gary Jones",
-                "homepage": "https://github.com/GaryJones",
-                "role": "Developer"
-            },
-            {
-                "name": "Juliette Reinders Folmer",
-                "homepage": "https://github.com/jrfnl",
-                "role": "Developer"
-            }
-        ],
-        "description": "TGM Plugin Activation is a PHP library that allows you to easily require or recommend plugins for your WordPress themes (and plugins).",
-        "homepage": "http://tgmpluginactivation.com",
-        "keywords": [
-            "activation",
-            "library",
-            "plugins",
-            "theme",
-            "wordpress"
-        ]
+        }
     }
 ]

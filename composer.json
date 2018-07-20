@@ -22,7 +22,7 @@
   },
   "extra": {
     "installer-paths": {
-      "meta-box/{$name}": ["vendor:meta-box"]
+      "vendor/meta-box/{$name}": ["vendor:meta-box"]
     }
   }
 }
