@@ -17,7 +17,6 @@ use AutoListings\Enquiry\Fields as EnquiryFields;
 use AutoListings\Enquiry\AdminColumns as EnquiryColumns;
 use AutoListings\Enquiry\ContactForm;
 use AutoListings\Admin\Main as AdminMain;
-use AutoListings\Admin\Menu;
 use AutoListings\Admin\Assets as AdminAssets;
 use AutoListings\Admin\SellerColumns;
 use AutoListings\Admin\Settings;
@@ -53,7 +52,6 @@ $al_search_query = new SearchQuery();
 
 if ( is_admin() ) {
 	$al_admin           = new AdminMain();
-	$al_menu            = new Menu();
 	$al_admin_assets    = new AdminAssets();
 	$al_listing_columns = new ListingColumns();
 	$al_enquiry_columns = new EnquiryColumns();
