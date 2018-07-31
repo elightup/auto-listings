@@ -11,16 +11,20 @@ List, manage & sell cars easily. Advanced search, vehicle data from 1941, lead c
 
 == Description ==
 
-Auto Listings works with any WordPress theme & allows you to create a car sales marketplace. It is perfect for car dealers, car sale websites or car classifieds websites.
+[**Auto Listings**](https://wpautolistings.com) helps you list, manage & sell cars easily. The plugin includes advanced search, auto-populating for vehicle data, lead capture, gallery, maps. It's a must-have tool for car dealers.
+
+**Auto Listings** works with any WordPress theme & allows you to create a car sales marketplace. It is perfect for car dealers, car sale websites or car classifieds websites.
 
 Create, edit and manage your car listings using **Auto Listings**.
 
 The plugin is well coded, mobile friendly (responsive), SEO friendly and can be easily customized.
 
+### Free Car Listings Theme
 
->View some sample [car listings](http://wpautolistings.com/auto-listings?utm_source=plugin&utm_medium=readme&utm_content=preview_listings)
+We also offer [free car listings theme](https://wpautolistings.com/themes/) that you can use with the plugin. It's compatible with the plugin, responsive and ready to use in production websites.
 
 ### Why car dealers love Auto Listings
+
 * **Vehicle Data** - car data from 1941 - over 68,000 cars! Simply choose the year, make and model. All specs are then populated into your fields
 * **Advanced Search** - highly customizable search box can be added anywhere
 * **New, Used & Certified** - choose the condition of vehicles to sell
@@ -38,8 +42,8 @@ The plugin is well coded, mobile friendly (responsive), SEO friendly and can be 
 * **Mobile Friendly**
 * **Sell Cars** - perfect for car dealerships, car sales websites or car classifieds
 
-
 ### Why your users will love Auto Listings
+
 * **Advanced Search** - makes it easy to find what they are looking for
 * **Looks Fantastic** - users will love the easy to use design
 * **List or Grid View** - visitors choose their own style of viewing cars
@@ -67,15 +71,10 @@ There are tons of options and you can choose which fields you want to add to the
 
 There is also a radius search that allows users to narrow the search results to their region. This uses a combination of Google Maps Geocoding and radius searching to deliver the relevant results.
 
->Visit the [search box docs page](http://wpautolistings.com/docs/search?utm_source=plugin&utm_medium=readme&utm_content=search_docs) for more info.
-
 = Google Maps =
 Google Maps is integrated into each listing. When adding a listing, you simply need to start typing the address and Google will help you find the exact address and location. You can even move the map marker and place wherever you like.
 
 On the listing page, it will not pinpoint an exact address, it will instead show a circle of the area. Which avoids giving away any personal addresses.
-
-
->Try out our [search box](http://wpautolistings.com/auto-listings?utm_source=plugin&utm_medium=readme&utm_content=search_box) here and see how smart it is.
 
 = Shortcodes =
 
@@ -86,7 +85,7 @@ On the listing page, it will not pinpoint an exact address, it will instead show
 
 The shortcodes can be easily customized, with each shortcode having many options.
 
->Visit the [shortcodes docs page](http://wpautolistings.com/docs/shortcodes?utm_source=plugin&utm_medium=readme&utm_content=shortcode_docs) for more info.
+> Visit the [shortcodes docs page](https://wpautolistings.com/docs/shortcodes/) for more info.
 
 = Template System =
 
@@ -96,13 +95,13 @@ Easily override the default HTML template files by including them into your own 
 
 The template system used is very similar to the WooCommerce template system, so if you have used that before, this will be a breeze.
 
->Visit the [template docs page](http://wpautolistings.com/docs/templates?utm_source=plugin&utm_medium=readme&utm_content=template_docs) for more info.
+> Visit the [template docs page](https://wpautolistings.com/docs/templates/) for more info.
 
 = Premium Extensions =
 
 We have a number of premium extensions to help take your automotive website to the next level.
 
->View our [Premium Extensions](http://wpautolistings.com/extensions?utm_source=plugin&utm_medium=readme&utm_content=extensions) here.
+> View our [Premium Extensions](https://wpautolistings.com/extensions/) here.
 
 
 == Installation ==
@@ -127,11 +126,7 @@ Install like any other plugin - directly from plugins page or upload via FTP.
 
 = Where can I find documentation? =
 
-Please visit the official documentation page at [http://wpautolistings.com/documentation/](http://wpautolistings.com/documentation?utm_source=plugin&utm_medium=readme_faq&utm_content=docs)
-
-= Where can I get support? =
-
-Support is provided in the [Auto Listings support forum](https://wordpress.org/support/plugin/auto-listings/).
+Please visit the [official documentation page](https://wpautolistings.com/docs/)
 
 = Will Auto Listings work with my theme? =
 
@@ -155,61 +150,4 @@ It is perfect for car dealers and car dealerships, car classifieds websites or a
 
 == Changelog ==
 
-= 1.1.6 - 2017-08-03 =
-* NEW - Add option to set default view
-
-= 1.1.5 - 2017-07-06 =
-* FIX - Price dropdowns in search form were hardcoded with $ currency symbol. Change this to allow any currency
-
-= 1.1.4 - 2017-06-29 =
-* UPDATE - JS update for frontend extension
-
-= 1.1.3 - 2017-06-28 =
-* NEW - Add more fields to search
-* NEW - Allow fields to be exluded from search box
-* NEW - Add 'layout' attribute to search box
-
-= 1.1.2 - 2017-06-28 =
-* NEW - Use filtered version of the_content() within the listing description. Allows other plugins to use the_content()
-
-= 1.1.1 - 2017-06-27 =
-* NEW - Spanish translation es_ES
-* UPDATE - More minor changes to allow for new Frontend Listings extension
-
-= 1.1.0 - 2017-06-23 =
-* NEW - Refactor a lot of code for new Frontend Listings extension. Mainly making metaboxes available to frontend
-* UPDATE - Remove check for $0 amount. It now displays $0 instead of blank
-* UPDATE - CarQuery API now goes back to 1941
-
-= 1.0.7 - 2017-06-16 =
-* NEW - Add color pickers for contact icons and for listing icons
-* NEW - Add further install instructions regarding theme compatibility
-* UPDATE - Fix up some general styling issues
-
-= 1.0.6 - 2017-06-15 =
-* UPDATE - General code tidy ups
-* UPDATE - Better organize functions-x.php files
-* UPDATE - Add recommended fields with an asterix
-* FIX - Column class conflicts with Bootstrap 4.0
-
-= 1.0.5 - 2017-06-14 =
-* UPDATE - Move all Seller related templates into future dealer extension
-* UPDATE - CSS & JS updates to allow for future dealer extension
-* UPDATE - Update description on Seller dropdown within listings
-
-= 1.0.4 - 2017-06-09 =
-* NEW - Add option for imperial/metric measurement units
-* UPDATE - At a glance odometer reading not displaying correctly on sigle listing
-
-= 1.0.3 - 2017-06-08 =
-* UPDATE - Enqueue goggle maps differently so can work on future dealer extension
-* UPDATE - Update single seller template for use in future dealer extension
-
-= 1.0.2 - 2017-06-07 =
-* UPDATE - CarQuery API starting year changed to 1980
-
-= 1.0.1 - 2017-06-07 =
-* UPDATE - Add en_AU and en_NZ languages
-
-= 1.0.0 - 2017-06-06 =
-* RELEASED - Initial release
+Visit our [changelog page](https://wpautolistings.com/changelog/) for up-to-date information.

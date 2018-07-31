@@ -1,21 +1,4 @@
-#more {
+/* Always show meta boxes in the sidebar */
+#side-sortables .postbox {
 	display: block !important;
-	border: none;
-	background: none;
-}
-#more .hndle,
-#more .handlediv {
-	display: none;
-}
-#more .inside {
-	padding: 0;
-	margin: 0;
-}
-#more p {
-	margin-top: 0;
-}
-#more img {
-	max-width: 100%;
-	height: auto;
-	border: 2px solid #444;
 }
