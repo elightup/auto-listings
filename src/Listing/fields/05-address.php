@@ -73,5 +73,7 @@ return [
 	'post_types' => 'auto-listing',
 	'fields'     => $fields,
 	'context'    => 'side',
-	'geo'        => true,
+	'geo'        => [
+		'api_key' => auto_listings_option( 'maps_api_key' ),
+	],
 ];

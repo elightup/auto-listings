@@ -4,7 +4,7 @@ namespace AutoListings\Listing;
 class Fields {
 	public function __construct() {
 		add_filter( 'rwmb_meta_boxes', [ $this, 'register_meta_boxes' ] );
-		add_filter( 'gmap_api_params', [ $this, 'geolocation_params' ] );
+		add_action( 'rwmb_enqueue_scripts', [ $this, 'enqueue' ] );
 	}
 
 	public function register_meta_boxes( $meta_boxes ) {
@@ -16,8 +16,26 @@ class Fields {
 		return $meta_boxes;
 	}
 
-	public function geolocation_params( $params ) {
-		$params['key'] = auto_listings_option( 'maps_api_key' );
-		return $params;
+	public function enqueue() {
+		if ( ! $this->is_screen() ) {
+			return;
+		}
+
+		$css_dir = AUTO_LISTINGS_URL . 'assets/admin/css/';
+		$js_dir  = AUTO_LISTINGS_URL . 'assets/admin/js/';
+
+		wp_enqueue_script( 'carquery', 'http://www.carqueryapi.com/js/carquery.0.3.4.js', [ 'jquery' ], '0.3.4', true );
+		wp_enqueue_script( 'al-carquery', $js_dir . 'carquery.js', [ 'carquery' ], AUTO_LISTINGS_VERSION, true );
+		wp_localize_script( 'al-carquery', 'AlCarQuery', [
+			'errorNoSelected' => __( 'Please select a year, make and model.', 'auto-listings' ),
+			'errorNoData'     => __( 'Cannot retrieve data. Please try again later.', 'auto-listings' ),
+		] );
+	}
+
+	public function is_screen() {
+		if ( ! is_admin() ) {
+			return true;
+		}
+		return 'auto-listing' === get_current_screen()->post_type;
 	}
 }

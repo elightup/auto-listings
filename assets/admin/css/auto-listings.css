@@ -1,7 +1,3 @@
-/*
- * CMB2 Overrides & General stuff
- */
-
 .auto-listings input::placeholder,
 .auto_listings_options input::placeholder {
     color: #ccc;
@@ -16,18 +12,11 @@
   max-width: 100%;
 }
 
-.auto-listings #cmb2-metabox-auto_listings_contact_form .cmb2-id-url,
-.auto-listings #cmb2-metabox-auto_listings_contact_form .cmb2-id-comment {
-    display: none;
-    visibility: hidden;
-}
 .auto-listings h2.hndle .dashicons {
     color: #78a3d2;
     font-size: 22px;
     margin: -1px 8px 0 0;
 }
-.auto-listings p.cmb2-metabox-description,
-.auto_listings_options p.cmb2-metabox-description,
 .auto-listings span.light {
     color: #888;
     font-size: 12px;
@@ -39,55 +28,8 @@
     display: block;
     color: #aaa;
 }
-.auto-listings .cmb-type-group .cmb2-wrap > .cmb-field-list > .cmb-row,
-.auto-listings .postbox-container .cmb2-wrap > .cmb-field-list > .cmb-row {
-    padding: 1.2em 0 0;
-}
-.postbox.cmb-row.cmb-repeatable-grouping {
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
-    margin: 25px 0;
-}
-.auto-listings .cmbhandle-title {
-    cursor: pointer;
-}
 .auto-listings #side-sortables {
     padding-top: 0;
-}
-.auto-listings #side-sortables .cmb-th {
-    padding-bottom: 5px;
-}
-.auto-listings #side-sortables .cmb-th label {
-    padding: 0;
-}
-.auto-listings #side-sortables .cmb-th label::after {
-    border-bottom: medium none;
-    padding-top: 0;
-}
-.auto-listings #side-sortables .cmb2-wrap > .cmb-field-list > .cmb-row {
-    padding: 0;
-}
-.auto-listings #side-sortables .cmb2-wrap > .cmb-field-list > .cmb-row:not(:last-of-type) {
-    border: none;
-}
-.auto-listings #side-sortables .cmb-td .cmb2_select {
-    width: 100%;
-}
-.auto-listings #side-sortables .cmb-row .cmb2-metabox-description {
-  padding: 0;
-}
-.auto-listings .cmb2-wrap input[type="email"],
-.auto-listings .cmb2-wrap input[type="number"] {
-    width: 100%;
-}
-.auto-listings .cmb2-wrap input.cmb2-upload-file {
-    width: 65% !important;
-}
-.cmb2-postbox .cmb-row:not(:last-of-type) {
-    border: none;
-}
-.auto-listings .cmb2-element.ui-datepicker .ui-datepicker-header,
-.auto-listings .cmb2-element.ui-datepicker .ui-timepicker-div .ui-widget-header {
-    background: #78a3d2;
 }
 .auto-listings .ui-datepicker .ui-datepicker-buttonpane button {
     box-shadow: 0 1px 0 #ddd;
@@ -101,13 +43,6 @@
 /*
  * Listing Status
  */
-#cmb2-metabox-_al_listing_settings a {
-  text-decoration: none;
-}
-#cmb2-metabox-_al_listing_settings .most-recent {
-    margin-top: 0;
-    padding-top: 0;
-}
 #archive-item.button {
   margin: 15px 0 10px;
 }
@@ -132,10 +67,6 @@
 /*
  * Listing Vehicle select
  */
-.auto-listings .cmb-row.cmb2-id-select-model-button, .auto-listings .cmb-row.cmb2-id-populate-button {
-  margin: 0 !important;
-  padding: 0 !important;
-}
 .auto-listings #cq-select-model {
   margin: 5px 0;
 }
@@ -146,9 +77,6 @@
 /*
  * Listing Address
  */
-.auto-listings .cmb-row.cmb2-id-al-geocomplete {
-  margin: 0;
-}
 .auto-listings #al-find {
     margin: -10px 10px 0 0;
     width: 120px;
@@ -164,10 +92,6 @@
     margin: 0 auto 0;
     width: 100%;
     border: 2px solid #eee;
-}
-.auto-listings .cmb2-metabox-description.map-desc {
-    margin: 0 auto 15px !important;
-    padding: 0 !important;
 }
 
 /*
@@ -201,66 +125,13 @@
     text-align: center;
 }
 /*
- * Options 
+ * Options
  */
-
-.auto_listings_options .inside .cmb-th label {
-    display: block;
-    font-size: 13px;
-    padding: 0;
-}
-.auto_listings_options .cmb-type-labels .cmb-th {
-    padding: 10px 10px 20px 0;
-}
-.auto_listings_options .cmb-type-labels .cmb-td {
-    padding: 0 10px;
-}
 .auto_listings_options .license-active {
     border-top: 1px solid #46b450;
     display: block;
     padding: 5px 10px;
     width: 95%;
-}
-.auto_listings_options .cmb-repeat .cmb-td {
-    padding: 10px 0 0;
-}
-.auto_listings_options .cmb2-wrap .cmb-row.cmb-repeat-row {
-    padding: 0;
-}
-.auto_listings_options .cmb-repeat .cmb-th + .cmb-td {
-    margin-left: 10px;
-}
-.auto_listings_options .cmb-add-row {
-    margin: 20px 0 15px;
-}
-.auto_listings_options .postbox.cmb-row.cmb-repeatable-grouping {
-  margin: 5px 0 10px;
-}
-
-.auto_listings_options .cmb-row.cmb-repeat-group-field {
-  padding: 8px 0;
-  border: none !important;
-}
-.auto_listings_options .cmb-repeatable-group .cmb-td {
-  padding: 0;
-}
-.auto_listings_options .cmb-repeatable-group .cmb-row.cmb-remove-field-row {
-  margin: 0;
-  padding: 0 0 10px 0;
-}
-.auto_listings_options .cmb2-radio-list {
-  float: left;
-  width: 100%;
-}
-.auto_listings_options .cmb2-radio-list li {
-  float: left;
-  width: 33%;
-  height: 40px;
-}
-.auto_listings_options .cmb2-radio-list i:before {
-  display: inline-block;
-  margin: 0;
-  line-height: 20px;
 }
 
 
@@ -371,9 +242,6 @@
 .settings_page_auto_listings_options #side_metabox .ui-sortable-handle {
   background: #fff;
 
-}
-.settings_page_auto_listings_options .cmb-row.cmb-type-options-save-button{
-  background: #fff;
 }
 .settings_page_auto_listings_options #side_metabox .inside {
   padding: 0;
