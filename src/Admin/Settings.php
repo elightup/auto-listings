@@ -12,8 +12,8 @@ class Settings {
 		$settings_pages['auto-listings'] = [
 			'id'          => 'auto-listings',
 			'option_name' => 'auto_listings_options',
-			'menu_title'  => __( 'Auto Listings', 'auto-listings' ),
-			'parent'      => 'options-general.php',
+			'menu_title'  => __( 'Settings', 'auto-listings' ),
+			'parent'      => 'edit.php?post_type=auto-listing',
 			'tabs'        => [
 				'general'    => __( 'General', 'auto-listings' ),
 				'listings'   => __( 'Listings', 'auto-listings' ),
