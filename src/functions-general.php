@@ -36,31 +36,45 @@ function auto_listings_shortcode_att( $attribute, $shortcode ) {
 
 	if( has_shortcode( $post->post_content, $shortcode ) ) {
 
-	    $pattern = get_shortcode_regex();
-	    if ( preg_match_all( '/'. $pattern .'/s', $post->post_content, $matches )
-	        && array_key_exists( 2, $matches )
-	        && in_array( $shortcode, $matches[2] ) )
-	    {
+		$pattern = get_shortcode_regex();
+		if ( preg_match_all( '/'. $pattern .'/s', $post->post_content, $matches )
+			&& array_key_exists( 2, $matches )
+			&& in_array( $shortcode, $matches[2] ) )
+		{
 
-	        $key = array_search( $shortcode, $matches[2], true );
+			$key = array_search( $shortcode, $matches[2], true );
 
-	        if( $matches[3][$key] ) {
-	        	$att = str_replace( $attribute . '="', "", trim( $matches[3][$key] ) );
-	    		$att = str_replace( '"', '', $att );
+			if( $matches[3][$key] ) {
+				$att = str_replace( $attribute . '="', "", trim( $matches[3][$key] ) );
+				$att = str_replace( '"', '', $att );
 
-	    		if ( isset ( $att ) ) {
-		            return $att;
-	    		}
+				if ( isset ( $att ) ) {
+					return $att;
+				}
 
-	        }
+			}
 
-	    }
+		}
 	}
 
 }
 
 function auto_listings_seller_ID() {
-	return auto_listings_meta( 'seller' );
+	$id = auto_listings_meta( 'seller' );
+	if ( $id ) {
+		return $id;
+	}
+
+	// Gets the author when on single seller page
+	$current_author = get_query_var( 'author_name' )
+		? get_user_by( 'slug', get_query_var( 'author_name' ) )
+		: get_userdata( get_query_var('author' ) );
+	if ( $current_author ) {
+		return $current_author->ID;
+	}
+
+	// If nothing above, then check for shortcode
+	return auto_listings_shortcode_att( 'id', 'auto_listings_seller' );
 }
 
 /**
@@ -109,9 +123,9 @@ add_action( 'init', 'auto_listings_add_new_image_sizes', 11 );
 
 function auto_listings_add_new_image_sizes() {
 	add_theme_support( 'post-thumbnails' );
-    add_image_size( 'al-lge', 1200, 750, array( 'center', 'center' ) ); //main
-    add_image_size( 'al-sml', 400, 250, array( 'center', 'center' ) ); //thumb
-    //pp( get_intermediate_image_sizes() );
+	add_image_size( 'al-lge', 1200, 750, array( 'center', 'center' ) ); //main
+	add_image_size( 'al-sml', 400, 250, array( 'center', 'center' ) ); //thumb
+	//pp( get_intermediate_image_sizes() );
 }
 
 
