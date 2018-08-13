@@ -105,7 +105,7 @@ class SearchQuery {
 		if ( isset( $_GET['condition'] ) && ! empty( $_GET['condition'] ) ) {
 			return [
 				'key'     => '_al_listing_condition',
-				'value'   => sanitize_text_field( $_GET['condition'] ),
+				'value'   => $_GET['condition'],
 				'compare' => 'IN',
 			];
 		}

@@ -4,6 +4,7 @@ class PostType {
 	public function __construct() {
 		add_action( 'init', [ $this, 'register_post_type' ] );
 		add_action( 'init', [ $this, 'register_taxonomy' ] );
+		add_action( 'add_meta_boxes', [ $this, 'remove_body_type_meta_box' ] );
 	}
 
 	public function register_post_type() {
@@ -71,18 +72,16 @@ class PostType {
 			'items_list'            => __( 'Listings list', 'auto-listings' ),
 		];
 
-		register_taxonomy(
-			'body-type', // the taxonomy name
-			'auto-listing', // the post type it belongs to
-			[
-				'labels'             => $labels,
-				'hierarchical'       => true,
-				'public'             => true,
-				'publicly_queryable' => true,
-				'show_in_nav_menus'  => true,
-				'show_ui'            => true,
-				'show_admin_column'  => false, // we do this manually
-			]
-		);
+		register_taxonomy( 'body-type', 'auto-listing', [
+			'labels'             => $labels,
+			'hierarchical'       => true,
+			'public'             => true,
+			'show_ui'            => true,
+			'show_admin_column'  => false,
+		] );
+	}
+
+	public function remove_body_type_meta_box() {
+		remove_meta_box( 'body-typediv', 'auto-listing', 'side' );
 	}
 }

@@ -25,7 +25,7 @@ function auto_listings_get_ID() {
  * Return an attribute value from any shortcode
  */
 function auto_listings_shortcode_att( $attribute, $shortcode ) {
-	
+
 	global $post;
 
 	if( ! $post )
@@ -35,19 +35,19 @@ function auto_listings_shortcode_att( $attribute, $shortcode ) {
 		return;
 
 	if( has_shortcode( $post->post_content, $shortcode ) ) {
-			
+
 	    $pattern = get_shortcode_regex();
 	    if ( preg_match_all( '/'. $pattern .'/s', $post->post_content, $matches )
 	        && array_key_exists( 2, $matches )
 	        && in_array( $shortcode, $matches[2] ) )
 	    {
-	        
+
 	        $key = array_search( $shortcode, $matches[2], true );
 
 	        if( $matches[3][$key] ) {
 	        	$att = str_replace( $attribute . '="', "", trim( $matches[3][$key] ) );
 	    		$att = str_replace( '"', '', $att );
-	    		
+
 	    		if ( isset ( $att ) ) {
 		            return $att;
 	    		}
@@ -57,6 +57,10 @@ function auto_listings_shortcode_att( $attribute, $shortcode ) {
 	    }
 	}
 
+}
+
+function auto_listings_seller_ID() {
+	return auto_listings_meta( 'seller' );
 }
 
 /**
@@ -248,9 +252,9 @@ function auto_listings_search_within_radius() {
 function auto_listings_search_get_vehicle_data() {
 
 	$args = apply_filters( 'auto_listings_search_get_vehicle_data_args', array(
-		'post_type' 	=> 'auto-listing', 
-		'numberposts' 	=> -1, 
-		'post_status' 	=> array( 'publish' ), 
+		'post_type' 	=> 'auto-listing',
+		'numberposts' 	=> -1,
+		'post_status' 	=> array( 'publish' ),
 		'fields' 		=> 'ids'
 	) );
 
@@ -275,7 +279,7 @@ function auto_listings_search_get_vehicle_data() {
 		$data[$key] = array_filter( $data[$key] );
 		$data[$key] = array_unique( $data[$key] );
 	}
-	
+
 	return $data;
 
 }

@@ -61,6 +61,7 @@ class ContactForm {
 
 		wp_mail( $to, $subject, $message, $headers );
 		$enquiries   = get_post_meta( $listing_id, '_al_listing_enquiries', true );
+		$enquiries = empty( $enquiries ) || ! is_array( $enquiries ) ? [] : $enquiries;
 		$enquiries[] = $enquiry->post_id;
 		update_post_meta( $listing_id, '_al_listing_enquiries', $enquiries );
 	}

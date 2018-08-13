@@ -10,7 +10,7 @@ function is_auto_listings_admin() {
 	$post_type 	= get_post_type();
 	$screen 	= get_current_screen();
 	$return = false;
-	
+
 	if( in_array( $post_type, array( 'auto-listing', 'listing-enquiry' ) ) ) {
 		$return = true;
 	}
@@ -81,8 +81,9 @@ if ( ! function_exists( 'is_listing' ) ) {
  */
 if ( ! function_exists( 'is_listing_search' ) ) {
 	function is_listing_search() {
-		if( ! is_search() )
+		if ( ! is_search() || ! is_page() ) {
 			return false;
+		}
         $current_page = sanitize_post( $GLOBALS['wp_the_query']->get_queried_object() );
         $result = $current_page->name == 'listing';
 		return apply_filters( 'is_listing_search', $result );

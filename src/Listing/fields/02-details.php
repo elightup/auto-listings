@@ -2,21 +2,21 @@
 $prefix = '_al_listing_';
 $fields = [];
 
-$fields[10] = [
+$fields[] = [
 	'name' => __( 'Price', 'auto-listings' ),
 	'id'   => $prefix . 'price',
 	'type' => 'number',
 	'min'  => 0,
 	'step' => '0.01',
 ];
-$fields[11] = [
+$fields[] = [
 	'name' => __( 'Suffix', 'auto-listings' ),
 	'desc' => __( 'Optional text after price.', 'auto-listings' ),
 	'id'   => $prefix . 'price_suffix',
 	'type' => 'text',
 ];
 
-$fields[20] = [
+$fields[] = [
 	'name' => auto_listings_miles_kms_label(),
 	'desc' => __( '', 'auto-listings' ),
 	'id'   => $prefix . 'odometer',
@@ -24,24 +24,30 @@ $fields[20] = [
 	'min'  => 0,
 	'step' => '0.01',
 ];
-$fields[30] = [
+$fields[] = [
 	'name' => __( 'Color', 'auto-listings' ),
 	'id'   => $prefix . 'color',
 	'type' => 'text',
 ];
-$fields[40] = [
+$fields[] = [
 	'name' => __( 'Registration', 'auto-listings' ),
 	'id'   => $prefix . 'registration',
 	'type' => 'text',
 ];
-$fields[50] = [
+$fields[] = [
+	'name'     => __( 'Body Type', 'auto-listings' ),
+	'id'       => $prefix . 'body_type',
+	'type'     => 'taxonomy',
+	'taxonomy' => 'body-type',
+];
+$fields[] = [
 	'name'             => __( 'Status', 'auto-listings' ),
 	'id'               => $prefix . 'status',
 	'type'             => 'select',
 	'show_option_none' => true,
 	'options'          => auto_listings_available_listing_statuses(),
 ];
-$fields[60] = [
+$fields[] = [
 	'name'    => __( 'Condition', 'auto-listings' ),
 	'id'      => $prefix . 'condition',
 	'type'    => 'select',

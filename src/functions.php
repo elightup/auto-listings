@@ -133,22 +133,24 @@ function auto_listings_admin_listing_map( $field_args, $field ) {
 }
 
 /**
- * Output the archive button
- *
- * @param  object $field_args Current field args
- * @param  object $field      Current field object
+ * Output the archive button.
  */
-function auto_listings_admin_listing_status_area( $field_args, $field ) {
-	$post_id   = $field->object_id;
-	$post_type = get_post_type( $field->object_id );
+function auto_listings_admin_listing_status_area() {
+	$post_id = 0;
+	if ( isset( $_GET['post'] ) ) {
+		$post_id = intval( $_GET['post'] );
+	} elseif ( isset( $_POST['post_ID'] ) ) {
+		$post_id = intval( $_POST['post_ID'] );
+	}
+	$post_type = get_post_type( $post_id );
 	$label     = get_post_type_object( $post_type );
-	$enquiries = auto_listings_meta( 'enquiries', $field->object_id );
+	$enquiries = auto_listings_meta( 'enquiries', $post_id );
 	$count     = ! empty( $enquiries ) ? count( $enquiries ) : 0;
 	$latest    = is_array( $enquiries ) ? end( $enquiries ) : null;
 
 	// listing enquiries section
 	if ( $post_type == 'auto-listing' ) {
-		echo '<div class=""listing-enquiries>';
+		echo '<div class="listing-enquiries">';
 
 		echo '<span class="dashicons dashicons-admin-comments"></span> <a target="_blank" href="' . esc_url( admin_url( 'edit.php?post_type=listing-enquiry&listings=' . get_the_title( $post_id ) ) ) . '"><span>' . sprintf( _n( '%s Enquiry', '%s Enquiries', $count, 'auto-listings' ), $count ) . '</a></span>';
 
