@@ -301,7 +301,7 @@ class SearchForm {
 			}
 			?>
 
-			<select name="<?= esc_attr( $args['name'] ); ?>">
+			<select placeholder="<?php echo esc_attr( $args['label'] ); ?>" name="<?= esc_attr( $args['name'] ); ?>">
 				<option value=""><?= esc_attr( $args['label'] ) ?></option>
 
 				<?php foreach ( $options as $val => $text ) : ?>
@@ -345,7 +345,7 @@ class SearchForm {
 
 			<?php else : ?>
 
-				<select multiple="multiple" name="<?= esc_attr( $args['name'] ); ?>[]">
+				<select multiple="multiple" placeholder="<?php echo esc_attr( $args['label'] ); ?>" name="<?= esc_attr( $args['name'] ); ?>[]">
 
 					<?php foreach ( $options as $val => $text ) : ?>
 						<option value="<?= esc_attr( $val ); ?>" <?= esc_attr( $selected ); ?> ><?= esc_attr( $text ) ?></option>
