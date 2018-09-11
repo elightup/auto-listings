@@ -16,15 +16,15 @@ class Fields {
 		return $meta_boxes;
 	}
 
-	public function enqueue() {
-		if ( ! $this->is_screen() ) {
+	public function enqueue( $meta_box ) {
+		if ( ! $this->is_screen() || '_al_listing_select' != $meta_box->id ) {
 			return;
 		}
 
 		$css_dir = AUTO_LISTINGS_URL . 'assets/admin/css/';
 		$js_dir  = AUTO_LISTINGS_URL . 'assets/admin/js/';
 
-		wp_enqueue_script( 'carquery', 'http://www.carqueryapi.com/js/carquery.0.3.4.js', [ 'jquery' ], '0.3.4', true );
+		wp_enqueue_script( 'carquery', 'https://www.carqueryapi.com/js/carquery.0.3.4.js', [ 'jquery' ], '0.3.4', true );
 		wp_enqueue_script( 'al-carquery', $js_dir . 'carquery.js', [ 'carquery' ], AUTO_LISTINGS_VERSION, true );
 		wp_localize_script( 'al-carquery', 'AlCarQuery', [
 			'errorNoSelected' => __( 'Please select a year, make and model.', 'auto-listings' ),
