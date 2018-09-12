@@ -2,7 +2,7 @@
     padding-top: 30px;
     padding-bottom: 30px;
 }
-/* apply a natural box layout model to all elements, but allowing components to change 
+/* apply a natural box layout model to all elements, but allowing components to change
 should fix up some theme issues
 */
 [class^="auto-listings-"],
@@ -43,7 +43,7 @@ should fix up some theme issues
 .auto-listings-single .contact {
   list-style: outside none none;
   margin: 0;
-  padding: 0;
+  padding: 0 30px 30px;
   line-height: 28px;
 }
 .auto-listings-single .contact i {
@@ -346,8 +346,6 @@ should fix up some theme issues
     position: relative;
     box-shadow: 0px 1px 4px rgba(0,0,0,0.18);
     background: #fff;
-    -moz-box-flex: 0;
-    flex: 0;
     max-width: 100%;
 }
 .auto-listings-items li .image {
@@ -377,11 +375,6 @@ should fix up some theme issues
     margin-top: 10px;
     padding: 0 15px 0 0;
 }
-.auto-listings-items li .at-a-glance {
-  border-bottom: 1px solid #ddd;
-  padding: 3px 0 8px;
-  margin: 0 0 6px;
-}
 .auto-listings-items li .price {
     margin-bottom: 4px;
 }
@@ -391,8 +384,9 @@ should fix up some theme issues
 }
 .auto-listings-items li .at-a-glance {
   display: inline-block;
-  margin: 5px 0 5px;
-  padding: 3px 0 5px;
+  border-bottom: 1px solid #ddd;
+  padding: 3px 0 8px;
+  margin: 0 0 6px;
   width: 100%;
 }
 .auto-listings-items .at-a-glance ul {
@@ -472,6 +466,7 @@ should fix up some theme issues
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  display: inline-block;
 }
 
 .auto-listings-items.grid-view li.col-2 {
@@ -853,6 +848,30 @@ should fix up some theme issues
   display: none;
 }
 
+/* ======================================== SINGLE DEALER ========================================
+*/
+
+.single-auto-dealer .entry-title {
+  margin-bottom: 28px;
+}
+
+.single-auto-dealer .auto-listings-items .at-a-glance {
+  padding: 0;
+  margin: 0;
+}
+
+.single-auto-dealer .auto-listings-items .at-a-glance li {
+  padding: 10px 20px;
+  margin-right: 0;
+}
+
+.single-auto-dealer .auto-listings-items.grid-view .bottom-wrap a.al-button {
+  display: block;
+  float: none;
+  line-height: 24px;
+  margin: 0 0 5px;
+}
+
 /* ======================================== SINGLE AGENT ========================================
 */
 
@@ -972,7 +991,7 @@ should fix up some theme issues
     margin-right: 0;
     width: 100%;
   }
- 
+
     .auto-listings-items li .image {
       float: none;
       margin-bottom: 15px;
