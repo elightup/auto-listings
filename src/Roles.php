@@ -13,12 +13,13 @@ class Roles {
 			'delete_private_posts'   => true,
 			'delete_published_posts' => true,
 			'edit_others_posts'      => true,
+			'edit_others_pages'      => true,
 			'edit_private_posts'     => true,
 			'edit_published_posts'   => true,
+			'edit_published_pages'   => true,
 			'publish_posts'          => true,
 			'read_private_posts'     => true,
 		] );
-
 	}
 
 	public function add_caps() {
@@ -31,7 +32,6 @@ class Roles {
 		if ( ! is_object( $wp_roles ) ) {
 			return;
 		}
-
 		$seller_caps = $this->get_seller_caps();
 		foreach ( $seller_caps as $cap_group ) {
 			foreach ( $cap_group as $cap ) {
