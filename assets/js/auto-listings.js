@@ -62,23 +62,19 @@
 
         if( ! get_cookie( 'view' ) ) { switch_view( default_view ); }
 
-        $( '.auto-listings-view-switcher div' ).click( function() {   
+        $( '.auto-listings-view-switcher div' ).click( function() {
             var view = $( this ).attr( 'id' );
-            set_cookie( view );  
+            set_cookie( view );
             switch_view( view );
         });
-     
+
         if( get_cookie( 'view' ) == 'grid') { switch_view( 'grid' ); }
 
         function switch_view( to ) {
-
             var from = ( to == 'list' ) ? 'grid' : 'list';
-
-            var listings = $('.auto-listings-items li');
-            $.each( listings, function( index, listing ) {
-                $( '.auto-listings-items' ).removeClass( from + '-view' );
-                $( '.auto-listings-items' ).addClass( to + '-view' );
-            });
+            var $switcher = $( '.auto-listings-view-switcher' );
+            var $listings = $switcher.nextAll( '.auto-listings-items' );
+            $listings.removeClass( from + '-view' ).addClass( to + '-view' );
         }
 
         function set_cookie( value ) {
@@ -134,8 +130,8 @@
                     el.lightGallery({
                         selector: '#image-gallery .lslide'
                     });
-                }   
-            }); 
+                }
+            });
 
         }
 
@@ -147,7 +143,7 @@
     function auto_listings_tabs() {
 
         $( 'body' ).on( 'init', '.al-tabs-wrapper, .auto-listings-tabs', function() {
-                
+
                 $( '.al-tab, .auto-listings-tabs .panel:not(.panel .panel)' ).hide();
 
                 var $tabs = $( this ).find( '.al-tabs, ul.tabs' ).first();
@@ -161,7 +157,7 @@
 
             } )
             .on( 'click', '.al-tabs li a, ul.tabs li a', function( e ) {
-                
+
                 e.preventDefault();
                 var $tab          = $( this );
                 var $tabs_wrapper = $tab.closest( '.al-tabs-wrapper, .auto-listings-tabs' );
@@ -196,9 +192,9 @@
             }
 
             al_map = new google.maps.Map( document.getElementById( 'auto-listings-map' ), options );
-            
+
             var position = new google.maps.LatLng( lat, lng );
-            
+
             var al_icon = {
                 path: 'M25,0 C60,0, 60,50, 25,50 C-10,50, -10,0, 25,0',
                 fillColor: '#26a0f2',

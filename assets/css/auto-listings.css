@@ -881,6 +881,9 @@ should fix up some theme issues
     margin: 5px 30px 30px 0;
     padding: 4px;
 }
+.auto-listings-single.seller .name {
+  margin: 0 0 10px;
+}
 .auto-listings-single.seller .avatar-wrap img {
   display: block;
 }
@@ -918,6 +921,9 @@ should fix up some theme issues
 }
 .auto-listings-single.seller .social .youtube i {
     color: #bb0000;
+}
+.auto-listings-single.seller .sidebar {
+  padding: 30px;
 }
 
 /* ======================================== MEDIA QUERIES ========================================
@@ -1034,6 +1040,9 @@ should fix up some theme issues
 }
 
 /* Small devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-
+@media (max-width: 575px) {
+  .auto-listings-single.seller .sidebar {
+    padding: 15px;
+  }
 }
+
