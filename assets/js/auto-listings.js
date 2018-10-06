@@ -180,7 +180,7 @@
      * Google map
      */
     function auto_listings_google_map() {
-
+        if ( typeof google !== 'object' && typeof google.maps !== 'object' ) return;
         var lat = auto_listings.lat;
         var lng = auto_listings.lng;
 
