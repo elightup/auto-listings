@@ -418,6 +418,7 @@ function auto_listings_price( $price = null ) {
 	if ( ! $price ) {
 		$price = auto_listings_meta( 'price' );
 	}
+	$price = apply_filters( 'auto_listings_filter_price', $price );
 	$suffix = auto_listings_meta( 'price_suffix' );
 	return auto_listings_format_price( $price ) . ' ' . $suffix;
 }

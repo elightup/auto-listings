@@ -26,6 +26,7 @@ $details_array = array(
     __( 'Engine', 'auto-listings' )                 => auto_listings_engine(),
     __( 'Fuel Economy Combined', 'auto-listings' )  => auto_listings_fuel_economy(),
 );
+$details_array = apply_filters( 'auto_listings_details_array', $details_array );
 ?>
 
 <?php if ( $heading ) : ?>
@@ -35,10 +36,10 @@ $details_array = array(
 
 <table class="table table-striped">
     <tbody>
-        <?php 
-            foreach ( $details_array as $label => $value ) { 
+        <?php
+            foreach ( $details_array as $label => $value ) {
             if( empty( $value ) || $value == '' )
-                continue; 
+                continue;
         ?>
         <tr>
             <th><?php echo esc_html( $label ); ?></th>

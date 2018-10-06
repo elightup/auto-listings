@@ -10,6 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $specs = auto_listings_get_specs_for_output();
+$specs = apply_filters( 'auto_listings_specs_for_output', $specs );
 
 if( ! $specs || empty( $specs ) )
     return;
@@ -29,7 +30,7 @@ $heading = esc_html( apply_filters( 'auto_listings_specifications_heading', __( 
     	<?php foreach ( $specs as $field => $value ) { ?>
     		<tr>
 	            <th><?php echo esc_html( $field ); ?></th>
-	            <td><?php echo esc_html( $value ); ?></td>
+	            <td><?php echo wp_kses_post( $value ); ?></td>
 	        </tr>
 
     	<?php } ?>

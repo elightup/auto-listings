@@ -30,7 +30,7 @@ class SearchForm {
 		$vars[] = 'odometer';
 		$vars[] = 'within';
 		$vars[] = 'area';
-		return $vars;
+		return apply_filters( 'auto_listings_query_vars', $vars );
 	}
 
 	public function search_form( $atts ) {
@@ -105,6 +105,7 @@ class SearchForm {
 						if ( ! in_array( 'odometer', $exclude ) ) {
 							echo $this->odometer_field();
 						}
+						do_action( 'auto_listings_extra_search_fields', $exclude );
 						?>
 					</div>
 				<?php endif; ?>

@@ -23,6 +23,7 @@ class SearchQuery {
 		$radius_query[]    = $this->radius_query( $query );
 
 		$query_1 = array_merge( $year_query, $make_query, $model_query, $condition_query, $price_query, $odometer_query );
+		$query_1 = apply_filters( 'auto_listings_search_query', $query_1 );
 
 		// If our radius query fails, fall back to keyword searching. Will fail with no map API key.
 		$query_2 = $radius_query;
