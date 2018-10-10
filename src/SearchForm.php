@@ -342,7 +342,7 @@ class SearchForm {
 			<?php // Condition field. If we only have 1 condition, remove the select option ?>
 			<?php if ( $args['name'] == 'condition' && count( $options ) <= 1 ) : ?>
 
-				<input type="hidden" name="condition[]" value="<?= esc_html( $options[0] ) ?>"/>
+				<input type="hidden" name="condition[]" value="<?= esc_html( key( $options ) ) ?>"/>
 
 			<?php else : ?>
 
