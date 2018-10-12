@@ -153,19 +153,29 @@ class SearchQuery {
 	 * @return array
 	 */
 	private function price_meta_query() {
-		if ( isset( $_GET['max_price'] ) && ! empty( $_GET['max_price'] ) || isset( $_GET['min_price'] ) && ! empty( $_GET['min_price'] ) ) {
+		if ( empty( $_GET['max_price'] ) && empty( $_GET['min_price'] ) ) {
+			return [];
+		}
+		if ( ! empty( $_GET['max_price'] ) && empty( $_GET['min_price'] ) ) {
+			$value = floatval( $_GET['max_price'] );
+			$compare = '<=';
+		} elseif ( empty( $_GET['max_price'] ) && ! empty( $_GET['min_price'] ) ) {
+			$value = floatval( $_GET['min_price'] );
+			$compare = '>=';
+		} else  {
 			$min = floatval( $_GET['min_price'] );
 			$max = floatval( $_GET['max_price'] );
-
-			return [
-				'key'          => '_al_listing_price',
-				'value'        => [ $min, $max ],
-				'compare'      => 'BETWEEN',
-				'type'         => 'DECIMAL',
-				'price_filter' => true,
-			];
+			$value = [ $min, $max ];
+			$compare = 'BETWEEN';
 		}
-		return [];
+		return [
+			'key'          => '_al_listing_price',
+			'value'        => $value,
+			'compare'      => $compare,
+			'type'         => 'DECIMAL',
+			'price_filter' => true,
+		];
+
 	}
 
 	public function radius_query( \WP_Query $query ) {

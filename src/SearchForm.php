@@ -328,7 +328,7 @@ class SearchForm {
 			return '';
 		}
 		ob_start();
-		$selected = isset( $_GET[ $args['name'] ] ) ? $_GET[ $args['name'] ] : '';
+		$selected = isset( $_GET[ $args['name'] ] ) ? $_GET[ $args['name'] ] : [];
 		?>
 
 		<div class="field <?= esc_attr( str_replace( '_', '-', $args['name'] ) ); ?>">
@@ -349,7 +349,7 @@ class SearchForm {
 				<select multiple="multiple" placeholder="<?php echo esc_attr( $args['label'] ); ?>" name="<?= esc_attr( $args['name'] ); ?>[]">
 
 					<?php foreach ( $options as $val => $text ) : ?>
-						<option value="<?= esc_attr( $val ); ?>" <?= esc_attr( $selected ); ?> ><?= esc_attr( $text ) ?></option>
+						<option value="<?= esc_attr( $val ); ?>" <?php selected( true, in_array( $val, $selected ) ) ?> ><?= esc_attr( $text ) ?></option>
 					<?php endforeach; ?>
 
 				</select>
