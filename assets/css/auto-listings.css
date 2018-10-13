@@ -630,7 +630,7 @@ should fix up some theme issues
   position: relative;
 }
 .auto-listings-search .area-wrap button:hover,.auto-listings-search .area-wrap button:focus {
-  border: 2px solid transparent;
+  border: 2px solid #337ab7;
 }
 .auto-listings-search .extras-wrap {
   display: none;
@@ -640,6 +640,11 @@ should fix up some theme issues
   cursor: pointer;
   text-decoration: none;
 }
+
+.auto-listings-search a.refine i {
+  margin-left: 10px;
+}
+
 .auto-listings-search a.refine.shown i {
    -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
@@ -675,7 +680,11 @@ should fix up some theme issues
 .auto-listings-search .SumoSelect > .CaptionCont > label > i {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
   height: auto;
-  top: 20%;
+  width: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+  line-height: 16px;
 }
 .auto-listings-search .SumoSelect > .CaptionCont > label > i::before {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
