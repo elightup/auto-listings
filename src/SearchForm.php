@@ -83,6 +83,11 @@ class SearchForm {
 						<input class="field area" type="text" name="s" placeholder="<?= esc_attr( $atts['area_placeholder'] ); ?>" value="<?= esc_attr( $s ); ?>"/>
 						<button class="al-button" type="submit"><?= esc_html( $atts['submit_btn'] ); ?></button>
 					</div>
+				<?php else : ?>
+					<div class="row">
+						<input type="hidden" name="s" value="<?= esc_attr( $s ); ?>"/>
+						<button class="al-button" type="submit"><?= esc_html( $atts['submit_btn'] ); ?></button>
+					</div>
 				<?php endif; ?>
 
 				<?php if ( ! in_array( 'refine', $exclude ) ) : ?>
