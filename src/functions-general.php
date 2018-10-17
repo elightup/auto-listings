@@ -80,11 +80,11 @@ function auto_listings_seller_ID() {
 /**
  * Get the meta af any item
  */
-function auto_listings_meta( $meta, $post_id = 0 ) {
+function auto_listings_meta( $meta, $post_id = 0, $single = true ) {
 	if( ! $post_id )
 		$post_id = get_the_ID();
 	$meta_key = '_al_listing_' . $meta;
-	$data = get_post_meta( $post_id, $meta_key, true );
+	$data = get_post_meta( $post_id, $meta_key, $single );
 	return $data;
 }
 
@@ -111,7 +111,7 @@ function auto_listings_columns() {
  * Are we hiding an item
  */
 function auto_listings_hide_item( $item ) {
-	$hide = auto_listings_meta( 'hide' );
+	$hide = auto_listings_meta( 'hide', '', false );
 	if( ! $hide ) {
 		return false;
 	}
