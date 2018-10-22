@@ -141,7 +141,7 @@ class SearchQuery {
 			$tax_query[] = [
 				'taxonomy' => 'body-type',
 				'field'    => 'slug',
-				'terms'    => sanitize_text_field( $_GET['body_type'] ),
+				'terms'    => array_map( 'sanitize_text_field', wp_unslash( $_GET['body_type'] ) ),
 			];
 			return $tax_query;
 		}

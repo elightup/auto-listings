@@ -84,7 +84,7 @@ class SearchForm {
 						<button class="al-button" type="submit"><?= esc_html( $atts['submit_btn'] ); ?></button>
 					</div>
 				<?php else : ?>
-					<div class="row">
+					<div class="row area-wrap">
 						<input type="hidden" name="s" value="<?= esc_attr( $s ); ?>"/>
 						<button class="al-button" type="submit"><?= esc_html( $atts['submit_btn'] ); ?></button>
 					</div>
