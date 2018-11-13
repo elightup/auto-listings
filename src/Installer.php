@@ -217,6 +217,7 @@ class Installer {
 			$prefix . 'model_engine_type'       => 'Inline',
 			$prefix . 'model_engine_cyl'        => '4',
 			$prefix . 'make_country'            => 'USA',
+			$prefix . 'seller'                  => get_current_user_id(),
 		];
 
 		//Save values from created array into db
