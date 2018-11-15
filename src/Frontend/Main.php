@@ -4,6 +4,7 @@ namespace AutoListings\Frontend;
 class Main {
 	public function __construct() {
 		add_action( 'body_class', [ $this, 'body_class' ] );
+		add_action( 'wp_head', [ $this, 'head_comment' ] );
 	}
 
 	/**
@@ -22,4 +23,12 @@ class Main {
 
 		return array_unique( $classes );
 	}
+
+	/**
+	 * Add comment to <head> tag
+	 */
+	public function head_comment() {
+		echo '<!-- This site is using Auto Listings plugin- https://wordpress.org/plugins/auto-listings/ -->';
+	}
+
 }
