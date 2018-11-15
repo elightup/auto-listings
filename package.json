@@ -1,5 +1,6 @@
 {
 	"scripts": {
-		"update": "composer clear-cache && rm -rf vendor && rm -rf composer.lock && composer install"
+		"update": "composer clear-cache && rm -rf vendor && rm -rf composer.lock && composer install",
+		"zip": "git archive -o auto-listings.zip --prefix=auto-listings/ HEAD"
 	}
 }

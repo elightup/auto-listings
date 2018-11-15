@@ -223,7 +223,7 @@
         });
 
         $('.auto-listings-search').on( 'click', 'a.refine', function( e ) {
-            $('.extras-wrap').slideToggle( 200 );
+            $( this ).next('.extras-wrap').slideToggle( 200 );
             $( this ).toggleClass( 'shown' );
         });
 
