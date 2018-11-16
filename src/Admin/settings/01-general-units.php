@@ -1,4 +1,10 @@
 <?php
+/**
+ * Measurements Fields.
+ *
+ * @package Auto Listings.
+ */
+
 return [
 	'id'             => 'units',
 	'title'          => __( 'Measurements', 'auto-listings' ),

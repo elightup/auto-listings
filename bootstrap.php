@@ -1,9 +1,17 @@
 <?php
-include 'vendor/autoload.php';
+/**
+ * Load all plugin's files
+ *
+ * @package Auto Listings
+ */
+
+/**
+ * Initialize class and require files.
+ */
+require 'vendor/autoload.php';
 
 use AutoListings\Plugin;
 use AutoListings\Installer;
-use AutoListings\Upgrade\Version200;
 use AutoListings\Shortcodes;
 use AutoListings\Query;
 use AutoListings\SearchForm;
@@ -35,7 +43,6 @@ require 'src/updater/class-auto-listings-license.php';
 
 $al_plugin     = new Plugin( __DIR__ . '/auto-listings.php' );
 $al_installer  = new Installer();
-$al_version200 = new Version200();
 
 $al_listing_post_type = new ListingPostType();
 $al_post_statuses     = new PostStatuses();

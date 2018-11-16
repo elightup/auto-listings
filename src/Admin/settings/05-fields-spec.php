@@ -1,13 +1,19 @@
 <?php
+/**
+ * Listing spec fields to display.
+ *
+ * @package Auto Listings.
+ */
+
 $fields = auto_listings_spec_fields();
 
 $options = [];
-foreach ( $fields as $id => $field ) {
+foreach ( $fields as $field_id => $field ) {
 	$label = $field['label'];
 	if ( isset( $field['desc'] ) ) {
 		$label .= ' <span class="description">' . $field['desc'] . '</span>';
 	}
-	$options[ $id ] = $label;
+	$options[ $field_id ] = $label;
 }
 
 return [

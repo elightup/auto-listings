@@ -1,4 +1,10 @@
 <?php
+/**
+ * Contact form setting fields.
+ *
+ * @package Auto Listings.
+ */
+
 return [
 	'id'             => 'contact_form',
 	'title'          => __( 'Contact Form Settings', 'auto-listings' ),

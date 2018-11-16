@@ -1,6 +1,19 @@
-<?php ob_start(); ?>
+<?php
+/**
+ * Theme recommendation.
+ *
+ * @package Auto Listings.
+ */
+
+ob_start();
+?>
 <p><?php esc_html_e( 'Want a full-featured theme that is compatible with the plugin?', 'auto-listings' ); ?></p>
-<p><?php printf( __( 'Check out %s - our <strong>free</strong> theme for car listings website.', 'auto-listings' ), '<a href="https://wpautolistings.com/themes/?utm_source=WordPress&utm_medium=link&utm_campaign=plugin" target="_blank">CarListing</a>' ); ?></p>
+<p>
+	<?php
+	/* translators: theme url */
+	echo wp_kses_post( sprintf( __( 'Check out %s - our <strong>free</strong> theme for car listings website.', 'auto-listings' ), '<a href="https://wpautolistings.com/themes/?utm_source=WordPress&utm_medium=link&utm_campaign=plugin" target="_blank">CarListing</a>' ) );
+	?>
+	</p>
 <?php
 $message = ob_get_clean();
 return [

@@ -1,4 +1,10 @@
 <?php
+/**
+ * Number of Columns field.
+ *
+ * @package Auto Listings.
+ */
+
 return [
 	'id'             => 'columns',
 	'title'          => __( 'Columns', 'auto-listings' ),

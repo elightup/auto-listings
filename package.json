@@ -1,6 +1,7 @@
 {
 	"scripts": {
 		"update": "composer clear-cache && rm -rf vendor && rm -rf composer.lock && composer install",
-		"zip": "git archive -o auto-listings.zip --prefix=auto-listings/ HEAD"
+		"zip": "git archive -o auto-listings.zip --prefix=auto-listings/ HEAD",
+		"check": "phpcs --standard=WordPress --extensions=php . > check.txt"
 	}
 }

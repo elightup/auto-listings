@@ -1,12 +1,18 @@
 <?php
+/**
+ * Hooks used in templates.
+ *
+ * @package Auto Listings.
+ */
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 add_filter( 'post_class', 'auto_listings_listing_post_class', 20, 3 );
 
 /**
  * Content Wrappers.
- * 
  */
 add_action( 'auto_listings_before_main_content', 'auto_listings_output_content_wrapper', 10 );
 add_action( 'auto_listings_after_main_content', 'auto_listings_output_content_wrapper_end', 10 );
@@ -14,7 +20,6 @@ add_action( 'auto_listings_after_main_content', 'auto_listings_output_content_wr
 
 /**
  * Archive Listings - Top of page
- *
  */
 add_action( 'auto_listings_archive_page_upper_full_width', 'auto_listings_listing_archive_title', 10 );
 add_action( 'auto_listings_archive_page_upper_full_width', 'auto_listings_listing_archive_content', 20 );
@@ -22,7 +27,6 @@ add_action( 'auto_listings_archive_page_upper_full_width', 'auto_listings_listin
 
 /**
  * Archive Listings - Before listings
- *
  */
 add_action( 'auto_listings_before_listings_loop', 'auto_listings_ordering', 10 );
 add_action( 'auto_listings_before_listings_loop', 'auto_listings_view_switcher', 20 );
@@ -30,14 +34,12 @@ add_action( 'auto_listings_before_listings_loop', 'auto_listings_pagination', 30
 
 /**
  * Archive Listings - After listings
- *
  */
 add_action( 'auto_listings_after_listings_loop', 'auto_listings_pagination', 10 );
 
 
 /**
  * Archive Listings - Listing Loop Items.
- *
  */
 add_action( 'auto_listings_before_listings_loop_item_summary', 'auto_listings_template_loop_image', 10 );
 
@@ -51,7 +53,6 @@ add_action( 'auto_listings_listings_loop_item', 'auto_listings_template_loop_bot
 
 /**
  * Single Listing
- *
  */
 add_action( 'auto_listings_single_upper_full_width', 'auto_listings_template_single_title', 10 );
 

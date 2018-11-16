@@ -1,7 +1,14 @@
 <?php
+/**
+ * Enqueue scripts and styles on frontend.
+ *
+ * @package Auto Listings.
+ */
 
-// Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Metric and imperial formatting
@@ -10,22 +17,36 @@ function auto_listings_metric() {
 	$return = auto_listings_option( 'metric' ) ? auto_listings_option( 'metric' ) : 'yes';
 	return $return;
 }
+
+/**
+ * Listing miles and kms label
+ */
 function auto_listings_miles_kms_label() {
 	$return = auto_listings_metric() == 'no' ? __( 'Miles', 'auto-listings' ) : __( 'Kilometers', 'auto-listings' );
 	return $return;
 }
+
+/**
+ * Short listing miles and kms label
+ */
 function auto_listings_miles_kms_label_short() {
 	$return = auto_listings_metric() == 'no' ? __( 'mi', 'auto-listings' ) : __( 'km', 'auto-listings' );
 	return $return;
 }
+
+/**
+ * Listing per hour unit
+ */
 function auto_listings_per_hour_unit() {
 	$return = auto_listings_metric() == 'yes' ? __( 'mph', 'auto-listings' ) : __( 'kph', 'auto-listings' );
 	return $return;
 }
 
 
-/*
+/**
  * Run date formatting through here
+ *
+ * @param string $date date format.
  */
 function auto_listings_format_date( $date ) {
 	$timestamp = strtotime( $date );
@@ -37,6 +58,7 @@ function auto_listings_format_date( $date ) {
 
 /**
  * Do we include the decimals
+ *
  * @since  1.0.0
  * @return string
  */
@@ -52,23 +74,23 @@ function auto_listings_include_decimals() {
  * @return string
  */
 function auto_listings_format_price_format() {
-	$option 		= get_option( 'auto_listings_options' );
-	$currency_pos 	= isset( $option['currency_position'] ) ? $option['currency_position'] : 'left';
-	$format 		= '%1$s%2$s';
+	$option         = get_option( 'auto_listings_options' );
+	$currency_pos   = isset( $option['currency_position'] ) ? $option['currency_position'] : 'left';
+	$format         = '%1$s%2$s';
 
 	switch ( $currency_pos ) {
-		case 'left' :
+		case 'left':
 			$format = '%1$s%2$s';
-		break;
-		case 'right' :
+			break;
+		case 'right':
 			$format = '%2$s%1$s';
-		break;
-		case 'left_space' :
+			break;
+		case 'left_space':
 			$format = '%1$s&nbsp;%2$s';
-		break;
-		case 'right_space' :
+			break;
+		case 'right_space':
 			$format = '%2$s&nbsp;%1$s';
-		break;
+			break;
 	}
 
 	return apply_filters( 'auto_listings_format_price_format', $format, $currency_pos );
@@ -76,6 +98,7 @@ function auto_listings_format_price_format() {
 
 /**
  * Return the currency_symbol for prices.
+ *
  * @since  1.0.0
  * @return string
  */
@@ -87,6 +110,7 @@ function auto_listings_currency_symbol() {
 
 /**
  * Return the thousand separator for prices.
+ *
  * @since  1.0.0
  * @return string
  */
@@ -98,6 +122,7 @@ function auto_listings_thousand_separator() {
 
 /**
  * Return the decimal separator for prices.
+ *
  * @since  1.0.0
  * @return string
  */
@@ -109,6 +134,7 @@ function auto_listings_decimal_separator() {
 
 /**
  * Return the number of decimals after the decimal point.
+ *
  * @since  1.0.0
  * @return int
  */
@@ -121,7 +147,7 @@ function auto_listings_decimals() {
 /**
  * Trim trailing zeros off prices.
  *
- * @param mixed $price
+ * @param mixed $price listing price.
  * @return string
  */
 function auto_listings_trim_zeros( $price ) {
@@ -132,42 +158,47 @@ function auto_listings_trim_zeros( $price ) {
 /**
  * Format the price with a currency symbol.
  *
- * @param float $price
- * @param array $args (default: array())
+ * @param float $price listing price.
+ * @param array $args (default: array()) format price arguments.
  * @return string
  */
 function auto_listings_format_price( $price, $args = array() ) {
-	extract( apply_filters( 'auto_listings_format_price_args', wp_parse_args( $args, array(
-		'currency_symbol'  	 	=> auto_listings_currency_symbol(),
-		'decimal_separator'  	=> auto_listings_decimal_separator(),
-		'thousand_separator' 	=> auto_listings_thousand_separator(),
-		'decimals'           	=> auto_listings_decimals(),
-		'price_format'       	=> auto_listings_format_price_format(),
-		'include_decimals'      => auto_listings_include_decimals()
-	) ) ) );
+	extract(
+		apply_filters(
+			'auto_listings_format_price_args',
+			wp_parse_args(
+				$args,
+				array(
+					'currency_symbol'       => auto_listings_currency_symbol(),
+					'decimal_separator'     => auto_listings_decimal_separator(),
+					'thousand_separator'    => auto_listings_thousand_separator(),
+					'decimals'              => auto_listings_decimals(),
+					'price_format'          => auto_listings_format_price_format(),
+					'include_decimals'      => auto_listings_include_decimals(),
+				)
+			)
+		)
+	);
 
-	$return = null;
-	//if( $price != 0 ) {
-		$negative        = $price < 0;
-		$price           = apply_filters( 'auto_listings_raw_price', floatval( $negative ? $price * -1 : $price ) );
-		$price           = apply_filters( 'auto_listings_formatted_price', number_format( $price, $decimals, $decimal_separator, $thousand_separator ), $price, $decimals, $decimal_separator, $thousand_separator );
+	$return   = null;
+	$negative = $price < 0;
+	$price    = apply_filters( 'auto_listings_raw_price', floatval( $negative ? $price * -1 : $price ) );
+	$price    = apply_filters( 'auto_listings_formatted_price', number_format( $price, $decimals, $decimal_separator, $thousand_separator ), $price, $decimals, $decimal_separator, $thousand_separator );
 
-		if ( $include_decimals == 'no' ) {
-			$price = auto_listings_trim_zeros( $price );
-		}
-		
-		$formatted_price = ( $negative ? '-' : '' ) . sprintf( $price_format, '<span class="currency-symbol">' . $currency_symbol . '</span>', $price );
-		$return          = '<span class="price-amount">' . $formatted_price . '</span>';
-	//}
+	if ( 'no' == $include_decimals ) {
+		$price = auto_listings_trim_zeros( $price );
+	}
 
+	$formatted_price = ( $negative ? '-' : '' ) . sprintf( $price_format, '<span class="currency-symbol">' . $currency_symbol . '</span>', $price );
+	$return          = '<span class="price-amount">' . $formatted_price . '</span>';
 	return apply_filters( 'auto_listings_format_price', $return, $price, $args );
 }
 
 /**
  * Format the price with a currency symbol.
  *
- * @param float $price
- * @param array $args (default: array())
+ * @param float $price Listing price.
+ *
  * @return string
  */
 function auto_listings_raw_price( $price ) {

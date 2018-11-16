@@ -1,4 +1,10 @@
 <?php
+/**
+ * Uninstall setting.
+ *
+ * @package Auto Listings.
+ */
+
 return [
 	'id'             => 'uninstall',
 	'title'          => __( 'Uninstall', 'auto-listings' ),

@@ -1,4 +1,10 @@
 <?php
+/**
+ * Colors setting fields.
+ *
+ * @package Auto Listings.
+ */
+
 return [
 	'id'             => 'colors',
 	'title'          => __( 'Colors', 'auto-listings' ),
@@ -13,25 +19,25 @@ return [
 		],
 		[
 			'name' => __( 'Button Text', 'auto-listings' ),
-			'desc' => __( '', 'auto-listings' ),
+			'desc' => '',
 			'id'   => 'button_text_color',
 			'type' => 'color',
 		],
 		[
 			'name' => __( 'Price', 'auto-listings' ),
-			'desc' => __( '', 'auto-listings' ),
+			'desc' => '',
 			'id'   => 'price_color',
 			'type' => 'color',
 		],
 		[
 			'name' => __( 'Contact Icons', 'auto-listings' ),
-			'desc' => __( '', 'auto-listings' ),
+			'desc' => '',
 			'id'   => 'contact_icon_color',
 			'type' => 'color',
 		],
 		[
 			'name' => __( 'Listing Icons', 'auto-listings' ),
-			'desc' => __( '', 'auto-listings' ),
+			'desc' => '',
 			'id'   => 'listing_icon_color',
 			'type' => 'color',
 		],

@@ -1,4 +1,10 @@
 <?php
+/**
+ * Gallery setting fields
+ *
+ * @package Auto Listings.
+ */
+
 return [
 	'id'             => 'gallery_settings',
 	'title'          => __( 'Gallery Settings', 'auto-listings' ),

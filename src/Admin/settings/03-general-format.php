@@ -1,4 +1,10 @@
 <?php
+/**
+ * Price format setting fields.
+ *
+ * @package Auto Listings.
+ */
+
 return [
 	'id'             => 'price_format',
 	'title'          => __( 'Price Format', 'auto-listings' ),
@@ -24,14 +30,14 @@ return [
 		],
 		[
 			'name' => __( 'Thousand Separator', 'auto-listings' ),
-			'desc' => __( '', 'auto-listings' ),
+			'desc' => '',
 			'id'   => 'thousand_separator',
 			'type' => 'text',
 			'std'  => ',',
 		],
 		[
 			'name'    => __( 'Include Decimals', 'auto-listings' ),
-			'desc'    => __( '', 'auto-listings' ),
+			'desc'    => '',
 			'id'      => 'include_decimals',
 			'type'    => 'select',
 			'options' => [
@@ -42,14 +48,14 @@ return [
 		],
 		[
 			'name' => __( 'Decimal Separator', 'auto-listings' ),
-			'desc' => __( '', 'auto-listings' ),
+			'desc' => '',
 			'id'   => 'decimal_separator',
 			'type' => 'text',
 			'std'  => '.',
 		],
 		[
 			'name' => __( 'Number of Decimals', 'auto-listings' ),
-			'desc' => __( '', 'auto-listings' ),
+			'desc' => '',
 			'id'   => 'decimals',
 			'type' => 'number',
 			'std'  => 2,

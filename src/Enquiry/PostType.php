@@ -1,15 +1,32 @@
 <?php
+/**
+ * Register Enquiry Post Type.
+ *
+ * @package Auto Listings.
+ */
+
 namespace AutoListings\Enquiry;
+
+/**
+ * Class Contact Form
+ */
 class PostType {
+
+	/**
+	 * Add hooks when module is loaded.
+	 */
 	public function __construct() {
 		add_action( 'init', [ $this, 'register_post_type' ] );
 	}
 
+	/**
+	 * Register Enquiry post type.
+	 */
 	public function register_post_type() {
 		$labels = [
 			'name'                  => _x( 'Enquiries', 'Enquiry post type name', 'auto-listings' ),
 			'singular_name'         => _x( 'Enquiry', 'Singular enquiry post type name', 'auto-listings' ),
-			'add_new'               => __( 'New %1s', 'auto-listings' ),
+			'add_new'               => __( 'New Enquiry', 'auto-listings' ),
 			'add_new_item'          => __( 'Add New Enquiry', 'auto-listings' ),
 			'edit_item'             => __( 'Edit Enquiry', 'auto-listings' ),
 			'new_item'              => __( 'New Enquiry', 'auto-listings' ),
@@ -37,14 +54,13 @@ class PostType {
 			'menu_icon'           => 'dashicons-email',
 			'menu_position'       => 56,
 			'query_var'           => true,
-			//'rewrite'            => array('slug' => 'listings-enquiry', 'with_front' => false),
+			// 'rewrite'            => array('slug' => 'listings-enquiry', 'with_front' => false),
 			'capability_type'     => 'post',
 			'capabilities'        => [
 				'create_posts' => false,
-				// Removes support for the "Add New" function ( use 'do_not_allow' instead of false for multisite set ups )
+				// Removes support for the "Add New" function ( use 'do_not_allow' instead of false for multisite set ups ).
 			],
-			'map_meta_cap'        => true, // Set to `false`, if users are not allowed to edit/delete existing posts
-			//'has_archive'        => '',
+			'map_meta_cap'        => true, // Set to `false`, if users are not allowed to edit/delete existing posts.
 			'hierarchical'        => false,
 			'supports'            => [ 'title', 'revisions' ],
 		];

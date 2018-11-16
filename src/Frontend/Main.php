@@ -1,7 +1,20 @@
 <?php
+/**
+ * Add class to body class.
+ *
+ * @package Auto Listings.
+ */
+
 namespace AutoListings\Frontend;
 
+/**
+ * Class Main
+ */
 class Main {
+
+	/**
+	 * Add hooks when module is loaded.
+	 */
 	public function __construct() {
 		add_action( 'body_class', [ $this, 'body_class' ] );
 		add_action( 'wp_head', [ $this, 'head_comment' ] );
@@ -10,7 +23,7 @@ class Main {
 	/**
 	 * Add body classes for our pages.
 	 *
-	 * @param  array $classes
+	 * @param  array $classes body class.
 	 *
 	 * @return array
 	 */

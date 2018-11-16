@@ -1,4 +1,10 @@
 <?php
+/**
+ * Contact form messages setting fields.
+ *
+ * @package Auto Listings.
+ */
+
 return [
 	'id'             => 'contact_form_messages',
 	'title'          => __( 'Contact Form Messages', 'auto-listings' ),

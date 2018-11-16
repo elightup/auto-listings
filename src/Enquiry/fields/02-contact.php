@@ -1,4 +1,10 @@
 <?php
+/**
+ * Contact fields in single Enquiry .
+ *
+ * @package Auto Listings.
+ */
+
 $prefix = '_al_enquiry_';
 
 $fields = [];

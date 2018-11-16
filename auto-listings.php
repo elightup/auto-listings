@@ -8,6 +8,8 @@
  * Version: 2.0.4
  * Text Domain: auto-listings
  * Domain Path: languages
+ *
+ * @package Auto Listings
  */
 
 // Exit if accessed directly.
@@ -26,4 +28,4 @@ function auto_listings_check_php_version() {
 	}
 }
 
-include 'bootstrap.php';
+require 'bootstrap.php';

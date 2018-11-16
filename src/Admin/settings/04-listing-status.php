@@ -1,4 +1,10 @@
 <?php
+/**
+ * Listings Status setting fields.
+ *
+ * @package Auto Listings.
+ */
+
 return [
 	'id'             => 'listing_statuses',
 	'title'          => __( 'Listing Statuses', 'auto-listings' ),
@@ -34,6 +40,7 @@ return [
 					'id'          => 'icon',
 					'type'        => 'text',
 					'placeholder' => 'auto-icon-odometer',
+					/* translators: docs link */
 					'desc'        => sprintf( __( 'Add icon class to display an icon. See %s for available icons.', 'auto-listings' ), '<a target="_blank" href="http://www.wpautolistings.com/docs/icons?utm_source=plugin&utm_medium=settings_page&utm_content=icon_docs">icon docs</a>' ) . '<br>' . __( 'Can also use FontAwesome icon classes such as "fa fa-caret-left".', 'auto-listings' ),
 				],
 			],
