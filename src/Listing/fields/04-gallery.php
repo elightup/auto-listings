@@ -1,4 +1,10 @@
 <?php
+/**
+ * Listing gallery field.
+ *
+ * @package Auto Listings.
+ */
+
 $prefix = '_al_listing_';
 
 $fields     = [];

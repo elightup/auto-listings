@@ -1,27 +1,46 @@
 <?php
+/**
+ * Add Plugin roles.
+ *
+ * @package Auto Listings.
+ */
+
 namespace AutoListings;
 
+/**
+ * Class Roles
+ */
 class Roles {
+	/**
+	 * Add custom role.
+	 */
 	public function add_roles() {
-		add_role( 'auto_listings_seller', __( 'Auto Listings Seller', 'auto-listings' ), [
-			'read'                   => true,
-			'edit_posts'             => true,
-			'delete_posts'           => true,
-			'unfiltered_html'        => true,
-			'upload_files'           => true,
-			'delete_others_posts'    => true,
-			'delete_private_posts'   => true,
-			'delete_published_posts' => true,
-			'edit_others_posts'      => true,
-			'edit_others_pages'      => true,
-			'edit_private_posts'     => true,
-			'edit_published_posts'   => true,
-			'edit_published_pages'   => true,
-			'publish_posts'          => true,
-			'read_private_posts'     => true,
-		] );
+		add_role(
+			'auto_listings_seller',
+			__( 'Auto Listings Seller', 'auto-listings' ),
+			[
+				'read'                   => true,
+				'edit_posts'             => true,
+				'delete_posts'           => true,
+				'unfiltered_html'        => true,
+				'upload_files'           => true,
+				'delete_others_posts'    => true,
+				'delete_private_posts'   => true,
+				'delete_published_posts' => true,
+				'edit_others_posts'      => true,
+				'edit_others_pages'      => true,
+				'edit_private_posts'     => true,
+				'edit_published_posts'   => true,
+				'edit_published_pages'   => true,
+				'publish_posts'          => true,
+				'read_private_posts'     => true,
+			]
+		);
 	}
 
+	/**
+	 * Add caps for custom role and administrator.
+	 */
 	public function add_caps() {
 		global $wp_roles;
 
@@ -41,16 +60,19 @@ class Roles {
 		}
 	}
 
+	/**
+	 * Get seller caps.
+	 */
 	public function get_seller_caps() {
 		$capabilities = [];
 
 		$capabilities['listing'] = [
-			// Users
+			// Users.
 			'list_users',
 			'create_users',
 			'edit_users',
 
-			// Listings
+			// Listings.
 			'edit_listing',
 			'read_listing',
 			'delete_listing',
@@ -65,12 +87,15 @@ class Roles {
 			'edit_private_listings',
 			'edit_published_listings',
 
-			// Enquiries use post capability
+			// Enquiries use post capability.
 		];
 
 		return $capabilities;
 	}
 
+	/**
+	 * Remove caps from seller and administrator.
+	 */
 	public function remove_caps() {
 		global $wp_roles;
 

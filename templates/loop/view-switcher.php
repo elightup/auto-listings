@@ -3,10 +3,12 @@
  * View Switcher
  *
  * This template can be overridden by copying it to yourtheme/listings/loop/view-switcher.php.
+ *
+ * @package Auto Listings.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit; // Exit if accessed directly.
 }
 
 ?>

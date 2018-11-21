@@ -144,7 +144,7 @@ class AdminColumns {
 	 * @param array $vars query vars.
 	 */
 	public function orderby_status( $vars ) {
-		if ( isset( $vars['orderby'] ) && 'status' == $vars['orderby'] ) {
+		if ( isset( $vars['orderby'] ) && 'status' === $vars['orderby'] ) {
 			$vars = array_merge(
 				$vars,
 				[
@@ -162,7 +162,7 @@ class AdminColumns {
 	 * @param array $vars query vars.
 	 */
 	public function orderby_condition( $vars ) {
-		if ( isset( $vars['orderby'] ) && 'condition' == $vars['orderby'] ) {
+		if ( isset( $vars['orderby'] ) && 'condition' === $vars['orderby'] ) {
 			$vars = array_merge(
 				$vars,
 				[
@@ -180,7 +180,7 @@ class AdminColumns {
 	 * @param array $vars query vars.
 	 */
 	public function orderby_seller( $vars ) {
-		if ( isset( $vars['orderby'] ) && 'seller' == $vars['orderby'] ) {
+		if ( isset( $vars['orderby'] ) && 'seller' === $vars['orderby'] ) {
 			$vars = array_merge(
 				$vars,
 				[
@@ -198,7 +198,7 @@ class AdminColumns {
 	 * @param array $vars query vars.
 	 */
 	public function orderby_price( $vars ) {
-		if ( isset( $vars['orderby'] ) && 'price' == $vars['orderby'] ) {
+		if ( isset( $vars['orderby'] ) && 'price' === $vars['orderby'] ) {
 			$vars = array_merge(
 				$vars,
 				[
@@ -281,7 +281,7 @@ class AdminColumns {
 			}
 		}
 
-		wp_reset_query();
+		wp_reset_postdata();
 		return $fields;
 	}
 

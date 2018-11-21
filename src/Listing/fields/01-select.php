@@ -1,4 +1,10 @@
 <?php
+/**
+ * Vehicle select fields.
+ *
+ * @package Auto Listings.
+ */
+
 $prefix = '_al_listing_';
 
 return [

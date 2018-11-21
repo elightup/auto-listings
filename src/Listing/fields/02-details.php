@@ -1,4 +1,10 @@
 <?php
+/**
+ * Listing detail fields.
+ *
+ * @package Auto Listings.
+ */
+
 $prefix = '_al_listing_';
 $fields = [];
 
@@ -18,7 +24,7 @@ $fields[] = [
 
 $fields[] = [
 	'name' => auto_listings_miles_kms_label(),
-	'desc' => __( '', 'auto-listings' ),
+	'desc' => '',
 	'id'   => $prefix . 'odometer',
 	'type' => 'number',
 	'min'  => 0,

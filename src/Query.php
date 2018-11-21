@@ -1,7 +1,20 @@
 <?php
+/**
+ * Build query for archive listings page.
+ *
+ * @package Auto Listings.
+ */
+
 namespace AutoListings;
 
+/**
+ * Class Query
+ */
 class Query {
+
+	/**
+	 * Add hooks when module is loaded.
+	 */
 	public function __construct() {
 		if ( is_admin() ) {
 			return;
@@ -27,36 +40,32 @@ class Query {
 	/**
 	 * Query the listings, applying sorting/ordering etc. This applies to the main WordPress loop.
 	 *
-	 * @param mixed $query
+	 * @param mixed $query Query object.
 	 */
 	public function listings_query( $query ) {
 		$query->set( 'post_status', 'publish' );
 
-		// Ordering query vars
+		// Ordering query vars.
 		$ordering = $this->get_ordering_args();
 		$query->set( 'orderby', $ordering['orderby'] );
 		$query->set( 'order', $ordering['order'] );
 		if ( isset( $ordering['meta_key'] ) ) {
 			$query->set( 'meta_key', $ordering['meta_key'] );
 		}
-
-		// get default as either rent or sell. We don't want both at the same time
-		// the search query can modify this later if need be
-		// $meta_query[] = array(
-		// 	'key' 		=> '_al_listing_purpose',
-		// 	'value' 	=> auto_listings_display(),
-		// 	'compare' 	=> 'LIKE',
-		// );
-		//$q->set( 'meta_query', $meta_query );
-		//pp( $q );
 	}
 
+	/**
+	 * Query the listings, applying sorting/ordering etc. This applies to the main WordPress loop.
+	 *
+	 * @param string $orderby Sort listings by parameter.
+	 * @param string $order Ascending or descending order.
+	 */
 	public function get_ordering_args( $orderby = '', $order = '' ) {
-		// Get ordering from query string unless defined
+		// Get ordering from query string unless defined.
 		if ( ! $orderby ) {
 			$orderby_value = isset( $_GET['orderby'] ) ? esc_html( $_GET['orderby'] ) : 'date';
 
-			// Get order + orderby args from string
+			// Get order + orderby args from string.
 			$orderby_value = explode( '-', $orderby_value );
 			$orderby       = esc_attr( $orderby_value[0] );
 			$order         = ! empty( $orderby_value[1] ) ? $orderby_value[1] : $order;
@@ -66,7 +75,7 @@ class Query {
 		$order   = strtoupper( $order );
 		$args    = [];
 
-		// Default - menu_order
+		// Default - menu_order.
 		$args['orderby']  = 'date ID';
 		$args['order']    = 'OLD' === $order ? 'ASC' : 'DESC';
 		$args['meta_key'] = '';
@@ -86,6 +95,9 @@ class Query {
 		return apply_filters( 'auto_listings_get_ordering_args', $args );
 	}
 
+	/**
+	 * Restore original query
+	 */
 	public function remove_query_hook() {
 		remove_action( 'pre_get_posts', [ $this, 'pre_get_posts' ] );
 	}

@@ -1,11 +1,28 @@
 <?php
+/**
+ * Listings search query.
+ *
+ * @package Auto Listings.
+ */
+
 namespace AutoListings;
 
+/**
+ * Class SearchQuery.
+ */
 class SearchQuery {
+	/**
+	 * Add hooks when module is loaded.
+	 */
 	public function __construct() {
 		add_action( 'pre_get_posts', [ $this, 'pre_get_posts' ], 999 );
 	}
 
+	/**
+	 * Customize the search query.
+	 *
+	 * @param WP_Query $query Query object.
+	 */
 	public function pre_get_posts( \WP_Query $query ) {
 		if ( is_admin() || ! $query->is_main_query() || ! is_post_type_archive( 'auto-listing' ) || ! is_search() ) {
 			return;
@@ -51,6 +68,7 @@ class SearchQuery {
 
 	/**
 	 * Return a meta query for filtering by year.
+	 *
 	 * @return array
 	 */
 	private function year_query() {
@@ -60,7 +78,6 @@ class SearchQuery {
 				'key'     => '_al_listing_model_year',
 				'value'   => $data,
 				'compare' => 'IN',
-				//'type'      => 'NUMERIC',
 			];
 		}
 		return [];
@@ -68,6 +85,7 @@ class SearchQuery {
 
 	/**
 	 * Return a meta query for filtering by make.
+	 *
 	 * @return array
 	 */
 	private function make_query() {
@@ -84,6 +102,7 @@ class SearchQuery {
 
 	/**
 	 * Return a meta query for filtering by model.
+	 *
 	 * @return array
 	 */
 	private function model_query() {
@@ -100,6 +119,7 @@ class SearchQuery {
 
 	/**
 	 * Return a meta query for filtering by condition.
+	 *
 	 * @return array
 	 */
 	private function condition_query() {
@@ -115,6 +135,7 @@ class SearchQuery {
 
 	/**
 	 * Return a meta query for filtering by odometer.
+	 *
 	 * @return array
 	 */
 	private function odometer_query() {
@@ -134,6 +155,7 @@ class SearchQuery {
 
 	/**
 	 * Return a taxonomy query for filtering by body type.
+	 *
 	 * @return array
 	 */
 	private function body_type_query() {
@@ -150,6 +172,7 @@ class SearchQuery {
 
 	/**
 	 * Return a meta query for filtering by price.
+	 *
 	 * @return array
 	 */
 	private function price_meta_query() {
@@ -157,15 +180,15 @@ class SearchQuery {
 			return [];
 		}
 		if ( ! empty( $_GET['max_price'] ) && empty( $_GET['min_price'] ) ) {
-			$value = floatval( $_GET['max_price'] );
+			$value   = floatval( $_GET['max_price'] );
 			$compare = '<=';
 		} elseif ( empty( $_GET['max_price'] ) && ! empty( $_GET['min_price'] ) ) {
-			$value = floatval( $_GET['min_price'] );
+			$value   = floatval( $_GET['min_price'] );
 			$compare = '>=';
-		} else  {
-			$min = floatval( $_GET['min_price'] );
-			$max = floatval( $_GET['max_price'] );
-			$value = [ $min, $max ];
+		} else {
+			$min     = floatval( $_GET['min_price'] );
+			$max     = floatval( $_GET['max_price'] );
+			$value   = [ $min, $max ];
 			$compare = 'BETWEEN';
 		}
 		return [
@@ -178,6 +201,11 @@ class SearchQuery {
 
 	}
 
+	/**
+	 * Return a meta query for filtering by location.
+	 *
+	 * @param WP_Query $query Query object.
+	 */
 	public function radius_query( \WP_Query $query ) {
 		if ( empty( $_GET['s'] ) ) {
 			return false;
@@ -188,7 +216,7 @@ class SearchQuery {
 			return false;
 		}
 
-		// We have to remove the "s" parameter from the query, because it will prevent the posts from being found
+		// We have to remove the "s" parameter from the query, because it will prevent the posts from being found.
 		$query->query_vars['s'] = '';
 
 		$search_radius = $this->geocode( $search_term );
@@ -197,24 +225,24 @@ class SearchQuery {
 			return false;
 		}
 
-		$lat = $search_radius['lat']; // get the lat of the requested address
-		$lng = $search_radius['lng']; // get the lng of the requested address
+		$lat = $search_radius['lat']; // get the lat of the requested address.
+		$lng = $search_radius['lng']; // get the lng of the requested address.
 
-		// we'll want everything within, say, 30km distance
+		// we'll want everything within, say, 30km distance.
 		$distance = isset( $_GET['within'] ) && ! empty( $_GET['within'] ) ? floatval( $_GET['within'] ) : 50;
 
-		// earth's radius in km = ~6371
+		// earth's radius in km = ~6371.
 		$radius = auto_listings_metric() == 'yes' ? 6371 : 3950;
 
-		// latitude boundaries
+		// latitude boundaries.
 		$maxlat = $lat + rad2deg( $distance / $radius );
 		$minlat = $lat - rad2deg( $distance / $radius );
 
-		// longitude boundaries (longitude gets smaller when latitude increases)
+		// longitude boundaries (longitude gets smaller when latitude increases).
 		$maxlng = $lng + rad2deg( $distance / $radius / cos( deg2rad( $lat ) ) );
 		$minlng = $lng - rad2deg( $distance / $radius / cos( deg2rad( $lat ) ) );
 
-		// build the meta query array
+		// build the meta query array.
 		$radius_array = [
 			'relation' => 'AND',
 		];
@@ -235,41 +263,44 @@ class SearchQuery {
 		return apply_filters( 'auto_listings_search_radius_args', $radius_array );
 	}
 
-
-	// function to geocode address, it will return false if unable to geocode address
+	/**
+	 * Function to geocode address, it will return false if unable to geocode address.
+	 *
+	 * @param string $address Listing address.
+	 */
 	private function geocode( $address ) {
-		return false;
-		// url encode the address
+		if ( empty( $address ) ) {
+			return false;
+		}
+		// url encode the address.
 		$address = urlencode( esc_html( $address ) );
 
-		// google map geocode api url
+		// google map geocode api url.
 		$url = auto_listings_google_geocode_maps_url( $address );
 
-		$arrContextOptions = [
+		$arr_context_options = [
 			'ssl' => [
 				'verify_peer'      => false,
 				'verify_peer_name' => false,
 			],
 		];
 
-		// get the json response
-		$resp_json = file_get_contents( $url, false, stream_context_create( $arrContextOptions ) );
+		// get the json response.
+		$resp_json = file_get_contents( $url, false, stream_context_create( $arr_context_options ) );
 
-		// decode the json
+		// decode the json.
 		$resp = json_decode( $resp_json, true );
 
-		//pp( $resp );
-
-		// response status will be 'OK', if able to geocode given address
-		if ( $resp['status'] !== 'OK' ) {
+		// response status will be 'OK', if able to geocode given address.
+		if ( 'OK' !== $resp['status'] ) {
 			return false;
 		}
 
-		// get the lat and lng
+		// get the lat and lng.
 		$lat = $resp['results'][0]['geometry']['location']['lat'];
 		$lng = $resp['results'][0]['geometry']['location']['lng'];
 
-		// verify if data is complete
+		// verify if data is complete.
 		if ( ! $lat || ! $lng ) {
 			return false;
 		}
@@ -282,25 +313,29 @@ class SearchQuery {
 
 
 	/**
-	 * Searches through our custom fields using a keyword match
-	 * @return array
+	 * Searches listing through keyword
+	 *
+	 * @param array $q Query vars.
 	 */
 	private function keyword_query( $q ) {
 		if ( empty( $_GET['s'] ) ) {
 			return [];
 		}
 
-		$custom_fields = apply_filters( 'auto_listings_keyword_search_fields', [
-			// put all the meta fields you want to search for here
-			'_al_listing_city',
-			'_al_listing_zip',
-			'_al_listing_state',
-			'_al_listing_route',
-			'_al_listing_displayed_address',
-		] );
-		$searchterm    = sanitize_text_field( $_GET['s'] );
+		$custom_fields = apply_filters(
+			'auto_listings_keyword_search_fields',
+			[
+				// put all the meta fields you want to search for here.
+				'_al_listing_city',
+				'_al_listing_zip',
+				'_al_listing_state',
+				'_al_listing_route',
+				'_al_listing_displayed_address',
+			]
+		);
+		$searchterm = sanitize_text_field( $_GET['s'] );
 
-		// we have to remove the "s" parameter from the query, because it will prevent the posts from being found
+		// we have to remove the "s" parameter from the query, because it will prevent the posts from being found.
 		$q->query_vars['s'] = '';
 
 		if ( ! $searchterm ) {
@@ -309,11 +344,14 @@ class SearchQuery {
 
 		$meta_query = [ 'relation' => 'OR' ];
 		foreach ( $custom_fields as $cf ) {
-			array_push( $meta_query, [
-				'key'     => $cf,
-				'value'   => $searchterm,
-				'compare' => 'LIKE',
-			] );
+			array_push(
+				$meta_query,
+				[
+					'key'     => $cf,
+					'value'   => $searchterm,
+					'compare' => 'LIKE',
+				]
+			);
 		}
 		return $meta_query;
 	}

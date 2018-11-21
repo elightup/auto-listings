@@ -1,12 +1,28 @@
 <?php
+/**
+ * Register Post Type and Taxonomy.
+ *
+ * @package Auto Listings.
+ */
+
 namespace AutoListings\Listing;
+
+/**
+ * Class PostType
+ */
 class PostType {
+	/**
+	 * Add hooks when module is loaded.
+	 */
 	public function __construct() {
 		add_action( 'init', [ $this, 'register_post_type' ] );
 		add_action( 'init', [ $this, 'register_taxonomy' ] );
 		add_action( 'add_meta_boxes', [ $this, 'remove_body_type_meta_box' ] );
 	}
 
+	/**
+	 * Register Listings Post Type.
+	 */
 	public function register_post_type() {
 		$slug = auto_listings_option( 'single_url' ) ? auto_listings_option( 'single_url' ) : 'listing';
 
@@ -52,6 +68,9 @@ class PostType {
 		register_post_type( 'auto-listing', $args );
 	}
 
+	/**
+	 * Register Body Type Taxonomy.
+	 */
 	public function register_taxonomy() {
 		$labels = [
 			'name'                  => _x( 'Body Types', 'body-type general name', 'auto-listings' ),
@@ -72,15 +91,22 @@ class PostType {
 			'items_list'            => __( 'Listings list', 'auto-listings' ),
 		];
 
-		register_taxonomy( 'body-type', 'auto-listing', [
-			'labels'             => $labels,
-			'hierarchical'       => true,
-			'public'             => true,
-			'show_ui'            => true,
-			'show_admin_column'  => false,
-		] );
+		register_taxonomy(
+			'body-type',
+			'auto-listing',
+			[
+				'labels'            => $labels,
+				'hierarchical'      => true,
+				'public'            => true,
+				'show_ui'           => true,
+				'show_admin_column' => false,
+			]
+		);
 	}
 
+	/**
+	 * Remove Body Type Metabox in single listing.
+	 */
 	public function remove_body_type_meta_box() {
 		remove_meta_box( 'body-typediv', 'auto-listing', 'side' );
 	}

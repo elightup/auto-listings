@@ -59,7 +59,7 @@ class Assets {
 
 		$gallery_array = [
 			'gallery_mode'   => auto_listings_option( 'gallery_mode' ) ? auto_listings_option( 'gallery_mode' ) : 'fade',
-			'auto_slide'     => auto_listings_option( 'auto_slide' ) == 'no' ? false : true,
+			'auto_slide'     => auto_listings_option( 'auto_slide' ) === 'no' ? false : true,
 			'slide_delay'    => auto_listings_option( 'slide_delay' ) ? auto_listings_option( 'slide_delay' ) : 3000,
 			'slide_duration' => auto_listings_option( 'slide_duration' ) ? auto_listings_option( 'slide_duration' ) : 3000,
 			'thumbs_shown'   => auto_listings_option( 'thumbs_shown' ) ? auto_listings_option( 'thumbs_shown' ) : 6,
@@ -94,23 +94,23 @@ class Assets {
 
 		$css = '';
 		foreach ( $options as $key => $value ) {
-			if ( 'button_bg_color' == $key ) {
+			if ( 'button_bg_color' === $key ) {
 				$css .= '.auto-listings .al-button, .auto-listings .contact-form .button-primary { background-color: ' . esc_html( $value ) . '; border-color: ' . esc_html( $value ) . '}';
 				$css .= '.auto-listings .al-button:hover, .auto-listings .contact-form .button-primary:hover { color: ' . esc_html( $value ) . '; }';
 				$css .= '.auto-listings-single .image-gallery .lSPager.lSGallery li.active, .auto-listings-single .image-gallery .lSPager.lSGallery li:hover, .auto-listings-search .area-wrap .area:focus, .auto-listings-search .area-wrap .area:active { border-color: ' . esc_html( $value ) . '; }';
 				$css .= '.auto-listings .auto-listings-tabs ul.tabs li.active { box-shadow: 0 3px 0 ' . esc_html( $value ) . ' inset; }';
 			}
-			if ( 'button_text_color' == $key ) {
+			if ( 'button_text_color' === $key ) {
 				$css .= '.auto-listings .al-button, .auto-listings .contact-form .button-primary { color: ' . esc_html( $value ) . '; }';
 				$css .= '.auto-listings .al-button:hover, .auto-listings .contact-form .button-primary:hover { background-color: ' . esc_html( $value ) . '; }';
 			}
-			if ( 'price_color' == $key ) {
+			if ( 'price_color' === $key ) {
 				$css .= '.auto-listings .price { color: ' . esc_html( $value ) . '; }';
 			}
-			if ( 'contact_icon_color' == $key ) {
+			if ( 'contact_icon_color' === $key ) {
 				$css .= '.auto-listings .contact i { color: ' . esc_html( $value ) . '; }';
 			}
-			if ( 'listing_icon_color' == $key ) {
+			if ( 'listing_icon_color' === $key ) {
 				$css .= '.auto-listings .at-a-glance li i { color: ' . esc_html( $value ) . '; }';
 			}
 		}

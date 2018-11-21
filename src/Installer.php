@@ -1,8 +1,19 @@
 <?php
+/**
+ * Enqueue scripts and styles on frontend.
+ *
+ * @package Auto Listings.
+ */
 
 namespace AutoListings;
 
+/**
+ * Class Installer
+ */
 class Installer {
+	/**
+	 * Add hooks when module is loaded.
+	 */
 	public function __construct() {
 		register_activation_hook( AUTO_LISTINGS_FILE, [ $this, 'install' ] );
 		add_action( 'admin_notices', [ $this, 'notice' ] );
@@ -12,13 +23,13 @@ class Installer {
 	 * Set up the post types, taxonomies, and creates sample data.
 	 */
 	public function install() {
-		// install data
+		// install data.
 		$this->install_plugin_options();
 		wp_insert_term( 'SUV', 'body_type' );
 		$this->install_listings_page();
 		$this->install_sample_listing();
 
-		// Add Upgraded From Option
+		// Add Upgraded From Option.
 		$current_version = get_option( 'auto_listings_version' );
 		if ( $current_version ) {
 			update_option( 'auto_listings_version_upgraded_from', $current_version );
@@ -26,25 +37,25 @@ class Installer {
 
 		update_option( 'auto_listings_version', AUTO_LISTINGS_VERSION );
 
-		// Create Auto_Listings roles
+		// Create Auto_Listings roles.
 		$roles = new Roles();
 		$roles->add_roles();
 		$roles->add_caps();
 
-		// when upgrading
-		// if ( ! $current_version ) {}
-
-		// Bail if activating from network, or bulk
+		// Bail if activating from network, or bulk.
 		if ( is_network_admin() || isset( $_GET['activate-multi'] ) ) {
 			return;
 		}
 
-		// Add the transient to redirect
+		// Add the transient to redirect.
 		set_transient( '_auto_listings_activation_redirect', true, 30 );
 
 		flush_rewrite_rules( false );
 	}
 
+	/**
+	 * Default options.
+	 */
 	protected function install_plugin_options() {
 		$options = get_option( 'auto_listings_options' );
 		if ( $options || ! empty( $options ) ) {
@@ -98,6 +109,9 @@ class Installer {
 		update_option( 'auto_listings_options', $options );
 	}
 
+	/**
+	 * Default Archive Listing Page
+	 */
 	protected function install_listings_page() {
 		global $wpdb;
 
@@ -113,17 +127,20 @@ class Installer {
 
 		$options = get_option( 'auto_listings_options' );
 		if ( isset( $options['archives_page'] ) && ( $page = get_post( $options['archives_page'] ) ) ) {
-			if ( 'page' === $page->post_type && ! in_array( $page->post_status, [
+			if ( 'page' === $page->post_type && ! in_array(
+				$page->post_status,
+				[
 					'pending',
 					'trash',
 					'future',
 					'auto-draft',
-				] ) ) {
+				]
+			) ) {
 				return;
 			}
 		}
 
-		// Search for an existing page with the specified page content (typically a shortcode)
+		// Search for an existing page with the specified page content (typically a shortcode).
 		$valid_page_found = $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_type='page' AND post_status NOT IN ( 'pending', 'trash', 'future', 'auto-draft' ) AND post_content LIKE %s LIMIT 1;", "%{$page_content}%" ) );
 
 		if ( $valid_page_found ) {
@@ -134,7 +151,7 @@ class Installer {
 			return;
 		}
 
-		// Search for an existing page with the specified page content (typically a shortcode)
+		// Search for an existing page with the specified page content (typically a shortcode).
 		$trashed_page_found = $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_type='page' AND post_status = 'trash' AND post_content LIKE %s LIMIT 1;", "%{$page_content}%" ) );
 
 		if ( $trashed_page_found ) {
@@ -153,6 +170,9 @@ class Installer {
 		update_option( 'auto_listings_options', $options );
 	}
 
+	/**
+	 * Create default listing
+	 */
 	protected function install_sample_listing() {
 		global $wpdb;
 
@@ -167,14 +187,14 @@ class Installer {
 			'comment_status' => 'closed',
 		];
 
-		// Search for an existing page with the specified page content (typically a shortcode)
+		// Search for an existing page with the specified page content (typically a shortcode).
 		$valid_page_found = $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_type='auto-listing' AND post_status NOT IN ( 'pending', 'trash', 'future', 'auto-draft' ) AND post_title LIKE %s LIMIT 1;", "%{$listing_title}%" ) );
 
 		if ( $valid_page_found ) {
 			return;
 		}
 
-		// Search for an existing page with the specified page content (typically a shortcode)
+		// Search for an existing page with the specified page content (typically a shortcode).
 		$trashed_page_found = $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_type='auto-listing' AND post_status = 'trash' AND post_title LIKE %s LIMIT 1;", "%{$listing_title}%" ) );
 
 		if ( $trashed_page_found ) {
@@ -220,7 +240,7 @@ class Installer {
 			$prefix . 'seller'                  => get_current_user_id(),
 		];
 
-		//Save values from created array into db
+		// Save values from created array into db.
 		foreach ( $save_meta as $meta_key => $meta_value ) {
 			update_post_meta( $listing_id, $meta_key, $meta_value );
 		}
@@ -228,22 +248,24 @@ class Installer {
 		wp_set_object_terms( $listing_id, 'suv', 'body-type' );
 	}
 
+	/**
+	 * Print notice.
+	 */
 	public function notice() {
 		$redirected = get_transient( '_auto_listings_redirected' );
-		if ( false === $redirected || ! isset( $_GET['page'] ) || $_GET['page'] !== 'auto_listings_options' ) {
+		if ( false === $redirected || ! isset( $_GET['page'] ) || 'auto_listings_options' !== $_GET['page'] ) {
 			return;
 		}
-
-		// Delete the transient
-		//delete_transient( '_auto_listings_redirected' );
 
 		$class   = 'notice notice-info is-dismissible';
 		$message = '<strong>' . __( 'Success!', 'auto-listings' ) . '</strong>' . __( ' A sample listing has been created: ', 'auto-listings' );
 		$message .= '<a class="button button-small" target="_blank" href="' . home_url( '/listings' ) . '">' . __( 'View First Listing', 'auto-listings' ) . '</a><br><br>';
 		$message .= __( 'Step 1. Please go through each tab below, configure the options and <strong>hit the save button</strong>.', 'auto-listings' ) . '<br>';
 		$message .= __( 'Step 2. Add your first Listing by navigating to <strong>Listings > New Listing</strong>', 'auto-listings' ) . '<br><br>';
+		// translators: %s is contact url.
 		$message .= sprintf( __( '<em><strong>Please Note</strong>: When viewing listings, if things aren\'t looking quiet right, don\'t panic. <br>It is likely just a small theme compatibility issue which is easily resolved. <a href="%s">Contact us here</a> and we will be happy to help and make it look great with your theme.</em>', 'auto-listings' ), 'http://wpautolistings.com/submit-ticket/' ) . '<br>';
 
-		printf( '<div class="%1$s"><p>%2$s</p></div>', $class, $message );
+		// translators: %1 is tag class, %2 is the message.
+		printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), wp_kses_post( $message ) );
 	}
 }

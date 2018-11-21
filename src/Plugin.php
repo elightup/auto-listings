@@ -1,24 +1,34 @@
 <?php
+/**
+ * Define constant, tgmpa and load text domain.
+ *
+ * @package Auto Listings.
+ */
 
 namespace AutoListings;
 
+/**
+ * Class Plugin
+ */
 class Plugin {
 	/**
 	 * Plugin base file.
+	 *
 	 * @var string
 	 */
 	protected $file;
 
 	/**
 	 * Query instance.
-	 * @since 1.0.0
+	 *
+	 * @var string
 	 */
 	public $query = null;
 
 	/**
 	 * Plugin constructor.
 	 *
-	 * @param string $file Plugin base file
+	 * @param string $file Plugin base file.
 	 */
 	public function __construct( $file ) {
 		$this->file = $file;
@@ -28,6 +38,9 @@ class Plugin {
 		do_action( 'auto_listings_loaded' );
 	}
 
+	/**
+	 * Define plugin const variable.
+	 */
 	protected function define_constants() {
 		define( 'AUTO_LISTINGS_FILE', $this->file );
 		define( 'AUTO_LISTINGS_DIR', plugin_dir_path( $this->file ) );
@@ -36,6 +49,9 @@ class Plugin {
 		define( 'AUTO_LISTINGS_VERSION', '1.1.6' );
 	}
 
+	/**
+	 * Hook when init plugin.
+	 */
 	protected function init_hooks() {
 		add_action( 'init', [ $this, 'init' ], 0 );
 		add_filter( 'plugin_row_meta', [ $this, 'plugin_row_meta' ], 10, 2 );
@@ -44,6 +60,7 @@ class Plugin {
 
 	/**
 	 * Init Auto_Listings when WordPress Initialises.
+	 *
 	 * @since 1.0.0
 	 */
 	public function init() {
@@ -54,6 +71,9 @@ class Plugin {
 		do_action( 'auto_listings_init' );
 	}
 
+	/**
+	 * Load plugin text domain.
+	 */
 	public function load_plugin_textdomain() {
 		load_plugin_textdomain( 'auto-listings', false, basename( __DIR__ ) . '/languages' );
 	}
@@ -67,7 +87,7 @@ class Plugin {
 	 * @return array
 	 */
 	public function plugin_row_meta( $links, $file ) {
-		if ( $file !== AUTO_LISTINGS_BASENAME ) {
+		if ( AUTO_LISTINGS_BASENAME !== $file ) {
 			return $links;
 		}
 
@@ -76,6 +96,9 @@ class Plugin {
 		return $links;
 	}
 
+	/**
+	 * Install required plugin on activation.
+	 */
 	public function register_plugins() {
 		$plugins = [
 			[
@@ -90,12 +113,12 @@ class Plugin {
 			'parent_slug' => 'plugins.php',
 			'capability'  => 'install_plugins',
 			'strings'     => [
+				/* translators: 1: plugin name(s). */
 				'notice_can_install_required' => _n_noop(
-					/* translators: 1: plugin name(s). */
 					'The Auto Listings plugin requires the following plugin: %1$s.',
 					'The Auto Listings plugin requires the following plugins: %1$s.',
 					'auto-listings'
-				)
+				),
 			],
 		];
 

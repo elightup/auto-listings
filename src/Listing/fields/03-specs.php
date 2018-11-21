@@ -1,18 +1,24 @@
 <?php
+/**
+ * Specifications Fields.
+ *
+ * @package Auto Listings.
+ */
+
 $prefix = '_al_listing_';
 
 $fields      = [];
 $spec_fields = auto_listings_spec_fields();
 $display     = auto_listings_option( 'field_display' );
 
-foreach ( $spec_fields as $id => $value ) {
-	if ( is_array( $display ) && ! in_array( $id, $display ) ) {
+foreach ( $spec_fields as $field_id => $value ) {
+	if ( is_array( $display ) && ! in_array( $field_id, $display ) ) {
 		continue;
 	}
 
 	$fields[] = [
 		'name'    => $value['label'],
-		'id'      => $prefix . $id,
+		'id'      => $prefix . $field_id,
 		'type'    => 'text',
 		'columns' => 3,
 	];

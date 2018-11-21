@@ -1,14 +1,19 @@
 <?php
+/**
+ * Listings functions.
+ *
+ * @package Auto Listings.
+ */
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-
+/**
+ * Listings spec fields.
+ */
 function auto_listings_spec_fields() {
-	//$option = auto_listings_option( '' );
-
 	$spec_fields = [
 
 		'model_year'              => [
@@ -42,7 +47,7 @@ function auto_listings_spec_fields() {
 			'desc'  => __( ' (Recommended)', 'auto-listings' ),
 		],
 
-		// transmission
+		// transmission.
 		'model_drive'             => [
 			'label' => __( 'Drive Type', 'auto-listings' ),
 			'type'  => 'transmission',
@@ -54,7 +59,7 @@ function auto_listings_spec_fields() {
 			'desc'  => __( ' (Recommended)', 'auto-listings' ),
 		],
 
-		// fuel
+		// fuel.
 		'model_engine_fuel'       => [
 			'label' => __( 'Fuel Type', 'auto-listings' ),
 			'type'  => 'fuel',
@@ -64,7 +69,7 @@ function auto_listings_spec_fields() {
 	];
 
 	$metric_fields = [
-		// fuel
+		// fuel.
 		'model_lkm_hwy'       => [
 			'label' => __( 'Fuel Economy Highway (l/100km)', 'auto-listings' ),
 			'type'  => 'fuel',
@@ -82,7 +87,7 @@ function auto_listings_spec_fields() {
 			'type'  => 'fuel',
 		],
 
-		// dimensions
+		// dimensions.
 		'model_weight_kg'     => [
 			'label' => __( 'Weight (kg)', 'auto-listings' ),
 			'type'  => 'weight_dimensions',
@@ -104,7 +109,7 @@ function auto_listings_spec_fields() {
 			'type'  => 'weight_dimensions',
 		],
 
-		// performance
+		// performance.
 		'model_0_to_100_kph'  => [
 			'label' => __( '0-100 kph', 'auto-listings' ),
 			'type'  => 'performance',
@@ -114,17 +119,16 @@ function auto_listings_spec_fields() {
 			'type'  => 'performance',
 		],
 
-		// engine
+		// engine.
 		'model_engine_cc'     => [
 			'label' => __( 'Engine Displacement (cc)', 'auto-listings' ),
 			'type'  => 'engine',
 		],
 
-
 	];
 
 	$imperial_fields = [
-		// fuel
+		// fuel.
 		'model_mpg_hwy'       => [
 			'label' => __( 'Fuel Economy Highway (mpg)', 'auto-listings' ),
 			'type'  => 'fuel',
@@ -142,7 +146,7 @@ function auto_listings_spec_fields() {
 			'type'  => 'fuel',
 		],
 
-		// dimensions
+		// dimensions.
 		'model_weight_lbs'    => [
 			'label' => __( 'Weight (lbs)', 'auto-listings' ),
 			'type'  => 'weight_dimensions',
@@ -164,7 +168,7 @@ function auto_listings_spec_fields() {
 			'type'  => 'weight_dimensions',
 		],
 
-		// performance
+		// performance.
 		'model_0_to_100_kph'  => [
 			'label' => __( '0-62 mph', 'auto-listings' ),
 			'type'  => 'performance',
@@ -174,7 +178,7 @@ function auto_listings_spec_fields() {
 			'type'  => 'performance',
 		],
 
-		// engine
+		// engine.
 		'model_engine_ci'     => [
 			'label' => __( 'Engine Displacement (ci)', 'auto-listings' ),
 			'type'  => 'engine',
@@ -183,7 +187,7 @@ function auto_listings_spec_fields() {
 
 	$engine_fields = [
 
-		// engine
+		// engine.
 		'model_engine_position'       => [
 			'label' => __( 'Engine Location', 'auto-listings' ),
 			'type'  => 'engine',
@@ -268,14 +272,17 @@ function auto_listings_spec_fields() {
 	return $fields;
 }
 
+/**
+ * Output the listing specs.
+ */
 function auto_listings_get_specs_for_output() {
 	$fields      = [];
 	$spec_fields = auto_listings_spec_fields();
 	$display     = auto_listings_option( 'field_display' );
 
-	// loop through all our fields
+	// loop through all our fields.
 	foreach ( $spec_fields as $id => $value ) {
-		// skip the ones we don't want to show
+		// skip the ones we don't want to show.
 		if ( is_array( $display ) && ! in_array( $id, $display ) ) {
 			continue;
 		}
@@ -294,6 +301,10 @@ function auto_listings_get_specs_for_output() {
 
 /**
  * Post classes for listings.
+ *
+ * @param array  $classes post class.
+ * @param string $class class  name.
+ * @param int    $post_id      post ID.
  */
 function auto_listings_listing_post_class( $classes, $class = '', $post_id = '' ) {
 	if ( ! $post_id || 'auto-listing' !== get_post_type( $post_id ) ) {
@@ -319,7 +330,7 @@ function auto_listings_listing_post_class( $classes, $class = '', $post_id = '' 
 	return $classes;
 }
 
-/*
+/**
  * Show Archive Page title within page content area
  */
 function auto_listings_force_page_title() {
@@ -327,7 +338,7 @@ function auto_listings_force_page_title() {
 	return $force;
 }
 
-/*
+/**
  * Get the URL of the first image of a listing
  */
 function auto_listings_get_first_image() {
@@ -348,7 +359,7 @@ function auto_listings_get_first_image() {
 	];
 }
 
-/*
+/**
  * Get the listing status
  */
 function auto_listings_get_status() {
@@ -386,7 +397,7 @@ function auto_listings_get_status() {
 	];
 }
 
-/*
+/**
  * Highlight new
  */
 function auto_listings_highlight_new() {
@@ -395,7 +406,7 @@ function auto_listings_highlight_new() {
 		return;
 	}
 
-	// see if it should still be displayed
+	// see if it should still be displayed.
 	$listed_time = get_the_time( 'U' );
 	$timestamp   = strtotime( '+' . $days . ' days', $listed_time );
 	if ( $timestamp < time() ) {
@@ -407,12 +418,16 @@ function auto_listings_highlight_new() {
 }
 
 
-/* ======================================================================================
-										Template Functions
-   ====================================================================================== */
-
 /*
+======================================================================================
+									Template Functions
+======================================================================================
+*/
+
+/**
  * Outputs the price HTML
+ *
+ * @param string $price Listing Price.
  */
 function auto_listings_price( $price = null ) {
 	if ( ! $price ) {
@@ -423,7 +438,7 @@ function auto_listings_price( $price = null ) {
 	return auto_listings_format_price( $price ) . ' ' . $suffix;
 }
 
-/*
+/**
  * Outputs the vehicle
  */
 function auto_listings_vehicle() {
@@ -431,7 +446,7 @@ function auto_listings_vehicle() {
 	return $output;
 }
 
-/*
+/**
  * Outputs the make, model & year
  */
 function auto_listings_year_make_model() {
@@ -441,7 +456,7 @@ function auto_listings_year_make_model() {
 	return $year . ' ' . $make . ' ' . $model;
 }
 
-/*
+/**
  * Outputs the engine
  */
 function auto_listings_engine() {
@@ -457,7 +472,7 @@ function auto_listings_engine() {
 	return $output;
 }
 
-/*
+/**
  * Outputs the fuel economy
  */
 function auto_listings_fuel_economy() {
@@ -469,7 +484,7 @@ function auto_listings_fuel_economy() {
 	return $output;
 }
 
-/*
+/**
  * Outputs the fuel economy
  */
 function auto_listings_odometer() {
@@ -482,7 +497,7 @@ function auto_listings_odometer() {
 	return $output;
 }
 
-/*
+/**
  * Outputs the transmission
  */
 function auto_listings_transmission() {
@@ -490,7 +505,7 @@ function auto_listings_transmission() {
 	return $output;
 }
 
-/*
+/**
  * Outputs the drive type
  */
 function auto_listings_drive_type() {
@@ -498,7 +513,7 @@ function auto_listings_drive_type() {
 	return $output;
 }
 
-/*
+/**
  * Outputs a body type link
  */
 function auto_listings_body_type() {

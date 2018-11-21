@@ -1,8 +1,15 @@
 <?php
+/**
+ * Listing map fields.
+ *
+ * @package Auto Listings.
+ */
+
 $prefix = '_al_listing_';
 
 $key = auto_listings_option( 'maps_api_key' );
 if ( ! $key ) {
+	// translators: link to setting page.
 	$warning = '<div class="archived-text warning">' . sprintf( __( 'No Google Maps API key found.<br>Please <a href="%s">add one here</a>', 'auto-listings' ), admin_url( 'options-general.php?page=auto-listings' ) ) . '</div>';
 }
 

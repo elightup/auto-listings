@@ -22,7 +22,7 @@ function auto_listings_metric() {
  * Listing miles and kms label
  */
 function auto_listings_miles_kms_label() {
-	$return = auto_listings_metric() == 'no' ? __( 'Miles', 'auto-listings' ) : __( 'Kilometers', 'auto-listings' );
+	$return = auto_listings_metric() === 'no' ? __( 'Miles', 'auto-listings' ) : __( 'Kilometers', 'auto-listings' );
 	return $return;
 }
 
@@ -30,7 +30,7 @@ function auto_listings_miles_kms_label() {
  * Short listing miles and kms label
  */
 function auto_listings_miles_kms_label_short() {
-	$return = auto_listings_metric() == 'no' ? __( 'mi', 'auto-listings' ) : __( 'km', 'auto-listings' );
+	$return = auto_listings_metric() === 'no' ? __( 'mi', 'auto-listings' ) : __( 'km', 'auto-listings' );
 	return $return;
 }
 
@@ -38,7 +38,7 @@ function auto_listings_miles_kms_label_short() {
  * Listing per hour unit
  */
 function auto_listings_per_hour_unit() {
-	$return = auto_listings_metric() == 'yes' ? __( 'mph', 'auto-listings' ) : __( 'kph', 'auto-listings' );
+	$return = auto_listings_metric() === 'yes' ? __( 'mph', 'auto-listings' ) : __( 'kph', 'auto-listings' );
 	return $return;
 }
 
@@ -50,7 +50,7 @@ function auto_listings_per_hour_unit() {
  */
 function auto_listings_format_date( $date ) {
 	$timestamp = strtotime( $date );
-	$date = date_i18n( get_option( 'date_format' ), $timestamp, false );
+	$date      = date_i18n( get_option( 'date_format' ), $timestamp, false );
 	return apply_filters( 'auto_listings_format_date', $date, $timestamp );
 }
 
@@ -169,12 +169,12 @@ function auto_listings_format_price( $price, $args = array() ) {
 			wp_parse_args(
 				$args,
 				array(
-					'currency_symbol'       => auto_listings_currency_symbol(),
-					'decimal_separator'     => auto_listings_decimal_separator(),
-					'thousand_separator'    => auto_listings_thousand_separator(),
-					'decimals'              => auto_listings_decimals(),
-					'price_format'          => auto_listings_format_price_format(),
-					'include_decimals'      => auto_listings_include_decimals(),
+					'currency_symbol'    => auto_listings_currency_symbol(),
+					'decimal_separator'  => auto_listings_decimal_separator(),
+					'thousand_separator' => auto_listings_thousand_separator(),
+					'decimals'           => auto_listings_decimals(),
+					'price_format'       => auto_listings_format_price_format(),
+					'include_decimals'   => auto_listings_include_decimals(),
 				)
 			)
 		)

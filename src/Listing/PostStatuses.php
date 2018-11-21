@@ -1,7 +1,19 @@
 <?php
+/**
+ * Register listing statuses.
+ *
+ * @package Auto Listings.
+ */
+
 namespace AutoListings\Listing;
 
+/**
+ * Class Assets
+ */
 class PostStatuses {
+	/**
+	 * Add hooks when module is loaded.
+	 */
 	public function __construct() {
 		add_action( 'init', [ $this, 'register_post_statuses' ] );
 		add_action( 'admin_footer-post.php', [ $this, 'post_screen_js' ] );
@@ -9,18 +21,28 @@ class PostStatuses {
 		add_filter( 'display_post_states', [ $this, 'display_post_states' ], 10, 2 );
 	}
 
+	/**
+	 * Register Listing Status.
+	 */
 	public function register_post_statuses() {
-		register_post_status( 'archive', [
-			'label'                     => _x( 'Archive', 'post', 'auto-listings' ),
-			'public'                    => false,
-			'private'                   => false,
-			'exclude_from_search'       => false,
-			'show_in_admin_all_list'    => false,
-			'show_in_admin_status_list' => true,
-			'label_count'               => _n_noop( 'Archive <span class="count">(%s)</span>', 'Archived <span class="count">(%s)</span>', 'auto-listings' ),
-		] );
+		register_post_status(
+			'archive',
+			[
+				'label'                     => _x( 'Archive', 'post', 'auto-listings' ),
+				'public'                    => false,
+				'private'                   => false,
+				'exclude_from_search'       => false,
+				'show_in_admin_all_list'    => false,
+				'show_in_admin_status_list' => true,
+				// translators: number of archived listings.
+				'label_count'               => _n_noop( 'Archive <span class="count">(%s)</span>', 'Archived <span class="count">(%s)</span>', 'auto-listings' ),
+			]
+		);
 	}
 
+	/**
+	 * Add listing status to publish box.
+	 */
 	public function post_screen_js() {
 		global $post;
 
@@ -49,6 +71,9 @@ class PostStatuses {
 		}
 	}
 
+	/**
+	 * Add listing status to listings edit screen.
+	 */
 	public function edit_screen_js() {
 		global $typenow;
 
@@ -71,6 +96,12 @@ class PostStatuses {
 		<?php
 	}
 
+	/**
+	 * Display listing status in table of listings.
+	 *
+	 * @param array  $post_states post status array.
+	 * @param object $post        post object.
+	 */
 	public function display_post_states( $post_states, $post ) {
 		if (
 			'auto-listing' !== $post->post_type ||
@@ -80,8 +111,11 @@ class PostStatuses {
 			return $post_states;
 		}
 
-		return array_merge( $post_states, [
-			'archive' => '<span class="dashicons dashicons-portfolio"></span>',
-		] );
+		return array_merge(
+			$post_states,
+			[
+				'archive' => '<span class="dashicons dashicons-portfolio"></span>',
+			]
+		);
 	}
 }

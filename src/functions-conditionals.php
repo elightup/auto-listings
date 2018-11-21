@@ -14,9 +14,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Returns true if on a listings page in the admin
  */
 function is_auto_listings_admin() {
-	$post_type  = get_post_type();
-	$screen     = get_current_screen();
-	$return = false;
+	$post_type = get_post_type();
+	$screen    = get_current_screen();
+	$return    = false;
 
 	if ( in_array( $post_type, array( 'auto-listing', 'listing-enquiry' ) ) ) {
 		$return = true;
@@ -79,7 +79,7 @@ if ( ! function_exists( 'is_listing' ) ) {
 		if ( is_singular( 'auto-listing' ) ) {
 			$result = true;
 		}
-		if ( is_single() && get_post_type() == 'auto-listing' ) {
+		if ( is_single() && get_post_type() === 'auto-listing' ) {
 			$result = true;
 		}
 		return apply_filters( 'is_listing', $result );
@@ -95,7 +95,7 @@ if ( ! function_exists( 'is_listing_search' ) ) {
 			return false;
 		}
 		$current_page = sanitize_post( $GLOBALS['wp_the_query']->get_queried_object() );
-		$result = $current_page->name == 'listing';
+		$result = $current_page->name === 'listing';
 		return apply_filters( 'is_listing_search', $result );
 	}
 }

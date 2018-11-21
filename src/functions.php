@@ -1,5 +1,11 @@
 <?php
 /**
+ * Enqueue scripts and styles on frontend.
+ *
+ * @package Auto Listings.
+ */
+
+/**
  * Returns the listing statuses as set in the options.
  *
  * @return array
@@ -33,29 +39,33 @@ function auto_listings_available_listing_conditions() {
 
 /**
  * Returns array of all sellers.
- * For use in dropdowns.
+ *
+ * @param array $field setting fields.
  */
 function auto_listings_admin_get_sellers( $field ) {
-	$args = apply_filters( 'auto_listings_sellers_as_dropdown', [
-		'role'         => '',
-		'role__in'     => [ 'auto_listings_seller', 'administrator' ],
-		'role__not_in' => [],
-		'meta_key'     => '',
-		'meta_value'   => '',
-		'meta_compare' => '',
-		'meta_query'   => [],
-		'date_query'   => [],
-		'include'      => [],
-		'exclude'      => [],
-		'orderby'      => 'display_name',
-		'order'        => 'ASC',
-		'offset'       => '',
-		'search'       => '',
-		'number'       => '',
-		'count_total'  => false,
-		'fields'       => [ 'display_name', 'ID' ],
-		'who'          => '',
-	] );
+	$args = apply_filters(
+		'auto_listings_sellers_as_dropdown',
+		[
+			'role'         => '',
+			'role__in'     => [ 'auto_listings_seller', 'administrator' ],
+			'role__not_in' => [],
+			'meta_key'     => '',
+			'meta_value'   => '',
+			'meta_compare' => '',
+			'meta_query'   => [],
+			'date_query'   => [],
+			'include'      => [],
+			'exclude'      => [],
+			'orderby'      => 'display_name',
+			'order'        => 'ASC',
+			'offset'       => '',
+			'search'       => '',
+			'number'       => '',
+			'count_total'  => false,
+			'fields'       => [ 'display_name', 'ID' ],
+			'who'          => '',
+		]
+	);
 
 	$sellers = get_users( $args );
 	$array   = [ '' => __( 'No Seller', 'auto-listings' ) ];
@@ -107,16 +117,16 @@ function auto_listings_get_pages() {
 /**
  * Output the map on the admin edit listing
  *
- * @param  object $field_args Current field args
- * @param  object $field      Current field object
+ * @param  object $field_args Current field args.
+ * @param  object $field      Current field object.
  */
 function auto_listings_admin_listing_map( $field_args, $field ) {
 	?>
 	<div class="cmb-row">
 		<div class="cmb-th">&nbsp</div>
 		<div class="cmb-td">
-			<button id="al-find" type="button" class="al-button button button-small"><?php _e( 'Find', 'auto-listings' ); ?></button>
-			<button id="al-reset" type="button" class="al-button button button-small"><?php _e( 'Reset', 'auto-listings' ); ?></button>
+			<button id="al-find" type="button" class="al-button button button-small"><?php esc_html_e( 'Find', 'auto-listings' ); ?></button>
+			<button id="al-reset" type="button" class="al-button button button-small"><?php esc_html_e( 'Reset', 'auto-listings' ); ?></button>
 		</div>
 	</div>
 
@@ -124,7 +134,7 @@ function auto_listings_admin_listing_map( $field_args, $field ) {
 		<div class="cmb-th">&nbsp</div>
 		<div class="cmb-td">
 			<div class="al-admin-map" style="width: 400px; height: 220px;"></div>
-			<p class="cmb2-metabox-description map-desc"><?php _e( 'Modify the marker\'s position by dragging it.', 'auto-listings' ); ?></p>
+			<p class="cmb2-metabox-description map-desc"><?php esc_html_e( 'Modify the marker\'s position by dragging it.', 'auto-listings' ); ?></p>
 		</div>
 	</div>
 
@@ -148,26 +158,28 @@ function auto_listings_admin_listing_status_area() {
 	$count     = ! empty( $enquiries ) ? count( $enquiries ) : 0;
 	$latest    = is_array( $enquiries ) ? end( $enquiries ) : null;
 
-	// listing enquiries section
-	if ( $post_type == 'auto-listing' ) {
+	// listing enquiries section.
+	if ( 'auto-listing' == $post_type ) {
 		echo '<div class="listing-enquiries">';
 
-		echo '<span class="dashicons dashicons-admin-comments"></span> <a target="_blank" href="' . esc_url( admin_url( 'edit.php?post_type=listing-enquiry&listings=' . get_the_title( $post_id ) ) ) . '"><span>' . sprintf( _n( '%s Enquiry', '%s Enquiries', $count, 'auto-listings' ), $count ) . '</a></span>';
+		// translators: %s is number of enquiry.
+		echo '<span class="dashicons dashicons-admin-comments"></span> <a target="_blank" href="' . esc_url( admin_url( 'edit.php?post_type=listing-enquiry&listings=' . get_the_title( $post_id ) ) ) . '"><span>' . sprintf( _n( '%s Enquiry', '%s Enquiries', $count, 'auto-listings' ), $count ) . '</a></span>'; // wpcs xss: ok.
 
 		if ( $latest ) {
-			echo '<p class="cmb2-metabox-description most-recent">' . __( 'Most Recent:', 'auto-listings' ) . ' ' . sprintf( _x( '%s ago', '%s = human-readable time difference', 'auto-listings' ), human_time_diff( get_the_date( 'U', $latest ), current_time( 'timestamp' ) ) ) . '</p>';
+			// translators: %s is the time.
+			echo '<p class="cmb2-metabox-description most-recent">' . __( 'Most Recent:', 'auto-listings' ) . ' ' . sprintf( _x( '%s ago', '%s = human-readable time difference', 'auto-listings' ), human_time_diff( get_the_date( 'U', $latest ), current_time( 'timestamp' ) ) ) . '</p>'; // wpcs xss: ok.
 		}
 		echo '</div>';
 	}
 
-
 	if ( 'archive' !== get_post_status( $post_id ) ) {
-		// archive button
+		// translators: %s is name of listing.
 		$button = ' <button id="archive-item" type="button" class="button button-small">' . sprintf( __( 'Archive This %s', 'auto-listings' ), ucwords( $label->labels->singular_name ) ) . '</button>';
 
-		echo $button;
+		echo $button; // wpcs xss: ok.
 	} else {
-		echo '<div class="archived-text warning">' . sprintf( __( 'This %s is archived.', 'auto-listings' ), $label->labels->singular_name ) . '<br>' . __( 'Hit the Publish button to un-archive it.', 'auto-listings' ) . '</div>';
+		// translators: %s is name of listing.
+		echo '<div class="archived-text warning">' . sprintf( __( 'This %s is archived.', 'auto-listings' ), $label->labels->singular_name ) . '<br>' . __( 'Hit the Publish button to un-archive it.', 'auto-listings' ) . '</div>'; // wpcs xss: ok.
 	}
 	?>
 
@@ -188,7 +200,7 @@ function auto_listings_admin_listing_status_area() {
 					$( btn ).after( '<div class="archived-text ' + obj.result + '">' + obj.string + '</div>' );
 
 					// change the select input to be archived (in case listing is updated after our actions)
-					$( '#post-status-display' ).text( '<?php esc_html_e( 'Archived', 'auto-listings' ) ?>' );
+					$( '#post-status-display' ).text( '<?php esc_html_e( 'Archived', 'auto-listings' ); ?>' );
 				} );
 			} );
 		} );
@@ -196,21 +208,25 @@ function auto_listings_admin_listing_status_area() {
 	<?php
 }
 
-// Ajax Handler for archiving a listings
 add_action( 'wp_ajax_auto_listings_ajax_archive_item', 'auto_listings_ajax_archive_item' );
+/**
+ * Ajax Handler for archiving a listings
+ */
 function auto_listings_ajax_archive_item() {
-	// Get the Post ID
+	// Get the Post ID.
 	$post_id   = (int) $_REQUEST['post_id'];
 	$post_type = get_post_type( $post_id );
 	$label     = get_post_type_object( $post_type );
 	$response  = false;
 
-	// Proceed, again we are checking for permissions
+	// Proceed, again we are checking for permissions.
 	if ( wp_verify_nonce( $_REQUEST['nonce'], 'al-archive-' . $post_id ) ) {
-		$updated = wp_update_post( [
-			'ID'          => $post_id,
-			'post_status' => 'archive',
-		] );
+		$updated = wp_update_post(
+			[
+				'ID'          => $post_id,
+				'post_status' => 'archive',
+			]
+		);
 
 		if ( is_wp_error( $updated ) ) {
 			$response = false;
@@ -219,21 +235,23 @@ function auto_listings_ajax_archive_item() {
 		}
 	}
 
-	if ( $response == true ) {
+	if ( true == $response ) {
 		$return = [
+			// translators: %s is name of listing.
 			'string' => sprintf( __( 'This %s is now archived.', 'auto-listings' ), $label->labels->singular_name ),
 			'result' => 'warning',
 		];
 	} else {
 		$return = [
+			// translators: %s is name of listing.
 			'string' => sprintf( __( 'There was an error archiving this %s', 'auto-listings' ), $label->labels->singular_name ),
 			'result' => 'error',
 		];
 	}
 
-	// Whatever the outcome, send the Response back
+	// Whatever the outcome, send the Response back.
 	echo json_encode( $return );
 
-	// Always exit when doing Ajax
+	// Always exit when doing Ajax.
 	exit();
 }

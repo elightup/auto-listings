@@ -1,7 +1,19 @@
 <?php
+/**
+ * Listings search form.
+ *
+ * @package Auto Listings.
+ */
+
 namespace AutoListings;
 
+/**
+ * Class SearchForm
+ */
 class SearchForm {
+	/**
+	 * Add hooks when module is loaded.
+	 */
 	public function __construct() {
 		add_filter( 'wp', [ $this, 'has_shortcode' ] );
 		add_filter( 'query_vars', [ $this, 'register_query_vars' ] );
@@ -19,6 +31,11 @@ class SearchForm {
 		}
 	}
 
+	/**
+	 * Register query vars.
+	 *
+	 * @param array $vars query vars.
+	 */
 	public function register_query_vars( $vars ) {
 		$vars[] = 'the_year';
 		$vars[] = 'make';
@@ -33,17 +50,25 @@ class SearchForm {
 		return apply_filters( 'auto_listings_query_vars', $vars );
 	}
 
+	/**
+	 * Search Form shortcode.
+	 *
+	 * @param array $atts shortcode attributes.
+	 */
 	public function search_form( $atts ) {
 		$s = isset( $_GET['s'] ) ? sanitize_text_field( $_GET['s'] ) : '';
 
-		$atts = shortcode_atts( [
-			'area_placeholder' => __( 'State, Zip, Town', 'auto-listings' ),
-			'submit_btn'       => __( 'Find My Car', 'auto-listings' ),
-			'refine_text'      => __( 'More Refinements', 'auto-listings' ),
-			'style'            => '1',
-			'layout'           => '',
-			'exclude'          => [],
-		], $atts );
+		$atts = shortcode_atts(
+			[
+				'area_placeholder' => __( 'State, Zip, Town', 'auto-listings' ),
+				'submit_btn'       => __( 'Find My Car', 'auto-listings' ),
+				'refine_text'      => __( 'More Refinements', 'auto-listings' ),
+				'style'            => '1',
+				'layout'           => '',
+				'exclude'          => [],
+			],
+			$atts
+		);
 
 		$exclude = ! empty( $atts['exclude'] ) ? array_map( 'trim', explode( ',', $atts['exclude'] ) ) : [];
 
@@ -51,8 +76,7 @@ class SearchForm {
 		?>
 
 		<form
-			id="auto-listings-search"
-			class="auto-listings-search s-<?= esc_attr( $atts['style'] ); ?> <?= esc_attr( $atts['layout'] ); ?>" autocomplete="off"
+			id="auto-listings-search" class="auto-listings-search s-<?php echo esc_attr( $atts['style'] ); ?> <?php echo esc_attr( $atts['layout'] ); ?>" autocomplete="off"
 			action="<?php the_permalink( auto_listings_option( 'archives_page' ) ); ?>"
 			method="GET"
 			role="search">
@@ -60,7 +84,7 @@ class SearchForm {
 
 				<?php if ( ! in_array( 'condition', $exclude ) ) : ?>
 					<div class="row condition-wrap">
-						<?= $this->condition_field(); ?>
+						<?php echo $this->condition_field(); // wpcs xss: ok. ?>
 					</div>
 				<?php endif; ?>
 
@@ -68,10 +92,10 @@ class SearchForm {
 					<div class="row price-wrap">
 						<?php
 						if ( ! in_array( 'min_price', $exclude ) ) {
-							echo $this->min_price_field();
+							echo $this->min_price_field(); // wpcs xss: ok.
 						}
 						if ( ! in_array( 'max_price', $exclude ) ) {
-							echo $this->max_price_field();
+							echo $this->max_price_field(); // wpcs xss: ok.
 						}
 						?>
 					</div>
@@ -79,36 +103,36 @@ class SearchForm {
 
 				<?php if ( ! in_array( 'area', $exclude ) ) : ?>
 					<div class="row area-wrap">
-						<?= $this->within_field(); ?>
-						<input class="field area" type="text" name="s" placeholder="<?= esc_attr( $atts['area_placeholder'] ); ?>" value="<?= esc_attr( $s ); ?>"/>
-						<button class="al-button" type="submit"><?= esc_html( $atts['submit_btn'] ); ?></button>
+						<?php echo $this->within_field(); // wpcs xss: ok. ?>
+						<input class="field area" type="text" name="s" placeholder="<?php echo esc_attr( $atts['area_placeholder'] ); ?>" value="<?php echo esc_attr( $s ); ?>"/>
+						<button class="al-button" type="submit"><?php echo esc_html( $atts['submit_btn'] ); ?></button>
 					</div>
 				<?php else : ?>
 					<div class="row area-wrap">
-						<input type="hidden" name="s" value="<?= esc_attr( $s ); ?>"/>
-						<button class="al-button" type="submit"><?= esc_html( $atts['submit_btn'] ); ?></button>
+						<input type="hidden" name="s" value="<?php echo esc_attr( $s ); ?>"/>
+						<button class="al-button" type="submit"><?php echo esc_html( $atts['submit_btn'] ); ?></button>
 					</div>
 				<?php endif; ?>
 
 				<?php if ( ! in_array( 'refine', $exclude ) ) : ?>
-					<a class="refine"><?= esc_html( $atts['refine_text'] ); ?><i class="fa fa-angle-down"></i></a>
+					<a class="refine"><?php echo esc_html( $atts['refine_text'] ); ?><i class="fa fa-angle-down"></i></a>
 
 					<div class="row extras-wrap">
 						<?php
 						if ( ! in_array( 'year', $exclude ) ) {
-							echo $this->year_field();
+							echo $this->year_field(); // wpcs xss: ok.
 						}
 						if ( ! in_array( 'make', $exclude ) ) {
-							echo $this->make_field();
+							echo $this->make_field(); // wpcs xss: ok.
 						}
 						if ( ! in_array( 'model', $exclude ) ) {
-							echo $this->model_field();
+							echo $this->model_field(); // wpcs xss: ok.
 						}
 						if ( ! in_array( 'body_type', $exclude ) ) {
-							echo $this->body_type_field();
+							echo $this->body_type_field(); // wpcs xss: ok.
 						}
 						if ( ! in_array( 'odometer', $exclude ) ) {
-							echo $this->odometer_field();
+							echo $this->odometer_field(); // wpcs xss: ok.
 						}
 						do_action( 'auto_listings_extra_search_fields', $exclude );
 						?>
@@ -119,40 +143,40 @@ class SearchForm {
 
 				<?php
 				if ( ! in_array( 'condition', $exclude ) ) {
-					echo $this->condition_field();
+					echo $this->condition_field(); // wpcs xss: ok.
 				}
 				if ( ! in_array( 'prices', $exclude ) ) {
 					if ( ! in_array( 'min_price', $exclude ) ) {
-						echo $this->min_price_field();
+						echo $this->min_price_field(); // wpcs xss: ok.
 					}
 					if ( ! in_array( 'max_price', $exclude ) ) {
-						echo $this->max_price_field();
+						echo $this->max_price_field(); // wpcs xss: ok.
 					}
 				}
 				if ( ! in_array( 'year', $exclude ) ) {
-					echo $this->year_field();
+					echo $this->year_field(); // wpcs xss: ok.
 				}
 				if ( ! in_array( 'make', $exclude ) ) {
-					echo $this->make_field();
+					echo $this->make_field(); // wpcs xss: ok.
 				}
 				if ( ! in_array( 'model', $exclude ) ) {
-					echo $this->model_field();
+					echo $this->model_field(); // wpcs xss: ok.
 				}
 				if ( ! in_array( 'body_type', $exclude ) ) {
-					echo $this->body_type_field();
+					echo $this->body_type_field(); // wpcs xss: ok.
 				}
 				if ( ! in_array( 'odometer', $exclude ) ) {
-					echo $this->odometer_field();
+					echo $this->odometer_field(); // wpcs xss: ok.
 				}
 				if ( ! in_array( 'area', $exclude ) ) {
-					echo $this->within_field();
+					echo $this->within_field(); // wpcs xss: ok.
 					?>
-					<input class="field area" type="text" name="s" placeholder="<?= esc_attr( $atts['area_placeholder'] ); ?>" value="<?= esc_attr( $s ); ?>">
+					<input class="field area" type="text" name="s" placeholder="<?php echo esc_attr( $atts['area_placeholder'] ); ?>" value="<?php echo esc_attr( $s ); ?>">
 					<?php
 				}
 				?>
 
-				<button class="al-button" type="submit"><?= esc_html( $atts['submit_btn'] ); ?></button>
+				<button class="al-button" type="submit"><?php echo esc_html( $atts['submit_btn'] ); ?></button>
 
 			<?php endif; ?>
 		</form>
@@ -162,6 +186,9 @@ class SearchForm {
 		return apply_filters( 'auto_listings_search_form_output', $output, $atts );
 	}
 
+	/**
+	 * Year field
+	 */
 	public function year_field() {
 		$data    = auto_listings_search_get_vehicle_data();
 		$year    = $data['year'];
@@ -179,6 +206,9 @@ class SearchForm {
 		return $this->multiple_select_field( $options, $args );
 	}
 
+	/**
+	 * Make field
+	 */
 	public function make_field() {
 		$data    = auto_listings_search_get_vehicle_data();
 		$make    = $data['make'];
@@ -196,6 +226,9 @@ class SearchForm {
 		return $this->multiple_select_field( $options, $args );
 	}
 
+	/**
+	 * Model field
+	 */
 	public function model_field() {
 		$data    = auto_listings_search_get_vehicle_data();
 		$model   = $data['model'];
@@ -213,6 +246,9 @@ class SearchForm {
 		return $this->multiple_select_field( $options, $args );
 	}
 
+	/**
+	 * Condition field
+	 */
 	public function condition_field() {
 		$conditions = auto_listings_option( 'display_condition' );
 		$options    = [];
@@ -230,6 +266,9 @@ class SearchForm {
 		return $this->multiple_select_field( $options, $args );
 	}
 
+	/**
+	 * Min price field
+	 */
 	public function min_price_field() {
 		$min_max_price = auto_listings_search_price_min_max();
 		$args          = [
@@ -240,6 +279,9 @@ class SearchForm {
 		return $this->select_field( $min_max_price, $args );
 	}
 
+	/**
+	 * Max price field
+	 */
 	public function max_price_field() {
 		$min_max_price = auto_listings_search_price_min_max();
 		$args          = [
@@ -250,6 +292,9 @@ class SearchForm {
 		return $this->select_field( $min_max_price, $args );
 	}
 
+	/**
+	 * Within field
+	 */
 	public function within_field() {
 		$key = auto_listings_option( 'maps_api_key' );
 		if ( empty( $key ) ) {
@@ -263,11 +308,16 @@ class SearchForm {
 		return $this->select_field( $radius, $args );
 	}
 
+	/**
+	 * Body type field
+	 */
 	public function body_type_field() {
-		$body_types = get_terms( [
-			'taxonomy'   => 'body-type',
-			'hide_empty' => true,
-		] );
+		$body_types = get_terms(
+			[
+				'taxonomy'   => 'body-type',
+				'hide_empty' => true,
+			]
+		);
 
 		$options = [];
 
@@ -283,6 +333,9 @@ class SearchForm {
 		return $this->multiple_select_field( $options, $args );
 	}
 
+	/**
+	 * Odometer field
+	 */
 	public function odometer_field() {
 		$odometer = auto_listings_search_mileage_max();
 		$args     = [
@@ -292,6 +345,12 @@ class SearchForm {
 		return $this->select_field( $odometer, $args );
 	}
 
+	/**
+	 * Select field
+	 *
+	 * @param array $options Field options.
+	 * @param array $args Field arguments.
+	 */
 	public function select_field( $options, $args = [] ) {
 		if ( empty( $options ) ) {
 			return '';
@@ -299,7 +358,7 @@ class SearchForm {
 		$selected = isset( $_GET[ $args['name'] ] ) ? $_GET[ $args['name'] ] : '';
 		ob_start();
 		?>
-		<div class="field <?= esc_attr( str_replace( '_', '-', $args['name'] ) ); ?>">
+		<div class="field <?php echo esc_attr( str_replace( '_', '-', $args['name'] ) ); ?>">
 
 			<?php
 			if ( isset( $args['prefix'] ) ) {
@@ -307,11 +366,11 @@ class SearchForm {
 			}
 			?>
 
-			<select placeholder="<?php echo esc_attr( $args['label'] ); ?>" name="<?= esc_attr( $args['name'] ); ?>">
-				<option value=""><?= esc_attr( $args['label'] ) ?></option>
+			<select placeholder="<?php echo esc_attr( $args['label'] ); ?>" name="<?php echo esc_attr( $args['name'] ); ?>">
+				<option value=""><?php echo esc_attr( $args['label'] ); ?></option>
 
 				<?php foreach ( $options as $val => $text ) : ?>
-					<option value="<?= esc_attr( $val ); ?>" <?php selected( $val, $selected ); ?> ><?= esc_attr( $text ) ?></option>
+					<option value="<?php echo esc_attr( $val ); ?>" <?php selected( $val, $selected ); ?> ><?php echo esc_attr( $text ); ?></option>
 				<?php endforeach; ?>
 			</select>
 
@@ -328,6 +387,12 @@ class SearchForm {
 		return apply_filters( 'auto_listings_search_field' . $args['name'], $output );
 	}
 
+	/**
+	 * Multiple select field
+	 *
+	 * @param array $options Field options.
+	 * @param array $args Field arguments.
+	 */
 	public function multiple_select_field( $options, $args = [] ) {
 		if ( empty( $options ) ) {
 			return '';
@@ -336,25 +401,24 @@ class SearchForm {
 		$selected = isset( $_GET[ $args['name'] ] ) ? $_GET[ $args['name'] ] : [];
 		?>
 
-		<div class="field <?= esc_attr( str_replace( '_', '-', $args['name'] ) ); ?>">
+		<div class="field <?php echo esc_attr( str_replace( '_', '-', $args['name'] ) ); ?>">
 
 			<?php
 			if ( isset( $args['prefix'] ) ) {
 				echo '<span class="prefix">' . esc_html( $args['prefix'] ) . '</span>';
 			}
-			?>
+			// Condition field. If we only have 1 condition, remove the select option.
+			if ( 'condition' == $args['name'] && count( $options ) <= 1 ) :
+				?>
 
-			<?php // Condition field. If we only have 1 condition, remove the select option ?>
-			<?php if ( $args['name'] == 'condition' && count( $options ) <= 1 ) : ?>
-
-				<input type="hidden" name="condition[]" value="<?= esc_html( key( $options ) ) ?>"/>
+				<input type="hidden" name="condition[]" value="<?php echo esc_html( key( $options ) ); ?>"/>
 
 			<?php else : ?>
 
-				<select multiple="multiple" placeholder="<?php echo esc_attr( $args['label'] ); ?>" name="<?= esc_attr( $args['name'] ); ?>[]">
+				<select multiple="multiple" placeholder="<?php echo esc_attr( $args['label'] ); ?>" name="<?php echo esc_attr( $args['name'] ); ?>[]">
 
 					<?php foreach ( $options as $val => $text ) : ?>
-						<option value="<?= esc_attr( $val ); ?>" <?php selected( true, in_array( $val, $selected ) ) ?> ><?= esc_attr( $text ) ?></option>
+						<option value="<?php echo esc_attr( $val ); ?>" <?php selected( true, in_array( $val, $selected ) ); ?> ><?php echo esc_attr( $text ); ?></option>
 					<?php endforeach; ?>
 
 				</select>

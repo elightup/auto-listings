@@ -1,7 +1,20 @@
 <?php
+/**
+ * Plugin shortcodes
+ *
+ * @package Auto Listings.
+ */
+
 namespace AutoListings;
 
+/**
+ * Class Shortcodes
+ */
 class Shortcodes {
+
+	/**
+	 * Add hooks when module is loaded.
+	 */
 	public function __construct() {
 		add_filter( 'wp', [ $this, 'has_shortcode' ] );
 		add_shortcode( 'auto_listings_listing', [ $this, 'listing' ] );
@@ -17,8 +30,8 @@ class Shortcodes {
 			return;
 		}
 		if ( has_shortcode( $post->post_content, 'auto_listings_browse' ) ||
-		     has_shortcode( $post->post_content, 'auto_listings_listing' ) ||
-		     has_shortcode( $post->post_content, 'auto_listings_listings' )
+			has_shortcode( $post->post_content, 'auto_listings_listing' ) ||
+			has_shortcode( $post->post_content, 'auto_listings_listings' )
 		) {
 			add_filter( 'is_auto_listings', '__return_true' );
 		}
@@ -31,14 +44,17 @@ class Shortcodes {
 	/**
 	 * Display a single listing.
 	 *
-	 * @param array $atts
+	 * @param array $atts shortcode attributes.
 	 *
 	 * @return string
 	 */
 	public function listing( $atts ) {
-		$atts = shortcode_atts( [
-			'id' => 0,
-		], $atts );
+		$atts = shortcode_atts(
+			[
+				'id' => 0,
+			],
+			$atts
+		);
 
 		$args  = [
 			'post_type'      => 'auto-listing',
@@ -67,19 +83,21 @@ class Shortcodes {
 	/**
 	 * List multiple listings shortcode.
 	 *
-	 * @param array $atts
-	 *
+	 * @param array $atts Shortcode attributes.
 	 * @return string
 	 */
 	public function listings( $atts ) {
-		$atts = shortcode_atts( [
-			'orderby' => 'date',
-			'order'   => 'asc',
-			'number'  => '20',
-			'seller'  => '', // id of the seller
-			'ids'     => '',
-			'compact' => '',
-		], $atts );
+		$atts = shortcode_atts(
+			[
+				'orderby' => 'date',
+				'order'   => 'asc',
+				'number'  => '20',
+				'seller'  => '', // id of the seller.
+				'ids'     => '',
+				'compact' => '',
+			],
+			$atts
+		);
 
 		$query_args = [
 			'post_type'           => 'auto-listing',
@@ -100,8 +118,8 @@ class Shortcodes {
 			$query_args['meta_compare'] = '=';
 		}
 
-		// if we are in compact mode
-		if ( ! empty( $atts['compact'] ) && $atts['compact'] == 'true' ) {
+		// if we are in compact mode.
+		if ( ! empty( $atts['compact'] ) && 'true' === $atts['compact'] ) {
 			remove_action( 'auto_listings_listings_loop_item', 'auto_listings_template_loop_at_a_glance', 40 );
 			remove_action( 'auto_listings_listings_loop_item', 'auto_listings_template_loop_description', 50 );
 			add_filter( 'post_class', [ $this, 'listings_compact_mode' ] );
@@ -125,9 +143,9 @@ class Shortcodes {
 	/**
 	 * Loop over found listings.
 	 *
-	 * @param  array  $query_args
-	 * @param  array  $atts
-	 * @param  string $loop_name
+	 * @param  array  $query_args Query parameters.
+	 * @param  array  $atts Shortcode attributes.
+	 * @param  string $loop_name Loop name.
 	 *
 	 * @return string
 	 */

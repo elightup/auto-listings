@@ -1,4 +1,10 @@
 <?php
+/**
+ * Listing setting fields.
+ *
+ * @package Auto Listings.
+ */
+
 $prefix = '_al_listing_';
 
 $fields = [];
@@ -14,12 +20,15 @@ $fields[15] = [
 	'id'         => $prefix . 'seller',
 	'type'       => 'user',
 	'std'        => get_current_user_id(),
-	'query_args' => apply_filters( 'auto_listings_sellers_as_dropdown', [
-		'role__in'    => [ 'auto_listings_seller', 'administrator' ],
-		'orderby'     => 'display_name',
-		'order'       => 'ASC',
-		'count_total' => false,
-	] ),
+	'query_args' => apply_filters(
+		'auto_listings_sellers_as_dropdown',
+		[
+			'role__in'    => [ 'auto_listings_seller', 'administrator' ],
+			'orderby'     => 'display_name',
+			'order'       => 'ASC',
+			'count_total' => false,
+		]
+	),
 ];
 
 $fields[20] = [

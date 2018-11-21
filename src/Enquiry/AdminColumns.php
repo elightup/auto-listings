@@ -155,7 +155,7 @@ class AdminColumns {
 	 * @param array $vars query vars.
 	 */
 	public function orderby_seller( $vars ) {
-		if ( isset( $vars['orderby'] ) && 'seller' == $vars['orderby'] ) {
+		if ( isset( $vars['orderby'] ) && 'seller' === $vars['orderby'] ) {
 			$vars = array_merge(
 				$vars,
 				[
@@ -173,7 +173,7 @@ class AdminColumns {
 	 * @param array $vars query vars.
 	 */
 	public function orderby_name( $vars ) {
-		if ( isset( $vars['orderby'] ) && 'name' == $vars['orderby'] ) {
+		if ( isset( $vars['orderby'] ) && 'name' === $vars['orderby'] ) {
 			$vars = array_merge(
 				$vars,
 				[
@@ -191,7 +191,7 @@ class AdminColumns {
 	 * @param array $vars query vars.
 	 */
 	public function orderby_email( $vars ) {
-		if ( isset( $vars['orderby'] ) && 'email' == $vars['orderby'] ) {
+		if ( isset( $vars['orderby'] ) && 'email' === $vars['orderby'] ) {
 			$vars = array_merge(
 				$vars,
 				[
@@ -214,7 +214,7 @@ class AdminColumns {
 		}
 
 		// only add filter to post type you want.
-		if ( 'listing-enquiry' == $type && is_admin() && $pagenow == 'edit.php' ) {
+		if ( 'listing-enquiry' === $type && is_admin() && 'edit.php' === $pagenow ) {
 
 			$fields = $this->build_fields();
 
@@ -226,16 +226,16 @@ class AdminColumns {
 
 					?>
 					<select name='<?php echo esc_attr( $field ); ?>' id='<?php echo esc_attr( $field ); ?>' class='postform'>
-						com
 						<option value=''>
 							<?php
 							/* translators: field value. */
-							printf( __( 'Show all %s', 'auto-listings' ), esc_html( $field ) ) ?>
+							printf( __( 'Show all %s', 'auto-listings' ), esc_html( $field ) )
+							?>
 						</option>
 
 						<?php
 						foreach ( $values as $val => $text ) :
-							$text = $field == 'sellers' ? get_the_author_meta( 'display_name', $val ) : $text;
+							$text = $field === 'sellers' ? get_the_author_meta( 'display_name', $val ) : $text;
 							if ( empty( $val ) ) {
 								continue;
 							}
@@ -279,7 +279,7 @@ class AdminColumns {
 		}
 
 		/* Restore original Post Data */
-		wp_reset_query();
+		wp_reset_postdata();
 		return $fields;
 	}
 
