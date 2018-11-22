@@ -41,7 +41,7 @@ class Main {
 	 * Add comment to <head> tag
 	 */
 	public function head_comment() {
-		echo '<!-- This site is using Auto Listings plugin- https://wordpress.org/plugins/auto-listings/ -->';
+		echo '<!-- This site is using Auto Listings plugin - https://wordpress.org/plugins/auto-listings/ -->';
 	}
 
 }
