@@ -39,10 +39,9 @@ require 'src/functions-formatting.php';
 require 'src/functions-general.php';
 require 'src/functions-listing.php';
 require 'src/functions-sidebars.php';
-require 'src/updater/class-auto-listings-license.php';
 
-$al_plugin     = new Plugin( __DIR__ . '/auto-listings.php' );
-$al_installer  = new Installer();
+$al_plugin    = new Plugin( __DIR__ . '/auto-listings.php' );
+$al_installer = new Installer();
 
 $al_listing_post_type = new ListingPostType();
 $al_post_statuses     = new PostStatuses();
