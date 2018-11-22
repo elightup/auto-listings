@@ -1,4 +1,10 @@
 <?php
+/**
+ * Uninstall plugin.
+ *
+ * @package Auto Listings.
+ */
+
 // Exit if accessed directly.
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
@@ -15,22 +21,24 @@ if ( 'yes' !== $remove ) {
 }
 
 $auto_listings_post_types = [ 'auto-listing', 'listing-enquiry' ];
-foreach ( $auto_listings_post_types as $post_type ) {
-	$items = get_posts( [
-		'post_type'   => $post_type,
-		'numberposts' => - 1,
-		'post_status' => [
-			'publish',
-			'pending',
-			'draft',
-			'auto-draft',
-			'future',
-			'private',
-			'inherit',
-			'trash',
-		],
-		'fields'      => 'ids',
-	] );
+foreach ( $auto_listings_post_types as $auto_listings_post_type ) {
+	$items = get_posts(
+		[
+			'post_type'   => $auto_listings_post_type,
+			'numberposts' => - 1,
+			'post_status' => [
+				'publish',
+				'pending',
+				'draft',
+				'auto-draft',
+				'future',
+				'private',
+				'inherit',
+				'trash',
+			],
+			'fields'      => 'ids',
+		]
+	);
 
 	if ( $items ) {
 		foreach ( $items as $item ) {
@@ -50,6 +58,6 @@ $roles->remove_caps();
 
 /** Delete the Roles */
 $auto_listings_roles = [ 'auto_listings_seller' ];
-foreach ( $auto_listings_roles as $role ) {
-	remove_role( $role );
+foreach ( $auto_listings_roles as $auto_listings_role ) {
+	remove_role( $auto_listings_role );
 }

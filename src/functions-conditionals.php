@@ -37,7 +37,7 @@ function is_auto_listings() {
 	// include on sellers page.
 	$is_seller = false;
 	if ( is_author() ) {
-		$user = new WP_User( auto_listings_seller_ID() );
+		$user       = new WP_User( auto_listings_seller_ID() );
 		$user_roles = $user->roles;
 		if ( in_array( 'auto_listings_seller', $user_roles ) ) {
 			$is_seller = true;
@@ -95,7 +95,7 @@ if ( ! function_exists( 'is_listing_search' ) ) {
 			return false;
 		}
 		$current_page = sanitize_post( $GLOBALS['wp_the_query']->get_queried_object() );
-		$result = $current_page->name === 'listing';
+		$result       = 'listing' === $current_page->name;
 		return apply_filters( 'is_listing_search', $result );
 	}
 }

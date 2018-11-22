@@ -21,6 +21,6 @@ function auto_listings_enquiry_meta( $meta, $post_id = 0 ) {
 		$post_id = get_the_ID();
 	}
 	$meta_key = '_al_enquiry_' . $meta;
-	$data = get_post_meta( $post_id, $meta_key, true );
+	$data     = get_post_meta( $post_id, $meta_key, true );
 	return $data;
 }

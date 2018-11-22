@@ -14,7 +14,7 @@ return [
 		[
 			'name'        => __( 'Opening HTML Tag(s)', 'auto-listings' ),
 			'desc'        => __( 'Override the opening HTML tags for all Listings pages.', 'auto-listings' ) . '<br>' .
-							 __( 'This can help you to match the HTML with your current theme.', 'auto-listings' ),
+							__( 'This can help you to match the HTML with your current theme.', 'auto-listings' ),
 			'id'          => 'opening_html',
 			'type'        => 'textarea',
 			'placeholder' => '<div class=&quot;container&quot;><div class=&quot;main-content&quot;>',
@@ -23,7 +23,7 @@ return [
 		[
 			'name'        => __( 'Closing HTML Tag(s)', 'auto-listings' ),
 			'desc'        => __( 'Override the closing HTML tags for all Listings pages.', 'auto-listings' ) . '<br>' .
-							 __( 'This can help you to match the HTML with your current theme.', 'auto-listings' ),
+							__( 'This can help you to match the HTML with your current theme.', 'auto-listings' ),
 			'id'          => 'closing_html',
 			'type'        => 'textarea',
 			'placeholder' => '</div></div>',

@@ -26,7 +26,7 @@ class TemplateLoader {
 	public function template_include( $template ) {
 		$file = '';
 
-		if ( is_single() && get_post_type() == 'auto-listing' ) {
+		if ( is_single() && get_post_type() === 'auto-listing' ) {
 			$file = 'single-listing.php';
 		}
 

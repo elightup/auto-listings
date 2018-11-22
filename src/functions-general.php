@@ -104,7 +104,7 @@ function auto_listings_meta( $meta, $post_id = 0, $single = true ) {
 		$post_id = get_the_ID();
 	}
 	$meta_key = '_al_listing_' . $meta;
-	$data = get_post_meta( $post_id, $meta_key, $single );
+	$data     = get_post_meta( $post_id, $meta_key, $single );
 	return $data;
 }
 
@@ -304,10 +304,10 @@ function auto_listings_search_get_vehicle_data() {
 	$args = apply_filters(
 		'auto_listings_search_get_vehicle_data_args',
 		array(
-			'post_type'     => 'auto-listing',
-			'numberposts'   => -1,
-			'post_status'   => array( 'publish' ),
-			'fields'        => 'ids',
+			'post_type'   => 'auto-listing',
+			'numberposts' => -1,
+			'post_status' => array( 'publish' ),
+			'fields'      => 'ids',
 		)
 	);
 

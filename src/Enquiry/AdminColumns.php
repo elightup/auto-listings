@@ -217,7 +217,6 @@ class AdminColumns {
 		if ( 'listing-enquiry' === $type && is_admin() && 'edit.php' === $pagenow ) {
 
 			$fields = $this->build_fields();
-
 			if ( $fields ) {
 
 				foreach ( $fields as $field => $values ) {
@@ -240,7 +239,7 @@ class AdminColumns {
 								continue;
 							}
 							?>
-							<option value="<?php echo esc_attr( $val ) ?>" <?php if ( isset( $_GET[ $field ] ) ) selected( $_GET[ $field ], $val ); ?>><?php echo esc_html( $text ); ?></option>
+							<option value="<?php echo esc_attr( $val ); ?>" <?php ( isset( $_GET[ $field ] ) ) ? selected( $_GET[ $field ], $val ) : '' ?>><?php echo esc_html( $text ); ?></option>
 
 						<?php endforeach; ?>
 

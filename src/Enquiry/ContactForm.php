@@ -99,7 +99,7 @@ class ContactForm {
 
 		wp_mail( $to, $subject, $message, $headers );
 		$enquiries   = get_post_meta( $listing_id, '_al_listing_enquiries', true );
-		$enquiries = empty( $enquiries ) || ! is_array( $enquiries ) ? [] : $enquiries;
+		$enquiries   = empty( $enquiries ) || ! is_array( $enquiries ) ? [] : $enquiries;
 		$enquiries[] = $enquiry->post_id;
 		update_post_meta( $listing_id, '_al_listing_enquiries', $enquiries );
 	}
@@ -133,11 +133,11 @@ class ContactForm {
 		$message = auto_listings_option( 'contact_form_message' );
 		if ( ! isset( $message ) || empty( $message ) ) {
 			$message = __( 'Hi {seller_name},', 'auto-listings' ) . "\r\n" .
-					   __( 'There has been a new enquiry on <strong>{listing_title}</strong>', 'auto-listings' ) . "\r\n" .
-					   __( 'Name: {enquiry_name}', 'auto-listings' ) . "\r\n" .
-					   __( 'Email: {enquiry_email}', 'auto-listings' ) . "\r\n" .
-					   __( 'Phone: {enquiry_phone}', 'auto-listings' ) . "\r\n" .
-					   __( 'Message: {enquiry_message}', 'auto-listings' ) . "\r\n";
+					__( 'There has been a new enquiry on <strong>{listing_title}</strong>', 'auto-listings' ) . "\r\n" .
+					__( 'Name: {enquiry_name}', 'auto-listings' ) . "\r\n" .
+					__( 'Email: {enquiry_email}', 'auto-listings' ) . "\r\n" .
+					__( 'Phone: {enquiry_phone}', 'auto-listings' ) . "\r\n" .
+					__( 'Message: {enquiry_message}', 'auto-listings' ) . "\r\n";
 		}
 		return apply_filters( 'auto_listings_contact_form_message', wpautop( wp_kses_post( $message ) ) );
 	}

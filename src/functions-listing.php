@@ -259,8 +259,7 @@ function auto_listings_spec_fields() {
 			'label' => __( 'Engine Compression Ratio', 'auto-listings' ),
 			'type'  => 'engine',
 		],
-
-		'make_country' => [
+		'make_country'                => [
 			'label' => __( 'Country', 'auto-listings' ),
 			'type'  => 'general',
 		],
@@ -322,8 +321,8 @@ function auto_listings_listing_post_class( $classes, $class = '', $post_id = '' 
 			$classes[] = strtolower( 'has-thumbnail' );
 		}
 	}
-
-	if ( false !== ( $key = array_search( 'hentry', $classes ) ) ) {
+	$key = array_search( 'hentry', $classes );
+	if ( false !== $key ) {
 		unset( $classes[ $key ] );
 	}
 
@@ -433,7 +432,7 @@ function auto_listings_price( $price = null ) {
 	if ( ! $price ) {
 		$price = auto_listings_meta( 'price' );
 	}
-	$price = apply_filters( 'auto_listings_filter_price', $price );
+	$price  = apply_filters( 'auto_listings_filter_price', $price );
 	$suffix = auto_listings_meta( 'price_suffix' );
 	return auto_listings_format_price( $price ) . ' ' . $suffix;
 }
@@ -476,7 +475,7 @@ function auto_listings_engine() {
  * Outputs the fuel economy
  */
 function auto_listings_fuel_economy() {
-	if ( auto_listings_metric() == 'yes' ) {
+	if ( auto_listings_metric() === 'yes' ) {
 		$output = auto_listings_meta( 'model_lkm_mixed' ) ? auto_listings_meta( 'model_lkm_mixed' ) . __( 'L/km', 'auto-listings' ) : null;
 	} else {
 		$output = auto_listings_meta( 'model_mpg_mixed' ) ? auto_listings_meta( 'model_mpg_mixed' ) . __( 'mpg', 'auto-listings' ) : null;

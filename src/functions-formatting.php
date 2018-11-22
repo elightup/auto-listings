@@ -74,9 +74,9 @@ function auto_listings_include_decimals() {
  * @return string
  */
 function auto_listings_format_price_format() {
-	$option         = get_option( 'auto_listings_options' );
-	$currency_pos   = isset( $option['currency_position'] ) ? $option['currency_position'] : 'left';
-	$format         = '%1$s%2$s';
+	$option       = get_option( 'auto_listings_options' );
+	$currency_pos = isset( $option['currency_position'] ) ? $option['currency_position'] : 'left';
+	$format       = '%1$s%2$s';
 
 	switch ( $currency_pos ) {
 		case 'left':
@@ -185,7 +185,7 @@ function auto_listings_format_price( $price, $args = array() ) {
 	$price    = apply_filters( 'auto_listings_raw_price', floatval( $negative ? $price * -1 : $price ) );
 	$price    = apply_filters( 'auto_listings_formatted_price', number_format( $price, $decimals, $decimal_separator, $thousand_separator ), $price, $decimals, $decimal_separator, $thousand_separator );
 
-	if ( 'no' == $include_decimals ) {
+	if ( 'no' === $include_decimals ) {
 		$price = auto_listings_trim_zeros( $price );
 	}
 
