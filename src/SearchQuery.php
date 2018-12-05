@@ -232,7 +232,7 @@ class SearchQuery {
 		$distance = isset( $_GET['within'] ) && ! empty( $_GET['within'] ) ? floatval( $_GET['within'] ) : 50;
 
 		// earth's radius in km = ~6371.
-		$radius = auto_listings_metric() == 'yes' ? 6371 : 3950;
+		$radius = auto_listings_metric() === 'yes' ? 6371 : 3950;
 
 		// latitude boundaries.
 		$maxlat = $lat + rad2deg( $distance / $radius );
@@ -333,6 +333,7 @@ class SearchQuery {
 				'_al_listing_displayed_address',
 			]
 		);
+
 		$searchterm = sanitize_text_field( $_GET['s'] );
 
 		// we have to remove the "s" parameter from the query, because it will prevent the posts from being found.

@@ -282,7 +282,7 @@ function auto_listings_get_specs_for_output() {
 	// loop through all our fields.
 	foreach ( $spec_fields as $id => $value ) {
 		// skip the ones we don't want to show.
-		if ( is_array( $display ) && ! in_array( $id, $display ) ) {
+		if ( is_array( $display ) && ! in_array( $id, $display, true ) ) {
 			continue;
 		}
 
@@ -321,7 +321,7 @@ function auto_listings_listing_post_class( $classes, $class = '', $post_id = '' 
 			$classes[] = strtolower( 'has-thumbnail' );
 		}
 	}
-	$key = array_search( 'hentry', $classes );
+	$key = array_search( 'hentry', $classes, true );
 	if ( false !== $key ) {
 		unset( $classes[ $key ] );
 	}
@@ -372,7 +372,7 @@ function auto_listings_get_status() {
 	$status = null;
 	if ( $option_status ) {
 		foreach ( $option_status as $key => $value ) {
-			if ( in_array( $listing_status, $value ) ) {
+			if ( in_array( $listing_status, $value, true ) ) {
 				$status     = isset( $value['status'] ) ? $value['status'] : null;
 				$bg_color   = isset( $value['bg_color'] ) ? $value['bg_color'] : null;
 				$text_color = isset( $value['text_color'] ) ? $value['text_color'] : null;

@@ -159,7 +159,7 @@ function auto_listings_admin_listing_status_area() {
 	$latest    = is_array( $enquiries ) ? end( $enquiries ) : null;
 
 	// listing enquiries section.
-	if ( 'auto-listing' == $post_type ) {
+	if ( 'auto-listing' === $post_type ) {
 		echo '<div class="listing-enquiries">';
 
 		// translators: %s is number of enquiry.
@@ -214,13 +214,13 @@ add_action( 'wp_ajax_auto_listings_ajax_archive_item', 'auto_listings_ajax_archi
  */
 function auto_listings_ajax_archive_item() {
 	// Get the Post ID.
-	$post_id   = (int) $_REQUEST['post_id'];
+	$post_id   = isset( $_REQUEST['post_id'] ) ? intval( $_REQUEST['post_id'] ) : 0;
 	$post_type = get_post_type( $post_id );
 	$label     = get_post_type_object( $post_type );
 	$response  = false;
 
 	// Proceed, again we are checking for permissions.
-	if ( wp_verify_nonce( $_REQUEST['nonce'], 'al-archive-' . $post_id ) ) {
+	if ( isset( $_REQUEST['nonce'] ) && wp_verify_nonce( $_REQUEST['nonce'], 'al-archive-' . $post_id ) ) {
 		$updated = wp_update_post(
 			[
 				'ID'          => $post_id,
@@ -235,7 +235,7 @@ function auto_listings_ajax_archive_item() {
 		}
 	}
 
-	if ( true == $response ) {
+	if ( true === $response ) {
 		$return = [
 			// translators: %s is name of listing.
 			'string' => sprintf( __( 'This %s is now archived.', 'auto-listings' ), $label->labels->singular_name ),
@@ -250,7 +250,7 @@ function auto_listings_ajax_archive_item() {
 	}
 
 	// Whatever the outcome, send the Response back.
-	echo json_encode( $return );
+	echo wp_json_encode( $return );
 
 	// Always exit when doing Ajax.
 	exit();

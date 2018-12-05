@@ -49,7 +49,8 @@ class AdminColumns {
 	 * @param array $columns array of columns.
 	 */
 	public function columns( $columns ) {
-		$post_type = sanitize_text_field( $_GET['post_type'] );
+		$post_type = filter_input( INPUT_GET, 'post_type' );
+		$post_type = sanitize_text_field( $post_type );
 
 		/* Get taxonomies that should appear in the manage posts table. */
 		$taxonomies = get_object_taxonomies( $post_type, 'objects' );
@@ -228,18 +229,18 @@ class AdminColumns {
 						<option value=''>
 							<?php
 							/* translators: field value. */
-							printf( __( 'Show all %s', 'auto-listings' ), esc_html( $field ) )
+							echo wp_kses_post( sprintf( __( 'Show all %s', 'auto-listings' ), $field ) );
 							?>
 						</option>
 
 						<?php
 						foreach ( $values as $val => $text ) :
-							$text = $field === 'sellers' ? get_the_author_meta( 'display_name', $val ) : $text;
+							$text = 'sellers' === $field ? get_the_author_meta( 'display_name', $val ) : $text;
 							if ( empty( $val ) ) {
 								continue;
 							}
 							?>
-							<option value="<?php echo esc_attr( $val ); ?>" <?php ( isset( $_GET[ $field ] ) ) ? selected( $_GET[ $field ], $val ) : '' ?>><?php echo esc_html( $text ); ?></option>
+							<option value="<?php echo esc_attr( $val ); ?>" <?php ( isset( $_GET[ $field ] ) ) ? selected( $_GET[ $field ], $val ) : ''; ?>><?php echo esc_html( $text ); ?></option>
 
 						<?php endforeach; ?>
 
@@ -265,11 +266,11 @@ class AdminColumns {
 			'post_status'    => 'publish',
 		];
 
-		$listings = query_posts( $args );
+		$listings = new \WP_Query( $args );
 
-		if ( $listings ) {
+		if ( $listings->posts ) {
 			$fields = [];
-			foreach ( $listings as $listing ) {
+			foreach ( $listings->posts as $listing ) {
 				foreach ( $this->filter_fields as $field => $text ) {
 					$val                     = auto_listings_enquiry_meta( $field, $listing->ID );
 					$fields[ $text ][ $val ] = $val;

@@ -54,7 +54,6 @@ class PostType {
 			'menu_icon'           => 'dashicons-email',
 			'menu_position'       => 56,
 			'query_var'           => true,
-			// 'rewrite'            => array('slug' => 'listings-enquiry', 'with_front' => false),
 			'capability_type'     => 'post',
 			'capabilities'        => [
 				'create_posts' => false,

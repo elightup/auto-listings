@@ -20,7 +20,8 @@ $cols = auto_listings_columns();
 	/**
 	 * @hooked auto_listings_template_loop_image
 	 */
-	do_action( 'auto_listings_before_listings_loop_item_summary' ); ?>
+	do_action( 'auto_listings_before_listings_loop_item_summary' );
+	?>
 
 	<div class="summary">
 

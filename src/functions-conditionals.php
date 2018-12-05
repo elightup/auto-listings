@@ -18,11 +18,11 @@ function is_auto_listings_admin() {
 	$screen    = get_current_screen();
 	$return    = false;
 
-	if ( in_array( $post_type, array( 'auto-listing', 'listing-enquiry' ) ) ) {
+	if ( in_array( $post_type, array( 'auto-listing', 'listing-enquiry' ), true ) ) {
 		$return = true;
 	}
 
-	if ( in_array( $screen->id, array( 'auto-listing', 'edit-auto-listing', 'listing-enquiry', 'edit-listing-enquiry', 'settings_page_auto_listings_options' ) ) ) {
+	if ( in_array( $screen->id, array( 'auto-listing', 'edit-auto-listing', 'listing-enquiry', 'edit-listing-enquiry', 'settings_page_auto_listings_options' ), true ) ) {
 		$return = true;
 	}
 
@@ -39,7 +39,7 @@ function is_auto_listings() {
 	if ( is_author() ) {
 		$user       = new WP_User( auto_listings_seller_ID() );
 		$user_roles = $user->roles;
-		if ( in_array( 'auto_listings_seller', $user_roles ) ) {
+		if ( in_array( 'auto_listings_seller', $user_roles, true ) ) {
 			$is_seller = true;
 		}
 	}

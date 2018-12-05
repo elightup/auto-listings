@@ -246,7 +246,7 @@ class AdminColumns {
 				</option>
 
 				<?php foreach ( $values as $val => $text ) : ?>
-					<?php $text = $field == 'sellers' ? get_the_author_meta( 'display_name', $val ) : $text; ?>
+					<?php $text = 'sellers' === $field ? get_the_author_meta( 'display_name', $val ) : $text; ?>
 					<option value="<?php echo esc_attr( $val ); ?>" <?php selected( $selected, $val ); ?>><?php echo esc_html( $text ); ?></option>
 				<?php endforeach; ?>
 
@@ -269,11 +269,11 @@ class AdminColumns {
 			'post_status'    => 'publish',
 		];
 
-		$query = query_posts( $args );
+		$query = new \WP_Query( $args );
 
-		if ( $query ) {
+		if ( $query->posts ) {
 			$fields = [];
-			foreach ( $query as $listing ) {
+			foreach ( $query->posts as $listing ) {
 				foreach ( $this->filter_fields as $field => $text ) {
 					$val                     = auto_listings_meta( $field, $listing->ID );
 					$fields[ $text ][ $val ] = $val;

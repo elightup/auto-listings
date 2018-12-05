@@ -82,26 +82,26 @@ class SearchForm {
 			role="search">
 			<?php if ( 'standard' !== $atts['layout'] ) : ?>
 
-				<?php if ( ! in_array( 'condition', $exclude ) ) : ?>
+				<?php if ( ! in_array( 'condition', $exclude, true ) ) : ?>
 					<div class="row condition-wrap">
 						<?php echo $this->condition_field(); // wpcs xss: ok. ?>
 					</div>
 				<?php endif; ?>
 
-				<?php if ( ! in_array( 'prices', $exclude ) ) : ?>
+				<?php if ( ! in_array( 'prices', $exclude, true ) ) : ?>
 					<div class="row price-wrap">
 						<?php
-						if ( ! in_array( 'min_price', $exclude ) ) {
+						if ( ! in_array( 'min_price', $exclude, true ) ) {
 							echo $this->min_price_field(); // wpcs xss: ok.
 						}
-						if ( ! in_array( 'max_price', $exclude ) ) {
+						if ( ! in_array( 'max_price', $exclude, true ) ) {
 							echo $this->max_price_field(); // wpcs xss: ok.
 						}
 						?>
 					</div>
 				<?php endif; ?>
 
-				<?php if ( ! in_array( 'area', $exclude ) ) : ?>
+				<?php if ( ! in_array( 'area', $exclude, true ) ) : ?>
 					<div class="row area-wrap">
 						<?php echo $this->within_field(); // wpcs xss: ok. ?>
 						<input class="field area" type="text" name="s" placeholder="<?php echo esc_attr( $atts['area_placeholder'] ); ?>" value="<?php echo esc_attr( $s ); ?>"/>
@@ -114,24 +114,24 @@ class SearchForm {
 					</div>
 				<?php endif; ?>
 
-				<?php if ( ! in_array( 'refine', $exclude ) ) : ?>
+				<?php if ( ! in_array( 'refine', $exclude, true ) ) : ?>
 					<a class="refine"><?php echo esc_html( $atts['refine_text'] ); ?><i class="fa fa-angle-down"></i></a>
 
 					<div class="row extras-wrap">
 						<?php
-						if ( ! in_array( 'year', $exclude ) ) {
+						if ( ! in_array( 'year', $exclude, true ) ) {
 							echo $this->year_field(); // wpcs xss: ok.
 						}
-						if ( ! in_array( 'make', $exclude ) ) {
+						if ( ! in_array( 'make', $exclude, true ) ) {
 							echo $this->make_field(); // wpcs xss: ok.
 						}
-						if ( ! in_array( 'model', $exclude ) ) {
+						if ( ! in_array( 'model', $exclude, true ) ) {
 							echo $this->model_field(); // wpcs xss: ok.
 						}
-						if ( ! in_array( 'body_type', $exclude ) ) {
+						if ( ! in_array( 'body_type', $exclude, true ) ) {
 							echo $this->body_type_field(); // wpcs xss: ok.
 						}
-						if ( ! in_array( 'odometer', $exclude ) ) {
+						if ( ! in_array( 'odometer', $exclude, true ) ) {
 							echo $this->odometer_field(); // wpcs xss: ok.
 						}
 						do_action( 'auto_listings_extra_search_fields', $exclude );
@@ -142,33 +142,33 @@ class SearchForm {
 			<?php else : ?>
 
 				<?php
-				if ( ! in_array( 'condition', $exclude ) ) {
+				if ( ! in_array( 'condition', $exclude, true ) ) {
 					echo $this->condition_field(); // wpcs xss: ok.
 				}
-				if ( ! in_array( 'prices', $exclude ) ) {
-					if ( ! in_array( 'min_price', $exclude ) ) {
+				if ( ! in_array( 'prices', $exclude, true ) ) {
+					if ( ! in_array( 'min_price', $exclude, true ) ) {
 						echo $this->min_price_field(); // wpcs xss: ok.
 					}
-					if ( ! in_array( 'max_price', $exclude ) ) {
+					if ( ! in_array( 'max_price', $exclude, true ) ) {
 						echo $this->max_price_field(); // wpcs xss: ok.
 					}
 				}
-				if ( ! in_array( 'year', $exclude ) ) {
+				if ( ! in_array( 'year', $exclude, true ) ) {
 					echo $this->year_field(); // wpcs xss: ok.
 				}
-				if ( ! in_array( 'make', $exclude ) ) {
+				if ( ! in_array( 'make', $exclude, true ) ) {
 					echo $this->make_field(); // wpcs xss: ok.
 				}
-				if ( ! in_array( 'model', $exclude ) ) {
+				if ( ! in_array( 'model', $exclude, true ) ) {
 					echo $this->model_field(); // wpcs xss: ok.
 				}
-				if ( ! in_array( 'body_type', $exclude ) ) {
+				if ( ! in_array( 'body_type', $exclude, true ) ) {
 					echo $this->body_type_field(); // wpcs xss: ok.
 				}
-				if ( ! in_array( 'odometer', $exclude ) ) {
+				if ( ! in_array( 'odometer', $exclude, true ) ) {
 					echo $this->odometer_field(); // wpcs xss: ok.
 				}
-				if ( ! in_array( 'area', $exclude ) ) {
+				if ( ! in_array( 'area', $exclude, true ) ) {
 					echo $this->within_field(); // wpcs xss: ok.
 					?>
 					<input class="field area" type="text" name="s" placeholder="<?php echo esc_attr( $atts['area_placeholder'] ); ?>" value="<?php echo esc_attr( $s ); ?>">
@@ -408,7 +408,7 @@ class SearchForm {
 				echo '<span class="prefix">' . esc_html( $args['prefix'] ) . '</span>';
 			}
 			// Condition field. If we only have 1 condition, remove the select option.
-			if ( 'condition' == $args['name'] && count( $options ) <= 1 ) :
+			if ( 'condition' === $args['name'] && count( $options ) <= 1 ) :
 				?>
 
 				<input type="hidden" name="condition[]" value="<?php echo esc_html( key( $options ) ); ?>"/>
@@ -418,7 +418,7 @@ class SearchForm {
 				<select multiple="multiple" placeholder="<?php echo esc_attr( $args['label'] ); ?>" name="<?php echo esc_attr( $args['name'] ); ?>[]">
 
 					<?php foreach ( $options as $val => $text ) : ?>
-						<option value="<?php echo esc_attr( $val ); ?>" <?php selected( true, in_array( $val, $selected ) ); ?> ><?php echo esc_attr( $text ); ?></option>
+						<option value="<?php echo esc_attr( $val ); ?>" <?php selected( true, in_array( $val, $selected, true ) ); ?> ><?php echo esc_attr( $text ); ?></option>
 					<?php endforeach; ?>
 
 				</select>

@@ -71,7 +71,10 @@ class Shortcodes {
 		ob_start();
 		?>
 		<div id="listing-<?php the_ID(); ?>" class="auto-listings-single">
-			<?php while ( $query->have_posts() ) : $query->the_post(); ?>
+			<?php
+			while ( $query->have_posts() ) :
+				$query->the_post();
+				?>
 				<?php auto_listings_get_part( 'content-single-listing.php' ); ?>
 			<?php endwhile; // end of the loop. ?>
 		</div>
@@ -162,7 +165,10 @@ class Shortcodes {
 		<?php do_action( "auto_listings_shortcode_before_{$loop_name}_loop" ); ?>
 
 		<ul class="auto-listings-items">
-			<?php while ( $query->have_posts() ) : $query->the_post(); ?>
+			<?php
+			while ( $query->have_posts() ) :
+				$query->the_post();
+				?>
 				<?php auto_listings_get_part( 'content-listing.php' ); ?>
 			<?php endwhile; ?>
 		</ul>

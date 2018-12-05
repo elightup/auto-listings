@@ -206,7 +206,7 @@ function auto_listings_listing_archive_title() {
 function auto_listings_listing_archive_get_title() {
 	// get the title we need (search page or not).
 	if ( is_search() ) {
-		$query      = isset( $_GET['s'] ) && ! empty( $_GET['s'] ) ? ' - ' . esc_html( $_GET['s'] ) : '';
+		$query = isset( $_GET['s'] ) && ! empty( $_GET['s'] ) ? ' - ' . esc_html( $_GET['s'] ) : '';
 		// Translators: %s is listing title.
 		$page_title = sprintf( __( 'Search Results %s', 'auto-listings' ), esc_html( $query ) );
 
@@ -377,6 +377,6 @@ function auto_listings_get_part( $part ) {
 	}
 
 	if ( $template ) {
-		include( $template );
+		include $template;
 	}
 }

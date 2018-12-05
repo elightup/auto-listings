@@ -57,7 +57,7 @@ class ContactForm {
 		$data['post_author'] = $listing_seller;
 
 		// Translators: % is listing id.
-		$data['post_title']  = sprintf( __( 'Enquiry on listing #%s', 'auto-listings' ), $listing_id );
+		$data['post_title'] = sprintf( __( 'Enquiry on listing #%s', 'auto-listings' ), $listing_id );
 		return $data;
 	}
 

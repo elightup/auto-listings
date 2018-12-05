@@ -63,7 +63,8 @@ class Query {
 	public function get_ordering_args( $orderby = '', $order = '' ) {
 		// Get ordering from query string unless defined.
 		if ( ! $orderby ) {
-			$orderby_value = isset( $_GET['orderby'] ) ? esc_html( $_GET['orderby'] ) : 'date';
+			$orderby_value = filter_input( INPUT_GET, 'orderby' );
+			$orderby_value = isset( $orderby_value ) ? esc_html( $orderby_value ) : 'date';
 
 			// Get order + orderby args from string.
 			$orderby_value = explode( '-', $orderby_value );

@@ -23,7 +23,8 @@ do_action( 'auto_listings_before_main_content' ); ?>
 		/**
 		 * @hooked auto_listings_listing_archive_description (displays any content, including shortcodes, within the main content editor of your chosen listing archive page)
 		 */
-		do_action( 'auto_listings_archive_page_upper_full_width' ); ?>
+		do_action( 'auto_listings_archive_page_upper_full_width' );
+		?>
 	</div>
 
 	<?php if ( is_active_sidebar( 'auto-listings' ) ) : ?>
@@ -32,7 +33,8 @@ do_action( 'auto_listings_before_main_content' ); ?>
 
 	<?php endif; // endif is_active_sidebar. ?>
 
-		<?php if ( have_posts() ) :
+		<?php
+		if ( have_posts() ) :
 
 			/**
 			 * @hooked auto_listings_ordering (the ordering dropdown)
@@ -41,9 +43,10 @@ do_action( 'auto_listings_before_main_content' ); ?>
 			 */
 			do_action( 'auto_listings_before_listings_loop' );
 
-			$cols   = auto_listings_columns();
-			$count  = 1;
-			while ( have_posts() ) : the_post();
+			$cols  = auto_listings_columns();
+			$count = 1;
+			while ( have_posts() ) :
+				the_post();
 
 				// wrapper for our columns.
 				if ( 1 === $count % $cols ) {
@@ -70,7 +73,7 @@ do_action( 'auto_listings_before_main_content' ); ?>
 
 		else :
 			$alert = __( 'Sorry, no listings were found.', 'auto-listings' );
-			$alert = apply_filters( 'auto-listings-no-results', $alert );
+			$alert = apply_filters( 'auto_listings_no_results', $alert );
 			?>
 			<p class="alert auto-listings-no-results"><?php echo wp_kses_post( $alert ); ?></p>
 

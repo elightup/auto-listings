@@ -54,7 +54,7 @@ function auto_listings_shortcode_att( $attribute, $shortcode ) {
 		$pattern = get_shortcode_regex();
 		if ( preg_match_all( '/' . $pattern . '/s', $post->post_content, $matches )
 			&& array_key_exists( 2, $matches )
-			&& in_array( $shortcode, $matches[2] ) ) {
+			&& in_array( $shortcode, $matches[2], true ) ) {
 
 			$key = array_search( $shortcode, $matches[2], true );
 
@@ -139,7 +139,7 @@ function auto_listings_hide_item( $item ) {
 	if ( ! $hide ) {
 		return false;
 	}
-	return in_array( $item, $hide );
+	return in_array( $item, $hide, true );
 }
 
 
@@ -247,7 +247,7 @@ function auto_listings_search_price_min_max() {
  */
 function auto_listings_search_mileage_max() {
 	$miles_kms = auto_listings_miles_kms_label_short();
-	$numbers = array(
+	$numbers   = array(
 		'10000',
 		'20000',
 		'30000',
@@ -273,7 +273,7 @@ function auto_listings_search_mileage_max() {
  */
 function auto_listings_search_within_radius() {
 	$miles_kms = auto_listings_miles_kms_label_short();
-	$numbers = array(
+	$numbers   = array(
 		'10',
 		'20',
 		'30',
@@ -332,6 +332,6 @@ function auto_listings_search_get_vehicle_data() {
 		$data[ $key ] = array_unique( $data[ $key ] );
 	}
 
-	return $data;
+	return apply_filters( 'auto_listings_search_get_vehicle_data', $data );
 
 }

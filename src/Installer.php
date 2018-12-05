@@ -126,7 +126,8 @@ class Installer {
 		];
 
 		$options = get_option( 'auto_listings_options' );
-		if ( isset( $options['archives_page'] ) && ( $page = get_post( $options['archives_page'] ) ) ) {
+		$page    = get_post( $options['archives_page'] );
+		if ( isset( $options['archives_page'] ) && isset( $page ) ) {
 			if ( 'page' === $page->post_type && ! in_array(
 				$page->post_status,
 				[
@@ -134,7 +135,8 @@ class Installer {
 					'trash',
 					'future',
 					'auto-draft',
-				]
+				],
+				true
 			) ) {
 				return;
 			}
@@ -257,8 +259,8 @@ class Installer {
 			return;
 		}
 
-		$class   = 'notice notice-info is-dismissible';
-		$message = '<strong>' . __( 'Success!', 'auto-listings' ) . '</strong>' . __( ' A sample listing has been created: ', 'auto-listings' );
+		$class    = 'notice notice-info is-dismissible';
+		$message  = '<strong>' . __( 'Success!', 'auto-listings' ) . '</strong>' . __( ' A sample listing has been created: ', 'auto-listings' );
 		$message .= '<a class="button button-small" target="_blank" href="' . home_url( '/listings' ) . '">' . __( 'View First Listing', 'auto-listings' ) . '</a><br><br>';
 		$message .= __( 'Step 1. Please go through each tab below, configure the options and <strong>hit the save button</strong>.', 'auto-listings' ) . '<br>';
 		$message .= __( 'Step 2. Add your first Listing by navigating to <strong>Listings > New Listing</strong>', 'auto-listings' ) . '<br><br>';

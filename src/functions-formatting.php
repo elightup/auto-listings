@@ -202,5 +202,5 @@ function auto_listings_format_price( $price, $args = array() ) {
  * @return string
  */
 function auto_listings_raw_price( $price ) {
-	return strip_tags( auto_listings_format_price( $price ) );
+	return wp_strip_all_tags( auto_listings_format_price( $price ) );
 }

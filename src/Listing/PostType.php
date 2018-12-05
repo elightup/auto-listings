@@ -45,7 +45,8 @@ class PostType {
 			'items_list'            => __( 'Listings list', 'auto-listings' ),
 		];
 
-		$args = [
+		$archive_page = auto_listings_option( 'archives_page' );
+		$args         = [
 			'labels'             => $labels,
 			'public'             => true,
 			'publicly_queryable' => true,
@@ -61,7 +62,7 @@ class PostType {
 			],
 			'capability_type'    => 'listing',
 			'map_meta_cap'       => true,
-			'has_archive'        => ( $archive_page = auto_listings_option( 'archives_page' ) ) && get_post( $archive_page ) ? get_page_uri( $archive_page ) : 'listings',
+			'has_archive'        => isset( $archive_page ) && get_post( $archive_page ) ? get_page_uri( $archive_page ) : 'listings',
 			'hierarchical'       => false,
 			'supports'           => [ 'title', 'editor', 'excerpt' ],
 		];

@@ -12,7 +12,7 @@ $spec_fields = auto_listings_spec_fields();
 $display     = auto_listings_option( 'field_display' );
 
 foreach ( $spec_fields as $field_id => $value ) {
-	if ( is_array( $display ) && ! in_array( $field_id, $display ) ) {
+	if ( is_array( $display ) && ! in_array( $field_id, $display, true ) ) {
 		continue;
 	}
 

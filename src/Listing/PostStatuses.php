@@ -54,7 +54,7 @@ class PostStatuses {
 			?>
 			<script>
 				jQuery( function ( $ ) {
-					$( '#post_status' ).append( '<option value="archive"><?php esc_html_e( 'Archived', 'auto-listings' ) ?></option>' );
+					$( '#post_status' ).append( '<option value="archive"><?php esc_html_e( 'Archived', 'auto-listings' ); ?></option>' );
 				} );
 			</script>
 			<?php
@@ -64,7 +64,7 @@ class PostStatuses {
 			?>
 			<script>
 				jQuery( function ( $ ) {
-					$( '#post-status-display' ).text( '<?php esc_html_e( 'Archived', 'auto-listings' ) ?>' );
+					$( '#post-status-display' ).text( '<?php esc_html_e( 'Archived', 'auto-listings' ); ?>' );
 				} );
 			</script>
 			<?php
@@ -83,7 +83,7 @@ class PostStatuses {
 		?>
 		<script>
 			jQuery( function ( $ ) {
-				$( 'select[name="_status"]' ).append( '<option value="archive"><?php esc_html_e( 'Archived', 'auto-listings' ) ?></option>' );
+				$( 'select[name="_status"]' ).append( '<option value="archive"><?php esc_html_e( 'Archived', 'auto-listings' ); ?></option>' );
 				$( '.editinline' ).on( 'click', function () {
 					var $row = $( this ).closest( 'tr' ),
 						$option = $( '.inline-edit-row' ).find( 'select[name="_status"] option[value="archive"]' ),
