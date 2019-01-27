@@ -397,6 +397,37 @@ function auto_listings_get_status() {
 }
 
 /**
+ * Get the listing state
+ */
+function auto_listings_get_state() {
+	$listing_state = auto_listings_meta( 'listing_state' );
+	$option_state  = auto_listings_option( 'listing_state' );
+
+	if ( ! $listing_state ) {
+		return;
+	}
+
+	$state = null;
+	if ( $option_state ) {
+		foreach ( $option_state as $key => $value ) {
+			if ( in_array( $listing_state, $value, true ) ) {
+				$state     = isset( $value['state'] ) ? $value['state'] : null;
+				$text_color = isset( $value['text_color'] ) ? $value['text_color'] : null;
+			}
+		}
+	}
+
+	if ( ! $state ) {
+		$state     = $listing_state;
+		$text_color = '#444444';
+	}
+	return [
+		'state'     => $state,
+		'text_color' => $text_color,
+	];
+}
+
+/**
  * Highlight new
  */
 function auto_listings_highlight_new() {

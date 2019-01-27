@@ -22,6 +22,22 @@ function auto_listings_available_listing_statuses() {
 }
 
 /**
+ * Returns the listing states as set in the options.
+ *
+ * @return array
+ */
+function auto_listings_available_listing_states() {
+	$data  = auto_listings_option( 'listing_state' );
+	$array = [];
+	if ( $data ) {
+		foreach ( $data as $d ) {
+			$array[ $d['state'] ] = $d['state'];
+		}
+	}
+	return $array;
+}
+
+/**
  * Returns the listing conditions as set in the options.
  *
  * @return array

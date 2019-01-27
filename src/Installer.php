@@ -94,6 +94,16 @@ class Installer {
 				'text_color' => '#ffffff',
 			],
 		];
+		$options['listing_state']       = [
+			[
+				'state'      => 'Sold',
+				'text_color' => '#1e73be',
+			],
+			[
+				'state'      => 'Reserved',
+				'text_color' => '#dd3333',
+			],
+		];
 		$options['field_display']       = [
 			'model_year',
 			'make_display',

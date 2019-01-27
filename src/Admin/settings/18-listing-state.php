@@ -1,0 +1,36 @@
+<?php
+/**
+ * Listings State setting fields.
+ *
+ * @package Auto Listings.
+ */
+
+return [
+	'id'             => 'listing_states',
+	'title'          => __( 'Listing State', 'auto-listings' ),
+	'settings_pages' => 'auto-listings',
+	'tab'            => 'listings',
+	'fields'         => [
+		[
+			'type'        => 'group',
+			'before'      => '<p>' . __( 'Once state have been added here, they are then available in the Status dropdown field when adding or editing a listing.', 'auto-listings' ) . '</p>',
+			'id'          => 'listing_state',
+			'clone'       => true,
+			'collapsible' => true,
+			'group_title' => __( 'Listing State {#}', 'auto-listings' ),
+			'add_button'  => __( '+ Add Listing State', 'auto-listings' ),
+			'fields'      => [
+				[
+					'name' => __( 'State', 'auto-listings' ),
+					'id'   => 'state',
+					'type' => 'text',
+				],
+				[
+					'name' => __( 'Text Color', 'auto-listings' ),
+					'id'   => 'text_color',
+					'type' => 'color',
+				],
+			],
+		],
+	],
+];

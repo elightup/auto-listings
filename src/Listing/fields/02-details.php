@@ -50,8 +50,17 @@ $fields[] = [
 	'name'             => __( 'Status', 'auto-listings' ),
 	'id'               => $prefix . 'status',
 	'type'             => 'select',
+	'placeholder'      => __( 'Hidden', 'auto-listings' ),
 	'show_option_none' => true,
 	'options'          => auto_listings_available_listing_statuses(),
+];
+$fields[] = [
+	'name'             => __( 'Listing State', 'auto-listings' ),
+	'id'               => $prefix . 'listing_state',
+	'type'             => 'select',
+	'placeholder'      => __( 'Available', 'auto-listings' ),
+	'show_option_none' => true,
+	'options'          => auto_listings_available_listing_states(),
 ];
 $fields[] = [
 	'name'    => __( 'Condition', 'auto-listings' ),
