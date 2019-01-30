@@ -411,19 +411,22 @@ function auto_listings_get_state() {
 	if ( $option_state ) {
 		foreach ( $option_state as $key => $value ) {
 			if ( in_array( $listing_state, $value, true ) ) {
-				$state     = isset( $value['state'] ) ? $value['state'] : null;
+				$state      = isset( $value['state'] ) ? $value['state'] : null;
 				$text_color = isset( $value['text_color'] ) ? $value['text_color'] : null;
+				$hide_price = isset( $value['hide_price'] ) ? $value['hide_price'] : null;
 			}
 		}
 	}
 
 	if ( ! $state ) {
-		$state     = $listing_state;
+		$state      = $listing_state;
 		$text_color = '#444444';
+		$hide_price = true;
 	}
 	return [
-		'state'     => $state,
+		'state'      => $state,
 		'text_color' => $text_color,
+		'hide_price' => $hide_price,
 	];
 }
 
@@ -463,9 +466,19 @@ function auto_listings_price( $price = null ) {
 	if ( ! $price ) {
 		$price = auto_listings_meta( 'price' );
 	}
-	$price  = apply_filters( 'auto_listings_filter_price', $price );
-	$suffix = auto_listings_meta( 'price_suffix' );
-	return auto_listings_format_price( $price ) . ' ' . $suffix;
+	$state        = auto_listings_get_state();
+	$price        = apply_filters( 'auto_listings_filter_price', $price );
+	$suffix       = auto_listings_meta( 'price_suffix' );
+	$price_output = auto_listings_format_price( $price ) . ' ' . $suffix;
+	$state_output = '<span class="state" style="color: ' . esc_attr( $state['text_color'] ) . '">' . esc_html( $state['state'] ) . '</span>';
+
+	if ( empty( $state ) ) {
+		return $price_output;
+	}
+	if ( $state['hide_price'] ) {
+		return $state_output;
+	}
+	return $price_output . $state_output;
 }
 
 /**

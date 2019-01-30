@@ -365,6 +365,12 @@ should fix up some theme issues
   position: absolute;
   bottom: 0;
 }
+
+.auto-listings-items li .state {
+  font-weight: bold;
+  font-size: 30px;
+}
+
 .auto-listings-items li .summary {
     float: right;
     width: 70%;

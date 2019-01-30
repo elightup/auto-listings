@@ -7,13 +7,13 @@
 
 return [
 	'id'             => 'listing_states',
-	'title'          => __( 'Listing State', 'auto-listings' ),
+	'title'          => __( 'Listing States', 'auto-listings' ),
 	'settings_pages' => 'auto-listings',
 	'tab'            => 'listings',
 	'fields'         => [
 		[
 			'type'        => 'group',
-			'before'      => '<p>' . __( 'Once state have been added here, they are then available in the Status dropdown field when adding or editing a listing.', 'auto-listings' ) . '</p>',
+			'before'      => '<p>' . __( 'Once state have been added here, they are then available in the <strong>Listings State</strong> dropdown field when adding or editing a listing.', 'auto-listings' ) . '</p>',
 			'id'          => 'listing_state',
 			'clone'       => true,
 			'collapsible' => true,
@@ -29,6 +29,12 @@ return [
 					'name' => __( 'Text Color', 'auto-listings' ),
 					'id'   => 'text_color',
 					'type' => 'color',
+				],
+				[
+					'name' => __( 'Hide Price', 'auto-listings' ),
+					'id'   => 'hide_price',
+					'type' => 'checkbox',
+					'std'  => true,
 				],
 			],
 		],

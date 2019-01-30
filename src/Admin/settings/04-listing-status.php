@@ -13,7 +13,7 @@ return [
 	'fields'         => [
 		[
 			'type'        => 'group',
-			'before'      => '<p>' . __( 'Once statuses have been added here, they are then available in the Status dropdown field when adding or editing a listing.', 'auto-listings' ) . '</p><p>' . __( 'Statuses appear in a styled box over the listing\'s image and are used primarily to attract attention.', 'auto-listings' ) . '</p>',
+			'before'      => '<p>' . __( 'Once statuses have been added here, they are then available in the <strong>Status</strong> dropdown field when adding or editing a listing.', 'auto-listings' ) . '</p><p>' . __( 'Statuses appear in a styled box over the listing\'s image and are used primarily to attract attention.', 'auto-listings' ) . '</p>',
 			'id'          => 'listing_status',
 			'clone'       => true,
 			'collapsible' => true,
