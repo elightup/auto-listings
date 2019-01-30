@@ -330,7 +330,11 @@ function auto_listings_search_get_vehicle_data() {
 	foreach ( $data as $key => $value ) {
 		$data[ $key ] = array_filter( $data[ $key ] );
 		$data[ $key ] = array_unique( $data[ $key ] );
-		sort( $data[ $key] );
+		if ( 'year' === $key ) {
+			rsort( $data[ $key ] );
+		} else {
+			sort( $data[ $key ] );
+		}
 	}
 
 	return apply_filters( 'auto_listings_search_get_vehicle_data', $data );
