@@ -470,15 +470,15 @@ function auto_listings_price( $price = null ) {
 	$price        = apply_filters( 'auto_listings_filter_price', $price );
 	$suffix       = auto_listings_meta( 'price_suffix' );
 	$price_output = auto_listings_format_price( $price ) . ' ' . $suffix;
-	$state_output = '<span class="state" style="color: ' . esc_attr( $state['text_color'] ) . '">' . esc_html( $state['state'] ) . '</span>';
-
-	if ( empty( $state ) ) {
+	if ( is_admin() ) {
 		return $price_output;
 	}
-	if ( $state['hide_price'] ) {
-		return $state_output;
+	$state_output = '';
+	if ( ! empty( $state ) ) {
+		$state_output = '<span class="state" style="color: ' . esc_attr( $state['text_color'] ) . '">' . esc_html( $state['state'] ) . '</span>';
 	}
-	return $price_output . $state_output;
+	$output = $state['hide_price'] ? $state_output : $price_output . $state_output;
+	return $output;
 }
 
 /**
