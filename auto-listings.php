@@ -28,4 +28,13 @@ function auto_listings_check_php_version() {
 	}
 }
 
-require 'bootstrap.php';
+add_action( 'plugins_loaded', 'auto_listings_check_meta_box' );
+/**
+ * Check if Meta Box plugin is active.
+ */
+function auto_listings_check_meta_box() {
+	if ( ! defined( 'RWMB_VER' ) ) {
+		return;
+	}
+	require 'bootstrap.php';
+}
