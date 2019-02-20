@@ -15,6 +15,9 @@ function auto_listings_available_listing_statuses() {
 	$array = [];
 	if ( $data ) {
 		foreach ( $data as $d ) {
+			if ( empty( $d['status'] ) ) {
+				continue;
+			}
 			$array[ $d['status'] ] = $d['status'];
 		}
 	}
@@ -31,7 +34,9 @@ function auto_listings_available_listing_states() {
 	$array = [];
 	if ( $data ) {
 		foreach ( $data as $d ) {
-			$array[ $d['state'] ] = $d['state'];
+			if ( empty( $d['state'] ) ) {
+				continue;
+			}$array[ $d['state'] ] = $d['state'];
 		}
 	}
 	return $array;

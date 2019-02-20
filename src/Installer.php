@@ -98,10 +98,12 @@ class Installer {
 			[
 				'state'      => 'Sold',
 				'text_color' => '#1e73be',
+				'hide_price' => true,
 			],
 			[
 				'state'      => 'Reserved',
 				'text_color' => '#dd3333',
+				'hide_price' => true,
 			],
 		];
 		$options['field_display']       = [

@@ -34,7 +34,6 @@ return [
 					'name' => __( 'Hide Price', 'auto-listings' ),
 					'id'   => 'hide_price',
 					'type' => 'checkbox',
-					'std'  => true,
 				],
 			],
 		],
