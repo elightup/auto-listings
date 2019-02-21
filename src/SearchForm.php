@@ -418,7 +418,7 @@ class SearchForm {
 				<select multiple="multiple" placeholder="<?php echo esc_attr( $args['label'] ); ?>" name="<?php echo esc_attr( $args['name'] ); ?>[]">
 
 					<?php foreach ( $options as $val => $text ) : ?>
-						<option value="<?php echo esc_attr( $val ); ?>" <?php selected( true, in_array( $val, $selected, true ) ); ?> ><?php echo esc_attr( $text ); ?></option>
+						<option value="<?php echo esc_attr( $val ); ?>" <?php selected( true, in_array( strval( $val ), $selected, true ) ); ?> ><?php echo esc_attr( $text ); ?></option>
 					<?php endforeach; ?>
 
 				</select>
