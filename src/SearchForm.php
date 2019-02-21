@@ -168,13 +168,13 @@ class SearchForm {
 				if ( ! in_array( 'odometer', $exclude, true ) ) {
 					echo $this->odometer_field(); // wpcs xss: ok.
 				}
-				if ( ! in_array( 'area', $exclude, true ) ) {
+				if ( ! in_array( 'area', $exclude, true ) ) :
 					echo $this->within_field(); // wpcs xss: ok.
 					?>
 					<input class="field area" type="text" name="s" placeholder="<?php echo esc_attr( $atts['area_placeholder'] ); ?>" value="<?php echo esc_attr( $s ); ?>">
-					<?php
-				}
-				?>
+				<?php else : ?>
+					<input type="hidden" name="s" value="<?php echo esc_attr( $s ); ?>"/>
+				<?php endif; ?>
 
 				<button class="al-button" type="submit"><?php echo esc_html( $atts['submit_btn'] ); ?></button>
 
