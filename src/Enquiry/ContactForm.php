@@ -190,7 +190,7 @@ class ContactForm {
 	 */
 	protected function content_type() {
 		$type = auto_listings_option( 'contact_form_email_type' );
-		return 'html_email' === $type ? 'text/html' : 'text/html';
+		return 'html_email' === $type ? 'text/html' : 'text/plain';
 	}
 
 	/**
@@ -201,7 +201,7 @@ class ContactForm {
 	 * @param int    $enquiry_id Enquiry ID.
 	 */
 	protected function replace_placeholders( $string, $listing_id, $enquiry_id ) {
-		return str_replace( $this->placeholders(), $this->replacements( $listing_id, $enquiry_id ), esc_html( $string ) );
+		return str_replace( $this->placeholders(), $this->replacements( $listing_id, $enquiry_id ), $string );
 	}
 
 	/**
