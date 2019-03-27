@@ -60,5 +60,11 @@ return [
 			'type' => 'number',
 			'std'  => 2,
 		],
+		[
+			'id'          => 'price_range',
+			'name'        => __( 'Price Range', 'auto-listings' ),
+			'type'        => 'text',
+			'desc' => __( 'Enter your price range here, from lowest to highest, seperated by the comma. If this is left empty, our default price range will be used.', 'auto-listings' ),
+		],
 	],
 ];

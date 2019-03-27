@@ -215,7 +215,7 @@ function auto_listings_search_country() {
  * Get price min max search values
  */
 function auto_listings_search_price_min_max() {
-
+	$price_range = auto_listings_option( 'price_range' );
 	$options = apply_filters(
 		'auto_listings_search_price_min_max',
 		array(
@@ -237,9 +237,29 @@ function auto_listings_search_price_min_max() {
 			'150000' => auto_listings_raw_price( '150000' ),
 		)
 	);
-
+	if ( empty( $price_range ) ) {
+		return $options;
+	}
+	$options = auto_listings_get_price_from_price_range( $price_range );
 	return $options;
+}
 
+/**
+ * Get options from price range
+ *
+ * @param string $price_range Price Range setting options.
+ */
+function auto_listings_get_price_from_price_range( $price_range ) {
+	$prices = explode( ',', $price_range );
+	$prices = array_values( $prices );
+	sort( $prices );
+
+	$raw_prices = array_map( function( $price ) {
+		return auto_listings_raw_price( $price );
+	}, $prices );
+
+	$options = array_combine( $prices, $raw_prices );
+	return $options;
 }
 
 /**
