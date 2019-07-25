@@ -64,6 +64,7 @@ class SearchQuery {
 		$query->set( 'meta_query', $meta_query );
 		$query->set( 'tax_query', $body_type_query );
 		$query->set( 'post_type', 'auto-listing' );
+		do_action( 'auto_listings_search_query_all', $query );
 	}
 
 	/**
