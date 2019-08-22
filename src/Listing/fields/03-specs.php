@@ -17,10 +17,11 @@ foreach ( $spec_fields as $field_id => $value ) {
 	}
 
 	$fields[] = [
-		'name'    => $value['label'],
-		'id'      => $prefix . $field_id,
-		'type'    => 'text',
-		'columns' => 3,
+		'name'              => $value['label'],
+		'id'                => $prefix . $field_id,
+		'type'              => 'text',
+		'sanitize_callback' => 'wp_kses_post',
+		'columns'           => 3,
 	];
 }
 

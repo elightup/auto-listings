@@ -30,8 +30,6 @@ class AdminColumns {
 		add_filter( 'manage_auto-listing_posts_columns', [ $this, 'columns' ] );
 		add_action( 'manage_auto-listing_posts_custom_column', [ $this, 'show' ], 10, 2 );
 
-		add_action( 'manage_body-type_custom_column', [ $this, 'body_type_data' ], 10, 3 );
-
 		// sorting.
 		add_filter( 'manage_edit-auto-listing_sortable_columns', [ $this, 'sortable_columns' ] );
 		add_filter( 'request', [ $this, 'orderby_status' ] );
