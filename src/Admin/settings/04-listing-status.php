@@ -24,6 +24,7 @@ return [
 					'name' => __( 'Status', 'auto-listings' ),
 					'id'   => 'status',
 					'type' => 'text',
+					'sanitize_callback' => 'wp_kses_post',
 				],
 				[
 					'name' => __( 'Background Color', 'auto-listings' ),

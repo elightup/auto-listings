@@ -16,10 +16,11 @@ $fields[] = [
 	'step' => '0.01',
 ];
 $fields[] = [
-	'name' => __( 'Suffix', 'auto-listings' ),
-	'desc' => __( 'Optional text after price.', 'auto-listings' ),
-	'id'   => $prefix . 'price_suffix',
-	'type' => 'text',
+	'name'              => __( 'Suffix', 'auto-listings' ),
+	'desc'              => __( 'Optional text after price.', 'auto-listings' ),
+	'id'                => $prefix . 'price_suffix',
+	'type'              => 'text',
+	'sanitize_callback' => 'wp_kses_post',
 ];
 
 $fields[] = [
@@ -31,14 +32,16 @@ $fields[] = [
 	'step' => '0.01',
 ];
 $fields[] = [
-	'name' => __( 'Color', 'auto-listings' ),
-	'id'   => $prefix . 'color',
-	'type' => 'text',
+	'name'              => __( 'Color', 'auto-listings' ),
+	'id'                => $prefix . 'color',
+	'type'              => 'text',
+	'sanitize_callback' => 'wp_kses_post',
 ];
 $fields[] = [
-	'name' => __( 'Registration', 'auto-listings' ),
-	'id'   => $prefix . 'registration',
-	'type' => 'text',
+	'name'              => __( 'Registration', 'auto-listings' ),
+	'id'                => $prefix . 'registration',
+	'type'              => 'text',
+	'sanitize_callback' => 'wp_kses_post',
 ];
 $fields[] = [
 	'name'     => __( 'Body Type', 'auto-listings' ),

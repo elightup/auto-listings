@@ -21,9 +21,10 @@ return [
 			'add_button'  => __( '+ Add Listing State', 'auto-listings' ),
 			'fields'      => [
 				[
-					'name' => __( 'State', 'auto-listings' ),
-					'id'   => 'state',
-					'type' => 'text',
+					'name'              => __( 'State', 'auto-listings' ),
+					'id'                => 'state',
+					'type'              => 'text',
+					'sanitize_callback' => 'wp_kses_post',
 				],
 				[
 					'name' => __( 'Text Color', 'auto-listings' ),

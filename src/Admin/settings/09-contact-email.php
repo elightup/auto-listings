@@ -22,10 +22,11 @@ return [
 			'std'     => 'html_email',
 		],
 		[
-			'name' => __( 'Email Subject', 'auto-listings' ),
-			'id'   => 'contact_form_subject',
-			'type' => 'text',
-			'std'  => __( 'New enquiry on listing #{listing_id}', 'auto-listings' ),
+			'name'              => __( 'Email Subject', 'auto-listings' ),
+			'id'                => 'contact_form_subject',
+			'type'              => 'text',
+			'std'               => __( 'New enquiry on listing #{listing_id}', 'auto-listings' ),
+			'sanitize_callback' => 'wp_kses_post',
 		],
 		[
 			'name' => __( 'Email Message', 'auto-listings' ),

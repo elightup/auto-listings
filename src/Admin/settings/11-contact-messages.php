@@ -12,18 +12,21 @@ return [
 	'tab'            => 'contact',
 	'fields'         => [
 		[
-			'name' => __( 'Success Message', 'auto-listings' ),
-			'desc' => __( 'The message that is displayed to users upon successfully sending a message.', 'auto-listings' ),
-			'id'   => 'contact_form_success',
-			'type' => 'text',
-			'std'  => __( 'Thank you, we will be in touch with you soon.', 'auto-listings' ),
+			'name'              => __( 'Success Message', 'auto-listings' ),
+			'desc'              => __( 'The message that is displayed to users upon successfully sending a message.', 'auto-listings' ),
+			'id'                => 'contact_form_success',
+			'type'              => 'text',
+			'std'               => __( 'Thank you, we will be in touch with you soon.', 'auto-listings' ),
+			'sanitize_callback' => 'wp_kses_post',
+
 		],
 		[
-			'name' => __( 'Error Message', 'auto-listings' ),
-			'desc' => __( 'The message that is displayed if there is an error sending the message.', 'auto-listings' ),
-			'id'   => 'contact_form_error',
-			'type' => 'text',
-			'std'  => __( 'There was an error. Please try again.', 'auto-listings' ),
+			'name'              => __( 'Error Message', 'auto-listings' ),
+			'desc'              => __( 'The message that is displayed if there is an error sending the message.', 'auto-listings' ),
+			'id'                => 'contact_form_error',
+			'type'              => 'text',
+			'std'               => __( 'There was an error. Please try again.', 'auto-listings' ),
+			'sanitize_callback' => 'wp_kses_post',
 		],
 		[
 			'name'    => __( 'Include Error Code', 'auto-listings' ),

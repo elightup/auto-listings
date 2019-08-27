@@ -17,9 +17,10 @@ if ( is_admin() ) {
 		'post_type' => 'auto-listing',
 	];
 	$fields[20] = [
-		'id'   => $prefix . 'listing_title',
-		'name' => __( 'Listing Title', 'auto-listing' ),
-		'type' => 'text',
+		'id'                => $prefix . 'listing_title',
+		'name'              => __( 'Listing Title', 'auto-listing' ),
+		'type'              => 'text',
+		'sanitize_callback' => 'wp_kses_post',
 	];
 	$fields[30] = [
 		'id'   => $prefix . 'listing_seller',
