@@ -237,3 +237,7 @@
 	margin: 20px 0 10px;
 	border: 2px solid #444;
 }
+
+#display_fields ul.rwmb-input-list {
+	column-count: 3;
+}
