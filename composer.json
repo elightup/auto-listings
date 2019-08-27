@@ -17,6 +17,11 @@
       "AutoListings\\": "src/"
     },
     "files": [
+      "vendor/meta-box/mb-frontend-submission/mb-frontend-submission.php",
+      "vendor/meta-box/mb-settings-page/mb-settings-page.php",
+      "vendor/meta-box/meta-box-columns/meta-box-columns.php",
+      "vendor/meta-box/meta-box-geolocation/meta-box-geolocation.php",
+      "vendor/meta-box/meta-box-group/meta-box-group.php",
       "class-tgm-plugin-activation.php"
     ]
   },
