@@ -49,6 +49,9 @@ class Shortcodes {
 	 * @return string
 	 */
 	public function listing( $atts ) {
+		if ( is_admin() ) {
+			return;
+		}
 		$atts = shortcode_atts(
 			[
 				'id' => 0,
@@ -90,6 +93,9 @@ class Shortcodes {
 	 * @return string
 	 */
 	public function listings( $atts ) {
+		if ( is_admin() ) {
+			return;
+		}
 		$atts = shortcode_atts(
 			[
 				'orderby' => 'date',
