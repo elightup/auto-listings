@@ -50,7 +50,7 @@ class Shortcodes {
 	 */
 	public function listing( $atts ) {
 		if ( is_admin() ) {
-			return;
+			return '';
 		}
 		$atts = shortcode_atts(
 			[
@@ -94,7 +94,7 @@ class Shortcodes {
 	 */
 	public function listings( $atts ) {
 		if ( is_admin() ) {
-			return;
+			return '';
 		}
 		$atts = shortcode_atts(
 			[
