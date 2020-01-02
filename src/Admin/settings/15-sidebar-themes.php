@@ -1,17 +1,9 @@
-<?php
-/**
- * Theme recommendation.
- *
- * @package Auto Listings.
- */
-
-ob_start();
-?>
+<?php ob_start(); ?>
 <p><?php esc_html_e( 'Want a full-featured theme that is compatible with the plugin?', 'auto-listings' ); ?></p>
 <p>
 	<?php
 	/* translators: theme url */
-	echo wp_kses_post( sprintf( __( 'Check out %s - our <strong>free</strong> theme for car listings website.', 'auto-listings' ), '<a href="https://wpautolistings.com/themes/?utm_source=WordPress&utm_medium=link&utm_campaign=plugin" target="_blank">CarListing</a>' ) );
+	echo wp_kses_post( sprintf( __( 'Check out %s - our <strong>free</strong> theme for car listings website.', 'auto-listings' ), '<a href="https://wpautolistings.com/themes/?utm_source=WordPress&utm_medium=link&utm_campaign=plugin" target="_blank">CarListings</a>' ) );
 	?>
 	</p>
 <?php
