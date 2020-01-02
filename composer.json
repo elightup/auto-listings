@@ -1,18 +1,108 @@
 {
   "name": "auto-listings/auto-listings",
-  "repositories": [{
-    "type": "composer",
-    "url": "https://packages.metabox.io/d3868083e53c57b032d27c257404e200"
-  }],
+  "repositories": [
+    {
+      "type": "git",
+      "url": "git@bitbucket.org:metabox/mb-frontend-submission.git"
+    },
+    {
+      "type": "git",
+      "url": "git@bitbucket.org:metabox/mb-settings-page.git"
+    },
+    {
+      "type": "git",
+      "url": "git@bitbucket.org:metabox/meta-box-columns.git"
+    },
+    {
+      "type": "git",
+      "url": "git@bitbucket.org:metabox/meta-box-geolocation.git"
+    },
+    {
+      "type": "git",
+      "url": "git@bitbucket.org:metabox/meta-box-group.git"
+    }
+  ],
   "require": {
-    "php": ">=5.4",
-    "meta-box/mb-settings-page": "dev-master",
-    "meta-box/meta-box-group": "dev-master",
+    "meta-box/mb-frontend-submission": "dev-master",
+    "meta-box/mb-settings-page": "^2",
     "meta-box/meta-box-columns": "dev-master",
     "meta-box/meta-box-geolocation": "dev-master",
-    "meta-box/mb-frontend-submission": "dev-master"
+    "meta-box/meta-box-group": "dev-master",
+    "tgmpa/tgm-plugin-activation": "^2.6",
+    "composer/installers": "^1"
   },
-  "autoload": {
+  "extra": {
+    "installer-paths": {
+      "vendor/meta-box/{$name}": ["vendor:meta-box"]
+    },
+    "light-ignore-plugin": {
+      "meta-box/mb-frontend-submission": [
+        ".git",
+        ".gitattributes",
+        ".gitignore",
+        "*.json",
+        "*.lock",
+        "languages/*.po",
+        "tests",
+        "vendor"
+      ],
+      "meta-box/mb-settings-page": [
+        ".git",
+        ".gitattributes",
+        "*.yml",
+        "*.json",
+        "*.scss",
+        "*.po",
+        "*.pot",
+        "tests",
+        "vendor"
+      ],
+      "meta-box/meta-box-columns": [
+        ".git",
+        ".gitattributes",
+        "*.less",
+        "*.json",
+        "tests"
+      ],
+      "meta-box/meta-box-geolocation": [
+        ".git",
+        ".gitattributes",
+        "*.json",
+        "tests"
+      ],
+      "meta-box/meta-box-group": [
+        ".git",
+        ".gitattributes",
+        "*.json",
+        "*.scss",
+        "languages/*.po",
+        "tests"
+      ],
+      "tgmpa/tgm-plugin-activation": [
+        ".editorconfig",
+        ".scrutinizer.yml",
+        ".travis.yml",
+        "*.md",
+        "*.json",
+        "*.xml",
+        "example.php",
+        "languages",
+        "plugins"
+      ],
+      "gamajo/template-loader": [
+        ".editoconfig",
+        ".gitignore",
+        ".phpcs.xml.dist",
+        "*.md",
+        "*.json",
+        "LICENSE"
+      ],
+      "composer": [
+        "LICENSE"
+      ]
+    }
+  },
+   "autoload": {
     "psr-4": {
       "AutoListings\\": "src/"
     },
@@ -24,10 +114,5 @@
       "vendor/meta-box/meta-box-group/meta-box-group.php",
       "class-tgm-plugin-activation.php"
     ]
-  },
-  "extra": {
-    "installer-paths": {
-      "vendor/meta-box/{$name}": ["vendor:meta-box"]
-    }
   }
 }
