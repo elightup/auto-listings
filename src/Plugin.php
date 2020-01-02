@@ -91,7 +91,7 @@ class Plugin {
 			return $links;
 		}
 
-		$links[] = '<a href="' . esc_url( 'http://wpautolistings.com/documentation?utm_source=plugin&utm_medium=plugins_page&utm_content=docs' ) . '" title="' . esc_attr__( 'View Documentation', 'auto-listings' ) . '">' . esc_html__( 'Documentation', 'auto-listings' ) . '</a>';
+		$links[] = '<a href="' . esc_url( 'https://wpautolistings.com/docs/?utm_source=plugin&utm_medium=plugins_page&utm_content=docs' ) . '" title="' . esc_attr__( 'View Documentation', 'auto-listings' ) . '">' . esc_html__( 'Documentation', 'auto-listings' ) . '</a>';
 
 		return $links;
 	}

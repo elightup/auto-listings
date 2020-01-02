@@ -112,7 +112,7 @@
       "vendor/meta-box/meta-box-columns/meta-box-columns.php",
       "vendor/meta-box/meta-box-geolocation/meta-box-geolocation.php",
       "vendor/meta-box/meta-box-group/meta-box-group.php",
-      "class-tgm-plugin-activation.php"
+      "vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php"
     ]
   }
 }
