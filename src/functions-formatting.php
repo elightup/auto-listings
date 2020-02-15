@@ -116,7 +116,7 @@ function auto_listings_currency_symbol() {
  */
 function auto_listings_thousand_separator() {
 	$option = get_option( 'auto_listings_options' );
-	$return = isset( $option['thousand_separator'] ) ? stripslashes( $option['thousand_separator'] ) : ',';
+	$return = isset( $option['thousand_separator'] ) ? stripslashes( $option['thousand_separator'] ) : '';
 	return $return;
 }
 
