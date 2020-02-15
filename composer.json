@@ -102,11 +102,22 @@
       ]
     }
   },
-   "autoload": {
+  "autoload": {
     "psr-4": {
       "AutoListings\\": "src/"
     },
     "files": [
+      "src/functions.php",
+      "src/functions-conditionals.php",
+      "src/functions-enquiry.php",
+      "src/functions-formatting.php",
+      "src/functions-general.php",
+      "src/functions-listing.php",
+      "src/functions-sidebars.php",
+
+      "src/Frontend/template-hooks.php",
+      "src/Frontend/template-tags.php",
+
       "vendor/meta-box/mb-frontend-submission/mb-frontend-submission.php",
       "vendor/meta-box/mb-settings-page/mb-settings-page.php",
       "vendor/meta-box/meta-box-columns/meta-box-columns.php",

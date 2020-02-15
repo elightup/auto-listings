@@ -14,8 +14,8 @@ class Installer {
 	/**
 	 * Add hooks when module is loaded.
 	 */
-	public function __construct() {
-		register_activation_hook( AUTO_LISTINGS_FILE, [ $this, 'install' ] );
+	public function __construct( $file ) {
+		register_activation_hook( $file, [ $this, 'install' ] );
 		add_action( 'admin_notices', [ $this, 'notice' ] );
 	}
 
