@@ -13,19 +13,33 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || die;
 
-register_activation_hook( __FILE__, 'auto_listings_check_php_version' );
+final class AutoListings {
+	public function __construct() {
+		register_activation_hook( __FILE__, array( $this, 'check_php_version' ) );
 
-/**
- * Display notice for old PHP version.
- */
-function auto_listings_check_php_version() {
-	if ( version_compare( phpversion(), '5.4', '<' ) ) {
-		die( esc_html__( 'Auto listings plugin requires PHP version 5.4+. Please contact your host and ask them to upgrade.', 'auto-listings' ) );
+		add_action( 'plugins_loaded', array( $this, 'load' ) );
+
+		add_action( 'init', [ $this, 'load_plugin_textdomain' ], 0 );
+	}
+
+	public function check_php_version() {
+		if ( version_compare( phpversion(), '5.4', '<' ) ) {
+			die( esc_html__( 'Auto listings plugin requires PHP version 5.4+. Please contact your host and ask them to upgrade.', 'auto-listings' ) );
+		}
+	}
+
+	public function load_plugin_textdomain() {
+		load_plugin_textdomain( 'auto-listings', false, basename( __DIR__ ) . '/languages' );
+	}
+
+	public function load() {
+		require __DIR__ . '/bootstrap.php';
 	}
 }
 
-require 'bootstrap.php';
+require __DIR__ . '/vendor/autoload.php';
+new AutoListings\Installer( __FILE__ );
+
+new AutoListings();
