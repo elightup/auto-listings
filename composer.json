@@ -1,5 +1,6 @@
 {
   "name": "auto-listings/auto-listings",
+  "type": "wordpress-plugin",
   "repositories": [
     {
       "type": "git",
@@ -23,31 +24,36 @@
     }
   ],
   "require": {
-    "meta-box/mb-frontend-submission": "dev-master",
+    "meta-box/mb-frontend-submission": "^2",
     "meta-box/mb-settings-page": "^2",
     "meta-box/meta-box-columns": "dev-master",
     "meta-box/meta-box-geolocation": "dev-master",
-    "meta-box/meta-box-group": "dev-master",
+    "meta-box/meta-box-group": "^1",
     "tgmpa/tgm-plugin-activation": "^2.6",
     "composer/installers": "^1"
   },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "extra": {
     "installer-paths": {
-      "vendor/meta-box/{$name}": ["vendor:meta-box"]
+      "vendor/meta-box/{$name}": ["vendor:wpmetabox", "vendor:meta-box"]
     },
     "light-ignore-plugin": {
       "meta-box/mb-frontend-submission": [
-        ".git",
         ".gitattributes",
         ".gitignore",
         "*.json",
         "*.lock",
-        "languages/*.po",
+        "*.yml",
+        "sass",
         "tests",
         "vendor"
       ],
+      "meta-box/mb-frontend-submission/languages": [
+        "*.po",
+        "*.pot"
+      ],
       "meta-box/mb-settings-page": [
-        ".git",
         ".gitattributes",
         "*.yml",
         "*.json",
@@ -57,26 +63,30 @@
         "tests",
         "vendor"
       ],
+      "meta-box/mb-settings-page/languages": [
+        "*.po",
+        "*.pot"
+      ],
       "meta-box/meta-box-columns": [
-        ".git",
         ".gitattributes",
         "*.less",
         "*.json",
         "tests"
       ],
       "meta-box/meta-box-geolocation": [
-        ".git",
         ".gitattributes",
         "*.json",
         "tests"
       ],
       "meta-box/meta-box-group": [
-        ".git",
         ".gitattributes",
         "*.json",
         "*.scss",
-        "languages/*.po",
         "tests"
+      ],
+      "meta-box/meta-box-group/languages": [
+        "*.po",
+        "*.pot"
       ],
       "tgmpa/tgm-plugin-activation": [
         ".editorconfig",
