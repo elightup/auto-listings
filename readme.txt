@@ -1,8 +1,8 @@
-=== Auto Listings ===
-Contributors: autolistings
+=== Auto Listings - Car listings & car dealership plugin for WordPress ===
+Contributors: elightup, autolistings
 Tags: car dealer, sell cars, car classifieds, car sales, car listings, automotive listings, auto listings, automotive, car, car dealership
 Requires at least: 4.5
-Tested up to: 5.2.4
+Tested up to: 5.3.2
 Stable tag: 2.1.5
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -85,7 +85,7 @@ On the listing page, it will not pinpoint an exact address, it will instead show
 
 The shortcodes can be easily customized, with each shortcode having many options.
 
-> Visit the [shortcodes docs page](https://wpautolistings.com/docs/shortcodes/) for more info.
+Visit the [shortcodes docs page](https://wpautolistings.com/docs/shortcodes/) for more info.
 
 = Template System =
 
@@ -95,7 +95,7 @@ Easily override the default HTML template files by including them into your own 
 
 The template system used is very similar to the WooCommerce template system, so if you have used that before, this will be a breeze.
 
-> Visit the [template docs page](https://wpautolistings.com/docs/templates/) for more info.
+Visit the [template docs page](https://wpautolistings.com/docs/templates/) for more info.
 
 = Premium Extensions =
 
