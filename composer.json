@@ -40,6 +40,7 @@
     },
     "light-ignore-plugin": {
       "meta-box/mb-frontend-submission": [
+        ".git",
         ".gitattributes",
         ".gitignore",
         "*.json",
@@ -54,6 +55,7 @@
         "*.pot"
       ],
       "meta-box/mb-settings-page": [
+        ".git",
         ".gitattributes",
         "*.yml",
         "*.json",
@@ -68,17 +70,20 @@
         "*.pot"
       ],
       "meta-box/meta-box-columns": [
+        ".git",
         ".gitattributes",
         "*.less",
         "*.json",
         "tests"
       ],
       "meta-box/meta-box-geolocation": [
+        ".git",
         ".gitattributes",
         "*.json",
         "tests"
       ],
       "meta-box/meta-box-group": [
+        ".git",
         ".gitattributes",
         "*.json",
         "*.scss",
