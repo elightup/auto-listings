@@ -16,11 +16,7 @@ return [
 			'desc'    => __( 'What type of condition vehicles are you selling?', 'auto-listings' ),
 			'id'      => 'display_condition',
 			'type'    => 'checkbox_list',
-			'options' => [
-				'New'       => __( 'New', 'auto-listings' ),
-				'Used'      => __( 'Used', 'auto-listings' ),
-				'Certified' => __( 'Certified', 'auto-listings' ),
-			],
+			'options' => auto_listings_available_listing_conditions(),
 		],
 		[
 			'name' => __( 'Highlight New Listings', 'auto-listings' ),

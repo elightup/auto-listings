@@ -83,11 +83,7 @@ class AdminColumns {
 		}
 
 		if ( 'condition' === $column_name ) {
-			$condition = auto_listings_meta( 'condition', $post_id );
-			if ( ! $condition ) {
-				return;
-			}
-			echo esc_html( $condition );
+			echo esc_html( rwmb_the_value( '_al_listing_condition', '', $post_id, false ) );
 		}
 
 		if ( 'vehicle' === $column_name ) {

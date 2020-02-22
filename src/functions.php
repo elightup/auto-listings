@@ -48,14 +48,11 @@ function auto_listings_available_listing_states() {
  * @return array
  */
 function auto_listings_available_listing_conditions() {
-	$data  = auto_listings_option( 'display_condition' );
-	$array = [];
-	if ( $data ) {
-		foreach ( $data as $d ) {
-			$array[ $d ] = $d;
-		}
-	}
-	return $array;
+	return [
+		'New'       => __( 'New', 'auto-listings' ),
+		'Used'      => __( 'Used', 'auto-listings' ),
+		'Certified' => __( 'Certified', 'auto-listings' ),
+	];
 }
 
 /**
