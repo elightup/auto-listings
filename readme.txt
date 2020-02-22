@@ -1,4 +1,4 @@
-=== Auto Listings - Car listings & car dealership plugin for WordPress ===
+=== Auto Listings - Car Listings & Car Dealership Plugin for WordPress ===
 Contributors: elightup, autolistings
 Tags: car dealer, sell cars, car classifieds, car sales, car listings, automotive listings, auto listings, automotive, car, car dealership
 Requires at least: 4.5
