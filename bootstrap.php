@@ -1,7 +1,10 @@
 <?php
 namespace AutoListings;
 
+include __DIR__ . '/vendor/autoload.php';
+
 new Plugin( __DIR__ . '/auto-listings.php' );
+new Installer;
 
 new Listing\PostType;
 new Listing\PostStatuses;

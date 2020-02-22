@@ -33,6 +33,7 @@ class Plugin {
 	public function __construct( $file ) {
 		$this->file = $file;
 		$this->define_constants();
+		$this->init_hooks();
 
 		do_action( 'auto_listings_loaded' );
 	}
@@ -52,8 +53,29 @@ class Plugin {
 	 * Hook when init plugin.
 	 */
 	protected function init_hooks() {
+		add_action( 'init', [ $this, 'init' ], 0 );
 		add_filter( 'plugin_row_meta', [ $this, 'plugin_row_meta' ], 10, 2 );
 		add_action( 'tgmpa_register', [ $this, 'register_plugins' ] );
+	}
+
+	/**
+	 * Init Auto_Listings when WordPress Initialises.
+	 *
+	 * @since 1.0.0
+	 */
+	public function init() {
+		do_action( 'before_auto_listings_init' );
+
+		$this->load_plugin_textdomain();
+
+		do_action( 'auto_listings_init' );
+	}
+
+	/**
+	 * Load plugin text domain.
+	 */
+	public function load_plugin_textdomain() {
+		load_plugin_textdomain( 'auto-listings', false, basename( basename( __DIR__ ) ) . '/languages' );
 	}
 
 	/**
