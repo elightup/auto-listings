@@ -48,11 +48,28 @@ function auto_listings_available_listing_states() {
  * @return array
  */
 function auto_listings_available_listing_conditions() {
-	return [
+	$condition_options = auto_listings_listing_condition_options();
+	$data              = auto_listings_option( 'display_condition' );
+	$array             = [];
+	if ( $data ) {
+		foreach ( $data as $d ) {
+			$array[ $d ] = $condition_options[ $d ];
+		}
+	}
+	return $array;
+}
+
+/**
+ * Returns all the listing condition options.
+ *
+ * @return array
+ */
+function auto_listings_listing_condition_options() {
+	return apply_filters( 'auto_listings_listing_condition_options', [
 		'New'       => __( 'New', 'auto-listings' ),
 		'Used'      => __( 'Used', 'auto-listings' ),
 		'Certified' => __( 'Certified', 'auto-listings' ),
-	];
+	] );
 }
 
 /**

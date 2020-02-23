@@ -250,13 +250,9 @@ class SearchForm {
 	 * Condition field
 	 */
 	public function condition_field() {
-		$conditions = auto_listings_option( 'display_condition' );
-		$options    = [];
-		if ( ! $conditions ) {
+		$options = auto_listings_available_listing_conditions();
+		if ( ! $options ) {
 			return '';
-		}
-		foreach ( $conditions as $n ) {
-			$options[ $n ] = $n;
 		}
 		$args = [
 			'name'   => 'condition',
