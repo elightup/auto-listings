@@ -48,7 +48,7 @@ function auto_listings_available_listing_states() {
  * @return array
  */
 function auto_listings_available_listing_conditions() {
-	$condition_options = auto_listings_listing_condition_options();
+	$condition_options = auto_listings_conditions();
 	$data              = auto_listings_option( 'display_condition' );
 	$array             = [];
 	if ( $data ) {
@@ -59,13 +59,8 @@ function auto_listings_available_listing_conditions() {
 	return $array;
 }
 
-/**
- * Returns all the listing condition options.
- *
- * @return array
- */
-function auto_listings_listing_condition_options() {
-	return apply_filters( 'auto_listings_listing_condition_options', [
+function auto_listings_conditions() {
+	return apply_filters( 'auto_listings_conditions', [
 		'New'       => __( 'New', 'auto-listings' ),
 		'Used'      => __( 'Used', 'auto-listings' ),
 		'Certified' => __( 'Certified', 'auto-listings' ),
