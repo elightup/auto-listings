@@ -16,6 +16,7 @@ class Main {
 	 */
 	public function __construct() {
 		add_filter( 'admin_body_class', [ $this, 'admin_body_class' ] );
+		add_filter( 'ajax_query_attachments_args', [ $this, 'restrict_media_library' ], 999 );
 	}
 
 	/**
@@ -28,5 +29,16 @@ class Main {
 			$classes .= ' auto-listings';
 		}
 		return $classes;
+	}
+
+	/**
+	 * Restrict Media Library for all user except administrator
+	 */
+	public function restrict_media_library( $query ) {
+	    $user_id = get_current_user_id();
+	    if ( $user_id && ! current_user_can( 'administrator' ) ) {
+	        $query['author'] = $user_id;
+	    }
+	    return $query;
 	}
 }
