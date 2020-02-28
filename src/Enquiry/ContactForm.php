@@ -20,6 +20,7 @@ class ContactForm {
 		add_filter( 'rwmb_frontend_insert_post_data', [ $this, 'post_data' ], 10, 2 );
 		add_action( 'rwmb_frontend_after_save_post', [ $this, 'add_listing_data' ] );
 		add_action( 'rwmb_frontend_after_save_post', [ $this, 'send_notification' ] );
+		add_filter( 'rwmb_frontend_field_value_confirmation', [ $this, 'confirmation_message' ] );
 	}
 
 	/**
@@ -235,5 +236,18 @@ class ContactForm {
 		$replace['enquiry_phone']   = get_post_meta( $enquiry_id, '_al_enquiry_phone', true );
 		$replace['enquiry_message'] = get_post_meta( $enquiry_id, '_al_enquiry_message', true );
 		return apply_filters( 'auto_listings_contact_form_replace', $replace );
+	}
+
+	/**
+	 * Confirmation Message
+	 *
+	 * @param int $message confimation message
+	 */
+	public function confirmation_message( $message ) {
+		$success_message = auto_listings_option( 'contact_form_success' );
+		if ( empty( $success_message ) ) {
+			return $message;
+		}
+		return $success_message;
 	}
 }
