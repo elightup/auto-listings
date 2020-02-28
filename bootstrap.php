@@ -18,6 +18,7 @@ new Shortcodes;
 new Query;
 new SearchForm;
 new SearchQuery;
+new Upgrade\Manager;
 
 if ( is_admin() ) {
 	new Admin\Main;
