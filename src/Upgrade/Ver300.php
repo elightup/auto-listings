@@ -36,9 +36,6 @@ class Ver300 {
 			if ( $seller_role ) {
 				$seller_role->remove_cap( $cap );
 			}
-			if ( $admin_role ) {
-				$admin_role->remove_cap( $cap );
-			}
 		}
 	}
 }
