@@ -1,20 +1,7 @@
 <?php
-/**
- * Add class to body class.
- *
- * @package Auto Listings.
- */
-
 namespace AutoListings\Frontend;
 
-/**
- * Class Main
- */
 class Main {
-
-	/**
-	 * Add hooks when module is loaded.
-	 */
 	public function __construct() {
 		add_action( 'body_class', [ $this, 'body_class' ] );
 		add_action( 'wp_head', [ $this, 'head_comment' ] );
@@ -24,7 +11,6 @@ class Main {
 	 * Add body classes for our pages.
 	 *
 	 * @param  array $classes body class.
-	 *
 	 * @return array
 	 */
 	public function body_class( $classes ) {
@@ -41,7 +27,7 @@ class Main {
 	 * Add comment to <head> tag
 	 */
 	public function head_comment() {
-		echo '<!-- This site is using Auto Listings plugin - https://wpautolistings.com/ -->';
+		echo "\n<!-- This site is using Auto Listings plugin - https://wpautolistings.com/ -->\n";
 	}
 
 }
