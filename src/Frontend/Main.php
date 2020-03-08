@@ -3,31 +3,18 @@ namespace AutoListings\Frontend;
 
 class Main {
 	public function __construct() {
-		add_action( 'body_class', [ $this, 'body_class' ] );
-		add_action( 'wp_head', [ $this, 'head_comment' ] );
+		add_action( 'body_class', [ $this, 'add_body_class' ] );
+		add_action( 'wp_head', [ $this, 'add_head_comment' ] );
 	}
 
-	/**
-	 * Add body classes for our pages.
-	 *
-	 * @param  array $classes body class.
-	 * @return array
-	 */
-	public function body_class( $classes ) {
-		$classes = (array) $classes;
-
+	public function add_body_class( $classes ) {
 		if ( is_auto_listings() ) {
 			$classes[] = 'auto-listings';
 		}
-
-		return array_unique( $classes );
+		return $classes;
 	}
 
-	/**
-	 * Add comment to <head> tag
-	 */
-	public function head_comment() {
+	public function add_head_comment() {
 		echo "\n<!-- This site is using Auto Listings plugin - https://wpautolistings.com/ -->\n";
 	}
-
 }
