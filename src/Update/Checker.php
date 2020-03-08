@@ -3,8 +3,8 @@ namespace AutoListings\Update;
 
 class Checker {
 	// Update API endpoint URL.
-	// private $api_url = 'https://wpautolistings.com/index.php';
-	private $api_url = 'http://localhost/autolistingsplugins/index.php';
+	private $api_url = 'https://wpautolistings.com/index.php';
+	// private $api_url = 'http://localhost/dev/index.php';
 
 	// The update option object.
 	private $option;
@@ -25,7 +25,7 @@ class Checker {
 	}
 
 	/**
-	 * Enable update checker when premium extensions are installed.
+	 * Enable update checker when PRO version is installed.
 	 */
 	public function enable_update() {
 		if ( $this->has_extensions() ) {
@@ -74,11 +74,6 @@ class Checker {
 		static $response = null;
 
 		$request = rwmb_request();
-
-		// Bypass embed plugins via TGMPA.
-		if ( $request->get( 'tgmpa-update' ) || 'tgmpa-bulk-update' === $request->post( 'action' ) ) {
-			return $data;
-		}
 
 		// Make sure to send remote request once.
 		if ( null === $response ) {
@@ -151,6 +146,7 @@ class Checker {
 		] );
 
 		$response = wp_remote_retrieve_body( $request );
+
 		return $response ? @unserialize( $response ) : false;
 	}
 
@@ -158,12 +154,10 @@ class Checker {
 	 * Check if a plugin has an update to a new version.
 	 *
 	 * @param object $plugin_data The plugin update data.
-	 *
 	 * @return bool
 	 */
 	private function has_update( $plugin_data ) {
 		$plugins = get_plugins();
-
 		return isset( $plugins[ $plugin_data->plugin ] ) && version_compare( $plugins[ $plugin_data->plugin ]['Version'], $plugin_data->new_version, '<' );
 	}
 }

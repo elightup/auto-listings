@@ -39,16 +39,15 @@ class Settings {
 	public function register_settings_fields( $meta_boxes ) {
 		if ( $this->checker->has_extensions() ) {
 			$meta_boxes[] = [
-				'id' => 'al-license',
-				'title' => __( 'License', 'auto-listings' ),
+				'id'             => 'al-license',
+				'title'          => __( 'License', 'auto-listings' ),
 				'settings_pages' => 'auto-listings',
-				'tab' => 'license',
-				'fields' => [
+				'tab'            => 'license',
+				'fields'         => [
 					[
-						'name' => __( 'License Key', 'auto-listings' ),
-						'id' => 'license_key',
+						'name'   => __( 'License Key', 'auto-listings' ),
+						'id'     => 'license_key',
 						'before' => $this->output_instruction(),
-						'desc' => $this->output_status(),
 					],
 				],
 			];
@@ -71,19 +70,6 @@ class Settings {
 			</p>
 		<?php
 		return ob_get_clean();
-	}
-
-	public function output_status() {
-		$messages = array(
-			'invalid' => __( 'Your license key is <b>invalid</b>. Please update your license key or <a href="%1$s" target="_blank">get a new one here</a>.', 'auto-listings' ),
-			'expired' => __( 'Your license key is <b>expired</b>. Please renew your license.', 'auto-listings' ),
-			'active'  => __( 'Your license key is <b>active</b>.', 'auto-listings' ),
-		);
-		$status = $this->option->get_license_status();
-		if ( isset( $messages[ $status ] ) ) {
-			return sprintf( $messages[ $status ], 'https://wpautolistings.com/pro/' );
-		}
-		return '';
 	}
 
 	public function check_license() {
