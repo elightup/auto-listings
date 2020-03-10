@@ -29,7 +29,6 @@
     "meta-box/meta-box-columns": "dev-master",
     "meta-box/meta-box-geolocation": "dev-master",
     "meta-box/meta-box-group": "^1",
-    "tgmpa/tgm-plugin-activation": "^2.6",
     "composer/installers": "^1"
   },
   "minimum-stability": "dev",
@@ -92,17 +91,6 @@
       "meta-box/meta-box-group/languages": [
         "*.po",
         "*.pot"
-      ],
-      "tgmpa/tgm-plugin-activation": [
-        ".editorconfig",
-        ".scrutinizer.yml",
-        ".travis.yml",
-        "*.md",
-        "*.json",
-        "*.xml",
-        "example.php",
-        "languages",
-        "plugins"
       ],
       "gamajo/template-loader": [
         ".editoconfig",

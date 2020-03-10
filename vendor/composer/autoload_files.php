@@ -6,7 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'a5f882d89ab791a139cd2d37e50cdd80' => $vendorDir . '/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php',
     '4f6bfac5880e9e16cb1be3bf40865224' => $baseDir . '/src/functions.php',
     'ca86bebd7a7adda372be9e92f0622477' => $baseDir . '/src/functions-conditionals.php',
     '9ea25700a020167978a87e756a7c2e27' => $baseDir . '/src/functions-enquiry.php',

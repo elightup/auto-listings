@@ -7,7 +7,6 @@ namespace Composer\Autoload;
 class ComposerStaticInitad425d620f1de7b335ac8fdfd53595b5
 {
     public static $files = array (
-        'a5f882d89ab791a139cd2d37e50cdd80' => __DIR__ . '/..' . '/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php',
         '4f6bfac5880e9e16cb1be3bf40865224' => __DIR__ . '/../..' . '/src/functions.php',
         'ca86bebd7a7adda372be9e92f0622477' => __DIR__ . '/../..' . '/src/functions-conditionals.php',
         '9ea25700a020167978a87e756a7c2e27' => __DIR__ . '/../..' . '/src/functions-enquiry.php',
