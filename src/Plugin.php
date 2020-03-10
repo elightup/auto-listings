@@ -1,10 +1,4 @@
 <?php
-/**
- * Define constant, tgmpa and load text domain.
- *
- * @package Auto Listings.
- */
-
 namespace AutoListings;
 
 /**
@@ -55,7 +49,6 @@ class Plugin {
 	protected function init_hooks() {
 		add_action( 'init', [ $this, 'init' ], 0 );
 		add_filter( 'plugin_row_meta', [ $this, 'plugin_row_meta' ], 10, 2 );
-		add_action( 'tgmpa_register', [ $this, 'register_plugins' ] );
 	}
 
 	/**
@@ -94,34 +87,5 @@ class Plugin {
 		$links[] = '<a href="' . esc_url( 'https://wpautolistings.com/docs/?utm_source=plugin&utm_medium=plugins_page&utm_content=docs' ) . '" title="' . esc_attr__( 'View Documentation', 'auto-listings' ) . '">' . esc_html__( 'Documentation', 'auto-listings' ) . '</a>';
 
 		return $links;
-	}
-
-	/**
-	 * Install required plugin on activation.
-	 */
-	public function register_plugins() {
-		$plugins = [
-			[
-				'name'     => 'Meta Box',
-				'slug'     => 'meta-box',
-				'required' => true,
-			],
-		];
-		$config  = [
-			'id'          => 'auto-listings',
-			'menu'        => 'tgmpa-install-plugins',
-			'parent_slug' => 'plugins.php',
-			'capability'  => 'install_plugins',
-			'strings'     => [
-				/* translators: 1: plugin name(s). */
-				'notice_can_install_required' => _n_noop(
-					'The Auto Listings plugin requires the following plugin: %1$s.',
-					'The Auto Listings plugin requires the following plugins: %1$s.',
-					'auto-listings'
-				),
-			],
-		];
-
-		tgmpa( $plugins, $config );
 	}
 }
