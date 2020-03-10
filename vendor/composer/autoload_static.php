@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitad425d620f1de7b335ac8fdfd53595b5
+class ComposerStaticInit186999ac33914e05478ecf5ac304ff69
 {
     public static $files = array (
         '4f6bfac5880e9e16cb1be3bf40865224' => __DIR__ . '/../..' . '/src/functions.php',
@@ -21,7 +21,6 @@ class ComposerStaticInitad425d620f1de7b335ac8fdfd53595b5
         '95968d89ab73f6676dff3db7f56f5a91' => __DIR__ . '/..' . '/meta-box/meta-box-columns/meta-box-columns.php',
         'b7c058c33578677940038256b120b25f' => __DIR__ . '/..' . '/meta-box/meta-box-geolocation/meta-box-geolocation.php',
         '669984435029805eb4b3b641c23faa8f' => __DIR__ . '/..' . '/meta-box/meta-box-group/meta-box-group.php',
-        'b0d82ba9c39594b89c0a3f12a7599280' => __DIR__ . '/..' . '/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -29,10 +28,6 @@ class ComposerStaticInitad425d620f1de7b335ac8fdfd53595b5
         array (
             'MBSP\\' => 5,
             'MBFS\\' => 5,
-        ),
-        'C' => 
-        array (
-            'Composer\\Installers\\' => 20,
         ),
         'A' => 
         array (
@@ -49,10 +44,6 @@ class ComposerStaticInitad425d620f1de7b335ac8fdfd53595b5
         array (
             0 => __DIR__ . '/..' . '/meta-box/mb-frontend-submission/src',
         ),
-        'Composer\\Installers\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers',
-        ),
         'AutoListings\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
@@ -67,9 +58,9 @@ class ComposerStaticInitad425d620f1de7b335ac8fdfd53595b5
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitad425d620f1de7b335ac8fdfd53595b5::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitad425d620f1de7b335ac8fdfd53595b5::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitad425d620f1de7b335ac8fdfd53595b5::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit186999ac33914e05478ecf5ac304ff69::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit186999ac33914e05478ecf5ac304ff69::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit186999ac33914e05478ecf5ac304ff69::$classMap;
 
         }, null, ClassLoader::class);
     }
