@@ -73,8 +73,6 @@ class Checker {
 	public function check_updates( $data ) {
 		static $response = null;
 
-		$request = rwmb_request();
-
 		// Make sure to send remote request once.
 		if ( null === $response ) {
 			$response = $this->request( [ 'action' => 'check_updates' ] );
