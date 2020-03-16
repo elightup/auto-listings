@@ -1,124 +1,67 @@
 <?php
-/**
- * Add Plugin roles.
- *
- * @package Auto Listings.
- */
-
 namespace AutoListings;
 
-/**
- * Class Roles
- */
 class Roles {
 	/**
-	 * Add custom role.
+	 * Add seller role with the same capabilities as authors.
+	 * @link https://wordpress.org/support/article/roles-and-capabilities/#author
 	 */
 	public function add_roles() {
+		$seller_caps = self::get_seller_caps();
+		$seller_caps = array_map( array_flip( $seller_caps ), 'boolval' );
 		add_role(
 			'auto_listings_seller',
 			__( 'Auto Listings Seller', 'auto-listings' ),
-			[
-				'read'                   => true,
-				'edit_posts'             => true,
-				'delete_posts'           => true,
-				'unfiltered_html'        => true,
-				'upload_files'           => true,
-				'delete_private_posts'   => true,
-				'delete_published_posts' => true,
-				'edit_others_pages'      => true,
-				'edit_private_posts'     => true,
-				'edit_published_posts'   => true,
-				'edit_published_pages'   => true,
-				'publish_posts'          => true,
-				'read_private_posts'     => true,
-			]
+			$seller_caps
 		);
 	}
 
-	/**
-	 * Add caps for custom role and administrator.
-	 */
 	public function add_caps() {
-		global $wp_roles;
-
-		if ( ! isset( $wp_roles ) && class_exists( 'WP_Roles' ) ) {
-			$wp_roles = new \WP_Roles();
-		}
-
-		if ( ! is_object( $wp_roles ) ) {
-			return;
-		}
-		$seller_caps = $this->get_seller_caps();
-		foreach ( $seller_caps as $key => $cap_group ) {
-			foreach ( $cap_group as $cap ) {
-				if ( 'administrator_listing' !== $key ) {
-					$wp_roles->add_cap( 'auto_listings_seller', $cap );
-				}
-				$wp_roles->add_cap( 'administrator', $cap );
-			}
+		$caps = self::get_listings_caps();
+		foreach ( $caps as $cap ) {
+			wp_roles()->add_cap( 'administrator', $cap );
 		}
 	}
 
-	/**
-	 * Get seller caps.
-	 */
-	public function get_seller_caps() {
-		$capabilities = [];
+	public function remove_caps() {
+		$caps = self::get_listings_caps();
+		$admin_role  = get_role( 'administrator' );
+		array_walk( $caps, [ $admin_role, 'remove_cap' ] );
+	}
 
-		$capabilities['listing'] = [
+	public static function get_seller_caps() {
+		return [
+			'delete_posts',
+			'delete_published_posts',
+			'edit_posts',
+			'edit_published_posts',
+			'publish_posts',
 
-			// Listings.
-			'edit_listing',
-			'read_listing',
-			'delete_listing',
+			'delete_listings',
+			'delete_published_listings',
 			'edit_listings',
+			'edit_published_listings',
+			'publish_listings',
+
+			'read',
+			'upload_files',
+		];
+	}
+
+	public static function get_listings_caps() {
+		return [
+			'edit_listings',
+			'edit_others_listings',
 			'publish_listings',
 			'read_private_listings',
+
 			'delete_listings',
 			'delete_private_listings',
 			'delete_published_listings',
+			'delete_others_listings',
 			'edit_private_listings',
 			'edit_published_listings',
-
-			// Enquiries use post capability.
+			'create_listings',
 		];
-
-		$capabilities['administrator_listing'] = [
-			'edit_others_listings',
-			'delete_others_listings',
-		];
-
-		return $capabilities;
-	}
-
-	/**
-	 * Remove caps from seller and administrator.
-	 */
-	public function remove_caps() {
-		global $wp_roles;
-
-		if ( ! isset( $wp_roles ) && class_exists( 'WP_Roles' ) ) {
-			$wp_roles = new \WP_Roles();
-		}
-
-		if ( ! is_object( $wp_roles ) ) {
-			return;
-		}
-
-		$seller_caps = $this->get_seller_caps();
-		$seller_role = get_role( 'auto_listings_seller' );
-		$admin_role  = get_role( 'administrator' );
-
-		foreach ( $seller_caps as $cap_group ) {
-			foreach ( $cap_group as $cap ) {
-				if ( $seller_role ) {
-					$seller_role->remove_cap( $cap );
-				}
-				if ( $admin_role ) {
-					$admin_role->remove_cap( $cap );
-				}
-			}
-		}
 	}
 }

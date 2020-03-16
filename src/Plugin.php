@@ -40,7 +40,8 @@ class Plugin {
 		define( 'AUTO_LISTINGS_DIR', plugin_dir_path( $this->file ) );
 		define( 'AUTO_LISTINGS_URL', plugin_dir_url( $this->file ) );
 		define( 'AUTO_LISTINGS_BASENAME', plugin_basename( $this->file ) );
-		define( 'AUTO_LISTINGS_VERSION', '3.0.0' );
+		define( 'AUTO_LISTINGS_VERSION', '2.2.0' );
+		define( 'AUTO_LISTINGS_DB_VERSION', '2' );
 	}
 
 	/**

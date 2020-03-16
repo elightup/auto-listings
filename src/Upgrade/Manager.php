@@ -7,9 +7,9 @@ class Manager {
 	}
 
 	public function upgrade() {
-		$current_version = get_option( 'auto_listings_version', AUTO_LISTINGS_VERSION );
+		$current_version = get_option( 'auto_listings_db_version', '1' );
 
-		$versions = ['3.0.0'];
+		$versions = ['2'];
 		foreach ( $versions as $version ) {
 			if ( version_compare( $current_version, $version, '>=' ) ) {
 				continue;
@@ -18,10 +18,6 @@ class Manager {
 			new $class;
 		}
 
-		if ( version_compare( $current_version, end( $versions ), '<' ) ) {
-			update_option( 'auto_listings_version', end( $versions ) );
-		} else {
-			update_option( 'auto_listings_version', AUTO_LISTINGS_VERSION );
-		}
+		update_option( 'auto_listings_db_version', AUTO_LISTINGS_DB_VERSION );
 	}
 }
