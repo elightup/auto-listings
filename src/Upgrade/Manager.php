@@ -9,8 +9,8 @@ class Manager {
 	public function upgrade() {
 		$current_version = get_option( 'auto_listings_version', AUTO_LISTINGS_VERSION );
 
-		$vesions = ['3.0.0'];
-		foreach ( $vesions as $version ) {
+		$versions = ['3.0.0'];
+		foreach ( $versions as $version ) {
 			if ( version_compare( $current_version, $version, '>=' ) ) {
 				continue;
 			}
@@ -18,8 +18,10 @@ class Manager {
 			new $class;
 		}
 
-		if ( version_compare( $current_version, end( $vesions ), '<' ) ) {
-			update_option( 'auto_listings_version', end( $vesions ) );
+		if ( version_compare( $current_version, end( $versions ), '<' ) ) {
+			update_option( 'auto_listings_version', end( $versions ) );
+		} else {
+			update_option( 'auto_listings_version', AUTO_LISTINGS_VERSION );
 		}
 	}
 }

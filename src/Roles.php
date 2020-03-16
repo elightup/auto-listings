@@ -24,10 +24,8 @@ class Roles {
 				'delete_posts'           => true,
 				'unfiltered_html'        => true,
 				'upload_files'           => true,
-				'delete_others_posts'    => true,
 				'delete_private_posts'   => true,
 				'delete_published_posts' => true,
-				'edit_others_posts'      => true,
 				'edit_others_pages'      => true,
 				'edit_private_posts'     => true,
 				'edit_published_posts'   => true,
@@ -52,9 +50,11 @@ class Roles {
 			return;
 		}
 		$seller_caps = $this->get_seller_caps();
-		foreach ( $seller_caps as $cap_group ) {
+		foreach ( $seller_caps as $key => $cap_group ) {
 			foreach ( $cap_group as $cap ) {
-				$wp_roles->add_cap( 'auto_listings_seller', $cap );
+				if ( 'administrator_listing' !== $key ) {
+					$wp_roles->add_cap( 'auto_listings_seller', $cap );
+				}
 				$wp_roles->add_cap( 'administrator', $cap );
 			}
 		}
@@ -67,27 +67,26 @@ class Roles {
 		$capabilities = [];
 
 		$capabilities['listing'] = [
-			// Users.
-			'list_users',
-			'create_users',
-			'edit_users',
 
 			// Listings.
 			'edit_listing',
 			'read_listing',
 			'delete_listing',
 			'edit_listings',
-			'edit_others_listings',
 			'publish_listings',
 			'read_private_listings',
 			'delete_listings',
 			'delete_private_listings',
 			'delete_published_listings',
-			'delete_others_listings',
 			'edit_private_listings',
 			'edit_published_listings',
 
 			// Enquiries use post capability.
+		];
+
+		$capabilities['administrator_listing'] = [
+			'edit_others_listings',
+			'delete_others_listings',
 		];
 
 		return $capabilities;
