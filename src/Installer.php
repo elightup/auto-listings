@@ -14,8 +14,8 @@ class Installer {
 	/**
 	 * Add hooks when module is loaded.
 	 */
-	public function __construct() {
-		register_activation_hook( AUTO_LISTINGS_FILE, [ $this, 'install' ] );
+	public function __construct( $file ) {
+		register_activation_hook( $file, [ $this, 'install' ] );
 		add_action( 'admin_notices', [ $this, 'notice' ] );
 	}
 
@@ -28,14 +28,6 @@ class Installer {
 		wp_insert_term( 'SUV', 'body_type' );
 		$this->install_listings_page();
 		$this->install_sample_listing();
-
-		// Add Upgraded From Option.
-		$current_version = get_option( 'auto_listings_version' );
-		if ( $current_version ) {
-			update_option( 'auto_listings_version_upgraded_from', $current_version );
-		}
-
-		update_option( 'auto_listings_version', AUTO_LISTINGS_VERSION );
 
 		// Create Auto_Listings roles.
 		$roles = new Roles();

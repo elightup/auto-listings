@@ -28,6 +28,8 @@ function auto_listings_check_php_version() {
 
 add_action( 'plugins_loaded', 'auto_listings_load' );
 
+include __DIR__ . '/vendor/autoload.php';
+
 function auto_listings_load() {
 	// If Meta Box is NOT active.
 	if ( ! defined( 'RWMB_VER' ) ) {
@@ -36,6 +38,8 @@ function auto_listings_load() {
 		require __DIR__ . '/bootstrap.php';
 	}
 }
+
+new AutoListings\Installer( __FILE__ );
 
 function auto_listings_admin_notice() {
 	$plugins      = get_plugins();
