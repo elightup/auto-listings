@@ -8,7 +8,7 @@ class Roles {
 	 */
 	public function add_roles() {
 		$seller_caps = self::get_seller_caps();
-		$seller_caps = array_map( array_flip( $seller_caps ), 'boolval' );
+		$seller_caps = array_map( 'boolval', array_flip( $seller_caps ) );
 		add_role(
 			'auto_listings_seller',
 			__( 'Auto Listings Seller', 'auto-listings' ),
