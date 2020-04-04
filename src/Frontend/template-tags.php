@@ -349,34 +349,20 @@ function auto_listings_template_path() {
  *
  * @param string $part template part.
  */
-function auto_listings_get_part( $part ) {
-	if ( ! $part ) {
-		return;
-	}
-	// Look within passed path within the theme - this is priority.
-	$template = locate_template(
+function auto_listings_get_part( $part, $data = [] ) {
+	// Remove file name extension.
+	$part = str_replace( '.php', '', $part );
+
+	// Merge $data param with default $data.
+	$data = array_merge(
 		[
-			trailingslashit( auto_listings_template_path() ) . $part,
-			$part,
-		]
+			'post_id' => get_the_ID(),
+		],
+		$data
 	);
-
-	// Get template from plugin directory.
-	if ( ! $template ) {
-		$dirs = apply_filters(
-			'auto_listings_template_directory',
-			[
-				AUTO_LISTINGS_DIR . 'templates/',
-			]
-		);
-		foreach ( $dirs as $dir ) {
-			if ( file_exists( trailingslashit( $dir ) . $part ) ) {
-				$template = $dir . $part;
-			}
-		}
+	static $template_loader = null;
+	if ( null === $template_loader ) {
+		$template_loader = new AutoListings\Frontend\TemplatePathLoader;
 	}
-
-	if ( $template ) {
-		include $template;
-	}
+	$template_loader->set_template_data( $data )->get_template_part( $part );
 }
