@@ -51,10 +51,15 @@ function auto_listings_available_listing_conditions() {
 	$condition_options = auto_listings_conditions();
 	$data              = auto_listings_option( 'display_condition' );
 	$array             = [];
-	if ( $data ) {
-		foreach ( $data as $d ) {
-			$array[ $d ] = $condition_options[ $d ];
+
+	if ( ! $data ) {
+		return;
+	}
+	foreach ( $data as $d ) {
+		if ( empty( $condition_options[ $d ] ) ) {
+			continue;
 		}
+		$array[ $d ] = $condition_options[ $d ];
 	}
 	return $array;
 }
