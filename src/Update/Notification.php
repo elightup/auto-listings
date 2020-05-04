@@ -64,7 +64,7 @@ class Notification {
 			return;
 		}
 
-		echo '<div class="notice notice-warning is-dismissible"><p><span class="dashicons dashicons-warning" style="color: #f56e28"></span> ', wp_kses_post( sprintf( $messages[ $status ], $this->settings_page, 'https://metabox.io/pro/' ) ), '</p></div>';
+		echo '<div class="notice notice-warning is-dismissible"><p><span class="dashicons dashicons-warning" style="color: #f56e28"></span> ', wp_kses_post( sprintf( $messages[ $status ], $this->settings_page, 'https://wpautolistings.com/pro/' ) ), '</p></div>';
 	}
 
 	/**
