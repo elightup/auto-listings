@@ -30,10 +30,11 @@ class Notification {
 		$this->settings_page = admin_url( 'admin.php?page=auto-listings#tab-license' );
 	}
 
-	/**
-	 * Add hooks to show admin notice.
-	 */
 	public function init() {
+		add_action( 'init', [ $this, 'show_notifications' ] );
+	}
+
+	public function show_notifications() {
 		if ( ! $this->checker->has_extensions() ) {
 			return;
 		}

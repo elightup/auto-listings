@@ -60,7 +60,9 @@ class Checker {
 		$plugins    = get_plugins();
 		$plugins    = array_map( 'dirname', array_keys( $plugins ) );
 
-		return array_intersect( $extensions, $plugins );
+		$extensions = array_intersect( $extensions, $plugins );
+		$extensions = apply_filters( 'auto_listings_extensions', $extensions );
+		return $extensions;
 	}
 
 	/**
