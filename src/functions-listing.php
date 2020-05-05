@@ -374,8 +374,8 @@ function auto_listings_get_status() {
 		foreach ( $option_status as $key => $value ) {
 			if ( in_array( $listing_status, $value, true ) ) {
 				$status     = isset( $value['status'] ) ? $value['status'] : null;
-				$bg_color   = isset( $value['bg_color'] ) ? $value['bg_color'] : null;
-				$text_color = isset( $value['text_color'] ) ? $value['text_color'] : null;
+				$bg_color   = isset( $value['bg_color'] ) ? $value['bg_color'] : '#ffffff';
+				$text_color = isset( $value['text_color'] ) ? $value['text_color'] : '#444444';
 				$icon       = isset( $value['icon'] ) ? $value['icon'] : null;
 			}
 		}
