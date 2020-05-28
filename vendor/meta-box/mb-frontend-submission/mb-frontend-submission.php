@@ -3,7 +3,7 @@
  * Plugin Name: MB Frontend Submission
  * Plugin URI:  https://metabox.io/plugins/mb-frontend-submission
  * Description: Submit posts and custom fields in the frontend.
- * Version:     2.2.0
+ * Version:     2.2.1
  * Author:      MetaBox.io
  * Author URI:  https://metabox.io
  * License:     GPL2+

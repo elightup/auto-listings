@@ -1,0 +1,25 @@
+$blue: #45cbf7;
+$blue-2: #2f829d;
+$red: #cf1d1d;
+$red-2: #ae1414;
+
+%rwmb-notice {
+	padding: .75em 1.25em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	border: 1px solid transparent;
+	border-radius: .25em;
+}
+
+%i {
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	font-family: sans-serif;
+	font-weight: bold;
+	font-style: normal;
+	text-align: center;
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+}

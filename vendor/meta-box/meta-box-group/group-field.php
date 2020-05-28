@@ -80,7 +80,7 @@ class RWMB_Group_Field extends RWMB_Field {
 
 		// Add filter to child field meta value, make sure it's added only once.
 		if ( empty( self::$meta_queue ) ) {
-			add_filter( 'rwmb_field_meta', array( __CLASS__, 'child_field_meta' ), 10, 3 );
+			add_filter( 'rwmb_raw_meta', array( __CLASS__, 'child_field_meta' ), 10, 3 );
 		}
 
 		// Add group value to the queue.
@@ -105,7 +105,7 @@ class RWMB_Group_Field extends RWMB_Field {
 
 		// Remove filter to child field meta value and reset class's parent field's meta.
 		if ( empty( self::$meta_queue ) ) {
-			remove_filter( 'rwmb_field_meta', array( __CLASS__, 'child_field_meta' ) );
+			remove_filter( 'rwmb_raw_meta', array( __CLASS__, 'child_field_meta' ) );
 		}
 
 		return ob_get_clean();
@@ -175,30 +175,13 @@ class RWMB_Group_Field extends RWMB_Field {
 			$meta = $group_meta[ $child_id ];
 		}
 
-		// Use $field['std'] only when the meta box hasn't been saved (i.e. the first time we run).
-		$meta = ! $saved && isset( $child_field['std'] ) ? $child_field['std'] : $meta;
-
-		// Escape attributes.
-		$meta = self::call( $child_field, 'esc_meta', $meta );
-
-		/**
-		 * Make sure meta value is an array for clonable and multiple fields.
-		 *
-		 * @see RWMB_Field::meta()
-		 */
-		if ( $child_field['clone'] || $child_field['multiple'] ) {
-			if ( ! is_array( $meta ) && ! empty( $meta ) ) {
-				$meta = array( $meta );
-			}
-			if ( empty( $meta ) || ! is_array( $meta ) ) {
-				/**
-				 * Note: if field is clonable, $meta must be an array with values.
-				 * so that the foreach loop in self::show() runs properly.
-				 *
-				 * @see RWMB_Field::show()
-				 */
-				$meta = $child_field['clone'] ? array( '' ) : array();
-			}
+		// Fix value for date time timestamp.
+		if (
+			in_array( $child_field['type'], ['date', 'datetime', 'time'], true )
+			&& ! empty( $child_field['timestamp'] )
+			&& isset( $meta['timestamp'] )
+		) {
+			$meta = $meta['timestamp'];
 		}
 
 		return $meta;

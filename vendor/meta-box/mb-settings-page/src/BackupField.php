@@ -7,7 +7,7 @@ class RWMB_Backup_Field extends RWMB_Textarea_Field {
 		$field['field_name'] = "{$field['option_name']}_backup";
 
 		$meta = $func( $field['option_name'] );
-		$meta = $meta ? json_encode( $meta ) : '';
+		$meta = $meta ? wp_json_encode( $meta ) : '';
 
 		return parent::html( $meta, $field );
 	}

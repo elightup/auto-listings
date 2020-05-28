@@ -127,12 +127,29 @@
 	padding-bottom: 0;
 }
 
+.rwmb-settings-tabs-left.rwmb-settings-no-boxes .rwmb-settings-wrap {
+	border: 1px solid #ddd;
+	background: #fff;
+}
+
 .rwmb-settings-tabs-left.rwmb-settings-no-boxes h2.nav-tab-wrapper {
 	border-color: #ddd;
+	border-width: 0 1px 0 0;
 }
 
 .rwmb-settings-tabs-left.rwmb-settings-no-boxes .nav-tab {
-	border-bottom-color: #eee;
+	border-bottom-color: #ddd;
+	background-color: #f6f6f6;
+}
+
+.rwmb-settings-tabs-left.rwmb-settings-no-boxes .nav-tab-active {
+	background-color: #fff;
+	margin-right: -1px;
+}
+
+.rwmb-settings-tabs-left.rwmb-settings-no-boxes .rwmb-settings-form-wrap {
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 .rwmb-settings-tabs-left.rwmb-settings-no-boxes #poststuff .inside {
