@@ -3,16 +3,16 @@ $grey: #d8d8d8;
 
 
 .auto-listings-search {
-    .search-body__item {
-        margin: 10px 0;
-    }
     
-    .search-form__submit {
-        font-weight: 300;
-        background: $blue;
-    }
+}
+
+.als-field {
+    display: flex;
+    margin: 5px 0;
+
+    &__radio {
+        margin: 0 7px 0 0;
     
-    .field__inputs {
         label {
             font-weight: 300;
             position: relative;
@@ -35,4 +35,10 @@ $grey: #d8d8d8;
             }
         }
     }
+}
+
+.als-submit {
+    font-weight: 300;
+    background: $blue;
+    display: block;
 }
