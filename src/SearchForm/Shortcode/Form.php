@@ -1,7 +1,7 @@
 <?php
 namespace AutoListings\SearchForm\Shortcode;
 
-// use AutoListingsPro\Frontend\Assets;
+use AutoListings\Frontend\Assets;
 
 class Form {
 	public function __construct() {
@@ -32,10 +32,10 @@ class Form {
 			return;
 		}
 
-		// Must enqueue frontend assets. Use filter to bypass is_auto_listing_pro check.
-		// add_filter( 'is_auto_listings_pro', '__return_true' );
-		// $assets = new Assets;
-		// $assets->enqueue();
+		// Must enqueue frontend assets. Use filter to bypass is_auto_listing check.
+		add_filter( 'is_auto_listings', '__return_true' );
+		$assets = new Assets;
+		$assets->enqueue();
 
 		$output = '';
 
