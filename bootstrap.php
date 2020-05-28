@@ -11,9 +11,13 @@ new Enquiry\PostType;
 new Enquiry\Fields;
 new Enquiry\ContactForm;
 
+
+new SearchForm\Assets;
+new SearchForm\PostType;
+
 new Shortcodes;
 new Query;
-new SearchForm;
+
 new SearchQuery;
 new Upgrade\Manager;
 
@@ -24,6 +28,8 @@ if ( is_admin() ) {
 	new Enquiry\AdminColumns;
 	new Admin\SellerColumns;
 	new Admin\Settings;
+	new SearchForm\AdminColumns;
+    new SearchForm\Editor;
 
 	// Update.
 	$update_option  = new Update\Option();
@@ -39,4 +45,10 @@ if ( ( ! is_admin() || wp_doing_ajax() ) && ! wp_doing_cron() ) {
 	new Frontend\TemplateLoader;
 	new Frontend\TemplatePathLoader;
 	new Frontend\Assets;
+
+	new SearchForm\Shortcode\Form;
+    $control = new SearchForm\Shortcode\Control;
+    new SearchForm\Shortcode\Field( $control );
+    new SearchForm\Shortcode\Total;
+    new SearchForm\Shortcode\Button;
 }
