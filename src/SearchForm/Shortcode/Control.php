@@ -61,7 +61,7 @@ class Control {
 	}
 
 	private function radio( $options, $args ) {
-		$selected = filter_var( INPUT_GET, $args['name'], FILTER_SANITIZE_STRING );
+		$selected = filter_var( $args['name'], FILTER_SANITIZE_STRING );
 		?>
 
 		<span class="als-field__radio">
