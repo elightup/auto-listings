@@ -27,9 +27,32 @@ const Modal = ( props ) => {
 
 	const closeModal = () => setActive( false );
 
-	let data = {
-		name: props.name,
-		type: props.type
+	const [values, setValues] = useState( {
+		label: '',
+		placeholder: '',
+		prefix: '',
+		suffix: '',
+		type: '',
+		multiple: false,
+	} );
+	const setValue = ( attribute, value ) => {
+		let newValues = values;
+		newValues[attribute] = value;
+		setValues( newValues );
+	}
+
+	const insert = () => {
+		let shortcode = '';
+		Object.keys( values ).forEach( key => {
+			if ( values[key] ) {
+				shortcode += ` ${key}="${values[key]}"`;
+			}
+		} );
+
+		let name = 'button' === props.type ? '' : ` name="${props.name}"`;
+		shortcode = `[als_${props.type}${name}${shortcode}]`;
+
+		insertTextAtCursor( shortcode );
 	}
 
 	return (
@@ -42,10 +65,10 @@ const Modal = ( props ) => {
 				</h3>
 				<small><i>Leave empty to use the default values</i></small>
 
-				<FieldAttributes dataType={props.type} />
+				<FieldAttributes dataType={props.type} setValue={ setValue }/>
 
 				<div className="modal-actions">
-					<Button {...data} />
+					<Button insert={ insert } />
 				</div>
 			</div>
 		</>
@@ -80,33 +103,34 @@ const FieldAttributes = ( props ) => {
 
 	const [multiple, setMultiple] = useState( true );
 	const toggleMultiple = () => setMultiple( ! multiple );
+	const setValue = props.setValue;
 
 	return (
 		<>
 			<label>
 				<span>Label</span>
-				<input id="als-field_label" type="text" />
+				<input id="als-field_label" type="text" onChange={ e => setValue( 'label', e.target.value ) } />
 			</label>
 			<label>
 				<span>Placeholder</span>
-				<input id="als-field_placeholder" type="text" />
+				<input id="als-field_placeholder" type="text" onChange={ e => setValue( 'placeholder', e.target.value ) } />
 			</label>
 			<label>
 				<span>Prefix</span>
-				<input id="als-field_prefix" type="text" />
+				<input id="als-field_prefix" type="text" onChange={ e => setValue( 'prefix', e.target.value ) } />
 			</label>
 			<label>
 				<span>Suffix</span>
-				<input id="als-field_suffix" type="text" />
+				<input id="als-field_suffix" type="text" onChange={ e => setValue( 'suffix', e.target.value ) } />
 			</label>
 			<label>
 				<span>Type</span>
-				<SelectControl options={options} toggleMultiple={toggleMultiple} />
+				<SelectControl options={options} toggleMultiple={toggleMultiple} setValue={ setValue }/>
 			</label>
 			{
 				! multiple ? '' : (
 					<label className="modal-checkbox active">
-						<input id="als-field_multiple" type="checkbox" />
+						<input id="als-field_multiple" type="checkbox" onChange={ e => setValue( 'multiple', e.target.checked ) } />
 						<span>Multiple</span>
 					</label>
 				)
@@ -115,41 +139,21 @@ const FieldAttributes = ( props ) => {
 	);
 }
 
-const SelectControl = ( { options, toggleMultiple } ) => {
+const SelectControl = ( { options, toggleMultiple, setValue } ) => {
+	const onChange = e => {
+		toggleMultiple();
+		setValue( 'type', e.target.value );
+	}
+
 	return (
-		<select id="als-field_type" onChange={toggleMultiple}>
+		<select id="als-field_type" onChange={onChange}>
 			{ options.map( ( { value, label } ) => <option value={value}>{label}</option> ) }
 		</select>
 	);
 }
 
-const Button = ( props ) => {
-	const insertFieldShortcode = () => {
-		// button and fields attibutes
-		let fieldLabel       = document.querySelector( '#als-field_label' ),
-			label            = "" === fieldLabel.value ? "" : ' label="' + fieldLabel.value + '" '
-		let fieldType        = document.querySelector( '#als-field_type' ),
-			type             = "" === fieldType.value ? "" : ' type="' + fieldType.value + '" '
-
-		// fields attributes
-		let fieldPlaceholder = document.querySelector( '#als-field_placeholder' ),
-			placeholder      = 'button' === props.type || "" === fieldPlaceholder.value ? "" : ' placeholder="' + fieldPlaceholder.value + '" '
-		let isMultiple       = document.getElementById( 'als-field_multiple' ),
-			multiple         = 'button' === props.type || false === isMultiple.checked ? "" : ' multiple="true"'
-		let fieldPrefix      = document.querySelector( '#als-field_prefix' ),
-			prefix           = 'button' === props.type || "" === fieldPrefix.value ? "" : ' prefix="' + fieldPrefix.value + '" '
-		let fieldSuffix      = document.querySelector( '#als-field_suffix' ),
-			suffix           = 'button' === props.type || "" === fieldSuffix.value ? "" : ' suffix="' + fieldSuffix.value + '" '
-		let name             = 'button' === props.type ? "" : ' name="' + props.name  + '"';
-
-
-		let shortCode = '[als_' + props.type + name + label + placeholder + type + multiple + prefix + suffix + ']'
-
-		insertTextAtCursor( shortCode );
-		modalObject.classList.remove( 'active' );
-	}
-
+const Button = ( { insert } ) => {
 	return (
-		<span data-field={props.name} class="button button-primary button-large" onClick={insertFieldShortcode}>Insert Field</span>
+		<span class="button button-primary button-large" onClick={insert}>Insert Field</span>
 	);
 }
