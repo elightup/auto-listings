@@ -1,4 +1,5 @@
 import {editorHTML} from './editor.js';
+const { useState } = wp.element;
 
 const btnInsertField = [...document.querySelectorAll('.btn-insert_field')]
 const btnInsertModal = [...document.querySelectorAll('.btn-insert_modal')]
@@ -16,11 +17,15 @@ const insertTextAtCursor = text => {
 
 const createModal = ( text, name, type ) => {
 	ReactDOM.render( <Modal text={text.trim()} name={name} type={type} />, document.getElementById( 'als-fields' ) );
-	setTimeout( () => modalObject.classList.add( 'active' ), 0 );
 }
 
 const Modal = ( props ) => {
-	const closeModal = () => modalObject.classList.remove( 'active' );
+	const [active, setActive] = useState( true );
+	if ( ! active ) {
+		return;
+	}
+
+	const closeModal = () => setActive( false );
 
 	let data = {
 		name: props.name,
