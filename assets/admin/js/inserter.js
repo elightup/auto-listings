@@ -77,6 +77,10 @@ const FieldAttributes = ( props ) => {
 		{ value: 'select', label: 'Dropdown' },
 		{ value: 'radio', label: 'Single Choice' },
 	];
+
+	const [multiple, setMultiple] = useState( true );
+	const toggleMultiple = () => setMultiple( ! multiple );
+
 	return (
 		<>
 			<label>
@@ -97,27 +101,21 @@ const FieldAttributes = ( props ) => {
 			</label>
 			<label>
 				<span>Type</span>
-				<SelectControl options={options} />
+				<SelectControl options={options} toggleMultiple={toggleMultiple} />
 			</label>
-			<label className="modal-checkbox active">
-				<input id="als-field_multiple" type="checkbox" />
-				<span>Multiple</span>
-			</label>
+			{
+				! multiple ? '' : (
+					<label className="modal-checkbox active">
+						<input id="als-field_multiple" type="checkbox" />
+						<span>Multiple</span>
+					</label>
+				)
+			}
 		</>
 	);
 }
 
-const SelectControl = ( { options } ) => {
-	const toggleMultiple = () => {
-		let containers = document.querySelectorAll( '.modal-checkbox' );
-		if ( ! containers.length ) {
-			return;
-		}
-		containers.forEach( el => el.classList.toggle( 'active' ) )
-
-		document.getElementById( 'als-field_multiple' ).checked = false
-	}
-
+const SelectControl = ( { options, toggleMultiple } ) => {
 	return (
 		<select id="als-field_type" onChange={toggleMultiple}>
 			{ options.map( ( { value, label } ) => <option value={value}>{label}</option> ) }
