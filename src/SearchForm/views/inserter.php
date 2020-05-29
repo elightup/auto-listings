@@ -4,20 +4,21 @@
 	 * Field list
 	 */
 	$als_fields = [
-		'condition'       => 'Condition',
-		'make'            => 'Make',
-		'model'           => 'Model',
-		'price'           => 'Price',
-		'min_price'       => 'Min Price',
-		'max_price'       => 'Max Price',
-		'year'            => 'Year',
 		'body_type'       => 'Body Type',
-		'odometer'        => 'Odometer',
-		'transmission'    => 'Transmission',
+		'condition'       => 'Condition',
 		'drivetrain'      => 'Drivetrain',
 		'engine'          => 'Engine',
+		'exterior_colors' => 'Exterior Colors',
 		'fuel_type'       => 'Fuel Type',
-		'exterior_colors' => 'Exterior Colors'
+		'make'            => 'Make',
+		'max_price'       => 'Max Price',
+		'min_price'       => 'Min Price',
+		'model'           => 'Model',
+		'odometer'        => 'Odometer',
+		'price'           => 'Price',
+		'transmission'    => 'Transmission',
+		'within'          => 'Within',
+		'year'            => 'Year',
 	];
 
 	asort( $als_fields );

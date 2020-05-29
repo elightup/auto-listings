@@ -24,6 +24,11 @@ function auto_listings_search_mileage_max() {
 }
 
 function auto_listings_search_within_radius() {
+	$key = auto_listings_option( 'maps_api_key' );
+	if ( empty( $key ) ) {
+		return [];
+	}
+
 	$miles_kms = auto_listings_miles_kms_label_short();
 	$numbers   = array(
 		'10',
@@ -89,7 +94,7 @@ function auto_listings_get_price_from_price_range( $price_range ) {
 }
 
 function auto_listings_search_city() {
-	$city = auto_listings_option( 'search_city' ) ? auto_listings_option( 'search_city' ) : '';
+	$city = auto_listings_option( '_al_listing_city' ) ? auto_listings_option( '_al_listing_city' ) : '';
 	return apply_filters( 'auto_listings_search_city', $city );
 }
 

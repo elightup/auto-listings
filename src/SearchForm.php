@@ -292,10 +292,6 @@ class SearchForm {
 	 * Within field
 	 */
 	public function within_field() {
-		$key = auto_listings_option( 'maps_api_key' );
-		if ( empty( $key ) ) {
-			return '';
-		}
 		$radius = auto_listings_search_within_radius();
 		$args   = [
 			'name'  => 'within',

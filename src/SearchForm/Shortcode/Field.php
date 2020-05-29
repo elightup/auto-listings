@@ -9,20 +9,21 @@ class Field {
 		$this->control = $control;
 
 		$this->placeholder = array(
-			'year'            => __( 'All years', 'auto-listings' ),
-			'make'            => __( 'All makes', 'auto-listings' ),
-			'transmission'    => __( 'All transmissions', 'auto-listings' ),
+			'body_type'       => __( 'All body types', 'auto-listings' ),
+			'condition'       => __( 'All conditions', 'auto-listings' ),
 			'drivetrain'      => __( 'All drivetrains', 'auto-listings' ),
 			'engine'          => __( 'All engines', 'auto-listings' ),
-			'fuel_type'       => __( 'All fuel types', 'auto-listings' ),
 			'exterior_colors' => __( 'All colors', 'auto-listings' ),
-			'model'           => __( 'All models', 'auto-listings' ),
-			'condition'       => __( 'All conditions', 'auto-listings' ),
-			'body_type'       => __( 'All body types', 'auto-listings' ),
-			'price'           => __( 'All prices', 'auto-listings' ),
-			'min_price'       => __( 'All prices', 'auto-listings' ),
+			'fuel_type'       => __( 'All fuel types', 'auto-listings' ),
+			'make'            => __( 'All makes', 'auto-listings' ),
 			'max_price'       => __( 'All prices', 'auto-listings' ),
+			'min_price'       => __( 'All prices', 'auto-listings' ),
+			'model'           => __( 'All models', 'auto-listings' ),
 			'odometer'        => __( 'All mileages', 'auto-listings' ),
+			'price'           => __( 'All prices', 'auto-listings' ),
+			'transmission'    => __( 'All transmissions', 'auto-listings' ),
+			'within'          => __( 'All areas', 'auto-listings' ),
+			'year'            => __( 'All years', 'auto-listings' ),
 		);
 
 		add_shortcode( 'als_field', array( $this, 'render' ) );
@@ -60,6 +61,9 @@ class Field {
 			case 'max_price':
 				$options = auto_listings_search_price_min_max();
 				break;
+			case 'within':
+				$options = auto_listings_search_within_radius();
+				break;
 			default:
 				$options = $this->get_default_options( $atts['name'] );
 				break;
@@ -78,11 +82,14 @@ class Field {
 	}
 
 	private function get_default_options( $name ) {
-		if ( 'condition' === $name ) {
-			$data = auto_listings_available_listing_conditions();
-		} else {
-			$data = auto_listings_search_get_vehicle_data();
-			$data = $data[ $name ];
+		switch ( $name ) {
+			case 'condition' :
+				$data = auto_listings_available_listing_conditions();
+				break;
+			default:
+				$data = auto_listings_search_get_vehicle_data();
+				$data = $data[ $name ];
+				break;
 		}
 
 		if ( ! $data ) {
