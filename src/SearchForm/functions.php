@@ -1,4 +1,5 @@
 <?php
+// TODO: bỏ hết các function này, chuyển thành các method của Shortcode.
 function auto_listings_search_mileage_max() {
 	$miles_kms = auto_listings_miles_kms_label_short();
 	$numbers   = array(
