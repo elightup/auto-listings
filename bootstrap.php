@@ -17,7 +17,7 @@ new SearchForm\PostType;
 
 new Shortcodes;
 new Query;
-
+new SearchForm;
 new SearchQuery;
 new Upgrade\Manager;
 
