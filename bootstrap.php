@@ -24,10 +24,12 @@ new Upgrade\Manager;
 if ( is_admin() ) {
 	new Admin\Main;
 	new Admin\Assets;
-	new Listing\AdminColumns;
-	new Enquiry\AdminColumns;
 	new Admin\SellerColumns;
 	new Admin\Settings;
+
+	new Listing\AdminColumns;
+	new Enquiry\AdminColumns;
+	
 	new SearchForm\AdminColumns;
     new SearchForm\Editor;
 

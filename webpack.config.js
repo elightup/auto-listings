@@ -25,7 +25,7 @@ var adminConfig = Object.assign( {}, config, {
     ],
     output: {
         path: path.resolve(__dirname, 'assets/admin/js'),
-        filename: "admin.js"
+        filename: "search-form.js"
     },
 } );
 
