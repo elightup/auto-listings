@@ -2,9 +2,9 @@
     "private": true,
     "scripts": {
         "css:admin": "node-sass assets/admin/search-form.scss --sourcemap none --output-style compressed -o assets/admin",
-        "css:frontend": "node-sass assets/frontend/search-form.scss --sourcemap none --output-style compressed -o assets/frontend",
+        "css:frontend": "node-sass assets/css/auto-listings.scss --sourcemap none --output-style compressed -o assets/css",
         "watch:admin": "node-sass assets/admin/search-form.scss --sourcemap true --output-style compressed -w sass -r -o assets/admin",
-        "watch:search-frontend": "node-sass assets/css/search-form.scss --sourcemap true --output-style compressed -w sass -r -o assets/css",
+        "watch:frontend": "node-sass assets/css/auto-listings.scss --sourcemap true --output-style compressed -w sass -r -o assets/css",
         "watch:css": "node-sass --sourcemap none --output-style compressed -w sass/style.scss -r -o assets/css",
         "watch:js": "webpack --watch --mode development",
         "start": "webpack --mode development",
