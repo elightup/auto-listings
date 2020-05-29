@@ -38,6 +38,8 @@ class Assets {
 		wp_enqueue_style( 'auto-listings-fontawesome', $css_url . 'font-awesome.min.css', [], $ver );
 		wp_enqueue_style( 'auto-listings-sumoselect', $css_url . 'sumoselect.min.css', [], $ver );
 
+		wp_enqueue_style( 'als-frontend', AUTO_LISTINGS_URL . 'assets/css/search-form.css', array(), AUTO_LISTINGS_VERSION );
+		
 		if ( is_listing() ) {
 			wp_enqueue_style( 'auto-listings-lightslider', $css_url . 'lightslider.css', [], $ver );
 			wp_enqueue_style( 'auto-listings-lightgallery', $css_url . 'lightgallery.css', [], $ver );
