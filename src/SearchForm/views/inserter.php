@@ -1,29 +1,6 @@
 <div class="als-inserter">
 	<?php
 	/**
-	 * Field list
-	 */
-	$als_fields = [
-		'body_type'       => 'Body Type',
-		'condition'       => 'Condition',
-		'drivetrain'      => 'Drivetrain',
-		'engine'          => 'Engine',
-		'exterior_colors' => 'Exterior Colors',
-		'fuel_type'       => 'Fuel Type',
-		'make'            => 'Make',
-		'max_price'       => 'Max Price',
-		'min_price'       => 'Min Price',
-		'model'           => 'Model',
-		'odometer'        => 'Odometer',
-		'price'           => 'Price',
-		'transmission'    => 'Transmission',
-		'within'          => 'Within',
-		'year'            => 'Year',
-	];
-
-	asort( $als_fields );
-
-	/**
 	 * Special fields
 	 */
 	$als_special_fields = [
@@ -33,9 +10,7 @@
 	
 	<div class="widefat">
 		<h3><?php esc_html_e( 'Field list', 'auto-listings' ) ?></h3>
-		<div class="als-fields" id="als-type-field">
-			
-		</div>
+		<div class="als-fields" id="als-fields"></div>
 
 		<hr>
 
@@ -47,15 +22,6 @@
 						<?php esc_html_e( $name, 'auto-listings' ) ?>
 				</span>
 			<?php endforeach; ?>
-
-			<span class="button btn-insert_modal"
-					data-tab="template-editor"
-					data-field='<?php echo '[als_button]'; ?>'
-					data-type="button">
-					<?php esc_html_e( 'Button', 'auto-listings' ) ?>
-			</span>
 		</div>
 	</div>
 </div>
-
-<div id="als-fields"></div>

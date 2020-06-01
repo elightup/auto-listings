@@ -37,6 +37,7 @@ class Assets {
 				'transmission'    => 'Transmission',
 				'within'          => 'Within',
 				'year'            => 'Year',
+				'button'		  => 'Button',
 			]
 		]);
 	}

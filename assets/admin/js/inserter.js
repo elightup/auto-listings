@@ -12,14 +12,33 @@ const insertTextAtCursor = text => {
 }
 
 const createModal = () => {
-	// Object.keys( als_admin.fields ).forEach( key => {
-		// console.log(key)
-		// console.log(als_admin.fields[key])
-		ReactDOM.render( <Test />, document.getElementById( 'als-type-field' ) );
-	// } );
+	ReactDOM.render( <Fields />, document.getElementById( 'als-fields' ) );
 }
 
-const ButtonCreateModal = ( {text, name, type, toggleModal, setValue} ) => {
+const Fields = () => {
+	const [active, setActive] = useState( false );
+	const toggleModal = () => setActive( ! active );
+
+	const [datas, setDatas] = useState( {
+		text: '',
+		name: '',
+		type: '',
+	} );
+	const setValue = ( newData ) => {
+		setDatas( newData );
+	}
+
+	return (
+		<>
+		{ Object.keys( als_admin.fields ).map( key => <ButtonInsertField text={als_admin.fields[key]} name={key} toggleModal={toggleModal} setValue={setValue} /> ) }
+		{ active ? <Modal text={datas.text} name={datas.name} type={datas.type} toggleModal={toggleModal} /> : null }
+		</>
+	);
+}
+
+const ButtonInsertField = ( {text, name, toggleModal, setValue} ) => {
+	let type = 'button' === name ? 'button' : 'field';
+
 	const handleClick = () => {
 		toggleModal();
 		setValue( {
@@ -41,38 +60,13 @@ const ButtonCreateModal = ( {text, name, type, toggleModal, setValue} ) => {
 	);
 }
 
-const Test = () => {
-	const [active, setActive] = useState( false );
-	const toggleModal = () => setActive( ! active );
-
-	const [datas, setDatas] = useState( {
-		text: '',
-		name: '',
-		type: '',
-	} );
-	const setValue = ( newData ) => {
-		setDatas( newData );
-	}
-
-	return (
-		<>
-		{
-			Object.keys( als_admin.fields ).map( key =>
-				<ButtonCreateModal text={als_admin.fields[key]} name={key} type="field" toggleModal={toggleModal} setValue={setValue} />
-			)
-		}
-		{ active ? <Modal dataText={datas.text} dataName={datas.name} dataType={datas.type} toggleModal={toggleModal} /> : null }
-		</>
-	);
-}
-
-const Modal = ( {dataText, dataName, dataType, toggleModal} ) => {
+const Modal = ( {text, name, type, toggleModal} ) => {
 	const [values, setValues] = useState( {
 		label: '',
 		placeholder: '',
 		prefix: '',
 		suffix: '',
-		type: 'button' === dataType ? 'submit' : 'select',
+		type: 'button' === type ? 'submit' : 'select',
 		multiple: false,
 	} );
 	const setValue = ( attribute, value ) => {
@@ -89,8 +83,8 @@ const Modal = ( {dataText, dataName, dataType, toggleModal} ) => {
 			}
 		} );
 
-		let name = 'button' === dataType ? '' : ` name="${dataName}"`;
-		shortcode = `[als_${dataType}${name}${shortcode}]`;
+		let _name = 'button' === type ? '' : ` name="${name}"`;
+		shortcode = `[als_${type}${_name}${shortcode}]`;
 
 		insertTextAtCursor( shortcode );
 	}
@@ -100,15 +94,15 @@ const Modal = ( {dataText, dataName, dataType, toggleModal} ) => {
 			<div id="modal-bg" onClick={toggleModal}></div>
 			<div className="modal">
 				<h3>
-					{dataText} attributes
+					{text} attributes
 					<span className="modal-close" onClick={toggleModal}>&times;</span>
 				</h3>
 				<small><i>Leave empty to use the default values</i></small>
 
-				<FieldAttributes type={dataType} setValue={ setValue }/>
+				<FieldAttributes type={type} setValue={ setValue }/>
 
 				<div className="modal-actions">
-					<Button insert={ insert } toggleModal={toggleModal} />
+					<ButtonInsertShortcode insert={ insert } toggleModal={toggleModal} />
 				</div>
 			</div>
 		</>
@@ -193,7 +187,7 @@ const SelectControl = ( { options, toggleMultiple, setValue } ) => {
 	);
 }
 
-const Button = ( { insert, toggleModal } ) => {
+const ButtonInsertShortcode = ( { insert, toggleModal } ) => {
 	const handleClick = () => {
 		insert();
 		setTimeout(() => {
