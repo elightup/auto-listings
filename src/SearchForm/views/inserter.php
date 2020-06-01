@@ -33,15 +33,8 @@
 	
 	<div class="widefat">
 		<h3><?php esc_html_e( 'Field list', 'auto-listings' ) ?></h3>
-		<div class="als-fields">
-			<?php foreach ( $als_fields as $field => $name ) : ?>
-				<span class="button btn-insert_modal"
-						data-tab="template-editor"
-						data-field='<?php esc_html_e( $field, 'auto-listings' ) ?>'
-						data-type="field">
-						<?php esc_html_e( $name, 'auto-listings' ) ?>
-				</span>
-			<?php endforeach; ?>
+		<div class="als-fields" id="als-type-field">
+			
 		</div>
 
 		<hr>

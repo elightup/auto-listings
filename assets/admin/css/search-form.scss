@@ -3,6 +3,7 @@
 $blue: #007cba;
 
 .btn-insert_field, .btn-insert_modal {
+	margin-right: 3px !important;
 	margin-bottom: 5px !important;
 }
 
@@ -54,7 +55,7 @@ $blue: #007cba;
 	}
 }
 
-#als-fields {
+.als-fields {
 	.modal {
 		position: fixed;
 		top: 50%;

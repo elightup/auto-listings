@@ -2,11 +2,8 @@ import {editorHTML} from './editor.js';
 const { useState } = wp.element;
 
 const btnInsertField = [...document.querySelectorAll('.btn-insert_field')]
-const btnInsertModal = [...document.querySelectorAll('.btn-insert_modal')]
 
 btnInsertField.forEach( btn => btn.addEventListener( 'click', () => insertTextAtCursor( btn.dataset.field ) ) );
-
-btnInsertModal.forEach( btn => btn.addEventListener( 'click', () => createModal( btn.textContent, btn.dataset.field, btn.dataset.type ) ) );
 
 const insertTextAtCursor = text => {
 	const doc = editorHTML.getDoc();
@@ -14,24 +11,68 @@ const insertTextAtCursor = text => {
 	editorHTML.focus();
 }
 
-const createModal = ( text, name, type ) => {
-	ReactDOM.render( <Modal text={text.trim()} name={name} type={type} />, document.getElementById( 'als-fields' ) );
+const createModal = () => {
+	// Object.keys( als_admin.fields ).forEach( key => {
+		// console.log(key)
+		// console.log(als_admin.fields[key])
+		ReactDOM.render( <Test />, document.getElementById( 'als-type-field' ) );
+	// } );
 }
 
-const Modal = ( props ) => {
-	const [active, setActive] = useState( true );
-	if ( ! active ) {
-		return;
+const ButtonCreateModal = ( {text, name, type, toggleModal, setValue} ) => {
+	const handleClick = () => {
+		toggleModal();
+		setValue( {
+			text: text,
+			name: name,
+			type: type,
+		} )
 	}
 
-	const closeModal = () => setActive( false );
+	return (
+		<span class="button btn-insert_modal"
+			data-tab="template-editor"
+			data-field={name}
+			data-type={type}
+			onClick={handleClick}
+			>
+			{text}
+		</span>
+	);
+}
 
+const Test = () => {
+	const [active, setActive] = useState( false );
+	const toggleModal = () => setActive( ! active );
+
+	const [datas, setDatas] = useState( {
+		text: '',
+		name: '',
+		type: '',
+	} );
+	const setValue = ( newData ) => {
+		setDatas( newData );
+	}
+
+	return (
+		<>
+		{
+			Object.keys( als_admin.fields ).map( key =>
+				<ButtonCreateModal text={als_admin.fields[key]} name={key} type="field" toggleModal={toggleModal} setValue={setValue} />
+			)
+		}
+		{ active ? <Modal dataText={datas.text} dataName={datas.name} dataType={datas.type} toggleModal={toggleModal} /> : null }
+		</>
+	);
+}
+
+const Modal = ( {dataText, dataName, dataType, toggleModal} ) => {
 	const [values, setValues] = useState( {
 		label: '',
 		placeholder: '',
 		prefix: '',
 		suffix: '',
-		type: 'button' === props.type ? 'submit' : 'select',
+		type: 'button' === dataType ? 'submit' : 'select',
 		multiple: false,
 	} );
 	const setValue = ( attribute, value ) => {
@@ -48,26 +89,26 @@ const Modal = ( props ) => {
 			}
 		} );
 
-		let name = 'button' === props.type ? '' : ` name="${props.name}"`;
-		shortcode = `[als_${props.type}${name}${shortcode}]`;
+		let name = 'button' === dataType ? '' : ` name="${dataName}"`;
+		shortcode = `[als_${dataType}${name}${shortcode}]`;
 
 		insertTextAtCursor( shortcode );
 	}
 
 	return (
 		<>
-			<div id="modal-bg" onClick={closeModal}></div>
+			<div id="modal-bg" onClick={toggleModal}></div>
 			<div className="modal">
 				<h3>
-					{props.text} attributes
-					<span className="modal-close" onClick={closeModal}>&times;</span>
+					{dataText} attributes
+					<span className="modal-close" onClick={toggleModal}>&times;</span>
 				</h3>
 				<small><i>Leave empty to use the default values</i></small>
 
-				<FieldAttributes type={props.type} setValue={ setValue }/>
+				<FieldAttributes type={dataType} setValue={ setValue }/>
 
 				<div className="modal-actions">
-					<Button insert={ insert } closeModal={closeModal} />
+					<Button insert={ insert } toggleModal={toggleModal} />
 				</div>
 			</div>
 		</>
@@ -152,11 +193,11 @@ const SelectControl = ( { options, toggleMultiple, setValue } ) => {
 	);
 }
 
-const Button = ( { insert, closeModal } ) => {
+const Button = ( { insert, toggleModal } ) => {
 	const handleClick = () => {
 		insert();
 		setTimeout(() => {
-			closeModal();
+			toggleModal();
 		}, 0);
 	}
 
@@ -164,3 +205,7 @@ const Button = ( { insert, closeModal } ) => {
 		<span class="button button-primary button-large" onClick={handleClick}>Insert Field</span>
 	);
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+	createModal();
+  });
