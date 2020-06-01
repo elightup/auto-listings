@@ -3,7 +3,6 @@ const { useState } = wp.element;
 
 const btnInsertField = [...document.querySelectorAll('.btn-insert_field')]
 const btnInsertModal = [...document.querySelectorAll('.btn-insert_modal')]
-const modalObject    = document.getElementById( 'als-fields' )
 
 btnInsertField.forEach( btn => btn.addEventListener( 'click', () => insertTextAtCursor( btn.dataset.field ) ) );
 
@@ -65,10 +64,10 @@ const Modal = ( props ) => {
 				</h3>
 				<small><i>Leave empty to use the default values</i></small>
 
-				<FieldAttributes dataType={props.type} setValue={ setValue }/>
+				<FieldAttributes data={props.type} setValue={ setValue }/>
 
 				<div className="modal-actions">
-					<Button insert={ insert } />
+					<Button insert={ insert } closeModal={closeModal} />
 				</div>
 			</div>
 		</>
@@ -76,7 +75,7 @@ const Modal = ( props ) => {
 }
 
 const FieldAttributes = ( props ) => {
-	if ( 'button' === props.dataType ) {
+	if ( 'button' === props.data ) {
 		const options = [
 			{ value: 'submit', label: 'Submit' },
 			{ value: 'reset', label: 'Reset' },
@@ -141,8 +140,8 @@ const FieldAttributes = ( props ) => {
 
 const SelectControl = ( { options, toggleMultiple, setValue } ) => {
 	const onChange = e => {
-		toggleMultiple();
-		setValue( 'type', e.target.value );
+		if ( toggleMultiple ) { toggleMultiple() }
+		if ( setValue ) { setValue( 'type', e.target.value ) }
 	}
 
 	return (
@@ -152,8 +151,15 @@ const SelectControl = ( { options, toggleMultiple, setValue } ) => {
 	);
 }
 
-const Button = ( { insert } ) => {
+const Button = ( { insert, closeModal } ) => {
+	const handleClick = () => {
+		insert();
+		setTimeout(() => {
+			closeModal();
+		}, 0);
+	}
+
 	return (
-		<span class="button button-primary button-large" onClick={insert}>Insert Field</span>
+		<span class="button button-primary button-large" onClick={handleClick}>Insert Field</span>
 	);
 }
