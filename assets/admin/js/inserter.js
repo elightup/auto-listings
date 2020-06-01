@@ -31,7 +31,7 @@ const Modal = ( props ) => {
 		placeholder: '',
 		prefix: '',
 		suffix: '',
-		type: '',
+		type: 'button' === props.type ? 'submit' : 'select',
 		multiple: false,
 	} );
 	const setValue = ( attribute, value ) => {
@@ -64,7 +64,7 @@ const Modal = ( props ) => {
 				</h3>
 				<small><i>Leave empty to use the default values</i></small>
 
-				<FieldAttributes data={props.type} setValue={ setValue }/>
+				<FieldAttributes type={props.type} setValue={ setValue }/>
 
 				<div className="modal-actions">
 					<Button insert={ insert } closeModal={closeModal} />
@@ -75,7 +75,9 @@ const Modal = ( props ) => {
 }
 
 const FieldAttributes = ( props ) => {
-	if ( 'button' === props.data ) {
+	const setValue = props.setValue;
+
+	if ( 'button' === props.type ) {
 		const options = [
 			{ value: 'submit', label: 'Submit' },
 			{ value: 'reset', label: 'Reset' },
@@ -85,11 +87,11 @@ const FieldAttributes = ( props ) => {
 			<>
 				<label>
 					<span>Label</span>
-					<input id="als-field_label" type="text" />
+					<input id="als-field_label" type="text" onChange={ e => setValue( 'label', e.target.value ) } />
 				</label>
 				<label>
 					<span>Type</span>
-					<SelectControl options={options} />
+					<SelectControl options={options} setValue={setValue} />
 				</label>
 			</>
 		);
@@ -102,7 +104,6 @@ const FieldAttributes = ( props ) => {
 
 	const [multiple, setMultiple] = useState( true );
 	const toggleMultiple = () => setMultiple( ! multiple );
-	const setValue = props.setValue;
 
 	return (
 		<>
@@ -124,7 +125,7 @@ const FieldAttributes = ( props ) => {
 			</label>
 			<label>
 				<span>Type</span>
-				<SelectControl options={options} toggleMultiple={toggleMultiple} setValue={ setValue }/>
+				<SelectControl options={options} toggleMultiple={toggleMultiple} setValue={ setValue }  />
 			</label>
 			{
 				! multiple ? '' : (
@@ -145,7 +146,7 @@ const SelectControl = ( { options, toggleMultiple, setValue } ) => {
 	}
 
 	return (
-		<select id="als-field_type" onChange={onChange}>
+		<select id="als-field_type" onChange={onChange} >
 			{ options.map( ( { value, label } ) => <option value={value}>{label}</option> ) }
 		</select>
 	);
