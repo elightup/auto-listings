@@ -11,8 +11,6 @@ new Enquiry\PostType;
 new Enquiry\Fields;
 new Enquiry\ContactForm;
 
-
-new SearchForm\Assets;
 new SearchForm\PostType;
 
 new Shortcodes;

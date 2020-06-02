@@ -194,7 +194,7 @@ const ButtonInsertShortcode = ( { insert, toggleModal } ) => {
 	const handleClick = ( e ) => {
 		e.preventDefault();
 		insert();
-		setTimeout( toggleModal, 0);
+		toggleModal();
 	}
 
 	return (
