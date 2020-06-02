@@ -1,3 +1,11 @@
+// TODO
+// 1: Viết dấu cách trong ngoặc { }
+// 2: Kiểm tra tất cả các text chưa được dịch
+// 3: Kiểm tra các class và ID thừa
+// 4: Đổi các button về <button>, bỏ class button-large
+// 5: Chuyển nút total listings vào react
+// 6: Thêm prefix vào CSS class. Dùng class thay cho ID.
+
 import {editorHTML} from './editor.js';
 const { useState } = wp.element;
 
