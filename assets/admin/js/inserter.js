@@ -17,15 +17,13 @@ const Fields = () => {
 		name: '',
 		type: '',
 	} );
-	const setValue = newData => setData( newData );
 
 	return (
 		<>
 		{ Object.keys( als_admin.fields ).map( ( key ) =>
-			'total_listings' === key ?
-				<TotalListings key={ key } text={ als_admin.fields[key] } name={ key } /> 
-			:					
-				<ButtonInsertField key={ key } text={ als_admin.fields[key] } name={ key } toggleModal={ toggleModal } setValue={ setValue } /> 
+			'total_listings' === key
+			? <TotalListings key={ key } text={ als_admin.fields[key] } name={ key } />
+			: <ButtonInsertField key={ key } text={ als_admin.fields[key] } name={ key } toggleModal={ toggleModal } setValue={ setData } />
 		) }
 
 		{ active ? <Modal text={ data.text } name={ data.name } type={ data.type } toggleModal={ toggleModal } /> : null }
@@ -34,12 +32,10 @@ const Fields = () => {
 }
 
 const TotalListings = ( { text, name } ) => {
-	let shortcode = `[als_${name}]`;
-
 	const handleClick = ( e ) => {
 		e.preventDefault();
 		changeTab( e );
-		insertTextAtCursor( shortcode );
+		insertTextAtCursor( `[als_${name}]` );
 	}
 
 	return (
@@ -69,7 +65,7 @@ const Modal = ( { text, name, type, toggleModal } ) => {
 		placeholder: '',
 		prefix: '',
 		suffix: '',
-		type: 'button' === type ? 'submit' : 'select',
+		type: '',
 		multiple: false,
 	} );
 	const setValue = ( attribute, value ) => {
@@ -94,7 +90,7 @@ const Modal = ( { text, name, type, toggleModal } ) => {
 
 	return (
 		<>
-			<div class="als-modal__overlay" onClick={ toggleModal }></div>
+			<div class="als-modal-overlay" onClick={ toggleModal }></div>
 			<div className="als-modal">
 				<h3>
 					{ text + ' ' + als_admin.translate.label }
@@ -125,7 +121,7 @@ const FieldAttributes = ( props ) => {
 			<>
 				<label>
 					<span>{ als_admin.translate.label }</span>
-					<input id="als-field_label" type="text" onChange={ e => setValue( 'label', e.target.value ) } />
+					<input type="text" onChange={ e => setValue( 'label', e.target.value ) } />
 				</label>
 				<label>
 					<span>{ als_admin.translate.type }</span>
@@ -147,19 +143,19 @@ const FieldAttributes = ( props ) => {
 		<>
 			<label>
 				<span>{ als_admin.translate.label }</span>
-				<input id="als-field_label" type="text" onChange={ e => setValue( 'label', e.target.value ) } />
+				<input type="text" onChange={ e => setValue( 'label', e.target.value ) } />
 			</label>
 			<label>
 				<span>{ als_admin.translate.placeholder }</span>
-				<input id="als-field_placeholder" type="text" onChange={ e => setValue( 'placeholder', e.target.value ) } />
+				<input type="text" onChange={ e => setValue( 'placeholder', e.target.value ) } />
 			</label>
 			<label>
 				<span>{ als_admin.translate.prefix }</span>
-				<input id="als-field_prefix" type="text" onChange={ e => setValue( 'prefix', e.target.value ) } />
+				<input type="text" onChange={ e => setValue( 'prefix', e.target.value ) } />
 			</label>
 			<label>
 				<span>{ als_admin.translate.suffix }</span>
-				<input id="als-field_suffix" type="text" onChange={ e => setValue( 'suffix', e.target.value ) } />
+				<input type="text" onChange={ e => setValue( 'suffix', e.target.value ) } />
 			</label>
 			<label>
 				<span>{ als_admin.translate.type }</span>
@@ -167,8 +163,8 @@ const FieldAttributes = ( props ) => {
 			</label>
 			{
 				! multiple ? '' : (
-					<label className="als-modal-checkbox active">
-						<input id="als-field_multiple" type="checkbox" onChange={ e => setValue( 'multiple', e.target.checked ) } />
+					<label className="als-modal-checkbox">
+						<input type="checkbox" onChange={ e => setValue( 'multiple', e.target.checked ) } />
 						<span>{ als_admin.translate.multiple }</span>
 					</label>
 				)
@@ -188,7 +184,7 @@ const SelectControl = ( { options, toggleMultiple, setValue } ) => {
 	}
 
 	return (
-		<select id="als-field_type" onChange={ onChange } >
+		<select onChange={ onChange } >
 			{ options.map( ( { value, label } ) => <option value={ value }>{ label }</option> ) }
 		</select>
 	);
@@ -198,9 +194,7 @@ const ButtonInsertShortcode = ( { insert, toggleModal } ) => {
 	const handleClick = ( e ) => {
 		e.preventDefault();
 		insert();
-		setTimeout(() => {
-			toggleModal();
-		}, 0);
+		setTimeout( toggleModal, 0);
 	}
 
 	return (

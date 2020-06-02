@@ -1,44 +1,39 @@
 $blue: #4299e1;
 $grey: #d8d8d8;
 
-
-.auto-listings-search {
-    
-}
-
 .als-field {
-    display: flex;
-    margin: 5px 0;
+	display: flex;
+	margin: 5px 0;
 
-    &__radio {
-        margin: 0 7px 0 0;
-    
-        label {
-            font-weight: 300;
-            position: relative;
-            cursor: pointer;
-        }
-    
-        span {
-            background: $grey;
-            padding: 3px 7px;
-            border-radius: 4px;
-        }
-    
-        input[type="radio"] {
-            position: absolute;
-            opacity: 0;
-    
-            &:checked ~ span {
-                background: $blue;
-                color: #ffffff;
-            }
-        }
-    }
+	&__radio {
+		margin: 0 7px 0 0;
+
+		label {
+			font-weight: 300;
+			position: relative;
+			cursor: pointer;
+		}
+
+		span {
+			background: $grey;
+			padding: 3px 7px;
+			border-radius: 4px;
+		}
+
+		input[type="radio"] {
+			position: absolute;
+			opacity: 0;
+
+			&:checked ~ span {
+				background: $blue;
+				color: #fff;
+			}
+		}
+	}
 }
 
 .als-submit {
-    font-weight: 300;
-    background: $blue;
-    display: block;
+	font-weight: 300;
+	background: $blue;
+	display: block;
 }

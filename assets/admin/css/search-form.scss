@@ -1,7 +1,5 @@
 @import 'code-mirror';
 
-$blue: #007cba;
-
 .als-tab {
 	&__nav {
 		display: flex;
@@ -97,18 +95,14 @@ $blue: #007cba;
 			margin-bottom: 0;
 			flex-direction: row;
 			align-items: center;
-			display: none;
-
-			&.active {
-				display: flex;
-			}
+			display: flex;
 
 			input {
 				width: auto;
 			}
 
 			span {
-				font-weight: 300;
+				font-weight: 400;
 			}
 		}
 
@@ -131,7 +125,7 @@ $blue: #007cba;
 		border-top: 1px solid #ddd;
 	}
 
-	&__overlay{
+	&-overlay{
 		position: fixed;
 		top: 0;
 		bottom: 0;
