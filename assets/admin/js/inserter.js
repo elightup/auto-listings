@@ -11,27 +11,21 @@ const insertTextAtCursor = text => {
 	editorHTML.focus();
 }
 
-const createModal = () => {
-	ReactDOM.render( <Fields />, document.getElementById( 'als-fields' ) );
-}
-
 const Fields = () => {
 	const [active, setActive] = useState( false );
 	const toggleModal = () => setActive( ! active );
 
-	const [datas, setDatas] = useState( {
+	const [data, setData] = useState( {
 		text: '',
 		name: '',
 		type: '',
 	} );
-	const setValue = ( newData ) => {
-		setDatas( newData );
-	}
+	const setValue = newData => setData( newData );
 
 	return (
 		<>
-		{ Object.keys( als_admin.fields ).map( key => <ButtonInsertField text={als_admin.fields[key]} name={key} toggleModal={toggleModal} setValue={setValue} /> ) }
-		{ active ? <Modal text={datas.text} name={datas.name} type={datas.type} toggleModal={toggleModal} /> : null }
+		{ Object.keys( als_admin.fields ).map( key => <ButtonInsertField key={key} text={als_admin.fields[key]} name={key} toggleModal={toggleModal} setValue={setValue} /> ) }
+		{ active ? <Modal text={data.text} name={data.name} type={data.type} toggleModal={toggleModal} /> : null }
 		</>
 	);
 }
@@ -39,25 +33,13 @@ const Fields = () => {
 const ButtonInsertField = ( {text, name, toggleModal, setValue} ) => {
 	let type = 'button' === name ? 'button' : 'field';
 
-	const handleClick = () => {
+	const handleClick = ( e ) => {
+		e.preventDefault();
 		toggleModal();
-		setValue( {
-			text: text,
-			name: name,
-			type: type,
-		} )
+		setValue( { text, name, type } );
 	}
 
-	return (
-		<span class="button btn-insert_modal"
-			data-tab="template-editor"
-			data-field={name}
-			data-type={type}
-			onClick={handleClick}
-			>
-			{text}
-		</span>
-	);
+	return <button class="button" onClick={handleClick}>{text}</button>;
 }
 
 const Modal = ( {text, name, type, toggleModal} ) => {
@@ -176,8 +158,12 @@ const FieldAttributes = ( props ) => {
 
 const SelectControl = ( { options, toggleMultiple, setValue } ) => {
 	const onChange = e => {
-		if ( toggleMultiple ) { toggleMultiple() }
-		if ( setValue ) { setValue( 'type', e.target.value ) }
+		if ( toggleMultiple ) {
+			toggleMultiple();
+		}
+		if ( setValue ) {
+			setValue( 'type', e.target.value );
+		}
 	}
 
 	return (
@@ -200,6 +186,4 @@ const ButtonInsertShortcode = ( { insert, toggleModal } ) => {
 	);
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-	createModal();
-  });
+ReactDOM.render( <Fields />, document.getElementById( 'als-fields' ) );
