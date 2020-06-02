@@ -49,6 +49,10 @@ class Assets {
 				'multiple'     => __( 'Multiple', 'auto-listings' ),
 				'insert_field' => __( 'Insert Field', 'auto-listings' ),
 				'attributes'   => __( 'attributes', 'auto-listings' ),
+				'reset'        => __( 'Reset', 'auto-listings' ),
+				'submit'       => __( 'Submit', 'auto-listings' ),
+				'select'       => __( 'Dropdown', 'auto-listings' ),
+				'radio'        => __( 'Single Choice', 'auto-listings' ),
 				'notice'       => __( 'Leave empty to use the default values', 'auto-listings' ),
 				
 			]

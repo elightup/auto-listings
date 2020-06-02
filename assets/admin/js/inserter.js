@@ -117,8 +117,8 @@ const FieldAttributes = ( props ) => {
 
 	if ( 'button' === props.type ) {
 		const options = [
-			{ value: 'submit', label: 'Submit' },
-			{ value: 'reset', label: 'Reset' },
+			{ value: 'submit', label: als_admin.translate.submit },
+			{ value: 'reset', label: als_admin.translate.reset },
 		];
 
 		return (
@@ -136,8 +136,8 @@ const FieldAttributes = ( props ) => {
 	}
 
 	const options = [
-		{ value: 'select', label: 'Dropdown' },
-		{ value: 'radio', label: 'Single Choice' },
+		{ value: 'select', label: als_admin.translate.select },
+		{ value: 'radio', label: als_admin.translate.radio },
 	];
 
 	const [multiple, setMultiple] = useState( true );
