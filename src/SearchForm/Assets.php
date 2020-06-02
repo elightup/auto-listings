@@ -37,7 +37,20 @@ class Assets {
 				'transmission'    => 'Transmission',
 				'within'          => 'Within',
 				'year'            => 'Year',
-				'button'		  => 'Button',
+				'button'          => 'Button',
+				'total_listings'  => 'Total listings'
+			],
+			'translate' => [
+				'label'        => __( 'Label', 'auto-listings' ),
+				'type'         => __( 'Type', 'auto-listings' ),
+				'placeholder'  => __( 'Placeholder', 'auto-listings' ),
+				'prefix'       => __( 'Prefix', 'auto-listings' ),
+				'suffix'       => __( 'Suffix', 'auto-listings' ),
+				'multiple'     => __( 'Multiple', 'auto-listings' ),
+				'insert_field' => __( 'Insert Field', 'auto-listings' ),
+				'attributes'   => __( 'attributes', 'auto-listings' ),
+				'notice'       => __( 'Leave empty to use the default values', 'auto-listings' ),
+				
 			]
 		]);
 	}

@@ -2,18 +2,6 @@
 
 $blue: #007cba;
 
-.btn-insert_field, .btn-insert_modal {
-	margin-right: 3px !important;
-	margin-bottom: 5px !important;
-}
-
-.btn-short_type {
-	background: #d8d8d8;
-	display: inline-block;
-	padding: 3px 7px;
-	margin-right: 2px;
-}
-
 .als-tab {
 	&__nav {
 		display: flex;
@@ -48,29 +36,31 @@ $blue: #007cba;
 }
 
 .als-fields {
-	& + hr {
+	hr {
 		border-top: 1px solid #ccd0d4;
 		border-bottom: 0;
 		margin-bottom: 10px;
 	}
+
+	.button {
+		margin: 0 3px 5px 0;
+	}
 }
 
-.als-fields {
-	.modal {
-		position: fixed;
-		top: 50%;
-		left: 50%;
-		z-index: 11;
-		min-height: 200px;
-		min-width: 330px;
-		border-radius: 4px;
-		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-		background: #ffffff;
-		opacity: 1;
-		transform: translate(-50%, -50%) scale(1);
-		transform-origin: center;
-		animation: zoom .25s;
-	}
+.als-modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 11;
+	min-height: 200px;
+	min-width: 330px;
+	border-radius: 4px;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+	background: #ffffff;
+	opacity: 1;
+	transform: translate(-50%, -50%) scale(1);
+	transform-origin: center;
+	animation: zoom .25s;
 
 	h3 {
 		margin: 0;
@@ -84,12 +74,12 @@ $blue: #007cba;
 		&::first-letter {
 			text-transform: uppercase;
 		}
+	}
 
-		.modal-close {
-			font-size: 24px;
-			cursor: pointer;
-			padding-bottom: 5px;
-		}
+	&__close {
+		font-size: 24px;
+		cursor: pointer;
+		padding-bottom: 5px;
 	}
 
 	small {
@@ -103,11 +93,8 @@ $blue: #007cba;
 		margin: 12px 0;
 		padding: 0px 16px;
 
-		&.modal-checkbox {
+		&.als-modal-checkbox {
 			margin-bottom: 0;
-		}
-
-		&.modal-checkbox {
 			flex-direction: row;
 			align-items: center;
 			display: none;
@@ -137,22 +124,22 @@ $blue: #007cba;
 		width: 100%;
 	}
 
-	.modal-actions {
+	&__actions {
 		display: flex;
 		justify-content: flex-end;
 		padding: 7px 16px;
 		border-top: 1px solid #ddd;
 	}
-}
 
-#modal-bg {
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	z-index: 10;
-	background: rgba(#000, 0.5);
+	&__overlay{
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 10;
+		background: rgba(#000, 0.5);
+	}
 }
 
 @keyframes zoom {

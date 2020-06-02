@@ -2,7 +2,6 @@ import { editorHTML, editorCSS } from './editor.js';
 
 const tabLinks  = [...document.querySelectorAll( '.als-tab__link' )]
 const tabPanels = [...document.querySelectorAll( '.als-tab__pane' )]
-const insertors = [...document.querySelectorAll( '.btn-insert_modal' ), ...document.querySelectorAll( '.btn-insert_field' )]
 
 tabLinks.forEach( 
     btn => btn.addEventListener( 
@@ -11,14 +10,7 @@ tabLinks.forEach(
     )
 )
 
-insertors.forEach( 
-    btn => btn.addEventListener( 
-        'click',
-        ( e ) => changeTab( e )
-    )
-)
-
-const changeTab = ( e ) => {
+export const changeTab = ( e ) => {
     hide( [...tabLinks, ...tabPanels] );
     show( e.target, tabLinks );
     show( e.target, tabPanels );

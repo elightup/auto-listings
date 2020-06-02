@@ -1,22 +1,11 @@
-// TODO
-// 1: Viết dấu cách trong ngoặc { }
-// 2: Kiểm tra tất cả các text chưa được dịch
-// 3: Kiểm tra các class và ID thừa
-// 4: Đổi các button về <button>, bỏ class button-large
-// 5: Chuyển nút total listings vào react
-// 6: Thêm prefix vào CSS class. Dùng class thay cho ID.
-
-import {editorHTML} from './editor.js';
+import { editorHTML } from './editor.js';
+import { changeTab } from './tabs.js';
 const { useState } = wp.element;
 
-const btnInsertField = [...document.querySelectorAll('.btn-insert_field')]
-
-btnInsertField.forEach( btn => btn.addEventListener( 'click', () => insertTextAtCursor( btn.dataset.field ) ) );
-
 const insertTextAtCursor = text => {
+	editorHTML.focus();
 	const doc = editorHTML.getDoc();
 	doc.replaceRange( text, doc.getCursor() );
-	editorHTML.focus();
 }
 
 const Fields = () => {
@@ -32,25 +21,49 @@ const Fields = () => {
 
 	return (
 		<>
-		{ Object.keys( als_admin.fields ).map( key => <ButtonInsertField key={key} text={als_admin.fields[key]} name={key} toggleModal={toggleModal} setValue={setValue} /> ) }
-		{ active ? <Modal text={data.text} name={data.name} type={data.type} toggleModal={toggleModal} /> : null }
+		{ Object.keys( als_admin.fields ).map( ( key ) =>
+			'total_listings' === key ?
+				<TotalListings key={ key } text={ als_admin.fields[key] } name={ key } /> 
+			:					
+				<ButtonInsertField key={ key } text={ als_admin.fields[key] } name={ key } toggleModal={ toggleModal } setValue={ setValue } /> 
+		) }
+
+		{ active ? <Modal text={ data.text } name={ data.name } type={ data.type } toggleModal={ toggleModal } /> : null }
 		</>
 	);
 }
 
-const ButtonInsertField = ( {text, name, toggleModal, setValue} ) => {
+const TotalListings = ( { text, name } ) => {
+	let shortcode = `[als_${name}]`;
+
+	const handleClick = ( e ) => {
+		e.preventDefault();
+		changeTab( e );
+		insertTextAtCursor( shortcode );
+	}
+
+	return (
+		<>
+			<hr />
+			<button class="button" data-tab="template-editor" onClick={ handleClick }>{ text }</button>
+		</>
+	);
+}
+
+const ButtonInsertField = ( { text, name, toggleModal, setValue } ) => {
 	let type = 'button' === name ? 'button' : 'field';
 
 	const handleClick = ( e ) => {
 		e.preventDefault();
+		changeTab( e );
 		toggleModal();
 		setValue( { text, name, type } );
 	}
 
-	return <button class="button" onClick={handleClick}>{text}</button>;
+	return <button class="button" data-tab="template-editor" onClick={ handleClick }>{ text }</button>;
 }
 
-const Modal = ( {text, name, type, toggleModal} ) => {
+const Modal = ( { text, name, type, toggleModal } ) => {
 	const [values, setValues] = useState( {
 		label: '',
 		placeholder: '',
@@ -69,30 +82,30 @@ const Modal = ( {text, name, type, toggleModal} ) => {
 		let shortcode = '';
 		Object.keys( values ).forEach( key => {
 			if ( values[key] ) {
-				shortcode += ` ${key}="${values[key]}"`;
+				shortcode += ` ${ key }="${ values[key] }"`;
 			}
 		} );
 
-		let _name = 'button' === type ? '' : ` name="${name}"`;
-		shortcode = `[als_${type}${_name}${shortcode}]`;
+		let _name = 'button' === type ? '' : ` name="${ name }"`;
+		shortcode = `[als_${ type }${ _name }${ shortcode }]`;
 
 		insertTextAtCursor( shortcode );
 	}
 
 	return (
 		<>
-			<div id="modal-bg" onClick={toggleModal}></div>
-			<div className="modal">
+			<div class="als-modal__overlay" onClick={ toggleModal }></div>
+			<div className="als-modal">
 				<h3>
-					{text} attributes
-					<span className="modal-close" onClick={toggleModal}>&times;</span>
+					{ text + ' ' + als_admin.translate.label }
+					<span className="als-modal__close" onClick={ toggleModal }>&times;</span>
 				</h3>
-				<small><i>Leave empty to use the default values</i></small>
+				<small><i>{ als_admin.translate.notice }</i></small>
 
-				<FieldAttributes type={type} setValue={ setValue }/>
+				<FieldAttributes type={ type } setValue={ setValue }/>
 
-				<div className="modal-actions">
-					<ButtonInsertShortcode insert={ insert } toggleModal={toggleModal} />
+				<div className="als-modal__actions">
+					<ButtonInsertShortcode insert={ insert } toggleModal={ toggleModal } />
 				</div>
 			</div>
 		</>
@@ -111,12 +124,12 @@ const FieldAttributes = ( props ) => {
 		return (
 			<>
 				<label>
-					<span>Label</span>
+					<span>{ als_admin.translate.label }</span>
 					<input id="als-field_label" type="text" onChange={ e => setValue( 'label', e.target.value ) } />
 				</label>
 				<label>
-					<span>Type</span>
-					<SelectControl options={options} setValue={setValue} />
+					<span>{ als_admin.translate.type }</span>
+					<SelectControl options={ options } setValue={ setValue } />
 				</label>
 			</>
 		);
@@ -133,30 +146,30 @@ const FieldAttributes = ( props ) => {
 	return (
 		<>
 			<label>
-				<span>Label</span>
+				<span>{ als_admin.translate.label }</span>
 				<input id="als-field_label" type="text" onChange={ e => setValue( 'label', e.target.value ) } />
 			</label>
 			<label>
-				<span>Placeholder</span>
+				<span>{ als_admin.translate.placeholder }</span>
 				<input id="als-field_placeholder" type="text" onChange={ e => setValue( 'placeholder', e.target.value ) } />
 			</label>
 			<label>
-				<span>Prefix</span>
+				<span>{ als_admin.translate.prefix }</span>
 				<input id="als-field_prefix" type="text" onChange={ e => setValue( 'prefix', e.target.value ) } />
 			</label>
 			<label>
-				<span>Suffix</span>
+				<span>{ als_admin.translate.suffix }</span>
 				<input id="als-field_suffix" type="text" onChange={ e => setValue( 'suffix', e.target.value ) } />
 			</label>
 			<label>
-				<span>Type</span>
-				<SelectControl options={options} toggleMultiple={toggleMultiple} setValue={ setValue }  />
+				<span>{ als_admin.translate.type }</span>
+				<SelectControl options={ options } toggleMultiple={ toggleMultiple } setValue={ setValue }  />
 			</label>
 			{
 				! multiple ? '' : (
-					<label className="modal-checkbox active">
+					<label className="als-modal-checkbox active">
 						<input id="als-field_multiple" type="checkbox" onChange={ e => setValue( 'multiple', e.target.checked ) } />
-						<span>Multiple</span>
+						<span>{ als_admin.translate.multiple }</span>
 					</label>
 				)
 			}
@@ -175,14 +188,15 @@ const SelectControl = ( { options, toggleMultiple, setValue } ) => {
 	}
 
 	return (
-		<select id="als-field_type" onChange={onChange} >
-			{ options.map( ( { value, label } ) => <option value={value}>{label}</option> ) }
+		<select id="als-field_type" onChange={ onChange } >
+			{ options.map( ( { value, label } ) => <option value={ value }>{ label }</option> ) }
 		</select>
 	);
 }
 
 const ButtonInsertShortcode = ( { insert, toggleModal } ) => {
-	const handleClick = () => {
+	const handleClick = ( e ) => {
+		e.preventDefault();
 		insert();
 		setTimeout(() => {
 			toggleModal();
@@ -190,7 +204,7 @@ const ButtonInsertShortcode = ( { insert, toggleModal } ) => {
 	}
 
 	return (
-		<span class="button button-primary button-large" onClick={handleClick}>Insert Field</span>
+		<button class="button button-primary" onClick={ handleClick }>{ als_admin.translate.insert_field }</button>
 	);
 }
 
