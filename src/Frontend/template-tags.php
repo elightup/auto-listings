@@ -29,22 +29,22 @@ function auto_listings_get_theme() {
 /**
  * Output wrapper start
  */
-function auto_listings_output_content_wrapper() {
-	auto_listings_get_part( 'global/wrapper-start.php' );
+function auto_listings_output_content_wrapper( $data = [] ) {
+	auto_listings_get_part( 'global/wrapper-start.php', $data );
 }
 
 /**
  * Output wrapper end
  */
-function auto_listings_output_content_wrapper_end() {
-	auto_listings_get_part( 'global/wrapper-end.php' );
+function auto_listings_output_content_wrapper_end( $data = [] ) {
+	auto_listings_get_part( 'global/wrapper-end.php', $data );
 }
 
 /**
  * Output sidebar
  */
-function auto_listings_get_sidebar() {
-	auto_listings_get_part( 'global/sidebar.php' );
+function auto_listings_get_sidebar( $data = [] ) {
+	auto_listings_get_part( 'global/sidebar.php', $data );
 }
 
 
@@ -53,85 +53,85 @@ function auto_listings_get_sidebar() {
 /**
  * Output title in single listing template
  */
-function auto_listings_template_single_title() {
-	auto_listings_get_part( 'single-listing/title.php' );
+function auto_listings_template_single_title( $data = [] ) {
+	auto_listings_get_part( 'single-listing/title.php', $data );
 }
 
 /**
  * Output address in single listing template
  */
-function auto_listings_template_single_address() {
+function auto_listings_template_single_address( $data = [] ) {
 	if ( auto_listings_hide_item( 'address' ) ) {
 		return;
 	}
-	auto_listings_get_part( 'single-listing/address.php' );
+	auto_listings_get_part( 'single-listing/address.php', $data );
 }
 
 /**
  * Output price in single listing template
  */
-function auto_listings_template_single_price() {
+function auto_listings_template_single_price( $data = [] ) {
 	if ( auto_listings_hide_item( 'price' ) ) {
 		return;
 	}
-	auto_listings_get_part( 'single-listing/price.php' );
+	auto_listings_get_part( 'single-listing/price.php', $data );
 }
 
 /**
  * Output at-a-glance box in single listing template
  */
-function auto_listings_template_single_at_a_glance() {
-	auto_listings_get_part( 'single-listing/at-a-glance.php' );
+function auto_listings_template_single_at_a_glance( $data = [] ) {
+	auto_listings_get_part( 'single-listing/at-a-glance.php', $data );
 }
 
 /**
  * Output gallery in single listing template
  */
-function auto_listings_template_single_gallery() {
-	auto_listings_get_part( 'single-listing/gallery.php' );
+function auto_listings_template_single_gallery( $data = [] ) {
+	auto_listings_get_part( 'single-listing/gallery.php', $data );
 }
 
 /**
  * Output map in single listing template
  */
-function auto_listings_template_single_map() {
+function auto_listings_template_single_map( $data = [] ) {
 	$key = auto_listings_option( 'maps_api_key' );
 	if ( auto_listings_hide_item( 'map' ) || ! $key ) {
 		return;
 	}
-	auto_listings_get_part( 'single-listing/map.php' );
+	auto_listings_get_part( 'single-listing/map.php', $data );
 }
 
 /**
  * Output tagline in single listing template
  */
-function auto_listings_template_single_tagline() {
-	auto_listings_get_part( 'single-listing/tagline.php' );
+function auto_listings_template_single_tagline( $data = [] ) {
+	auto_listings_get_part( 'single-listing/tagline.php', $data );
 }
 
 /**
  * Output description in single listing template
  */
-function auto_listings_template_single_description() {
-	auto_listings_get_part( 'single-listing/description.php' );
+function auto_listings_template_single_description( $data = [] ) {
+	auto_listings_get_part( 'single-listing/description.php', $data );
 }
 
 /**
  * Output contact form in single listing template
  */
-function auto_listings_template_single_contact_form() {
+function auto_listings_template_single_contact_form( $data = [] ) {
 	$seller = auto_listings_meta( 'seller' );
 	if ( auto_listings_hide_item( 'contact_form' ) || empty( $seller ) ) {
 		return;
 	}
-	auto_listings_get_part( 'single-listing/contact-form.php' );
+	auto_listings_get_part( 'single-listing/contact-form.php', $data );
 }
 
 /**
  * Output tabs in single listing template
  */
-function auto_listings_output_listing_tabs() {
-	auto_listings_get_part( 'single-listing/tabs/tabs.php' );
+function auto_listings_output_listing_tabs( $data = [] ) {
+	auto_listings_get_part( 'single-listing/tabs/tabs.php', $data );
 }
 
 /**
@@ -160,15 +160,15 @@ function auto_listings_default_tabs( $tabs = [] ) {
 /**
  * Output detail tab in single listing template
  */
-function auto_listings_details_tab() {
-	auto_listings_get_part( 'single-listing/tabs/details.php' );
+function auto_listings_details_tab( $data = [] ) {
+	auto_listings_get_part( 'single-listing/tabs/details.php', $data );
 }
 
 /**
  * Output spec tab in single listing template
  */
-function auto_listings_specifications_tab() {
-	auto_listings_get_part( 'single-listing/tabs/specifications.php' );
+function auto_listings_specifications_tab( $data = [] ) {
+	auto_listings_get_part( 'single-listing/tabs/specifications.php', $data );
 }
 
 /*
@@ -256,84 +256,84 @@ function auto_listings_listing_archive_content() {
 /**
  * Output order by selection in listings loop.
  */
-function auto_listings_ordering() {
-	auto_listings_get_part( 'loop/orderby.php' );
+function auto_listings_ordering( $data = [] ) {
+	auto_listings_get_part( 'loop/orderby.php', $data );
 }
 
 /**
  * Output view switcher in listings loop.
  */
-function auto_listings_view_switcher() {
-	auto_listings_get_part( 'loop/view-switcher.php' );
+function auto_listings_view_switcher( $data = [] ) {
+	auto_listings_get_part( 'loop/view-switcher.php', $data );
 }
 
 /**
  * Output pagination in listings loop.
  */
-function auto_listings_pagination() {
-	auto_listings_get_part( 'loop/pagination.php' );
+function auto_listings_pagination( $data = [] ) {
+	auto_listings_get_part( 'loop/pagination.php', $data );
 }
 
 /**
  * Output loop title in listings loop.
  */
-function auto_listings_template_loop_title() {
-	auto_listings_get_part( 'loop/title.php' );
+function auto_listings_template_loop_title( $data = [] ) {
+	auto_listings_get_part( 'loop/title.php', $data );
 }
 
 /**
  * Output address in listings loop.
  */
-function auto_listings_template_loop_address() {
+function auto_listings_template_loop_address( $data = [] ) {
 	if ( auto_listings_hide_item( 'address' ) ) {
 		return;
 	}
-	auto_listings_get_part( 'loop/address.php' );
+	auto_listings_get_part( 'loop/address.php', $data );
 }
 
 /**
  * Output price in listings loop.
  */
-function auto_listings_template_loop_price() {
+function auto_listings_template_loop_price( $data = [] ) {
 	if ( auto_listings_hide_item( 'price' ) ) {
 		return;
 	}
-	auto_listings_get_part( 'loop/price.php' );
+	auto_listings_get_part( 'loop/price.php', $data );
 }
 
 /**
  * Output at-a-glance box in listings loop.
  */
-function auto_listings_template_loop_at_a_glance() {
-	auto_listings_get_part( 'loop/at-a-glance.php' );
+function auto_listings_template_loop_at_a_glance( $data = [] ) {
+	auto_listings_get_part( 'loop/at-a-glance.php', $data );
 }
 
 /**
  * Output tagline in listings loop.
  */
-function auto_listings_template_loop_tagline() {
-	auto_listings_get_part( 'loop/tagline.php' );
+function auto_listings_template_loop_tagline( $data = [] ) {
+	auto_listings_get_part( 'loop/tagline.php', $data );
 }
 
 /**
  * Output description in listings loop.
  */
-function auto_listings_template_loop_description() {
-	auto_listings_get_part( 'loop/description.php' );
+function auto_listings_template_loop_description( $data = [] ) {
+	auto_listings_get_part( 'loop/description.php', $data );
 }
 
 /**
  * Output data after description in listings loop.
  */
-function auto_listings_template_loop_bottom() {
-	auto_listings_get_part( 'loop/bottom.php' );
+function auto_listings_template_loop_bottom( $data = [] ) {
+	auto_listings_get_part( 'loop/bottom.php', $data );
 }
 
 /**
  * Output listing image in listings loop.
  */
-function auto_listings_template_loop_image() {
-	auto_listings_get_part( 'loop/image.php' );
+function auto_listings_template_loop_image( $data = [] ) {
+	auto_listings_get_part( 'loop/image.php', $data );
 }
 
 /**
@@ -358,7 +358,7 @@ function auto_listings_get_part( $part, $data = [] ) {
 		[
 			'post_id' => get_the_ID(),
 		],
-		$data
+		(array) $data
 	);
 	static $template_loader = null;
 	if ( null === $template_loader ) {
