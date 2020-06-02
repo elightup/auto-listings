@@ -9,7 +9,7 @@ class Button {
 	public function render( $atts ) {
 		$atts = shortcode_atts(
 			array(
-				'type'  => null,
+				'type'  => 'submit',
 				'label' => __( 'Submit', 'auto-listings' ),
 			),
 			$atts
