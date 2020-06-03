@@ -341,7 +341,7 @@
 			searchForm.$selectedWrap.html( output );
 		},
 		toggleExtraFields: function() {
-			searchForm.$searchForm.on( 'click', '.als-refine', function( e ) {
+			searchForm.$searchForm.on( 'click', '.als-toggle-btn', function( e ) {
 				e.preventDefault();
 				searchForm.$extraFields.slideToggle( 200 );
 				$( this ).toggleClass( 'shown' );
