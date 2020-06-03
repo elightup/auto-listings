@@ -74,7 +74,9 @@ const Modal = ( { text, name, type, toggleModal } ) => {
 		setValues( newValues );
 	}
 
-	const insert = () => {
+	const insert = ( e ) => {
+		e.preventDefault();
+		
 		let shortcode = '';
 		Object.keys( values ).forEach( key => {
 			if ( values[key] ) {
@@ -86,6 +88,7 @@ const Modal = ( { text, name, type, toggleModal } ) => {
 		shortcode = `[als_${ type }${ _name }${ shortcode }]`;
 
 		insertTextAtCursor( shortcode );
+		toggleModal();
 	}
 
 	return (
@@ -101,7 +104,7 @@ const Modal = ( { text, name, type, toggleModal } ) => {
 				<FieldAttributes type={ type } setValue={ setValue }/>
 
 				<div className="als-modal__actions">
-					<ButtonInsertShortcode insert={ insert } toggleModal={ toggleModal } />
+					<button class="button button-primary" onClick={ insert }>{ als_admin.translate.insert_field }</button>
 				</div>
 			</div>
 		</>
@@ -187,18 +190,6 @@ const SelectControl = ( { options, toggleMultiple, setValue } ) => {
 		<select onChange={ onChange } >
 			{ options.map( ( { value, label } ) => <option value={ value }>{ label }</option> ) }
 		</select>
-	);
-}
-
-const ButtonInsertShortcode = ( { insert, toggleModal } ) => {
-	const handleClick = ( e ) => {
-		e.preventDefault();
-		insert();
-		toggleModal();
-	}
-
-	return (
-		<button class="button button-primary" onClick={ handleClick }>{ als_admin.translate.insert_field }</button>
 	);
 }
 
