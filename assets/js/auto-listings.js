@@ -264,7 +264,7 @@
 		},
 		setSelectedFields: function( $selectedItem ) {
 			var $select         = $selectedItem.find( 'select' );
-			var label           = $selectedItem.find( '.field__label' ).text();
+			var label           = $selectedItem.find( '.als-field__label' ).text();
 			var selectedKeyName = $select.attr( 'name' );
 			var value           = '';
 			if ( $select.val() ) {
