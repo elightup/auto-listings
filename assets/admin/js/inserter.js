@@ -18,14 +18,10 @@ const Fields = () => {
 		type: '',
 	} );
 
-	const extraFields = [ 'total_listings', 'selected', 'toggle_wrapper' ];
-
 	return (
 		<>
 		{ Object.keys( als_admin.fields ).map( ( key ) =>
-			extraFields.includes( key )
-			? <ExtraField key={ key } text={ als_admin.fields[key] } name={ key } />
-			: <ButtonInsertField key={ key } text={ als_admin.fields[key] } name={ key } toggleModal={ toggleModal } setValue={ setData } />
+			<ButtonInsertField key={ key } text={ als_admin.fields[key] } name={ key } toggleModal={ toggleModal } setValue={ setData } />
 		) }
 
 		{ active ? <Modal text={ data.text } name={ data.name } type={ data.type } toggleModal={ toggleModal } /> : null }
@@ -33,17 +29,23 @@ const Fields = () => {
 	);
 }
 
-const ExtraField = ( { text, name } ) => {
+const FieldsExtra = () => {
 	const handleClick = ( e ) => {
 		e.preventDefault();
 		changeTab( e );
-		insertTextAtCursor( `[als_${name}]` );
+
+		const fieldHasContent = [ 'toggle_wrapper', 'refine' ];
+
+		let name = e.target.dataset.name;
+		let shortcode = fieldHasContent.includes( name ) ? `[als_${name}]\n\n[/als_${name}]` : `[als_${name}]`;
+		insertTextAtCursor( shortcode );
 	}
 
 	return (
 		<>
-			<hr />
-			<button class="button" data-tab="template-editor" onClick={ handleClick }>{ text }</button>
+		{ Object.keys( als_admin.fields_extra ).map( ( key ) =>
+			<button class="button" data-tab="template-editor" data-name={key} onClick={ handleClick }>{ als_admin.fields_extra[key] }</button>
+		) }
 		</>
 	);
 }
@@ -196,3 +198,4 @@ const SelectControl = ( { options, toggleMultiple, setValue } ) => {
 }
 
 ReactDOM.render( <Fields />, document.getElementById( 'als-fields' ) );
+ReactDOM.render( <FieldsExtra />, document.getElementById( 'als-fields-extra' ) );

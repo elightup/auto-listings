@@ -95,9 +95,12 @@ class Editor {
 				'within'          => __( 'Within' ),
 				'year'            => __( 'Year' ),
 				'button'          => __( 'Button' ),
+			],
+			'fields_extra' => [
 				'total_listings'  => __( 'Total listings' ),
 				'selected'        => __( 'Selected' ),
 				'toggle_wrapper'  => __( 'Toggle Wrapper' ),
+				'refine'          => __( 'Refine' ),
 			],
 			'translate' => [
 				'label'        => __( 'Label', 'auto-listings' ),

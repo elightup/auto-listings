@@ -4,5 +4,9 @@
 		<div class="als-fields" id="als-fields">
 			<!-- render button fields here -->
 		</div>
+		<hr>
+		<div class="als-fields" id="als-fields-extra">
+			<!-- render extra fields here -->
+		</div>
 	</div>
 </div>
