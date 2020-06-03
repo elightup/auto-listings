@@ -79,23 +79,23 @@ class Editor {
 
 		wp_localize_script( 'als-admin', 'als_admin', [
 			'fields' => [
-				'body_type'       => 'Body Type',
-				'condition'       => 'Condition',
-				'drivetrain'      => 'Drivetrain',
-				'engine'          => 'Engine',
-				'exterior_colors' => 'Exterior Colors',
-				'fuel_type'       => 'Fuel Type',
-				'make'            => 'Make',
-				'max_price'       => 'Max Price',
-				'min_price'       => 'Min Price',
-				'model'           => 'Model',
-				'odometer'        => 'Odometer',
-				'price'           => 'Price',
-				'transmission'    => 'Transmission',
-				'within'          => 'Within',
-				'year'            => 'Year',
-				'button'          => 'Button',
-				'total_listings'  => 'Total listings'
+				'body_type'       => __( 'Body Type' ),
+				'condition'       => __( 'Condition' ),
+				'drivetrain'      => __( 'Drivetrain' ),
+				'engine'          => __( 'Engine' ),
+				'exterior_colors' => __( 'Exterior Colors' ),
+				'fuel_type'       => __( 'Fuel Type' ),
+				'make'            => __( 'Make' ),
+				'max_price'       => __( 'Max Price' ),
+				'min_price'       => __( 'Min Price' ),
+				'model'           => __( 'Model' ),
+				'odometer'        => __( 'Odometer' ),
+				'price'           => __( 'Price' ),
+				'transmission'    => __( 'Transmission' ),
+				'within'          => __( 'Within' ),
+				'year'            => __( 'Year' ),
+				'button'          => __( 'Button' ),
+				'total_listings'  => __( 'Total listings' ),
 			],
 			'translate' => [
 				'label'        => __( 'Label', 'auto-listings' ),
@@ -111,7 +111,6 @@ class Editor {
 				'select'       => __( 'Dropdown', 'auto-listings' ),
 				'radio'        => __( 'Single Choice', 'auto-listings' ),
 				'notice'       => __( 'Leave empty to use the default values', 'auto-listings' ),
-				
 			]
 		]);
 	}
