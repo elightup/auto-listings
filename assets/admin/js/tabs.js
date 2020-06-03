@@ -1,4 +1,4 @@
-import { editorHTML, editorCSS } from './editor.js';
+import { editorHTML, editorCSS, editorJS } from './editor.js';
 
 const tabLinks  = [...document.querySelectorAll( '.als-tab__link' )]
 const tabPanels = [...document.querySelectorAll( '.als-tab__pane' )]
@@ -32,5 +32,10 @@ const show = ( e, array, className = 'is-active' ) => {
 	if ( 'css-editor' === e.dataset.tab ) {
 		editorCSS.refresh();
 		editorCSS.focus();
+	}
+
+	if ( 'js-editor' === e.dataset.tab ) {
+		editorJS.refresh();
+		editorJS.focus();
 	}
 }

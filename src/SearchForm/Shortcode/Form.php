@@ -43,6 +43,10 @@ class Form {
 			$output .= '<style>' . $post->post_excerpt . '</style>';
 		}
 
+		if ( $post->post_content_filtered ) {
+			$output .= '<script>' . $post->post_content_filtered . '</script>';
+		}
+
 		$output .= '<form'
 			. ' id="auto-listings-search" class="auto-listings-search" autocomplete="off"'
 			. ' action="' . get_the_permalink( auto_listings_option( 'archives_page' ) ) . '"'

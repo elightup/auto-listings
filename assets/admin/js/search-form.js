@@ -1,1 +1,136 @@
-!function(e){var t={};function a(l){if(t[l])return t[l].exports;var n=t[l]={i:l,l:!1,exports:{}};return e[l].call(n.exports,n,n.exports,a),n.l=!0,n.exports}a.m=e,a.c=t,a.d=function(e,t,l){a.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:l})},a.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},a.t=function(e,t){if(1&t&&(e=a(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var l=Object.create(null);if(a.r(l),Object.defineProperty(l,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var n in e)a.d(l,n,function(t){return e[t]}.bind(null,n));return l},a.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return a.d(t,"a",t),t},a.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},a.p="",a(a.s=2)}([function(e,t,a){"use strict";a.r(t),a.d(t,"editorHTML",(function(){return n})),a.d(t,"editorCSS",(function(){return c}));let l=_.extend({},wp.codeEditor.defaultSettings);l.codemirror.theme="oceanic-next";const n=wp.codeEditor.initialize("als-post-content",l).codemirror;let r=_.extend({},wp.codeEditor.defaultSettings);r.codemirror.mode="css",r.codemirror.theme="oceanic-next";const c=wp.codeEditor.initialize("als-post-excerpt",r).codemirror},function(e,t,a){"use strict";a.r(t),a.d(t,"changeTab",(function(){return c}));var l=a(0);const n=[...document.querySelectorAll(".als-tab__link")],r=[...document.querySelectorAll(".als-tab__pane")];n.forEach(e=>e.addEventListener("click",e=>c(e)));const c=e=>{o([...n,...r]),s(e.target,n),s(e.target,r)},o=(e,t="is-active")=>{e.forEach(e=>e.classList.remove(t))},s=(e,t,a="is-active")=>{e.classList.contains("button")&&e.classList.add(a),t.find(t=>t.dataset.tab===e.dataset.tab).classList.add(a),"template-editor"===e.dataset.tab&&(l.editorHTML.refresh(),l.editorHTML.focus()),"css-editor"===e.dataset.tab&&(l.editorCSS.refresh(),l.editorCSS.focus())}},function(e,t,a){a(0),a(1),e.exports=a(3)},function(e,t,a){"use strict";a.r(t);var l=a(0),n=a(1);const{useState:r}=wp.element,c=e=>{l.editorHTML.focus();const t=l.editorHTML.getDoc();t.replaceRange(e,t.getCursor())},o=()=>{const[e,t]=r(!1),a=()=>t(!e),[l,n]=r({text:"",name:"",type:""});return React.createElement(React.Fragment,null,Object.keys(als_admin.fields).map(e=>"total_listings"===e?React.createElement(s,{key:e,text:als_admin.fields[e],name:e}):React.createElement(i,{key:e,text:als_admin.fields[e],name:e,toggleModal:a,setValue:n})),e?React.createElement(u,{text:l.text,name:l.name,type:l.type,toggleModal:a}):null)},s=({text:e,name:t})=>React.createElement(React.Fragment,null,React.createElement("hr",null),React.createElement("button",{class:"button","data-tab":"template-editor",onClick:e=>{e.preventDefault(),Object(n.changeTab)(e),c(`[als_${t}]`)}},e)),i=({text:e,name:t,toggleModal:a,setValue:l})=>{let r="button"===t?"button":"field";return React.createElement("button",{class:"button","data-tab":"template-editor",onClick:c=>{c.preventDefault(),Object(n.changeTab)(c),a(),l({text:e,name:t,type:r})}},e)},u=({text:e,name:t,type:a,toggleModal:l})=>{const[n,o]=r({label:"",placeholder:"",prefix:"",suffix:"",type:"",multiple:!1});return React.createElement(React.Fragment,null,React.createElement("div",{class:"als-modal-overlay",onClick:l}),React.createElement("div",{className:"als-modal"},React.createElement("h3",null,e+" "+als_admin.translate.label,React.createElement("span",{className:"als-modal__close",onClick:l},"×")),React.createElement("small",null,React.createElement("i",null,als_admin.translate.notice)),React.createElement(m,{type:a,setValue:(e,t)=>{let a=n;a[e]=t,o(a)}}),React.createElement("div",{className:"als-modal__actions"},React.createElement(p,{insert:()=>{let e="";Object.keys(n).forEach(t=>{n[t]&&(e+=` ${t}="${n[t]}"`)}),e=`[als_${a}${"button"===a?"":` name="${t}"`}${e}]`,c(e)},toggleModal:l}))))},m=e=>{const t=e.setValue;if("button"===e.type){const e=[{value:"submit",label:als_admin.translate.submit},{value:"reset",label:als_admin.translate.reset}];return React.createElement(React.Fragment,null,React.createElement("label",null,React.createElement("span",null,als_admin.translate.label),React.createElement("input",{type:"text",onChange:e=>t("label",e.target.value)})),React.createElement("label",null,React.createElement("span",null,als_admin.translate.type),React.createElement(d,{options:e,setValue:t})))}const a=[{value:"select",label:als_admin.translate.select},{value:"radio",label:als_admin.translate.radio}],[l,n]=r(!0);return React.createElement(React.Fragment,null,React.createElement("label",null,React.createElement("span",null,als_admin.translate.label),React.createElement("input",{type:"text",onChange:e=>t("label",e.target.value)})),React.createElement("label",null,React.createElement("span",null,als_admin.translate.placeholder),React.createElement("input",{type:"text",onChange:e=>t("placeholder",e.target.value)})),React.createElement("label",null,React.createElement("span",null,als_admin.translate.prefix),React.createElement("input",{type:"text",onChange:e=>t("prefix",e.target.value)})),React.createElement("label",null,React.createElement("span",null,als_admin.translate.suffix),React.createElement("input",{type:"text",onChange:e=>t("suffix",e.target.value)})),React.createElement("label",null,React.createElement("span",null,als_admin.translate.type),React.createElement(d,{options:a,toggleMultiple:()=>n(!l),setValue:t})),l?React.createElement("label",{className:"als-modal-checkbox"},React.createElement("input",{type:"checkbox",onChange:e=>t("multiple",e.target.checked)}),React.createElement("span",null,als_admin.translate.multiple)):"")},d=({options:e,toggleMultiple:t,setValue:a})=>React.createElement("select",{onChange:e=>{t&&t(),a&&a("type",e.target.value)}},e.map(({value:e,label:t})=>React.createElement("option",{value:e},t))),p=({insert:e,toggleModal:t})=>React.createElement("button",{class:"button button-primary",onClick:a=>{a.preventDefault(),e(),t()}},als_admin.translate.insert_field);ReactDOM.render(React.createElement(o,null),document.getElementById("als-fields"))}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./assets/admin/js/editor.js":
+/*!***********************************!*\
+  !*** ./assets/admin/js/editor.js ***!
+  \***********************************/
+/*! exports provided: editorHTML, editorCSS, editorJS */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"editorHTML\", function() { return editorHTML; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"editorCSS\", function() { return editorCSS; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"editorJS\", function() { return editorJS; });\nlet editorSettings = _.extend({}, wp.codeEditor.defaultSettings);\n\neditorSettings.codemirror.theme = 'oceanic-next';\nconst editorHTML = wp.codeEditor.initialize('als-post-content', editorSettings).codemirror;\n\nlet cssSettings = _.extend({}, wp.codeEditor.defaultSettings);\n\ncssSettings.codemirror.mode = 'css';\ncssSettings.codemirror.theme = 'oceanic-next';\nconst editorCSS = wp.codeEditor.initialize('als-post-excerpt', cssSettings).codemirror;\n\nlet jsSettings = _.extend({}, wp.codeEditor.defaultSettings);\n\ncssSettings.codemirror.mode = 'javascript';\ncssSettings.codemirror.theme = 'oceanic-next';\nconst editorJS = wp.codeEditor.initialize('als-post-content-filtered', jsSettings).codemirror;\n\n//# sourceURL=webpack:///./assets/admin/js/editor.js?");
+
+/***/ }),
+
+/***/ "./assets/admin/js/inserter.js":
+/*!*************************************!*\
+  !*** ./assets/admin/js/inserter.js ***!
+  \*************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _editor_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./editor.js */ \"./assets/admin/js/editor.js\");\n/* harmony import */ var _tabs_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tabs.js */ \"./assets/admin/js/tabs.js\");\n\n\nconst {\n  useState\n} = wp.element;\n\nconst insertTextAtCursor = text => {\n  _editor_js__WEBPACK_IMPORTED_MODULE_0__[\"editorHTML\"].focus();\n  const doc = _editor_js__WEBPACK_IMPORTED_MODULE_0__[\"editorHTML\"].getDoc();\n  doc.replaceRange(text, doc.getCursor());\n};\n\nconst Fields = () => {\n  const [active, setActive] = useState(false);\n\n  const toggleModal = () => setActive(!active);\n\n  const [data, setData] = useState({\n    text: '',\n    name: '',\n    type: ''\n  });\n  return /*#__PURE__*/React.createElement(React.Fragment, null, Object.keys(als_admin.fields).map(key => 'total_listings' === key ? /*#__PURE__*/React.createElement(TotalListings, {\n    key: key,\n    text: als_admin.fields[key],\n    name: key\n  }) : /*#__PURE__*/React.createElement(ButtonInsertField, {\n    key: key,\n    text: als_admin.fields[key],\n    name: key,\n    toggleModal: toggleModal,\n    setValue: setData\n  })), active ? /*#__PURE__*/React.createElement(Modal, {\n    text: data.text,\n    name: data.name,\n    type: data.type,\n    toggleModal: toggleModal\n  }) : null);\n};\n\nconst TotalListings = ({\n  text,\n  name\n}) => {\n  const handleClick = e => {\n    e.preventDefault();\n    Object(_tabs_js__WEBPACK_IMPORTED_MODULE_1__[\"changeTab\"])(e);\n    insertTextAtCursor(`[als_${name}]`);\n  };\n\n  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(\"hr\", null), /*#__PURE__*/React.createElement(\"button\", {\n    class: \"button\",\n    \"data-tab\": \"template-editor\",\n    onClick: handleClick\n  }, text));\n};\n\nconst ButtonInsertField = ({\n  text,\n  name,\n  toggleModal,\n  setValue\n}) => {\n  let type = 'button' === name ? 'button' : 'field';\n\n  const handleClick = e => {\n    e.preventDefault();\n    Object(_tabs_js__WEBPACK_IMPORTED_MODULE_1__[\"changeTab\"])(e);\n    toggleModal();\n    setValue({\n      text,\n      name,\n      type\n    });\n  };\n\n  return /*#__PURE__*/React.createElement(\"button\", {\n    class: \"button\",\n    \"data-tab\": \"template-editor\",\n    onClick: handleClick\n  }, text);\n};\n\nconst Modal = ({\n  text,\n  name,\n  type,\n  toggleModal\n}) => {\n  const [values, setValues] = useState({\n    label: '',\n    placeholder: '',\n    prefix: '',\n    suffix: '',\n    type: '',\n    multiple: false\n  });\n\n  const setValue = (attribute, value) => {\n    let newValues = values;\n    newValues[attribute] = value;\n    setValues(newValues);\n  };\n\n  const insert = e => {\n    e.preventDefault();\n    let shortcode = '';\n    Object.keys(values).forEach(key => {\n      if (values[key]) {\n        shortcode += ` ${key}=\"${values[key]}\"`;\n      }\n    });\n\n    let _name = 'button' === type ? '' : ` name=\"${name}\"`;\n\n    shortcode = `[als_${type}${_name}${shortcode}]`;\n    insertTextAtCursor(shortcode);\n    toggleModal();\n  };\n\n  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(\"div\", {\n    class: \"als-modal-overlay\",\n    onClick: toggleModal\n  }), /*#__PURE__*/React.createElement(\"div\", {\n    className: \"als-modal\"\n  }, /*#__PURE__*/React.createElement(\"h3\", null, text + ' ' + als_admin.translate.label, /*#__PURE__*/React.createElement(\"span\", {\n    className: \"als-modal__close\",\n    onClick: toggleModal\n  }, \"\\xD7\")), /*#__PURE__*/React.createElement(\"small\", null, /*#__PURE__*/React.createElement(\"i\", null, als_admin.translate.notice)), /*#__PURE__*/React.createElement(FieldAttributes, {\n    type: type,\n    setValue: setValue\n  }), /*#__PURE__*/React.createElement(\"div\", {\n    className: \"als-modal__actions\"\n  }, /*#__PURE__*/React.createElement(\"button\", {\n    class: \"button button-primary\",\n    onClick: insert\n  }, als_admin.translate.insert_field))));\n};\n\nconst FieldAttributes = props => {\n  const setValue = props.setValue;\n\n  if ('button' === props.type) {\n    const options = [{\n      value: 'submit',\n      label: als_admin.translate.submit\n    }, {\n      value: 'reset',\n      label: als_admin.translate.reset\n    }];\n    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(\"label\", null, /*#__PURE__*/React.createElement(\"span\", null, als_admin.translate.label), /*#__PURE__*/React.createElement(\"input\", {\n      type: \"text\",\n      onChange: e => setValue('label', e.target.value)\n    })), /*#__PURE__*/React.createElement(\"label\", null, /*#__PURE__*/React.createElement(\"span\", null, als_admin.translate.type), /*#__PURE__*/React.createElement(SelectControl, {\n      options: options,\n      setValue: setValue\n    })));\n  }\n\n  const options = [{\n    value: 'select',\n    label: als_admin.translate.select\n  }, {\n    value: 'radio',\n    label: als_admin.translate.radio\n  }];\n  const [multiple, setMultiple] = useState(true);\n\n  const toggleMultiple = () => setMultiple(!multiple);\n\n  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(\"label\", null, /*#__PURE__*/React.createElement(\"span\", null, als_admin.translate.label), /*#__PURE__*/React.createElement(\"input\", {\n    type: \"text\",\n    onChange: e => setValue('label', e.target.value)\n  })), /*#__PURE__*/React.createElement(\"label\", null, /*#__PURE__*/React.createElement(\"span\", null, als_admin.translate.placeholder), /*#__PURE__*/React.createElement(\"input\", {\n    type: \"text\",\n    onChange: e => setValue('placeholder', e.target.value)\n  })), /*#__PURE__*/React.createElement(\"label\", null, /*#__PURE__*/React.createElement(\"span\", null, als_admin.translate.prefix), /*#__PURE__*/React.createElement(\"input\", {\n    type: \"text\",\n    onChange: e => setValue('prefix', e.target.value)\n  })), /*#__PURE__*/React.createElement(\"label\", null, /*#__PURE__*/React.createElement(\"span\", null, als_admin.translate.suffix), /*#__PURE__*/React.createElement(\"input\", {\n    type: \"text\",\n    onChange: e => setValue('suffix', e.target.value)\n  })), /*#__PURE__*/React.createElement(\"label\", null, /*#__PURE__*/React.createElement(\"span\", null, als_admin.translate.type), /*#__PURE__*/React.createElement(SelectControl, {\n    options: options,\n    toggleMultiple: toggleMultiple,\n    setValue: setValue\n  })), !multiple ? '' : /*#__PURE__*/React.createElement(\"label\", {\n    className: \"als-modal-checkbox\"\n  }, /*#__PURE__*/React.createElement(\"input\", {\n    type: \"checkbox\",\n    onChange: e => setValue('multiple', e.target.checked)\n  }), /*#__PURE__*/React.createElement(\"span\", null, als_admin.translate.multiple)));\n};\n\nconst SelectControl = ({\n  options,\n  toggleMultiple,\n  setValue\n}) => {\n  const onChange = e => {\n    if (toggleMultiple) {\n      toggleMultiple();\n    }\n\n    if (setValue) {\n      setValue('type', e.target.value);\n    }\n  };\n\n  return /*#__PURE__*/React.createElement(\"select\", {\n    onChange: onChange\n  }, options.map(({\n    value,\n    label\n  }) => /*#__PURE__*/React.createElement(\"option\", {\n    value: value\n  }, label)));\n};\n\nReactDOM.render( /*#__PURE__*/React.createElement(Fields, null), document.getElementById('als-fields'));\n\n//# sourceURL=webpack:///./assets/admin/js/inserter.js?");
+
+/***/ }),
+
+/***/ "./assets/admin/js/tabs.js":
+/*!*********************************!*\
+  !*** ./assets/admin/js/tabs.js ***!
+  \*********************************/
+/*! exports provided: changeTab */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"changeTab\", function() { return changeTab; });\n/* harmony import */ var _editor_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./editor.js */ \"./assets/admin/js/editor.js\");\n\nconst tabLinks = [...document.querySelectorAll('.als-tab__link')];\nconst tabPanels = [...document.querySelectorAll('.als-tab__pane')];\ntabLinks.forEach(btn => btn.addEventListener('click', e => changeTab(e)));\nconst changeTab = e => {\n  hide([...tabLinks, ...tabPanels]);\n  show(e.target, tabLinks);\n  show(e.target, tabPanels);\n};\n\nconst hide = (array, className = 'is-active') => {\n  array.forEach(el => el.classList.remove(className));\n};\n\nconst show = (e, array, className = 'is-active') => {\n  if (e.classList.contains('button')) {\n    e.classList.add(className);\n  }\n\n  array.find(el => el.dataset.tab === e.dataset.tab).classList.add(className);\n\n  if ('template-editor' === e.dataset.tab) {\n    _editor_js__WEBPACK_IMPORTED_MODULE_0__[\"editorHTML\"].refresh();\n    _editor_js__WEBPACK_IMPORTED_MODULE_0__[\"editorHTML\"].focus();\n  }\n\n  if ('css-editor' === e.dataset.tab) {\n    _editor_js__WEBPACK_IMPORTED_MODULE_0__[\"editorCSS\"].refresh();\n    _editor_js__WEBPACK_IMPORTED_MODULE_0__[\"editorCSS\"].focus();\n  }\n\n  if ('js-editor' === e.dataset.tab) {\n    _editor_js__WEBPACK_IMPORTED_MODULE_0__[\"editorJS\"].refresh();\n    _editor_js__WEBPACK_IMPORTED_MODULE_0__[\"editorJS\"].focus();\n  }\n};\n\n//# sourceURL=webpack:///./assets/admin/js/tabs.js?");
+
+/***/ }),
+
+/***/ 0:
+/*!*************************************************************************************************!*\
+  !*** multi ./assets/admin/js/editor.js ./assets/admin/js/tabs.js ./assets/admin/js/inserter.js ***!
+  \*************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("__webpack_require__(/*! ./assets/admin/js/editor.js */\"./assets/admin/js/editor.js\");\n__webpack_require__(/*! ./assets/admin/js/tabs.js */\"./assets/admin/js/tabs.js\");\nmodule.exports = __webpack_require__(/*! ./assets/admin/js/inserter.js */\"./assets/admin/js/inserter.js\");\n\n\n//# sourceURL=webpack:///multi_./assets/admin/js/editor.js_./assets/admin/js/tabs.js_./assets/admin/js/inserter.js?");
+
+/***/ })
+
+/******/ });
