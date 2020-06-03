@@ -22,6 +22,6 @@ class Extras {
 	}
 
 	public function render_refine_button( $atts, $content = null ) {
-		return '<a class="refine">' . $content . '</a>';
+		return '<a class="als-refine">' . $content . '</a>';
 	}
 }
