@@ -116,6 +116,7 @@ class Editor {
 					'submit'       => __( 'Submit', 'auto-listings' ),
 					'select'       => __( 'Dropdown', 'auto-listings' ),
 					'radio'        => __( 'Single Choice', 'auto-listings' ),
+					'trigger'      => __( 'Trigger', 'auto-listings' ),
 					'notice'       => __( 'Leave empty to use the default values', 'auto-listings' ),
 				),
 			)

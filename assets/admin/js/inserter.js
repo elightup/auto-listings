@@ -62,6 +62,7 @@ const Modal = ( { text, name, type, toggleModal } ) => {
 		prefix: '',
 		suffix: '',
 		type: '',
+		trigger: '',
 		multiple: false,
 	} );
 	const setValue = ( attribute, value ) => {
@@ -143,8 +144,8 @@ const FieldAttributes = ( props ) => {
 		return (
 			<>
 				<label>
-					<span>{ als_admin.translate.label }</span>
-					<input type="text" onChange={ e => setValue( 'label', e.target.value ) } />
+					<span>{ als_admin.translate.trigger }</span>
+					<input type="text" onChange={ e => setValue( 'trigger', e.target.value ) } />
 				</label>
 			</>
 		);
