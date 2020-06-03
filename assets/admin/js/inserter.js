@@ -1,5 +1,4 @@
 import { editorHTML } from './editor.js';
-import { changeTab } from './tabs.js';
 const { useState } = wp.element;
 
 const insertTextAtCursor = text => {
@@ -32,19 +31,13 @@ const Fields = () => {
 const FieldsExtra = () => {
 	const handleClick = ( e ) => {
 		e.preventDefault();
-		changeTab( e );
-
-		const fieldHasContent = [ 'toggle_wrapper', 'refine' ];
-
-		let name = e.target.dataset.name;
-		let shortcode = fieldHasContent.includes( name ) ? `[als_${name}]\n\n[/als_${name}]` : `[als_${name}]`;
-		insertTextAtCursor( shortcode );
+		insertTextAtCursor( `[als_${ e.target.dataset.name }]` );
 	}
 
 	return (
 		<>
 		{ Object.keys( als_admin.fields_extra ).map( ( key ) =>
-			<button class="button" data-tab="template-editor" data-name={key} onClick={ handleClick }>{ als_admin.fields_extra[key] }</button>
+			<button class="button" data-name={ key } onClick={ handleClick }>{ als_admin.fields_extra[key] }</button>
 		) }
 		</>
 	);
@@ -55,12 +48,11 @@ const ButtonInsertField = ( { text, name, toggleModal, setValue } ) => {
 
 	const handleClick = ( e ) => {
 		e.preventDefault();
-		changeTab( e );
 		toggleModal();
 		setValue( { text, name, type } );
 	}
 
-	return <button class="button" data-tab="template-editor" onClick={ handleClick }>{ text }</button>;
+	return <button class="button" onClick={ handleClick }>{ text }</button>;
 }
 
 const Modal = ( { text, name, type, toggleModal } ) => {
@@ -88,8 +80,17 @@ const Modal = ( { text, name, type, toggleModal } ) => {
 			}
 		} );
 
-		let _name = 'button' === type ? '' : ` name="${ name }"`;
-		shortcode = `[als_${ type }${ _name }${ shortcode }]`;
+		switch ( name ) {
+			case 'button':
+				shortcode = `[als_${ name }${ shortcode }]`;
+				break;
+			case 'toggle_wrapper':
+				shortcode = `[als_${ name }${ shortcode }]\n\n[/als_${ name }]`;
+				break;
+			default:
+				shortcode = `[als_${ type } name="${ name }" ${ shortcode }]`;
+				break;
+		}
 
 		insertTextAtCursor( shortcode );
 		toggleModal();
@@ -105,7 +106,7 @@ const Modal = ( { text, name, type, toggleModal } ) => {
 				</h3>
 				<small><i>{ als_admin.translate.notice }</i></small>
 
-				<FieldAttributes type={ type } setValue={ setValue }/>
+				<FieldAttributes type={ type } name={ name } setValue={ setValue }/>
 
 				<div className="als-modal__actions">
 					<button class="button button-primary" onClick={ insert }>{ als_admin.translate.insert_field }</button>
@@ -133,6 +134,17 @@ const FieldAttributes = ( props ) => {
 				<label>
 					<span>{ als_admin.translate.type }</span>
 					<SelectControl options={ options } setValue={ setValue } />
+				</label>
+			</>
+		);
+	}
+
+	if ( 'toggle_wrapper' === props.name ) {
+		return (
+			<>
+				<label>
+					<span>{ als_admin.translate.label }</span>
+					<input type="text" onChange={ e => setValue( 'label', e.target.value ) } />
 				</label>
 			</>
 		);

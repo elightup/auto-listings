@@ -76,48 +76,50 @@ class Editor {
 		wp_enqueue_style( 'als-admin', AUTO_LISTINGS_URL . 'assets/admin/css/search-form.css', AUTO_LISTINGS_VERSION );
 		wp_enqueue_script( 'als-admin', AUTO_LISTINGS_URL . 'assets/admin/js/search-form.js', array( 'code-editor', 'underscore', 'wp-element' ), AUTO_LISTINGS_VERSION, true );
 
-
-		wp_localize_script( 'als-admin', 'als_admin', [
-			'fields' => [
-				'body_type'       => __( 'Body Type' ),
-				'condition'       => __( 'Condition' ),
-				'drivetrain'      => __( 'Drivetrain' ),
-				'engine'          => __( 'Engine' ),
-				'exterior_colors' => __( 'Exterior Colors' ),
-				'fuel_type'       => __( 'Fuel Type' ),
-				'make'            => __( 'Make' ),
-				'max_price'       => __( 'Max Price' ),
-				'min_price'       => __( 'Min Price' ),
-				'model'           => __( 'Model' ),
-				'odometer'        => __( 'Odometer' ),
-				'price'           => __( 'Price' ),
-				'transmission'    => __( 'Transmission' ),
-				'within'          => __( 'Within' ),
-				'year'            => __( 'Year' ),
-				'button'          => __( 'Button' ),
-			],
-			'fields_extra' => [
-				'total_listings'  => __( 'Total listings' ),
-				'selected'        => __( 'Selected' ),
-				'toggle_wrapper'  => __( 'Toggle Wrapper' ),
-				'refine'          => __( 'Refine' ),
-			],
-			'translate' => [
-				'label'        => __( 'Label', 'auto-listings' ),
-				'type'         => __( 'Type', 'auto-listings' ),
-				'placeholder'  => __( 'Placeholder', 'auto-listings' ),
-				'prefix'       => __( 'Prefix', 'auto-listings' ),
-				'suffix'       => __( 'Suffix', 'auto-listings' ),
-				'multiple'     => __( 'Multiple', 'auto-listings' ),
-				'insert_field' => __( 'Insert Field', 'auto-listings' ),
-				'attributes'   => __( 'attributes', 'auto-listings' ),
-				'reset'        => __( 'Reset', 'auto-listings' ),
-				'submit'       => __( 'Submit', 'auto-listings' ),
-				'select'       => __( 'Dropdown', 'auto-listings' ),
-				'radio'        => __( 'Single Choice', 'auto-listings' ),
-				'notice'       => __( 'Leave empty to use the default values', 'auto-listings' ),
-			]
-		]);
+		wp_localize_script(
+			'als-admin',
+			'als_admin',
+			array(
+				'fields'       => array(
+					'body_type'       => __( 'Body Type', 'auto-listings' ),
+					'condition'       => __( 'Condition', 'auto-listings' ),
+					'drivetrain'      => __( 'Drivetrain', 'auto-listings' ),
+					'engine'          => __( 'Engine', 'auto-listings' ),
+					'exterior_colors' => __( 'Exterior Colors', 'auto-listings' ),
+					'fuel_type'       => __( 'Fuel Type', 'auto-listings' ),
+					'make'            => __( 'Make', 'auto-listings' ),
+					'max_price'       => __( 'Max Price', 'auto-listings' ),
+					'min_price'       => __( 'Min Price', 'auto-listings' ),
+					'model'           => __( 'Model', 'auto-listings' ),
+					'odometer'        => __( 'Odometer', 'auto-listings' ),
+					'price'           => __( 'Price', 'auto-listings' ),
+					'transmission'    => __( 'Transmission', 'auto-listings' ),
+					'within'          => __( 'Within', 'auto-listings' ),
+					'year'            => __( 'Year', 'auto-listings' ),
+					'button'          => __( 'Button', 'auto-listings' ),
+					'toggle_wrapper'  => __( 'Toggle Wrapper', 'auto-listings' ),
+				),
+				'fields_extra' => array(
+					'total_listings' => __( 'Total listings', 'auto-listings' ),
+					'selected'       => __( 'Selected value', 'auto-listings' ),
+				),
+				'translate'    => array(
+					'label'        => __( 'Label', 'auto-listings' ),
+					'type'         => __( 'Type', 'auto-listings' ),
+					'placeholder'  => __( 'Placeholder', 'auto-listings' ),
+					'prefix'       => __( 'Prefix', 'auto-listings' ),
+					'suffix'       => __( 'Suffix', 'auto-listings' ),
+					'multiple'     => __( 'Multiple', 'auto-listings' ),
+					'insert_field' => __( 'Insert Field', 'auto-listings' ),
+					'attributes'   => __( 'attributes', 'auto-listings' ),
+					'reset'        => __( 'Reset', 'auto-listings' ),
+					'submit'       => __( 'Submit', 'auto-listings' ),
+					'select'       => __( 'Dropdown', 'auto-listings' ),
+					'radio'        => __( 'Single Choice', 'auto-listings' ),
+					'notice'       => __( 'Leave empty to use the default values', 'auto-listings' ),
+				),
+			)
+		);
 	}
 
 	private function is_screen() {
