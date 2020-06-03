@@ -215,26 +215,11 @@
     }
 
     /**
-     * Search box
-     */
-    function auto_listings_search_box() {
-
-        $('#auto-listings-search select').SumoSelect({
-        });
-
-        $('.auto-listings-search').on( 'click', 'a.refine', function( e ) {
-            $( this ).next('.extras-wrap').slideToggle( 200 );
-            $( this ).toggleClass( 'shown' );
-        });
-
-    }
-
-    /**
      * Search Form
      */
     var searchForm = {
 		init: function( $scope = $( 'body' ) ) {
-			if ( ! $scope.find( '.auto-listings-search' ).length ) {
+			if ( ! $scope.find( '.als' ).length ) {
 				return;
             }
 			searchForm.initElement( $scope );
@@ -247,20 +232,20 @@
 			searchForm.reset();
 		},
 		initElement: function( $scope ) {
-			searchForm.$searchForm    =  $scope.find( '.auto-listings-search' );
-			searchForm.$extraFields   =  $scope.find( '.listings-search__extras' );
-			searchForm.$selectFields  =  $scope.find( '.auto-listings-search select' );
-			searchForm.$selectedWrap  =  $scope.find( '.search__footer__selected' );
-			searchForm.$resetButton   =  $scope.find( '.auto-listings-search .reset-all');
-			searchForm.$priceField    =  $scope.find( '.auto-listings-search' ).find( '[name="price"]' );
-			searchForm.$locationField =  $scope.find( '.auto-listings-search' ).find( '[name="s"]' );
+			searchForm.$searchForm    =  $scope.find( '.als' );
+			searchForm.$selectFields  =  $scope.find( '.als select' );
+			searchForm.$extraFields   =  $scope.find( '.als-toggle-wrapper' );
+			searchForm.$selectedWrap  =  $scope.find( '.als-selected' );
+			searchForm.$resetButton   =  $scope.find( '.als .reset-all');
+			searchForm.$priceField    =  $scope.find( '.als' ).find( '[name="price"]' );
+			searchForm.$locationField =  $scope.find( '.als' ).find( '[name="s"]' );
 			searchForm.selected       = {};
 		},
 		initSumoSelect: function() {
 			searchForm.$selectFields.SumoSelect({});
 		},
 		setDefaultSelected: function() {
-			$selectedItems = searchForm.$searchForm.find( '.is-selected' );
+			$selectedItems = searchForm.$searchForm.find( '.als-is-selected' );
 			if ( $selectedItems.length === 0 ) {
 				return;
 			}
@@ -272,7 +257,7 @@
 		setSelectedOnChange: function() {
 			searchForm.$selectFields.on( 'change', function() {
 				var $this       = $( this );
-				var $searchItem = $this.closest( '.search-body__item' );
+				var $searchItem = $this.closest( '.als-field' );
 				searchForm.setSelectedFields( $searchItem );
 				searchForm.printSelectedFields();
 			} );
@@ -283,12 +268,12 @@
 			var selectedKeyName = $select.attr( 'name' );
 			var value           = '';
 			if ( $select.val() ) {
-				if ( ! $selectedItem.hasClass( 'is-selected' ) ) {
-					$selectedItem.addClass( 'is-selected' );
+				if ( ! $selectedItem.hasClass( 'als-is-selected' ) ) {
+					$selectedItem.addClass( 'als-is-selected' );
 				}
 				value = $select.next( '.SelectBox' ).attr( 'title' );
 			} else {
-				$selectedItem.removeClass( 'is-selected' );
+				$selectedItem.removeClass( 'als-is-selected' );
 			}
 			var selectedItem = {
 				label: label,
@@ -297,7 +282,7 @@
 			searchForm.selected[ selectedKeyName ] = selectedItem;
 		},
 		deleteSelectedFields: function() {
-			searchForm.$searchForm.on( 'click', '.selected-item__close', function( e ) {
+			searchForm.$searchForm.on( 'click', '.als-selected__item-close', function( e ) {
 				var key = $( this ).attr( 'data-selected' );
 				if ( key.indexOf( '[]' ) < 0 ) {
 					$( 'select[name="' + key + '"]' ).val( '' );
@@ -310,7 +295,7 @@
 		handlePriceField: function() {
 			searchForm.$priceField.on( 'change', function() {
 				var $this = $( this );
-				var $wrapper = $this.closest( '.auto-listings-search' );
+				var $wrapper = $this.closest( '.als' );
 				var $minField = $wrapper.find( 'input[name="min_price"]' );
 				var $maxField = $wrapper.find( 'input[name="max_price"]' );
 				var value = $this.val();
@@ -349,11 +334,9 @@
 				if ( selectedItem.value === '' ) {
 					continue;
 				}
-				output += '<span class="search-selected-item">\
-					<i class="ion-close-circled selected-item__close" data-selected="' + key + '"></i>\
-					<span class="selected-item__label">' +  selectedItem.label + ': </span>\
-					<span class="selected-item__value">' +  selectedItem.value + '</span>\
-				</span>';
+				output += `<span class="als-selected__item"><i class="ion-close-circled als-selected__item-close" data-selected="${ key }"></i>`;
+                output += selectedItem.label ? `<span class="als-selected__item-label">${ selectedItem.label }: </span>` : '';
+                output += `<span class="als-selected__item-value">${ selectedItem.value }</span></span>`;
 			}
 			searchForm.$selectedWrap.html( output );
 		},

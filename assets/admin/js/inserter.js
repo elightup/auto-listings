@@ -18,11 +18,13 @@ const Fields = () => {
 		type: '',
 	} );
 
+	const extraFields = [ 'total_listings', 'selected', 'toggle_wrapper' ];
+
 	return (
 		<>
 		{ Object.keys( als_admin.fields ).map( ( key ) =>
-			'total_listings' === key
-			? <TotalListings key={ key } text={ als_admin.fields[key] } name={ key } />
+			extraFields.includes( key )
+			? <ExtraField key={ key } text={ als_admin.fields[key] } name={ key } />
 			: <ButtonInsertField key={ key } text={ als_admin.fields[key] } name={ key } toggleModal={ toggleModal } setValue={ setData } />
 		) }
 
@@ -31,7 +33,7 @@ const Fields = () => {
 	);
 }
 
-const TotalListings = ( { text, name } ) => {
+const ExtraField = ( { text, name } ) => {
 	const handleClick = ( e ) => {
 		e.preventDefault();
 		changeTab( e );
@@ -76,7 +78,7 @@ const Modal = ( { text, name, type, toggleModal } ) => {
 
 	const insert = ( e ) => {
 		e.preventDefault();
-		
+
 		let shortcode = '';
 		Object.keys( values ).forEach( key => {
 			if ( values[key] ) {

@@ -49,6 +49,6 @@ if ( ( ! is_admin() || wp_doing_ajax() ) && ! wp_doing_cron() ) {
 	new SearchForm\Shortcode\Form;
     $control = new SearchForm\Shortcode\Control;
     new SearchForm\Shortcode\Field( $control );
-    new SearchForm\Shortcode\Total;
+    new SearchForm\Shortcode\Extras;
     new SearchForm\Shortcode\Button;
 }

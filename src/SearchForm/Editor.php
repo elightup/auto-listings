@@ -96,6 +96,8 @@ class Editor {
 				'year'            => __( 'Year' ),
 				'button'          => __( 'Button' ),
 				'total_listings'  => __( 'Total listings' ),
+				'selected'        => __( 'Selected' ),
+				'toggle_wrapper'  => __( 'Toggle Wrapper' ),
 			],
 			'translate' => [
 				'label'        => __( 'Label', 'auto-listings' ),

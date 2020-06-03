@@ -48,7 +48,7 @@ class Form {
 		}
 
 		$output .= '<form'
-			. ' id="auto-listings-search" class="auto-listings-search" autocomplete="off"'
+			. ' id="auto-listings-search" class="als" autocomplete="off"'
 			. ' action="' . get_the_permalink( auto_listings_option( 'archives_page' ) ) . '"'
 			. ' method="GET"'
 			. ' role="search">';
