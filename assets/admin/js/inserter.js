@@ -62,7 +62,7 @@ const Modal = ( { text, name, type, toggleModal } ) => {
 		prefix: '',
 		suffix: '',
 		type: '',
-		trigger: '',
+		toggle_button_label: '',
 		multiple: false,
 	} );
 	const setValue = ( attribute, value ) => {
@@ -102,7 +102,7 @@ const Modal = ( { text, name, type, toggleModal } ) => {
 			<div class="als-modal-overlay" onClick={ toggleModal }></div>
 			<div className="als-modal">
 				<h3>
-					{ text + ' ' + als_admin.translate.label }
+					{ text + ' ' + als_admin.translate.attributes }
 					<span className="als-modal__close" onClick={ toggleModal }>&times;</span>
 				</h3>
 				<small><i>{ als_admin.translate.notice }</i></small>
@@ -144,8 +144,8 @@ const FieldAttributes = ( props ) => {
 		return (
 			<>
 				<label>
-					<span>{ als_admin.translate.trigger }</span>
-					<input type="text" onChange={ e => setValue( 'trigger', e.target.value ) } />
+					<span>{ als_admin.translate.toggle_button_label }</span>
+					<input type="text" onChange={ e => setValue( 'toggle_button_label', e.target.value ) } />
 				</label>
 			</>
 		);
