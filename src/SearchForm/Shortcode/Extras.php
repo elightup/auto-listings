@@ -19,7 +19,7 @@ class Extras {
 	public function render_toggle_wrapper( $atts, $content = null ) {
 		$atts = shortcode_atts(
 			array(
-				'trigger_label' => __( 'Advance Search', 'auto-listings' ),
+				'toggle_button_label' => __( 'Advance Search', 'auto-listings' ),
 			),
 			$atts
 		);
