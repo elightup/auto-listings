@@ -236,7 +236,7 @@
 			searchForm.$selectFields  =  $scope.find( '.als select' );
 			searchForm.$extraFields   =  $scope.find( '.als-toggle-wrapper' );
 			searchForm.$selectedWrap  =  $scope.find( '.als-selected' );
-			searchForm.$resetButton   =  $scope.find( '.als .reset-all');
+			searchForm.$resetButton   =  $scope.find( '.als-reset');
 			searchForm.$priceField    =  $scope.find( '.als' ).find( '[name="price"]' );
 			searchForm.$locationField =  $scope.find( '.als' ).find( '[name="s"]' );
 			searchForm.selected       = {};
