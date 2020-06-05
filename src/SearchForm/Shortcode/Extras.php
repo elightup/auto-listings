@@ -9,7 +9,7 @@ class Extras {
 	}
 
 	public function render_total() {
-		return auto_listings_available_listings() ? auto_listings_available_listings() : '';
+		return function_exists( 'auto_listings_available_listings' ) ? auto_listings_available_listings() : '';
 	}
 
 	public function render_selected() {
