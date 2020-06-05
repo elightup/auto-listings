@@ -31,7 +31,7 @@
 
 		function submitCallback() {
 			if ( 'true' === i18n.ajax ) {
-				performAjax( $submitBtn );
+				performAjax();
 			} else {
 				// Remove disable then trigger click again.
 				$submitBtn.prop( 'disabled', false ).trigger( 'click' );
@@ -86,14 +86,23 @@
 				$( '.rwmb-confirmation' ).remove();
 			}
 
-			const data   = getAjaxData();
-			const config = getAjaxConfig( data );
+			// Don't submit when the form is not validated.
+			if ( $.validator && ! $form.valid() ) {
+				return;
+			}
 
 			addLoading( $submitBtn );
 
-			const ajax = $.ajax( config );
-
-			ajax.done( function( res ) {
+			let data = new FormData( $form[0] );
+			data.append( '_ajax_nonce', i18n.nonce );
+			$.ajax( {
+				dataType: 'json',
+				type: 'POST',
+				data: data,
+				url: i18n.ajaxUrl,
+				contentType: false,
+				processData: false
+			} ).done( function( res ) {
 				removeLoading();
 				if( res.success ) {
 					handleSuccessResponse( res );
@@ -108,29 +117,6 @@
 			$( 'html, body' ).animate( {
 				scrollTop: $form.offset().top - 50
 			}, 200 );
-		}
-
-		function getAjaxData() {
-			var data = new FormData( $form[0] );
-			data.append( '_ajax_nonce', i18n.nonce );
-
-			return data;
-		}
-
-		function getAjaxConfig( data ) {
-			return {
-				dataType: 'json',
-				type: 'POST',
-				data: data,
-				url: i18n.ajaxUrl,
-				contentType: false,
-				processData: false
-			};
-		}
-
-		function hasFileField() {
-			$fileFields = $form.find( 'input[type="file"]' );
-			return $fileFields.length > 0;
 		}
 
 		function handleSuccessResponse( res ) {
@@ -172,7 +158,7 @@
 				e.preventDefault();
 
 				$form.prepend( '<input name="action" type="hidden" value="ajax_delete" />' );
-				performAjax( $deleteBtn );
+				performAjax();
 			} else {
 				$( this ).off( 'click' ).click();
 				disableSubmitButton();

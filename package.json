@@ -1,0 +1,22 @@
+{
+    "private": true,
+    "scripts": {
+        "css:admin": "node-sass assets/admin/css/search-form.scss --sourcemap none --output-style compressed -o assets/admin/css",
+        "css:frontend": "node-sass assets/css/auto-listings.scss --sourcemap none --output-style compressed -o assets/css",
+        "watch:admin": "node-sass assets/admin/css/search-form.scss --sourcemap true --output-style compressed -w sass -r -o assets/admin/css",
+        "watch:frontend": "node-sass assets/css/auto-listings.scss --sourcemap true --output-style compressed -w sass -r -o assets/css",
+        "watch:css": "node-sass --sourcemap none --output-style compressed -w sass/style.scss -r -o assets/css",
+        "watch:js": "webpack --watch --mode development",
+        "start": "webpack --mode development",
+        "build": "webpack --mode production"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.8.6",
+        "@babel/plugin-proposal-class-properties": "^7.8.3",
+        "@babel/plugin-transform-react-jsx": "^7.8.3",
+        "babel-loader": "^8.0.6",
+        "node-sass": "^4.13.1",
+        "webpack": "^4.41.6",
+        "webpack-cli": "^3.3.11"
+    }
+}

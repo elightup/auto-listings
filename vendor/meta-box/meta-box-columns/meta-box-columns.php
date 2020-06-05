@@ -3,7 +3,7 @@
  * Plugin Name: Meta Box Columns
  * Plugin URI:  https://metabox.io/plugins/meta-box-columns/
  * Description: Display fields more beautiful by putting them into 12-columns grid.
- * Version:     1.2.6
+ * Version:     1.2.7
  * Author:      MetaBox.io
  * Author URI:  https://metabox.io
  * License:     GPL2+
@@ -16,8 +16,8 @@
 defined( 'ABSPATH' ) || die;
 
 if ( ! function_exists( 'mb_columns_add_markup' ) ) {
-	require __DIR__ . '/class-mb-columns-row.php';
-	require __DIR__ . '/class-mb-columns-processor.php';
+	require __DIR__ . '/row.php';
+	require __DIR__ . '/processor.php';
 
 	add_filter( 'rwmb_meta_box_settings', 'mb_columns_add_markup' );
 

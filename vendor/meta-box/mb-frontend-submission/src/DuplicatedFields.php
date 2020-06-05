@@ -8,11 +8,11 @@ namespace MBFS;
 
 class DuplicatedFields {
 	private $fields = [
-		'post_title',
-		'post_content',
-		'post_excerpt',
-		'post_date',
-		'_thumbnail_id',
+		'post_title' => 'title',
+		'post_content' => 'editor',
+		'post_excerpt' => 'excerpt',
+		'post_date' => 'date',
+		'_thumbnail_id' => 'thumbnail',
 	];
 
 	public function __construct() {
@@ -20,9 +20,15 @@ class DuplicatedFields {
 	}
 
 	public function remove_field( $html, $field ) {
-		if ( ! is_admin() ) {
+		if ( ! is_admin() || ! isset( $this->fields[ $field['id'] ] ) ) {
 			return $html;
 		}
-		return in_array( $field['id'], $this->fields, true ) ? '' : $html;
+
+		global $post;
+		if ( ! isset( $post->post_type ) ) {
+			return $html;
+		}
+		$support = $this->fields[ $field['id'] ];
+		return post_type_supports( $post->post_type, $support ) ? '' : $html;
 	}
 }

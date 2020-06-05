@@ -62,9 +62,9 @@ class SettingsPage {
 
 	public function show() {
 		$class = trim( "wrap {$this->class}" );
+		$class .= " rwmb-settings-{$this->style}";
 		if ( $this->tabs ) {
 			$class .= " rwmb-settings-tabs-{$this->tab_style}";
-			$class .= " rwmb-settings-{$this->style}";
 		}
 		?>
 		<div class="<?= esc_attr( $class ) ?>">

@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "watch": "node-sass --output-style compressed -w sass -r -o assets/css"
+  }
+}

@@ -1,0 +1,144 @@
+@import 'code-mirror';
+
+.als-tab {
+	&__nav {
+		display: flex;
+		align-items: center;
+		background: #fff;
+		padding: 0 12px;
+		height: 47px;
+		border: 1px solid #ccd0d4;
+		border-bottom: 0;
+		margin-bottom: 0;
+
+		li {
+			margin: 0 16px 0 0;
+			font-weight: 600;
+			font-size: 14px;
+			color: inherit;
+			cursor: pointer;
+
+			&.is-active {
+				color: #0073aa;
+			}
+		}
+	}
+
+	&__pane {
+		display: none;
+
+		&.is-active {
+			display: block;
+		}
+	}
+}
+
+.als-fields {
+	hr {
+		border-top: 1px solid #ccd0d4;
+		border-bottom: 0;
+		margin-bottom: 10px;
+	}
+
+	.button {
+		margin: 0 3px 5px 0;
+	}
+}
+
+.als-modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 11;
+	min-height: 180px;
+	min-width: 330px;
+	border-radius: 4px;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+	background: #ffffff;
+	opacity: 1;
+	transform: translate(-50%, -50%) scale(1);
+	transform-origin: center;
+	animation: zoom .25s;
+
+	h3 {
+		margin: 0;
+		padding: 0 16px;
+		border-bottom: 1px solid #ddd;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		font-size: 14px;
+
+		&::first-letter {
+			text-transform: uppercase;
+		}
+	}
+
+	&__close {
+		font-size: 24px;
+		cursor: pointer;
+		padding-bottom: 5px;
+	}
+
+	small {
+		padding: 7px 0 0 16px;
+	}
+
+	label {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		margin: 12px 0;
+		padding: 0px 16px;
+
+		&.als-modal-checkbox {
+			margin-bottom: 0;
+			flex-direction: row;
+			align-items: center;
+			display: flex;
+
+			input {
+				width: auto;
+			}
+
+			span {
+				font-weight: 400;
+			}
+		}
+
+		span {
+			display: block;
+			font-weight: 600;
+			margin-bottom: 4px;
+			width: 100%;
+		}
+	}
+
+	select, input[type=text] {
+		width: 100%;
+	}
+
+	&__actions {
+		display: flex;
+		justify-content: flex-end;
+		padding: 7px 16px;
+		border-top: 1px solid #ddd;
+	}
+
+	&-overlay{
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 10;
+		background: rgba(#000, 0.5);
+	}
+}
+
+@keyframes zoom {
+	from {
+		opacity: 0;
+		transform: translate(-50%, -50%) scale(0.7);
+	}
+}

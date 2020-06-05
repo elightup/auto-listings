@@ -20,15 +20,18 @@
     }
 
     /**
-     * Search box
+     * Search box ( Old version )
      */
     if( $( '.auto-listings-search' ).length > 0 ) {
-        auto_listings_search_box();
+        $('.auto-listings-search select').SumoSelect({});
+
+        $('.auto-listings-search').on( 'click', 'a.refine', function( e ) {
+            $( this ).next('.extras-wrap').slideToggle( 200 );
+            $( this ).toggleClass( 'shown' );
+        });
     }
 
     auto_listings_tabs();
-
-
 /**
  * ================================= FUNCTIONS =======================================
  */
@@ -202,7 +205,7 @@
                 scale: 1.5,
                 strokeColor: '#26a0f2',
                 strokeWeight: 3
-              };
+            };
 
             var set_marker = new google.maps.Marker({
                 map: al_map,
@@ -215,18 +218,145 @@
     }
 
     /**
-     * Search box
+     * Search Form
      */
-    function auto_listings_search_box() {
+    var searchForm = {
+		init: function( $scope = $( 'body' ) ) {
+			if ( ! $scope.find( '.als' ).length ) {
+				return;
+            }
+			searchForm.initElement( $scope );
+			searchForm.initSumoSelect();
+			searchForm.appendSearchKey();
+			searchForm.setDefaultSelected();
+			searchForm.toggleExtraFields();
+			searchForm.setSelectedOnChange();
+			searchForm.deleteSelectedFields();
+			searchForm.handlePriceField();
+			searchForm.reset();
+		},
+		initElement: function( $scope ) {
+			searchForm.$form          = $scope.find( '.als' );
+			searchForm.$selectFields  = $scope.find( '.als select' );
+			searchForm.$extraFields   = $scope.find( '.als-toggle-wrapper' );
+			searchForm.$selectedWrap  = $scope.find( '.als-selected' );
+			searchForm.$resetButton   = $scope.find( '.als-reset');
+			searchForm.$priceField    = $scope.find( '.als' ).find( '[name="price"]' );
+			searchForm.$locationField = $scope.find( '.als' ).find( '[name="s"]' );
+			searchForm.selected       = {};
+		},
+		initSumoSelect: function() {
+			searchForm.$selectFields.SumoSelect({});
+        },
+        appendSearchKey: function() {
+            if ( searchForm.$form.find( '[name="s"]' ).length !== 0 ) {
+                return;
+            }
+            searchForm.$form.append( '<input type="hidden" name="s" />' )
+        },
+		setDefaultSelected: function() {
+			$selectedItems = searchForm.$form.find( '.als-is-selected' );
+			if ( $selectedItems.length === 0 ) {
+				return;
+			}
+			$selectedItems.each( function() {
+				searchForm.setSelectedFields( $( this ) );
+			} );
+			searchForm.printSelectedFields();
+		},
+		setSelectedOnChange: function() {
+			searchForm.$selectFields.on( 'change', function() {
+				var $this       = $( this );
+				var $searchItem = $this.closest( '.als-field' );
+				searchForm.setSelectedFields( $searchItem );
+				searchForm.printSelectedFields();
+			} );
+		},
+		setSelectedFields: function( $selectedItem ) {
+			var $select         = $selectedItem.find( 'select' );
+			var label           = $selectedItem.find( '.als-field__label' ).text();
+			var selectedKeyName = $select.attr( 'name' );
+			var value           = '';
+			if ( $select.val() ) {
+				if ( ! $selectedItem.hasClass( 'als-is-selected' ) ) {
+					$selectedItem.addClass( 'als-is-selected' );
+				}
+				value = $select.next( '.SelectBox' ).attr( 'title' );
+			} else {
+				$selectedItem.removeClass( 'als-is-selected' );
+			}
+			var selectedItem = {
+				label: label,
+				value: value
+			};
+			searchForm.selected[ selectedKeyName ] = selectedItem;
+		},
+		deleteSelectedFields: function() {
+			searchForm.$form.on( 'click', '.als-selected__close', function( e ) {
+				var key = $( this ).attr( 'data-selected' );
+				if ( key.indexOf( '[]' ) < 0 ) {
+					$( 'select[name="' + key + '"]' ).val( '' );
+				}
+				$( 'select[name="' + key + '"]' )[0].sumo.unSelectAll();
+				delete searchForm.selected[ key ];
+				searchForm.printSelectedFields();
+			} );
+		},
+		handlePriceField: function() {
+			searchForm.$priceField.on( 'change', function() {
+				var $minField = searchForm.$form.find( '[name="min_price"]' );
+				var $maxField = searchForm.$form.find( '[name="max_price"]' );
+				var value = $( this ).val();
+				if ( value == '' ) {
+					$minField.val( '' );
+					$maxField.val( '' );
+				} else {
+					value = value.split( '-' );
+					$minField.val( value[0] );
+					$maxField.val( value[1] );
+				}
+			} );
+		},
+		reset: function() {
+			searchForm.$resetButton.on( 'click', function( e ) {
+				e.preventDefault();
+				searchForm.$selectFields.each( function() {
+					var $this = $( this );
+					if ( ! $this.val() ) {
+						return true;
+					}
+					if ( $this.attr( 'name' ).indexOf( '[]' ) < 0 ) {
+						$this.val( '' );
+					}
+					$this[0].sumo.unSelectAll();
+				} );
+				searchForm.$locationField.val('');
+				searchForm.selected = {};
+				searchForm.$selectedWrap.empty();
+			} );
+		},
+		printSelectedFields: function() {
+			var output = '';
+			for( var key in searchForm.selected ) {
+				var selectedItem = searchForm.selected[ key ];
+				if ( selectedItem.value === '' ) {
+					continue;
+				}
+				output += `<span class="als-selected__item"><i class="als-selected__close" data-selected="${ key }">&times;</i>`;
+                output += selectedItem.label ? `<span class="als-selected__label">${ selectedItem.label }: </span>` : '';
+                output += `<span class="als-selected__value">${ selectedItem.value }</span></span>`;
+			}
+			searchForm.$selectedWrap.html( output );
+		},
+		toggleExtraFields: function() {
+			searchForm.$form.on( 'click', '.als-toggle-button', function( e ) {
+				e.preventDefault();
+				searchForm.$extraFields.slideToggle( 200 );
+				$( this ).toggleClass( 'shown' );
+			} );
+		},
+	};
 
-        $('#auto-listings-search select').SumoSelect({
-        });
-
-        $('.auto-listings-search').on( 'click', 'a.refine', function( e ) {
-            $( this ).next('.extras-wrap').slideToggle( 200 );
-            $( this ).toggleClass( 'shown' );
-        });
-
-    }
+	searchForm.init();
 
 })(jQuery);

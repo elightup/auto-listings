@@ -106,6 +106,9 @@ class MB_Columns_Row {
 		if ( ! $this->is_start_column( $field ) ) {
 			return;
 		}
+		if ( ! isset( $this->columns[ $field['column'] ] ) ) {
+			return;
+		}
 
 		$column = $this->columns[ $field['column'] ];
 		$before = '';

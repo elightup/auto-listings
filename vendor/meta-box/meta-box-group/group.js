@@ -167,6 +167,7 @@
 	};
 
 	group.clone.updateIndex = function() {
+		// debugger;
 		var $this = $( this );
 
 		// Update index only for sub fields in a group
@@ -220,7 +221,7 @@
 		}
 
 		var regex = new RegExp( '_(\\d*)$' ),
-			newValue = '_' + Date.now();
+			newValue = '_' + rwmb.uniqid();
 
 		if ( regex.test( id ) ) {
 			id = id.replace( regex, newValue );
@@ -306,6 +307,6 @@
 		.on( 'click', '.rwmb-group-title-wrapper, .rwmb-group-toggle-handle', group.toggle.handle )
 		.on( 'clone_instance', '.rwmb-clone', group.clone.processGroup )
 		.on( 'update_index', rwmb.inputSelectors, group.clone.replaceId )
-		.on( 'clone', rwmb.inputSelectors, group.clone.updateIndex )
+		.on( 'update_index', rwmb.inputSelectors, group.clone.updateIndex )
 		.on( 'click', '.rwmb-group-remove', group.clone.remove );
 } )( jQuery, _, document, window, rwmb, RWMB_Group );

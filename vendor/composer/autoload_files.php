@@ -13,6 +13,7 @@ return array(
     'f9803e00772776d3207070b363d681d3' => $baseDir . '/src/functions-general.php',
     'a872b70be4f9d410707626d681964d0f' => $baseDir . '/src/functions-listing.php',
     '6f04e33201b10d967d5c2d468d43af71' => $baseDir . '/src/functions-sidebars.php',
+    '67044878b0dc26239c83e213a6ac4e25' => $baseDir . '/src/SearchForm/functions.php',
     '6b6b1f4986f46522e7c0e9ae0dca8041' => $baseDir . '/src/Frontend/template-hooks.php',
     '315ebd61770793434c70b58288e3d288' => $baseDir . '/src/Frontend/template-tags.php',
     '659266b31e06c92d08b6a7b028c47337' => $vendorDir . '/meta-box/mb-frontend-submission/mb-frontend-submission.php',
