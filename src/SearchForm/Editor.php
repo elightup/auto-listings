@@ -100,8 +100,8 @@ class Editor {
 					'toggle_wrapper'  => __( 'Toggle Wrapper', 'auto-listings' ),
 				),
 				'fields_extra' => array(
-					'total_listings' => __( 'Total listings', 'auto-listings' ),
-					'selected'       => __( 'Selected value', 'auto-listings' ),
+					'total_listings' => __( 'Total Listings', 'auto-listings' ),
+					'selected'       => __( 'Selected Values', 'auto-listings' ),
 				),
 				'translate'    => array(
 					'label'               => __( 'Label', 'auto-listings' ),
