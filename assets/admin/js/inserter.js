@@ -62,7 +62,6 @@ const Modal = ( { text, name, type, toggleModal } ) => {
 		prefix: '',
 		suffix: '',
 		type: '',
-		toggle_button_label: '',
 		multiple: false,
 	} );
 	const setValue = ( attribute, value ) => {
@@ -145,7 +144,7 @@ const FieldAttributes = ( props ) => {
 			<>
 				<label>
 					<span>{ als_admin.translate.toggle_button_label }</span>
-					<input type="text" onChange={ e => setValue( 'toggle_button_label', e.target.value ) } />
+					<input type="text" onChange={ e => setValue( 'label', e.target.value ) } />
 				</label>
 			</>
 		);
