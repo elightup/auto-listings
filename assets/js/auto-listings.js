@@ -20,15 +20,18 @@
     }
 
     /**
-     * Search box
+     * Search box ( Old version )
      */
     if( $( '.auto-listings-search' ).length > 0 ) {
-        auto_listings_search_box();
+        $('.auto-listings-search select').SumoSelect({});
+
+        $('.auto-listings-search').on( 'click', 'a.refine', function( e ) {
+            $( this ).next('.extras-wrap').slideToggle( 200 );
+            $( this ).toggleClass( 'shown' );
+        });
     }
 
     auto_listings_tabs();
-
-
 /**
  * ================================= FUNCTIONS =======================================
  */
@@ -232,7 +235,7 @@
 			searchForm.reset();
 		},
 		initElement: function( $scope ) {
-			searchForm.$searchForm    =  $scope.find( '.als' );
+			searchForm.$form    =  $scope.find( '.als' );
 			searchForm.$selectFields  =  $scope.find( '.als select' );
 			searchForm.$extraFields   =  $scope.find( '.als-toggle-wrapper' );
 			searchForm.$selectedWrap  =  $scope.find( '.als-selected' );
@@ -245,7 +248,7 @@
 			searchForm.$selectFields.SumoSelect({});
 		},
 		setDefaultSelected: function() {
-			$selectedItems = searchForm.$searchForm.find( '.als-is-selected' );
+			$selectedItems = searchForm.$form.find( '.als-is-selected' );
 			if ( $selectedItems.length === 0 ) {
 				return;
 			}
@@ -282,7 +285,7 @@
 			searchForm.selected[ selectedKeyName ] = selectedItem;
 		},
 		deleteSelectedFields: function() {
-			searchForm.$searchForm.on( 'click', '.als-selected__item-close', function( e ) {
+			searchForm.$form.on( 'click', '.als-selected__close', function( e ) {
 				var key = $( this ).attr( 'data-selected' );
 				if ( key.indexOf( '[]' ) < 0 ) {
 					$( 'select[name="' + key + '"]' ).val( '' );
@@ -294,11 +297,9 @@
 		},
 		handlePriceField: function() {
 			searchForm.$priceField.on( 'change', function() {
-				var $this = $( this );
-				var $wrapper = $this.closest( '.als' );
-				var $minField = $wrapper.find( 'input[name="min_price"]' );
-				var $maxField = $wrapper.find( 'input[name="max_price"]' );
-				var value = $this.val();
+				var $minField = searchForm.$form.find( '[name="min_price"]' );
+				var $maxField = searchForm.$form.find( '[name="max_price"]' );
+				var value = $( this ).val();
 				if ( value == '' ) {
 					$minField.val( '' );
 					$maxField.val( '' );
@@ -334,14 +335,14 @@
 				if ( selectedItem.value === '' ) {
 					continue;
 				}
-				output += `<span class="als-selected__item"><i class="ion-close-circled als-selected__item-close" data-selected="${ key }"></i>`;
-                output += selectedItem.label ? `<span class="als-selected__item-label">${ selectedItem.label }: </span>` : '';
-                output += `<span class="als-selected__item-value">${ selectedItem.value }</span></span>`;
+				output += `<span class="als-selected__item"><i class="als-selected__close" data-selected="${ key }">&times;</i>`;
+                output += selectedItem.label ? `<span class="als-selected__label">${ selectedItem.label }: </span>` : '';
+                output += `<span class="als-selected__value">${ selectedItem.value }</span></span>`;
 			}
 			searchForm.$selectedWrap.html( output );
 		},
 		toggleExtraFields: function() {
-			searchForm.$searchForm.on( 'click', '.als-toggle-btn', function( e ) {
+			searchForm.$form.on( 'click', '.als-toggle-button', function( e ) {
 				e.preventDefault();
 				searchForm.$extraFields.slideToggle( 200 );
 				$( this ).toggleClass( 'shown' );
