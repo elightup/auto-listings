@@ -155,6 +155,10 @@ const FieldAttributes = ( props ) => {
 		return (
 			<>
 				<label>
+					<span>{ als_admin.translate.label }</span>
+					<input type="text" onChange={ e => setValue( 'label', e.target.value ) } />
+				</label>
+				<label>
 					<span>{ als_admin.translate.placeholder }</span>
 					<input type="text" onChange={ e => setValue( 'placeholder', e.target.value ) } />
 				</label>
