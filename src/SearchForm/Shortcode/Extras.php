@@ -19,11 +19,11 @@ class Extras {
 	public function render_toggle_wrapper( $atts, $content = null ) {
 		$atts = shortcode_atts(
 			array(
-				'toggle_button_label' => __( 'Advance Search', 'auto-listings' ),
+				'label' => __( 'Advanced Search', 'auto-listings' ),
 			),
 			$atts
 		);
 
-		return '<a class="als-toggle-btn">' . $atts['toggle_button_label'] . '</a><div class="als-toggle-wrapper">' . do_shortcode( $content ) . '</div>';
+		return '<button class="als-toggle-button">' . $atts['label'] . '</button><div class="als-toggle-wrapper">' . do_shortcode( $content ) . '</div>';
 	}
 }
