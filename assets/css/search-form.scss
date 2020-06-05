@@ -32,6 +32,12 @@ $grey: #d8d8d8;
 	}
 }
 
+.als-field--keyword {
+	input {
+		width: 200px;
+	}
+}
+
 .als-selected__close {
 	cursor: pointer;
 }

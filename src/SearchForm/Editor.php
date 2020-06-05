@@ -81,6 +81,7 @@ class Editor {
 			'als_admin',
 			array(
 				'fields'       => array(
+					'keyword'         => __( 'Keyword', 'auto-listings' ),
 					'make'            => __( 'Make', 'auto-listings' ),
 					'model'           => __( 'Model', 'auto-listings' ),
 					'condition'       => __( 'Condition', 'auto-listings' ),

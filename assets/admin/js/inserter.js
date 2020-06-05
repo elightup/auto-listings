@@ -82,6 +82,7 @@ const Modal = ( { text, name, type, toggleModal } ) => {
 
 		switch ( name ) {
 			case 'button':
+			case 'keyword':
 				shortcode = `[als_${ name }${ shortcode }]`;
 				break;
 			case 'toggle_wrapper':
@@ -145,6 +146,17 @@ const FieldAttributes = ( props ) => {
 				<label>
 					<span>{ als_admin.translate.toggle_button_label }</span>
 					<input type="text" onChange={ e => setValue( 'label', e.target.value ) } />
+				</label>
+			</>
+		);
+	}
+
+	if ( 'keyword' === props.name ) {
+		return (
+			<>
+				<label>
+					<span>{ als_admin.translate.placeholder }</span>
+					<input type="text" onChange={ e => setValue( 'placeholder', e.target.value ) } />
 				</label>
 			</>
 		);

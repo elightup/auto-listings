@@ -6,6 +6,7 @@ class Extras {
 		add_shortcode( 'als_total_listings', array( $this, 'render_total' ) );
 		add_shortcode( 'als_selected', array( $this, 'render_selected' ) );
 		add_shortcode( 'als_toggle_wrapper', array( $this, 'render_toggle_wrapper' ) );
+		add_shortcode( 'als_keyword', array( $this, 'render_search_keyword' ) );
 	}
 
 	public function render_total() {
@@ -25,5 +26,23 @@ class Extras {
 		);
 
 		return '<button class="als-toggle-button">' . $atts['label'] . '</button><div class="als-toggle-wrapper">' . do_shortcode( $content ) . '</div>';
+	}
+
+	public function render_search_keyword( $atts ) {
+		$atts = shortcode_atts(
+			array(
+				'label'       => '',
+				'placeholder' => __( 'Search any car', 'auto-listings' ),
+			),
+			$atts
+		);
+
+		$label = $atts['label'] ? '<label>' . $atts['label'] . '</label>' : '';
+
+		$output = '<div class="als-field als-field--keyword ">';
+		$output .= sprintf( '%1s<input type="text" name="s" placeholder="%2s" />', $label, $atts['placeholder'], 'auto-listings' );
+		$output .= '</div>';
+
+		return $output;
 	}
 }

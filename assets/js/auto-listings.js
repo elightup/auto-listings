@@ -227,6 +227,7 @@
             }
 			searchForm.initElement( $scope );
 			searchForm.initSumoSelect();
+			searchForm.appendSearchKey();
 			searchForm.setDefaultSelected();
 			searchForm.toggleExtraFields();
 			searchForm.setSelectedOnChange();
@@ -235,18 +236,24 @@
 			searchForm.reset();
 		},
 		initElement: function( $scope ) {
-			searchForm.$form    =  $scope.find( '.als' );
-			searchForm.$selectFields  =  $scope.find( '.als select' );
-			searchForm.$extraFields   =  $scope.find( '.als-toggle-wrapper' );
-			searchForm.$selectedWrap  =  $scope.find( '.als-selected' );
-			searchForm.$resetButton   =  $scope.find( '.als-reset');
-			searchForm.$priceField    =  $scope.find( '.als' ).find( '[name="price"]' );
-			searchForm.$locationField =  $scope.find( '.als' ).find( '[name="s"]' );
+			searchForm.$form          = $scope.find( '.als' );
+			searchForm.$selectFields  = $scope.find( '.als select' );
+			searchForm.$extraFields   = $scope.find( '.als-toggle-wrapper' );
+			searchForm.$selectedWrap  = $scope.find( '.als-selected' );
+			searchForm.$resetButton   = $scope.find( '.als-reset');
+			searchForm.$priceField    = $scope.find( '.als' ).find( '[name="price"]' );
+			searchForm.$locationField = $scope.find( '.als' ).find( '[name="s"]' );
 			searchForm.selected       = {};
 		},
 		initSumoSelect: function() {
 			searchForm.$selectFields.SumoSelect({});
-		},
+        },
+        appendSearchKey: function() {
+            if ( searchForm.$form.find( '[name="s"]' ).length !== 0 ) {
+                return;
+            }
+            searchForm.$form.append( '<input type="hidden" name="s" />' )
+        },
 		setDefaultSelected: function() {
 			$selectedItems = searchForm.$form.find( '.als-is-selected' );
 			if ( $selectedItems.length === 0 ) {
