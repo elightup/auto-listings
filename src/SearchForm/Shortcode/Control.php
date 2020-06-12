@@ -44,7 +44,7 @@ class Control {
 	}
 
 	private function select( $options, $args ) {
-		$selected = filter_var( $args['name'], FILTER_SANITIZE_STRING );
+		$selected = isset( $_GET[ $args['name'] ] ) ? filter_var( $_GET[ $args['name'] ], FILTER_SANITIZE_STRING ) : '';
 		?>
 
 		<select <?= 'true' === $args['multiple'] ? 'multiple' : '' ?> placeholder="<?= esc_attr( $args['placeholder'] ); ?>" name="<?= esc_attr( $args['name'] ); ?>">
@@ -57,7 +57,7 @@ class Control {
 	}
 
 	private function radio( $options, $args ) {
-		$selected = filter_var( $args['name'], FILTER_SANITIZE_STRING );
+		$selected = isset( $_GET[ $args['name'] ] ) ? filter_var( $_GET[ $args['name'] ], FILTER_SANITIZE_STRING ) : '';
 		?>
 
 		<span class="als-field__radio">
