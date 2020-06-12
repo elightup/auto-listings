@@ -89,7 +89,7 @@ const Modal = ( { text, name, type, toggleModal } ) => {
 				shortcode = `[als_${ name }${ shortcode }]\n\n[/als_${ name }]`;
 				break;
 			default:
-				shortcode = `[als_${ type } name="${ name }" ${ shortcode }]`;
+				shortcode = `[als_${ type } name="${ name }"${ shortcode }]`;
 				break;
 		}
 
