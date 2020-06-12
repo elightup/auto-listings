@@ -48,10 +48,6 @@ class Control {
 		?>
 
 		<select <?= 'true' === $args['multiple'] ? 'multiple' : '' ?> placeholder="<?= esc_attr( $args['placeholder'] ); ?>" name="<?= esc_attr( $args['name'] ); ?>">
-			<?php if ( 'true' !== $args['multiple'] ) : ?>
-				<option value=""><?= esc_attr( $args['placeholder'] ); ?></option>
-			<?php endif; ?>
-
 			<?php foreach ( $options as $val => $text ) : ?>
 				<option value="<?= esc_attr( $val ); ?>" <?php selected( $val, $selected ); ?>><?= esc_html( $text ); ?></option>
 			<?php endforeach; ?>

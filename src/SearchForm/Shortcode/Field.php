@@ -43,11 +43,18 @@ class Field {
 			$atts
 		);
 
+		$placeholder_option = [];
+		$atts['placeholder'] = $atts['placeholder'] ?: $this->placeholder[ $atts['name'] ];
+		if ( $atts[ 'multiple' ] === 'false' ) {
+			$placeholder_option[''] = $atts['placeholder'];
+		}
+
 		$method = "get_{$atts['name']}_options";
 
 		// TODO: move all functions to get search options to this class.
 		// $method = method_exists( $this, $method ) ? $method : 'get_default_options';
 		// $options = $this->{$method}();
+		$options = [];
 
 		switch ( $atts['name'] ) {
 			case 'odometer':
@@ -66,11 +73,9 @@ class Field {
 				break;
 			default:
 				$options = $this->get_default_options( $atts['name'] );
-				break;
+			break;
 		}
-
-		$atts['placeholder'] = $atts['placeholder'] ?: $this->placeholder[ $atts['name'] ];
-
+		$options = array_merge( $placeholder_option, $options );
 		$output = $this->control->render( $options, $atts );
 
 		if ( 'price' === $atts['name'] ) {
