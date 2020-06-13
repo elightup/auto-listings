@@ -296,8 +296,13 @@
 				var key = $( this ).attr( 'data-selected' );
 				if ( key.indexOf( '[]' ) < 0 ) {
 					$( 'select[name="' + key + '"]' ).val( '' );
-				}
-				$( 'select[name="' + key + '"]' )[0].sumo.unSelectAll();
+                }
+                
+				$( 'select[name="' + key + '"]' ).each( function() {
+                    $( this )[0].sumo.unSelectAll();
+                    $( this ).siblings( '.multiple' ).find( 'li' ).removeClass( 'selected' )
+                } )
+                
 				delete searchForm.selected[ key ];
 				searchForm.printSelectedFields();
 			} );
