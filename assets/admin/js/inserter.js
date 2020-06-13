@@ -171,7 +171,9 @@ const FieldAttributes = ( props ) => {
 		{ value: 'radio', label: als_admin.translate.radio },
 	];
 
-	const [multiple, setMultiple] = useState( true );
+	const FieldsNoMultiple = [ 'price', 'min_price', 'max_price' ];
+
+	const [multiple, setMultiple] = FieldsNoMultiple.includes( props.name ) ? useState( false ): useState( true );
 	const toggleMultiple = () => setMultiple( ! multiple );
 
 	return (
