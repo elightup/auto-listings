@@ -30,16 +30,19 @@ class SearchQuery {
 
 		$meta_query = [];
 
-		$year_query[]      = $this->year_query();
-		$make_query[]      = $this->make_query();
-		$model_query[]     = $this->model_query();
-		$condition_query[] = $this->condition_query();
-		$odometer_query[]  = $this->odometer_query();
-		$price_query[]     = $this->price_meta_query();
-		$body_type_query   = $this->body_type_query();
-		$radius_query[]    = $this->radius_query( $query );
+		$year_query[]         = $this->year_query();
+		$make_query[]         = $this->make_query();
+		$model_query[]        = $this->model_query();
+		$condition_query[]    = $this->condition_query();
+		$odometer_query[]     = $this->odometer_query();
+		$transmission_query[] = $this->transmission_query();
+		$engine_query[]       = $this->engine_query();
+		$fuel_type_query[]    = $this->fuel_type_query();
+		$price_query[]        = $this->price_meta_query();
+		$body_type_query      = $this->body_type_query();
+		$radius_query[]       = $this->radius_query( $query );
 
-		$query_1 = array_merge( $year_query, $make_query, $model_query, $condition_query, $price_query, $odometer_query );
+		$query_1 = array_merge( $year_query, $make_query, $model_query, $condition_query, $price_query, $odometer_query, $transmission_query, $engine_query, $fuel_type_query );
 		$query_1 = apply_filters( 'auto_listings_search_query', $query_1 );
 
 		// If our radius query fails, fall back to keyword searching. Will fail with no map API key.
@@ -149,6 +152,57 @@ class SearchQuery {
 				'value'   => [ $min, $max ],
 				'compare' => 'BETWEEN',
 				'type'    => 'NUMERIC',
+			];
+		}
+		return [];
+	}
+
+	/**
+	 * Return a meta query for filtering by transmission.
+	 *
+	 * @return array
+	 */
+	private function transmission_query() {
+		if ( isset( $_GET['transmission'] ) && ! empty( $_GET['transmission'] ) ) {
+			$data = array_map( 'sanitize_text_field', wp_unslash( $_GET['transmission'] ) );
+			return [
+				'key'     => '_al_listing_model_transmission_type',
+				'value'   => $data,
+				'compare' => 'IN',
+			];
+		}
+		return [];
+	}
+
+	/**
+	 * Return a meta query for filtering by engine.
+	 *
+	 * @return array
+	 */
+	private function engine_query() {
+		if ( isset( $_GET['engine'] ) && ! empty( $_GET['engine'] ) ) {
+			$data = array_map( 'sanitize_text_field', wp_unslash( $_GET['engine'] ) );
+			return [
+				'key'     => '_al_listing_model_engine_type',
+				'value'   => $data,
+				'compare' => 'IN',
+			];
+		}
+		return [];
+	}
+
+	/**
+	 * Return a meta query for filtering by fuel type.
+	 *
+	 * @return array
+	 */
+	private function fuel_type_query() {
+		if ( isset( $_GET['fuel_type'] ) && ! empty( $_GET['fuel_type'] ) ) {
+			$data = array_map( 'sanitize_text_field', wp_unslash( $_GET['fuel_type'] ) );
+			return [
+				'key'     => '_al_listing_model_engine_fuel',
+				'value'   => $data,
+				'compare' => 'IN',
 			];
 		}
 		return [];
@@ -316,7 +370,7 @@ class SearchQuery {
 	/**
 	 * Searches listing through keyword
 	 *
-	 * @param array $q Query vars.
+	 * @param WP_Query $q Query object.
 	 */
 	private function keyword_query( $q ) {
 		if ( empty( $_GET['s'] ) ) {
