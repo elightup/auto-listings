@@ -78,10 +78,14 @@ class Field {
 			break;
 		}
 
-		$placeholder_option = [];
-		$placeholder_option[''] = 'false' === $atts[ 'multiple' ] && $atts[ 'placeholder' ] ? $atts[ 'placeholder' ] : $this->placeholder[ $atts[ 'name' ] ];
+		$atts['placeholder'] = $atts['placeholder'] ?: $this->placeholder[ $atts['name'] ];
 
-		$options = $placeholder_option + $options;
+		// Insert placeholder option for normal select field
+		$placeholder_option = [];
+		if ( $atts[ 'multiple' ] === 'false' ) {
+			$placeholder_option[''] = $atts['placeholder'];
+			$options = $placeholder_option + $options;
+		}
 
 		$output = $this->control->render( $options, $atts );
 

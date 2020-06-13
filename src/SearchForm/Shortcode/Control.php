@@ -48,13 +48,25 @@ class Control {
 		$selected = isset( $_GET[ $args['name'] ] ) ? filter_var( $_GET[ $args['name'] ], FILTER_SANITIZE_STRING ) : '';
 		?>
 
-		<select id="<?= esc_attr( $id ); ?>" <?= 'true' === $args['multiple'] ? 'multiple' : '' ?> placeholder="<?= esc_attr( $args['placeholder'] ); ?>" name="<?= esc_attr( $args['name'] ); ?>">
-			<?php foreach ( $options as $val => $text ) : ?>
-				<option value="<?= esc_attr( $val ); ?>" <?php selected( $val, $selected ); ?>><?= esc_html( $text ); ?></option>
-			<?php endforeach; ?>
-		</select>
+		<?php
+		// Condition field. If we only have 1 condition, remove the select option.
+		if ( 'condition' === $args['name'] && count( $options ) <= 1 ) :
+			?>
+
+			<input type="hidden" name="condition[]" value="<?php echo esc_html( key( $options ) ); ?>"/>
+
+		<?php else : ?>
+
+			<select id="<?= esc_attr( $id ); ?>" <?= 'true' === $args['multiple'] ? 'multiple' : '' ?> placeholder="<?= esc_attr( $args['placeholder'] ); ?>" name="<?= esc_attr( $args['name'] ); ?>">
+
+				<?php foreach ( $options as $val => $text ) : ?>
+					<option value="<?= esc_attr( $val ); ?>" <?php selected( $val, $selected ); ?>><?= esc_html( $text ); ?></option>
+				<?php endforeach; ?>
+
+			</select>
 
 		<?php
+		endif;
 	}
 
 	private function radio( $options, $args ) {
