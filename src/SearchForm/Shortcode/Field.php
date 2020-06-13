@@ -4,6 +4,7 @@ namespace AutoListings\SearchForm\Shortcode;
 class Field {
 	private $control;
 	private $placeholder;
+	private $name = [];
 
 	public function __construct( $control ) {
 		$this->control = $control;
@@ -26,6 +27,10 @@ class Field {
 			'year'            => __( 'All years', 'auto-listings' ),
 		);
 
+		foreach ( $this->placeholder as $key => $value ) {
+			array_push( $this->name, $key );
+		}
+
 		add_shortcode( 'als_field', array( $this, 'render' ) );
 	}
 
@@ -42,6 +47,10 @@ class Field {
 			),
 			$atts
 		);
+
+		if ( ! in_array( $atts[ 'name' ], $this->name ) ) {
+			return;
+		}
 
 		$placeholder_option = [];
 		$atts['placeholder'] = $atts['placeholder'] ?: $this->placeholder[ $atts['name'] ];
