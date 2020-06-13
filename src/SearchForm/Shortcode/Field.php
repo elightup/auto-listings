@@ -12,7 +12,7 @@ class Field {
 		$this->placeholder = array(
 			'body_type'       => __( 'All body types', 'auto-listings' ),
 			'condition'       => __( 'All conditions', 'auto-listings' ),
-			'drivetrain'      => __( 'All drivetrains', 'auto-listings' ),
+			'model_drive'     => __( 'All drive types', 'auto-listings' ),
 			'engine'          => __( 'All engines', 'auto-listings' ),
 			'exterior_colors' => __( 'All colors', 'auto-listings' ),
 			'fuel_type'       => __( 'All fuel types', 'auto-listings' ),

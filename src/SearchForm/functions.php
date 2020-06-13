@@ -122,7 +122,7 @@ function auto_listings_search_get_vehicle_data() {
 			$data['make'][]            = get_post_meta( $id, '_al_listing_make_display', true );
 			$data['model'][]           = get_post_meta( $id, '_al_listing_model_name', true );
 			$data['transmission'][]    = get_post_meta( $id, '_al_listing_model_transmission_type', true );
-			$data['drivetrain'][]      = get_post_meta( $id, '_al_listing_model_drivetrain', true );
+			$data['model_drive'][]     = get_post_meta( $id, '_al_listing_model_drive', true );
 			$data['engine'][]          = get_post_meta( $id, '_al_listing_model_engine_type', true );
 			$data['fuel_type'][]       = get_post_meta( $id, '_al_listing_model_engine_fuel', true );
 			$data['exterior_colors'][] = get_post_meta( $id, '_al_listing_exterior_colors', true );

@@ -86,7 +86,7 @@ class Editor {
 					'model'           => __( 'Model', 'auto-listings' ),
 					'condition'       => __( 'Condition', 'auto-listings' ),
 					'body_type'       => __( 'Body Type', 'auto-listings' ),
-					'drivetrain'      => __( 'Drivetrain', 'auto-listings' ),
+					'model_drive'     => __( 'Drive Type', 'auto-listings' ),
 					'engine'          => __( 'Engine', 'auto-listings' ),
 					'odometer'        => __( 'Odometer', 'auto-listings' ),
 					'transmission'    => __( 'Transmission', 'auto-listings' ),
