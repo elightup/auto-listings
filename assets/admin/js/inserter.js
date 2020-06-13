@@ -100,7 +100,7 @@ const Modal = ( { text, name, type, toggleModal } ) => {
 	return (
 		<>
 			<div class="als-modal-overlay" onClick={ toggleModal }></div>
-			<div className="als-modal">
+			<form className="als-modal" onSubmit={ insert }>
 				<h3>
 					{ text + ' ' + als_admin.translate.attributes }
 					<span className="als-modal__close" onClick={ toggleModal }>&times;</span>
@@ -110,9 +110,9 @@ const Modal = ( { text, name, type, toggleModal } ) => {
 				<FieldAttributes type={ type } name={ name } setValue={ setValue }/>
 
 				<div className="als-modal__actions">
-					<button class="button button-primary" onClick={ insert }>{ als_admin.translate.insert_field }</button>
+					<button type="submit" class="button button-primary">{ als_admin.translate.insert_field }</button>
 				</div>
-			</div>
+			</form>
 		</>
 	);
 }
