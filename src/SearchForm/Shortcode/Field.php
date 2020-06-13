@@ -52,12 +52,6 @@ class Field {
 			return;
 		}
 
-		$placeholder_option = [];
-		$atts['placeholder'] = $atts['placeholder'] ?: $this->placeholder[ $atts['name'] ];
-		if ( $atts[ 'multiple' ] === 'false' ) {
-			$placeholder_option[''] = $atts['placeholder'];
-		}
-
 		$method = "get_{$atts['name']}_options";
 
 		// TODO: move all functions to get search options to this class.
@@ -84,7 +78,11 @@ class Field {
 				$options = $this->get_default_options( $atts['name'] );
 			break;
 		}
-		$options = array_merge( $placeholder_option, $options );
+
+		$placeholder_option[''] = 'false' === $atts[ 'multiple' ] && $atts[ 'placeholder' ] ?: $this->placeholder[ $atts[ 'name' ] ];
+
+		$options = $placeholder_option + $options;
+
 		$output = $this->control->render( $options, $atts );
 
 		if ( 'price' === $atts['name'] ) {

@@ -20,7 +20,6 @@ function auto_listings_search_mileage_max() {
 	}
 
 	return apply_filters( 'auto_listings_search_mileage_max', $options );
-
 }
 
 function auto_listings_search_within_radius() {
