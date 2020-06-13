@@ -1,0 +1,85 @@
+$blue: #4299e1;
+$grey: #d8d8d8;
+
+.als {
+	> *:not(:last-child) {
+		margin-bottom: 10px;
+	}
+	.SumoSelect {
+		width: 100%;
+	}
+	input:not([type="submit"]) {
+		width: 100%;
+		position: relative;
+		border: 1px solid #a4a4a4;
+		min-height: 14px;
+		background-color: #fff;
+		border-radius: 2px;
+		margin: 0;
+	}
+	button {
+		background: $blue;
+		color: #fff;
+		border-radius: 4px;
+		border: 1px solid transparent;
+		padding: 8px 12px;
+		cursor: pointer;
+		line-height: 24px;
+		font-size: 16px;
+		font-weight: 700;
+		transition: all 0.25;
+	}
+}
+
+.als-field {
+	&:not(:last-child) {
+		margin-bottom: 10px;
+	}
+	&__label {
+		display: block;
+		margin-bottom: 5px;
+	}
+	&__radio {
+		margin: 0 7px 0 0;
+
+		label {
+			position: relative;
+			cursor: pointer;
+			font-size: 16px;
+		}
+
+		span {
+			background: $grey;
+			padding: 3px 7px;
+			border-radius: 4px;
+		}
+
+		input[type="radio"] {
+			position: absolute;
+			opacity: 0;
+
+			&:checked ~ span {
+				background: $blue;
+				color: #fff;
+			}
+		}
+	}
+}
+
+.als-selected__close {
+	cursor: pointer;
+}
+
+.als-toggle-button {
+	cursor: pointer;
+}
+
+.als-toggle-wrapper {
+	display: none;
+}
+
+.als-submit {
+	font-weight: 400;
+	display: block;
+	cursor: pointer;
+}

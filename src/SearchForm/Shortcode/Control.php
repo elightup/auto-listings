@@ -22,15 +22,16 @@ class Control {
 
 		<div class="als-field als-field--<?= esc_attr( str_replace( '_', '-', $args['name'] ) ); ?> <?= esc_attr( $class_selected ); ?>">
 			<?php
+			$id = uniqid();
 			if ( $args['label'] ) {
-				echo '<span class="als-field__label">', esc_html( $args['label'] ), '</span>';
+				echo '<label for="', esc_attr( $id ), '" class="als-field__label">', esc_html( $args['label'] ), '</label>';
 			}
 
 			if ( $args['prefix'] ) {
 				echo '<span class="als-field__prefix">', esc_html( $args['prefix'] ), '</span>';
 			}
 
-			$this->{$args['type']}( $options, $args );
+			$this->{$args['type']}( $options, $args, $id );
 
 			if ( $args['suffix'] ) {
 				echo '<span class="als-field__suffix">', esc_html( $args['suffix'] ), '</span>';
@@ -43,11 +44,11 @@ class Control {
 		return $output;
 	}
 
-	private function select( $options, $args ) {
+	private function select( $options, $args, $id ) {
 		$selected = isset( $_GET[ $args['name'] ] ) ? filter_var( $_GET[ $args['name'] ], FILTER_SANITIZE_STRING ) : '';
 		?>
 
-		<select <?= 'true' === $args['multiple'] ? 'multiple' : '' ?> placeholder="<?= esc_attr( $args['placeholder'] ); ?>" name="<?= esc_attr( $args['name'] ); ?>">
+		<select id="<?= esc_attr( $id ); ?>" <?= 'true' === $args['multiple'] ? 'multiple' : '' ?> placeholder="<?= esc_attr( $args['placeholder'] ); ?>" name="<?= esc_attr( $args['name'] ); ?>">
 			<?php foreach ( $options as $val => $text ) : ?>
 				<option value="<?= esc_attr( $val ); ?>" <?php selected( $val, $selected ); ?>><?= esc_html( $text ); ?></option>
 			<?php endforeach; ?>
