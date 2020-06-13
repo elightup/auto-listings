@@ -116,7 +116,6 @@ function auto_listings_search_get_vehicle_data() {
 	if ( $items ) {
 
 		foreach ( $items as $id ) {
-
 			$data['year'][]            = get_post_meta( $id, '_al_listing_model_year', true );
 			$data['make'][]            = get_post_meta( $id, '_al_listing_make_display', true );
 			$data['model'][]           = get_post_meta( $id, '_al_listing_model_name', true );
@@ -124,8 +123,6 @@ function auto_listings_search_get_vehicle_data() {
 			$data['model_drive'][]     = get_post_meta( $id, '_al_listing_model_drive', true );
 			$data['engine'][]          = get_post_meta( $id, '_al_listing_model_engine_type', true );
 			$data['fuel_type'][]       = get_post_meta( $id, '_al_listing_model_engine_fuel', true );
-			$data['exterior_colors'][] = get_post_meta( $id, '_al_listing_exterior_colors', true );
-
 		}
 	}
 

@@ -9,12 +9,11 @@ class Field {
 	public function __construct( $control ) {
 		$this->control = $control;
 
-		$this->placeholder = array(
+		$this->placeholder = apply_filters( 'als_fields_placeholder', array(
 			'body_type'       => __( 'All body types', 'auto-listings' ),
 			'condition'       => __( 'All conditions', 'auto-listings' ),
 			'model_drive'     => __( 'All drive types', 'auto-listings' ),
 			'engine'          => __( 'All engines', 'auto-listings' ),
-			'exterior_colors' => __( 'All colors', 'auto-listings' ),
 			'fuel_type'       => __( 'All fuel types', 'auto-listings' ),
 			'make'            => __( 'All makes', 'auto-listings' ),
 			'max_price'       => __( 'All prices', 'auto-listings' ),
@@ -25,7 +24,7 @@ class Field {
 			'transmission'    => __( 'All transmissions', 'auto-listings' ),
 			'within'          => __( 'All areas', 'auto-listings' ),
 			'year'            => __( 'All years', 'auto-listings' ),
-		);
+		) );
 
 		foreach ( $this->placeholder as $key => $value ) {
 			array_push( $this->name, $key );

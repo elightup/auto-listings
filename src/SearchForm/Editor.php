@@ -80,7 +80,7 @@ class Editor {
 			'als-admin',
 			'als_admin',
 			array(
-				'fields'       => array(
+				'fields'       => apply_filters( 'als_fields', array(
 					'keyword'         => __( 'Keyword', 'auto-listings' ),
 					'make'            => __( 'Make', 'auto-listings' ),
 					'model'           => __( 'Model', 'auto-listings' ),
@@ -92,14 +92,13 @@ class Editor {
 					'transmission'    => __( 'Transmission', 'auto-listings' ),
 					'fuel_type'       => __( 'Fuel Type', 'auto-listings' ),
 					'year'            => __( 'Year', 'auto-listings' ),
-					'exterior_colors' => __( 'Exterior Colors', 'auto-listings' ),
 					'within'          => __( 'Within', 'auto-listings' ),
 					'max_price'       => __( 'Max Price', 'auto-listings' ),
 					'min_price'       => __( 'Min Price', 'auto-listings' ),
 					'price'           => __( 'Price', 'auto-listings' ),
 					'button'          => __( 'Button', 'auto-listings' ),
 					'toggle_wrapper'  => __( 'Toggle Wrapper', 'auto-listings' ),
-				),
+				) ),
 				'fields_extra' => array(
 					'total_listings' => __( 'Total Listings', 'auto-listings' ),
 					'selected'       => __( 'Selected Values', 'auto-listings' ),
