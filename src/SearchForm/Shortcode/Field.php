@@ -79,7 +79,8 @@ class Field {
 			break;
 		}
 
-		$placeholder_option[''] = 'false' === $atts[ 'multiple' ] && $atts[ 'placeholder' ] ?: $this->placeholder[ $atts[ 'name' ] ];
+		$placeholder_option = [];
+		$placeholder_option[''] = 'false' === $atts[ 'multiple' ] && $atts[ 'placeholder' ] ? $atts[ 'placeholder' ] : $this->placeholder[ $atts[ 'name' ] ];
 
 		$options = $placeholder_option + $options;
 
