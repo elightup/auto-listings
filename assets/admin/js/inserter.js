@@ -130,7 +130,7 @@ const FieldAttributes = ( props ) => {
 			<>
 				<label>
 					<span>{ als_admin.translate.label }</span>
-					<input type="text" onChange={ e => setValue( 'label', e.target.value ) } />
+					<input type="text" onChange={ e => setValue( 'label', e.target.value ) } autoFocus />
 				</label>
 				<label>
 					<span>{ als_admin.translate.type }</span>
@@ -145,7 +145,7 @@ const FieldAttributes = ( props ) => {
 			<>
 				<label>
 					<span>{ als_admin.translate.toggle_button_label }</span>
-					<input type="text" onChange={ e => setValue( 'label', e.target.value ) } />
+					<input type="text" onChange={ e => setValue( 'label', e.target.value ) } autoFocus />
 				</label>
 			</>
 		);
@@ -156,7 +156,7 @@ const FieldAttributes = ( props ) => {
 			<>
 				<label>
 					<span>{ als_admin.translate.label }</span>
-					<input type="text" onChange={ e => setValue( 'label', e.target.value ) } />
+					<input type="text" onChange={ e => setValue( 'label', e.target.value ) } autoFocus />
 				</label>
 				<label>
 					<span>{ als_admin.translate.placeholder }</span>
@@ -178,7 +178,7 @@ const FieldAttributes = ( props ) => {
 		<>
 			<label>
 				<span>{ als_admin.translate.label }</span>
-				<input type="text" onChange={ e => setValue( 'label', e.target.value ) } />
+				<input type="text" onChange={ e => setValue( 'label', e.target.value ) } autoFocus />
 			</label>
 			<label>
 				<span>{ als_admin.translate.placeholder }</span>
