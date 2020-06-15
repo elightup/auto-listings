@@ -38,11 +38,12 @@ class SearchQuery {
 		$transmission_query[] = $this->transmission_query();
 		$engine_query[]       = $this->engine_query();
 		$fuel_type_query[]    = $this->fuel_type_query();
+		$model_drive_query[]  = $this->model_drive_query();
 		$price_query[]        = $this->price_meta_query();
 		$body_type_query      = $this->body_type_query();
 		$radius_query[]       = $this->radius_query( $query );
 
-		$query_1 = array_merge( $year_query, $make_query, $model_query, $condition_query, $price_query, $odometer_query, $transmission_query, $engine_query, $fuel_type_query );
+		$query_1 = array_merge( $year_query, $make_query, $model_query, $condition_query, $price_query, $odometer_query, $transmission_query, $engine_query, $fuel_type_query, $model_drive_query );
 		$query_1 = apply_filters( 'auto_listings_search_query', $query_1 );
 
 		// If our radius query fails, fall back to keyword searching. Will fail with no map API key.
@@ -77,7 +78,7 @@ class SearchQuery {
 	 */
 	private function year_query() {
 		if ( isset( $_GET['the_year'] ) && ! empty( $_GET['the_year'] ) ) {
-			$data = array_map( 'sanitize_text_field', wp_unslash( $_GET['the_year'] ) );
+			$data = array_map( 'sanitize_text_field', wp_unslash( (array) $_GET['the_year'] ) );
 			return [
 				'key'     => '_al_listing_model_year',
 				'value'   => $data,
@@ -94,7 +95,7 @@ class SearchQuery {
 	 */
 	private function make_query() {
 		if ( isset( $_GET['make'] ) && ! empty( $_GET['make'] ) ) {
-			$data = array_map( 'sanitize_text_field', wp_unslash( $_GET['make'] ) );
+			$data = array_map( 'sanitize_text_field', wp_unslash( (array) $_GET['make'] ) );
 			return [
 				'key'     => '_al_listing_make_display',
 				'value'   => $data,
@@ -111,7 +112,7 @@ class SearchQuery {
 	 */
 	private function model_query() {
 		if ( isset( $_GET['model'] ) && ! empty( $_GET['model'] ) ) {
-			$data = array_map( 'sanitize_text_field', wp_unslash( $_GET['model'] ) );
+			$data = array_map( 'sanitize_text_field', wp_unslash( (array) $_GET['model'] ) );
 			return [
 				'key'     => '_al_listing_model_name',
 				'value'   => $data,
@@ -128,9 +129,10 @@ class SearchQuery {
 	 */
 	private function condition_query() {
 		if ( isset( $_GET['condition'] ) && ! empty( $_GET['condition'] ) ) {
+			$data = array_map( 'sanitize_text_field', wp_unslash( (array) $_GET['condition'] ) );
 			return [
 				'key'     => '_al_listing_condition',
-				'value'   => $_GET['condition'],
+				'value'   => $data,
 				'compare' => 'IN',
 			];
 		}
@@ -164,7 +166,7 @@ class SearchQuery {
 	 */
 	private function transmission_query() {
 		if ( isset( $_GET['transmission'] ) && ! empty( $_GET['transmission'] ) ) {
-			$data = array_map( 'sanitize_text_field', wp_unslash( $_GET['transmission'] ) );
+			$data = array_map( 'sanitize_text_field', wp_unslash( (array) $_GET['transmission'] ) );
 			return [
 				'key'     => '_al_listing_model_transmission_type',
 				'value'   => $data,
@@ -181,7 +183,7 @@ class SearchQuery {
 	 */
 	private function engine_query() {
 		if ( isset( $_GET['engine'] ) && ! empty( $_GET['engine'] ) ) {
-			$data = array_map( 'sanitize_text_field', wp_unslash( $_GET['engine'] ) );
+			$data = array_map( 'sanitize_text_field', (array) wp_unslash( $_GET['engine'] ) );
 			return [
 				'key'     => '_al_listing_model_engine_type',
 				'value'   => $data,
@@ -196,9 +198,26 @@ class SearchQuery {
 	 *
 	 * @return array
 	 */
+	private function model_drive_query() {
+		if ( isset( $_GET['model_drive'] ) && ! empty( $_GET['model_drive'] ) ) {
+			$data = array_map( 'sanitize_text_field', (array) wp_unslash( $_GET['model_drive'] ) );
+			return [
+				'key'     => '_al_listing_model_drive',
+				'value'   => $data,
+				'compare' => 'IN',
+			];
+		}
+		return [];
+	}
+
+	/**
+	 * Return a meta query for filtering by fuel type.
+	 *
+	 * @return array
+	 */
 	private function fuel_type_query() {
 		if ( isset( $_GET['fuel_type'] ) && ! empty( $_GET['fuel_type'] ) ) {
-			$data = array_map( 'sanitize_text_field', wp_unslash( $_GET['fuel_type'] ) );
+			$data = array_map( 'sanitize_text_field', (array) wp_unslash( $_GET['fuel_type'] ) );
 			return [
 				'key'     => '_al_listing_model_engine_fuel',
 				'value'   => $data,
