@@ -32,8 +32,8 @@ class Extras {
 		$id = uniqid();
 		$atts = shortcode_atts(
 			array(
-				'label'       => '',
-				'placeholder' => __( 'Search any car', 'auto-listings' ),
+				'label'       => __( 'Location', 'auto-listings' ),
+				'placeholder' => __( 'Town, city or postcode', 'auto-listings' ),
 			),
 			$atts
 		);
