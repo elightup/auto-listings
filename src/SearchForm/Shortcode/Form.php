@@ -32,11 +32,6 @@ class Form {
 			return;
 		}
 
-		// Must enqueue frontend assets. Use filter to bypass is_auto_listing check.
-		add_filter( 'is_auto_listings', '__return_true' );
-		$assets = new Assets;
-		$assets->enqueue();
-
 		$output = '';
 
 		if ( $post->post_excerpt ) {

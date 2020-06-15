@@ -26,7 +26,7 @@ class SearchForm {
 	public function has_shortcode() {
 		global $post;
 
-		if ( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'auto_listings_search' ) ) {
+		if ( is_a( $post, 'WP_Post' ) && ( has_shortcode( $post->post_content, 'auto_listings_search' ) || has_shortcode( $post->post_content, 'als' ) ) ) {
 			add_filter( 'is_auto_listings', '__return_true' );
 		}
 	}
