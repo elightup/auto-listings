@@ -4,36 +4,55 @@ namespace AutoListings\SearchForm\Shortcode;
 class Field {
 	private $control;
 	private $placeholder;
-	private $name = [];
+	private $label;
 
 	public function __construct( $control ) {
 		$this->control = $control;
 
 		$this->placeholder = apply_filters( 'als_fields_placeholder', array(
-			'body_type'       => __( 'All body types', 'auto-listings' ),
-			'condition'       => __( 'All conditions', 'auto-listings' ),
-			'model_drive'     => __( 'All drive types', 'auto-listings' ),
-			'engine'          => __( 'All engines', 'auto-listings' ),
-			'fuel_type'       => __( 'All fuel types', 'auto-listings' ),
-			'make'            => __( 'All makes', 'auto-listings' ),
-			'max_price'       => __( 'All prices', 'auto-listings' ),
-			'min_price'       => __( 'All prices', 'auto-listings' ),
-			'model'           => __( 'All models', 'auto-listings' ),
-			'odometer'        => __( 'All mileages', 'auto-listings' ),
-			'price'           => __( 'All prices', 'auto-listings' ),
-			'transmission'    => __( 'All transmissions', 'auto-listings' ),
-			'within'          => __( 'All areas', 'auto-listings' ),
-			'year'            => __( 'All years', 'auto-listings' ),
+			'body_type'    => __( 'All body types', 'auto-listings' ),
+			'condition'    => __( 'All conditions', 'auto-listings' ),
+			'model_drive'  => __( 'All drive types', 'auto-listings' ),
+			'engine'       => __( 'All engines', 'auto-listings' ),
+			'fuel_type'    => __( 'All fuel types', 'auto-listings' ),
+			'make'         => __( 'All makes', 'auto-listings' ),
+			'max_price'    => __( 'All prices', 'auto-listings' ),
+			'min_price'    => __( 'All prices', 'auto-listings' ),
+			'model'        => __( 'All models', 'auto-listings' ),
+			'odometer'     => __( 'All mileages', 'auto-listings' ),
+			'price'        => __( 'All prices', 'auto-listings' ),
+			'transmission' => __( 'All transmissions', 'auto-listings' ),
+			'within'       => __( 'All areas', 'auto-listings' ),
+			'year'         => __( 'All years', 'auto-listings' ),
 		) );
 
-		foreach ( $this->placeholder as $key => $value ) {
-			array_push( $this->name, $key );
-		}
+		$this->label = apply_filters( 'als_fields_default', array(
+			'body_type'    => __( 'Body Type', 'auto-listings' ),
+			'condition'    => __( 'Condition', 'auto-listings' ),
+			'model_drive'  => __( 'Drive Types', 'auto-listings' ),
+			'engine'       => __( 'Engine', 'auto-listings' ),
+			'fuel_type'    => __( 'Fuel Type', 'auto-listings' ),
+			'make'         => __( 'Make', 'auto-listings' ),
+			'max_price'    => __( 'Max Price', 'auto-listings' ),
+			'min_price'    => __( 'Min Price', 'auto-listings' ),
+			'model'        => __( 'Model', 'auto-listings' ),
+			'odometer'     => __( 'Milegage', 'auto-listings' ),
+			'price'        => __( 'Price', 'auto-listings' ),
+			'transmission' => __( 'Transmission', 'auto-listings' ),
+			'within'       => __( 'Within', 'auto-listings' ),
+			'year'         => __( 'Year', 'auto-listings' ),
+		) );
 
 		add_shortcode( 'als_field', array( $this, 'render' ) );
 	}
 
 	public function render( $atts ) {
+		if ( empty( $atts['name'] ) ) {
+			return;
+		}
+		$default_label = ! empty( $this->label[ $atts['name'] ] ) ? $this->label[ $atts['name'] ] : '';
+		$default_placeholder = ! empty( $this->placeholder[ $atts['name'] ] ) ? $this->label[ $atts['name'] ] : '';
+
 		$atts = shortcode_atts(
 			array(
 				'name'        => '',
@@ -41,13 +60,13 @@ class Field {
 				'multiple'    => 'false',
 				'prefix'      => '',
 				'suffix'      => '',
-				'label'       => '',
-				'placeholder' => '',
+				'label'       => $default_label,
+				'placeholder' => $default_placeholder,
 			),
 			$atts
 		);
 
-		if ( ! in_array( $atts[ 'name' ], $this->name ) ) {
+		if ( ! in_array( $atts[ 'name' ], array_keys( $this->placeholder ) ) ) {
 			return;
 		}
 
@@ -77,8 +96,6 @@ class Field {
 				$options = $this->get_default_options( $atts['name'] );
 			break;
 		}
-
-		$atts['placeholder'] = $atts['placeholder'] ?: $this->placeholder[ $atts['name'] ];
 
 		// Insert placeholder option for normal select field
 		$placeholder_option = [];
