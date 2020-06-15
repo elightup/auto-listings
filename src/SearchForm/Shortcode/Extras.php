@@ -25,7 +25,7 @@ class Extras {
 			$atts
 		);
 
-		return '<button type="button" class="als-toggle-button">' . $atts['label'] . '</button><div class="als-toggle-wrapper">' . do_shortcode( $content ) . '</div>';
+		return '<div class="als-toggle-wrapper">' . do_shortcode( $content ) . '</div>';
 	}
 
 	public function render_search_keyword( $atts ) {

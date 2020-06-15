@@ -113,6 +113,7 @@ class Editor {
 					'insert_field'        => __( 'Insert Field', 'auto-listings' ),
 					'attributes'          => __( 'attributes', 'auto-listings' ),
 					'reset'               => __( 'Reset', 'auto-listings' ),
+					'toggle'              => __( 'Toggle', 'auto-listings' ),
 					'submit'              => __( 'Submit', 'auto-listings' ),
 					'select'              => __( 'Dropdown', 'auto-listings' ),
 					'radio'               => __( 'Single Choice', 'auto-listings' ),

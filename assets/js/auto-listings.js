@@ -297,12 +297,12 @@
 				if ( key.indexOf( '[]' ) < 0 ) {
 					$( 'select[name="' + key + '"]' ).val( '' );
                 }
-                
+
 				$( 'select[name="' + key + '"]' ).each( function() {
                     $( this )[0].sumo.unSelectAll();
                     $( this ).siblings( '.multiple' ).find( 'li' ).removeClass( 'selected' )
                 } )
-                
+
 				delete searchForm.selected[ key ];
 				searchForm.printSelectedFields();
 			} );
@@ -354,7 +354,7 @@
 			searchForm.$selectedWrap.html( output );
 		},
 		toggleExtraFields: function() {
-			searchForm.$form.on( 'click', '.als-toggle-button', function( e ) {
+			searchForm.$form.on( 'click', '.als-toggle', function( e ) {
 				e.preventDefault();
 				searchForm.$extraFields.slideToggle( 200 );
 				$( this ).toggleClass( 'shown' );

@@ -124,6 +124,7 @@ const FieldAttributes = ( props ) => {
 		const options = [
 			{ value: 'submit', label: als_admin.translate.submit },
 			{ value: 'reset', label: als_admin.translate.reset },
+			{ value: 'toggle', label: als_admin.translate.toggle },
 		];
 
 		return (

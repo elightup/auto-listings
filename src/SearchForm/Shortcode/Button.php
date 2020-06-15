@@ -15,8 +15,8 @@ class Button {
 			$atts
 		);
 
-		$class  = 'reset' === $atts['type'] ? ' als-reset' : '';
-		$output = sprintf( '<button class="als-submit%s" type="submit">%s</button>', esc_html( $class ), esc_html( $atts['label'] ), 'auto-listings' );
+		$type   = $atts['type'] === 'submit' ? 'submit' : 'button';
+		$output = sprintf( '<button class="als-%s" type="%s">%s</button>', esc_attr( $atts['type'] ), $type, esc_html( $atts['label'] ), 'auto-listings' );
 
 		return $output;
 	}
