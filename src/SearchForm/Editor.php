@@ -97,9 +97,9 @@ class Editor {
 					'min_price'       => __( 'Min Price', 'auto-listings' ),
 					'price'           => __( 'Price', 'auto-listings' ),
 					'button'          => __( 'Button', 'auto-listings' ),
-					'toggle_wrapper'  => __( 'Toggle Wrapper', 'auto-listings' ),
-				) ),
+					) ),
 				'fields_extra' => array(
+					'toggle_wrapper' => __( 'Toggle Wrapper', 'auto-listings' ),
 					'total_listings' => __( 'Total Listings', 'auto-listings' ),
 					'selected'       => __( 'Selected Values', 'auto-listings' ),
 				),

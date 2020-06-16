@@ -31,7 +31,17 @@ const Fields = () => {
 const FieldsExtra = () => {
 	const handleClick = ( e ) => {
 		e.preventDefault();
-		insertTextAtCursor( `[als_${ e.target.dataset.name }]` );
+		const name = e.target.dataset.name;
+		let shortcode = '';
+		switch ( name ) {
+			case 'toggle_wrapper':
+				shortcode = `[als_${ name }]\n\n[/als_${ name }]`;
+				break;
+			default:
+				shortcode = `[als_${ name }]`;
+				break;
+		}
+		insertTextAtCursor( shortcode );
 	}
 
 	return (
