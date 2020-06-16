@@ -45,11 +45,12 @@ class Control {
 	}
 
 	private function select( $options, $args ) {
+		$is_multiple = $args['multiple'] === 'true' && ! in_array( $args['multiple'], [ 'price', 'min_price', 'max_price', 'odometer' ] );
 		$selected  = isset( $_GET[ $args['name'] ] ) ? (array) $_GET[ $args['name'] ] : [];
-		$name = $args['multiple'] === 'true' ? $args['name'] . '[]' : $args['name'];
+		$name = $is_multiple ? $args['name'] . '[]' : $args['name'];
 		?>
 
-		<select id="<?= esc_attr( $args['id'] ); ?>" <?= 'true' === $args['multiple'] ? 'multiple' : '' ?> placeholder="<?= esc_attr( $args['placeholder'] ); ?>" name="<?= esc_attr( $name ); ?>">
+		<select id="<?= esc_attr( $args['id'] ); ?>" <?= $is_multiple ? 'multiple' : '' ?> placeholder="<?= esc_attr( $args['placeholder'] ); ?>" name="<?= esc_attr( $name ); ?>">
 
 			<?php foreach ( $options as $value => $label ) : ?>
 
