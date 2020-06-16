@@ -116,7 +116,7 @@ function auto_listings_search_get_vehicle_data() {
 	if ( $items ) {
 
 		foreach ( $items as $id ) {
-			$data['year'][]            = get_post_meta( $id, '_al_listing_model_year', true );
+			$data['the_year'][]        = get_post_meta( $id, '_al_listing_model_year', true );
 			$data['make'][]            = get_post_meta( $id, '_al_listing_make_display', true );
 			$data['model'][]           = get_post_meta( $id, '_al_listing_model_name', true );
 			$data['transmission'][]    = get_post_meta( $id, '_al_listing_model_transmission_type', true );

@@ -91,7 +91,7 @@ class Editor {
 					'odometer'        => __( 'Odometer', 'auto-listings' ),
 					'transmission'    => __( 'Transmission', 'auto-listings' ),
 					'fuel_type'       => __( 'Fuel Type', 'auto-listings' ),
-					'year'            => __( 'Year', 'auto-listings' ),
+					'the_year'        => __( 'Year', 'auto-listings' ),
 					'within'          => __( 'Within', 'auto-listings' ),
 					'max_price'       => __( 'Max Price', 'auto-listings' ),
 					'min_price'       => __( 'Min Price', 'auto-listings' ),

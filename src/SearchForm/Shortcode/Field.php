@@ -23,7 +23,7 @@ class Field {
 			'price'        => __( 'All prices', 'auto-listings' ),
 			'transmission' => __( 'All transmissions', 'auto-listings' ),
 			'within'       => __( 'All areas', 'auto-listings' ),
-			'year'         => __( 'All years', 'auto-listings' ),
+			'the_year'     => __( 'All years', 'auto-listings' ),
 		) );
 
 		$this->label = apply_filters( 'als_fields_default', array(
@@ -40,7 +40,7 @@ class Field {
 			'price'        => __( 'Price', 'auto-listings' ),
 			'transmission' => __( 'Transmission', 'auto-listings' ),
 			'within'       => __( 'Within', 'auto-listings' ),
-			'year'         => __( 'Year', 'auto-listings' ),
+			'the_year'     => __( 'Year', 'auto-listings' ),
 		) );
 
 		add_shortcode( 'als_field', array( $this, 'render' ) );
