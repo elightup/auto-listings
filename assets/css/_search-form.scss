@@ -66,8 +66,16 @@ $grey: #d8d8d8;
 	}
 }
 
+.als-selected__item + .als-selected__item {
+	margin-left: 24px;
+}
+
 .als-selected__close {
 	cursor: pointer;
+	&:before {
+		content: "\00d7";
+		margin-right: 5px;
+	}
 }
 
 .als-toggle-button {

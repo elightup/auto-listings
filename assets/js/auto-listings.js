@@ -1,6 +1,4 @@
-/**
- */
-(function($){
+( function( $ ) {
 
     /**
      * Archive page
@@ -40,6 +38,9 @@
      * Ordering
      */
     function auto_listings_ordering() {
+        if ( ! $('.auto-listings-ordering select.orderby').length ) {
+            return;
+        }
         $('.auto-listings-ordering select.orderby').SumoSelect();
         $( '.auto-listings-ordering' ).on( 'change', 'select.orderby', function() {
             $( this ).closest( 'form' ).submit();
@@ -184,6 +185,10 @@
      */
     function auto_listings_google_map() {
         if ( typeof google !== 'object' ) return;
+        var map = $( '#auto-listings-map' );
+		if ( map.length == 0 ) {
+			return;
+		}
         var lat = auto_listings.lat;
         var lng = auto_listings.lng;
 
@@ -347,7 +352,7 @@
 				if ( selectedItem.value === '' ) {
 					continue;
 				}
-				output += `<span class="als-selected__item"><i class="als-selected__close" data-selected="${ key }">&times;</i>`;
+				output += `<span class="als-selected__item"><i class="als-selected__close" data-selected="${ key }"></i>`;
                 output += selectedItem.label ? `<span class="als-selected__label">${ selectedItem.label }: </span>` : '';
                 output += `<span class="als-selected__value">${ selectedItem.value }</span></span>`;
 			}
