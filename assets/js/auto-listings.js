@@ -42,7 +42,7 @@
             return;
         }
         $('.auto-listings-ordering select.orderby').SumoSelect();
-        $( '.auto-listings-ordering' ).on( 'change', 'select.orderby', function() {
+        $( 'body' ).on( 'change', 'select.orderby', function() {
             $( this ).closest( 'form' ).submit();
         });
     }
