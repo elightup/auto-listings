@@ -126,6 +126,8 @@ function auto_listings_search_get_vehicle_data() {
 		}
 	}
 
+	$data = apply_filters( 'auto_listings_search_get_vehicle_data', $data, $items );
+
 	// remove empties and make unique.
 	foreach ( $data as $key => $value ) {
 		$data[ $key ] = array_filter( $data[ $key ] );
@@ -137,7 +139,7 @@ function auto_listings_search_get_vehicle_data() {
 		}
 	}
 
-	return apply_filters( 'auto_listings_search_get_vehicle_data', $data );
+	return $data;
 }
 
 function get_body_type_options() {

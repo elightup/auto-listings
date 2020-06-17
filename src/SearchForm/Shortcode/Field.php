@@ -3,13 +3,13 @@ namespace AutoListings\SearchForm\Shortcode;
 
 class Field {
 	private $control;
-	private $placeholder;
-	private $label;
+	private $placeholders;
+	private $labels;
 
 	public function __construct( $control ) {
 		$this->control = $control;
 
-		$this->placeholder = apply_filters( 'als_fields_placeholder', array(
+		$this->placeholders = [
 			'body_type'    => __( 'All body types', 'auto-listings' ),
 			'condition'    => __( 'All conditions', 'auto-listings' ),
 			'model_drive'  => __( 'All drive types', 'auto-listings' ),
@@ -24,9 +24,9 @@ class Field {
 			'transmission' => __( 'All transmissions', 'auto-listings' ),
 			'within'       => __( 'All areas', 'auto-listings' ),
 			'the_year'     => __( 'All years', 'auto-listings' ),
-		) );
+		];
 
-		$this->label = apply_filters( 'als_fields_default', array(
+		$this->labels = [
 			'body_type'    => __( 'Body Type', 'auto-listings' ),
 			'condition'    => __( 'Condition', 'auto-listings' ),
 			'model_drive'  => __( 'Drive Types', 'auto-listings' ),
@@ -41,7 +41,7 @@ class Field {
 			'transmission' => __( 'Transmission', 'auto-listings' ),
 			'within'       => __( 'Within', 'auto-listings' ),
 			'the_year'     => __( 'Year', 'auto-listings' ),
-		) );
+		];
 
 		add_shortcode( 'als_field', array( $this, 'render' ) );
 	}
@@ -50,8 +50,12 @@ class Field {
 		if ( empty( $atts['name'] ) ) {
 			return;
 		}
-		$default_label = ! empty( $this->label[ $atts['name'] ] ) ? $this->label[ $atts['name'] ] : '';
-		$default_placeholder = ! empty( $this->placeholder[ $atts['name'] ] ) ? $this->label[ $atts['name'] ] : '';
+
+		$this->placeholders = apply_filters( 'als_field_placeholders', $this->placeholders );
+		$this->labels       = apply_filters( 'als_field_labels', $this->labels );
+
+		$default_label = ! empty( $this->labels[ $atts['name'] ] ) ? $this->labels[ $atts['name'] ] : '';
+		$default_placeholder = ! empty( $this->placeholders[ $atts['name'] ] ) ? $this->labels[ $atts['name'] ] : '';
 
 		$atts = shortcode_atts(
 			array(
@@ -66,7 +70,7 @@ class Field {
 			$atts
 		);
 
-		if ( ! in_array( $atts[ 'name' ], array_keys( $this->placeholder ) ) ) {
+		if ( ! in_array( $atts['name'], array_keys( $this->placeholders ) ) ) {
 			return;
 		}
 
