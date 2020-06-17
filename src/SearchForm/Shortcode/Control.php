@@ -45,7 +45,7 @@ class Control {
 	}
 
 	private function select( $options, $args ) {
-		$is_multiple = $args['multiple'] === 'true' && ! in_array( $args['multiple'], [ 'price', 'min_price', 'max_price', 'odometer' ] );
+		$is_multiple = $args['multiple'] === 'true' && ! in_array( $args['name'], [ 'price', 'min_price', 'max_price', 'odometer' ] );
 		$selected  = isset( $_GET[ $args['name'] ] ) ? (array) $_GET[ $args['name'] ] : [];
 		$name = $is_multiple ? $args['name'] . '[]' : $args['name'];
 		?>
