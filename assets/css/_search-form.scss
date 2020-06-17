@@ -2,9 +2,6 @@ $blue: #4299e1;
 $grey: #d8d8d8;
 
 .als {
-	> *:not(:last-child) {
-		margin-bottom: 10px;
-	}
 	.SumoSelect {
 		width: 100%;
 	}
@@ -31,10 +28,12 @@ $grey: #d8d8d8;
 	}
 }
 
+.als-field:not(:last-child),
+button[class^="als-"] {
+	margin-bottom: 10px;
+}
+
 .als-field {
-	&:not(:last-child) {
-		margin-bottom: 10px;
-	}
 	&__label {
 		display: block;
 		margin-bottom: 5px;
