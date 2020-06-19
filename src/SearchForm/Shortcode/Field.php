@@ -55,7 +55,7 @@ class Field {
 		$this->labels       = apply_filters( 'als_field_labels', $this->labels );
 
 		$default_label = ! empty( $this->labels[ $atts['name'] ] ) ? $this->labels[ $atts['name'] ] : '';
-		$default_placeholder = ! empty( $this->placeholders[ $atts['name'] ] ) ? $this->labels[ $atts['name'] ] : '';
+		$default_placeholder = ! empty( $this->placeholders[ $atts['name'] ] ) ? $this->placeholders[ $atts['name'] ] : '';
 
 		$atts = shortcode_atts(
 			array(
