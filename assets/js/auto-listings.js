@@ -126,7 +126,7 @@
                 loop: true,
                 slideMargin: 0,
                 galleryMargin: 10,
-                thumbMargin: 10,
+                thumbMargin: parseInt( auto_listings.thumb_margin ),
                 enableDrag: false,
                 currentPagerPosition: 'left',
 

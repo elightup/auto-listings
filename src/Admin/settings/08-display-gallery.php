@@ -44,6 +44,13 @@ return [
 			'std'  => 6,
 		],
 		[
+			'name' => __( 'Thumbnails margin', 'auto-listings' ),
+			'desc' => __( 'Space between thumbnails (px)', 'auto-listings' ),
+			'id'   => 'thumb_margin',
+			'type' => 'number',
+			'std'  => 10,
+		],
+		[
 			'name'    => __( 'Transition Type', 'auto-listings' ),
 			'desc'    => __( 'Should images slide or fade?', 'auto-listings' ),
 			'id'      => 'gallery_mode',

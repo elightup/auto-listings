@@ -63,6 +63,7 @@ class Assets {
 			'slide_delay'    => auto_listings_option( 'slide_delay' ) ? auto_listings_option( 'slide_delay' ) : 3000,
 			'slide_duration' => auto_listings_option( 'slide_duration' ) ? auto_listings_option( 'slide_duration' ) : 3000,
 			'thumbs_shown'   => auto_listings_option( 'thumbs_shown' ) ? auto_listings_option( 'thumbs_shown' ) : 6,
+			'thumb_margin'   => auto_listings_option( 'thumb_margin' ) ? auto_listings_option( 'thumb_margin' ) : 10,
 		];
 
 		$map_array = [
