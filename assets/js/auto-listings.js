@@ -62,7 +62,7 @@
      */
     function auto_listings_view_switcher() {
 
-        var default_view = auto_listings.list_grid_view;
+        var default_view = auto_listings.list_grid_view || 'list';
 
         if( ! get_cookie( 'view' ) ) { switch_view( default_view ); }
 
