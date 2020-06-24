@@ -42,9 +42,11 @@ class Form {
 			$output .= '<script>' . $post->post_content_filtered . '</script>';
 		}
 
+		$action = apply_filters( 'auto_listings_search_form_action', get_the_permalink( auto_listings_option( 'archives_page' ) ) );
+
 		$output .= '<form'
 			. ' class="als" autocomplete="off"'
-			. ' action="' . get_the_permalink( auto_listings_option( 'archives_page' ) ) . '"'
+			. ' action="' . $action . '"'
 			. ' method="GET"'
 			. ' role="search">';
 
