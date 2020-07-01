@@ -350,6 +350,12 @@ function auto_listings_template_path() {
  * @param string $part template part.
  */
 function auto_listings_get_part( $part, $data = [] ) {
+	$template = auto_listings_get_part_legacy( $part );
+	if ( $template ) {
+		include $template;
+		return;
+	}
+
 	// Remove file name extension.
 	$part = str_replace( '.php', '', $part );
 
@@ -365,4 +371,24 @@ function auto_listings_get_part( $part, $data = [] ) {
 		$template_loader = new AutoListings\Frontend\TemplatePathLoader;
 	}
 	$template_loader->set_template_data( $data )->get_template_part( $part );
+}
+
+/**
+ * Backward compatibility with old extensions.
+ * @param string $part template part.
+ */
+function auto_listings_get_part_legacy( $part ) {
+	$dirs = apply_filters(
+		'auto_listings_template_directory',
+		[
+			AUTO_LISTINGS_DIR . 'templates/',
+		]
+	);
+	foreach ( $dirs as $dir ) {
+		if ( file_exists( trailingslashit( $dir ) . $part ) ) {
+			$template = $dir . $part;
+		}
+	}
+
+	return $template ?: false;
 }
