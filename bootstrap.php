@@ -27,7 +27,7 @@ if ( is_admin() ) {
 
 	new Listing\AdminColumns;
 	new Enquiry\AdminColumns;
-	
+
 	new SearchForm\AdminColumns;
     new SearchForm\Editor;
 
@@ -43,7 +43,6 @@ if ( is_admin() ) {
 if ( ( ! is_admin() || wp_doing_ajax() ) && ! wp_doing_cron() ) {
 	new Frontend\Main;
 	new Frontend\TemplateLoader;
-	new Frontend\TemplatePathLoader;
 	new Frontend\Assets;
 
 	new SearchForm\Shortcode\Form;
