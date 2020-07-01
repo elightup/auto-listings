@@ -378,6 +378,7 @@ function auto_listings_get_part( $part, $data = [] ) {
  * @param string $part template part.
  */
 function auto_listings_get_part_legacy( $part ) {
+	$template = '';
 	$dirs = apply_filters(
 		'auto_listings_template_directory',
 		[
