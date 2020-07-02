@@ -191,8 +191,9 @@ class SearchForm {
 	 */
 	public function year_field() {
 		$data    = auto_listings_search_get_vehicle_data();
-		$year    = $data['year'];
+		$year    = $data['the_year'];
 		$options = [];
+		
 		if ( ! $year ) {
 			return '';
 		}
