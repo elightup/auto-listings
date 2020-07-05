@@ -350,7 +350,7 @@ function auto_listings_template_path() {
  * @param string $part template part.
  */
 function auto_listings_get_part( $part, $data = [] ) {
-	$template = auto_listings_get_part_legacy( $part );
+	$template = apply_filters( 'auto_listings_get_part_legacy', auto_listings_get_part_legacy( $part ) );
 	if ( $template ) {
 		include $template;
 		return;
@@ -378,7 +378,18 @@ function auto_listings_get_part( $part, $data = [] ) {
  * @param string $part template part.
  */
 function auto_listings_get_part_legacy( $part ) {
-	$template = '';
+	// Look within passed path within the theme - this is priority.
+	$template = locate_template(
+		[
+			trailingslashit( auto_listings_template_path() ) . $part,
+			$part,
+		]
+	);
+
+	if ( $template ) {
+		return $template;
+	}
+
 	$dirs = apply_filters(
 		'auto_listings_template_directory',
 		[
