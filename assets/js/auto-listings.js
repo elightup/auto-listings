@@ -41,7 +41,9 @@
         if ( ! $('.auto-listings-ordering select.orderby').length ) {
             return;
         }
-        $('.auto-listings-ordering select.orderby').SumoSelect();
+        $('.auto-listings-ordering select.orderby').SumoSelect({
+            showTitle: false,
+        });
         $( 'body' ).on( 'change', 'select.orderby', function() {
             $( this ).closest( 'form' ).submit();
         });
