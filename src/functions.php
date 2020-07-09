@@ -293,10 +293,11 @@ function auto_listings_ajax_archive_item() {
 
 function auto_listings_available_listings() {
 	$listings = new \WP_Query( [
-		'post_type'      => 'auto-listing',
-		'posts_per_page' => -1,
-		'no_found_rows'  => true,
-		'fields'         => 'ids'
+		'post_type'              => 'auto-listing',
+		'posts_per_page'         => -1,
+		'update_post_meta_cache' => 'false',
+		'update_post_term_cache' => 'false',
+		'fields'                 => 'ids'
 	] );
 	if ( empty( $listings->post_count ) ) {
 		return 0;
