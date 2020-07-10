@@ -107,11 +107,12 @@ function auto_listings_search_get_vehicle_data() {
 	$args = apply_filters(
 		'auto_listings_search_get_vehicle_data_args',
 		array(
-			'post_type'      => 'auto-listing',
-			'posts_per_page' => -1,
-			'post_status'    => array( 'publish' ),
-			'fields'         => 'ids',
-			'no_found_rows'  => true,
+			'post_type'              => 'auto-listing',
+			'posts_per_page'         => -1,
+			'post_status'            => array( 'publish' ),
+			'fields'                 => 'ids',
+			'no_found_rows'          => true,
+			'update_post_term_cache' => false,
 		)
 	);
 	$items = new WP_Query( $args );
@@ -119,6 +120,7 @@ function auto_listings_search_get_vehicle_data() {
 	if ( ! $items->have_posts() ) {
 		return [];
 	}
+	update_postmeta_cache( $items->posts );
 	foreach( $items->posts as $id ) {
 		$data['the_year'][]     = auto_listings_meta( 'model_year', $id );
 		$data['make'][]         = auto_listings_meta( 'make_display', $id );
