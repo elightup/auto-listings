@@ -121,6 +121,7 @@ function auto_listings_search_get_vehicle_data() {
 		return [];
 	}
 	update_postmeta_cache( $items->posts );
+
 	foreach( $items->posts as $id ) {
 		$data['the_year'][]     = auto_listings_meta( 'model_year', $id );
 		$data['make'][]         = auto_listings_meta( 'make_display', $id );
@@ -143,7 +144,7 @@ function auto_listings_search_get_vehicle_data() {
 			sort( $data[ $key ] );
 		}
 	}
-
+	$data['total'] = count( $items->posts );
 	return $data;
 }
 
