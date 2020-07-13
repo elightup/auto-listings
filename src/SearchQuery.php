@@ -61,10 +61,21 @@ class SearchQuery {
 		if ( ! empty( $_GET['s'] ) ) {
 			$query_2['relation']    = 'OR';
 			$meta_query[]           = $query_1;
-			$meta_query[]           = $query_2;
+
+			global $wpdb;
+			$title = sanitize_text_field( $_GET['s'] );
+			$ids = $wpdb->get_col( "SELECT ID FROM $wpdb->posts WHERE UCASE(post_title) LIKE '%$title%' AND post_type='auto-listing' AND post_status='publish'" );
+
+			if ( $ids ) {
+				$query->set( 'post__in', $ids );
+			} else {
+				$meta_query[]           = $query_2;
+			}
+
 			$meta_query['relation'] = 'AND';
 		}
 
+		
 		$query->set( 'meta_query', $meta_query );
 		$query->set( 'tax_query', $body_type_query );
 		$query->set( 'post_type', 'auto-listing' );
