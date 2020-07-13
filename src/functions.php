@@ -290,16 +290,3 @@ function auto_listings_ajax_archive_item() {
 	// Always exit when doing Ajax.
 	exit();
 }
-
-function auto_listings_available_listings() {
-	$listings = new \WP_Query( [
-		'post_type'      => 'auto-listing',
-		'posts_per_page' => -1,
-		'no_found_rows'  => true,
-		'fields'         => 'ids'
-	] );
-	if ( empty( $listings->post_count ) ) {
-		return 0;
-	}
-	return $listings->post_count;
-}

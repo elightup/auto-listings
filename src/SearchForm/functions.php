@@ -98,35 +98,41 @@ function auto_listings_search_city() {
 }
 
 function auto_listings_search_get_vehicle_data() {
+	static $data = [];
+
+	if ( $data ) {
+		return $data;
+	}
 
 	$args = apply_filters(
 		'auto_listings_search_get_vehicle_data_args',
 		array(
-			'post_type'      => 'auto-listing',
-			'posts_per_page' => -1,
-			'post_status'    => array( 'publish' ),
-			'fields'         => 'ids',
+			'post_type'              => 'auto-listing',
+			'posts_per_page'         => -1,
+			'post_status'            => array( 'publish' ),
+			'fields'                 => 'ids',
+			'no_found_rows'          => true,
+			'update_post_term_cache' => false,
 		)
 	);
+	$items = new WP_Query( $args );
 
-	$items = get_posts( $args );
+	if ( ! $items->have_posts() ) {
+		return [];
+	}
+	update_postmeta_cache( $items->posts );
 
-	$data = array();
-
-	if ( $items ) {
-
-		foreach ( $items as $id ) {
-			$data['the_year'][]        = get_post_meta( $id, '_al_listing_model_year', true );
-			$data['make'][]            = get_post_meta( $id, '_al_listing_make_display', true );
-			$data['model'][]           = get_post_meta( $id, '_al_listing_model_name', true );
-			$data['transmission'][]    = get_post_meta( $id, '_al_listing_model_transmission_type', true );
-			$data['model_drive'][]     = get_post_meta( $id, '_al_listing_model_drive', true );
-			$data['engine'][]          = get_post_meta( $id, '_al_listing_model_engine_type', true );
-			$data['fuel_type'][]       = get_post_meta( $id, '_al_listing_model_engine_fuel', true );
-		}
+	foreach( $items->posts as $id ) {
+		$data['the_year'][]     = auto_listings_meta( 'model_year', $id );
+		$data['make'][]         = auto_listings_meta( 'make_display', $id );
+		$data['model'][]        = auto_listings_meta( 'model_name', $id );
+		$data['transmission'][] = auto_listings_meta( 'model_transmission_type', $id );
+		$data['model_drive'][]  = auto_listings_meta( 'model_drive', $id );
+		$data['engine'][]       = auto_listings_meta( 'model_engine_type', $id );
+		$data['fuel_type'][]    = auto_listings_meta( 'model_engine_fuel', $id );
 	}
 
-	$data = apply_filters( 'auto_listings_search_get_vehicle_data', $data, $items );
+	$data = apply_filters( 'auto_listings_search_get_vehicle_data', $data, $items->posts );
 
 	// remove empties and make unique.
 	foreach ( $data as $key => $value ) {
@@ -138,7 +144,7 @@ function auto_listings_search_get_vehicle_data() {
 			sort( $data[ $key ] );
 		}
 	}
-
+	$data['total'] = count( $items->posts );
 	return $data;
 }
 

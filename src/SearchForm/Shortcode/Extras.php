@@ -10,7 +10,7 @@ class Extras {
 	}
 
 	public function render_total() {
-		return auto_listings_available_listings();
+		return auto_listings_search_get_vehicle_data()['total'];
 	}
 
 	public function render_selected() {

@@ -316,7 +316,7 @@ function auto_listings_listing_post_class( $classes, $class = '', $post_id = '' 
 		$classes[] = 'auto-listing';
 		$classes[] = 'auto-listing-' . $listing->ID;
 
-		$images = rwmb_meta( '_al_listing_image_gallery' );
+		$images = get_post_meta( $post_id, '_al_listing_image_gallery', false );
 		if ( $images ) {
 			$classes[] = strtolower( 'has-thumbnail' );
 		}
