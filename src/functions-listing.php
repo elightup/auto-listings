@@ -477,7 +477,7 @@ function auto_listings_price( $price = null ) {
 	if ( ! empty( $state ) ) {
 		$state_output = '<span class="state" style="color: ' . esc_attr( $state['text_color'] ) . '">' . esc_html( $state['state'] ) . '</span>';
 	}
-	$output = $state['hide_price'] ? $state_output : $price_output . $state_output;
+	$output = $state && $state['hide_price'] ? $state_output : $price_output . $state_output;
 	return apply_filters( 'auto_listings_price_html', $output );
 }
 
