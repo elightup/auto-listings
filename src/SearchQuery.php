@@ -64,7 +64,7 @@ class SearchQuery {
 
 			global $wpdb;
 			$title = sanitize_text_field( $_GET['s'] );
-			$ids = $wpdb->get_col( "SELECT ID FROM $wpdb->posts WHERE UCASE(post_title) LIKE '%$title%' AND post_type='auto-listing' AND post_status='publish'" );
+			$ids = $wpdb->get_col( "SELECT ID FROM $wpdb->posts WHERE LOWER(post_title) LIKE '%$title%' AND post_type='auto-listing' AND post_status='publish'" );
 
 			if ( $ids ) {
 				$query->set( 'post__in', $ids );
