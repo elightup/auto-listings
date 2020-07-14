@@ -63,7 +63,7 @@ class SearchQuery {
 			$meta_query[]           = $query_1;
 
 			global $wpdb;
-			$title = sanitize_text_field( $_GET['s'] );
+			$title = sanitize_text_field( strtolower( $_GET['s'] ) );
 			$ids = $wpdb->get_col( "SELECT ID FROM $wpdb->posts WHERE LOWER(post_title) LIKE '%$title%' AND post_type='auto-listing' AND post_status='publish'" );
 
 			if ( $ids ) {
