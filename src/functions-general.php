@@ -125,7 +125,7 @@ function auto_listings_option( $option ) {
 function auto_listings_columns() {
 	$columns = auto_listings_option( 'grid_columns' );
 	$columns = $columns ? $columns : '3';
-	return $columns;
+	return apply_filters( 'auto_listings_columns', $columns );
 }
 
 

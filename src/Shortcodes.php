@@ -53,9 +53,10 @@ class Shortcodes {
 			return '';
 		}
 		$atts = shortcode_atts(
-			[
-				'id' => 0,
-			],
+			apply_filters( 'auto_listings_shortcode_listings_default_atts', [
+				'id'         => 0,
+				'no_results' => __( 'Sorry, no listings were found.', 'auto-listings' ),
+			] ),
 			$atts
 		);
 
@@ -68,7 +69,7 @@ class Shortcodes {
 		];
 		$query = new \WP_Query( apply_filters( 'auto_listings_shortcode_listing_query', $args, $atts ) );
 		if ( ! $query->have_posts() ) {
-			return '';
+			$this->loop_no_results( $atts );
 		}
 
 		ob_start();
@@ -97,14 +98,17 @@ class Shortcodes {
 			return '';
 		}
 		$atts = shortcode_atts(
-			[
-				'orderby' => 'date',
-				'order'   => 'asc',
-				'number'  => '20',
-				'seller'  => '', // id of the seller.
-				'ids'     => '',
-				'compact' => '',
-			],
+			apply_filters( 'auto_listings_shortcode_listings_default_atts', [
+				'orderby'    => 'date',
+				'order'      => 'asc',
+				'number'     => '20',
+				'seller'     => '', // id of the seller.
+				'ids'        => '',
+				'compact'    => '',
+				'columns'    => '3',
+				'view'       => 'grid',
+				'no_results' => __( 'Sorry, no listings were found.', 'auto-listings' ),
+			] ),
 			$atts
 		);
 
@@ -149,6 +153,12 @@ class Shortcodes {
 		return $classes;
 	}
 
+	protected function loop_no_results( $atts ) {
+		?>
+		<p class="alert auto-listings-no-results"><?php echo wp_kses_post( $atts['no_results'] ); ?></p>
+		<?php
+	}
+
 	/**
 	 * Loop over found listings.
 	 *
@@ -162,25 +172,51 @@ class Shortcodes {
 		$query = new \WP_Query( apply_filters( 'auto_listings_shortcode_listings_query', $query_args, $atts, $loop_name ) );
 		if ( ! $query->have_posts() ) {
 			ob_start();
-			do_action( "auto_listings_shortcode_{$loop_name}_loop_no_results" );
+			$this->loop_no_results( $atts );
 			return ob_get_clean();
+		}
+
+		$view = ! empty( $atts['view'] ) ? $atts['view'] : 'list';
+		$view .= '-view';
+
+		if ( ! empty( $atts['columns'] ) ) {
+			add_filter( 'auto_listings_columns', function( $columns ) use ( $atts ) {
+				return $atts['columns'];
+			} );
 		}
 
 		ob_start();
 		?>
 		<?php do_action( "auto_listings_shortcode_before_{$loop_name}_loop" ); ?>
 
-		<ul class="auto-listings-items">
-			<?php
-			while ( $query->have_posts() ) :
-				$query->the_post();
-				?>
-				<?php auto_listings_get_part( 'content-listing.php' ); ?>
-			<?php endwhile; ?>
-		</ul>
-
-		<?php do_action( "auto_listings_shortcode_after_{$loop_name}_loop" ); ?>
 		<?php
+		$cols  = auto_listings_columns();
+		$count = 1;
+		while ( $query->have_posts() ) :
+			$query->the_post();
+
+			// wrapper for our columns.
+			if ( 1 === $count % $cols ) {
+				echo '<ul class="auto-listings-items ' . esc_attr( $view ) . '">';
+			}
+
+				auto_listings_get_part( 'content-listing.php' );
+
+			// wrapper for our columns.
+			if ( 0 === $count % $cols ) {
+				echo '</ul>';
+			}
+
+			$count++;
+		endwhile;
+
+		if ( 1 !== $count % $cols ) {
+			echo '</ul>';
+		}
+
+		do_action( 'auto_listings_after_listings_loop' );
+		do_action( "auto_listings_shortcode_after_{$loop_name}_loop" );
+
 		wp_reset_postdata();
 		return ob_get_clean();
 	}
