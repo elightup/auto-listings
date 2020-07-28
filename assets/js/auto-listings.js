@@ -108,14 +108,14 @@
     function auto_listings_slider() {
 
         if ( $("#image-gallery").length > 0) {
-            let $galleryParent = $( '.gallery-wrap' )
 
             $('#image-gallery').lightSlider({
-                thumbItem: parseInt( $galleryParent.attr( 'data-thumbs_shown' ) ),
-                mode: $galleryParent.attr( 'data-gallery_mode' ),
-                auto: $galleryParent.attr( 'data-auto_slide' ),
-                pause: parseInt( $galleryParent.attr( 'data-slide_delay' ) ),
-                speed: parseInt( $galleryParent.attr( 'data-slide_duration' ) ),
+
+                thumbItem: parseInt( auto_listings.thumbs_shown ),
+                mode: auto_listings.gallery_mode,
+                auto: auto_listings.auto_slide,
+                pause: parseInt( auto_listings.slide_delay ),
+                speed: parseInt( auto_listings.slide_duration ),
                 prevHtml: '<i class="fa fa-angle-left"></i>',
                 nextHtml: '<i class="fa fa-angle-right"></i>',
                 pager: true,
@@ -128,7 +128,7 @@
                 loop: true,
                 slideMargin: 0,
                 galleryMargin: 10,
-                thumbMargin: parseInt( $galleryParent.attr( 'data-thumb_margin' ) ),
+                thumbMargin: parseInt( auto_listings.thumb_margin ),
                 enableDrag: false,
                 currentPagerPosition: 'left',
 
