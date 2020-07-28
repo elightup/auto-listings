@@ -38,11 +38,6 @@ class Assets {
 		wp_enqueue_style( 'auto-listings-fontawesome', $css_url . 'font-awesome.min.css', [], $ver );
 		wp_enqueue_style( 'auto-listings-sumoselect', $css_url . 'sumoselect.min.css', [], $ver );
 
-		if ( is_listing() ) {
-			wp_enqueue_style( 'auto-listings-lightslider', $css_url . 'lightslider.css', [], $ver );
-			wp_enqueue_style( 'auto-listings-lightgallery', $css_url . 'lightgallery.css', [], $ver );
-		}
-
 		wp_enqueue_style( 'auto-listings', $css_url . 'auto-listings.css', [], $ver );
 
 		wp_enqueue_script( 'auto-listings-sumoselect', $js_url . 'sumoselect.min.js', [ 'jquery' ], $ver, true );
@@ -52,7 +47,7 @@ class Assets {
 				wp_enqueue_script( 'auto-listings-google-maps', $api_url, [], $ver, true );
 			}
 			wp_enqueue_script( 'auto-listings-lightslider', $js_url . 'lightslider.js', [ 'jquery' ], $ver, true );
-			wp_enqueue_script( 'auto-listings-lightgallery', $js_url . 'lightgallery.js', [ 'jquery' ], $ver, true );
+			wp_enqueue_style( 'auto-listings-lightslider', $css_url . 'lightslider.css', [], $ver );
 		}
 
 		wp_enqueue_script( 'auto-listings', $js_url . 'auto-listings.js', [ 'jquery' ], $ver, true );
