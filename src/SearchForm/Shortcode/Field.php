@@ -36,7 +36,7 @@ class Field {
 			'max_price'    => __( 'Max Price', 'auto-listings' ),
 			'min_price'    => __( 'Min Price', 'auto-listings' ),
 			'model'        => __( 'Model', 'auto-listings' ),
-			'odometer'     => __( 'Milegage', 'auto-listings' ),
+			'odometer'     => __( 'Mileage', 'auto-listings' ),
 			'price'        => __( 'Price', 'auto-listings' ),
 			'transmission' => __( 'Transmission', 'auto-listings' ),
 			'within'       => __( 'Within', 'auto-listings' ),
