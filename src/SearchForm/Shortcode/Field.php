@@ -134,10 +134,15 @@ class Field {
 		}
 
 		$options = array();
-		foreach ( $data as $d ) {
-			$options[ $d ] = $d;
+		if ( $name === 'condition' ) {
+			foreach ( $data as $value => $label ) {
+				$options[ $value ] = $label;
+			}
+		} else {
+			foreach ( $data as $label ) {
+				$options[ $label ] = $label;
+			}
 		}
-
 		return $options;
 	}
 
