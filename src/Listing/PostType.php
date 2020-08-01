@@ -65,6 +65,7 @@ class PostType {
 			'has_archive'        => isset( $archive_page ) && get_post( $archive_page ) ? get_page_uri( $archive_page ) : 'listings',
 			'hierarchical'       => false,
 			'supports'           => [ 'title', 'editor', 'excerpt' ],
+			'show_in_rest'       => true,
 		];
 		register_post_type( 'auto-listing', $args );
 	}
