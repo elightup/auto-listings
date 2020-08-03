@@ -18,6 +18,7 @@ class PostType {
 		add_action( 'init', [ $this, 'register_post_type' ] );
 		add_action( 'init', [ $this, 'register_taxonomy' ] );
 		add_action( 'add_meta_boxes', [ $this, 'remove_body_type_meta_box' ] );
+		add_filter( 'use_block_editor_for_post_type', [ $this, 'disable_block_editor' ], 10, 2 );
 	}
 
 	/**
@@ -111,5 +112,9 @@ class PostType {
 	 */
 	public function remove_body_type_meta_box() {
 		remove_meta_box( 'body-typediv', 'auto-listing', 'side' );
+	}
+
+	public function disable_block_editor( $enabled, $post_type ) {
+		return 'auto-listing' === $post_type ? false : $enabled;
 	}
 }
