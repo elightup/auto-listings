@@ -30,7 +30,8 @@ class Settings {
 	public function register_settings_fields( $meta_boxes ) {
 		$files = glob( __DIR__ . '/settings/*.php' );
 		foreach ( $files as $file ) {
-			$meta_boxes[] = include $file;
+			$meta_box = include $file;
+			$meta_boxes[ $meta_box['id'] ] = $meta_box;
 		}
 
 		return $meta_boxes;
