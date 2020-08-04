@@ -247,7 +247,7 @@
 			searchForm.$selectFields  = $scope.find( '.als select' );
 			searchForm.$extraFields   = $scope.find( '.als-toggle-wrapper' );
 			searchForm.$selectedWrap  = $scope.find( '.als-selected' );
-			searchForm.$resetButton   = $scope.find( '.als-reset');
+			searchForm.$resetButton   = $scope.find( '.als-reset' );
 			searchForm.$priceField    = $scope.find( '.als' ).find( '[name="price"]' );
 			searchForm.$locationField = $scope.find( '.als' ).find( '[name="s"]' );
 			searchForm.selected       = {};
@@ -299,15 +299,10 @@
 		},
 		deleteSelectedFields: function() {
 			searchForm.$form.on( 'click', '.als-selected__close', function( e ) {
-				var key = $( this ).attr( 'data-selected' );
-				if ( key.indexOf( '[]' ) < 0 ) {
-					$( 'select[name="' + key + '"]' ).val( '' );
-				}
+				var key     = $( this ).attr( 'data-selected' );
+				var $select = $( 'select[name="' + key + '"]' );
 
-				$( 'select[name="' + key + '"]' ).each( function() {
-					$( this )[0].sumo.unSelectAll();
-					$( this ).siblings( '.multiple' ).find( 'li' ).removeClass( 'selected' )
-				} )
+				searchForm.emptySelectValue( $select );
 
 				delete searchForm.selected[ key ];
 				searchForm.printSelectedFields();
@@ -336,10 +331,7 @@
 					if ( ! $this.val() ) {
 						return true;
 					}
-					if ( $this.attr( 'name' ).indexOf( '[]' ) < 0 ) {
-						$this.val( '' );
-					}
-					$this[0].sumo.unSelectAll();
+					searchForm.emptySelectValue( $this );
 				} );
 				searchForm.$locationField.val('');
 				searchForm.selected = {};
@@ -366,6 +358,11 @@
 				$( this ).toggleClass( 'shown' );
 			} );
 		},
+		emptySelectValue: function( $select ) {
+			$select.val( '' );
+			$select[0].sumo.unSelectAll();
+			$select.siblings( '.multiple' ).find( 'li' ).removeClass( 'selected' );
+		}
 	};
 
 	searchForm.init();
