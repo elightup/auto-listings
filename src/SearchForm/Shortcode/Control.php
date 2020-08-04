@@ -50,7 +50,7 @@ class Control {
 		$name = $is_multiple ? $args['name'] . '[]' : $args['name'];
 		?>
 
-		<select id="<?= esc_attr( $args['id'] ); ?>" <?= $is_multiple ? 'multiple' : '' ?> placeholder="<?= esc_attr( $args['placeholder'] ); ?>" name="<?= esc_attr( $name ); ?>">
+		<select id="<?= esc_attr( $args['id'] ); ?>" <?= $is_multiple ? 'multiple' : '' ?> data-placeholder="<?= esc_attr( $args['placeholder'] ); ?>" name="<?= esc_attr( $name ); ?>">
 
 			<?php foreach ( $options as $value => $label ) : ?>
 

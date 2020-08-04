@@ -253,7 +253,12 @@
 			searchForm.selected       = {};
 		},
 		initSumoSelect: function() {
-			searchForm.$selectFields.SumoSelect({});
+			searchForm.$selectFields.each( function() {
+				var $this = $( this );
+				$this.SumoSelect( {
+					'placeholder': $this.attr( 'data-placeholder' )
+				} )
+			} );
 		},
 		appendSearchKey: function() {
 			if ( searchForm.$form.find( '[name="s"]' ).length !== 0 ) {
