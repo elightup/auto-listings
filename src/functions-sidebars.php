@@ -21,9 +21,9 @@ function auto_listings_register_sidebars() {
 		array(
 			'name'          => __( 'Auto Listings', 'auto-listings' ),
 			'id'            => 'auto-listings',
-			'description'   => __( 'Widgets in this area will be shown on all listings pages.', 'theme-slug' ),
-			'before_widget' => '<li id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</li>',
+			'description'   => __( 'Widgets in this area will be shown on all listings pages.', 'auto-listings' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widgettitle">',
 			'after_title'   => '</h2>',
 		)
