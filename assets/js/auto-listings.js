@@ -332,11 +332,7 @@
 			searchForm.$resetButton.on( 'click', function( e ) {
 				e.preventDefault();
 				searchForm.$selectFields.each( function() {
-					var $this = $( this );
-					if ( ! $this.val() ) {
-						return true;
-					}
-					searchForm.emptySelectValue( $this );
+					searchForm.emptySelectValue( $( this ) );
 				} );
 				searchForm.$locationField.val('');
 				searchForm.selected = {};
@@ -364,6 +360,9 @@
 			} );
 		},
 		emptySelectValue: function( $select ) {
+			if ( ! $select.val() ) {
+				return;
+			}
 			$select.val( '' );
 			$select[0].sumo.unSelectAll();
 			$select.siblings( '.multiple' ).find( 'li' ).removeClass( 'selected' );
