@@ -1,8 +1,0 @@
-{
-  "scripts": {
-    "css": "lessc columns.less columns.css",
-    "zip": "git archive -o meta-box-columns.zip --prefix=meta-box-columns/ HEAD",
-    "upload": "scp meta-box-columns.zip metabox:/var/www/metabox.io/downloads",
-    "release": "npm run zip && npm run upload"
-  }
-}

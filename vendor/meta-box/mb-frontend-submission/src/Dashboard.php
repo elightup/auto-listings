@@ -20,6 +20,10 @@ class Dashboard {
 			return '';
 		}
 
+		if ( ! is_user_logged_in() ) {
+			return esc_html__( 'Please login to view the dashboard.', 'mb-frontend-submission' );
+		}
+
 		$this->get_edit_page_attrs( $atts['edit_page'] );
 
 		$atts = shortcode_atts( [
@@ -40,11 +44,6 @@ class Dashboard {
 		], $atts );
 
 		ob_start();
-
-		if ( ! is_user_logged_in() ) {
-			esc_html_e( 'Please login to view the dashboard.', 'mb-frontend-submission' );
-			return ob_get_clean();
-		}
 
 		$this->query_posts( $atts );
 		$this->show_welcome_message( $atts );
@@ -87,6 +86,7 @@ class Dashboard {
 
 		// Get only 'id' and 'post_type' attributes.
 		$attributes = [
+			'id'        => '',
 			'post_type' => 'post',
 			'url'       => get_permalink( $edit_page ),
 		];
@@ -127,18 +127,9 @@ class Dashboard {
 					<td align="center"><?= get_post_status(); ?></td>
 					<td align="center" class="mbfs-actions">
 						<a href="<?= esc_url( add_query_arg( 'rwmb_frontend_field_post_id', get_the_ID(), $this->edit_page_atts['url'] ) ) ?>" title="<?php esc_html_e( 'Edit', 'mb-frontend-submission' ) ?>">
-							<img src="<?= MBFS_URL . 'assets/images/pencil.svg' ?>">
+							<img src="<?= MBFS_URL . 'assets/pencil.svg' ?>">
 						</a>
-						<a class="mbfs-delete" title="<?php esc_html_e( 'Delete', 'mb-frontend-submission' ) ?>">
-							<img src="<?= MBFS_URL . 'assets/images/trash.svg' ?>">
-						</a>
-						<div class="mbfs-confirm">
-							<div class="mbfs-confirm__content">
-								<p><?php esc_html_e( 'Are you sure to delete this post?', 'mb-frontend-submission' ) ?></p>
-								<?= do_shortcode( '[mb_frontend_form id="' . $this->edit_page_atts['id'] . '" post_id="' . get_the_ID() . '" ajax="true" allow_delete="true" force_delete="'. $atts['force_delete'] .'" only_delete="true" delete_button="' . esc_html__( 'Confirm', 'mb-frontend-submission' ) . '"]' ); ?>
-								<button class="mbfs-close">&times;</button>
-							</div>
-						</div>
+						<?= do_shortcode( '[mb_frontend_form id="' . $this->edit_page_atts['id'] . '" post_id="' . get_the_ID() . '" ajax="true" allow_delete="true" force_delete="'. $atts['force_delete'] .'" only_delete="true" delete_button="<img src=\'' . MBFS_URL . 'assets/trash.svg' . '\'>"]' ); ?>
 					</td>
 				</tr>
 			<?php endwhile ?>
@@ -148,7 +139,7 @@ class Dashboard {
 	}
 
 	private function enqueue() {
-		wp_enqueue_style( 'mbfs-dashboard', MBFS_URL . 'assets/css/frontend-dashboard.css', '', '2.1.0' );
-		wp_enqueue_script( 'mb-frontend-form', MBFS_URL . 'assets/js/frontend-submission.js', array( 'jquery' ), '2.1.0', true );
+		wp_enqueue_style( 'mbfs-dashboard', MBFS_URL . 'assets/dashboard.css', '', MBFS_VER );
+		wp_enqueue_script( 'mbfs', MBFS_URL . 'assets/frontend-submission.js', array( 'jquery' ), MBFS_VER, true );
 	}
 }

@@ -7,19 +7,13 @@ class Shortcode {
 
 		add_action( 'template_redirect', array( $this, 'init_session' ) );
 
-		add_action('wp_ajax_ajax_submit', array( $this, 'process' ));
-		add_action('wp_ajax_nopriv_ajax_submit', array( $this, 'process' ));
+		add_action( 'wp_ajax_mbfs_submit', array( $this, 'process' ) );
+		add_action( 'wp_ajax_nopriv_mbfs_submit', array( $this, 'process' ) );
 
-		add_action('wp_ajax_ajax_delete', array( $this, 'delete' ));
-        add_action('wp_ajax_nopriv_ajax_delete', array( $this, 'delete' ));
+		add_action( 'wp_ajax_mbfs_delete', array( $this, 'delete' ) );
+		add_action( 'wp_ajax_nopriv_mbfs_delete', array( $this, 'delete' ) );
 
-		if ( filter_input( INPUT_POST, 'rwmb_delete', FILTER_SANITIZE_STRING ) ) {
-			add_action( 'template_redirect', array( $this, 'delete' ) );
-		}
-
-		if ( filter_input( INPUT_POST, 'rwmb_submit', FILTER_SANITIZE_STRING ) ) {
-			add_action( 'template_redirect', array( $this, 'process' ) );
-		}
+		add_action( 'template_redirect', [ $this, 'handle_request' ] );
 	}
 
 	public function shortcode( $atts ) {
@@ -40,6 +34,15 @@ class Shortcode {
 		$form->render();
 
 		return ob_get_clean();
+	}
+
+	public function handle_request() {
+		$action = filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING );
+		if ( ! $action || ! in_array( $action, ['mbfs_submit', 'mbfs_delete'], true ) ) {
+			return;
+		}
+		$method = 'mbfs_delete' === $action ? 'delete' : 'process';
+		$this->{$method}();
 	}
 
 	public function init_session() {
@@ -85,7 +88,7 @@ class Shortcode {
 		$meta_box_ids = array_filter( explode( ',', $config['id'] . ',' ) );
 		$meta_box_ids = implode( ',', $meta_box_ids );
 
-		$this->after_submit_ajax( $form, $config );
+		$this->send_success_message( $config['confirmation'], $form );
 
 		$redirect = add_query_arg( [] );
 		if ( $config['post_id'] ) {
@@ -94,13 +97,13 @@ class Shortcode {
 
 		// Allow to re-edit the submitted post.
 		if ( 'true' === $config['edit'] && $config['post_id'] ) {
-			$redirect = add_query_arg( 'rwmb-post-id', $config['post_id'], $redirect );
+			$redirect = add_query_arg( 'rwmb_frontend_field_post_id', $config['post_id'], $redirect );
 		}
 
 		$redirect = apply_filters( 'rwmb_frontend_redirect', $redirect, $config );
 
-		if ( $form->config[ 'redirect' ] ) {
-			$redirect = $form->config[ 'redirect' ];
+		if ( $config[ 'redirect' ] ) {
+			$redirect = $config[ 'redirect' ];
 		}
 
 		wp_redirect( $redirect );
@@ -109,50 +112,9 @@ class Shortcode {
 	}
 
 	private function check_ajax( $form, $data ) {
-		if ( ! $this->is_ajax( $form ) ) {
-			return;
+		if ( $this->is_ajax( $form ) && ! check_ajax_referer( 'ajax_nonce' ) ) {
+			$this->send_error_message( __( 'Invalid nonce', 'mb-frontend-submission' ) );
 		}
-
-		// Only check FormData support when doing ajax.
-		$this->check_form_data_support( $data );
-
-		if ( ! check_ajax_referer( 'ajax_nonce' ) ) {
-			wp_send_json_error( __( 'Invalid nonce', 'mb-frontend-submission' ) );
-		}
-	}
-
-	private function check_form_data_support( $data ) {
-		if ( isset( $data[ 'formData' ] ) && ! $data[ 'formData' ] ) {
-			wp_send_json_error( __( 'Your browser does not FormData.', 'mb-frontend-submission' ) );
-		}
-	}
-
-	private function after_submit_ajax( $form, $config ) {
-		if ( ! $this->is_ajax( $form ) ) {
-			return;
-		}
-
-		$response = [
-			'type'   => 'submit',
-			'config' => $config,
-		];
-
-		header( 'Content-type:application/json;charset=utf-8' );
-		wp_send_json_success( $response );
-	}
-
-	private function after_delete_ajax( $form, $config ) {
-		if ( ! $this->is_ajax( $form ) ) {
-			return;
-		}
-
-		$response = [
-			'type'   => 'delete',
-			'config' => $config,
-		];
-
-		header( 'Content-type:application/json;charset=utf-8' );
-		wp_send_json_success( $response );
 	}
 
 	private function check_recaptcha( $form, $data ) {
@@ -160,12 +122,11 @@ class Shortcode {
 			return;
 		}
 
-		$captcha = filter_var( $data[ 'captcha_token' ], FILTER_SANITIZE_STRING );
+		$captcha = filter_var( $data[ 'recaptcha_token' ], FILTER_SANITIZE_STRING );
 		$action  = filter_var( $data[ 'recaptcha_action' ], FILTER_SANITIZE_STRING );
 
 		if ( ! $captcha || ! $action ) {
-			$error = __( 'Invalid captcha token', 'mb-frontend-submission' );
-			$this->is_ajax( $form ) ? wp_send_json_error( $error ) : wp_die( $error );
+			$this->send_error_message( __( 'Invalid captcha token.', 'mb-frontend-submission' ) );
 		}
 
 		$url = 'https://www.google.com/recaptcha/api/siteverify';
@@ -177,9 +138,8 @@ class Shortcode {
 		$response = wp_remote_retrieve_body( wp_remote_get( $url ) );
 		$response = json_decode( $response, true );
 
-		if ( empty( $response[ 'success' ] ) || empty( $response['action'] ) || $action !== $response[ 'action' ] ) {
-			$error = __( 'Cannot verify captcha', 'mb-frontend-submission' );
-			$this->is_ajax( $form ) ? wp_send_json_error( $error ) : wp_die( $error );
+		if ( empty( $response['action'] ) || $action !== $response[ 'action' ] ) {
+			$this->send_error_message( __( 'Invalid captcha token.', 'mb-frontend-submission' ) );
 		}
 	}
 
@@ -211,13 +171,13 @@ class Shortcode {
 		$meta_box_ids = array_filter( explode( ',', $config['id'] . ',' ) );
 		$meta_box_ids = implode( ',', $meta_box_ids );
 
-		$this->after_delete_ajax( $form, $config );
+		$this->send_success_message( $config['delete_confirmation'], $form );
 
 		$redirect = add_query_arg( 'rwmb-form-deleted', $meta_box_ids );
 		$redirect = apply_filters( 'rwmb_frontend_redirect', $redirect, $config );
 
-		if ( $form->config[ 'redirect' ] ) {
-			$redirect = $form->config[ 'redirect' ];
+		if ( $config[ 'redirect' ] ) {
+			$redirect = $config[ 'redirect' ];
 		}
 
 		wp_redirect( $redirect );
@@ -336,6 +296,23 @@ class Shortcode {
 		foreach ( $args as $key => $value ) {
 			$args[ $key ] = apply_filters( "rwmb_frontend_field_value_{$key}", $value, $args );
 		}
+	}
+
+	private function send_error_message( $message, $form ) {
+		if ( $this->is_ajax( $form ) ) {
+			wp_send_json_error( ['message' => $message] );
+		}
+		wp_die( $message );
+	}
+
+	private function send_success_message( $message, $form ) {
+		if ( ! $this->is_ajax( $form ) ) {
+			return;
+		}
+		wp_send_json_success( [
+			'message'  => $message,
+			'redirect' => $form->config['redirect'],
+		] );
 	}
 
 	private function is_ajax( $form ) {

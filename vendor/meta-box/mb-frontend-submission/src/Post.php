@@ -112,12 +112,13 @@ class Post {
 		if ( ! in_array( 'thumbnail', $fields, true ) ) {
 			return;
 		}
-		$field = array(
-			'type'             => 'single_image',
+		$field = [
+			'type'             => current_user_can( 'upload_files' ) ? 'single_image' : 'image',
 			'name'             => esc_html__( 'Thumbnail', 'rwmb-frontend-submission' ),
 			'id'               => '_thumbnail_id',
 			'storage'          => rwmb_get_storage( 'post' ),
-		);
+			'max_file_uploads' => 1,
+		];
 		$field = RWMB_Field::call( 'normalize', $field );
 
 		$old = RWMB_Field::call( $field, 'raw_meta', $this->post_id );

@@ -31,15 +31,15 @@ class Form {
 		$this->enqueue_recaptcha();
 		$this->localize();
 
-		if ( ! $this->user_can_edit() ) {
-			echo '<div class="rwmb-error">', esc_html__( 'You are not allowed to edit this post.', 'mb-frontend-submission' ), '</div>';
-			return;
-		}
-
 		if ( $this->is_deleted() ) {
 			do_action( 'rwmb_frontend_before_delete_confirmation', $this->config );
 			$this->display_message( 'delete-confirmation' );
 			do_action( 'rwmb_frontend_after_delete_confirmation', $this->config );
+			return;
+		}
+
+		if ( ! $this->user_can_edit() ) {
+			echo '<div class="rwmb-error">', esc_html__( 'You are not allowed to edit this post.', 'mb-frontend-submission' ), '</div>';
 			return;
 		}
 
@@ -65,10 +65,17 @@ class Form {
 
 		$delete_button = '';
 		if ( 'true' === $this->config['allow_delete'] && $this->config['post_id'] && get_post_status( $this->config['post_id'] ) ) {
-			$delete_button = '<button class="rwmb-button rwmb-button--delete" name="rwmb_delete" value="1">' . esc_html( $this->config['delete_button'] ) . '</button>';
+			$delete_button = '<button class="rwmb-button rwmb-button--delete" name="rwmb_delete" value="1">' . $this->config['delete_button'] . '</button>';
 		}
 
 		if ( 'false' === $this->config['only_delete'] ) {
+			// Always enqueue Meta Box style & script, in case no meta boxes are set in the shortcode.
+			// If the form contains only title, content, thumbnail, then the media scripts which requires rwmb will fail.
+			wp_enqueue_style( 'rwmb', RWMB_CSS_URL . 'style.css', [], RWMB_VER );
+			if ( is_rtl() ) {
+				wp_enqueue_style( 'rwmb-rtl', RWMB_CSS_URL . 'style-rtl.css', [], RWMB_VER );
+			}
+			wp_enqueue_script( 'rwmb', RWMB_JS_URL . 'script.js', ['jquery'], RWMB_VER, true );
 
 			// Make sure Meta Box script is enqueued first.
 			foreach ( $this->meta_boxes as $meta_box ) {
@@ -104,7 +111,7 @@ class Form {
 			return false;
 		}
 		$post = get_post( $this->config['post_id'] );
-		return $post && ( $post->post_author == get_current_user_id() || current_user_can( 'edit_post', $post->ID ) );
+		return $post && ($post->post_status !== 'trash' ) && ( $post->post_author == get_current_user_id() || current_user_can( 'edit_post', $post->ID ) );
 	}
 
 	/**
@@ -206,27 +213,19 @@ class Form {
 	}
 
 	private function enqueue() {
-		wp_enqueue_style( 'mb-frontend-form', MBFS_URL . 'assets/css/frontend-submission.css', '', '2.0.0' );
+		wp_enqueue_style( 'mbfs-form', MBFS_URL . 'assets/form.css', '', MBFS_VER );
+		wp_enqueue_script( 'mbfs', MBFS_URL . 'assets/frontend-submission.js', array( 'jquery' ), MBFS_VER, true );
 
-		wp_enqueue_script( 'mb-frontend-form', MBFS_URL . 'assets/js/frontend-submission.js', array( 'jquery' ), '2.0.0', true );
-
-		$is_ajax = isset( $this->config['ajax'] ) ? $this->config['ajax'] : '';
-		$ajax_submit_result = $is_ajax ? $this->config[ 'confirmation' ] : '';
-		$ajax_delete_result = $is_ajax ? $this->config[ 'delete_confirmation' ] : '';
-
+		$is_ajax  = isset( $this->config['ajax'] ) ? $this->config['ajax'] : '';
 		$redirect = isset( $this->config['redirect'] ) ? $this->config['redirect'] : '';
 
-		$this->localize_data = array_merge(
-			$this->localize_data,
-			array(
-				'ajaxUrl'             => admin_url( 'admin-ajax.php' ),
-				'nonce'               => wp_create_nonce( 'ajax_nonce' ),
-				'ajax'                => $is_ajax,
-				'ajaxSubmitResult'    => $ajax_submit_result,
-				'ajaxDeleteResult'    => $ajax_delete_result,
-				'redirect'            => $redirect,
-			)
-		);
+		$this->localize_data = array_merge( $this->localize_data, [
+			'ajaxUrl'        => admin_url( 'admin-ajax.php' ),
+			'nonce'          => wp_create_nonce( 'ajax_nonce' ),
+			'ajax'           => $is_ajax,
+			'redirect'       => $redirect,
+			'confirm_delete' => __( 'Are you sure to delete this post?', 'mb-frontend-submission' ),
+		] );
 	}
 
 	private function enqueue_recaptcha() {
@@ -245,15 +244,17 @@ class Form {
 	}
 
 	private function localize() {
-		wp_localize_script( 'mb-frontend-form', 'mbFrontendForm', $this->localize_data );
+		wp_localize_script( 'mbfs', 'mbFrontendForm', $this->localize_data );
 	}
 
 	private function render_hidden_fields() {
 		$key = ConfigStorage::store( $this->config );
 		echo '<input type="hidden" name="rwmb_form_config" value="', esc_attr( $key ), '">';
-		// add hidden input if has recaptcha v3
+		echo '<input type="hidden" name="action" value="mbfs_submit">';
+
+		// Add hidden input if has recaptcha v3
 		if ( $this->config[ 'recaptcha_key' ] ) {
-			echo '<input id="captcha_token" type="hidden" name="captcha_token" value="">';
+			echo '<input type="hidden" name="recaptcha_token" value="">';
 			echo '<input type="hidden" name="recaptcha_action" value="submit_frontend">';
 		}
 	}

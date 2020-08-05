@@ -1,0 +1,67 @@
+@import 'mixins';
+
+.mbfs-add-new-post {
+	text-decoration: none;
+	padding: .5em 1em;
+	color: #fff;
+	background: $blue;
+	border-radius: .25em;
+	transition: .3s;
+	display: inline-block;
+	margin: 1em 0;
+
+	&:hover {
+		color: #fff;
+		background: $blue-2;
+	}
+}
+
+.mbfs-posts {
+	width: 100%;
+	tr {
+		&:nth-child(2n+1) {
+			background: rgba(0, 0, 0, .1);
+		}
+	}
+	th {
+		width: 20%;
+		&:first-child {
+			width: 40%;
+		}
+	}
+}
+
+.mbfs-actions {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	a,
+	.rwmb-button--delete {
+		background: $blue;
+		text-decoration: none;
+		display: inline-flex;
+		width: 2em;
+		height: 2em;
+		line-height: 2;
+		justify-content: center;
+		align-items: center;
+		border-radius: .25em;
+		border: none;
+		transition: .3s;
+		box-sizing: border-box;
+		cursor: pointer;
+		padding: .4em;
+		margin: 0;
+
+		&:hover {
+			background: $blue-2;
+		}
+	}
+	form {
+		margin-left: 4px;
+	}
+	.rwmb-loading {
+		display: none;
+	}
+}
