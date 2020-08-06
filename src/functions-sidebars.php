@@ -22,8 +22,8 @@ function auto_listings_register_sidebars() {
 			'name'          => __( 'Auto Listings', 'auto-listings' ),
 			'id'            => 'auto-listings',
 			'description'   => __( 'Widgets in this area will be shown on all listings pages.', 'auto-listings' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
 			'before_title'  => '<h2 class="widgettitle">',
 			'after_title'   => '</h2>',
 		)
