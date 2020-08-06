@@ -56,7 +56,7 @@ class Form {
 		}
 
 		do_action( 'rwmb_frontend_before_form', $this->config );
-		echo '<form class="rwmb-form" method="post" enctype="multipart/form-data" encoding="multipart/form-data">';
+		echo '<form class="rwmb-form" method="post" enctype="multipart/form-data">';
 		$this->render_hidden_fields();
 
 		// Register wp color picker scripts for frontend.
