@@ -65,10 +65,10 @@ class PostType {
 			'map_meta_cap'       => true,
 			'has_archive'        => isset( $archive_page ) && get_post( $archive_page ) ? get_page_uri( $archive_page ) : 'listings',
 			'hierarchical'       => false,
-			'supports'           => [ 'title', 'editor', 'excerpt' ],
+			'supports'           => apply_filters( 'auto_listings_listing_supports', [ 'title', 'editor', 'excerpt' ] ),
 			'show_in_rest'       => true,
 		];
-		register_post_type( 'auto-listing', $args );
+		register_post_type( 'auto-listing', apply_filters( 'auto_listings_listing_post_type_args', $args ) );
 	}
 
 	/**
