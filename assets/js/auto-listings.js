@@ -102,46 +102,46 @@
 
 	}
 
-	/**
-	 * Slider
-	 */
-	function auto_listings_slider() {
+	 /**
+     * Slider
+     */
+    function auto_listings_slider() {
 
-		if ( $("#image-gallery").length > 0) {
+        if ( $( '#image-gallery' ).length > 0 ) {
 
-			$('#image-gallery').lightSlider({
+            $( '#image-gallery' ).lightSlider( {
 
-				thumbItem: parseInt( auto_listings.thumbs_shown ),
-				mode: auto_listings.gallery_mode,
-				auto: auto_listings.auto_slide,
-				pause: parseInt( auto_listings.slide_delay ),
-				speed: parseInt( auto_listings.slide_duration ),
-				prevHtml: '<i class="fa fa-angle-left"></i>',
-				nextHtml: '<i class="fa fa-angle-right"></i>',
-				pager: true,
-				controls: true,
+                thumbItem: 6,
+                mode: 'slide',
+                auto: true,
+                pause: 2000,
+                speed: 1000,
+                prevHtml: '<i class="fa fa-angle-left"></i>',
+                nextHtml: '<i class="fa fa-angle-right"></i>',
+                pager: true,
+                controls: true,
 
-				addClass: 'listing-gallery',
-				gallery: true,
-				item: 1,
-				autoWidth: false,
-				loop: true,
-				slideMargin: 0,
-				galleryMargin: 10,
-				thumbMargin: parseInt( auto_listings.thumb_margin ),
-				enableDrag: false,
-				currentPagerPosition: 'left',
+                addClass: 'listing-gallery',
+                gallery: true,
+                item: 1,
+                autoWidth: false,
+                loop: true,
+                slideMargin: 0,
+                thumbMargin: 10,
+                galleryMargin: 10,
+                enableDrag: false,
+                currentPagerPosition: 'left',
 
-				onSliderLoad: function(el) {
-					el.lightGallery({
-						selector: '#image-gallery .lslide'
-					});
-				}
-			});
+                onSliderLoad: function(el) {
+                    el.lightGallery({
+                        selector: '#image-gallery .lslide'
+                    } );
+                }
+            } );
 
-		}
+        }
 
-	}
+    }
 
 	/**
 	 * Tabs

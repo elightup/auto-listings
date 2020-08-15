@@ -52,15 +52,6 @@ class Assets {
 
 		wp_enqueue_script( 'auto-listings', $js_url . 'auto-listings.js', [ 'jquery' ], $ver, true );
 
-		$gallery_array = [
-			'gallery_mode'   => auto_listings_option( 'gallery_mode' ) ? auto_listings_option( 'gallery_mode' ) : 'fade',
-			'auto_slide'     => auto_listings_option( 'auto_slide' ) === 'no' ? false : true,
-			'slide_delay'    => auto_listings_option( 'slide_delay' ) ? auto_listings_option( 'slide_delay' ) : 3000,
-			'slide_duration' => auto_listings_option( 'slide_duration' ) ? auto_listings_option( 'slide_duration' ) : 3000,
-			'thumbs_shown'   => auto_listings_option( 'thumbs_shown' ) ? auto_listings_option( 'thumbs_shown' ) : 6,
-			'thumb_margin'   => auto_listings_option( 'thumb_margin' ) ? auto_listings_option( 'thumb_margin' ) : 10,
-		];
-
 		$map_array = [
 			'map_width'  => auto_listings_option( 'map_width' ),
 			'map_height' => auto_listings_option( 'map_height' ),
@@ -74,7 +65,7 @@ class Assets {
 			'list_grid_view' => auto_listings_option( 'list_grid_view' ),
 		];
 
-		$localized_array = array_merge( $gallery_array, $map_array, $general_array );
+		$localized_array = array_merge( $map_array, $general_array );
 
 		wp_localize_script( 'auto-listings', 'auto_listings', apply_filters( 'auto_listings_localized_script', $localized_array ) );
 	}
