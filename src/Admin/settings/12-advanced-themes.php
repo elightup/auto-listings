@@ -29,16 +29,5 @@ return [
 			'placeholder' => '</div></div>',
 			'rows'        => 2,
 		],
-		[
-			'name'    => __( 'Force Listings Page Title', 'auto-listings-related' ),
-			'desc'    => __( 'Some themes may be using incorrect template tags to display the archive page title.' ) . '<br>' . __( 'If your page title is not displaying on the listings page, you can force the page title here.', 'auto-listings-related' ),
-			'id'      => 'archives_page_title',
-			'type'    => 'select',
-			'default' => 'no',
-			'options' => [
-				'no'  => __( 'No', 'auto-listings' ),
-				'yes' => __( 'Yes', 'auto-listings' ),
-			],
-		],
 	],
 ];

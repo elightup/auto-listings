@@ -191,10 +191,6 @@ function auto_listings_listing_display_theme_title( $title ) {
  * Output page title in listings archive template
  */
 function auto_listings_listing_archive_title() {
-	$force = auto_listings_force_page_title();
-	if ( 'yes' !== $force ) {
-		return;
-	}
 	?>
 	<h1 class="page-title"><?php echo esc_html( auto_listings_listing_archive_get_title() ); ?></h1>
 	<?php

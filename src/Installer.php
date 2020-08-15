@@ -43,8 +43,6 @@ class Installer {
 		$options['price_color']       = '#337ab7';
 
 		$options['grid_columns']        = '3';
-		$options['delete_data']         = 'no';
-		$options['archives_page_title'] = 'no';
 		$options['listing_status']      = [
 			[
 				'status'     => 'Low Miles',

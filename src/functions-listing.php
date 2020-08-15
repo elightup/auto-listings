@@ -330,14 +330,6 @@ function auto_listings_listing_post_class( $classes, $class = '', $post_id = '' 
 }
 
 /**
- * Show Archive Page title within page content area
- */
-function auto_listings_force_page_title() {
-	$force = auto_listings_option( 'archives_page_title' ) ? auto_listings_option( 'archives_page_title' ) : 'no';
-	return $force;
-}
-
-/**
  * Get the URL of the first image of a listing
  */
 function auto_listings_get_first_image() {
