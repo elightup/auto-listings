@@ -103,45 +103,45 @@
 	}
 
 	 /**
-     * Slider
-     */
-    function auto_listings_slider() {
+	 * Slider
+	 */
+	function auto_listings_slider() {
 
-        if ( $( '#image-gallery' ).length > 0 ) {
+		if ( $( '#image-gallery' ).length > 0 ) {
 
-            $( '#image-gallery' ).lightSlider( {
+			$( '#image-gallery' ).lightSlider( {
 
-                thumbItem: 6,
-                mode: 'slide',
-                auto: true,
-                pause: 2000,
-                speed: 1000,
-                prevHtml: '<i class="fa fa-angle-left"></i>',
-                nextHtml: '<i class="fa fa-angle-right"></i>',
-                pager: true,
-                controls: true,
+				thumbItem: 6,
+				mode: 'slide',
+				auto: true,
+				pause: 2000,
+				speed: 1000,
+				prevHtml: '<i class="fa fa-angle-left"></i>',
+				nextHtml: '<i class="fa fa-angle-right"></i>',
+				pager: true,
+				controls: true,
 
-                addClass: 'listing-gallery',
-                gallery: true,
-                item: 1,
-                autoWidth: false,
-                loop: true,
-                slideMargin: 0,
-                thumbMargin: 10,
-                galleryMargin: 10,
-                enableDrag: false,
-                currentPagerPosition: 'left',
+				addClass: 'listing-gallery',
+				gallery: true,
+				item: 1,
+				autoWidth: false,
+				loop: true,
+				slideMargin: 0,
+				thumbMargin: 10,
+				galleryMargin: 10,
+				enableDrag: false,
+				currentPagerPosition: 'left',
 
-                onSliderLoad: function(el) {
-                    el.lightGallery({
-                        selector: '#image-gallery .lslide'
-                    } );
-                }
-            } );
+				onSliderLoad: function(el) {
+					el.lightGallery({
+						selector: '#image-gallery .lslide'
+					} );
+				}
+			} );
 
-        }
+		}
 
-    }
+	}
 
 	/**
 	 * Tabs
@@ -223,6 +223,52 @@
 		}
 
 	}
+
+	var FilterModelByMake = function( makeSelect ) {
+		this.makeSelect = makeSelect;
+		this.modelSelect = null;
+	};
+
+	FilterModelByMake.prototype.init = function() {
+		var that = this;
+		that.modelSelect = that.makeSelect.closest( '.als, .auto-listings-search' ).find( '.als-field--model select, .model select' );
+		if ( ! that.modelSelect.length ) {
+			return;
+		}
+		var selected = that.makeSelect.val();
+		if ( ! selected || ! selected.length ) {
+			that.modelSelect[0].sumo.disable();
+		} else {
+			that.filterModel( selected );
+		}
+
+		that.makeSelect.on( 'change', function() {
+			that.filterModel( $( this ).val() );
+		} );
+	};
+	FilterModelByMake.prototype.filterModel = function( selected ) {
+		var that = this;
+		var data = {
+			action: 'model_filter',
+			selected: selected
+		};
+		var $request = $.post( auto_listings.ajaxUrl, data );
+		$request.done( function( response ) {
+			that.handleResponse( response );
+		} );
+	};
+	FilterModelByMake.prototype.handleResponse = function( response ) {
+		var that = this;
+		var options = response.data;
+		var isOption = options.search( /option/g );
+		if ( isOption < 0 ) {
+			that.modelSelect[0].sumo.disable();
+			return;
+		}
+		that.modelSelect.html( options );
+		that.modelSelect[0].sumo.reload();
+		that.modelSelect[0].sumo.enable();
+	};
 
 	/**
 	 * Search Form
@@ -370,5 +416,10 @@
 	};
 
 	searchForm.init();
-
-})(jQuery);
+	$( window ).on( 'load', function() {
+		$( '.als-field--make select, .make select' ).each( function() {
+			var filter = new FilterModelByMake( $( this ) );
+			filter.init();
+		} );
+	} );
+} )( jQuery );

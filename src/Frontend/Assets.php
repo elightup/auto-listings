@@ -62,6 +62,7 @@ class Assets {
 		];
 
 		$general_array = [
+			'ajaxUrl'        => admin_url( 'admin-ajax.php' ),
 			'list_grid_view' => auto_listings_option( 'list_grid_view' ),
 		];
 

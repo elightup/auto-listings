@@ -12,6 +12,7 @@ new Enquiry\Fields;
 new Enquiry\ContactForm;
 
 new SearchForm\PostType;
+new SearchForm\Ajax;
 
 new Shortcodes;
 new Query;
