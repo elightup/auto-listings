@@ -9,7 +9,7 @@ class Ajax {
 
 	public function handle_ajax() {
 		if ( empty( $_POST[ 'selected' ] ) ) {
-			wp_send_json_error( 'No make selected' );
+			wp_send_json_error( __( 'No make selected', 'auto-listings' ) );
 		}
 		$selected = array_map( 'sanitize_text_field', wp_unslash( $_POST[ 'selected' ] ) );
 		$query = [

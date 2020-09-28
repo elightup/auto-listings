@@ -259,13 +259,14 @@
 	};
 	FilterModelByMake.prototype.handleResponse = function( response ) {
 		var that = this;
-		var options = response.data;
-		var isOption = options.search( /option/g );
-		if ( isOption < 0 ) {
+		if ( ! response.success ) {
 			that.modelSelect[0].sumo.disable();
 			return;
 		}
+		var selectedModel = that.modelSelect.val();
+		var options       = response.data;
 		that.modelSelect.html( options );
+		that.modelSelect.val( selectedModel );
 		that.modelSelect[0].sumo.reload();
 		that.modelSelect[0].sumo.enable();
 	};
