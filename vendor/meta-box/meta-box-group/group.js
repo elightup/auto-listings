@@ -46,7 +46,7 @@
 		$input.trigger( 'change' );
 
 		$group.toggleClass( 'rwmb-group-collapsed', 'collapsed' === state )
-		      .find( '.rwmb-group-toggle-handle' ).first().attr( 'aria-expanded', 'collapsed' !== state );
+			  .find( '.rwmb-group-toggle-handle' ).first().attr( 'aria-expanded', 'collapsed' !== state );
 	};
 
 	/**
@@ -60,35 +60,38 @@
 			$title = $group.find( '> .rwmb-group-title-wrapper > .rwmb-group-title, > .rwmb-input > .rwmb-group-title-wrapper > .rwmb-group-title' ),
 			options = $title.data( 'options' );
 
+		if ( 'undefined' === typeof options ) {
+			return;
+		}
+
+		var content = options.content || '',
+			fields = options.fields || [];
+
 		function processField( field ) {
 			if ( -1 === content.indexOf( '{' + field + '}' ) ) {
 				return;
 			}
 
 			var selectors = 'input[name*="[' + field + ']"], textarea[name*="[' + field + ']"], select[name*="[' + field + ']"], button[name*="[' + field + ']"]',
-				$field = $group.find( selectors ),
-				fieldValue = $field.val();
+				$field = $group.find( selectors );
 
+			if ( ! $field.length ) {
+				return;
+			}
+
+			var fieldValue = $field.val() || '';
 			if ( $field.is( 'select' ) && fieldValue ) {
 				fieldValue = $field.find( 'option:selected' ).text();
 			}
-
 			content = content.replace( '{' + field + '}', fieldValue );
 
 			// Update title when field's value is changed.
 			if ( ! $field.data( 'update-group-title' ) ) {
 				$field.on( 'keyup change', _.debounce( function () {
-					group.toggle.updateTitle( 0, element );
+					group.toggle.updateTitle( index, element );
 				}, 250 ) ).data( 'update-group-title', true );
 			}
 		}
-
-        if ( 'undefined' === typeof options ) {
-            return;
-        }
-
-        var content = options.content || '',
-			fields = options.fields || [];
 
 		content = content.replace( '{#}', index );
 		fields.forEach( processField );

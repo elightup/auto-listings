@@ -30,6 +30,9 @@ class MetaBox extends \RW_Meta_Box {
 			return;
 		}
 
+		$screen = get_current_screen();
+		add_filter( "postbox_classes_{$screen->id}_{$this->id}", array( $this, 'postbox_classes' ) );
+
 		$object_id = $page_args['option_name'];
 		$this->set_object_id( $object_id );
 

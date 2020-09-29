@@ -28,7 +28,8 @@
 }
 
 .rwmb-settings-no-boxes .postbox .handlediv,
-.rwmb-settings-no-boxes .postbox .hndle {
+.rwmb-settings-no-boxes .postbox .hndle,
+.rwmb-settings-no-boxes .postbox .postbox-header {
 	display: none;
 }
 

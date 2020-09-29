@@ -68,19 +68,6 @@
         "installation-source": "source"
     },
     {
-        "name": "meta-box/meta-box-group",
-        "version": "1.3.10",
-        "version_normalized": "1.3.10.0",
-        "source": {
-            "type": "git",
-            "url": "git@bitbucket.org:metabox/meta-box-group.git",
-            "reference": "b9f6baf7e8f584f185705319a33dbbf6b543c58e"
-        },
-        "time": "2020-04-27T06:59:17+00:00",
-        "type": "wordpress-plugin",
-        "installation-source": "source"
-    },
-    {
         "name": "meta-box/mb-frontend-submission",
         "version": "3.0.0",
         "version_normalized": "3.0.0.0",
@@ -119,15 +106,28 @@
         }
     },
     {
+        "name": "meta-box/meta-box-columns",
+        "version": "1.2.7",
+        "version_normalized": "1.2.7.0",
+        "source": {
+            "type": "git",
+            "url": "git@bitbucket.org:metabox/meta-box-columns.git",
+            "reference": "f424925e0f2a1c51c2a867ee43217195bb9c02ca"
+        },
+        "time": "2020-05-26T03:51:20+00:00",
+        "type": "wordpress-plugin",
+        "installation-source": "source"
+    },
+    {
         "name": "meta-box/mb-settings-page",
-        "version": "2.1.2",
-        "version_normalized": "2.1.2.0",
+        "version": "2.1.3",
+        "version_normalized": "2.1.3.0",
         "source": {
             "type": "git",
             "url": "git@bitbucket.org:metabox/mb-settings-page.git",
-            "reference": "096b7ad134aa70ebc625c0f61d1e68559d0c1977"
+            "reference": "df4c81819571bf54f8503a9e00a96d634afaf247"
         },
-        "time": "2020-05-27T07:59:37+00:00",
+        "time": "2020-09-05T07:14:53+00:00",
         "type": "wordpress-plugin",
         "installation-source": "source",
         "autoload": {
@@ -140,15 +140,15 @@
         }
     },
     {
-        "name": "meta-box/meta-box-columns",
-        "version": "1.2.7",
-        "version_normalized": "1.2.7.0",
+        "name": "meta-box/meta-box-group",
+        "version": "1.3.11",
+        "version_normalized": "1.3.11.0",
         "source": {
             "type": "git",
-            "url": "git@bitbucket.org:metabox/meta-box-columns.git",
-            "reference": "f424925e0f2a1c51c2a867ee43217195bb9c02ca"
+            "url": "git@bitbucket.org:metabox/meta-box-group.git",
+            "reference": "c9a703621db056d3ed4bb5a225114037ba407e8f"
         },
-        "time": "2020-05-26T03:51:20+00:00",
+        "time": "2020-08-22T03:15:31+00:00",
         "type": "wordpress-plugin",
         "installation-source": "source"
     }

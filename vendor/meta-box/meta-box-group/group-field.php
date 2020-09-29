@@ -54,8 +54,8 @@ class RWMB_Group_Field extends RWMB_Field {
 
 		// Use helper function to get correct URL to current folder, which can be used in themes/plugins.
 		list( , $url ) = RWMB_Loader::get_path( dirname( __FILE__ ) );
-		wp_enqueue_style( 'rwmb-group', $url . 'group.css', '', '1.1.2' );
-		wp_enqueue_script( 'rwmb-group', $url . 'group.js', array( 'jquery', 'underscore' ), '1.1.2', true );
+		wp_enqueue_style( 'rwmb-group', $url . 'group.css', '', '1.3.11' );
+		wp_enqueue_script( 'rwmb-group', $url . 'group.js', array( 'jquery', 'underscore' ), '1.3.11', true );
 		wp_localize_script(
 			'rwmb-group',
 			'RWMB_Group',

@@ -26,6 +26,10 @@ class Setting {
 
 		// Filter the option for previewing.
 		add_action( "customize_preview_{$this->id}", [ $this, 'preview' ] );
+
+		if ( ! empty( $_GET['customize_changeset_uuid'] ) ) {
+			$this->filter_update_from_customize_changeset();
+		}
 	}
 
 	public function save( $value, $setting ) {
@@ -56,11 +60,31 @@ class Setting {
 		$customized = json_decode( $customized, true );
 
 		if ( empty( $customized[ $this->id ] ) ) {
+			return $this->update_from_customize_changeset( $original );
+		}
+
+		$data     = json_decode( $customized[ $this->id ], true );
+		$original = empty( $original ) ? [] : $original;
+
+		return array_merge( $original, $data );
+	}
+
+	public function filter_update_from_customize_changeset() {
+		add_filter( "option_{$this->meta_box->object_id}", [ $this, 'update_from_customize_changeset' ] );
+		add_filter( "default_option_{$this->meta_box->object_id}", [ $this, 'update_from_customize_changeset' ] );
+	}
+
+	public function update_from_customize_changeset( $original ) {
+		if ( empty( $GLOBALS['wp_customize'] ) ) {
 			return $original;
 		}
 
-		$data = json_decode( $customized[ $this->id ], true );
+		$customized = $GLOBALS['wp_customize']->changeset_data();
+		if ( empty( $customized[ $this->id ] ) ) {
+			return $original;
+		}
 
+		$data     = json_decode( $customized[ $this->id ]['value'], true );
 		$original = empty( $original ) ? [] : $original;
 
 		return array_merge( $original, $data );
