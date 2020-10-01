@@ -105,7 +105,7 @@ function auto_listings_meta( $meta, $post_id = 0, $single = true ) {
 	}
 	$meta_key = '_al_listing_' . $meta;
 	$data     = get_post_meta( $post_id, $meta_key, $single );
-	return $data;
+	return apply_filters( 'auto_listings_meta', $data, $meta, $post_id );
 }
 
 /**

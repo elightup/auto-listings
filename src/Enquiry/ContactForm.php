@@ -116,7 +116,7 @@ class ContactForm {
 	protected function recipient( $listing_id ) {
 		$seller_id    = auto_listings_meta( 'seller', $listing_id );
 		$seller_email = get_the_author_meta( 'email', $seller_id ) ? get_the_author_meta( 'email', $seller_id ) : get_bloginfo( 'admin_email' );
-		return apply_filters( 'auto_listings_contact_form_recipient', sanitize_email( $seller_email ) );
+		return apply_filters( 'auto_listings_contact_form_recipient', sanitize_email( $seller_email ), $listing_id );
 	}
 
 	/**
