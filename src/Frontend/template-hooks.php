@@ -70,14 +70,15 @@ add_action( 'auto_listings_single_sidebar', 'auto_listings_template_single_map',
 add_action( 'auto_listings_single_sidebar', 'auto_listings_template_single_contact_form', 50 );
 
 function auto_listings_replace_hook_with_sidebar() {
+	if ( ! is_active_sidebar( 'auto-listings-single' ) ) {
+		return;
+	}
 	global $wp_filter;
-	if ( is_active_sidebar( 'auto-listings-single' ) ) {
-		foreach( $wp_filter['auto_listings_single_sidebar']->callbacks as $priority => $callback_args ) {
-			if ( $priority === 0 ) {
-				continue;
-			}
-			remove_action( 'auto_listings_single_sidebar', array_keys( $callback_args )[0], $priority );
+	foreach( $wp_filter['auto_listings_single_sidebar']->callbacks as $priority => $callback_args ) {
+		if ( $priority === 0 ) {
+			continue;
 		}
+		remove_action( 'auto_listings_single_sidebar', array_keys( $callback_args )[0], $priority );
 	}
 	dynamic_sidebar( 'auto-listings-single' );
 }
