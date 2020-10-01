@@ -113,7 +113,7 @@ class Shortcode {
 
 	private function check_ajax( $form, $data ) {
 		if ( $this->is_ajax( $form ) && ! check_ajax_referer( 'ajax_nonce' ) ) {
-			$this->send_error_message( __( 'Invalid nonce', 'mb-frontend-submission' ) );
+			$this->send_error_message( __( 'Invalid nonce', 'mb-frontend-submission' ), $form );
 		}
 	}
 
@@ -126,7 +126,7 @@ class Shortcode {
 		$action  = filter_var( $data[ 'recaptcha_action' ], FILTER_SANITIZE_STRING );
 
 		if ( ! $captcha || ! $action ) {
-			$this->send_error_message( __( 'Invalid captcha token.', 'mb-frontend-submission' ) );
+			$this->send_error_message( __( 'Invalid captcha token.', 'mb-frontend-submission' ), $form );
 		}
 
 		$url = 'https://www.google.com/recaptcha/api/siteverify';
@@ -139,7 +139,7 @@ class Shortcode {
 		$response = json_decode( $response, true );
 
 		if ( empty( $response['action'] ) || $action !== $response[ 'action' ] ) {
-			$this->send_error_message( __( 'Invalid captcha token.', 'mb-frontend-submission' ) );
+			$this->send_error_message( __( 'Invalid captcha token.', 'mb-frontend-submission' ), $form );
 		}
 	}
 
