@@ -74,10 +74,7 @@ function auto_listings_replace_hook_with_sidebar() {
 		return;
 	}
 	global $wp_filter;
-	foreach( $wp_filter['auto_listings_single_sidebar']->callbacks as $priority => $callback_args ) {
-		if ( $priority === 0 ) {
-			continue;
-		}
+	foreach ( $wp_filter['auto_listings_single_sidebar']->callbacks as $priority => $callback_args ) {
 		remove_action( 'auto_listings_single_sidebar', array_keys( $callback_args )[0], $priority );
 	}
 	dynamic_sidebar( 'auto-listings-single' );
