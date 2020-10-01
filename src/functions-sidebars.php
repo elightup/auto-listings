@@ -19,7 +19,7 @@ add_action( 'widgets_init', 'auto_listings_register_sidebars' );
 function auto_listings_register_sidebars() {
 	register_sidebar(
 		array(
-			'name'          => __( 'Auto Listings', 'auto-listings' ),
+			'name'          => __( 'Auto Listings Archive', 'auto-listings' ),
 			'id'            => 'auto-listings',
 			'description'   => __( 'Widgets in this area will be shown on all listings pages.', 'auto-listings' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
