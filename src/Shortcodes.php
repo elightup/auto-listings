@@ -138,7 +138,7 @@ class Shortcodes {
 			add_filter( 'post_class', [ $this, 'listings_compact_mode' ] );
 		}
 
-		return $this->listing_loop( $query_args, $atts, 'listings' );
+		return $this->listing_loop( $query_args, $atts );
 	}
 
 	/**
@@ -164,12 +164,11 @@ class Shortcodes {
 	 *
 	 * @param  array  $query_args Query parameters.
 	 * @param  array  $atts Shortcode attributes.
-	 * @param  string $loop_name Loop name.
 	 *
 	 * @return string
 	 */
-	protected function listing_loop( $query_args, $atts, $loop_name ) {
-		$query = new \WP_Query( apply_filters( 'auto_listings_shortcode_listings_query', $query_args, $atts, $loop_name ) );
+	protected function listing_loop( $query_args, $atts ) {
+		$query = new \WP_Query( apply_filters( 'auto_listings_shortcode_listings_query', $query_args, $atts ) );
 		if ( ! $query->have_posts() ) {
 			ob_start();
 			$this->loop_no_results( $atts );
@@ -179,18 +178,12 @@ class Shortcodes {
 		$view = ! empty( $atts['view'] ) ? $atts['view'] : 'list';
 		$view .= '-view';
 
-		if ( ! empty( $atts['columns'] ) ) {
-			add_filter( 'auto_listings_columns', function( $columns ) use ( $atts ) {
-				return $atts['columns'];
-			} );
-		}
-
 		ob_start();
 		?>
-		<?php do_action( "auto_listings_shortcode_before_{$loop_name}_loop" ); ?>
+		<?php do_action( "auto_listings_shortcode_before_listings_loop" ); ?>
 
 		<?php
-		$cols  = auto_listings_columns();
+		$cols  = ! empty( $atts['columns'] ) ? $atts['columns'] : auto_listings_columns();
 		$count = 1;
 		while ( $query->have_posts() ) :
 			$query->the_post();
@@ -215,9 +208,9 @@ class Shortcodes {
 		}
 
 		do_action( 'auto_listings_after_listings_loop' );
-		do_action( "auto_listings_shortcode_after_{$loop_name}_loop" );
+		do_action( "auto_listings_shortcode_after_listings_loop" );
 
 		wp_reset_postdata();
-		return ob_get_clean();
+		return apply_filters( 'auto_listings_listings_shortcode_output', ob_get_clean(), $query, $view, $cols );
 	}
 }
