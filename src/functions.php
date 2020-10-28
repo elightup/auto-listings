@@ -290,3 +290,36 @@ function auto_listings_ajax_archive_item() {
 	// Always exit when doing Ajax.
 	exit();
 }
+
+add_action( 'pmxi_saved_post', 'auto_listings_wpai_import_gallery', 10, 1 );
+/**
+ * Ajax Handler for archiving a listings
+ */
+function auto_listings_wpai_import_gallery( $post_id ) {
+	if ( get_post_type( $post_id ) !== 'auto-listing' ) {
+		return;
+	}
+	$images = get_post_meta( $post_id, '_al_listing_image_gallery', true );
+	if ( empty( $images ) ) {
+		return;
+	}
+	$images = explode( '|', $images );
+	if ( empty( $images ) ) {
+		return;
+	}
+	$images = array_map( function( $image ) {
+		$image_parts = pathinfo( $image );
+		if ( empty( $image_parts ) ) {
+			return;
+		}
+		$attachment = get_page_by_title( $image_parts['filename'], OBJECT, 'attachment' );
+		if ( is_wp_error( $attachment ) || empty( $attachment ) ) {
+			return;
+		}
+		return $attachment->ID;
+	}, $images );
+
+	foreach ( $images as $image ) {
+		add_post_meta( $post_id, '_al_listing_image_gallery', $image, false );
+	}
+}
