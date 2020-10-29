@@ -323,3 +323,14 @@ function auto_listings_wpai_import_gallery( $post_id ) {
 		add_post_meta( $post_id, '_al_listing_image_gallery', $image, false );
 	}
 }
+function auto_listings_wpai_get_image_url( $value ) {
+	if ( empty( $value ) ) {
+		return $value;
+	}
+	$images = explode( '|', $value );
+	$images = array_map( function( $image_id ) {
+		return wp_get_attachment_url( $image_id );
+	}, $images );
+
+	return implode( '|', $images );
+}
