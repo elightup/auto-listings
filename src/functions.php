@@ -292,9 +292,6 @@ function auto_listings_ajax_archive_item() {
 }
 
 add_action( 'pmxi_saved_post', 'auto_listings_wpai_import_gallery', 10, 1 );
-/**
- * Ajax Handler for archiving a listings
- */
 function auto_listings_wpai_import_gallery( $post_id ) {
 	if ( get_post_type( $post_id ) !== 'auto-listing' ) {
 		return;
@@ -323,6 +320,7 @@ function auto_listings_wpai_import_gallery( $post_id ) {
 		add_post_meta( $post_id, '_al_listing_image_gallery', $image, false );
 	}
 }
+
 function auto_listings_wpai_get_image_url( $value ) {
 	if ( empty( $value ) ) {
 		return $value;
