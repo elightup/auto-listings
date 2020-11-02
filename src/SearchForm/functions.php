@@ -136,6 +136,7 @@ function auto_listings_search_get_vehicle_data() {
 
 	// remove empties and make unique.
 	foreach ( $data as $key => $value ) {
+		$data[ $key ] = array_map( 'trim', $data[ $key ] );
 		$data[ $key ] = array_filter( $data[ $key ] );
 		$data[ $key ] = array_unique( $data[ $key ] );
 		if ( 'year' === $key ) {
