@@ -295,7 +295,7 @@ function auto_listings_get_specs_for_output() {
 		$fields[ $label ] = $val;
 	}
 
-	return $fields;
+	return apply_filters( 'auto_listings_spec_fields', $fields );
 }
 
 /**
