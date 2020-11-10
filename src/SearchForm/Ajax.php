@@ -11,7 +11,8 @@ class Ajax {
 		if ( empty( $_POST[ 'selected' ] ) ) {
 			wp_send_json_error( __( 'No make selected', 'auto-listings' ) );
 		}
-		$selected = array_map( 'sanitize_text_field', wp_unslash( $_POST[ 'selected' ] ) );
+		$selected = is_array( $_POST[ 'selected' ] ) ? $_POST[ 'selected' ] : ( array ) $_POST[ 'selected' ];
+		$selected = array_map( 'sanitize_text_field', wp_unslash( $selected ) );
 		$query = [
 			'post_type'      => 'auto-listing',
 			'meta_key'       => '_al_listing_make_display',

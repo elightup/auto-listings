@@ -35,7 +35,7 @@ if ( ! empty( $listing_tabs ) ) : ?>
 		</ul>
 
 		<?php foreach ( $listing_tabs as $key => $listing_tab ) : ?>
-			<div class="auto-listings-Tabs-panel auto-listings-Tabs-panel--<?php echo esc_attr( $key ); ?> panel entry-content al-tab" id="tab-<?php echo esc_attr( $key ); ?>" role="tabpanel" aria-labelledby="tab-title-<?php echo esc_attr( $key ); ?>">
+			<div class="auto-listings-Tabs-panel auto-listings-Tabs-panel--<?php echo esc_attr( $key ); ?> panel al-tab" id="tab-<?php echo esc_attr( $key ); ?>" role="tabpanel" aria-labelledby="tab-title-<?php echo esc_attr( $key ); ?>">
 				<?php call_user_func( $listing_tab['callback'], $key, $listing_tab ); ?>
 			</div>
 		<?php endforeach; ?>
