@@ -51,32 +51,26 @@ function auto_listings_search_within_radius() {
 
 function auto_listings_search_price_min_max() {
 	$price_range = auto_listings_option( 'price_range' );
-	$options = apply_filters(
-		'auto_listings_search_price_min_max',
-		array(
-			'3000'   => auto_listings_raw_price( '3000' ),
-			'5000'   => auto_listings_raw_price( '5000' ),
-			'10000'  => auto_listings_raw_price( '10000' ),
-			'15000'  => auto_listings_raw_price( '15000' ),
-			'20000'  => auto_listings_raw_price( '20000' ),
-			'25000'  => auto_listings_raw_price( '25000' ),
-			'30000'  => auto_listings_raw_price( '30000' ),
-			'35000'  => auto_listings_raw_price( '35000' ),
-			'40000'  => auto_listings_raw_price( '40000' ),
-			'45000'  => auto_listings_raw_price( '45000' ),
-			'50000'  => auto_listings_raw_price( '50000' ),
-			'60000'  => auto_listings_raw_price( '60000' ),
-			'80000'  => auto_listings_raw_price( '80000' ),
-			'100000' => auto_listings_raw_price( '100000' ),
-			'125000' => auto_listings_raw_price( '125000' ),
-			'150000' => auto_listings_raw_price( '150000' ),
-		)
+	$options = array(
+		'3000'   => auto_listings_raw_price( '3000' ),
+		'5000'   => auto_listings_raw_price( '5000' ),
+		'10000'  => auto_listings_raw_price( '10000' ),
+		'15000'  => auto_listings_raw_price( '15000' ),
+		'20000'  => auto_listings_raw_price( '20000' ),
+		'25000'  => auto_listings_raw_price( '25000' ),
+		'30000'  => auto_listings_raw_price( '30000' ),
+		'35000'  => auto_listings_raw_price( '35000' ),
+		'40000'  => auto_listings_raw_price( '40000' ),
+		'45000'  => auto_listings_raw_price( '45000' ),
+		'50000'  => auto_listings_raw_price( '50000' ),
+		'60000'  => auto_listings_raw_price( '60000' ),
+		'80000'  => auto_listings_raw_price( '80000' ),
+		'100000' => auto_listings_raw_price( '100000' ),
+		'125000' => auto_listings_raw_price( '125000' ),
+		'150000' => auto_listings_raw_price( '150000' ),
 	);
-	if ( empty( $price_range ) ) {
-		return $options;
-	}
-	$options = auto_listings_get_price_from_price_range( $price_range );
-	return $options;
+	$options = empty( $price_range ) ? $options : auto_listings_get_price_from_price_range( $price_range );
+	return apply_filters( 'auto_listings_search_price_min_max', $options );
 }
 
 function auto_listings_get_price_from_price_range( $price_range ) {
