@@ -101,6 +101,8 @@ class Field {
 			break;
 		}
 
+		$options = apply_filters( 'als_field_options', $options, $atts['name'] );
+
 		// Insert placeholder option for normal select field
 		$placeholder_option = [];
 		if ( $atts[ 'multiple' ] === 'false' ) {
