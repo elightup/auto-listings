@@ -10,7 +10,7 @@ return [
 	'title'          => __( 'Listing Setup', 'auto-listings' ),
 	'settings_pages' => 'auto-listings',
 	'tab'            => 'listings',
-	'fields'         => [
+	'fields'         => apply_filters( 'auto_listings_listing_setup_fields', [
 		[
 			'name'    => __( 'Condition', 'auto-listings' ),
 			'desc'    => __( 'What type of condition vehicles are you selling?', 'auto-listings' ),
@@ -56,5 +56,5 @@ return [
 			'type' => 'text',
 			'std'  => 'listing',
 		],
-	],
+	] ),
 ];

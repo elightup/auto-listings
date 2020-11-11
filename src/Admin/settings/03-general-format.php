@@ -10,7 +10,7 @@ return [
 	'title'          => __( 'Price Format', 'auto-listings' ),
 	'settings_pages' => 'auto-listings',
 	'tab'            => 'general',
-	'fields'         => [
+	'fields'         => apply_filters( 'auto_listings_price_format_fields', [
 		[
 			'name'    => __( 'Currency Position', 'auto-listings' ),
 			'id'      => 'currency_position',
@@ -66,5 +66,5 @@ return [
 			'type'        => 'text',
 			'desc' => __( 'Enter your price range here, from lowest to highest, seperated by the comma. If this is left empty, our default price range will be used.', 'auto-listings' ),
 		],
-	],
+	] ),
 ];

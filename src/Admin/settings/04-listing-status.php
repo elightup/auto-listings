@@ -10,7 +10,7 @@ return [
 	'title'          => __( 'Listing Statuses', 'auto-listings' ),
 	'settings_pages' => 'auto-listings',
 	'tab'            => 'listings',
-	'fields'         => [
+	'fields'         => apply_filters( 'auto_listings_listing_statuses_fields', [
 		[
 			'type'        => 'group',
 			'before'      => '<p>' . __( 'Once statuses have been added here, they are then available in the <strong>Status</strong> dropdown field when adding or editing a listing.', 'auto-listings' ) . '</p><p>' . __( 'Statuses appear in a styled box over the listing\'s image and are used primarily to attract attention.', 'auto-listings' ) . '</p>',
@@ -46,5 +46,5 @@ return [
 				],
 			],
 		],
-	],
+	] ),
 ];

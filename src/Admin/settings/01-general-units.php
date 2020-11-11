@@ -10,7 +10,7 @@ return [
 	'title'          => __( 'Measurements', 'auto-listings' ),
 	'settings_pages' => 'auto-listings',
 	'tab'            => 'general',
-	'fields'         => [
+	'fields'         => apply_filters( 'auto_listings_units_fields', [
 		[
 			'name'    => __( 'Metric or Imperial', 'auto-listings' ),
 			'id'      => 'metric',
@@ -20,5 +20,5 @@ return [
 				'no'  => __( 'Imperial', 'auto-listings' ),
 			],
 		],
-	],
+	] ),
 ];

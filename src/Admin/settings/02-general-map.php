@@ -10,7 +10,7 @@ return [
 	'title'          => __( 'Maps &amp; Search', 'auto-listings' ),
 	'settings_pages' => 'auto-listings',
 	'tab'            => 'general',
-	'fields'         => [
+	'fields'         => apply_filters( 'auto_listings_map_search_fields', [
 		[
 			'name'   => __( 'Google Maps API Key', 'auto-listings' ),
 			/* translators: url */
@@ -38,5 +38,5 @@ return [
 			'type' => 'number',
 			'std'  => 300,
 		],
-	],
+	] ),
 ];
