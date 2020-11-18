@@ -12,7 +12,7 @@ return [
 	'title'      => __( 'Vehicle Select', 'auto-listings' ),
 	'post_types' => 'auto-listing',
 	'priority'   => 'low',
-	'fields'     => [
+	'fields'     => apply_filters( 'auto_listings_vehicle_select', [
 		[
 			'type'       => 'button',
 			'id'         => 'cq-select-model',
@@ -67,5 +67,5 @@ return [
 			],
 			'desc'       => __( 'Once your vehicle is selected, hit the button to automatically populate the fields below.', 'auto-listings' ),
 		],
-	],
+	] ),
 ];
