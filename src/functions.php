@@ -332,3 +332,15 @@ function auto_listings_wpai_get_image_url( $value ) {
 
 	return implode( '|', $images );
 }
+
+/**
+ * Update featured image to the first image in gallery.
+ */
+function auto_listings_update_featured_image( $listing_id ) {
+	$first_gallery_image = get_post_meta( $listing_id, '_al_listing_image_gallery', true );
+	if ( $first_gallery_image ) {
+		return;
+	}
+	update_post_meta( $listing_id, '_thumbnail_id', $first_gallery_image );
+}
+add_action( 'rwmb__al_listing_images_after_save_post', 'auto_listings_update_featured_image' );
