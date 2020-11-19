@@ -2,15 +2,22 @@
 <p>
 	<?php
 	/* translators: theme url */
-	echo wp_kses_post( sprintf( __( '%s - our premium theme for car dealership and car listings websites.', 'auto-listings' ), '<a href="https://themeforest.net/item/corify-wordpress-car-listings-dealership-theme/25740868?ref=fitwp" target="_blank">Corify</a>' ) );
+	echo wp_kses_post( sprintf( __( '%s - powerful, elegant and lightweight premium theme for car dealership and car listings websites.', 'auto-listings' ), '<strong>eCar</strong>' ) );
 	?>
 </p>
 <p>
 	<?php
 	/* translators: theme url */
-	echo wp_kses_post( sprintf( __( '%s - free theme that helps you build a listings website with ease.', 'auto-listings' ), '<a href="https://wpautolistings.com/themes/?utm_source=WordPress&utm_medium=link&utm_campaign=plugin" target="_blank">CarListings</a>' ) );
+	echo wp_kses_post( sprintf( __( '%s - a must-have WordPress theme for car dealership and car listings websites.', 'auto-listings' ), '<strong>Corify</strong>' ) );
 	?>
 </p>
+<p>
+	<?php
+	/* translators: theme url */
+	echo wp_kses_post( sprintf( __( '%s - free theme that helps you build a listings website with ease.', 'auto-listings' ), '<strong>CarListings</strong>' ) );
+	?>
+</p>
+<a href="https://wpautolistings.com/themes/?utm_source=WordPress&utm_medium=link&utm_campaign=settings" type="button" class="button"><?php esc_html_e( 'Get all themes', 'auto-listings' ); ?></a>
 <?php
 $message = ob_get_clean();
 return [
