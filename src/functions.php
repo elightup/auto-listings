@@ -297,6 +297,7 @@ function auto_listings_wpai_import_gallery( $post_id ) {
 		return;
 	}
 	$images = get_post_meta( $post_id, '_al_listing_image_gallery', true );
+	delete_post_meta( $post_id, '_al_listing_image_gallery', true );
 	if ( empty( $images ) ) {
 		return;
 	}
