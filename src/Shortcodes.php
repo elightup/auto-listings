@@ -138,6 +138,12 @@ class Shortcodes {
 			add_filter( 'post_class', [ $this, 'listings_compact_mode' ] );
 		}
 
+		if ( ! empty( $atts['columns'] ) ) {
+			add_filter( 'auto_listings_columns', function() use ( $atts ) {
+				return $atts['columns'];
+			} );
+		}
+
 		return $this->listing_loop( $query_args, $atts );
 	}
 
