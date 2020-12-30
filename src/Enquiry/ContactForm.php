@@ -20,7 +20,7 @@ class ContactForm {
 		add_filter( 'rwmb_frontend_insert_post_data', [ $this, 'post_data' ], 10, 2 );
 		add_action( 'rwmb_frontend_after_save_post', [ $this, 'add_listing_data' ] );
 		add_action( 'rwmb_frontend_after_save_post', [ $this, 'send_notification' ] );
-		add_filter( 'rwmb_frontend_field_value_confirmation', [ $this, 'confirmation_message' ] );
+		add_filter( 'rwmb_frontend_field_value_confirmation', [ $this, 'confirmation_message' ], 10, 2 );
 	}
 
 	/**
@@ -246,7 +246,10 @@ class ContactForm {
 	 *
 	 * @param int $message confimation message
 	 */
-	public function confirmation_message( $message ) {
+	public function confirmation_message( $message, $args ) {
+		if ( $args['id'] !== 'auto_listings_contact_form' ) {
+			return $message;
+		}
 		$success_message = auto_listings_option( 'contact_form_success' );
 		if ( empty( $success_message ) ) {
 			return $message;
