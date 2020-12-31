@@ -30,7 +30,8 @@ class ContactForm {
 		$submit_button      = __( 'Send Enquiry', 'auto-listings' );
 		$recaptcha_site_key = auto_listings_option( 'captcha_site_key' );
 		$recaptcha_secret   = auto_listings_option( 'captcha_secret_key' );
-		$shortcode          = sprintf( '[mb_frontend_form id="auto_listings_contact_form" ajax="true" submit_button="%s" recaptcha_key="%s" recaptcha_secret="%s"]', $submit_button, $recaptcha_site_key, $recaptcha_secret );
+		$is_ajax            = auto_listings_option( 'contact_form_ajax' ) ? 'true' : 'false';
+		$shortcode          = sprintf( '[mb_frontend_form id="auto_listings_contact_form" ajax="%s" submit_button="%s" recaptcha_key="%s" recaptcha_secret="%s"]', $is_ajax, $submit_button, $recaptcha_site_key, $recaptcha_secret );
 		return do_shortcode( $shortcode );
 	}
 
