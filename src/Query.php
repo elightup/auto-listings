@@ -19,8 +19,7 @@ class Query {
 		if ( is_admin() ) {
 			return;
 		}
-		add_action( 'pre_get_posts', [ $this, 'pre_get_posts' ], 999 );
-		add_action( 'wp', [ $this, 'remove_query_hook' ] );
+		add_action( 'pre_get_posts', [ $this, 'pre_get_posts' ] );
 	}
 
 	/**
@@ -35,7 +34,6 @@ class Query {
 		}
 
 		$this->listings_query( $query );
-		$this->remove_query_hook();
 	}
 
 	/**
@@ -95,12 +93,5 @@ class Query {
 		}
 
 		return apply_filters( 'auto_listings_get_ordering_args', $args );
-	}
-
-	/**
-	 * Restore original query
-	 */
-	public function remove_query_hook() {
-		remove_action( 'pre_get_posts', [ $this, 'pre_get_posts' ] );
 	}
 }

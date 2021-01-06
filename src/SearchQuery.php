@@ -15,7 +15,7 @@ class SearchQuery {
 	 * Add hooks when module is loaded.
 	 */
 	public function __construct() {
-		add_action( 'pre_get_posts', [ $this, 'pre_get_posts' ], 99 );
+		add_action( 'pre_get_posts', [ $this, 'pre_get_posts' ] );
 	}
 
 	/**
@@ -24,7 +24,7 @@ class SearchQuery {
 	 * @param WP_Query $query Query object.
 	 */
 	public function pre_get_posts( \WP_Query $query ) {
-		if ( is_admin() || ! $query->is_main_query() || ! is_post_type_archive( 'auto-listing' ) || ! is_search() ) {
+		if ( is_admin() || ! $query->is_main_query() || ! $query->is_post_type_archive( 'auto-listing' ) || ! $query->is_search() ) {
 			return;
 		}
 
