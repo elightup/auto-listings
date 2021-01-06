@@ -29,7 +29,7 @@ class Query {
 	 * @param mixed $query Query object.
 	 */
 	public function pre_get_posts( $query ) {
-		$condition = apply_filters( 'auto_listings_ordering_condtion', ( is_listing_archive() || is_tax( 'body-type' ) ) && $query->is_main_query() );
+		$condition = apply_filters( 'auto_listings_ordering_condtion', ( $query->is_listing_archive() || $query->is_tax( 'body-type' ) ) && $query->is_main_query() );
 		if ( ! $condition ) {
 			return;
 		}
