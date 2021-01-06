@@ -30,7 +30,7 @@ class TemplateLoader {
 			$file = 'single-listing.php';
 		}
 
-		if ( is_listing_archive() ||
+		if ( is_post_type_archive( 'auto-listing' ) ||
 			is_listing_search() ||
 			is_listing_taxonomy()
 		) {

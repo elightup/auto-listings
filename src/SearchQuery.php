@@ -15,7 +15,7 @@ class SearchQuery {
 	 * Add hooks when module is loaded.
 	 */
 	public function __construct() {
-		add_action( 'pre_get_posts', [ $this, 'pre_get_posts' ], 999 );
+		add_action( 'pre_get_posts', [ $this, 'pre_get_posts' ], 99 );
 	}
 
 	/**
@@ -75,7 +75,7 @@ class SearchQuery {
 			$meta_query['relation'] = 'AND';
 		}
 
-		
+
 		$query->set( 'meta_query', $meta_query );
 		$query->set( 'tax_query', $body_type_query );
 		$query->set( 'post_type', 'auto-listing' );

@@ -19,7 +19,7 @@ class Query {
 		if ( is_admin() ) {
 			return;
 		}
-		add_action( 'pre_get_posts', [ $this, 'pre_get_posts' ] );
+		add_action( 'pre_get_posts', [ $this, 'pre_get_posts' ], 999 );
 		add_action( 'wp', [ $this, 'remove_query_hook' ] );
 	}
 
@@ -29,7 +29,7 @@ class Query {
 	 * @param mixed $query Query object.
 	 */
 	public function pre_get_posts( $query ) {
-		$condition = apply_filters( 'auto_listings_ordering_condtion', ( $query->is_listing_archive() || $query->is_tax( 'body-type' ) ) && $query->is_main_query() );
+		$condition = apply_filters( 'auto_listings_ordering_condtion', ( $query->is_post_type_archive( 'auto-listing' ) || $query->is_tax( 'body-type' ) ) && $query->is_main_query() );
 		if ( ! $condition ) {
 			return;
 		}

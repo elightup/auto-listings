@@ -44,18 +44,9 @@ function is_auto_listings() {
 		}
 	}
 
-	$result = apply_filters( 'is_auto_listings', ( is_listing_archive() || is_listing() || is_listing_search() || is_listing_taxonomy() || $is_seller ) ? true : false );
+	$result = apply_filters( 'is_auto_listings', ( is_post_type_archive( 'auto-listing' ) || is_listing() || is_listing_search() || is_listing_taxonomy() || $is_seller ) ? true : false );
 
 	return $result;
-}
-
-if ( ! function_exists( 'is_listing_archive' ) ) {
-	/**
-	 * Returns true when viewing the listing type archive.
-	 */
-	function is_listing_archive() {
-		return ( is_post_type_archive( 'auto-listing' ) );
-	}
 }
 
 /**

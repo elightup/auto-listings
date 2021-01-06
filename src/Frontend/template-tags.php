@@ -181,7 +181,7 @@ add_filter( 'get_the_archive_title', 'auto_listings_listing_display_theme_title'
  * @param string $title archive template title.
  */
 function auto_listings_listing_display_theme_title( $title ) {
-	if ( is_listing_archive() ) {
+	if ( is_post_type_archive( 'auto-listing' ) ) {
 		$title = auto_listings_listing_archive_get_title();
 	}
 	return $title;
@@ -210,7 +210,7 @@ function auto_listings_listing_archive_get_title() {
 			// Translators: %s is page number.
 			$page_title .= sprintf( __( '&nbsp;&ndash; Page %s', 'auto-listings' ), get_query_var( 'paged' ) );
 		}
-	} elseif ( is_listing_archive() ) {
+	} elseif ( is_post_type_archive( 'auto-listing' ) ) {
 		$page_id    = auto_listings_option( 'archives_page' );
 		$page_title = get_the_title( $page_id );
 	} else {
