@@ -1,13 +1,7 @@
 ( function( $ ) {
 
-	/**
-	 * Archive page
-	 */
-	if( $( 'body.auto-listings' ).hasClass( 'archive' ) ) {
-		auto_listings_view_switcher();
-		auto_listings_ordering();
-		auto_listings_buy_sell();
-	}
+	auto_listings_view_switcher();
+	auto_listings_ordering();
 
 	/**
 	 * Single listing
@@ -50,19 +44,12 @@
 	}
 
 	/**
-	 * Buy/Sell option
-	 */
-	function auto_listings_buy_sell() {
-		$( '.auto-listings-search' ).on( 'change', 'select.purpose', function() {
-			$( this ).closest( 'form' ).submit();
-		});
-	}
-
-
-	/**
 	 * View switcher
 	 */
 	function auto_listings_view_switcher() {
+		if ( ! $( '.auto-listings-view-switcher' ).length ) {
+			return;
+		}
 
 		var default_view = auto_listings.list_grid_view || 'list';
 
