@@ -10,26 +10,28 @@ namespace AutoListings\Frontend;
 /**
  * Template Loader Class
  */
-class TemplatePathLoader extends \Gamajo_Template_Loader {
-	/**
-	 * Prefix for filter names.
-	 *
-	 * @var string
-	 */
-	protected $filter_prefix = 'auto_listings';
+class TemplatePathLoader {
+	public static function load( $name, $args ) {
+		// Locate template file from child theme and parent theme and load it.
+		$file = locate_template( ["listings/$name.php"] );
+		if ( $file ) {
+			extract( $args );
+			$data = (object) $args;
+			require $file;
+			return;
+		}
 
-	/**
-	 * Directory name where custom templates for this plugin should be found in the theme.
-	 *
-	 * @var string
-	 */
-	protected $theme_template_directory = 'listings';
-
-	/**
-	 * Reference to the root directory path of this plugin.
-	 * Can either be a defined constant, or a relative reference from where the subclass lives.
-	 *
-	 * @var string
-	 */
-	protected $plugin_directory = AUTO_LISTINGS_DIR;
+		// Else load from the plugins.
+		$paths = apply_filters( 'auto_listings_template_paths', [AUTO_LISTINGS_DIR . 'templates'] );
+		krsort( $paths );
+		foreach ( $paths as $path ) {
+			$file = trailingslashit( $path ) . $name . '.php';
+			if ( file_exists( $file ) ) {
+				extract( $args );
+				$data = (object) $args;
+				require $file;
+				return;
+			}
+		}
+	}
 }

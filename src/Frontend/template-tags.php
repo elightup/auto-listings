@@ -362,11 +362,8 @@ function auto_listings_get_part( $part, $data = [] ) {
 		],
 		(array) $data
 	);
-	static $template_loader = null;
-	if ( null === $template_loader ) {
-		$template_loader = new AutoListings\Frontend\TemplatePathLoader;
-	}
-	$template_loader->set_template_data( $data )->get_template_part( $part );
+
+	AutoListings\Frontend\TemplatePathLoader::load( $part, $data );
 }
 
 /**
