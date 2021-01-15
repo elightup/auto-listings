@@ -268,7 +268,7 @@ function auto_listings_spec_fields() {
 
 	$fields = array_merge( $spec_fields, $metric_fields, $imperial_fields, $engine_fields );
 
-	return $fields;
+	return apply_filters( 'auto_listings_spec_fields', $fields );
 }
 
 /**
@@ -295,7 +295,7 @@ function auto_listings_get_specs_for_output() {
 		$fields[ $label ] = $val;
 	}
 
-	return apply_filters( 'auto_listings_spec_fields', $fields );
+	return $fields;
 }
 
 /**
