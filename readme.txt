@@ -3,7 +3,7 @@ Contributors: elightup, autolistings, rilwis, hungviet91
 Tags: car dealer, sell cars, car classifieds, car sales, car listings, automotive listings, auto listings, automotive, car, car dealership
 Requires at least: 5.5
 Tested up to: 5.6
-Stable tag: 2.5.10
+Stable tag: 2.5.11
 Requires PHP: 5.6
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
