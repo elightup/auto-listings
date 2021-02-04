@@ -28,7 +28,7 @@ $details_array = array(
 	__( 'Engine', 'auto-listings' )                => auto_listings_engine(),
 	__( 'Fuel Economy Combined', 'auto-listings' ) => auto_listings_fuel_economy(),
 );
-if ( ! auto_listings_hide_item( 'price' ) ) {
+if ( auto_listings_hide_item( 'price' ) ) {
 	unset( $details_array[ __( 'Price', 'auto-listings' ) ] );
 }
 $details_array = apply_filters( 'auto_listings_details_array', $details_array );
