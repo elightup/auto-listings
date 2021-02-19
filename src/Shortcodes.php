@@ -133,7 +133,7 @@ class Shortcodes {
 
 		// if we are in compact mode.
 		if ( ! empty( $atts['compact'] ) && 'true' === $atts['compact'] ) {
-			remove_action( 'auto_listings_listings_loop_item', 'auto_listings_template_loop_at_a_glance', 40 );
+			remove_action( 'auto_listings_listings_loop_item', 'auto_listings_template_loop_at_a_glance', 20 );
 			remove_action( 'auto_listings_listings_loop_item', 'auto_listings_template_loop_description', 50 );
 			add_filter( 'post_class', [ $this, 'listings_compact_mode' ] );
 		}
