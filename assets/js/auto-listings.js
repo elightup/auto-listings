@@ -6,10 +6,8 @@
 	/**
 	 * Single listing
 	 */
-	if( $( 'body.auto-listings' ).hasClass( 'single' ) ) {
-		auto_listings_google_map();
-		auto_listings_slider();
-	}
+	auto_listings_google_map();
+	auto_listings_slider();
 
 	/**
 	 * Search box ( Old version )
