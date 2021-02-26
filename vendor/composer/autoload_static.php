@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit186999ac33914e05478ecf5ac304ff69
+class ComposerStaticInit1ba6dcb9f4bcd8faad86bb0a7492d91b
 {
     public static $files = array (
         '4f6bfac5880e9e16cb1be3bf40865224' => __DIR__ . '/../..' . '/src/functions.php',
@@ -52,6 +52,7 @@ class ComposerStaticInit186999ac33914e05478ecf5ac304ff69
     );
 
     public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Gamajo_Template_Loader' => __DIR__ . '/..' . '/gamajo/template-loader/class-gamajo-template-loader.php',
         'RWMB_Backup_Field' => __DIR__ . '/..' . '/meta-box/mb-settings-page/src/BackupField.php',
     );
@@ -59,9 +60,9 @@ class ComposerStaticInit186999ac33914e05478ecf5ac304ff69
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit186999ac33914e05478ecf5ac304ff69::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit186999ac33914e05478ecf5ac304ff69::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit186999ac33914e05478ecf5ac304ff69::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit1ba6dcb9f4bcd8faad86bb0a7492d91b::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit1ba6dcb9f4bcd8faad86bb0a7492d91b::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit1ba6dcb9f4bcd8faad86bb0a7492d91b::$classMap;
 
         }, null, ClassLoader::class);
     }

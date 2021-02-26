@@ -1,62 +1,123 @@
-/* global google */
+( function( $, document, google ) {
+	class Base {
+		constructor( container ) {
+			this.container = container;
 
-( function ( $, document, google ) {
-	'use strict';
+			// 2 cases: not in or in a group.
+			this.addressFields = container.querySelectorAll( '.rwmb-text[name^="address"], .rwmb-text[name*="[address"]' );
 
-	// Use function construction to store location & DOM elements separately for meta box.
-	var Location = function ( $container ) {
-		this.$container = $container;
-		this.settings = null;
-	};
+			const geoEl = container.querySelector( '.data-geo' );
+			this.settings = geoEl ? JSON.parse( geoEl.dataset.geo ) : null;
+		}
 
-	Location.prototype = {
-		/**
-		 * Initialize.
-		 */
-		init: function () {
-			this.getDataGeo();
-			this.initAutocomplete();
-		},
-
-		/**
-		 * Get data geo config.
-		 */
-		getDataGeo: function () {
-			if ( this.settings === null ) {
-				this.settings = this.$container.find( '.data-geo' ).data( 'geo' );
+		init() {
+			if ( this.settings ) {
+				this.addressFields.forEach( this.autocomplete );
 			}
-		},
 
-		/**
-		 * Setup the autocomplete and run.
-		 */
-		initAutocomplete: function () {
-			if ( this.settings === null ) {
+			if ( !this.container.querySelector( `.rwmb-${ this.type }-field` ) ) {
 				return;
 			}
-			var that = this;
-			this.getAutocompleteFields().each( function() {
-				that.autocomplete( this );
-			} );
-		},
 
-		/**
-		 * Get autocomplete fields. Which is text field and has name starts with "address".
-		 */
-		getAutocompleteFields: function () {
-			// 2 cases: not in or in a group.
-			return this.$container.find( '.rwmb-text[name^="address"], .rwmb-text[name*="[address"]' );
-		},
+			const $container = $( this.container );
 
-		/**
-		 * Setup the autocomplete for each address field.
-		 *
-		 * @param field Current DOM element of the address field.
-		 *
-		 * @link https://developers.google.com/maps/documentation/javascript/places-autocomplete
-		 */
-		autocomplete: function ( field ) {
-			var that = this,
+			// Populate lat, lng when map pin changes.
+			$container.find( `.rwmb-${ this.type }` ).on( 'change', this.populateLatLngFromMap );
+
+			// Populate map when lat, lng change.
+			$container.find( '[data-binding="lat"]' ).prev().children().on( 'change keyup', _.debounce( this.populateMapFromLat, 500 ) );
+			$container.find( '[data-binding="lng"]' ).prev().children().on( 'change keyup', _.debounce( this.populateMapFromLng, 500 ) );
+		}
+
+		populateFromAddress = ( data, address ) => {
+			this.getPopulatedFields( address ).forEach( field => this.populateField( field, data ) );
+		};
+
+		getMapControllerFromLatLng = el => {
+			const addressField = this.getAddressField( el );
+			const map = [ ...this.getScope( el ).querySelectorAll( `.rwmb-${ this.type }-field` ) ].find( m => !addressField || m.dataset.addressField === addressField );
+			return map ? $( map ).data( `${ this.type }Controller` ) : null;
+		};
+
+		populateLatLngFromMap = e => {
+			const [ lat, lng ] = `${ e.target.value },,`.split( ',' );
+			const data = { lat, lng };
+
+			this.getPopulatedFields( e.target )
+				.filter( field => [ 'lat', 'lng' ].includes( field.dataset.binding ) )
+				.forEach( field => this.populateField( field, data ) );
+		};
+
+		populateField = ( field, data ) => {
+			const value = this.getFieldData( field.dataset.binding, data );
+			if ( value || field.dataset.bind_if_empty ) {
+				field.previousSibling.firstChild.value = value;
+			}
+		};
+
+		// Get populated fields connected to an element.
+		getPopulatedFields = el => {
+			let fields = [ ...this.getScope( el ).querySelectorAll( '.rwmb-geo-binding' ) ];
+
+			// Don't populate address.
+			fields = fields.filter( field => field.dataset.binding !== 'address' );
+
+			// If el is address, get all fields with no or the same address_field.
+			const addressId = this.getAddressId( el );
+			if ( addressId ) {
+				fields = fields.filter( field => {
+					const addressField = this.getAddressField( field );
+					return !addressField || addressField === addressId;
+				} );
+			} else {
+				// Get all fields with the same address_field.
+				fields = fields.filter( field => this.hasSameAddress( el, field ) );
+			}
+
+			return fields;
+		};
+
+		// If in a group clone, only populate data inside that group clone. Otherwise, populate in the meta box.
+		getScope = el => el.closest( '.rwmb-group-clone' ) || el.closest( '.rwmb-meta-box' );
+
+		// Check if 2 elements has the same address field, e.g. in the same geolocation group.
+		// Elements must be <input> or <script class="rwmb-geo-binding">
+		hasSameAddress = ( el1, el2 ) => {
+			const address1 = this.getAddressField( el1 ),
+				address2 = this.getAddressField( el2 );
+
+			if ( address1 === address2 ) {
+				return true;
+			}
+			return ( !address1 && this.isMapField( el2 ) ) || ( !address2 && this.isMapField( el1 ) );
+		};
+
+		// Get connected address field, including for map & address.
+		// Element must be <input> or <script class="rwmb-geo-binding">
+		getAddressField = el => {
+			if ( el.dataset.address_field ) {
+				return el.dataset.address_field;
+			}
+			const map = el.closest( `.rwmb-${ this.type }-field` );
+			return map ? map.dataset.addressField : null;
+		};
+
+		getAddressId = el => {
+			if ( !el.name || !el.name.includes( 'address' ) ) {
+				return null;
+			}
+			const lastIndex = el.name.lastIndexOf( 'address' );
+			return el.name.substr( lastIndex ).replace( ']', '' );
+		};
+
+		isMapField = el => !!el.closest( `.rwmb-${ this.type }-wrapper` );
+	}
+
+	class Map extends Base {
+		type = 'map';
+
+		autocomplete = field => {
+			let that = this,
 				$field = $( field ),
 				autocomplete = $field.data( 'autocompleteController' );
 
@@ -65,8 +126,7 @@
 			}
 
 			autocomplete = new google.maps.places.Autocomplete( field, this.settings );
-			// When user select a place in drop down, bind data to related fields
-			autocomplete.addListener( 'place_changed', function () {
+			autocomplete.addListener( 'place_changed', function() {
 				// Trigger for Map and other extensions.
 				$field.trigger( 'selected_address' );
 
@@ -75,31 +135,11 @@
 					return;
 				}
 
-				// If auto complete field and related field inside group. Only populate data inside that group. And vice versa.
-				var isGroup = $field.closest( '.rwmb-group-clone' ).length > 0,
-					$scope = isGroup ? $field.closest( '.rwmb-group-clone' ) : $field.closest( '.rwmb-meta-box' ),
-					lastAddressIndex = field.name.lastIndexOf( 'address' ),
-					fieldId = field.name.substr( lastAddressIndex ).replace( ']', '' ),
-					$elements = $scope.find( '.rwmb-geo-binding');
+				place.lat = place.geometry.location.lat();
+				place.lng = place.geometry.location.lng();
+				place.geometry = place.geometry.location.lat() + ',' + place.geometry.location.lng();
 
-				$elements.each( function () {
-					// What data is prepared to bind to that field
-					var $this = $( this ),
-						dataBinding = $this.data( 'binding' ),
-						dataBindEmpty = $this.data( 'bind_if_empty' ),
-						addressField = $this.data( 'address_field' ),
-						// What is that data's value
-						fieldValue = that.getFieldData( dataBinding, place );
-
-						if ( addressField && fieldId != addressField ) {
-							return;
-						}
-						if ( dataBinding !== 'address' && typeof fieldValue !== 'undefined' ) {
-							if ( fieldValue || dataBindEmpty ) {
-								$this.siblings( '.rwmb-input' ).children().val( fieldValue ).change();
-							}
-						}
-				} );
+				that.populateFromAddress( place, field );
 			} );
 
 			// Don't submit the form when select a address: https://metabox.io/support/topic/how-to-disable-submit-when-selecting-an-address/
@@ -108,7 +148,43 @@
 			} );
 
 			$field.data( 'autocompleteController', autocomplete );
-		},
+		};
+
+		populateMapFromLat = e => {
+			const controller = this.getMapControllerFromLatLng( e.target.parentNode.nextSibling );
+			if ( !controller ) {
+				return;
+			}
+
+			const latLng = {
+				lat: e.target.value,
+				lng: controller.marker.getPosition().lng()
+			};
+			this.updateMap( controller, latLng );
+		};
+
+		populateMapFromLng = e => {
+			const controller = this.getMapControllerFromLatLng( e.target.parentNode.nextSibling );
+			if ( !controller ) {
+				return;
+			}
+
+			const latLng = {
+				lat: controller.marker.getPosition().lat(),
+				lng: e.target.value
+			};
+			this.updateMap( controller, latLng );
+		};
+
+		// Update map's input value and marker.
+		updateMap = ( controller, latLng ) => {
+			const zoom = controller.map.getZoom();
+			controller.$coordinate.val( latLng.lat + ',' + latLng.lng + ',' + zoom );
+
+			const location = new google.maps.LatLng( latLng.lat, latLng.lng );
+			controller.marker.setPosition( location );
+			controller.map.setCenter( location );
+		};
 
 		/**
 		 * Get value of a address component type.
@@ -119,87 +195,135 @@
 		 * @param place google.maps.places.PlaceResult Information about a Place.
 		 * @returns string
 		 */
-		getFieldData: function ( type, place ) {
-			var that = this;
-
-			// If field is not in address_component then try to find them in another place
-			if ( [
-					'formatted_address',
-					'id',
-					'name',
-					'place_id',
-					'reference',
-					'url',
-					'vicinity'
-				].indexOf( type ) > - 1
-				&& typeof place !== 'undefined' && typeof place[type] !== 'undefined' ) {
-				return place[type];
-			}
-			if ( type === 'lat' ) {
-				return place.geometry.location.lat();
+		getFieldData = ( binding, place ) => {
+			if ( place.hasOwnProperty( binding ) ) {
+				return place[ binding ];
 			}
 
-			if ( type === 'lng' ) {
-				return place.geometry.location.lng();
+			// Find in `address_components`.
+			for ( let i = 0; i < place.address_components.length; i++ ) {
+				let component = place.address_components[ i ],
+					longName = true,
+					field = binding;
+
+				if ( binding.includes( 'short:' ) ) {
+					longName = false;
+					field = binding.replace( 'short:', '' );
+				}
+
+				if ( component.types.includes( field ) ) {
+					return longName ? component.long_name : component.short_name;
+				}
 			}
 
-			if ( type === 'geometry' ) {
-				return place.geometry.location.lat() + ',' + place.geometry.location.lng();
+			if ( !binding.includes( '+' ) ) {
+				return '';
 			}
-
-			var val = '';
 
 			// Allows users to merge data. For example: `shortname:country + ' ' + postal_code`
-			if ( type.indexOf( '+' ) > -1 ) {
-				type = type.split( '+' );
-				type.forEach( function ( field ) {
-					field = field.trim();
+			let val = '', that = this;
+			binding.split( '+' ).forEach( function( field ) {
+				field = field.trim();
 
-					if ( field.indexOf( "'" ) > -1 || field.indexOf( '"' ) > -1 ) {
-						field = field.replace( /['"]+/g, '' );
-						val += field;
-					} else {
-						val += that.getFieldData( field, place );
-					}
-				} );
-
-				return val;
-			}
-
-			// Find value in `address_components`.
-			for ( var i = 0, l = place.address_components.length; i < l; i ++ ) {
-				var component = place.address_components[i],
-					longName = true,
-					fieldType = type;
-
-				if ( type.indexOf( 'short:' ) > -1 ) {
-					longName = false;
-					fieldType = type.replace( 'short:', '' );
+				if ( field.indexOf( "'" ) > -1 || field.indexOf( '"' ) > -1 ) {
+					field = field.replace( /['"]+/g, '' );
+					val += field;
+				} else {
+					val += that.getFieldData( field, place );
 				}
+			} );
 
-				if ( component.types.indexOf( fieldType ) > -1 ) {
-					val = longName ? component.long_name : component.short_name;
-					break;
-				}
-			}
 			return val;
-		}
+		};
+	}
+
+	class Osm extends Base {
+		type = 'osm';
+
+		autocomplete = field => {
+			const that = this;
+			$( field ).on( 'selected_address', ( e, item ) => {
+				const data = {
+					...item.address,
+					lat: item.latitude,
+					lng: item.longitude,
+					geometry: item.latitude + ',' + item.longitude
+				};
+
+				that.populateFromAddress( data, field );
+			} );
+		};
+
+		populateMapFromLat = e => {
+			const controller = this.getMapControllerFromLatLng( e.target.parentNode.nextSibling );
+			if ( !controller ) {
+				return;
+			}
+
+			let latLng = controller.marker.getLatLng();
+			latLng.lat = e.target.value;
+			this.updateMap( controller, latLng );
+		};
+
+		populateMapFromLng = e => {
+			const controller = this.getMapControllerFromLatLng( e.target.parentNode.nextSibling );
+			if ( !controller ) {
+				return;
+			}
+
+			let latLng = controller.marker.getLatLng();
+			latLng.lng = e.target.value;
+			this.updateMap( controller, latLng );
+		};
+
+		// Update map's input value and marker.
+		updateMap = ( controller, latLng ) => {
+			const zoom = controller.map.getZoom();
+			controller.$coordinate.val( latLng.lat + ',' + latLng.lng + ',' + zoom );
+			controller.marker.setLatLng( latLng );
+			controller.map.panTo( latLng );
+		};
+
+		/**
+		 * @link https://nominatim.org/release-docs/latest/api/Search/#examples
+		 */
+		getFieldData = ( binding, data ) => {
+			if ( data.hasOwnProperty( binding ) ) {
+				return data[ binding ];
+			}
+
+			if ( !binding.includes( '+' ) ) {
+				return '';
+			}
+
+			// Allows users to merge data. For example: `shortname:country + ' ' + postal_code`
+			let val = '', that = this;
+			binding.split( '+' ).forEach( function( field ) {
+				field = field.trim();
+
+				if ( field.includes( "'" ) || field.includes( '"' ) ) {
+					field = field.replace( /['"]+/g, '' );
+					val += field;
+				} else {
+					val += that.getFieldData( field, item );
+				}
+			} );
+
+			return val;
+		};
 	};
 
 	function update() {
-		$( '.rwmb-meta-box' ).each( function () {
-			var $this = $( this ),
-				controller = $this.data( 'locationController' );
-			if ( ! controller ) {
-				controller = new Location( $this );
-			}
+		$( '.rwmb-meta-box' ).each( function() {
+			const type = this.querySelector( '.rwmb-osm' ) ? 'osm' : 'map';
+			controller = 'osm' === type ? new Osm( this ) : new Map( this );
 
 			controller.init();
-			$this.data( 'locationController', controller );
+			$( this ).data( 'controller', controller );
 		} );
 	}
 
-	$( function () {
+	$( function() {
 		update();
 		$( document ).on( 'clone_completed', update ); // Handle group clone event.
 	} );

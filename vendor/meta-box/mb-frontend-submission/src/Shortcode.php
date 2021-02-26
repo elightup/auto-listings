@@ -64,15 +64,15 @@ class Shortcode {
 		$config     = ConfigStorage::get( $config_key );
 
 		if ( empty( $config ) ) {
-			return;
+			$this->send_error_message( __( 'Invalid request. Please try again.', 'mb-frontend-submission' ) );
 		}
 
 		$form = $this->get_form( $config );
 		if ( null === $form ) {
-			return;
+			$this->send_error_message( __( 'Invalid request. Please try again.', 'mb-frontend-submission' ) );
 		}
 
-		$this->check_ajax( $form, $data );
+		$this->check_ajax();
 
 		$this->check_recaptcha( $form, $data );
 
@@ -111,9 +111,9 @@ class Shortcode {
 		die;
 	}
 
-	private function check_ajax( $form, $data ) {
-		if ( $this->is_ajax( $form ) && ! check_ajax_referer( 'ajax_nonce' ) ) {
-			$this->send_error_message( __( 'Invalid nonce', 'mb-frontend-submission' ), $form );
+	private function check_ajax() {
+		if ( $this->is_ajax() && ! check_ajax_referer( 'ajax_nonce' ) ) {
+			$this->send_error_message( __( 'Invalid ajax request. Please try again.', 'mb-frontend-submission' ) );
 		}
 	}
 
@@ -126,7 +126,7 @@ class Shortcode {
 		$action  = filter_var( $data[ 'recaptcha_action' ], FILTER_SANITIZE_STRING );
 
 		if ( ! $captcha || ! $action ) {
-			$this->send_error_message( __( 'Invalid captcha token.', 'mb-frontend-submission' ), $form );
+			$this->send_error_message( __( 'Invalid captcha token.', 'mb-frontend-submission' ) );
 		}
 
 		$url = 'https://www.google.com/recaptcha/api/siteverify';
@@ -139,7 +139,7 @@ class Shortcode {
 		$response = json_decode( $response, true );
 
 		if ( empty( $response['action'] ) || $action !== $response[ 'action' ] ) {
-			$this->send_error_message( __( 'Invalid captcha token.', 'mb-frontend-submission' ), $form );
+			$this->send_error_message( __( 'Invalid captcha token.', 'mb-frontend-submission' ) );
 		}
 	}
 
@@ -156,15 +156,15 @@ class Shortcode {
 		$config     = ConfigStorage::get( $config_key );
 
 		if ( empty( $config ) || empty( $config['post_id'] ) ) {
-			return;
+			$this->send_error_message( __( 'Invalid request. Please try again.', 'mb-frontend-submission' ) );
 		}
 
 		$form = $this->get_form( $config );
 		if ( null === $form ) {
-			return;
+			$this->send_error_message( __( 'Invalid request. Please try again.', 'mb-frontend-submission' ) );
 		}
 
-		$this->check_ajax( $form, $data );
+		$this->check_ajax();
 
 		$form->delete();
 
@@ -298,15 +298,15 @@ class Shortcode {
 		}
 	}
 
-	private function send_error_message( $message, $form ) {
-		if ( $this->is_ajax( $form ) ) {
+	private function send_error_message( $message ) {
+		if ( $this->is_ajax() ) {
 			wp_send_json_error( ['message' => $message] );
 		}
 		wp_die( $message );
 	}
 
 	private function send_success_message( $message, $form ) {
-		if ( ! $this->is_ajax( $form ) ) {
+		if ( ! $this->is_ajax() ) {
 			return;
 		}
 		wp_send_json_success( [
@@ -315,7 +315,7 @@ class Shortcode {
 		] );
 	}
 
-	private function is_ajax( $form ) {
-		return 'true' === $form->config['ajax'];
+	private function is_ajax() {
+		return defined( 'DOING_AJAX' ) && DOING_AJAX;
 	}
 }

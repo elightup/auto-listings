@@ -3,7 +3,7 @@
  * Plugin Name: Meta Box Geolocation
  * Plugin URI:  https://metabox.io/plugins/meta-box-geolocation/
  * Description: Powerful tool to interact with Google Maps API and save location data
- * Version:     1.2.6
+ * Version:     1.3.1
  * Author:      MetaBox.io
  * Author URI:  https://metabox.io
  * License:     GPL2+
@@ -28,6 +28,6 @@ if ( ! function_exists( 'meta_box_geolocation_load' ) ) {
         }
 
         require 'geolocation.php';
-        new MB_Geolocation();
+        new MB_Geolocation;
     }
 }

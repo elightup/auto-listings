@@ -32,17 +32,13 @@
 }
 
 .mbfs-actions {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
 	a,
 	.rwmb-button--delete {
 		background: $blue;
 		text-decoration: none;
 		display: inline-flex;
-		width: 2em;
-		height: 2em;
+		width: 32px;
+		height: 32px;
 		line-height: 2;
 		justify-content: center;
 		align-items: center;
@@ -60,6 +56,10 @@
 	}
 	form {
 		margin-left: 4px;
+		display: inline-flex;
+	}
+	.rwmb-form-submit {
+		display: inline-flex;
 	}
 	.rwmb-loading {
 		display: none;

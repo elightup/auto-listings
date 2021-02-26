@@ -4,11 +4,11 @@
 	"repositories": [
 		{
 			"type": "git",
-			"url": "git@bitbucket.org:metabox/mb-frontend-submission.git"
+			"url": "git@github.com:wpmetabox/mb-frontend-submission.git"
 		},
 		{
 			"type": "git",
-			"url": "git@bitbucket.org:metabox/mb-settings-page.git"
+			"url": "git@github.com:wpmetabox/mb-settings-page.git"
 		},
 		{
 			"type": "git",
@@ -16,11 +16,11 @@
 		},
 		{
 			"type": "git",
-			"url": "git@bitbucket.org:metabox/meta-box-geolocation.git"
+			"url": "git@github.com:wpmetabox/meta-box-geolocation.git"
 		},
 		{
 			"type": "git",
-			"url": "git@bitbucket.org:metabox/meta-box-group.git"
+			"url": "git@github.com:wpmetabox/meta-box-group.git"
 		}
 	],
 	"require": {
@@ -90,14 +90,6 @@
 				"*.po",
 				"*.pot"
 			],
-			"gamajo/template-loader": [
-				".editoconfig",
-				".gitignore",
-				".phpcs.xml.dist",
-				"*.md",
-				"*.json",
-				"LICENSE"
-			],
 			"composer": [
 				"LICENSE"
 			]
@@ -115,12 +107,9 @@
 			"src/functions-general.php",
 			"src/functions-listing.php",
 			"src/functions-sidebars.php",
-
 			"src/SearchForm/functions.php",
-
 			"src/Frontend/template-hooks.php",
 			"src/Frontend/template-tags.php",
-
 			"vendor/meta-box/mb-frontend-submission/mb-frontend-submission.php",
 			"vendor/meta-box/mb-settings-page/mb-settings-page.php",
 			"vendor/meta-box/meta-box-columns/meta-box-columns.php",

@@ -11,7 +11,7 @@ class MB_Geolocation {
 
 	public function __construct() {
 		add_action( 'rwmb_enqueue_scripts', array( $this, 'enqueue' ) );
-		add_action( 'rwmb_google_maps_url', array( $this, 'google_maps_url' ) );
+		add_filter( 'rwmb_google_maps_url', array( $this, 'google_maps_url' ) );
 
 		add_action( 'rwmb_before', array( $this, 'output_geo_data' ) );
 		add_action( 'rwmb_after', array( $this, 'reset_geo_data' ) );
@@ -29,7 +29,7 @@ class MB_Geolocation {
 		}
 		$this->register_google_maps_scripts( $meta_box->geo );
 		list( , $url ) = RWMB_Loader::get_path( __DIR__ );
-		wp_enqueue_script( 'mb-geolocation', $url . 'geolocation.js', array( 'google-maps' ), '1.2.6', true );
+		wp_enqueue_script( 'mb-geolocation', $url . 'geolocation.js', ['google-maps', 'jquery', 'underscore'], filemtime( __DIR__ . '/geolocation.js' ), true );
 	}
 
 	public function register_google_maps_scripts( $geo ) {
@@ -91,7 +91,8 @@ class MB_Geolocation {
 	 * @return string
 	 */
 	public function insert_field_geo_binding( $begin, $field ) {
-		if ( ! $this->data_geo ) {
+		// Don't add binding data if geolocation is not enabled and if field is a map fields.
+		if ( ! $this->data_geo || in_array( $field['type'], ['osm', 'map'] ) ) {
 			return $begin;
 		}
 		$binding       = isset( $field['binding'] ) ? $field['binding'] : $this->guess_binding_field( $field['id'] );
@@ -107,29 +108,27 @@ class MB_Geolocation {
 		return $begin;
 	}
 
-	/**
-	 * Get the supported fields
-	 *
-	 * @param string $field Field ID.
-	 * @return string
-	 */
-	private function guess_binding_field( $field ) {
+	private function guess_binding_field( $field_id ) {
 		$available_fields = array(
-			'address', 'street_address', 'route', 'intersection', 'political', 'country',
+			// Google Maps.
+			'street_address', 'route', 'intersection', 'political', 'country',
 			'administrative_area_level_1', 'administrative_area_level_2', 'administrative_area_level_3',
 			'colloquial_area', 'locality', 'sublocality', 'neighborhood', 'premise', 'subpremise',
 			'postal_code', 'natural_feature', 'airport', 'park', 'point_of_interest', 'post_box',
 			'street_number', 'floor', 'room', 'lat', 'lng', 'viewport', 'location',
 			'formatted_address', 'location_type', 'bounds', 'id', 'name', 'place_id',
-			'reference', 'url', 'vicinity', 'geometry'
+			'reference', 'url', 'vicinity', 'geometry',
+
+			// OSM.
+			'building', 'house_number', 'aeroway', 'road', 'neighbourhood', 'suburb', 'village', 'town', 'city', 'county', 'state', 'postcode', 'country', 'country_code',
 		);
 
 		foreach ( $available_fields as $available_field ) {
-			if ( $field === $available_field . '_short' ) {
+			if ( $field_id === $available_field . '_short' ) {
 				return 'short:' . $available_field;
 			}
-			if ( $field === $available_field ) {
-				return $field;
+			if ( $field_id === $available_field ) {
+				return $field_id;
 			}
 		}
 

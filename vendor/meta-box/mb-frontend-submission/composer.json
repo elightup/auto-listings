@@ -1,0 +1,82 @@
+{
+  "name": "meta-box/mb-frontend-submission",
+  "type": "wordpress-plugin",
+  "require": {
+    "gamajo/template-loader": "^1.3"
+  },
+  "autoload": {
+    "psr-4": { "MBFS\\": ["src/"] }
+  },
+  "extra": {
+    "dev-files": {
+      "/": [
+        ".github/",
+        ".gitattributes",
+        ".gitignore",
+
+        ".editoconfig",
+
+        "LICENSE",
+        "*.md",
+
+        "test/",
+        "tests/"
+      ],
+      "meta-box/*": [
+        ".git",
+
+        ".distignore",
+        ".babelrc",
+        "webpack.config.js",
+
+        "*.lock",
+        "*.json",
+        "*.yml",
+
+        "*.txt",
+        "*.less",
+        "*.scss",
+        "*.po",
+        "*.pot",
+
+        "demo.php",
+        "demo/",
+        "sass/",
+        "vendor/"
+      ],
+      "wpmetabox/*": [
+        ".git",
+
+        ".distignore",
+        ".babelrc",
+        "webpack.config.js",
+
+        "*.lock",
+        "*.json",
+        "*.yml",
+
+        "*.txt",
+        "*.less",
+        "*.scss",
+        "*.po",
+        "*.pot",
+
+        "demo.php",
+        "demo/",
+        "sass/",
+        "vendor/"
+      ],
+      "composer": [
+        "LICENSE"
+      ],
+      "gamajo/template-loader": [
+        ".editoconfig",
+        ".gitignore",
+        ".phpcs.xml.dist",
+        "*.md",
+        "*.json",
+        "LICENSE"
+      ]
+    }
+  }
+}

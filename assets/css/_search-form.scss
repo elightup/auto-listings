@@ -5,7 +5,7 @@ $grey: #d8d8d8;
 	.SumoSelect {
 		width: 100%;
 	}
-	input:not([type="submit"]) {
+	input:not([type='submit']) {
 		width: 100%;
 		position: relative;
 		border: 1px solid #a4a4a4;
@@ -29,7 +29,7 @@ $grey: #d8d8d8;
 }
 
 .als-field:not(:last-child),
-button[class^="als-"] {
+button[class^='als-'] {
 	margin-bottom: 10px;
 }
 
@@ -53,7 +53,7 @@ button[class^="als-"] {
 			border-radius: 4px;
 		}
 
-		input[type="radio"] {
+		input[type='radio'] {
 			position: absolute;
 			opacity: 0;
 
@@ -72,7 +72,7 @@ button[class^="als-"] {
 .als-selected__close {
 	cursor: pointer;
 	&:before {
-		content: "\00d7";
+		content: '\00d7';
 		margin-right: 5px;
 	}
 }
