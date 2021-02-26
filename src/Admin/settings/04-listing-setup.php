@@ -43,7 +43,7 @@ return [
 		[
 			'name'      => __( 'Listings Page', 'auto-listings' ),
 			/* translators: permalink setting url */
-			'desc'      => __( 'The main page to display your listings (not the front page).', 'auto-listings' ) . '<br>' . sprintf( __( 'Please visit <a target="_blank" href="%s">Settings &rarr; Permalinks</a> if this option is changed.', 'auto-listings' ), '<a target="_blank" href="' . admin_url( 'options-permalink.php' ) ),
+			'desc'      => __( 'The main page to display your listings (not the front page).', 'auto-listings' ) . '<br>' . sprintf( __( 'Please visit <a target="_blank" href="%s">Settings &rarr; Permalinks</a> if this option is changed.', 'auto-listings' ), admin_url( 'options-permalink.php' ) ),
 			'id'        => 'archives_page',
 			'type'      => 'post',
 			'post_type' => 'page',
@@ -51,7 +51,7 @@ return [
 		[
 			'name' => __( 'Single Listing Slug', 'auto-listings' ),
 			/* translators: permalink setting url */
-			'desc' => sprintf( __( 'Please visit <a target="_blank" href="%s">Settings &rarr; Permalinks</a> if this option is changed.', 'auto-listings' ), '<a target="_blank" href="' . admin_url( 'options-permalink.php' ) ),
+			'desc' => sprintf( __( 'Please visit <a target="_blank" href="%s">Settings &rarr; Permalinks</a> if this option is changed.', 'auto-listings' ), admin_url( 'options-permalink.php' ) ),
 			'id'   => 'single_url',
 			'type' => 'text',
 			'std'  => 'listing',
