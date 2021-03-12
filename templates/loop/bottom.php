@@ -10,7 +10,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
-$condition = auto_listings_meta( 'condition' );
+$condition = auto_listings_condition();
 ?>
 
 <div class="bottom-wrap">

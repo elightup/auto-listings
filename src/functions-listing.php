@@ -481,6 +481,16 @@ function auto_listings_odometer() {
 	return $output;
 }
 
+function auto_listings_condition() {
+	$condition_options = auto_listings_conditions();
+	$condition         = auto_listings_meta( 'condition' );
+
+	if ( empty( $condition_options[ $condition ] ) ) {
+		return '';
+	}
+	return $condition_options[ $condition ];
+}
+
 /**
  * Outputs the transmission
  */
