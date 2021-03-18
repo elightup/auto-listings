@@ -194,7 +194,7 @@ class SearchQuery {
 	 */
 	private function engine_query() {
 		if ( isset( $_GET['engine'] ) && ! empty( $_GET['engine'] ) ) {
-			$data = array_map( 'sanitize_text_field', (array) wp_unslash( $_GET['engine'] ) );
+			$data = array_map( 'sanitize_text_field', wp_unslash( (array) $_GET['engine'] ) );
 			return [
 				'key'     => '_al_listing_model_engine_type',
 				'value'   => $data,
@@ -211,7 +211,7 @@ class SearchQuery {
 	 */
 	private function model_drive_query() {
 		if ( isset( $_GET['model_drive'] ) && ! empty( $_GET['model_drive'] ) ) {
-			$data = array_map( 'sanitize_text_field', (array) wp_unslash( $_GET['model_drive'] ) );
+			$data = array_map( 'sanitize_text_field', wp_unslash( (array) $_GET['model_drive'] ) );
 			return [
 				'key'     => '_al_listing_model_drive',
 				'value'   => $data,
@@ -228,7 +228,7 @@ class SearchQuery {
 	 */
 	private function fuel_type_query() {
 		if ( isset( $_GET['fuel_type'] ) && ! empty( $_GET['fuel_type'] ) ) {
-			$data = array_map( 'sanitize_text_field', (array) wp_unslash( $_GET['fuel_type'] ) );
+			$data = array_map( 'sanitize_text_field', wp_unslash( (array) $_GET['fuel_type'] ) );
 			return [
 				'key'     => '_al_listing_model_engine_fuel',
 				'value'   => $data,
@@ -248,7 +248,7 @@ class SearchQuery {
 			$tax_query[] = [
 				'taxonomy' => 'body-type',
 				'field'    => 'slug',
-				'terms'    => array_map( 'sanitize_text_field', wp_unslash( $_GET['body_type'] ) ),
+				'terms'    => array_map( 'sanitize_text_field', wp_unslash( (array) $_GET['body_type'] ) ),
 			];
 			return $tax_query;
 		}
