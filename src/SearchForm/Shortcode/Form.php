@@ -14,9 +14,9 @@ class Form {
 		}
 
 		$atts = shortcode_atts(
-			array(
+			apply_filters( 'als_shortcode_atts', [
 				'id' => '',
-			),
+			] ),
 			$atts
 		);
 
@@ -44,11 +44,21 @@ class Form {
 
 		$action = apply_filters( 'auto_listings_search_form_action', get_the_permalink( auto_listings_option( 'archives_page' ) ) );
 
-		$output .= '<form'
-			. ' class="als" autocomplete="off"'
-			. ' action="' . $action . '"'
-			. ' method="GET"'
-			. ' role="search">';
+		$form_attributes = [
+			'class'        => 'als',
+			'autocomplete' => 'off',
+			'action'       => $action,
+			'method'       => 'GET',
+			'role'         => 'search',
+		];
+
+		$form_attributes = array_merge( $form_attributes, $atts );
+
+		$output .= '<form';
+		foreach( $form_attributes as $attr => $value ) {
+			$output .= ' ' . $attr . '=' . htmlspecialchars( $value );
+		}
+		$output .= '>';
 
 		$output .= do_shortcode( $post->post_content );
 
