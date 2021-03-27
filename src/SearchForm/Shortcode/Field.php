@@ -65,10 +65,13 @@ class Field {
 				'prefix'      => '',
 				'suffix'      => '',
 				'label'       => $default_label,
+				'default'     => '',
 				'placeholder' => $default_placeholder,
 			),
 			$atts
 		);
+
+		$atts = apply_filters( 'als_field_atts', $atts );
 
 		if ( ! in_array( $atts['name'], array_keys( $this->placeholders ) ) ) {
 			return;

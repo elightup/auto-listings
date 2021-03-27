@@ -13,12 +13,9 @@ class Form {
 			return '';
 		}
 
-		$atts = shortcode_atts(
-			[
-				'id' => '',
-			],
-			$atts
-		);
+		$atts = shortcode_atts( [
+			'id' => '',
+		], $atts );
 
 		$atts = apply_filters( 'als_shortcode_atts', $atts );
 

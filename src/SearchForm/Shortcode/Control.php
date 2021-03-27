@@ -17,7 +17,7 @@ class Control {
 			'id'          => uniqid(),
 		] );
 
-		$class_selected = empty( $_GET[ $args['name'] ] ) ? '' : 'als-is-selected';
+		$class_selected = empty( $_GET[ $args['name'] ] ) || $args['default'] ? '' : 'als-is-selected';
 		ob_start();
 		?>
 
@@ -45,9 +45,10 @@ class Control {
 	}
 
 	private function select( $options, $args ) {
-		$is_multiple = $args['multiple'] === 'true' && ! in_array( $args['name'], [ 'price', 'min_price', 'max_price', 'odometer' ] );
-		$selected  = isset( $_GET[ $args['name'] ] ) ? (array) $_GET[ $args['name'] ] : [];
-		$name = $is_multiple ? $args['name'] . '[]' : $args['name'];
+		$is_multiple = $args['multiple'] ==='true' && ! in_array( $args['name'], [ 'price', 'min_price', 'max_price', 'odometer' ] );
+		$default     = isset( $args['default'] ) ? array( $args['default'] ) : [];
+		$selected    = isset( $_GET[ $args['name'] ] ) ? (array) $_GET[ $args['name'] ] : $default;
+		$name        = $is_multiple ? $args['name'] . '[]' : $args['name'];
 		?>
 
 		<select id="<?= esc_attr( $args['id'] ); ?>" <?= $is_multiple ? 'multiple' : '' ?> data-placeholder="<?= esc_attr( $args['placeholder'] ); ?>" name="<?= esc_attr( $name ); ?>">
@@ -64,7 +65,8 @@ class Control {
 	}
 
 	private function radio( $options, $args ) {
-		$selected_option = isset( $_GET[ $args['name'] ] ) ? filter_var( $_GET[ $args['name'] ], FILTER_SANITIZE_STRING ) : '';
+		$default         = isset( $args['default'] ) ? $args['default'] : '';
+		$selected_option = isset( $_GET[ $args['name'] ] ) ? filter_var( $_GET[ $args['name'] ], FILTER_SANITIZE_STRING ) : $default;
 		?>
 
 		<span class="als-field__radio">
