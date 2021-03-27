@@ -14,11 +14,13 @@ class Form {
 		}
 
 		$atts = shortcode_atts(
-			apply_filters( 'als_shortcode_atts', [
+			[
 				'id' => '',
-			] ),
+			],
 			$atts
 		);
+
+		$atts = apply_filters( 'als_shortcode_atts', $atts );
 
 		$id = $atts['id'];
 		unset( $atts['id'] );
