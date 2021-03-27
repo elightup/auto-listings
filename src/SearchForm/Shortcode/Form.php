@@ -13,15 +13,14 @@ class Form {
 			return '';
 		}
 
-		$atts = shortcode_atts( [
-			'id' => '',
-		], $atts );
+		$atts = shortcode_atts(
+			apply_filters( 'als_shortcode_atts', [
+				'id' => '',
+			] ),
+			$atts
+		);
 
-		$atts = apply_filters( 'als_shortcode_atts', $atts );
-
-		$id = $atts['id'];
-		unset( $atts['id'] );
-
+		$id = apply_filters( 'als_form_id', $atts['id'] );
 		if ( empty( $id ) ) {
 			return '';
 		}
@@ -51,7 +50,7 @@ class Form {
 			'role'         => 'search',
 		];
 
-		$form_attributes = array_merge( $form_attributes, $atts );
+		$form_attributes = apply_filters( 'als_form_atts', array_merge( $form_attributes, $atts ) );
 
 		$output .= '<form';
 		foreach( $form_attributes as $attr => $value ) {
