@@ -58,16 +58,17 @@ class Field {
 		$default_placeholder = ! empty( $this->placeholders[ $atts['name'] ] ) ? $this->placeholders[ $atts['name'] ] : '';
 
 		$atts = shortcode_atts(
-			array(
+			apply_filters( 'als_field_shortcode_atts', [
 				'name'        => '',
 				'type'        => 'select', // 'radio'
 				'multiple'    => 'false',
+				'disabled'    => 'false',
 				'prefix'      => '',
 				'suffix'      => '',
 				'label'       => $default_label,
 				'default'     => '',
 				'placeholder' => $default_placeholder,
-			),
+			] ),
 			$atts
 		);
 
@@ -104,7 +105,7 @@ class Field {
 			break;
 		}
 
-		$options = apply_filters( 'als_field_options', $options, $atts['name'] );
+		$options = apply_filters( 'als_field_options', $options, $atts );
 
 		// Insert placeholder option for normal select field
 		$placeholder_option = [];

@@ -1,8 +1,6 @@
 <?php
 namespace AutoListings\SearchForm\Shortcode;
 
-use AutoListings\Frontend\Assets;
-
 class Form {
 	public function __construct() {
 		add_shortcode( 'als', array( $this, 'render' ) );
