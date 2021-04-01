@@ -348,6 +348,7 @@ function auto_listings_template_path() {
 function auto_listings_get_part( $part, $data = [] ) {
 	$template = apply_filters( 'auto_listings_get_part_legacy', auto_listings_get_part_legacy( $part ) );
 	if ( $template ) {
+		$data = (object) $data;
 		include $template;
 		return;
 	}

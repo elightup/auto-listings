@@ -345,3 +345,15 @@ function auto_listings_update_featured_image( $listing_id ) {
 	update_post_meta( $listing_id, '_thumbnail_id', $first_gallery_image );
 }
 add_action( 'rwmb__al_listing_images_after_save_post', 'auto_listings_update_featured_image' );
+
+/**
+ * Disable redirecting when paginate if the page has auto_listings_listings shortcode.
+ */
+function auto_listings_remove_redirect_canonical( $redirect_url ) {
+	global $post;
+    if ( is_page() && has_shortcode( $post->post_content, 'auto_listings_listings' ) )  {
+		$redirect_url = false;
+	}
+	return $redirect_url;
+}
+add_filter( 'redirect_canonical','auto_listings_remove_redirect_canonical' );

@@ -12,8 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 global $wp_query;
-
-if ( $wp_query->max_num_pages <= 1 ) {
+$query = ( empty( $data->query ) ) ? $wp_query : $data->query ;
+if ( $query->max_num_pages <= 1 ) {
 	return;
 }
 ?>
@@ -28,7 +28,7 @@ if ( $wp_query->max_num_pages <= 1 ) {
 				'mid-size'  => 1,
 				'add_args'  => false,
 				'current'   => ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1,
-				'total'     => $wp_query->max_num_pages,
+				'total'     => $query->max_num_pages,
 				'prev_text' => '&larr;',
 				'next_text' => '&rarr;',
 				'type'      => 'list',

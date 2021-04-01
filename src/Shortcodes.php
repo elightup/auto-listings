@@ -119,6 +119,7 @@ class Shortcodes {
 			'orderby'             => $atts['orderby'],
 			'order'               => $atts['order'],
 			'posts_per_page'      => $atts['number'],
+			'paged'               => isset( $_GET['paged'] ) ? $_GET['paged'] : 1,
 		];
 
 		if ( ! empty( $atts['ids'] ) ) {
@@ -213,7 +214,7 @@ class Shortcodes {
 			echo '</ul>';
 		}
 
-		do_action( 'auto_listings_after_listings_loop' );
+		do_action( 'auto_listings_after_listings_loop', [ 'query' => $query ] );
 		do_action( "auto_listings_shortcode_after_listings_loop" );
 
 		wp_reset_postdata();
