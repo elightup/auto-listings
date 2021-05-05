@@ -33,7 +33,8 @@ class Ajax {
 
 	public function get_listings_models( $listings ) {
 		$models = array_map( function( $listing ) {
-			return get_post_meta( $listing, '_al_listing_model_name', true );
+			$model = get_post_meta( $listing, '_al_listing_model_name', true );
+			return trim( $model );
 		}, $listings );
 		sort( $models );
 		return array_unique( array_filter( $models ) );
