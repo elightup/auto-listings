@@ -2,8 +2,8 @@
 Contributors: elightup, autolistings, rilwis, hungviet91
 Tags: car dealer, sell cars, car classifieds, car sales, car listings, automotive listings, auto listings, automotive, car, car dealership
 Requires at least: 5.5
-Tested up to: 5.6
-Stable tag: 2.5.14
+Tested up to: 5.9.1
+Stable tag: 2.6.0
 Requires PHP: 5.6
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -113,7 +113,7 @@ Install like any other plugin - directly from plugins page or upload via FTP.
 = Minimum Requirements =
 
 * WordPress 4.5 or greater
-* PHP version 5.4 or greater
+* PHP version 5.6 or greater
 
 = Setting Up =
 

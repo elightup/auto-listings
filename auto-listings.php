@@ -5,7 +5,7 @@
  * Author:      WP Auto Listings
  * Author URI:  https://wpautolistings.com
  * Plugin URI:  https://wpautolistings.com
- * Version:     2.5.14
+ * Version:     2.6.0
  * Text Domain: auto-listings
  * Domain Path: languages
  *
@@ -25,7 +25,7 @@ register_activation_hook( __FILE__, 'auto_listings_check_php_version' );
  * Display notice for old PHP version.
  */
 function auto_listings_check_php_version() {
-	if ( version_compare( phpversion(), '5.4', '<' ) ) {
+	if ( version_compare( phpversion(), '5.6', '<' ) ) {
 		die( esc_html__( 'Auto listings plugin requires PHP version 5.4+. Please contact your host and ask them to upgrade.', 'auto-listings' ) );
 	}
 }
