@@ -33,6 +33,68 @@
 	"minimum-stability": "dev",
 	"prefer-stable": true,
 	"extra": {
+		"dev-files": {
+			"/": [
+			  ".git",
+			  ".github/",
+			  ".gitattributes",
+			  ".gitignore",
+
+			  ".editoconfig",
+			  ".vscode",
+
+			  "LICENSE",
+			  "*.md",
+			  "phpcs.xml",
+
+			  "test/",
+			  "tests/"
+			],
+			"meta-box/*": [
+			  ".git",
+			  ".vscode",
+
+			  ".distignore",
+			  ".babelrc",
+			  "webpack.config.js",
+
+			  "*.lock",
+			  "*.json",
+			  "*.yml",
+
+			  "*.txt",
+			  "*.less",
+			  "*.scss",
+			  "*.po",
+
+			  "demo.php",
+			  "demo/",
+			  "sass/",
+			  "vendor/"
+			],
+			"wpmetabox/*": [
+			  ".git",
+			  ".vscode",
+
+			  ".distignore",
+			  ".babelrc",
+			  "webpack.config.js",
+
+			  "*.lock",
+			  "*.json",
+			  "*.yml",
+
+			  "*.txt",
+			  "*.less",
+			  "*.scss",
+			  "*.po",
+
+			  "demo.php",
+			  "demo/",
+			  "sass/",
+			  "vendor/"
+			]
+		},
 		"light-ignore-plugin": {
 			"meta-box/mb-frontend-submission": [
 				".git",

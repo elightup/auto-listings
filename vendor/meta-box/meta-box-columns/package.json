@@ -1,5 +1,0 @@
-{
-  "scripts": {
-    "css": "lessc columns.less columns.css"
-  }
-}

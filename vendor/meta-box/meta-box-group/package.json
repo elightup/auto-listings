@@ -1,5 +1,0 @@
-{
-  "scripts": {
-    "css": "node-sass group.scss --output-style=expanded --indent-type=tab --indent-width=1 -o ."
-  }
-}

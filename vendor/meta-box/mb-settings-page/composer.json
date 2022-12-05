@@ -1,8 +1,0 @@
-{
-  "name": "meta-box/mb-settings-page",
-  "type": "wordpress-plugin",
-  "autoload": {
-    "psr-4": {"MBSP\\" : "src/"},
-    "classmap": ["src/BackupField.php"]
-  }
-}
