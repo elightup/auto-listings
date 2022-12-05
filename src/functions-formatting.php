@@ -162,34 +162,23 @@ function auto_listings_trim_zeros( $price ) {
  * @param array $args (default: array()) format price arguments.
  * @return string
  */
-function auto_listings_format_price( $price, $args = array() ) {
-	extract(
-		apply_filters(
-			'auto_listings_format_price_args',
-			wp_parse_args(
-				$args,
-				array(
-					'currency_symbol'    => auto_listings_currency_symbol(),
-					'decimal_separator'  => auto_listings_decimal_separator(),
-					'thousand_separator' => auto_listings_thousand_separator(),
-					'decimals'           => auto_listings_decimals(),
-					'price_format'       => auto_listings_format_price_format(),
-					'include_decimals'   => auto_listings_include_decimals(),
-				)
-			)
-		)
-	);
+function auto_listings_format_price( $price, array $args = [] ) : string {
+	$args = wp_parse_args( $args, [
+		'currency_symbol'    => auto_listings_currency_symbol(),
+		'decimal_separator'  => auto_listings_decimal_separator(),
+		'thousand_separator' => auto_listings_thousand_separator(),
+		'decimals'           => auto_listings_decimals(),
+		'price_format'       => auto_listings_format_price_format(),
+		'include_decimals'   => auto_listings_include_decimals(),
+	] );
 
-	$return   = null;
-	$negative = $price < 0;
-	$price    = apply_filters( 'auto_listings_raw_price', floatval( $negative ? $price * -1 : $price ) );
-	$price    = apply_filters( 'auto_listings_formatted_price', number_format( $price, $decimals, $decimal_separator, $thousand_separator ), $price, $decimals, $decimal_separator, $thousand_separator );
+	$price = number_format( (float) $price, $args['decimals'], $args['decimal_separator'], $args['thousand_separator'] );
 
-	if ( 'no' === $include_decimals ) {
+	if ( 'no' === $args['include_decimals'] ) {
 		$price = auto_listings_trim_zeros( $price );
 	}
 
-	$formatted_price = ( $negative ? '-' : '' ) . sprintf( $price_format, '<span class="currency-symbol">' . $currency_symbol . '</span>', $price );
+	$formatted_price = sprintf( $args['price_format'], '<span class="currency-symbol">' . $args['currency_symbol'] . '</span>', $price );
 	$return          = '<span class="price-amount">' . $formatted_price . '</span>';
 	return apply_filters( 'auto_listings_format_price', $return, $price, $args );
 }
