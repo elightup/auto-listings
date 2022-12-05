@@ -8,7 +8,7 @@ class Installer {
 
 	public function install() {
 		$this->install_plugin_options();
-		wp_insert_term( 'SUV', 'body-type' );
+		wp_insert_term( __( 'SUV', 'auto-listings' ), 'body-type' );
 		$this->install_listings_page();
 		$this->install_sample_listing();
 
@@ -42,33 +42,33 @@ class Installer {
 		$options['button_text_color'] = '#ffffff';
 		$options['price_color']       = '#337ab7';
 
-		$options['grid_columns']        = '3';
-		$options['listing_status']      = [
+		$options['grid_columns']   = '3';
+		$options['listing_status'] = [
 			[
-				'status'     => 'Low Miles',
+				'status'     => __( 'Low Miles', 'auto-listings' ),
 				'bg_color'   => '#1e73be',
 				'text_color' => '#ffffff',
 				'icon'       => 'auto-icon-odometer',
 			],
 			[
-				'status'     => 'Fuel Efficient',
+				'status'     => __( 'Fuel Efficient', 'auto-listings' ),
 				'bg_color'   => '#dd3333',
 				'text_color' => '#ffffff',
 			],
 		];
-		$options['listing_state']       = [
+		$options['listing_state']  = [
 			[
-				'state'      => 'Sold',
+				'state'      => __( 'Sold', 'auto-listings' ),
 				'text_color' => '#1e73be',
 				'hide_price' => true,
 			],
 			[
-				'state'      => 'Reserved',
+				'state'      => __( 'Reserved', 'auto-listings' ),
 				'text_color' => '#dd3333',
 				'hide_price' => true,
 			],
 		];
-		$options['field_display']       = [
+		$options['field_display']  = [
 			'model_year',
 			'make_display',
 			'model_name',
@@ -93,7 +93,7 @@ class Installer {
 		$page_data    = [
 			'post_status'    => 'publish',
 			'post_type'      => 'page',
-			'post_title'     => 'Listings',
+			'post_title'     => __( 'Listings', 'auto-listings' ),
 			'post_content'   => $page_content,
 			'comment_status' => 'closed',
 		];
@@ -121,20 +121,20 @@ class Installer {
 			return;
 		}
 
-		$listing_title = 'My Sample Listing';
+		$listing_title = __( 'My Sample Listing', 'auto-listings' );
 		$listing_data  = [
 			'post_status'    => 'publish',
 			'post_type'      => 'auto-listing',
 			'post_title'     => $listing_title,
 			'post_content'   => '<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p><p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>',
-			'post_excerpt'   => 'Well looked after example!',
+			'post_excerpt'   => 'Tenetur error sunt deserunt minus nam.',
 			'comment_status' => 'closed',
 		];
-		$listing_id = wp_insert_post( $listing_data );
+		$listing_id    = wp_insert_post( $listing_data );
 
 		$prefix    = '_al_listing_';
 		$save_meta = [
-			$prefix . 'status'                  => 'Low Miles',
+			$prefix . 'status'                  => __( 'Low Miles', 'auto-listings' ),
 			$prefix . 'price'                   => '21000',
 			$prefix . 'price_suffix'            => '',
 			$prefix . 'odometer'                => '22590',
