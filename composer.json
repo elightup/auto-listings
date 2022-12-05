@@ -94,67 +94,6 @@
 			  "sass/",
 			  "vendor/"
 			]
-		},
-		"light-ignore-plugin": {
-			"meta-box/mb-frontend-submission": [
-				".git",
-				".gitattributes",
-				".gitignore",
-				"*.json",
-				"*.lock",
-				"*.yml",
-				"sass",
-				"tests",
-				"vendor",
-				"webpack.config.js"
-			],
-			"meta-box/mb-frontend-submission/languages": [
-				"*.po",
-				"*.pot"
-			],
-			"meta-box/mb-settings-page": [
-				".git",
-				".gitattributes",
-				"*.yml",
-				"*.json",
-				"*.scss",
-				"*.po",
-				"*.pot",
-				"tests",
-				"vendor"
-			],
-			"meta-box/mb-settings-page/languages": [
-				"*.po",
-				"*.pot"
-			],
-			"meta-box/meta-box-columns": [
-				".git",
-				".gitattributes",
-				"*.less",
-				"*.json",
-				"tests"
-			],
-			"meta-box/meta-box-geolocation": [
-				".git",
-				".gitattributes",
-				"*.json",
-				"tests"
-			],
-			"meta-box/meta-box-group": [
-				".git",
-				".gitattributes",
-				"*.json",
-				"*.scss",
-				"*.yml",
-				"tests"
-			],
-			"meta-box/meta-box-group/languages": [
-				"*.po",
-				"*.pot"
-			],
-			"composer": [
-				"LICENSE"
-			]
 		}
 	},
 	"autoload": {

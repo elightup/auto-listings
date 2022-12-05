@@ -3,7 +3,7 @@
         'name' => 'auto-listings/auto-listings',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '2ed9fc63d9ac6dfebf4f008aa5770b1f2972b995',
+        'reference' => '8fe4e3e72926a81a200631cbffaf5bca04f3883a',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'auto-listings/auto-listings' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '2ed9fc63d9ac6dfebf4f008aa5770b1f2972b995',
+            'reference' => '8fe4e3e72926a81a200631cbffaf5bca04f3883a',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
