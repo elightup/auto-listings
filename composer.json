@@ -12,7 +12,7 @@
 		},
 		{
 			"type": "git",
-			"url": "git@bitbucket.org:metabox/meta-box-columns.git"
+			"url": "git@github.com:wpmetabox/meta-box-columns.git"
 		},
 		{
 			"type": "git",

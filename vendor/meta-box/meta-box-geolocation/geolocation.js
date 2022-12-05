@@ -196,6 +196,21 @@
 		 * @returns string
 		 */
 		getFieldData = ( binding, place ) => {
+			// Check if binding is opening_hours
+			if ( binding == 'opening_hours' && typeof place[ binding ] !== 'undefined' ) {
+				let weekday_text = place[ binding ][ 'weekday_text' ],
+					val = '';
+				for ( let i = 0; i < weekday_text.length; i++ ) {
+					if ( val == '' ) {
+						val += weekday_text[ i ];
+					} else {
+						val += ', ' + weekday_text[ i ];
+					}
+				}
+
+				return val;
+			}
+
 			if ( place.hasOwnProperty( binding ) ) {
 				return place[ binding ];
 			}
@@ -305,7 +320,7 @@
 					field = field.replace( /['"]+/g, '' );
 					val += field;
 				} else {
-					val += that.getFieldData( field, item );
+					val += that.getFieldData( field, data );
 				}
 			} );
 
@@ -328,4 +343,4 @@
 		$( document ).on( 'clone_completed', update ); // Handle group clone event.
 	} );
 
-} )( jQuery, document, google );
+} )( jQuery, document, window.google );

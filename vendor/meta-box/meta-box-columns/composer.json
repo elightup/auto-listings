@@ -1,4 +1,9 @@
 {
   "name": "meta-box/meta-box-columns",
-  "type": "wordpress-plugin"
+  "type": "wordpress-plugin",
+  "autoload": {
+    "psr-4": {
+      "MetaBox\\Columns\\": "src/"
+    }
+  }
 }
