@@ -2,9 +2,9 @@
 Contributors: elightup, autolistings, rilwis, hungviet91
 Tags: car dealer, sell cars, car classifieds, car sales, car listings, automotive listings, auto listings, automotive, car, car dealership
 Requires at least: 5.5
-Tested up to: 5.9.1
-Stable tag: 2.6.0
-Requires PHP: 5.6
+Tested up to: 6.1.1
+Stable tag: 2.6.1
+Requires PHP: 7.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -19,10 +19,6 @@ List, manage & sell cars easily. Advanced search, vehicle data from 1941, lead c
 Create, edit and manage your car listings using **Auto Listings**.
 
 The plugin is well coded, mobile friendly (responsive), SEO friendly and can be easily customized.
-
-### Free Car Listings Theme
-
-We also offer [free car listings theme](https://wpautolistings.com/themes/) that you can use with the plugin. It's compatible with the plugin, responsive and ready to use in production websites.
 
 ### Why car dealers love Auto Listings
 
@@ -56,39 +52,7 @@ We also offer [free car listings theme](https://wpautolistings.com/themes/) that
 * **Detailed Specs** - detailed specs on each listing
 * **Responsive** - view on any device
 
-= Vehicle Data for car dealers =
-Easily populate the vehicle details and specs by simply choosing the vehicle year, make and model.
-No more manually typing all of your vehicle data. **Car dealers** love this!
-
-You simply need to choose the year, the make and the model of the vehicle and then click the 'Populate the Fields' button to auto populate each field.
-
-The car data is pulled from [CarQuery](http://www.carqueryapi.com/) and the CarQuery database contains over 68,000 vehicles from over 150 manufacturers going all the way back to 1941 until today.
-
-
-= Advanced Search =
-The search box is extremely smart and can be customized to suit your needs.
-
-There are tons of options and you can choose which fields you want to add to the search box.
-
-There is also a radius search that allows users to narrow the search results to their region. This uses a combination of Google Maps Geocoding and radius searching to deliver the relevant results.
-
-= Google Maps =
-Google Maps is integrated into each listing. When adding a listing, you simply need to start typing the address and Google will help you find the exact address and location. You can even move the map marker and place wherever you like.
-
-On the listing page, it will not pinpoint an exact address, it will instead show a circle of the area. Which avoids giving away any personal addresses.
-
-= Shortcodes =
-
-    [auto_listings_listing]
-    [auto_listings_listings]
-    [auto_listings_search]
-    [auto_listings_contact_form]
-
-The shortcodes can be easily customized, with each shortcode having many options.
-
-Visit the [shortcodes docs page](https://wpautolistings.com/docs/shortcodes/) for more info.
-
-= Template System =
+### Template System
 
 A robust, flexible framework & template system gives you full control over every aspect of your automotive website, so you can customize it to fit your needs.
 
@@ -98,22 +62,28 @@ The template system used is very similar to the WooCommerce template system, so 
 
 Visit the [template docs page](https://wpautolistings.com/docs/templates/) for more info.
 
-= Premium Extensions =
+### Premium Extensions
 
 We have a number of premium extensions to help take your automotive website to the next level.
 
-> View our [Premium Extensions](https://wpautolistings.com/extensions/) here.
+- [DVLA Search](https://wpautolistings.com/extensions/dvla-search/): Integrates with the DVLA Search API for the UK to get precise vehicle data.
+- [RegCheck API](https://wpautolistings.com/extensions/regcheck-api/): Delivers precise data lookup for vehicles.
+- [Frontend](https://wpautolistings.com/extensions/frontend/): Allow users to pay for and submit their own listings.
+- [Multiple Dealers](https://wpautolistings.com/extensions/multiple-dealers/): Create a multi-dealer car sales website.
 
+### Car Listings Theme
+
+We also offer [free and premium car listings theme](https://wpautolistings.com/themes/) that you can use with the plugin. It's compatible with the plugin, responsive and ready to use in production websites.
+
+- **eCar**: The best car listings theme. eCar is a premium WordPress theme for car dealership and car listings websites that's powerful, elegant and lightweight. eCar is designed to help you manage and sell cars easily with ease. It supports all features from the Auto Listings plugin such as advanced search, auto-populating for vehicle data, lead capture, gallery, maps and more.
+- **Corify**: Corify is a must-have WordPress theme for car dealership and car listings websites. It helps you list, manage & sell cars easily with advanced search, auto-populating for vehicle data, lead capture, gallery, maps. Integrating with Elementor page builder, Corify gives you endless possibilities to customize your car listings websites.
+- **CarListings**: CarListings is a free, beautiful and easy to use WordPress auto listing theme for car sellers and dealers. Working perfectly with plugin Auto Listings, this theme will help you build a beautiful car listing WordPress site with ease.
+
+Get all themes for your car listings websites [here](https://wpautolistings.com/themes/).
 
 == Installation ==
 
 Install like any other plugin - directly from plugins page or upload via FTP.
-
-
-= Minimum Requirements =
-
-* WordPress 4.5 or greater
-* PHP version 5.6 or greater
 
 = Setting Up =
 
@@ -150,5 +120,9 @@ It is perfect for car dealers and car dealerships, car classifieds websites or a
 6. Auto Listings settings pages
 
 == Changelog ==
+
+= 2.6.1 - 2022-12-05 =
+- Fix PHP 8 warning in format_price
+- Make text translateable
 
 Visit our [changelog page](https://wpautolistings.com/changelog/) for up-to-date information.
