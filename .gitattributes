@@ -10,3 +10,6 @@ Thumbs.db export-ignore
 .github export-ignore
 *.json export-ignore
 *.md export-ignore
+phpcs.xml export-ignore
+webpack.config.js export-ignore
+*.scss export-ignore
