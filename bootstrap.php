@@ -30,7 +30,7 @@ if ( is_admin() ) {
 	new Enquiry\AdminColumns;
 
 	new SearchForm\AdminColumns;
-    new SearchForm\Editor;
+	new SearchForm\Editor;
 }
 if ( ( ! is_admin() || wp_doing_ajax() ) && ! wp_doing_cron() ) {
 	new Frontend\Main;
@@ -38,8 +38,8 @@ if ( ( ! is_admin() || wp_doing_ajax() ) && ! wp_doing_cron() ) {
 	new Frontend\Assets;
 
 	new SearchForm\Shortcode\Form;
-    $control = new SearchForm\Shortcode\Control;
-    new SearchForm\Shortcode\Field( $control );
-    new SearchForm\Shortcode\Extras;
-    new SearchForm\Shortcode\Button;
+	$control = new SearchForm\Shortcode\Control;
+	new SearchForm\Shortcode\Field( $control );
+	new SearchForm\Shortcode\Extras;
+	new SearchForm\Shortcode\Button;
 }

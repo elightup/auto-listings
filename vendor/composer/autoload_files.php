@@ -16,9 +16,4 @@ return array(
     '67044878b0dc26239c83e213a6ac4e25' => $baseDir . '/src/SearchForm/functions.php',
     '6b6b1f4986f46522e7c0e9ae0dca8041' => $baseDir . '/src/Frontend/template-hooks.php',
     '315ebd61770793434c70b58288e3d288' => $baseDir . '/src/Frontend/template-tags.php',
-    '659266b31e06c92d08b6a7b028c47337' => $vendorDir . '/meta-box/mb-frontend-submission/mb-frontend-submission.php',
-    '30f7f5f36d25e456a33df614b8c75af8' => $vendorDir . '/meta-box/mb-settings-page/mb-settings-page.php',
-    '95968d89ab73f6676dff3db7f56f5a91' => $vendorDir . '/meta-box/meta-box-columns/meta-box-columns.php',
-    'b7c058c33578677940038256b120b25f' => $vendorDir . '/meta-box/meta-box-geolocation/meta-box-geolocation.php',
-    '669984435029805eb4b3b641c23faa8f' => $vendorDir . '/meta-box/meta-box-group/meta-box-group.php',
 );

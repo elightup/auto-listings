@@ -1,6 +1,12 @@
 {
 	"name": "auto-listings/auto-listings",
 	"type": "wordpress-plugin",
+	"config": {
+		"prepend-autoloader": false,
+		"allow-plugins": {
+			"composer/installers": true
+		}
+	},
 	"repositories": [
 		{
 			"type": "git",
@@ -39,64 +45,53 @@
 	"extra": {
 		"dev-files": {
 			"/": [
-			  ".git",
-			  ".github/",
-			  ".gitattributes",
-			  ".gitignore",
-
-			  ".editoconfig",
-			  ".vscode",
-
-			  "LICENSE",
-			  "*.md",
-			  "phpcs.xml",
-
-			  "test/",
-			  "tests/"
+				".git",
+				".github/",
+				".gitattributes",
+				".gitignore",
+				".editoconfig",
+				".vscode",
+				"LICENSE",
+				"*.md",
+				"phpcs.xml",
+				"test/",
+				"tests/"
 			],
 			"meta-box/*": [
-			  ".git",
-			  ".vscode",
-
-			  ".distignore",
-			  ".babelrc",
-			  "webpack.config.js",
-
-			  "*.lock",
-			  "*.json",
-			  "*.yml",
-
-			  "*.txt",
-			  "*.less",
-			  "*.scss",
-			  "*.po",
-
-			  "demo.php",
-			  "demo/",
-			  "sass/",
-			  "vendor/"
+				".git",
+				".vscode",
+				".distignore",
+				".babelrc",
+				"webpack.config.js",
+				"*.lock",
+				"*.json",
+				"*.yml",
+				"*.txt",
+				"*.less",
+				"*.scss",
+				"*.po",
+				"demo.php",
+				"demo/",
+				"sass/",
+				"vendor/"
 			],
 			"wpmetabox/*": [
-			  ".git",
-			  ".vscode",
-
-			  ".distignore",
-			  ".babelrc",
-			  "webpack.config.js",
-
-			  "*.lock",
-			  "*.json",
-			  "*.yml",
-
-			  "*.txt",
-			  "*.less",
-			  "*.scss",
-			  "*.po",
-
-			  "demo.php",
-			  "demo/",
-			  "sass/",
-			  "vendor/"
+				".git",
+				".vscode",
+				".distignore",
+				".babelrc",
+				"webpack.config.js",
+				"*.lock",
+				"*.json",
+				"*.yml",
+				"*.txt",
+				"*.less",
+				"*.scss",
+				"*.po",
+				"demo.php",
+				"demo/",
+				"sass/",
+				"vendor/"
 			]
 		}
 	},
@@ -114,12 +109,7 @@
 			"src/functions-sidebars.php",
 			"src/SearchForm/functions.php",
 			"src/Frontend/template-hooks.php",
-			"src/Frontend/template-tags.php",
-			"vendor/meta-box/mb-frontend-submission/mb-frontend-submission.php",
-			"vendor/meta-box/mb-settings-page/mb-settings-page.php",
-			"vendor/meta-box/meta-box-columns/meta-box-columns.php",
-			"vendor/meta-box/meta-box-geolocation/meta-box-geolocation.php",
-			"vendor/meta-box/meta-box-group/meta-box-group.php"
+			"src/Frontend/template-tags.php"
 		]
 	}
 }

@@ -24,14 +24,14 @@ class ComposerAutoloaderInit1ba6dcb9f4bcd8faad86bb0a7492d91b
 
         require __DIR__ . '/platform_check.php';
 
-        spl_autoload_register(array('ComposerAutoloaderInit1ba6dcb9f4bcd8faad86bb0a7492d91b', 'loadClassLoader'), true, true);
+        spl_autoload_register(array('ComposerAutoloaderInit1ba6dcb9f4bcd8faad86bb0a7492d91b', 'loadClassLoader'), true, false);
         self::$loader = $loader = new \Composer\Autoload\ClassLoader(\dirname(__DIR__));
         spl_autoload_unregister(array('ComposerAutoloaderInit1ba6dcb9f4bcd8faad86bb0a7492d91b', 'loadClassLoader'));
 
         require __DIR__ . '/autoload_static.php';
         call_user_func(\Composer\Autoload\ComposerStaticInit1ba6dcb9f4bcd8faad86bb0a7492d91b::getInitializer($loader));
 
-        $loader->register(true);
+        $loader->register(false);
 
         $includeFiles = \Composer\Autoload\ComposerStaticInit1ba6dcb9f4bcd8faad86bb0a7492d91b::$files;
         foreach ($includeFiles as $fileIdentifier => $file) {

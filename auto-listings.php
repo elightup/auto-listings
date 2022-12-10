@@ -13,7 +13,7 @@
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || die;
 
-include __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
 new AutoListings\Installer( __FILE__ );
 
@@ -34,9 +34,21 @@ function auto_listings_load() {
 	// If Meta Box is NOT active.
 	if ( ! defined( 'RWMB_VER' ) ) {
 		add_action( 'admin_notices', 'auto_listings_admin_notice' );
-	} else {
-		require __DIR__ . '/bootstrap.php';
+		return;
 	}
+
+	$plugins = [
+		'mb-frontend-submission',
+		'mb-settings-page',
+		'meta-box-columns',
+		'meta-box-geolocation',
+		'meta-box-group',
+	];
+	foreach ( $plugins as $plugin ) {
+		require __DIR__ . "/vendor/meta-box/$plugin/$plugin.php";
+	}
+
+	require __DIR__ . '/bootstrap.php';
 }
 
 function auto_listings_admin_notice() {
