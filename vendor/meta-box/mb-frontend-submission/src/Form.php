@@ -1,10 +1,13 @@
 <?php
 namespace MBFS;
 
+use WP_Error;
+
 class Form {
+	public $error;
+	public $config;
 	private $meta_boxes;
 	private $post;
-	public $config;
 	private $template_loader;
 
 	/**
@@ -21,6 +24,8 @@ class Form {
 		$this->config          = $config;
 		$this->template_loader = $template_loader;
 		$this->localize_data   = [];
+
+		$this->error = new WP_Error;
 	}
 
 	/**
@@ -56,7 +61,7 @@ class Form {
 		}
 
 		do_action( 'rwmb_frontend_before_form', $this->config );
-		echo '<form class="rwmb-form" method="post" enctype="multipart/form-data">';
+		echo '<form class="rwmb-form" id="' . esc_attr( $this->config['id'] ) . '" method="post" enctype="multipart/form-data">';
 		$this->render_hidden_fields();
 
 		// Register wp color picker scripts for frontend.
@@ -65,7 +70,7 @@ class Form {
 
 		$delete_button = '';
 		if ( 'true' === $this->config['allow_delete'] && $this->config['post_id'] && get_post_status( $this->config['post_id'] ) ) {
-			$delete_button = '<button class="rwmb-button rwmb-button--delete" name="rwmb_delete" value="1">' . $this->config['delete_button'] . '</button>';
+			$delete_button = '<button type="submit" class="rwmb-button rwmb-button--delete" name="rwmb_delete" value="1">' . $this->config['delete_button'] . '</button>';
 		}
 
 		if ( 'false' === $this->config['only_delete'] ) {
@@ -75,7 +80,7 @@ class Form {
 			if ( is_rtl() ) {
 				wp_enqueue_style( 'rwmb-rtl', RWMB_CSS_URL . 'style-rtl.css', [], RWMB_VER );
 			}
-			wp_enqueue_script( 'rwmb', RWMB_JS_URL . 'script.js', ['jquery'], RWMB_VER, true );
+			wp_enqueue_script( 'rwmb', RWMB_JS_URL . 'script.js', [ 'jquery' ], RWMB_VER, true );
 
 			// Make sure Meta Box script is enqueued first.
 			foreach ( $this->meta_boxes as $meta_box ) {
@@ -90,11 +95,23 @@ class Form {
 			}
 
 			do_action( 'rwmb_frontend_before_submit_button', $this->config );
-			echo '<div class="rwmb-field rwmb-button-wrapper rwmb-form-submit"><button class="rwmb-button" data-edit="' , esc_attr( $this->config['edit'] ) , '" name="rwmb_submit" value="1">', esc_html( $this->config['submit_button'] ), '</button>' , $delete_button , '</div>';
+
+			echo '<div class="rwmb-field rwmb-button-wrapper rwmb-form-submit"><div class="rwmb-input">';
+
+				// Allow submit button to be filtered
+				$submit_button = '<button type="submit" class="rwmb-button" data-edit="' . esc_attr( $this->config['edit'] ) . '" name="rwmb_submit" value="1">' . esc_html( $this->config['submit_button'] ) . '</button>';
+				$submit_button = apply_filters( 'rwmb_frontend_submit_button', $submit_button, $this->config['post_id'] );
+				echo $submit_button;
+
+				echo $delete_button;
+			echo '</div></div>';
+
 			do_action( 'rwmb_frontend_after_submit_button', $this->config );
 		} else {
 			do_action( 'rwmb_frontend_before_submit_button', $this->config );
-			echo '<div class="rwmb-field rwmb-button-wrapper rwmb-form-submit">' . $delete_button . '</div>';
+			echo '<div class="rwmb-field rwmb-button-wrapper rwmb-form-submit"><div class="rwmb-input">
+					' . $delete_button . '
+				</div></div>';
 			do_action( 'rwmb_frontend_after_submit_button', $this->config );
 		}
 
@@ -111,7 +128,7 @@ class Form {
 			return false;
 		}
 		$post = get_post( $this->config['post_id'] );
-		return $post && ($post->post_status !== 'trash' ) && ( $post->post_author == get_current_user_id() || current_user_can( 'edit_post', $post->ID ) );
+		return $post && ( $post->post_status !== 'trash' ) && ( $post->post_author == get_current_user_id() || current_user_can( 'edit_post', $post->ID ) );
 	}
 
 	/**
@@ -135,20 +152,18 @@ class Form {
 	 * Process the form.
 	 * Meta box auto hooks to 'save_post' action to save its data, so we only need to save the post.
 	 *
-	 * @return int Inserted object ID.
+	 * @return ?int Inserted object ID.
 	 */
 	public function process() {
-		Error::clear();
-
 		$validate = true;
 		foreach ( $this->meta_boxes as $meta_box ) {
 			$validate = $validate && $meta_box->validate();
 		}
 
-		$validate  = apply_filters( 'rwmb_frontend_validate', $validate, $this->config );
+		$validate = apply_filters( 'rwmb_frontend_validate', $validate, $this->config );
 
 		if ( true !== $validate ) {
-			Error::set( $validate );
+			$this->error->add( 'invalid', is_string( $validate ) ? $validate : __( 'Invalid form submission', 'mb-frontend-submission' ) );
 			return null;
 		}
 
@@ -176,9 +191,8 @@ class Form {
 	}
 
 	protected function display_errors() {
-		if ( Error::has() ) {
-			Error::show();
-			Error::clear();
+		if ( $this->error->has_errors() ) {
+			printf( '<div class="rwmb-error">%s</div>', wp_kses_post( implode( '<br>', $this->error->get_error_messages() ) ) );
 		}
 	}
 
@@ -197,7 +211,7 @@ class Form {
 			'1.0.7',
 			true
 		);
-		wp_register_script( 'wp-color-picker', admin_url( 'js/color-picker.min.js' ), array( 'iris' ), '', true );
+		wp_register_script( 'wp-color-picker', admin_url( 'js/color-picker.min.js' ), array( 'iris', 'wp-i18n' ), '', true );
 		wp_localize_script(
 			'wp-color-picker',
 			'wpColorPickerL10n',
@@ -216,14 +230,11 @@ class Form {
 		wp_enqueue_style( 'mbfs-form', MBFS_URL . 'assets/form.css', '', MBFS_VER );
 		wp_enqueue_script( 'mbfs', MBFS_URL . 'assets/frontend-submission.js', array( 'jquery' ), MBFS_VER, true );
 
-		$is_ajax  = isset( $this->config['ajax'] ) ? $this->config['ajax'] : '';
-		$redirect = isset( $this->config['redirect'] ) ? $this->config['redirect'] : '';
-
 		$this->localize_data = array_merge( $this->localize_data, [
 			'ajaxUrl'        => admin_url( 'admin-ajax.php' ),
 			'nonce'          => wp_create_nonce( 'ajax_nonce' ),
-			'ajax'           => $is_ajax,
-			'redirect'       => $redirect,
+			'ajax'           => $this->config['ajax'],
+			'redirect'       => $this->config['redirect'],
 			'confirm_delete' => __( 'Are you sure to delete this post?', 'mb-frontend-submission' ),
 		] );
 	}
@@ -249,34 +260,21 @@ class Form {
 
 	private function render_hidden_fields() {
 		$key = ConfigStorage::store( $this->config );
-		echo '<input type="hidden" name="rwmb_form_config" value="', esc_attr( $key ), '">';
+		echo '<input type="hidden" name="mbfs_key" value="', esc_attr( $key ), '">';
 		echo '<input type="hidden" name="action" value="mbfs_submit">';
 
 		// Add hidden input if has recaptcha v3
-		if ( $this->config[ 'recaptcha_key' ] ) {
-			echo '<input type="hidden" name="recaptcha_token" value="">';
-			echo '<input type="hidden" name="recaptcha_action" value="submit_frontend">';
+		if ( $this->config['recaptcha_key'] ) {
+			echo '<input type="hidden" name="mbfs_recaptcha_token" value="">';
 		}
 	}
 
 	private function is_processed() {
-		$id = array();
-		foreach ( $this->meta_boxes as $meta_box ) {
-			$id[] = $meta_box->id;
-		}
-		$id = implode( ',', $id );
-
-		return filter_input( INPUT_GET, 'rwmb-form-submitted' ) === $id;
+		return ConfigStorage::get_key( $this->config ) === filter_input( INPUT_GET, 'rwmb-form-submitted' );
 	}
 
 	private function is_deleted() {
-		$id = array();
-		foreach ( $this->meta_boxes as $meta_box ) {
-			$id[] = $meta_box->id;
-		}
-		$id = implode( ',', $id );
-
-		return filter_input( INPUT_GET, 'rwmb-form-deleted' ) === $id;
+		return ConfigStorage::get_key( $this->config ) === filter_input( INPUT_GET, 'rwmb-form-deleted' );
 	}
 
 	private function display_message( $type ) {

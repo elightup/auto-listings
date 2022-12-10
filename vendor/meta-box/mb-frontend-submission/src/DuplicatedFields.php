@@ -8,15 +8,15 @@ namespace MBFS;
 
 class DuplicatedFields {
 	private $fields = [
-		'post_title' => 'title',
-		'post_content' => 'editor',
-		'post_excerpt' => 'excerpt',
-		'post_date' => 'date',
+		'post_title'    => 'title',
+		'post_content'  => 'editor',
+		'post_excerpt'  => 'excerpt',
+		'post_date'     => 'date',
 		'_thumbnail_id' => 'thumbnail',
 	];
 
 	public function __construct() {
-		add_filter( 'rwmb_outer_html', [$this, 'remove_field'], 10, 2 );
+		add_filter( 'rwmb_outer_html', [ $this, 'remove_field' ], 10, 2 );
 	}
 
 	public function remove_field( $html, $field ) {

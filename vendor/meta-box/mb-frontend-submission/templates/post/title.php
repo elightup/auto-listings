@@ -6,10 +6,9 @@
  * @subpackage MB Frontend Submission
  */
 
-$name  = ! empty( $data->config['label_title'] ) ? $data->config['label_title'] : esc_html__( 'Title', 'rwmb-frontend-submission' );
 $field = apply_filters( 'rwmb_frontend_post_title', [
 	'type' => 'text',
-	'name' => $name,
+	'name' => $data->config['label_title'],
 	'id'   => 'post_title',
 ] );
 $field = RWMB_Field::call( 'normalize', $field );

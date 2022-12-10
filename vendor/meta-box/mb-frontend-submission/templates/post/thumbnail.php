@@ -12,10 +12,9 @@ if ( $thumbnail_id ) {
 	$default = [ $thumbnail_id ];
 }
 
-$name  = ! empty( $data->config['label_thumbnail'] ) ? $data->config['label_thumbnail'] : esc_html__( 'Thumbnail', 'rwmb-frontend-submission' );
 $field = apply_filters( 'rwmb_frontend_post_thumbnail', [
 	'type'             => current_user_can( 'upload_files' ) ? 'single_image' : 'image',
-	'name'             => $name,
+	'name'             => $data->config['label_thumbnail'],
 	'id'               => '_thumbnail_id',
 	'max_file_uploads' => 1,
 	'std'              => $default,

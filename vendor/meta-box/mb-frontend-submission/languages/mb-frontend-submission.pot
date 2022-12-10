@@ -1,0 +1,152 @@
+# Copyright (C) 2022 MetaBox.io
+# This file is distributed under the GPL2+.
+msgid ""
+msgstr ""
+"Project-Id-Version: MB Frontend Submission 3.1.5\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mb-frontend-submission\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-02-14T02:08:43+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.5.0\n"
+"X-Domain: mb-frontend-submission\n"
+
+#. Plugin Name of the plugin
+msgid "MB Frontend Submission"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://metabox.io/plugins/mb-frontend-submission"
+msgstr ""
+
+#. Description of the plugin
+msgid "Submit posts and custom fields in the frontend."
+msgstr ""
+
+#. Author of the plugin
+msgid "MetaBox.io"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://metabox.io"
+msgstr ""
+
+#: src/Dashboard.php:26
+msgid "Please login to view the dashboard."
+msgstr ""
+
+#: src/Dashboard.php:42
+msgid "Add New"
+msgstr ""
+
+#: src/Dashboard.php:51
+#: src/FormFactory.php:45
+msgid "Title"
+msgstr ""
+
+#: src/Dashboard.php:52
+msgid "Date"
+msgstr ""
+
+#: src/Dashboard.php:53
+msgid "Status"
+msgstr ""
+
+#: src/Dashboard.php:54
+msgid "Actions"
+msgstr ""
+
+#. Translators: %s - user display name.
+#: src/Dashboard.php:97
+msgid "Howdie, %s!"
+msgstr ""
+
+#. Translators: %1$d - number of posts, %2$s - post label name.
+#: src/Dashboard.php:99
+msgid "You have %1$d %2$s."
+msgstr ""
+
+#. Translators: %d - page ID.
+#: src/Dashboard.php:111
+msgid "Something is not right with the shortcode on page ID: %d"
+msgstr ""
+
+#: src/Dashboard.php:198
+msgid "Edit"
+msgstr ""
+
+#: src/Form.php:47
+msgid "You are not allowed to edit this post."
+msgstr ""
+
+#: src/Form.php:158
+msgid "Invalid form submission"
+msgstr ""
+
+#: src/Form.php:211
+msgid "Clear"
+msgstr ""
+
+#: src/Form.php:212
+msgid "Clear color"
+msgstr ""
+
+#: src/Form.php:213
+msgid "Default"
+msgstr ""
+
+#: src/Form.php:214
+msgid "Select default color"
+msgstr ""
+
+#: src/Form.php:215
+msgid "Select Color"
+msgstr ""
+
+#: src/Form.php:216
+msgid "Color value"
+msgstr ""
+
+#: src/Form.php:230
+msgid "Are you sure to delete this post?"
+msgstr ""
+
+#: src/Form.php:244
+msgid "Error trying to execute grecaptcha."
+msgstr ""
+
+#: src/FormFactory.php:52
+msgid "Submit"
+msgstr ""
+
+#: src/FormFactory.php:53
+msgid "Delete"
+msgstr ""
+
+#: src/FormFactory.php:54
+msgid "Your post has been successfully submitted. Thank you."
+msgstr ""
+
+#: src/FormFactory.php:55
+msgid "Your post has been successfully deleted."
+msgstr ""
+
+#: src/Post.php:83
+msgid "(No title)"
+msgstr ""
+
+#: src/Shortcode.php:104
+msgid "Invalid request. Please try again."
+msgstr ""
+
+#: src/Shortcode.php:119
+msgid "Invalid ajax request. Please try again."
+msgstr ""
+
+#: src/Shortcode.php:130
+#: src/Shortcode.php:143
+msgid "Invalid captcha token."
+msgstr ""

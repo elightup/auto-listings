@@ -6,6 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'MetaBox\\Support\\' => array($vendorDir . '/meta-box/support'),
     'MetaBox\\Columns\\' => array($vendorDir . '/meta-box/meta-box-columns/src'),
     'MBSP\\' => array($vendorDir . '/meta-box/mb-settings-page/src'),
     'MBFS\\' => array($vendorDir . '/meta-box/mb-frontend-submission/src'),

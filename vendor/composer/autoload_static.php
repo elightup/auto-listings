@@ -27,6 +27,7 @@ class ComposerStaticInit1ba6dcb9f4bcd8faad86bb0a7492d91b
     public static $prefixLengthsPsr4 = array (
         'M' => 
         array (
+            'MetaBox\\Support\\' => 16,
             'MetaBox\\Columns\\' => 16,
             'MBSP\\' => 5,
             'MBFS\\' => 5,
@@ -38,6 +39,10 @@ class ComposerStaticInit1ba6dcb9f4bcd8faad86bb0a7492d91b
     );
 
     public static $prefixDirsPsr4 = array (
+        'MetaBox\\Support\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/meta-box/support',
+        ),
         'MetaBox\\Columns\\' => 
         array (
             0 => __DIR__ . '/..' . '/meta-box/meta-box-columns/src',

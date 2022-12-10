@@ -5,9 +5,9 @@ const i18n = mbFrontendForm;
 
 function processForm() {
 	var $form = $( this );
-	var $submitBtn = $form.find( 'button[name=rwmb_submit]' );
-	var $deleteBtn = $form.find( 'button[name=rwmb_delete]' );
-	var isEdit = $submitBtn.attr( 'data-edit' );
+	var $submitBtn = $form.find( 'button[name="rwmb_submit"]' );
+	var $deleteBtn = $form.find( 'button[name="rwmb_delete"]' );
+	var editText   = $submitBtn.attr( 'data-edit' );
 
 	const setAction = action => $form.find( 'input[name="action"]' ).val( `mbfs_${ action }` );
 	const validate = () => {
@@ -51,7 +51,7 @@ function processForm() {
 		if ( i18n.recaptchaKey ) {
 			checkRecaptcha( {
 				success: token => {
-					$form.find( 'input[name="recaptcha_token"]' ).val( token );
+					$form.find( 'input[name="mbfs_recaptcha_token"]' ).val( token );
 					submitCallback();
 				},
 				error: () => displayMessage( i18n.captchaExecuteError, false )
@@ -78,7 +78,7 @@ function processForm() {
 			removeLoading();
 			enableButtons();
 			displayMessage( response.data.message, response.success );
-			scrollTo( $form );
+			scrollTo( $( '.rwmb-confirmation' ) );
 
 			if ( response.success && response.data.redirect ) {
 				redirect( response.data.redirect );
@@ -92,8 +92,9 @@ function processForm() {
 
 	function displayMessage( message, success = true ) {
 		message = `<div class="rwmb-confirmation${ success ? '' : ' rwmb-error' }">${ message }</div>`;
+		const isEdit = ( editText === 'true' );
 
-		if ( isEdit ) {
+		if ( isEdit || !success ) {
 			$form.prepend( message );
 		} else {
 			$form.replaceWith( message );

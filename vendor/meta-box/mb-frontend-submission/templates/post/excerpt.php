@@ -6,10 +6,9 @@
  * @subpackage MB Frontend Submission
  */
 
-$name  = ! empty( $data->config['label_excerpt'] ) ? $data->config['label_excerpt'] : esc_html__( 'Excerpt', 'rwmb-frontend-submission' );
 $field = apply_filters( 'rwmb_frontend_post_excerpt', [
 	'type' => 'textarea',
-	'name' => $name,
+	'name' => $data->config['label_excerpt'],
 	'id'   => 'post_excerpt',
 ] );
 $field = RWMB_Field::call( 'normalize', $field );

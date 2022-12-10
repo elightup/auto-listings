@@ -62,17 +62,18 @@
         },
         {
             "name": "meta-box/mb-frontend-submission",
-            "version": "3.0.1",
-            "version_normalized": "3.0.1.0",
+            "version": "4.1.2",
+            "version_normalized": "4.1.2.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:wpmetabox/mb-frontend-submission.git",
-                "reference": "2b0b26e4c2f65ac75729fa12ce5cd8cc62eeee6e"
+                "reference": "b61ed3c3c360fa5838926a1ed6079604f33bb53b"
             },
             "require": {
-                "gamajo/template-loader": "^1.3"
+                "gamajo/template-loader": "^1.3",
+                "meta-box/support": "dev-master"
             },
-            "time": "2021-01-28T03:37:52+00:00",
+            "time": "2022-12-05T02:30:27+00:00",
             "type": "wordpress-plugin",
             "extra": {
                 "dev-files": {
@@ -214,6 +215,31 @@
             "type": "wordpress-plugin",
             "installation-source": "source",
             "install-path": "../meta-box/meta-box-group"
+        },
+        {
+            "name": "meta-box/support",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wpmetabox/support.git",
+                "reference": "21ac638244f63c9372ff9958810552a1a26135d9"
+            },
+            "time": "2022-07-27T10:00:48+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "psr-4": {
+                    "MetaBox\\Support\\": ""
+                }
+            },
+            "license": [
+                "GNU GPL-2.0"
+            ],
+            "description": "Helpers for Meta Box plugins",
+            "homepage": "https://metabox.io",
+            "install-path": "../meta-box/support"
         }
     ],
     "dev": true,

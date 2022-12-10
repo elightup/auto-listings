@@ -6,10 +6,9 @@
  * @subpackage MB Frontend Submission
  */
 
-$name  = ! empty( $data->config['label_date'] ) ? $data->config['label_date'] : esc_html__( 'Date', 'rwmb-frontend-submission' );
 $field = apply_filters( 'rwmb_frontend_post_date', [
 	'type' => 'datetime',
-	'name' => $name,
+	'name' => $data->config['label_date'],
 	'id'   => 'post_date',
 ] );
 $field = RWMB_Field::call( 'normalize', $field );

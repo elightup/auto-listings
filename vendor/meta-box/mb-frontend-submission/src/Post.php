@@ -18,11 +18,11 @@ class Post {
 
 	private $template_loader;
 
-	public function __construct( $post_type = 'post', $post_id = 0, $config = array(), $template_loader ) {
+	public function __construct( $post_type, $post_id, $config, $template_loader ) {
 		$this->post_id         = (int) $post_id;
 		$this->post_type       = $post_id ? get_post_type( $post_id ) : $post_type;
 		$this->config          = $config;
-		$this->fields          = ['post_title', 'post_content', 'post_excerpt', 'post_date'];
+		$this->fields          = [ 'post_title', 'post_content', 'post_excerpt', 'post_date' ];
 		$this->template_loader = $template_loader;
 	}
 
@@ -54,7 +54,7 @@ class Post {
 	public function save() {
 		do_action( 'rwmb_frontend_before_save_post', $this );
 
-		foreach( $this->fields as $field ) {
+		foreach ( $this->fields as $field ) {
 			add_filter( "rwmb_{$field}_value", '__return_empty_string' );
 		}
 
@@ -73,12 +73,15 @@ class Post {
 		$data       = $this->get_data();
 		$data['ID'] = $this->post_id;
 		$data       = apply_filters( 'rwmb_frontend_update_post_data', $data, $this->config );
-
+		$data       = array_filter( $data );
 		wp_update_post( $data );
 	}
 
 	private function create() {
-		$data                = $this->get_data();
+		$data = $this->get_data();
+		if ( empty( $data['post_title'] ) ) {
+			$data['post_title'] = __( '(No title)', 'mb-frontend-submission' );
+		}
 		$data['post_type']   = $this->post_type;
 		$data['post_status'] = $this->config['post_status'];
 		$data                = apply_filters( 'rwmb_frontend_insert_post_data', $data, $this->config );
@@ -98,11 +101,6 @@ class Post {
 
 		// If developer sets the post parent using 'post' field.
 		$data['post_parent'] = filter_input( INPUT_POST, 'parent_id', FILTER_SANITIZE_NUMBER_INT );
-
-		if ( empty( $data['post_title'] ) ) {
-			$data['post_title'] = __( '(No title)', 'mb-frontend-submission' );
-		}
-
 		return $data;
 	}
 
