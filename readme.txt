@@ -131,6 +131,11 @@ It is perfect for car dealers and car dealerships, car classifieds websites or a
 
 == Changelog ==
 
+= 2.6.2 - 2022-12-11 =
+- Add auto updater for extensions
+- Reduce JS file size for search form builder with esbuild
+- Update Meta Box extensions
+
 = 2.6.1 - 2022-12-05 =
 - Fix PHP 8 warning in format_price
 - Make text translateable
