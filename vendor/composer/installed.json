@@ -1,6 +1,28 @@
 {
     "packages": [
         {
+            "name": "elightup/plugin-updater",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:elightup/plugin-updater.git",
+                "reference": "92440dca65305be266ea037382e5272971fc155a"
+            },
+            "time": "2022-08-22T07:10:02+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "psr-4": {
+                    "eLightUp\\PluginUpdater\\": [
+                        "src/"
+                    ]
+                }
+            },
+            "install-path": "../elightup/plugin-updater"
+        },
+        {
             "name": "gamajo/template-loader",
             "version": "1.3.1",
             "version_normalized": "1.3.1.0",

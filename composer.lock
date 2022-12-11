@@ -4,8 +4,27 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a43c4ee960e623c77b0c6db35847611b",
+    "content-hash": "ecc449932144193b8409f5428b7b6249",
     "packages": [
+        {
+            "name": "elightup/plugin-updater",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:elightup/plugin-updater.git",
+                "reference": "92440dca65305be266ea037382e5272971fc155a"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "eLightUp\\PluginUpdater\\": [
+                        "src/"
+                    ]
+                }
+            },
+            "time": "2022-08-22T07:10:02+00:00"
+        },
         {
             "name": "gamajo/template-loader",
             "version": "1.3.1",
@@ -231,7 +250,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "meta-box/meta-box-geolocation": 20
+        "meta-box/meta-box-geolocation": 20,
+        "elightup/plugin-updater": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

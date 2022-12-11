@@ -3,7 +3,7 @@
         'name' => 'auto-listings/auto-listings',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '6f40a491ccc59bd5b797bad1246f7a8d1aebe186',
+        'reference' => '4f0f2ad09b493203d26055ec324040e3f0e7fc47',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,10 +13,21 @@
         'auto-listings/auto-listings' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '6f40a491ccc59bd5b797bad1246f7a8d1aebe186',
+            'reference' => '4f0f2ad09b493203d26055ec324040e3f0e7fc47',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'elightup/plugin-updater' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '92440dca65305be266ea037382e5272971fc155a',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../elightup/plugin-updater',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
             'dev_requirement' => false,
         ),
         'gamajo/template-loader' => array(
