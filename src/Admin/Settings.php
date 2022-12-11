@@ -8,7 +8,7 @@ class Settings {
 		add_action( 'admin_print_styles-auto-listing_page_auto-listings', [ $this, 'enqueue' ] );
 	}
 
-	public function register_settings_pages( $settings_pages ) {
+	public function register_settings_pages( array $settings_pages ) : array {
 		$settings_pages['auto-listings'] = [
 			'id'          => 'auto-listings',
 			'option_name' => 'auto_listings_options',
@@ -27,10 +27,10 @@ class Settings {
 		return $settings_pages;
 	}
 
-	public function register_settings_fields( $meta_boxes ) {
+	public function register_settings_fields( array $meta_boxes ) : array {
 		$files = glob( __DIR__ . '/settings/*.php' );
 		foreach ( $files as $file ) {
-			$meta_box = include $file;
+			$meta_box                      = include $file;
 			$meta_boxes[ $meta_box['id'] ] = $meta_box;
 		}
 
@@ -38,6 +38,6 @@ class Settings {
 	}
 
 	public function enqueue() {
-		wp_enqueue_style( 'auto-listings-settings', AUTO_LISTINGS_URL . 'assets/admin/css/settings.css', '', AUTO_LISTINGS_VERSION );
+		wp_enqueue_style( 'auto-listings-settings', AUTO_LISTINGS_URL . 'assets/admin/css/settings.css', [], AUTO_LISTINGS_VERSION );
 	}
 }
