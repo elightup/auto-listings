@@ -9,6 +9,7 @@ Thumbs.db export-ignore
 .gitignore export-ignore
 .github export-ignore
 *.json export-ignore
+*.lock export-ignore
 *.md export-ignore
 phpcs.xml export-ignore
 webpack.config.js export-ignore

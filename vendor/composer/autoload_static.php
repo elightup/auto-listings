@@ -20,6 +20,10 @@ class ComposerStaticInit1ba6dcb9f4bcd8faad86bb0a7492d91b
     );
 
     public static $prefixLengthsPsr4 = array (
+        'e' => 
+        array (
+            'eLightUp\\PluginUpdater\\' => 23,
+        ),
         'M' => 
         array (
             'MetaBox\\Support\\' => 16,
@@ -34,6 +38,10 @@ class ComposerStaticInit1ba6dcb9f4bcd8faad86bb0a7492d91b
     );
 
     public static $prefixDirsPsr4 = array (
+        'eLightUp\\PluginUpdater\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/elightup/plugin-updater/src',
+        ),
         'MetaBox\\Support\\' => 
         array (
             0 => __DIR__ . '/..' . '/meta-box/support',

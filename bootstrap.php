@@ -31,6 +31,8 @@ if ( is_admin() ) {
 
 	new SearchForm\AdminColumns;
 	new SearchForm\Editor;
+
+	new Updater\Tab;
 }
 if ( ( ! is_admin() || wp_doing_ajax() ) && ! wp_doing_cron() ) {
 	new Frontend\Main;
