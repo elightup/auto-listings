@@ -1,22 +1,21 @@
 {
 	"private": true,
 	"scripts": {
-		"css:admin": "node-sass assets/admin/css/search-form.scss --sourcemap none --output-style compressed -o assets/admin/css",
-		"css:frontend": "node-sass assets/css/auto-listings.scss --sourcemap none --output-style compressed -o assets/css",
-		"watch:admin": "node-sass assets/admin/css/search-form.scss --sourcemap true --output-style compressed -w sass -r -o assets/admin/css",
-		"watch:frontend": "node-sass assets/css/auto-listings.scss --sourcemap true --output-style compressed -w sass -r -o assets/css",
-		"watch:css": "node-sass --sourcemap none --output-style compressed -w assets/css/auto-listings.scss -r -o assets/css",
-		"watch:js": "webpack --watch --mode development",
-		"start": "webpack --mode development",
-		"build": "webpack --mode production"
+		"css:admin": "sass --no-source-map -s compressed assets/admin/css/search-form.scss assets/admin/css/search-form.css",
+		"css:frontend": "sass --no-source-map -s compressed assets/css/auto-listings.scss assets/css/auto-listings.scss",
+		"watch:admin": "sass --no-source-map -s compressed -w assets/admin/css/search-form.scss assets/admin/css/search-form.css",
+		"watch:frontend": "sass --no-source-map -s compressed -w assets/css/auto-listings.scss assets/css/auto-listings.scss",
+		"watch:css": "npm run watch:admin && npm run watch:frontend",
+		"build:css": "npm run css:admin && npm run css:frontend",
+		"build:js": "node esbuild",
+		"start": "node esbuild"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.8.6",
-		"@babel/plugin-proposal-class-properties": "^7.8.3",
-		"@babel/plugin-transform-react-jsx": "^7.8.3",
-		"babel-loader": "^8.0.6",
-		"node-sass": "^4.13.1",
-		"webpack": "^4.41.6",
-		"webpack-cli": "^3.3.11"
+		"esbuild": "^0.16.4",
+		"sass": "^1.56.2"
+	},
+	"dependencies": {
+		"@wordpress/element": "^4.20.0",
+		"esbuild-plugin-external-global": "^1.0.1"
 	}
 }

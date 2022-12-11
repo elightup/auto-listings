@@ -12,5 +12,7 @@ Thumbs.db export-ignore
 *.lock export-ignore
 *.md export-ignore
 phpcs.xml export-ignore
-webpack.config.js export-ignore
+esbuild.js export-ignore
 *.scss export-ignore
+
+assets/admin/js/search-form export-ignore

@@ -1,11 +1,11 @@
-import { editorHTML, editorCSS, editorJS } from './editor.js';
+import { editorCSS, editorHTML, editorJS } from './editor';
 
 const tabLinks  = [...document.querySelectorAll( '.als-tab__link' )]
 const tabPanels = [...document.querySelectorAll( '.als-tab__pane' )]
 
 tabLinks.forEach( btn => btn.addEventListener( 'click', e => changeTab( e ) ) );
 
-export const changeTab = ( e ) => {
+const changeTab = ( e ) => {
 	hide( [...tabLinks, ...tabPanels] );
 	show( e.target, tabLinks );
 	show( e.target, tabPanels );

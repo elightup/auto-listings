@@ -1,5 +1,6 @@
+import { render, useState } from '@wordpress/element';
 import { editorHTML } from './editor.js';
-const { useState } = wp.element;
+import './tabs.js';
 
 const insertTextAtCursor = text => {
 	editorHTML.focus();
@@ -238,5 +239,5 @@ const SelectControl = ( { options, toggleMultiple, setValue } ) => {
 	);
 }
 
-ReactDOM.render( <Fields />, document.getElementById( 'als-fields' ) );
-ReactDOM.render( <FieldsExtra />, document.getElementById( 'als-fields-extra' ) );
+render( <Fields />, document.getElementById( 'als-fields' ) );
+render( <FieldsExtra />, document.getElementById( 'als-fields-extra' ) );
