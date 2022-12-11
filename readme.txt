@@ -1,9 +1,9 @@
 === Auto Listings - Car Listings & Car Dealership Plugin for WordPress ===
 Contributors: elightup, autolistings, rilwis, hungviet91
 Tags: car dealer, sell cars, car classifieds, car sales, car listings, automotive listings, auto listings, automotive, car, car dealership
-Requires at least: 5.5
+Requires at least: 5.9
 Tested up to: 6.1.1
-Stable tag: 2.6.1
+Stable tag: 2.6.2
 Requires PHP: 7.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -29,7 +29,7 @@ The plugin is well coded, mobile friendly (responsive), SEO friendly and can be 
 * **Specification Fields** - choose which spec fields you want to use
 * **Custom Fields** - add custom fields through the use of filters
 * **Listing Statuses** - custom Statuses can be styled with different colors & icons
-* **Highlight New** - make new listings stand out by auto highlighing for x days
+* **Highlight New** - make new listings stand out by auto highlighting for x days
 * **Image Galleries** - customized image galleries on each listing
 * **Contact Forms** - contact forms are inserted into each listing allowing you to easily capture leads
 * **Google Maps** - Google Maps integration in the admin makes adding locations a breeze
@@ -80,6 +80,16 @@ We also offer [free and premium car listings theme](https://wpautolistings.com/t
 - **CarListings**: CarListings is a free, beautiful and easy to use WordPress auto listing theme for car sellers and dealers. Working perfectly with plugin Auto Listings, this theme will help you build a beautiful car listing WordPress site with ease.
 
 Get all themes for your car listings websites [here](https://wpautolistings.com/themes/).
+
+### Other products
+
+If you love this plugin, please try our other great products:
+
+- [Slim SEO](https://wpslimseo.com): A lightweight and full-featured SEO plugin for WordPress
+- [Slim SEO Schema](https://wpslimseo.com/slim-seo-schema/): The best schema plugin for WordPress
+- [Meta Box](https://metabox.io): The best plugin for adding custom meta boxes and custom fields for WordPress
+- [GretaThemes](https://gretathemes.com): Beautiful and easy to use WordPress themes
+
 
 == Installation ==
 
