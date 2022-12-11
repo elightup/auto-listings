@@ -15,7 +15,7 @@ jobs:
         SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
         SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
     - name: Notify Slack
-        run: |
-          name=$(basename -s .git $(git config --get remote.origin.url))
-          tag=$(git describe --tags `git rev-list --tags --max-count=1`)
-          curl -X POST --data-urlencode "payload={\"channel\": \"#autolistings\", \"username\": \"Bot\", \"text\": \"New version $tag for $name has been just released!\", \"icon_emoji\": \":tada:\"}" ${{ secrets.SLACK_WEBHOOK }}
+      run: |
+        name=$(basename -s .git $(git config --get remote.origin.url))
+        tag=$(git describe --tags `git rev-list --tags --max-count=1`)
+        curl -X POST --data-urlencode "payload={\"channel\": \"#autolistings\", \"username\": \"Bot\", \"text\": \"New version $tag for $name has been just released!\", \"icon_emoji\": \":tada:\"}" ${{ secrets.SLACK_WEBHOOK }}
