@@ -1,16 +1,5 @@
 <?php
 /**
- * Listings functions.
- *
- * @package Auto Listings.
- */
-
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-
-/**
  * Listings spec fields.
  */
 function auto_listings_spec_fields() {
@@ -391,19 +380,7 @@ function auto_listings_highlight_new() {
 	return $color;
 }
 
-
-/*
-======================================================================================
-									Template Functions
-======================================================================================
-*/
-
-/**
- * Outputs the price HTML
- *
- * @param string $price Listing Price.
- */
-function auto_listings_price( $price = null ) {
+function auto_listings_price( $price = null ) : string {
 	if ( ! $price ) {
 		$price = auto_listings_meta( 'price' );
 	}
@@ -422,96 +399,55 @@ function auto_listings_price( $price = null ) {
 	return apply_filters( 'auto_listings_price_html', $output );
 }
 
-/**
- * Outputs the vehicle
- */
 function auto_listings_vehicle() {
-	$output = auto_listings_meta( 'model_vehicle' );
-	return $output;
+	return auto_listings_meta( 'model_vehicle' );
 }
 
-/**
- * Outputs the make, model & year
- */
-function auto_listings_year_make_model() {
+function auto_listings_year_make_model() : string {
 	$year  = auto_listings_meta( 'model_year' );
 	$make  = auto_listings_meta( 'make_display' );
 	$model = auto_listings_meta( 'model_name' );
 	return $year . ' ' . $make . ' ' . $model;
 }
 
-/**
- * Outputs the engine
- */
-function auto_listings_engine() {
-	$cylinders   = auto_listings_meta( 'model_engine_cyl' ) ? auto_listings_meta( 'model_engine_cyl' ) . __( ' cylinder ', 'auto-listings' ) : '';
-	$engine_type = auto_listings_meta( 'model_engine_type' ) ? auto_listings_meta( 'model_engine_type' ) . ' ' : '';
-	$engine_l    = auto_listings_meta( 'model_engine_l' ) ? auto_listings_meta( 'model_engine_l' ) : '';
+function auto_listings_engine() : string {
+	$cylinders   = auto_listings_meta( 'model_engine_cyl' ) ? auto_listings_meta( 'model_engine_cyl' ) . __( ' cylinder', 'auto-listings' ) : '';
+	$engine_type = auto_listings_meta( 'model_engine_type' ) ?: '';
+	$engine_l    = auto_listings_meta( 'model_engine_l' ) ? auto_listings_meta( 'model_engine_l' ) . 'L' : '';
 
-	if ( $cylinders || $engine_type || $engine_l ) {
-		$output = $cylinders . $engine_type . $engine_l . 'L';
-	} else {
-		$output = null;
-	}
-	return $output;
+	return implode( ' ', array_filter( [ $cylinders, $engine_type, $engine_l ] ) );
 }
 
-/**
- * Outputs the fuel economy
- */
-function auto_listings_fuel_economy() {
+function auto_listings_fuel_economy() : string {
 	if ( auto_listings_metric() === 'yes' ) {
-		$output = auto_listings_meta( 'model_lkm_mixed' ) ? auto_listings_meta( 'model_lkm_mixed' ) . __( 'L/km', 'auto-listings' ) : null;
-	} else {
-		$output = auto_listings_meta( 'model_mpg_mixed' ) ? auto_listings_meta( 'model_mpg_mixed' ) . __( 'mpg', 'auto-listings' ) : null;
+		return auto_listings_meta( 'model_lkm_mixed' ) ? auto_listings_meta( 'model_lkm_mixed' ) . __( 'L/km', 'auto-listings' ) : '';
 	}
-	return $output;
+	return auto_listings_meta( 'model_mpg_mixed' ) ? auto_listings_meta( 'model_mpg_mixed' ) . __( 'mpg', 'auto-listings' ) : '';
 }
 
-/**
- * Outputs the fuel economy
- */
 function auto_listings_odometer() {
 	$odometer = auto_listings_meta( 'odometer' );
 	if ( ! $odometer ) {
-		$output = __( 'n/a', 'auto-listings' );
-	} else {
-		$output = number_format_i18n( $odometer ) . ' ' . auto_listings_miles_kms_label_short();
+		return __( 'n/a', 'auto-listings' );
 	}
-	return $output;
+	return number_format_i18n( $odometer ) . ' ' . auto_listings_miles_kms_label_short();
 }
 
 function auto_listings_condition() {
 	$condition_options = auto_listings_conditions();
 	$condition         = auto_listings_meta( 'condition' );
 
-	if ( empty( $condition_options[ $condition ] ) ) {
-		return '';
-	}
-	return $condition_options[ $condition ];
+	return $condition_options[ $condition ] ?: '';
 }
 
-/**
- * Outputs the transmission
- */
 function auto_listings_transmission() {
-	$output = auto_listings_meta( 'model_transmission_type' );
-	return $output;
+	return auto_listings_meta( 'model_transmission_type' );
 }
 
-/**
- * Outputs the drive type
- */
 function auto_listings_drive_type() {
-	$output = auto_listings_meta( 'model_drive' );
-	return $output;
+	return auto_listings_meta( 'model_drive' );
 }
 
-/**
- * Outputs a body type link
- */
-function auto_listings_body_type() {
-	if ( has_term( '', 'body-type' ) ) {
-		return get_the_term_list( get_the_ID(), 'body-type', '', ', ' );
-	}
+function auto_listings_body_type() : string {
+	return (string) get_the_term_list( get_the_ID(), 'body-type', '', ', ' );
 }
