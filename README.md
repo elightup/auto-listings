@@ -98,6 +98,15 @@ We have a number of premium extensions to help take your automotive website to t
 
 View our [Premium Extensions](https://wpautolistings.com/extensions/) here.
 
+## You might also like
+
+If you love this plugin, please try our other great products:
+
+- [Slim SEO](https://wpslimseo.com): A lightweight and full-featured SEO plugin for WordPress
+- [Slim SEO Schema](https://wpslimseo.com/slim-seo-schema/): The best schema plugin for WordPress
+- [Meta Box](https://metabox.io): The best plugin for adding custom meta boxes and custom fields for WordPress
+- [GretaThemes](https://gretathemes.com): Beautiful and easy to use WordPress themes
+
 ## Installation
 
 From within WordPress

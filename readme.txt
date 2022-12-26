@@ -3,7 +3,7 @@ Contributors: elightup, autolistings, rilwis, hungviet91
 Tags: car dealer, sell cars, car classifieds, car sales, car listings, automotive listings, auto listings, automotive, car, car dealership
 Requires at least: 5.9
 Tested up to: 6.1.1
-Stable tag: 2.6.2
+Stable tag: 2.6.3
 Requires PHP: 7.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -130,6 +130,9 @@ It is perfect for car dealers and car dealerships, car classifieds websites or a
 6. Auto Listings settings pages
 
 == Changelog ==
+
+= 2.6.3 - 2022-12-26 =
+- Fix showing "L" after engine when no data for `engine_l`
 
 = 2.6.2 - 2022-12-11 =
 - Add auto updater for extensions
