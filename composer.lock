@@ -4,8 +4,28 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ecc449932144193b8409f5428b7b6249",
+    "content-hash": "befba1a1357648be860c30f6c596e64d",
     "packages": [
+        {
+            "name": "elightup/plugin-search",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:elightup/plugin-search.git",
+                "reference": "6bf4aa230d933ee1eadf3693db1eac441700d0e2"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "eLightUp\\PluginSearch\\": "src/"
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "time": "2022-12-26T12:24:17+00:00"
+        },
         {
             "name": "elightup/plugin-updater",
             "version": "dev-master",
@@ -251,7 +271,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "meta-box/meta-box-geolocation": 20,
-        "elightup/plugin-updater": 20
+        "elightup/plugin-updater": 20,
+        "elightup/plugin-search": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

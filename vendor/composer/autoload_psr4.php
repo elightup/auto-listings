@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'eLightUp\\PluginUpdater\\' => array($vendorDir . '/elightup/plugin-updater/src'),
+    'eLightUp\\PluginSearch\\' => array($vendorDir . '/elightup/plugin-search/src'),
     'MetaBox\\Support\\' => array($vendorDir . '/meta-box/support'),
     'MetaBox\\Columns\\' => array($vendorDir . '/meta-box/meta-box-columns/src'),
     'MBSP\\' => array($vendorDir . '/meta-box/mb-settings-page/src'),
