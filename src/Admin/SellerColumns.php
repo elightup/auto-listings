@@ -32,7 +32,9 @@ class SellerColumns {
 			unset( $columns['posts'] );
 			unset( $columns['role'] );
 		}
-		$columns['listings']     = __( 'Listings', 'auto-listings' );
+		if ( function_exists( 'auto_listings_seller_listings_count' ) ) {
+			$columns['listings'] = __( 'Listings', 'auto-listings' );
+		}
 		$columns['mobile']       = __( 'Mobile', 'auto-listings' );
 		$columns['office_phone'] = __( 'Office Phone', 'auto-listings' );
 		return $columns;
