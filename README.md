@@ -104,6 +104,7 @@ If you love this plugin, please try our other great products:
 
 - [Slim SEO](https://wpslimseo.com): A lightweight and full-featured SEO plugin for WordPress
 - [Slim SEO Schema](https://wpslimseo.com/slim-seo-schema/): The best schema plugin for WordPress
+- [Slim SEO Link Manager](https://wpslimseo.com/slim-seo-link-manager/): The best plugin for WordPress to build and monitor internal links
 - [Meta Box](https://metabox.io): The best plugin for adding custom meta boxes and custom fields for WordPress
 - [GretaThemes](https://gretathemes.com): Beautiful and easy to use WordPress themes
 

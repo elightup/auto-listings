@@ -3,7 +3,7 @@ Contributors: elightup, autolistings, rilwis, hungviet91
 Tags: car dealer, sell cars, car classifieds, car sales, car listings, automotive listings, auto listings, automotive, car, car dealership
 Requires at least: 5.9
 Tested up to: 6.1.1
-Stable tag: 2.6.3
+Stable tag: 2.6.4
 Requires PHP: 7.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -87,6 +87,7 @@ If you love this plugin, please try our other great products:
 
 - [Slim SEO](https://wpslimseo.com): A lightweight and full-featured SEO plugin for WordPress
 - [Slim SEO Schema](https://wpslimseo.com/slim-seo-schema/): The best schema plugin for WordPress
+- [Slim SEO Link Manager](https://wpslimseo.com/slim-seo-link-manager/): The best plugin for WordPress to build and monitor internal links
 - [Meta Box](https://metabox.io): The best plugin for adding custom meta boxes and custom fields for WordPress
 - [GretaThemes](https://gretathemes.com): Beautiful and easy to use WordPress themes
 
@@ -130,6 +131,9 @@ It is perfect for car dealers and car dealerships, car classifieds websites or a
 6. Auto Listings settings pages
 
 == Changelog ==
+
+= 2.6.4 - 2023-02-02 =
+- Fix error with multi dealer
 
 = 2.6.3 - 2022-12-26 =
 - Fix showing "L" after engine when no data for `engine_l`
