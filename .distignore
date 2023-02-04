@@ -1,0 +1,17 @@
+.DS_Store
+Thumbs.db
+node_modules
+
+.distignore
+.gitattributes
+.gitignore
+.git
+.github
+*.json
+*.lock
+*.md
+phpcs.xml
+esbuild.js
+*.scss
+
+assets/admin/js/search-form
