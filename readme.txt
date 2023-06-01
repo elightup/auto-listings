@@ -2,8 +2,8 @@
 Contributors: elightup, autolistings, rilwis, hungviet91
 Tags: car dealer, sell cars, car classifieds, car sales, car listings, automotive listings, auto listings, automotive, car, car dealership
 Requires at least: 5.9
-Tested up to: 6.1.1
-Stable tag: 2.6.4
+Tested up to: 6.2.2
+Stable tag: 2.6.5
 Requires PHP: 7.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -131,6 +131,9 @@ It is perfect for car dealers and car dealerships, car classifieds websites or a
 6. Auto Listings settings pages
 
 == Changelog ==
+
+= 2.6.5 - 2023-06-01 =
+- Fix error for year field on the search form
 
 = 2.6.4 - 2023-02-02 =
 - Fix error with multi dealer
