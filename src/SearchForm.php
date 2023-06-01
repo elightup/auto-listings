@@ -193,7 +193,7 @@ class SearchForm {
 		$data    = auto_listings_search_get_vehicle_data();
 		$year    = $data['the_year'];
 		$options = [];
-		
+
 		if ( ! $year ) {
 			return '';
 		}
@@ -391,7 +391,10 @@ class SearchForm {
 			return '';
 		}
 		ob_start();
-		$selected = isset( $_GET[ $args['name'] ] ) ? $_GET[ $args['name'] ] : [];
+		$selected = $_GET[ $args['name'] ] ?? [];
+		if ( empty( $selected ) || ! is_array( $selected ) ) {
+			$selected = [];
+		}
 		?>
 
 		<div class="field <?php echo esc_attr( str_replace( '_', '-', $args['name'] ) ); ?>">
