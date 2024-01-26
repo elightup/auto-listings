@@ -10,7 +10,7 @@ class Extras {
 	}
 
 	public function render_total() {
-		return auto_listings_search_get_vehicle_data()['total'];
+		return auto_listings_search_get_vehicle_data()[ 'total' ];
 	}
 
 	public function render_selected() {
@@ -29,7 +29,7 @@ class Extras {
 	}
 
 	public function render_search_keyword( $atts ) {
-		$id = uniqid();
+		$id   = uniqid();
 		$atts = shortcode_atts(
 			array(
 				'label'       => __( 'Location', 'auto-listings' ),
@@ -38,10 +38,10 @@ class Extras {
 			$atts
 		);
 
-		$label = $atts['label'] ? '<label class="als-field__label" for="' . esc_attr( $id ) . '">' . $atts['label'] . '</label>' : '';
+		$label = $atts[ 'label' ] ? '<label class="als-field__label" for="' . esc_attr( $id ) . '">' . $atts[ 'label' ] . '</label>' : '';
 
 		$output = '<div class="als-field als-field--keyword ">';
-		$output .= sprintf( '%1s<input id="%2s" type="text" name="s" placeholder="%3s" />', $label, $id, $atts['placeholder'] );
+		$output .= sprintf( '%1s<input id="%2s" type="text" name="s" placeholder="%3s" />', $label, esc_attr( $id ), esc_attr( $atts[ 'placeholder' ] ) );
 		$output .= '</div>';
 
 		return $output;
