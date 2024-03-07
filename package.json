@@ -4,7 +4,7 @@
 		"css:admin": "sass --no-source-map -s compressed assets/admin/css/search-form.scss assets/admin/css/search-form.css",
 		"css:frontend": "sass --no-source-map -s compressed assets/css/auto-listings.scss assets/css/auto-listings.scss",
 		"watch:admin": "sass --no-source-map -s compressed -w assets/admin/css/search-form.scss assets/admin/css/search-form.css",
-		"watch:frontend": "sass --no-source-map -s compressed -w assets/css/auto-listings.scss assets/css/auto-listings.scss",
+		"watch:frontend": "sass --no-source-map -s compressed -w assets/css/auto-listings.scss assets/css/auto-listings.css",
 		"watch:css": "npm run watch:admin && npm run watch:frontend",
 		"build:css": "npm run css:admin && npm run css:frontend",
 		"build:js": "node esbuild",
