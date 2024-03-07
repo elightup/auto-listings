@@ -170,21 +170,37 @@ should fix up some theme issues
 .lg-icon:after {
 	font-family: FontAwesome;
 }
-.lg-actions .lg-next:before {
-	content: "\f105";
-	font-size: 30px;
-	color: #fff;
-}
-.lg-actions .lg-prev:after {
-	content: "\f104";
-	font-size: 30px;
-	color: #fff;
-}
-.lg-toolbar .lg-close:after {
-	content: "\f00d";
-}
-.lg-toolbar .lg-download:after {
-	content: "\f019";
+body.single-auto-listing{
+	.lg-actions .lg-next:before {
+		content: "\f105";
+		font-size: 30px;
+		color: #fff;
+	}
+	.lg-actions .lg-prev:after {
+		content: "\f104";
+		font-size: 30px;
+		color: #fff;
+	}
+	.lg-toolbar .lg-close:after {
+		content: "\f00d";
+	}
+	.lg-toolbar .lg-download:after {
+		content: "\f019";
+	}
+	.lg-toolbar button{
+		background-color: unset;
+		border-color: #999;
+		border: 0;
+	}
+	#lg-zoom-out:after{
+		content: "\f146";
+	}
+	#lg-zoom-in:after{
+		content: "\f0fe";
+	}
+	#lg-actual-size:after{
+		content: "\f24d";
+	}
 }
 
 .auto-listings-single .gallery-wrap {
