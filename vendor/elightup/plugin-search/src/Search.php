@@ -23,7 +23,7 @@ class Search extends Base {
 		return $term;
 	}
 
-	private function data() : array {
+	private function data(): array {
 		return apply_filters( 'eps_search', [
 			[
 				'slug'     => 'slim-seo',
@@ -59,7 +59,7 @@ class Search extends Base {
 		] );
 	}
 
-	protected function validate() : bool {
+	protected function validate(): bool {
 		return ! empty( $this->args->search ) && is_string( $this->args->search ) && strlen( $this->args->search ) >= 3;
 	}
 }

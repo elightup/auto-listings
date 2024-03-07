@@ -28,7 +28,6 @@ class ComposerStaticInit1ba6dcb9f4bcd8faad86bb0a7492d91b
         ),
         'M' => 
         array (
-            'MetaBox\\Support\\' => 16,
             'MetaBox\\Columns\\' => 16,
             'MBSP\\' => 5,
             'MBFS\\' => 5,
@@ -47,10 +46,6 @@ class ComposerStaticInit1ba6dcb9f4bcd8faad86bb0a7492d91b
         'eLightUp\\PluginSearch\\' => 
         array (
             0 => __DIR__ . '/..' . '/elightup/plugin-search/src',
-        ),
-        'MetaBox\\Support\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/meta-box/support',
         ),
         'MetaBox\\Columns\\' => 
         array (

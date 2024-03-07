@@ -7,7 +7,9 @@ function processForm() {
 	var $form = $( this );
 	var $submitBtn = $form.find( 'button[name="rwmb_submit"]' );
 	var $deleteBtn = $form.find( 'button[name="rwmb_delete"]' );
-	var editText   = $submitBtn.attr( 'data-edit' );
+	var editText = $submitBtn.attr( 'data-edit' );
+	var $validationElements = $form.find( '.rwmb-validation' );
+	var countClick = 0;
 
 	const setAction = action => $form.find( 'input[name="action"]' ).val( `mbfs_${ action }` );
 	const validate = () => {
@@ -35,29 +37,71 @@ function processForm() {
 		}
 	}
 
-	function handleSubmitClick( e ) {
-		if ( i18n.recaptchaKey || isAjax ) {
-			e.preventDefault();
-		}
+	function isRemote() {
+		let remote = false;
+		$validationElements.each( function () {
+			const data = $( this ).data( 'validation' );
+			if ( Object.values( data.rules ).find( rule => rule.remote ) ) {
+				remote = true;
+			}
+		} );
+		return remote;
+	}
 
-		// Do nothing when the form is not validated.
-		if ( !validate() ) {
-			return;
-		}
+	function checkAjax() {
+		return new Promise( ( resolve, reject ) => {
+			$( document ).ajaxComplete( function ( event, request, settings ) {
+				const $form = $( settings.context );
 
-		disableButtons();
-		setAction( 'submit' );
+				if ( !$form.hasClass( 'mbfs-form' ) || $form.find( '.rwmb-error' ).length === 0 ) {
+					resolve();
+				}
 
-		if ( i18n.recaptchaKey ) {
-			checkRecaptcha( {
-				success: token => {
-					$form.find( 'input[name="mbfs_recaptcha_token"]' ).val( token );
-					submitCallback();
-				},
-				error: () => displayMessage( i18n.captchaExecuteError, false )
+				window.stop();
+				enableButtons();
+
+				if ( isAjax ) {
+					removeLoading();
+				}
+
+				reject( 'Remote validation error' );
 			} );
-		} else {
-			submitCallback();
+		} );
+	}
+
+	async function handleSubmitClick( e ) {
+		try {
+			countClick++;
+
+			if ( i18n.recaptchaKey || isAjax ) {
+				e.preventDefault();
+			}
+
+			// Do nothing when the form is not validated.
+			if ( !validate() ) {
+				return;
+			}
+
+			if ( countClick == 1 && isRemote() ) {
+				await checkAjax();
+			}
+
+			disableButtons();
+			setAction( 'submit' );
+
+			if ( i18n.recaptchaKey ) {
+				checkRecaptcha( {
+					success: token => {
+						$form.find( 'input[name="mbfs_recaptcha_token"]' ).val( token );
+						submitCallback();
+					},
+					error: () => displayMessage( i18n.captchaExecuteError, false )
+				} );
+			} else {
+				submitCallback();
+			}
+		} catch ( err ) {
+			console.log( err );
 		}
 	}
 
@@ -74,11 +118,14 @@ function processForm() {
 			url: i18n.ajaxUrl,
 			contentType: false,
 			processData: false
-		} ).done( function( response ) {
+		} ).done( function ( response ) {
 			removeLoading();
 			enableButtons();
 			displayMessage( response.data.message, response.success );
-			scrollTo( $( '.rwmb-confirmation' ) );
+
+			if ( response.success && response.data.allowScroll == 'true' ) {
+				scrollTo( $( '.rwmb-confirmation' ) );
+			}
 
 			if ( response.success && response.data.redirect ) {
 				redirect( response.data.redirect );
@@ -91,8 +138,10 @@ function processForm() {
 	}
 
 	function displayMessage( message, success = true ) {
-		message = `<div class="rwmb-confirmation${ success ? '' : ' rwmb-error' }">${ message }</div>`;
-		const isEdit = ( editText === 'true' );
+		if ( !success ) {
+			message = `<div class="rwmb-confirmation rwmb-error">${ message }</div>`;
+		}
+		const isEdit = editText === 'true';
 
 		if ( isEdit || !success ) {
 			$form.prepend( message );
@@ -132,6 +181,6 @@ function processForm() {
 	$deleteBtn.on( 'click', handleDeleteClick );
 }
 
-$( function() {
+$( function () {
 	$( '.rwmb-form' ).each( processForm );
 } );

@@ -25,7 +25,7 @@ abstract class Base {
 
 	abstract protected function suggests();
 
-	protected function check() : bool {
+	protected function check(): bool {
 		$paged = $_GET['paged'] ?? 1;
 		if ( $paged != 1 ) {
 			return false;
@@ -38,7 +38,7 @@ abstract class Base {
 		return $this->validate();
 	}
 
-	abstract protected function validate() : bool;
+	abstract protected function validate(): bool;
 
 	protected function insert( string $slug, int $position ) {
 		$slugs = wp_list_pluck( $this->result->plugins, 'slug' );

@@ -6,8 +6,11 @@
  * @subpackage MB Frontend Submission
  */
 
+$in_block = defined( 'REST_REQUEST' ) && REST_REQUEST;
+
 $field = apply_filters( 'rwmb_frontend_post_content', [
-	'type' => 'wysiwyg',
+	'type' => $in_block ? 'textarea' : 'wysiwyg',
+	'desc' => $in_block ? '<small>' . __( 'This content field will be replaced by a WYSIWYG (visual) editor on the front end.', 'mb-frontend-submission' ) . '</small>' : '',
 	'name' => $data->config['label_content'],
 	'id'   => 'post_content',
 ] );

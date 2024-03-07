@@ -49,7 +49,8 @@
 		};
 
 		populateField = ( field, data ) => {
-			const value = this.getFieldData( field.dataset.binding, data );
+			const value = this.getFieldData( field.dataset.binding, field.dataset.bind_if_empty, data );
+
 			if ( value || field.dataset.bind_if_empty ) {
 				field.previousSibling.firstChild.value = value;
 			}
@@ -195,7 +196,7 @@
 		 * @param place google.maps.places.PlaceResult Information about a Place.
 		 * @returns string
 		 */
-		getFieldData = ( binding, place ) => {
+		getFieldData = ( binding, bind_if_empty, place ) => {
 			// Check if binding is opening_hours
 			if ( binding == 'opening_hours' && typeof place[ binding ] !== 'undefined' ) {
 				let weekday_text = place[ binding ][ 'weekday_text' ],
@@ -213,6 +214,10 @@
 
 			if ( place.hasOwnProperty( binding ) ) {
 				return place[ binding ];
+			}
+
+			if ( place.hasOwnProperty( bind_if_empty ) ) {
+				return place[ bind_if_empty ];
 			}
 
 			// Find in `address_components`.
@@ -244,7 +249,7 @@
 					field = field.replace( /['"]+/g, '' );
 					val += field;
 				} else {
-					val += that.getFieldData( field, place );
+					val += that.getFieldData( field, bind_if_empty, place );
 				}
 			} );
 
@@ -302,9 +307,13 @@
 		/**
 		 * @link https://nominatim.org/release-docs/latest/api/Search/#examples
 		 */
-		getFieldData = ( binding, data ) => {
+		getFieldData = ( binding, bind_if_empty, data ) => {
 			if ( data.hasOwnProperty( binding ) ) {
 				return data[ binding ];
+			}
+
+			if ( data.hasOwnProperty( bind_if_empty ) ) {
+				return data[ bind_if_empty ];
 			}
 
 			if ( !binding.includes( '+' ) ) {
@@ -320,7 +329,7 @@
 					field = field.replace( /['"]+/g, '' );
 					val += field;
 				} else {
-					val += that.getFieldData( field, data );
+					val += that.getFieldData( field, bind_if_empty, data );
 				}
 			} );
 

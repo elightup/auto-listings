@@ -9,7 +9,7 @@ class Recommend extends Base {
 		}
 	}
 
-	private function data() : array {
+	private function data(): array {
 		return apply_filters( 'eps_recommend', [
 			[
 				'slug'     => 'slim-seo',
@@ -22,7 +22,7 @@ class Recommend extends Base {
 		] );
 	}
 
-	protected function validate() : bool {
+	protected function validate(): bool {
 		global $tab;
 		return in_array( $tab, [ 'featured', 'recommended' ], true );
 	}

@@ -9,6 +9,7 @@ class Form {
 	private $meta_boxes;
 	private $post;
 	private $template_loader;
+	private $localize_data;
 
 	/**
 	 * Constructor.
@@ -37,9 +38,7 @@ class Form {
 		$this->localize();
 
 		if ( $this->is_deleted() ) {
-			do_action( 'rwmb_frontend_before_delete_confirmation', $this->config );
-			$this->display_message( 'delete-confirmation' );
-			do_action( 'rwmb_frontend_after_delete_confirmation', $this->config );
+			$this->show_confirmation( 'delete' );
 			return;
 		}
 
@@ -51,9 +50,7 @@ class Form {
 		$this->display_errors();
 
 		if ( $this->is_processed() ) {
-			do_action( 'rwmb_frontend_before_display_confirmation', $this->config );
-			$this->display_message( 'confirmation' );
-			do_action( 'rwmb_frontend_after_display_confirmation', $this->config );
+			$this->show_confirmation( 'submit' );
 
 			if ( 'true' !== $this->config['edit'] ) {
 				return;
@@ -61,7 +58,7 @@ class Form {
 		}
 
 		do_action( 'rwmb_frontend_before_form', $this->config );
-		echo '<form class="rwmb-form" id="' . esc_attr( $this->config['id'] ) . '" method="post" enctype="multipart/form-data">';
+		echo '<form class="rwmb-form mbfs-form" id="' . esc_attr( $this->config['id'] ) . '" method="post" enctype="multipart/form-data">';
 		$this->render_hidden_fields();
 
 		// Register wp color picker scripts for frontend.
@@ -100,7 +97,7 @@ class Form {
 
 				// Allow submit button to be filtered
 				$submit_button = '<button type="submit" class="rwmb-button" data-edit="' . esc_attr( $this->config['edit'] ) . '" name="rwmb_submit" value="1">' . esc_html( $this->config['submit_button'] ) . '</button>';
-				$submit_button = apply_filters( 'rwmb_frontend_submit_button', $submit_button, $this->config['post_id'] );
+				$submit_button = apply_filters( 'rwmb_frontend_submit_button', $submit_button, $this->config );
 				echo $submit_button;
 
 				echo $delete_button;
@@ -277,9 +274,19 @@ class Form {
 		return ConfigStorage::get_key( $this->config ) === filter_input( INPUT_GET, 'rwmb-form-deleted' );
 	}
 
-	private function display_message( $type ) {
+	/**
+	 * Can call from Shortcode class to show confirmation message.
+	 */
+	public function show_confirmation( string $type ) {
+		$hook     = $type === 'submit' ? 'display' : 'delete';
+		$template = $type === 'submit' ? 'confirmation' : 'delete-confirmation';
+
+		do_action( "rwmb_frontend_before_{$hook}_confirmation", $this->config );
+
 		if ( $this->config['confirmation'] ) {
-			$this->template_loader->set_template_data( $this->config )->get_template_part( $type );
+			$this->template_loader->set_template_data( $this->config )->get_template_part( $template );
 		}
+
+		do_action( "rwmb_frontend_after_{$hook}_confirmation", $this->config );
 	}
 }

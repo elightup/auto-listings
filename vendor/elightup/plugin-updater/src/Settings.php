@@ -106,7 +106,7 @@ class Settings {
 		}
 
 		// Do nothing if license key remains the same.
-		$prev_key = $this->option->get_license_key_constant() ? '' : $this->option->get_license_key();
+		$prev_key = $this->option->get_license_key_constant() ?: $this->option->get_license_key();
 		if ( isset( $option['api_key'] ) && in_array( $option['api_key'], [ $prev_key, $this->fake_api_key ], true ) ) {
 			return;
 		}

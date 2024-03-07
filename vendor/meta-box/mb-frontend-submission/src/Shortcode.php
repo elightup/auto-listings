@@ -28,7 +28,7 @@ class Shortcode {
 		}
 
 		$form = FormFactory::make( $atts );
-		if ( empty( $form ) || ( empty( $form->config['id'] ) && empty( $form->config['post_fields'] ) ) ) {
+		if ( empty( $form ) || ( empty( $form->config['id'] ) && empty( $form->config['post_fields'] ) && $form->config['only_delete'] === 'false' ) ) {
 			return '';
 		}
 		ob_start();
@@ -66,7 +66,12 @@ class Shortcode {
 		}
 
 		// For ajax only.
-		$this->send_success_message( $this->config['confirmation'] );
+		if ( $this->is_ajax() ) {
+			ob_start();
+			$this->form->show_confirmation( 'submit' );
+			$confirmation = ob_get_clean();
+			$this->send_success_message( $confirmation );
+		}
 
 		$redirect = empty( $this->config['redirect'] ) ? add_query_arg( 'rwmb-form-submitted', $this->key ) : $this->config['redirect'];
 
@@ -77,7 +82,7 @@ class Shortcode {
 
 		$redirect = apply_filters( 'rwmb_frontend_redirect', $redirect, $this->config );
 
-		wp_safe_redirect( $redirect );
+		wp_redirect( $redirect );
 		die;
 	}
 
@@ -91,7 +96,7 @@ class Shortcode {
 		$redirect = empty( $this->config['redirect'] ) ? add_query_arg( 'rwmb-form-deleted', $this->key ) : $this->config['redirect'];
 		$redirect = apply_filters( 'rwmb_frontend_redirect', $redirect, $this->config );
 
-		wp_safe_redirect( $redirect );
+		wp_redirect( $redirect );
 		die;
 	}
 
@@ -153,6 +158,7 @@ class Shortcode {
 		wp_send_json_success( [
 			'message'  => $message,
 			'redirect' => $this->form->config['redirect'],
+			'allowScroll' => $this->config['allow_scroll'],
 		] );
 	}
 

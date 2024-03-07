@@ -15,7 +15,7 @@ class FormFactory {
 		return self::$forms[ $key ];
 	}
 
-	private static function normalize( $config ) {
+	public static function normalize( $config ): array {
 		$config = shortcode_atts( [
 			// Meta Box ID.
 			'id'                  => '',
@@ -29,6 +29,7 @@ class FormFactory {
 
 			// Ajax
 			'ajax'                => 'false',
+			'allow_scroll'        => 'true',
 
 			'show_add_more'       => 'false',
 
@@ -79,13 +80,12 @@ class FormFactory {
 		$filtered = [];
 		foreach ( $ids as $id ) {
 			$meta_box = rwmb_get_registry( 'meta_box' )->get( $id );
-			if ( empty( $meta_box ) || in_array( $meta_box->type, [ 'user', 'block' ] ) ) {
+			if ( empty( $meta_box ) ) {
 				continue;
 			}
 			$filtered[] = $meta_box->id;
 			if ( ! $config['post_type'] ) {
-				$post_types          = $meta_box->post_types;
-				$config['post_type'] = reset( $post_types );
+				$config['post_type'] = Helper::get_post_type_from_meta_box( $meta_box );
 			}
 		}
 		$config['id'] = implode( ',', $filtered );

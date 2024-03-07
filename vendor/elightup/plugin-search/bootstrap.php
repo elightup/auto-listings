@@ -1,11 +1,11 @@
 <?php
 namespace eLightUp\PluginSearch;
 
-defined( 'ABSPATH' ) || die;
+if ( defined( 'ABSPATH' ) ) {
+	if ( ! is_admin() ) {
+		return;
+	}
 
-if ( ! is_admin() ) {
-	return;
+	new Recommend;
+	new Search;
 }
-
-new Recommend;
-new Search;
