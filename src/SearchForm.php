@@ -18,6 +18,7 @@ class SearchForm {
 		add_filter( 'wp', [ $this, 'has_shortcode' ] );
 		add_filter( 'query_vars', [ $this, 'register_query_vars' ] );
 		add_shortcode( 'auto_listings_search', [ $this, 'search_form' ] );
+		add_filter( 'auto_listings_search_form_action', [ $this, 'set_dealer_search_form_action' ] );
 	}
 
 	/**
@@ -56,10 +57,10 @@ class SearchForm {
 	 * @param array $atts shortcode attributes.
 	 */
 	public function search_form( $atts ) {
-		$s = isset( $_GET['s'] ) ? sanitize_text_field( $_GET['s'] ) : '';
+		$s = isset( $_GET[ 's' ] ) ? sanitize_text_field( $_GET[ 's' ] ) : '';
 
 		$atts = shortcode_atts(
-			[
+			[ 
 				'area_placeholder' => __( 'State, Zip, Town', 'auto-listings' ),
 				'submit_btn'       => __( 'Find My Car', 'auto-listings' ),
 				'refine_text'      => __( 'More Refinements', 'auto-listings' ),
@@ -70,21 +71,20 @@ class SearchForm {
 			$atts
 		);
 
-		$exclude = ! empty( $atts['exclude'] ) ? array_map( 'trim', explode( ',', $atts['exclude'] ) ) : [];
+		$exclude = ! empty( $atts[ 'exclude' ] ) ? array_map( 'trim', explode( ',', $atts[ 'exclude' ] ) ) : [];
 
 		ob_start();
 		?>
 
-		<form
-			id="auto-listings-search" class="auto-listings-search s-<?php echo esc_attr( $atts['style'] ); ?> <?php echo esc_attr( $atts['layout'] ); ?>" autocomplete="off"
-			action="<?php the_permalink( auto_listings_option( 'archives_page' ) ); ?>"
-			method="GET"
+		<form id="auto-listings-search"
+			class="auto-listings-search s-<?php echo esc_attr( $atts[ 'style' ] ); ?> <?php echo esc_attr( $atts[ 'layout' ] ); ?>"
+			autocomplete="off" action="<?php the_permalink( auto_listings_option( 'archives_page' ) ); ?>" method="GET"
 			role="search">
-			<?php if ( 'standard' !== $atts['layout'] ) : ?>
+			<?php if ( 'standard' !== $atts[ 'layout' ] ) : ?>
 
 				<?php if ( ! in_array( 'condition', $exclude, true ) ) : ?>
 					<div class="row condition-wrap">
-						<?php echo $this->condition_field(); // wpcs xss: ok. ?>
+						<?php echo $this->condition_field(); // wpcs xss: ok.  ?>
 					</div>
 				<?php endif; ?>
 
@@ -103,19 +103,26 @@ class SearchForm {
 
 				<?php if ( ! in_array( 'area', $exclude, true ) ) : ?>
 					<div class="row area-wrap">
-						<?php echo $this->within_field(); // wpcs xss: ok. ?>
-						<input class="field area" type="text" name="s" placeholder="<?php echo esc_attr( $atts['area_placeholder'] ); ?>" value="<?php echo esc_attr( $s ); ?>"/>
-						<button class="al-button" type="submit"><?php echo esc_html( $atts['submit_btn'] ); ?></button>
+						<?php echo $this->within_field(); // wpcs xss: ok.  ?>
+						<input class="field area" type="text" name="s"
+							placeholder="<?php echo esc_attr( $atts[ 'area_placeholder' ] ); ?>" value="<?php echo esc_attr( $s ); ?>" />
+						<button class="al-button" type="submit">
+							<?php echo esc_html( $atts[ 'submit_btn' ] ); ?>
+						</button>
 					</div>
 				<?php else : ?>
 					<div class="row area-wrap">
-						<input type="hidden" name="s" value="<?php echo esc_attr( $s ); ?>"/>
-						<button class="al-button" type="submit"><?php echo esc_html( $atts['submit_btn'] ); ?></button>
+						<input type="hidden" name="s" value="<?php echo esc_attr( $s ); ?>" />
+						<button class="al-button" type="submit">
+							<?php echo esc_html( $atts[ 'submit_btn' ] ); ?>
+						</button>
 					</div>
 				<?php endif; ?>
 
 				<?php if ( ! in_array( 'refine', $exclude, true ) ) : ?>
-					<a class="refine"><?php echo esc_html( $atts['refine_text'] ); ?><i class="fa fa-angle-down"></i></a>
+					<a class="refine">
+						<?php echo esc_html( $atts[ 'refine_text' ] ); ?><i class="fa fa-angle-down"></i>
+					</a>
 
 					<div class="row extras-wrap">
 						<?php
@@ -171,12 +178,15 @@ class SearchForm {
 				if ( ! in_array( 'area', $exclude, true ) ) :
 					echo $this->within_field(); // wpcs xss: ok.
 					?>
-					<input class="field area" type="text" name="s" placeholder="<?php echo esc_attr( $atts['area_placeholder'] ); ?>" value="<?php echo esc_attr( $s ); ?>">
+					<input class="field area" type="text" name="s" placeholder="<?php echo esc_attr( $atts[ 'area_placeholder' ] ); ?>"
+						value="<?php echo esc_attr( $s ); ?>">
 				<?php else : ?>
-					<input type="hidden" name="s" value="<?php echo esc_attr( $s ); ?>"/>
+					<input type="hidden" name="s" value="<?php echo esc_attr( $s ); ?>" />
 				<?php endif; ?>
 
-				<button class="al-button" type="submit"><?php echo esc_html( $atts['submit_btn'] ); ?></button>
+				<button class="al-button" type="submit">
+					<?php echo esc_html( $atts[ 'submit_btn' ] ); ?>
+				</button>
 
 			<?php endif; ?>
 		</form>
@@ -191,7 +201,7 @@ class SearchForm {
 	 */
 	public function year_field() {
 		$data    = auto_listings_search_get_vehicle_data();
-		$year    = $data['the_year'];
+		$year    = $data[ 'the_year' ];
 		$options = [];
 
 		if ( ! $year ) {
@@ -200,7 +210,7 @@ class SearchForm {
 		foreach ( $year as $n ) {
 			$options[ $n ] = $n;
 		}
-		$args = [
+		$args = [ 
 			'name'  => 'the_year',
 			'label' => __( 'Year', 'auto-listings' ),
 		];
@@ -212,7 +222,7 @@ class SearchForm {
 	 */
 	public function make_field() {
 		$data    = auto_listings_search_get_vehicle_data();
-		$make    = $data['make'];
+		$make    = $data[ 'make' ];
 		$options = [];
 		if ( ! $make ) {
 			return '';
@@ -220,7 +230,7 @@ class SearchForm {
 		foreach ( $make as $n ) {
 			$options[ $n ] = $n;
 		}
-		$args = [
+		$args = [ 
 			'name'  => 'make',
 			'label' => __( 'Make', 'auto-listings' ),
 		];
@@ -232,7 +242,7 @@ class SearchForm {
 	 */
 	public function model_field() {
 		$data    = auto_listings_search_get_vehicle_data();
-		$model   = $data['model'];
+		$model   = $data[ 'model' ];
 		$options = [];
 		if ( ! $model ) {
 			return '';
@@ -240,7 +250,7 @@ class SearchForm {
 		foreach ( $model as $n ) {
 			$options[ $n ] = $n;
 		}
-		$args = [
+		$args = [ 
 			'name'  => 'model',
 			'label' => __( 'Model', 'auto-listings' ),
 		];
@@ -255,7 +265,7 @@ class SearchForm {
 		if ( ! $options ) {
 			return '';
 		}
-		$args = [
+		$args = [ 
 			'name'   => 'condition',
 			'label'  => __( 'condition', 'auto-listings' ),
 			'prefix' => __( 'I\'m looking for ', 'auto-listings' ),
@@ -268,7 +278,7 @@ class SearchForm {
 	 */
 	public function min_price_field() {
 		$min_max_price = auto_listings_search_price_min_max();
-		$args          = [
+		$args          = [ 
 			'name'   => 'min_price',
 			'label'  => __( 'min', 'auto-listings' ),
 			'prefix' => __( 'priced from', 'auto-listings' ),
@@ -281,7 +291,7 @@ class SearchForm {
 	 */
 	public function max_price_field() {
 		$min_max_price = auto_listings_search_price_min_max();
-		$args          = [
+		$args          = [ 
 			'name'   => 'max_price',
 			'label'  => __( 'max', 'auto-listings' ),
 			'prefix' => __( 'to', 'auto-listings' ),
@@ -294,7 +304,7 @@ class SearchForm {
 	 */
 	public function within_field() {
 		$radius = auto_listings_search_within_radius();
-		$args   = [
+		$args   = [ 
 			'name'  => 'within',
 			'label' => __( 'within', 'auto-listings' ),
 		];
@@ -306,7 +316,7 @@ class SearchForm {
 	 */
 	public function body_type_field() {
 		$body_types = get_terms(
-			[
+			[ 
 				'taxonomy'   => 'body-type',
 				'hide_empty' => true,
 			]
@@ -319,7 +329,7 @@ class SearchForm {
 				$options[ $type->slug ] = $type->name;
 			}
 		}
-		$args = [
+		$args = [ 
 			'name'  => 'body_type',
 			'label' => __( 'Body Type', 'auto-listings' ),
 		];
@@ -331,7 +341,7 @@ class SearchForm {
 	 */
 	public function odometer_field() {
 		$odometer = auto_listings_search_mileage_max();
-		$args     = [
+		$args     = [ 
 			'name'  => 'odometer',
 			'label' => __( 'Max Mileage', 'auto-listings' ),
 		];
@@ -348,28 +358,32 @@ class SearchForm {
 		if ( empty( $options ) ) {
 			return '';
 		}
-		$selected = isset( $_GET[ $args['name'] ] ) ? $_GET[ $args['name'] ] : '';
+		$selected = isset( $_GET[ $args[ 'name' ] ] ) ? $_GET[ $args[ 'name' ] ] : '';
 		ob_start();
 		?>
-		<div class="field <?php echo esc_attr( str_replace( '_', '-', $args['name'] ) ); ?>">
+		<div class="field <?php echo esc_attr( str_replace( '_', '-', $args[ 'name' ] ) ); ?>">
 
 			<?php
-			if ( isset( $args['prefix'] ) ) {
-				echo '<span class="prefix">' . esc_html( $args['prefix'] ) . '</span>';
+			if ( isset( $args[ 'prefix' ] ) ) {
+				echo '<span class="prefix">' . esc_html( $args[ 'prefix' ] ) . '</span>';
 			}
 			?>
 
-			<select placeholder="<?php echo esc_attr( $args['label'] ); ?>" name="<?php echo esc_attr( $args['name'] ); ?>">
-				<option value=""><?php echo esc_attr( $args['label'] ); ?></option>
+			<select placeholder="<?php echo esc_attr( $args[ 'label' ] ); ?>" name="<?php echo esc_attr( $args[ 'name' ] ); ?>">
+				<option value="">
+					<?php echo esc_attr( $args[ 'label' ] ); ?>
+				</option>
 
 				<?php foreach ( $options as $val => $text ) : ?>
-					<option value="<?php echo esc_attr( $val ); ?>" <?php selected( $val, $selected ); ?> ><?php echo esc_attr( $text ); ?></option>
+					<option value="<?php echo esc_attr( $val ); ?>" <?php selected( $val, $selected ); ?>>
+						<?php echo esc_attr( $text ); ?>
+					</option>
 				<?php endforeach; ?>
 			</select>
 
 			<?php
-			if ( isset( $args['suffix'] ) ) {
-				echo '<span class="suffix">' . esc_html( $args['suffix'] ) . '</span>';
+			if ( isset( $args[ 'suffix' ] ) ) {
+				echo '<span class="suffix">' . esc_html( $args[ 'suffix' ] ) . '</span>';
 			}
 			?>
 
@@ -377,7 +391,7 @@ class SearchForm {
 
 		<?php
 		$output = ob_get_clean();
-		return apply_filters( 'auto_listings_search_field' . $args['name'], $output );
+		return apply_filters( 'auto_listings_search_field' . $args[ 'name' ], $output );
 	}
 
 	/**
@@ -391,30 +405,33 @@ class SearchForm {
 			return '';
 		}
 		ob_start();
-		$selected = $_GET[ $args['name'] ] ?? [];
+		$selected = $_GET[ $args[ 'name' ] ] ?? [];
 		if ( empty( $selected ) || ! is_array( $selected ) ) {
 			$selected = [];
 		}
 		?>
 
-		<div class="field <?php echo esc_attr( str_replace( '_', '-', $args['name'] ) ); ?>">
+		<div class="field <?php echo esc_attr( str_replace( '_', '-', $args[ 'name' ] ) ); ?>">
 
 			<?php
-			if ( isset( $args['prefix'] ) ) {
-				echo '<span class="prefix">' . esc_html( $args['prefix'] ) . '</span>';
+			if ( isset( $args[ 'prefix' ] ) ) {
+				echo '<span class="prefix">' . esc_html( $args[ 'prefix' ] ) . '</span>';
 			}
 			// Condition field. If we only have 1 condition, remove the select option.
-			if ( 'condition' === $args['name'] && count( $options ) <= 1 ) :
+			if ( 'condition' === $args[ 'name' ] && count( $options ) <= 1 ) :
 				?>
 
-				<input type="hidden" name="condition[]" value="<?php echo esc_html( key( $options ) ); ?>"/>
+				<input type="hidden" name="condition[]" value="<?php echo esc_html( key( $options ) ); ?>" />
 
 			<?php else : ?>
 
-				<select multiple="multiple" placeholder="<?php echo esc_attr( $args['label'] ); ?>" name="<?php echo esc_attr( $args['name'] ); ?>[]">
+				<select multiple="multiple" placeholder="<?php echo esc_attr( $args[ 'label' ] ); ?>"
+					name="<?php echo esc_attr( $args[ 'name' ] ); ?>[]">
 
 					<?php foreach ( $options as $val => $text ) : ?>
-						<option value="<?php echo esc_attr( $val ); ?>" <?php selected( true, in_array( strval( $val ), $selected, true ) ); ?> ><?php echo esc_attr( $text ); ?></option>
+						<option value="<?php echo esc_attr( $val ); ?>" <?php selected( true, in_array( strval( $val ), $selected, true ) ); ?>>
+							<?php echo esc_attr( $text ); ?>
+						</option>
 					<?php endforeach; ?>
 
 				</select>
@@ -422,8 +439,8 @@ class SearchForm {
 			<?php endif; ?>
 
 			<?php
-			if ( isset( $args['suffix'] ) ) {
-				echo '<span class="suffix">' . esc_html( $args['suffix'] ) . '</span>';
+			if ( isset( $args[ 'suffix' ] ) ) {
+				echo '<span class="suffix">' . esc_html( $args[ 'suffix' ] ) . '</span>';
 			}
 			?>
 
@@ -431,6 +448,15 @@ class SearchForm {
 
 		<?php
 		$output = ob_get_clean();
-		return apply_filters( 'auto_listings_multiple_search_field' . $args['name'], $output );
+		return apply_filters( 'auto_listings_multiple_search_field' . $args[ 'name' ], $output );
+	}
+
+	// Search dealers
+	public function set_dealer_search_form_action( $action ) {
+		$archive_page = auto_listings_option( 'dealer_archives_page' );
+		if ( empty( $archive_page ) || ! is_post_type_archive( 'dealer' ) ) {
+			return $action;
+		}
+		return get_the_permalink( $archive_page );
 	}
 }
