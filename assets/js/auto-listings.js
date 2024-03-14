@@ -1,4 +1,4 @@
-( function( $ ) {
+( function ( $ ) {
 
 	auto_listings_view_switcher();
 	auto_listings_ordering();
@@ -12,54 +12,56 @@
 	/**
 	 * Search box ( Old version )
 	 */
-	if( $( '.auto-listings-search' ).length > 0 ) {
-		$('.auto-listings-search select').SumoSelect({});
+	if ( $( '.auto-listings-search' ).length > 0 ) {
+		$( '.auto-listings-search select' ).SumoSelect( {
+			forceCustomRendering: true,
+		} );
 
-		$('.auto-listings-search').on( 'click', 'a.refine', function( e ) {
-			$( this ).next('.extras-wrap').slideToggle( 200 );
+		$( '.auto-listings-search' ).on( 'click', 'a.refine', function ( e ) {
+			$( this ).next( '.extras-wrap' ).slideToggle( 200 );
 			$( this ).toggleClass( 'shown' );
-		});
+		} );
 	}
 
 	auto_listings_tabs();
-/**
- * ================================= FUNCTIONS =======================================
- */
+	/**
+	 * ================================= FUNCTIONS =======================================
+	 */
 
 	/**
 	 * Ordering
 	 */
 	function auto_listings_ordering() {
-		if ( ! $('.auto-listings-ordering select.orderby').length ) {
+		if ( !$( '.auto-listings-ordering select.orderby' ).length ) {
 			return;
 		}
-		$('.auto-listings-ordering select.orderby').SumoSelect({
+		$( '.auto-listings-ordering select.orderby' ).SumoSelect( {
 			showTitle: false,
-		});
-		$( 'body' ).on( 'change', 'select.orderby', function() {
+		} );
+		$( 'body' ).on( 'change', 'select.orderby', function () {
 			$( this ).closest( 'form' ).submit();
-		});
+		} );
 	}
 
 	/**
 	 * View switcher
 	 */
 	function auto_listings_view_switcher() {
-		if ( ! $( '.auto-listings-view-switcher' ).length ) {
+		if ( !$( '.auto-listings-view-switcher' ).length ) {
 			return;
 		}
 
 		var default_view = auto_listings.list_grid_view || 'list';
 
-		if( ! get_cookie( 'view' ) ) { switch_view( default_view ); }
+		if ( !get_cookie( 'view' ) ) { switch_view( default_view ); }
 
-		$( '.auto-listings-view-switcher div' ).click( function() {
+		$( '.auto-listings-view-switcher div' ).click( function () {
 			var view = $( this ).attr( 'id' );
 			set_cookie( view );
 			switch_view( view );
-		});
+		} );
 
-		if( get_cookie( 'view' ) == 'grid') { switch_view( 'grid' ); }
+		if ( get_cookie( 'view' ) == 'grid' ) { switch_view( 'grid' ); }
 
 		function switch_view( to ) {
 			var from = ( to == 'list' ) ? 'grid' : 'list';
@@ -70,26 +72,26 @@
 
 		function set_cookie( value ) {
 			var days = 30; // set cookie duration
-			if (days) {
+			if ( days ) {
 				var date = new Date();
-				date.setTime(date.getTime()+(days*24*60*60*1000));
-				var expires = "; expires="+date.toGMTString();
+				date.setTime( date.getTime() + ( days * 24 * 60 * 60 * 1000 ) );
+				var expires = "; expires=" + date.toGMTString();
 			}
 			else var expires = "";
-			document.cookie = "view="+value+expires+"; path=/";
+			document.cookie = "view=" + value + expires + "; path=/";
 		}
 
 		function get_cookie( name ) {
 			var value = "; " + document.cookie;
-			var parts = value.split("; " + name + "=");
-			if (parts.length == 2) return parts.pop().split(";").shift();
+			var parts = value.split( "; " + name + "=" );
+			if ( parts.length == 2 ) return parts.pop().split( ";" ).shift();
 		}
 
 	}
 
-	 /**
-	 * Slider
-	 */
+	/**
+	* Slider
+	*/
 	function auto_listings_slider() {
 
 		if ( $( '#image-gallery' ).length > 0 ) {
@@ -117,8 +119,8 @@
 				enableDrag: false,
 				currentPagerPosition: 'left',
 
-				onSliderLoad: function(el) {
-					el.lightGallery({
+				onSliderLoad: function ( el ) {
+					el.lightGallery( {
 						selector: '#image-gallery .lslide'
 					} );
 				}
@@ -133,26 +135,26 @@
 	 */
 	function auto_listings_tabs() {
 
-		$( 'body' ).on( 'init', '.al-tabs-wrapper, .auto-listings-tabs', function() {
+		$( 'body' ).on( 'init', '.al-tabs-wrapper, .auto-listings-tabs', function () {
 
-				$( '.al-tab, .auto-listings-tabs .panel:not(.panel .panel)' ).hide();
+			$( '.al-tab, .auto-listings-tabs .panel:not(.panel .panel)' ).hide();
 
-				var $tabs = $( this ).find( '.al-tabs, ul.tabs' ).first();
+			var $tabs = $( this ).find( '.al-tabs, ul.tabs' ).first();
 
-				$tabs.find( 'li:first a' ).click();
+			$tabs.find( 'li:first a' ).click();
 
-				// show reset password tab
-				if( $('.al-tab').hasClass('resetpass') ) {
-					$tabs.find( 'li:last a' ).click();
-				}
+			// show reset password tab
+			if ( $( '.al-tab' ).hasClass( 'resetpass' ) ) {
+				$tabs.find( 'li:last a' ).click();
+			}
 
-			} )
-			.on( 'click', '.al-tabs li a, ul.tabs li a', function( e ) {
+		} )
+			.on( 'click', '.al-tabs li a, ul.tabs li a', function ( e ) {
 
 				e.preventDefault();
-				var $tab          = $( this );
+				var $tab = $( this );
 				var $tabs_wrapper = $tab.closest( '.al-tabs-wrapper, .auto-listings-tabs' );
-				var $tabs         = $tabs_wrapper.find( '.al-tabs, ul.tabs' );
+				var $tabs = $tabs_wrapper.find( '.al-tabs, ul.tabs' );
 
 				$tabs.find( 'li' ).removeClass( 'active' );
 				$tabs_wrapper.find( '.al-tab, .panel:not(.panel .panel)' ).hide();
@@ -179,12 +181,12 @@
 		var lat = auto_listings.lat;
 		var lng = auto_listings.lng;
 
-		if( ( lat && lng ) && ( lat.length > 0 && lng.length > 0 ) ) {
+		if ( ( lat && lng ) && ( lat.length > 0 && lng.length > 0 ) ) {
 
 			var options = {
 				center: new google.maps.LatLng( lat, lng ),
 				zoom: parseInt( auto_listings.map_zoom ),
-			}
+			};
 
 			al_map = new google.maps.Map( document.getElementById( 'auto-listings-map' ), options );
 
@@ -199,69 +201,69 @@
 				strokeWeight: 3
 			};
 
-			var set_marker = new google.maps.Marker({
+			var set_marker = new google.maps.Marker( {
 				map: al_map,
 				icon: al_icon,
 				position: position
-			});
+			} );
 
 		}
 
 	}
 
-	var FilterModelByMake = function( makeSelect ) {
+	var FilterModelByMake = function ( makeSelect ) {
 		this.makeSelect = makeSelect;
 		this.modelSelect = null;
 	};
 
-	FilterModelByMake.prototype.init = function() {
+	FilterModelByMake.prototype.init = function () {
 		var that = this;
 		that.modelSelect = that.makeSelect.closest( '.als, .auto-listings-search' ).find( '.als-field--model select, .model select' );
-		if ( ! that.modelSelect.length ) {
+		if ( !that.modelSelect.length ) {
 			return;
 		}
 		var selected = that.makeSelect.val();
-		if ( ! selected || ! selected.length ) {
-			that.modelSelect[0].sumo.disable();
+		if ( !selected || !selected.length ) {
+			that.modelSelect[ 0 ].sumo.disable();
 		} else {
 			that.filterModel( selected );
 		}
 
-		that.makeSelect.on( 'change', function() {
+		that.makeSelect.on( 'change', function () {
 			that.filterModel( $( this ).val() );
 		} );
 	};
-	FilterModelByMake.prototype.filterModel = function( selected ) {
+	FilterModelByMake.prototype.filterModel = function ( selected ) {
 		var that = this;
 		var data = {
 			action: 'model_filter',
 			selected: selected
 		};
 		var $request = $.post( auto_listings.ajaxUrl, data );
-		$request.done( function( response ) {
+		$request.done( function ( response ) {
 			that.handleResponse( response );
 		} );
 	};
-	FilterModelByMake.prototype.handleResponse = function( response ) {
+	FilterModelByMake.prototype.handleResponse = function ( response ) {
 		var that = this;
-		if ( ! response.success ) {
-			that.modelSelect[0].sumo.disable();
+		if ( !response.success ) {
+			that.modelSelect[ 0 ].sumo.disable();
 			return;
 		}
 		var selectedModel = that.modelSelect.val();
-		var options       = response.data;
+		var options = response.data;
 		that.modelSelect.html( options );
 		that.modelSelect.val( selectedModel );
-		that.modelSelect[0].sumo.reload();
-		that.modelSelect[0].sumo.enable();
+		that.modelSelect[ 0 ].sumo.reload();
+		that.modelSelect[ 0 ].sumo.enable();
 	};
 
 	/**
 	 * Search Form
 	 */
 	var searchForm = {
-		init: function( $scope = $( 'body' ) ) {
-			if ( ! $scope.find( '.als' ).length ) {
+		init: function ( $scope = $( 'body' ) ) {
+			if ( !$scope.find( '.als' ).length ) {
 				return;
 			}
 			searchForm.initElement( $scope );
@@ -274,54 +276,54 @@
 			searchForm.handlePriceField();
 			searchForm.reset();
 		},
-		initElement: function( $scope ) {
-			searchForm.$form          = $scope.find( '.als' );
-			searchForm.$selectFields  = $scope.find( '.als select' );
-			searchForm.$extraFields   = $scope.find( '.als-toggle-wrapper' );
-			searchForm.$selectedWrap  = $scope.find( '.als-selected' );
-			searchForm.$resetButton   = $scope.find( '.als-reset' );
-			searchForm.$priceField    = $scope.find( '.als' ).find( '[name="price"]' );
+		initElement: function ( $scope ) {
+			searchForm.$form = $scope.find( '.als' );
+			searchForm.$selectFields = $scope.find( '.als select' );
+			searchForm.$extraFields = $scope.find( '.als-toggle-wrapper' );
+			searchForm.$selectedWrap = $scope.find( '.als-selected' );
+			searchForm.$resetButton = $scope.find( '.als-reset' );
+			searchForm.$priceField = $scope.find( '.als' ).find( '[name="price"]' );
 			searchForm.$locationField = $scope.find( '.als' ).find( '[name="s"]' );
-			searchForm.selected       = {};
+			searchForm.selected = {};
 		},
-		initSumoSelect: function() {
-			searchForm.$selectFields.each( function() {
+		initSumoSelect: function () {
+			searchForm.$selectFields.each( function () {
 				var $this = $( this );
 				$this.SumoSelect( {
 					'placeholder': $this.attr( 'data-placeholder' )
-				} )
+				} );
 			} );
 		},
-		appendSearchKey: function() {
+		appendSearchKey: function () {
 			if ( searchForm.$form.find( '[name="s"]' ).length !== 0 ) {
 				return;
 			}
-			searchForm.$form.append( '<input type="hidden" name="s" />' )
+			searchForm.$form.append( '<input type="hidden" name="s" />' );
 		},
-		setDefaultSelected: function() {
+		setDefaultSelected: function () {
 			$selectedItems = searchForm.$form.find( '.als-is-selected' );
 			if ( $selectedItems.length === 0 ) {
 				return;
 			}
-			$selectedItems.each( function() {
+			$selectedItems.each( function () {
 				searchForm.setSelectedFields( $( this ) );
 			} );
 			searchForm.printSelectedFields();
 		},
-		setSelectedOnChange: function() {
-			searchForm.$selectFields.on( 'change', function() {
-				var $this       = $( this );
+		setSelectedOnChange: function () {
+			searchForm.$selectFields.on( 'change', function () {
+				var $this = $( this );
 				var $searchItem = $this.closest( '.als-field' );
 				searchForm.setSelectedFields( $searchItem );
 				searchForm.printSelectedFields();
 			} );
 		},
-		setSelectedFields: function( $selectedItem ) {
-			var $select         = $selectedItem.find( 'select' );
+		setSelectedFields: function ( $selectedItem ) {
+			var $select = $selectedItem.find( 'select' );
 			var selectedKeyName = $select.attr( 'name' );
-			var selectValue     = $select.val() || []; // For jQuery < 3, empty multiple select return null;
+			var selectValue = $select.val() || []; // For jQuery < 3, empty multiple select return null;
 			if ( selectValue.length ) {
-				if ( ! $selectedItem.hasClass( 'als-is-selected' ) ) {
+				if ( !$selectedItem.hasClass( 'als-is-selected' ) ) {
 					$selectedItem.addClass( 'als-is-selected' );
 				}
 				var selectedItem = {
@@ -331,12 +333,12 @@
 				searchForm.selected[ selectedKeyName ] = selectedItem;
 			} else {
 				$selectedItem.removeClass( 'als-is-selected' );
-				delete searchForm.selected[ selectedKeyName ]
+				delete searchForm.selected[ selectedKeyName ];
 			}
 		},
-		deleteSelectedFields: function() {
-			searchForm.$form.on( 'click', '.als-selected__close', function( e ) {
-				var key     = $( this ).attr( 'data-selected' );
+		deleteSelectedFields: function () {
+			searchForm.$form.on( 'click', '.als-selected__close', function ( e ) {
+				var key = $( this ).attr( 'data-selected' );
 				var $select = $( 'select[name="' + key + '"]' );
 
 				searchForm.emptySelectValue( $select );
@@ -345,8 +347,8 @@
 				searchForm.printSelectedFields();
 			} );
 		},
-		handlePriceField: function() {
-			searchForm.$priceField.on( 'change', function() {
+		handlePriceField: function () {
+			searchForm.$priceField.on( 'change', function () {
 				var $minField = searchForm.$form.find( '[name="min_price"]' );
 				var $maxField = searchForm.$form.find( '[name="max_price"]' );
 				var value = $( this ).val();
@@ -355,25 +357,25 @@
 					$maxField.val( '' );
 				} else {
 					value = value.split( '-' );
-					$minField.val( value[0] );
-					$maxField.val( value[1] );
+					$minField.val( value[ 0 ] );
+					$maxField.val( value[ 1 ] );
 				}
 			} );
 		},
-		reset: function() {
-			searchForm.$resetButton.on( 'click', function( e ) {
+		reset: function () {
+			searchForm.$resetButton.on( 'click', function ( e ) {
 				e.preventDefault();
-				searchForm.$selectFields.each( function() {
+				searchForm.$selectFields.each( function () {
 					searchForm.emptySelectValue( $( this ) );
 				} );
-				searchForm.$locationField.val('');
+				searchForm.$locationField.val( '' );
 				searchForm.selected = {};
 				searchForm.$selectedWrap.empty();
 			} );
 		},
-		printSelectedFields: function() {
+		printSelectedFields: function () {
 			var output = '';
-			for( var key in searchForm.selected ) {
+			for ( var key in searchForm.selected ) {
 				var selectedItem = searchForm.selected[ key ];
 				if ( selectedItem.value === '' ) {
 					continue;
@@ -384,26 +386,26 @@
 			}
 			searchForm.$selectedWrap.html( output );
 		},
-		toggleExtraFields: function() {
-			searchForm.$form.on( 'click', '.als-toggle', function( e ) {
+		toggleExtraFields: function () {
+			searchForm.$form.on( 'click', '.als-toggle', function ( e ) {
 				e.preventDefault();
 				searchForm.$extraFields.slideToggle( 200 );
 				$( this ).toggleClass( 'shown' );
 			} );
 		},
-		emptySelectValue: function( $select ) {
-			if ( ! $select.val() ) {
+		emptySelectValue: function ( $select ) {
+			if ( !$select.val() ) {
 				return;
 			}
 			$select.val( '' );
-			$select[0].sumo.unSelectAll();
+			$select[ 0 ].sumo.unSelectAll();
 			$select.siblings( '.multiple' ).find( 'li' ).removeClass( 'selected' );
 		}
 	};
 
 	searchForm.init();
-	$( window ).on( 'load', function() {
-		$( '.als-field--make select, .make select' ).each( function() {
+	$( window ).on( 'load', function () {
+		$( '.als-field--make select, .make select' ).each( function () {
 			var filter = new FilterModelByMake( $( this ) );
 			filter.init();
 		} );
