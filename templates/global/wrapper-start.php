@@ -45,6 +45,24 @@ if ( auto_listings_option( 'opening_html' ) ) {
 		case 'twentyseventeen':
 			echo '<div class="wrap"><div id="primary" class="content-area"><main id="main" class="site-main" role="main">';
 			break;
+		case 'twentynineteen':
+			echo '<div class="wrap"><div id="primary" class="content-area site-branding "><main id="main" class="site-main" role="main">';
+			break;
+		case 'twentytwenty':
+			echo '<div class="wrap"><div id="primary" class="content-area section-inner"><main id="main" class="site-main" role="main">';
+			break;
+		case 'twentytwentyone':
+			echo '<div class="wrap"><div id="primary" class="content-area alignwide"><main id="main" class="site-main" role="main">';
+			break;
+		case 'twentytwentytwo':
+			echo '<div class="wrap wp-block-group alignfull is-layout-constrained"><div id="primary" class="content-area wp-block-group alignwide"><main id="main" class="site-main" role="main">';
+			break;
+		case 'twentytwentythree':
+			echo '<div class="wrap has-global-padding is-layout-constrained"><div id="primary" class="content-area alignwide"><main id="main" class="site-main" role="main">';
+			break;
+		case 'twentytwentyfour':
+			echo '<div class="wrap has-global-padding is-layout-constrained"><div id="primary" class="content-area alignwide"><main id="main" class="site-main" role="main">';
+			break;
 		default:
 			echo apply_filters( 'auto_listings_wrapper_start', '<div id="container" class="container"><div id="content" class="content" role="main">' ); // wpcs xss: ok.
 			break;
