@@ -1,9 +1,9 @@
 === Auto Listings - Car Listings & Car Dealership Plugin for WordPress ===
 Contributors: elightup, autolistings, rilwis, hungviet91
-Tags: car dealer, sell cars, car classifieds, car sales, car listings, automotive listings, auto listings, automotive, car, car dealership
+Tags: car dealer, car listings, auto listings, car dealership
 Requires at least: 5.9
-Tested up to: 6.4.2
-Stable tag: 2.6.6
+Tested up to: 6.4.3
+Stable tag: 2.6.7
 Requires PHP: 7.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -70,6 +70,8 @@ We have a number of premium extensions to help take your automotive website to t
 - [RegCheck API](https://wpautolistings.com/extensions/regcheck-api/): Delivers precise data lookup for vehicles.
 - [Frontend](https://wpautolistings.com/extensions/frontend/): Allow users to pay for and submit their own listings.
 - [Multiple Dealers](https://wpautolistings.com/extensions/multiple-dealers/): Create a multi-dealer car sales website.
+- [Custom Page](https://wpautolistings.com/extensions/custom-page/): Create custom page to show your sold or new cars.
+- [Tabs](https://wpautolistings.com/extensions/tabs/): Add custom tabs for your listings.
 
 ### Car Listings Theme
 
@@ -131,6 +133,10 @@ It is perfect for car dealers and car dealerships, car classifieds websites or a
 6. Auto Listings settings pages
 
 == Changelog ==
+
+= 2.6.7 - 2024-03-15 =
+- Add zoom effect for slider image
+- Fix search form not working on mobile
 
 = 2.6.6 - 2024-01-29 =
 - Fix XSS vulnerability in the search form

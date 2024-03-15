@@ -1,13 +1,14 @@
 <?php
 /**
- * Plugin Name: Auto Listings
- * Description: The best car listings and car dealership plugin for WordPress
- * Author:      WP Auto Listings
- * Author URI:  https://wpautolistings.com
- * Plugin URI:  https://wpautolistings.com
- * Version:     2.6.6
- * Text Domain: auto-listings
- * Domain Path: languages
+ * Plugin Name:      Auto Listings
+ * Description:      The best car listings and car dealership plugin for WordPress
+ * Author:           WP Auto Listings
+ * Author URI:       https://wpautolistings.com
+ * Plugin URI:       https://wpautolistings.com
+ * Version:          2.6.7
+ * Text Domain:      auto-listings
+ * Domain Path:      languages
+ * Requires Plugins: meta-box
  */
 
 // Exit if accessed directly.
