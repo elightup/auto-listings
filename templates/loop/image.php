@@ -17,7 +17,7 @@ $new            = auto_listings_highlight_new();
 ?>
 
 <div class="image">
-	<a href="<?php echo esc_url( get_permalink() ); ?>" title="<?php echo esc_attr( get_the_title() ); ?>">
+	<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
 		<?php if ( $listing_status ) { ?>
 			<span
 				style="background:<?php echo esc_attr( $listing_status['bg_color'] ); ?>;color:<?php echo esc_attr( $listing_status['text_color'] ); ?>"
@@ -37,12 +37,10 @@ $new            = auto_listings_highlight_new();
 		<?php } ?>
 
 		<?php if ( $image && isset ( $image['alt'] ) && isset ( $image['sml'] ) ) {
-			$image_alt = is_string( $image['alt'] ) ? esc_attr( $image['alt'] ) : '';
-			$image_src = is_string( $image['sml'] ) ? esc_url( $image['sml'] ) : '';
-			var_dump( $image_alt );
-			var_dump( $image_src );
+			$image_alt = isset ( $image['alt'] ) ? $image['alt'] : '';
+			$image_src = isset ( $image['sml'] ) ? $image['sml'] : '';
 			?>
-			<img alt="<?php echo $image_alt; ?>" src="<?php echo $image_src; ?>" />
+			<img alt="<?php echo esc_attr( $image_alt ); ?>" src="<?php echo esc_url( $image_src ); ?>" />
 		<?php } ?>
 
 	</a>
