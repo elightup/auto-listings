@@ -36,12 +36,12 @@ $new            = auto_listings_highlight_new();
 			</span>
 		<?php } ?>
 
-		<?php if ( $image && isset ( $image['alt'] ) && isset ( $image['sml'] ) ) :
+		<?php if ( $image && isset ( $image['alt'] ) && isset ( $image['sml'] ) ) {
 			$image_alt = $image['alt'] ?? '';
 			$image_src = $image['sml'] ?? '';
 			?>
 			<img alt="<?php echo esc_attr( $image_alt ); ?>" src="<?php echo esc_url( $image_src ); ?>" />
-		<?php endif; ?>
+		<?php } ?>
 
 	</a>
 </div>
