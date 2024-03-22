@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <h3 class="title">
-	<a href="<?php esc_url( the_permalink() ); ?>" title="<?php esc_attr( the_title() ); ?>">
+	<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
 		<?php the_title(); ?>
 	</a>
 </h3>
