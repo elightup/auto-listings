@@ -17,12 +17,13 @@ $new            = auto_listings_highlight_new();
 ?>
 
 <div class="image">
-	<a href="<?php esc_url( the_permalink() ); ?>" title="<?php esc_attr( the_title() ); ?>">
-
+	<a href="<?php echo esc_url( get_permalink() ); ?>" title="<?php echo esc_attr( get_the_title() ); ?>">
 		<?php if ( $listing_status ) { ?>
-			<span style="background:<?php echo esc_attr( $listing_status['bg_color'] ); ?>;color:<?php echo esc_attr( $listing_status['text_color'] ); ?>" class="status <?php echo esc_attr( $listing_status['status'] ); ?>">
+			<span
+				style="background:<?php echo esc_attr( $listing_status['bg_color'] ); ?>;color:<?php echo esc_attr( $listing_status['text_color'] ); ?>"
+				class="status <?php echo esc_attr( $listing_status['status'] ); ?>">
 				<?php if ( $listing_status['icon'] ) { ?>
-				<i class="<?php echo esc_attr( $listing_status['icon'] ); ?>"></i>
+					<i class="<?php echo esc_attr( $listing_status['icon'] ); ?>"></i>
 				<?php } ?>
 				<?php echo esc_html( $listing_status['status'] ); ?>
 			</span>
@@ -30,11 +31,20 @@ $new            = auto_listings_highlight_new();
 
 		<?php if ( $new ) { ?>
 			<span style="background:<?php echo esc_attr( $new ); ?>;" class="highlight-new">
-				<i class="fa fa-star"></i> <?php esc_html_e( 'New Listing', 'auto-listings' ); ?>
+				<i class="fa fa-star"></i>
+				<?php esc_html_e( 'New Listing', 'auto-listings' ); ?>
 			</span>
 		<?php } ?>
 
-		<img alt="<?php echo esc_attr( $image['alt'] ); ?>" src="<?php echo esc_url( $image['sml'] ); ?>" />
+		<?php if ( $image && isset ( $image['alt'] ) && isset ( $image['sml'] ) ) {
+			$image_alt = is_string( $image['alt'] ) ? esc_attr( $image['alt'] ) : '';
+			$image_src = is_string( $image['sml'] ) ? esc_url( $image['sml'] ) : '';
+			var_dump( $image_alt );
+			var_dump( $image_src );
+			?>
+			<img alt="<?php echo $image_alt; ?>" src="<?php echo $image_src; ?>" />
+		<?php } ?>
+		<!-- <img alt="< ?php echo esc_attr( $image['alt'] ); ?>" src="< ?php echo esc_url( $image['sml'] ); ?>" /> -->
 
 	</a>
 </div>
