@@ -44,7 +44,6 @@ $new            = auto_listings_highlight_new();
 			?>
 			<img alt="<?php echo $image_alt; ?>" src="<?php echo $image_src; ?>" />
 		<?php } ?>
-		<!-- <img alt="< ?php echo esc_attr( $image['alt'] ); ?>" src="< ?php echo esc_url( $image['sml'] ); ?>" /> -->
 
 	</a>
 </div>
