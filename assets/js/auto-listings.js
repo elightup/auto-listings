@@ -100,7 +100,7 @@
 
 				thumbItem: 6,
 				mode: 'slide',
-				auto: true,
+				auto: false,
 				pause: 2000,
 				speed: 1000,
 				prevHtml: '<i class="fa fa-angle-left"></i>',
