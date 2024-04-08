@@ -134,6 +134,10 @@ It is perfect for car dealers and car dealerships, car classifieds websites or a
 
 == Changelog ==
 
+= 2.6.8 - 2024-03-22 =
+- Fix PHP 8 errors
+- Fix layout for default themes
+
 = 2.6.7 - 2024-03-15 =
 - Add zoom effect for slider image
 - Fix search form not working on mobile
