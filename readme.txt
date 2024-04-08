@@ -2,8 +2,8 @@
 Contributors: elightup, autolistings, rilwis, hungviet91
 Tags: car dealer, car listings, auto listings, car dealership
 Requires at least: 5.9
-Tested up to: 6.4.3
-Stable tag: 2.6.7
+Tested up to: 6.5
+Stable tag: 2.6.9
 Requires PHP: 7.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -133,6 +133,9 @@ It is perfect for car dealers and car dealerships, car classifieds websites or a
 6. Auto Listings settings pages
 
 == Changelog ==
+
+= 2.6.9 - 2024-04-08 =
+- Do not auto start the slider for listings
 
 = 2.6.8 - 2024-03-22 =
 - Fix PHP 8 errors
