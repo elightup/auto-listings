@@ -97,8 +97,7 @@
 		if ( $( '#image-gallery' ).length > 0 ) {
 			var enableAuto = $('#image-gallery').data('enable-auto');
         	var sliderSpeed = parseInt($('#image-gallery').data('slider-speed'));
-			console.log('enableAuto', enableAuto);
-			console.log('sliderSpeed', sliderSpeed);
+
 			$( '#image-gallery' ).lightSlider( {
 
 				thumbItem: 6,
