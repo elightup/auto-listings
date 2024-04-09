@@ -95,14 +95,17 @@
 	function auto_listings_slider() {
 
 		if ( $( '#image-gallery' ).length > 0 ) {
-
+			var enableAuto = $('#image-gallery').data('enable-auto');
+        	var sliderSpeed = parseInt($('#image-gallery').data('slider-speed'));
+			console.log('enableAuto', enableAuto);
+			console.log('sliderSpeed', sliderSpeed);
 			$( '#image-gallery' ).lightSlider( {
 
 				thumbItem: 6,
 				mode: 'slide',
-				auto: false,
+				auto: enableAuto,
 				pause: 2000,
-				speed: 1000,
+				speed: sliderSpeed,
 				prevHtml: '<i class="fa fa-angle-left"></i>',
 				nextHtml: '<i class="fa fa-angle-right"></i>',
 				pager: true,
