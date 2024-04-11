@@ -89,45 +89,40 @@
 
 	}
 
-	/**
-	* Slider
-	*/
 	function auto_listings_slider() {
-
-		if ( $( '#image-gallery' ).length > 0 ) {
-
-			$( '#image-gallery' ).lightSlider( {
-
-				thumbItem: 6,
-				mode: 'slide',
-				auto: false,
-				pause: 2000,
-				speed: 1000,
-				prevHtml: '<i class="fa fa-angle-left"></i>',
-				nextHtml: '<i class="fa fa-angle-right"></i>',
-				pager: true,
-				controls: true,
-
-				addClass: 'listing-gallery',
-				gallery: true,
-				item: 1,
-				autoWidth: false,
-				loop: true,
-				slideMargin: 0,
-				thumbMargin: 10,
-				galleryMargin: 10,
-				enableDrag: false,
-				currentPagerPosition: 'left',
-
-				onSliderLoad: function ( el ) {
-					el.lightGallery( {
-						selector: '#image-gallery .lslide'
-					} );
-				}
-			} );
-
+		const $gallery = $( '#image-gallery' );
+		if ( !$gallery.length ) {
+			return;
 		}
 
+		$gallery.lightSlider( {
+			thumbItem: 6,
+			mode: 'slide',
+			auto: $gallery.data( 'auto' ),
+			pause: 2000,
+			speed: parseInt( $gallery.data( 'speed' ) ),
+			prevHtml: '<i class="fa fa-angle-left"></i>',
+			nextHtml: '<i class="fa fa-angle-right"></i>',
+			pager: true,
+			controls: true,
+
+			addClass: 'listing-gallery',
+			gallery: true,
+			item: 1,
+			autoWidth: false,
+			loop: true,
+			slideMargin: 0,
+			thumbMargin: 10,
+			galleryMargin: 10,
+			enableDrag: false,
+			currentPagerPosition: 'left',
+
+			onSliderLoad: function ( el ) {
+				el.lightGallery( {
+					selector: '#image-gallery .lslide'
+				} );
+			}
+		} );
 	}
 
 	/**
