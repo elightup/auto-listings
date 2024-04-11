@@ -19,7 +19,6 @@ class PostStatuses {
 		add_action( 'admin_footer-post.php', [ $this, 'post_screen_js' ] );
 		add_action( 'admin_footer-edit.php', [ $this, 'edit_screen_js' ] );
 		add_filter( 'display_post_states', [ $this, 'display_post_states' ], 10, 2 );
-		add_action( 'before_delete_post', [ $this, 'update_listing_on_enquire_delete' ] );
 	}
 
 	/**
@@ -120,21 +119,4 @@ class PostStatuses {
 		);
 	}
 
-	public function update_listing_on_enquire_delete( $post_id ) {
-		$post = get_post( $post_id );
-
-		if ( ! $post || $post->post_type !== 'listing-enquiry' ) {
-			return;
-		}
-
-		$listing_id              = get_post_meta( $post->ID, '_al_enquiry_listing_id', true );
-		$listing_enquiries_value = get_post_meta( $listing_id, '_al_listing_enquiries', true );
-
-		if ( ! $listing_enquiries_value ) {
-			return;
-		}
-
-		$updated_listing_enquiries = array_diff( $listing_enquiries_value, [ $post_id ] );
-		update_post_meta( $listing_id, '_al_listing_enquiries', $updated_listing_enquiries );
-	}
 }

@@ -19,7 +19,6 @@ class PostType {
 		add_action( 'init', [ $this, 'register_taxonomy' ] );
 		add_action( 'add_meta_boxes', [ $this, 'remove_body_type_meta_box' ] );
 		add_filter( 'use_block_editor_for_post_type', [ $this, 'disable_block_editor' ], 10, 2 );
-		add_action( 'before_delete_post', [ $this, 'update_listing_on_enquire_delete' ] );
 	}
 
 	/**
@@ -119,21 +118,4 @@ class PostType {
 		return 'auto-listing' === $post_type ? false : $enabled;
 	}
 
-	public function update_listing_on_enquire_delete( $post_id ) {
-		$post = get_post( $post_id );
-
-		if ( $post && $post->post_type === 'listing-enquiry' ) {
-
-			$listing_id              = get_post_meta( $post->ID, '_al_enquiry_listing_id', true );
-			$listing_enquiries_value = get_post_meta( $listing_id, '_al_listing_enquiries', true );
-
-			if ( $listing_enquiries_value ) {
-				if ( ( $key = array_search( $post_id, $listing_enquiries_value ) ) !== false ) {
-					unset( $listing_enquiries_value[ $key ] );
-
-					update_post_meta( $listing_id, '_al_listing_enquiries', $listing_enquiries_value );
-				}
-			}
-		}
-	}
 }
