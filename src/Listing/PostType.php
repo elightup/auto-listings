@@ -19,6 +19,7 @@ class PostType {
 		add_action( 'init', [ $this, 'register_taxonomy' ] );
 		add_action( 'add_meta_boxes', [ $this, 'remove_body_type_meta_box' ] );
 		add_filter( 'use_block_editor_for_post_type', [ $this, 'disable_block_editor' ], 10, 2 );
+		add_action( 'before_delete_post', [ $this, 'update_listing_on_enquire_delete' ] );
 	}
 
 	/**
@@ -27,7 +28,7 @@ class PostType {
 	public function register_post_type() {
 		$slug = auto_listings_option( 'single_url' ) ? auto_listings_option( 'single_url' ) : 'listing';
 
-		$labels = [
+		$labels = [ 
 			'name'                  => _x( 'Listings', 'Listing post type name', 'auto-listings' ),
 			'singular_name'         => _x( 'Listing', 'Singular listing post type name', 'auto-listings' ),
 			'add_new'               => __( 'New Listing', 'auto-listings' ),
@@ -47,7 +48,7 @@ class PostType {
 		];
 
 		$archive_page = auto_listings_option( 'archives_page' );
-		$args         = [
+		$args         = [ 
 			'labels'             => $labels,
 			'public'             => true,
 			'publicly_queryable' => true,
@@ -56,7 +57,7 @@ class PostType {
 			'menu_icon'          => 'dashicons-dashboard',
 			'menu_position'      => 56,
 			'query_var'          => true,
-			'rewrite'            => [
+			'rewrite'            => [ 
 				'slug'       => untrailingslashit( $slug ),
 				'with_front' => false,
 				'feeds'      => true,
@@ -75,7 +76,7 @@ class PostType {
 	 * Register Body Type Taxonomy.
 	 */
 	public function register_taxonomy() {
-		$labels = [
+		$labels = [ 
 			'name'                  => _x( 'Body Types', 'body-type general name', 'auto-listings' ),
 			'singular_name'         => _x( 'Body Type', 'body-type singular name', 'auto-listings' ),
 			'add_new'               => __( 'New Body Type', 'auto-listings' ),
@@ -97,7 +98,7 @@ class PostType {
 		register_taxonomy(
 			'body-type',
 			'auto-listing',
-			[
+			[ 
 				'labels'            => $labels,
 				'hierarchical'      => true,
 				'public'            => true,
@@ -116,5 +117,23 @@ class PostType {
 
 	public function disable_block_editor( $enabled, $post_type ) {
 		return 'auto-listing' === $post_type ? false : $enabled;
+	}
+
+	public function update_listing_on_enquire_delete( $post_id ) {
+		$post = get_post( $post_id );
+
+		if ( $post && $post->post_type === 'listing-enquiry' ) {
+
+			$listing_id              = get_post_meta( $post->ID, '_al_enquiry_listing_id', true );
+			$listing_enquiries_value = get_post_meta( $listing_id, '_al_listing_enquiries', true );
+
+			if ( $listing_enquiries_value ) {
+				if ( ( $key = array_search( $post_id, $listing_enquiries_value ) ) !== false ) {
+					unset( $listing_enquiries_value[ $key ] );
+
+					update_post_meta( $listing_id, '_al_listing_enquiries', $listing_enquiries_value );
+				}
+			}
+		}
 	}
 }
