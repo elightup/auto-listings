@@ -21,6 +21,8 @@ class ContactForm {
 		add_action( 'rwmb_frontend_after_save_post', [ $this, 'add_listing_data' ] );
 		add_action( 'rwmb_frontend_after_save_post', [ $this, 'send_notification' ] );
 		add_filter( 'rwmb_frontend_field_value_confirmation', [ $this, 'confirmation_message' ], 10, 2 );
+
+		add_action( 'before_delete_post', [ $this, 'update_listing_on_delete' ], 10, 2 );
 	}
 
 	/**
@@ -138,11 +140,11 @@ class ContactForm {
 		$message = auto_listings_option( 'contact_form_message' );
 		if ( ! isset( $message ) || empty( $message ) ) {
 			$message = __( 'Hi {seller_name},', 'auto-listings' ) . "\r\n" .
-					__( 'There has been a new enquiry on <strong>{listing_title}</strong>', 'auto-listings' ) . "\r\n" .
-					__( 'Name: {enquiry_name}', 'auto-listings' ) . "\r\n" .
-					__( 'Email: {enquiry_email}', 'auto-listings' ) . "\r\n" .
-					__( 'Phone: {enquiry_phone}', 'auto-listings' ) . "\r\n" .
-					__( 'Message: {enquiry_message}', 'auto-listings' ) . "\r\n";
+				__( 'There has been a new enquiry on <strong>{listing_title}</strong>', 'auto-listings' ) . "\r\n" .
+				__( 'Name: {enquiry_name}', 'auto-listings' ) . "\r\n" .
+				__( 'Email: {enquiry_email}', 'auto-listings' ) . "\r\n" .
+				__( 'Phone: {enquiry_phone}', 'auto-listings' ) . "\r\n" .
+				__( 'Message: {enquiry_message}', 'auto-listings' ) . "\r\n";
 		}
 		return apply_filters( 'auto_listings_contact_form_message', wpautop( wp_kses_post( $message ) ) );
 	}
@@ -256,5 +258,21 @@ class ContactForm {
 			return $message;
 		}
 		return $success_message;
+	}
+
+	public function update_listing_on_delete( $post_id, $post ): void {
+		if ( $post->post_type !== 'listing-enquiry' ) {
+			return;
+		}
+
+		$listing_id        = get_post_meta( $post->ID, '_al_enquiry_listing_id', true );
+		$listing_enquiries = get_post_meta( $listing_id, '_al_listing_enquiries', true );
+
+		if ( ! $listing_enquiries ) {
+			return;
+		}
+
+		$listing_enquiries = array_diff( $listing_enquiries, [ $post_id ] );
+		update_post_meta( $listing_id, '_al_listing_enquiries', $listing_enquiries );
 	}
 }
