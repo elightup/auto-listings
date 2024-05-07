@@ -214,7 +214,7 @@ function auto_listings_listing_archive_get_title() {
 		$page_id    = auto_listings_option( 'archives_page' );
 		$page_title = get_the_title( $page_id );
 	} else {
-		$page_title = get_the_title();
+		$page_title = the_archive_title();
 	}
 
 	$page_title = apply_filters( 'auto_listings_archive_page_title', $page_title );
