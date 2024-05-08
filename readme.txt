@@ -1,12 +1,12 @@
 === Auto Listings - Car Listings & Car Dealership Plugin for WordPress ===
-Contributors: elightup, autolistings, rilwis, hungviet91
-Tags: car dealer, car listings, auto listings, car dealership
-Requires at least: 5.9
-Tested up to: 6.5.2
-Stable tag: 2.6.10
-Requires PHP: 7.2
-License: GPLv3
-License URI: https://www.gnu.org/licenses/gpl-3.0.html
+Contributors:      elightup, autolistings, rilwis, hungviet91
+Tags:              car dealer, car listings, auto listings, car dealership
+Requires at least: 6.2
+Tested up to:      6.5.3
+Stable tag:        2.6.11
+Requires PHP:      7.2
+License:           GPLv3
+License URI:       https://www.gnu.org/licenses/gpl-3.0.html
 
 List, manage & sell cars easily. Advanced search, vehicle data from 1941, lead capture, gallery, maps. Great for car dealers.
 
@@ -133,6 +133,9 @@ It is perfect for car dealers and car dealerships, car classifieds websites or a
 6. Auto Listings settings pages
 
 == Changelog ==
+
+= 2.6.11 - 2024-05-08 =
+- Fix archive page title
 
 = 2.6.10 - 2024-04-12 =
 - Add options for slider: auto start and slider speed

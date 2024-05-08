@@ -5,7 +5,7 @@
  * Author:           WP Auto Listings
  * Author URI:       https://wpautolistings.com
  * Plugin URI:       https://wpautolistings.com
- * Version:          2.6.10
+ * Version:          2.6.11
  * Text Domain:      auto-listings
  * Domain Path:      languages
  * Requires Plugins: meta-box
@@ -17,17 +17,6 @@ defined( 'ABSPATH' ) || die;
 require __DIR__ . '/vendor/autoload.php';
 
 new AutoListings\Installer( __FILE__ );
-
-register_activation_hook( __FILE__, 'auto_listings_check_php_version' );
-
-/**
- * Display notice for old PHP version.
- */
-function auto_listings_check_php_version() {
-	if ( version_compare( phpversion(), '7.2', '<' ) ) {
-		die( esc_html__( 'Auto listings plugin requires PHP version 7.2+. Please contact your host and ask them to upgrade.', 'auto-listings' ) );
-	}
-}
 
 add_action( 'plugins_loaded', 'auto_listings_load' );
 
