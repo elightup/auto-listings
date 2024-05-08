@@ -77,21 +77,3 @@ function auto_listings_replace_hook_with_sidebar() {
 	dynamic_sidebar( 'auto-listings-single' );
 }
 add_action( 'auto_listings_single_sidebar', 'auto_listings_replace_hook_with_sidebar', 0 );
-
-//
-add_filter( 'get_the_archive_title', 'archive_title' );
-function archive_title( string $title ): string {
-	if ( is_category() ) {
-		$title = single_cat_title( '', false );
-	} elseif ( is_tag() ) {
-		$title = single_tag_title( '', false );
-	} elseif ( is_author() ) {
-		$title = '<span class="vcard">' . get_the_author() . '</span>';
-	} elseif ( is_post_type_archive() ) {
-		$title = post_type_archive_title( '', false );
-	} elseif ( is_tax() ) {
-		$title = single_term_title( '', false );
-	}
-
-	return $title;
-}

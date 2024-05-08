@@ -213,8 +213,11 @@ function auto_listings_listing_archive_get_title() {
 	} elseif ( is_post_type_archive( 'auto-listing' ) ) {
 		$page_id    = auto_listings_option( 'archives_page' );
 		$page_title = get_the_title( $page_id );
+	} elseif ( is_tax() ) {
+		$current_term = get_queried_object();
+		$page_title   = $current_term->name;
 	} else {
-		$page_title = the_archive_title();
+		$page_title = get_the_title();
 	}
 
 	$page_title = apply_filters( 'auto_listings_archive_page_title', $page_title );
