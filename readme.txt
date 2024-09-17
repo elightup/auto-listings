@@ -2,8 +2,8 @@
 Contributors:      elightup, autolistings, rilwis, hungviet91
 Tags:              car dealer, car listings, auto listings, car dealership
 Requires at least: 6.2
-Tested up to:      6.5.3
-Stable tag:        2.6.11
+Tested up to:      6.6.2
+Stable tag:        2.6.12
 Requires PHP:      7.2
 License:           GPLv3
 License URI:       https://www.gnu.org/licenses/gpl-3.0.html
@@ -133,6 +133,9 @@ It is perfect for car dealers and car dealerships, car classifieds websites or a
 6. Auto Listings settings pages
 
 == Changelog ==
+
+= 2.6.12 - 2024-09-17 =
+- Use full size for images in the gallery
 
 = 2.6.11 - 2024-05-08 =
 - Fix archive page title
