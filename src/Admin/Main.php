@@ -35,14 +35,14 @@ class Main {
 	 * Restrict Media Library for all user except administrator
 	 */
 	public function restrict_media_library( $query ) {
-	    $current_user = wp_get_current_user();
-	    if ( ! $current_user || empty( $current_user->roles ) ) {
-	    	return $query;
-	    }
-	    $roles = $current_user->roles;
-	    if ( in_array( 'auto_listings_seller', $roles ) || in_array( 'auto_listings_dealer', $roles ) ) {
-	        $query['author'] = $current_user->ID;
-	    }
-	    return $query;
+		$current_user = wp_get_current_user();
+		if ( ! $current_user || empty( $current_user->roles ) ) {
+			return $query;
+		}
+		$roles = $current_user->roles;
+		if ( in_array( 'auto_listings_seller', $roles ) || in_array( 'auto_listings_dealer', $roles ) ) {
+			$query['author'] = $current_user->ID;
+		}
+		return $query;
 	}
 }

@@ -41,10 +41,10 @@ return [
 			'placeholder' => 'somebody@somewhere.com',
 		],
 		[
-			'name'        => __( 'Enable Ajax submission', 'auto-listings' ),
-			'id'          => 'contact_form_ajax',
-			'type'        => 'checkbox',
-			'std'         => 1,
+			'name' => __( 'Enable Ajax submission', 'auto-listings' ),
+			'id'   => 'contact_form_ajax',
+			'type' => 'checkbox',
+			'std'  => 1,
 		],
 	],
 ];

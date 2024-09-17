@@ -21,9 +21,9 @@ return [
 			'add_button'  => __( '+ Add Status', 'auto-listings' ),
 			'fields'      => [
 				[
-					'name' => __( 'Status', 'auto-listings' ),
-					'id'   => 'status',
-					'type' => 'text',
+					'name'              => __( 'Status', 'auto-listings' ),
+					'id'                => 'status',
+					'type'              => 'text',
 					'sanitize_callback' => 'wp_kses_post',
 				],
 				[

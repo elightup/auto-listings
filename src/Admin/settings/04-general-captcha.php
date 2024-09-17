@@ -20,8 +20,8 @@ return [
 					Register your website with Google to get required API keys and enter them below.
 					<a href="https://www.google.com/recaptcha/admin#list" target="_blank">Get the API Keys</a>
 				</i>
-				</div>'
-				, 'autolistings-pro'
+				</div>',
+				'autolistings-pro'
 			),
 		],
 		[

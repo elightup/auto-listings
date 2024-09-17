@@ -35,4 +35,3 @@ class Assets {
 		wp_enqueue_style( 'al-admin', $css_dir . 'auto-listings.css', '', AUTO_LISTINGS_VERSION );
 	}
 }
-

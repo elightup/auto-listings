@@ -2,7 +2,7 @@
 
 <p><?php esc_html_e( 'Need to customize the plugin to suit your needs?', 'auto-listings' ); ?></p>
 <p><?php esc_html_e( 'We offer customization service with affordable price.', 'auto-listings' ); ?></p>
-<p><a href="https://wpautolistings.com/services/?utm_source=WordPress&utm_medium=link&utm_campaign=plugin" target="_blank"><?php esc_html_e( 'Send us an email', 'auto-listings' ); ?></a></p>
+<p><a href="https://wpautolistings.com/services/?utm_source=settings_page&utm_medium=link&utm_campaign=auto_listings" class="button button-primary" target="_blank"><?php esc_html_e( 'Send us an email', 'auto-listings' ); ?> &rarr;</a></p>
 <?php
 $message = ob_get_clean();
 return [

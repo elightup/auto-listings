@@ -1,11 +1,11 @@
 <?php
-return [ 
+return [
 	'id'             => 'slider',
 	'title'          => __( 'Image Slider', 'auto-listings' ),
 	'settings_pages' => 'auto-listings',
 	'tab'            => 'display',
-	'fields'         => [ 
-		[ 
+	'fields'         => [
+		[
 			'name'      => __( 'Auto start', 'auto-listings' ),
 			'id'        => 'slider_auto',
 			'type'      => 'switch',
@@ -13,7 +13,7 @@ return [
 			'on_label'  => __( 'Enable', 'auto-listings' ),
 			'off_label' => __( 'Disable', 'auto-listings' ),
 		],
-		[ 
+		[
 			'name'   => __( 'Slider speed', 'auto-listings' ),
 			'id'     => 'slider_speed',
 			'type'   => 'number',

@@ -1,84 +1,83 @@
+<?php ob_start(); ?>
+
+<?php if ( ! class_exists( '\AutoListingsTabs\General\Settings' ) ) : ?>
+	<p>
+		<span class="dashicons dashicons-yes-alt"></span>
+		<?php
+		// Translators: %1$s - extension URL, %2$s - extension name.
+		echo wp_kses_post( sprintf( __( '<a href="%1$s" target="_blank"><b>%2$s</b></a> - Add custom tabs for listings to show your terms or promotions.', 'auto-listings' ), 'https://wpautolistings.com/extensions/tabs/?utm_source=settings_page&utm_medium=link&utm_campaign=auto_listings', 'Tabs' ) );
+		?>
+	</p>
+<?php endif ?>
+
+<?php if ( ! defined( 'ALCP_DIR' ) ) : ?>
+	<p>
+		<span class="dashicons dashicons-yes-alt"></span>
+		<?php
+		// Translators: %1$s - extension URL, %2$s - extension name.
+		echo wp_kses_post( sprintf( __( '<a href="%1$s" target="_blank"><b>%2$s</b></a> - Create custom page to show your sold or new cars.', 'auto-listings' ), 'https://wpautolistings.com/extensions/custom-page/?utm_source=settings_page&utm_medium=link&utm_campaign=auto_listings', 'Custom Page' ) );
+		?>
+	</p>
+<?php endif ?>
+
+<?php if ( ! defined( 'AL_DVLA_DIR' ) ) : ?>
+	<p>
+		<span class="dashicons dashicons-yes-alt"></span>
+		<?php
+		// Translators: %1$s - extension URL, %2$s - extension name.
+		echo wp_kses_post( sprintf( __( '<a href="%1$s" target="_blank"><b>%2$s</b></a> - Integrates with the DVLA Search API for the UK to query vehicle details.', 'auto-listings' ), 'https://wpautolistings.com/extensions/dvla-search/?utm_source=settings_page&utm_medium=link&utm_campaign=auto_listings', 'DVLA Search' ) );
+		?>
+	</p>
+<?php endif ?>
+
+<?php if ( ! defined( 'AL_REGCHECK_DIR' ) ) : ?>
+	<p>
+		<span class="dashicons dashicons-yes-alt"></span>
+		<?php
+		// Translators: %1$s - extension URL, %2$s - extension name.
+		echo wp_kses_post( sprintf( __( '<a href="%1$s" target="_blank"><b>%2$s</b></a> - Delivers precise data lookup for vehicles.', 'auto-listings' ), 'https://wpautolistings.com/extensions/regcheck-api/?utm_source=settings_page&utm_medium=link&utm_campaign=auto_listings', 'RegCheck API' ) );
+		?>
+	</p>
+<?php endif ?>
+
+<?php if ( ! defined( 'AL_FRONTEND_PLUGIN_DIR' ) ) : ?>
+	<p>
+		<span class="dashicons dashicons-yes-alt"></span>
+		<?php
+		// Translators: %1$s - extension URL, %2$s - extension name.
+		echo wp_kses_post( sprintf( __( '<a href="%1$s" target="_blank"><b>%2$s</b></a> - Allow users to pay for and submit their own listings.', 'auto-listings' ), 'https://wpautolistings.com/extensions/frontend/?utm_source=settings_page&utm_medium=link&utm_campaign=auto_listings', 'Frontend' ) );
+		?>
+	</p>
+<?php endif ?>
+
+<?php if ( ! defined( 'AL_DEALERS_PLUGIN_DIR' ) ) : ?>
+	<p>
+		<span class="dashicons dashicons-yes-alt"></span>
+		<?php
+		// Translators: %1$s - extension URL, %2$s - extension name.
+		echo wp_kses_post( sprintf( __( '<a href="%1$s" target="_blank"><b>%2$s</b></a> - Create a multi-dealer car sales website.', 'auto-listings' ), 'https://wpautolistings.com/extensions/multiple-dealers/?utm_source=settings_page&utm_medium=link&utm_campaign=auto_listings', 'Multiple Dealers' ) );
+		?>
+	</p>
+<?php endif ?>
+
 <?php
-/**
- * List of Auto Listings extensions.
- *
- * @package Auto Listings.
- */
+$message = trim( ob_get_clean() );
 
-ob_start()
-?>
-<p class="about-description">
-	<?php echo wp_kses_post( __( 'There are a number of premium extensions available at <a href="http://wpautolistings.com/docs/?utm_source=plugin&utm_medium=settings_page&utm_content=extensions" target="_blank">www.wpautolistings.com</a> that will take your automotive website to the next level.', 'auto-listings' ) ); ?>
-</p>
+if ( empty( $message ) ) {
+	return [];
+}
 
-<div class="extensions wp-clearfix">
-	<div class="extension">
-		<div class="extension-inner">
-			<img class="extension-icon" src="<?php echo esc_url( AUTO_LISTINGS_URL . 'assets/images/dlva-search-icon.png' ); ?>" width="30" height="30">
-			<div class="extension-info">
-				<h3>DVLA Search</h3>
-				<p><?php esc_html_e( 'Integrates with the DVLA Search API for the UK.', 'auto-listings' ); ?></p>
-			</div>
-		</div>
-		<div class="extension-action">
-			<a class="button" target="_blank" href="https://wpautolistings.com/extensions/dvla-search/?utm_source=WordPress&utm_medium=link&utm_campaign=plugin"><?php esc_html_e( 'Learn More', 'auto-listings' ); ?></a>
-		</div>
-	</div>
-
-	<div class="extension">
-		<div class="extension-inner">
-			<img class="extension-icon" src="<?php echo esc_url( AUTO_LISTINGS_URL . 'assets/images/regcheck-api-icon.png' ); ?>" width="30" height="30">
-			<div class="extension-info">
-				<h3>RegCheck API</h3>
-				<p><?php esc_html_e( 'Delivers precise data lookup for vehicles.', 'auto-listings' ); ?></p>
-			</div>
-		</div>
-		<div class="extension-action">
-			<a class="button" target="_blank" href="https://wpautolistings.com/extensions/regcheck-api/?utm_source=WordPress&utm_medium=link&utm_campaign=plugin"><?php esc_html_e( 'Learn More', 'auto-listings' ); ?></a>
-		</div>
-	</div>
-
-	<div class="extension">
-		<div class="extension-inner">
-			<img class="extension-icon" src="<?php echo esc_url( AUTO_LISTINGS_URL . 'assets/images/frontend-icon.png' ); ?>" width="30" height="30">
-			<div class="extension-info">
-				<h3>Frontend</h3>
-				<p><?php esc_html_e( 'Allow users to pay for and submit their own listings.', 'auto-listings' ); ?></p>
-			</div>
-		</div>
-		<div class="extension-action">
-			<a class="button" target="_blank" href="https://wpautolistings.com/extensions/frontend/?utm_source=WordPress&utm_medium=link&utm_campaign=plugin"><?php esc_html_e( 'Learn More', 'auto-listings' ); ?></a>
-		</div>
-	</div>
-
-	<div class="extension">
-		<div class="extension-inner">
-			<img class="extension-icon" src="<?php echo esc_url( AUTO_LISTINGS_URL . 'assets/images/multiple-dealers-icon.png' ); ?>" width="30" height="30">
-			<div class="extension-info">
-				<h3>Multiple Dealers</h3>
-				<p><?php esc_html_e( 'Create a multi-dealer car sales website.', 'auto-listings' ); ?></p>
-			</div>
-		</div>
-		<div class="extension-action">
-			<a class="button" target="_blank" href="https://wpautolistings.com/extensions/multiple-dealers/?utm_source=WordPress&utm_medium=link&utm_campaign=plugin"><?php esc_html_e( 'Learn More', 'auto-listings' ); ?></a>
-		</div>
-	</div>
-</div>
-<?php
-$messages = ob_get_clean();
+$message .= '<a href="https://wpautolistings.com/extensions/?utm_source=settings_page&utm_medium=link&utm_campaign=auto_listings" class="button button-primary">' . esc_html__( 'Get all extensions', 'auto-listings' ) . ' &rarr;</a>';
 
 return [
-	'id'             => 'extensions',
-	'title'          => __( 'Extensions', 'auto-listings' ),
+	'id'             => 'auto-listings-premium-extensions',
+	'title'          => __( 'Premium Extensions', 'auto-listings' ),
 	'settings_pages' => 'auto-listings',
-	'tab'            => 'extensions',
+	'context'        => 'side',
 	'fields'         => [
 		[
-			'std'  => $messages,
+			'std'  => wp_kses_post( $message ),
 			'type' => 'custom_html',
 		],
 	],
 ];
-
-
-
