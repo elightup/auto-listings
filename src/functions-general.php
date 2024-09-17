@@ -145,12 +145,8 @@ function auto_listings_hide_item( $item ) {
 
 add_action( 'init', 'auto_listings_add_new_image_sizes', 11 );
 
-/**
- * Plugin image sizes.
- */
-function auto_listings_add_new_image_sizes() {
+function auto_listings_add_new_image_sizes(): void {
 	add_theme_support( 'post-thumbnails' );
-	add_image_size( 'al-lge', 1200, 750, array( 'center', 'center' ) ); // main.
 	add_image_size( 'al-sml', 400, 250, array( 'center', 'center' ) ); // thumb.
 }
 
