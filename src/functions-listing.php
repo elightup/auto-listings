@@ -437,7 +437,7 @@ function auto_listings_condition() {
 	$condition_options = auto_listings_conditions();
 	$condition         = auto_listings_meta( 'condition' );
 
-	return $condition_options[ $condition ] ?: '';
+	return $condition && isset( $condition_options[ $condition ] ) ? $condition_options[ $condition ] : '';
 }
 
 function auto_listings_transmission() {
