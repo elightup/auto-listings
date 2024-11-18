@@ -12,19 +12,19 @@ $fields = [];
 if ( is_admin() ) {
 	$fields[10] = [
 		'id'        => $prefix . 'listing_id',
-		'name'      => __( 'Listing', 'auto-listing' ),
+		'name'      => __( 'Listing', 'auto-listings' ),
 		'type'      => 'post',
 		'post_type' => 'auto-listing',
 	];
 	$fields[20] = [
 		'id'                => $prefix . 'listing_title',
-		'name'              => __( 'Listing Title', 'auto-listing' ),
+		'name'              => __( 'Listing Title', 'auto-listings' ),
 		'type'              => 'text',
 		'sanitize_callback' => 'wp_kses_post',
 	];
 	$fields[30] = [
 		'id'   => $prefix . 'listing_seller',
-		'name' => __( 'Seller', 'auto-listing' ),
+		'name' => __( 'Seller', 'auto-listings' ),
 		'type' => 'user',
 	];
 	$fields[40] = [

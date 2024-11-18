@@ -43,7 +43,7 @@ class Tab {
 			<?php
 			printf(
 				// Translators: %s - Account page URL.
-				wp_kses_post( __( 'Please enter your <a href="%s">license key</a> to enable automatic updates for Auto Listings plugins.', 'slim-seo' ) ),
+				wp_kses_post( __( 'Please enter your <a href="%s">license key</a> to enable automatic updates for Auto Listings plugins.', 'auto-listings' ) ),
 				'https://wpautolistings.com/my-account/'
 			);
 			?>

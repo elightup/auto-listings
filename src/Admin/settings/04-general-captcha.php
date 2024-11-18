@@ -21,16 +21,16 @@ return [
 					<a href="https://www.google.com/recaptcha/admin#list" target="_blank">Get the API Keys</a>
 				</i>
 				</div>',
-				'autolistings-pro'
+				'auto-listings'
 			),
 		],
 		[
-			'name' => __( 'Site key', 'autolistings-pro' ),
+			'name' => __( 'Site key', 'auto-listings' ),
 			'id'   => 'captcha_site_key',
 			'type' => 'text',
 		],
 		[
-			'name' => __( 'Secret key', 'autolistings-pro' ),
+			'name' => __( 'Secret key', 'auto-listings' ),
 			'id'   => 'captcha_secret_key',
 			'type' => 'text',
 		],
