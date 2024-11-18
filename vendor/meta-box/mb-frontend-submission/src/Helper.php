@@ -41,4 +41,14 @@ class Helper {
 		// Get only 'id' and 'post_type' attributes.
 		return array_intersect_key( $attributes, array_flip( [ 'id', 'post_type' ] ) );
 	}
+
+	public static function get_field_suggestions() {
+        $field_suggestions = [ 'title', 'date', 'status' ];
+
+        foreach ( rwmb_get_registry( 'field' )->get_by_object_type( 'model' ) as $fields ) {
+            $field_suggestions = array_merge($field_suggestions, array_keys($fields));
+        }
+
+        return $field_suggestions;
+    }
 }

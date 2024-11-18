@@ -2,6 +2,7 @@
 namespace MBFS\Bricks;
 
 use MBFS\DashboardRenderer;
+use MBFS\Helper;
 use MetaBox\Support\Data;
 
 class UserDashboard extends \Bricks\Element {
@@ -38,6 +39,35 @@ class UserDashboard extends \Bricks\Element {
 			'description' => esc_html__( 'Overwrite field group ID(s) from the edit page. If multiple field groups, enter their IDs separated by commas.', 'mb-frontend-submission' ),
 		];
 
+		$object_types                  = [
+			'post'  => __( 'Post', 'mb-frontend-submission' ),
+			'model' => __( 'Custom Model', 'mb-frontend-submission' ),
+		];
+		$this->controls['object_type'] = [
+			'tab'         => 'content',
+			'label'       => esc_html__( 'Object type', 'mb-frontend-submission' ),
+			'type'        => 'select',
+			'options'     => $object_types,
+			'default'     => '',
+			'description' => esc_html__( 'Object type of the submissions.', 'mb-frontend-submission' ),
+		];
+
+		if ( class_exists( \MetaBox\CustomTable\Model\Factory::class ) ) {
+			$all_models  = [ '' => __( 'Select', 'mb-frontend-submission' ) ];
+			$models      = \MetaBox\CustomTable\Model\Factory::get();
+			$model_names = array_combine( array_keys( $models ), array_keys( $models ) );
+			$all_models  = array_merge( $all_models, $model_names );
+
+			$this->controls['model_name'] = [
+				'tab'         => 'content',
+				'label'       => esc_html__( 'Model name', 'mb-frontend-submission' ),
+				'type'        => 'select',
+				'options'     => $all_models,
+				'default'     => '',
+				'description' => esc_html__( 'Select related model for the submissions.', 'mb-frontend-submission' ),
+			];
+		}
+
 		$post_types                  = wp_list_pluck( Data::get_post_types(), 'name' );
 		$this->controls['post_type'] = [
 			'tab'         => 'content',
@@ -55,15 +85,23 @@ class UserDashboard extends \Bricks\Element {
 			'default' => true,
 		];
 
+		$fields_suggestion = [
+			'title'  => esc_html__( 'Title', 'mb-frontend-submission' ),
+			'date'   => esc_html__( 'Date', 'mb-frontend-submission' ),
+			'status' => esc_html__( 'Status', 'mb-frontend-submission' ),
+		];
+
+		$fields = Helper::get_field_suggestions();
+
+		foreach ( $fields as $name ) {
+			$fields_suggestion[ $name ] = $name;
+		}
+
 		$this->controls['columns'] = [
 			'tab'         => 'content',
 			'label'       => esc_html__( 'Columns', 'mb-frontend-submission' ),
 			'type'        => 'select',
-			'options'     => [
-				'title'  => esc_html__( 'Title', 'mb-frontend-submission' ),
-				'date'   => esc_html__( 'Date', 'mb-frontend-submission' ),
-				'status' => esc_html__( 'Status', 'mb-frontend-submission' ),
-			],
+			'options'     => $fields_suggestion,
 			'multiple'    => true,
 			'default'     => [
 				'title',

@@ -3,7 +3,7 @@
  * Plugin Name: MB Frontend Submission
  * Plugin URI:  https://metabox.io/plugins/mb-frontend-submission
  * Description: Submit posts and custom fields in the frontend.
- * Version:     4.4.2
+ * Version:     4.4.5
  * Author:      MetaBox.io
  * Author URI:  https://metabox.io
  * License:     GPL2+
@@ -12,7 +12,9 @@
  */
 
 // Prevent loading this file directly.
-defined( 'ABSPATH' ) || die;
+if ( ! defined( 'ABSPATH' ) ) {
+	return;
+}
 
 if ( ! function_exists( 'mb_frontend_submission_load' ) ) {
 	if ( file_exists( __DIR__ . '/vendor' ) ) {
@@ -29,7 +31,7 @@ if ( ! function_exists( 'mb_frontend_submission_load' ) ) {
 		define( 'MBFS_DIR', __DIR__ );
 		list( , $url ) = RWMB_Loader::get_path( MBFS_DIR );
 		define( 'MBFS_URL', $url );
-		define( 'MBFS_VER', '4.4.2' );
+		define( 'MBFS_VER', '4.4.5' );
 
 		load_plugin_textdomain( 'mb-frontend-submission', false, basename( MBFS_DIR ) . '/languages' );
 
@@ -46,5 +48,7 @@ if ( ! function_exists( 'mb_frontend_submission_load' ) ) {
 		new MBFS\Block\SubmissionForm();
 		new MBFS\Block\UserDashboard( $dashboard_renderer );
 		new MBFS\Block\Attributes();
+
+		new MBFS\ConvertToBlocks();
 	}
 }

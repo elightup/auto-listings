@@ -2,7 +2,7 @@
 namespace MBFS;
 
 use WP_Error;
-
+use MetaBox\Support\Arr;
 class Form {
 	public $error;
 	public $config;
@@ -26,7 +26,7 @@ class Form {
 		$this->template_loader = $template_loader;
 		$this->localize_data   = [];
 
-		$this->error = new WP_Error;
+		$this->error = new WP_Error();
 	}
 
 	/**
@@ -63,10 +63,9 @@ class Form {
 
 		// Register wp color picker scripts for frontend.
 		$this->register_scripts();
-		wp_localize_jquery_ui_datepicker();
 
 		$delete_button = '';
-		if ( 'true' === $this->config['allow_delete'] && $this->config['post_id'] && get_post_status( $this->config['post_id'] ) ) {
+		if ( 'true' === $this->config['allow_delete'] && $this->config['object_id'] && get_post_status( $this->config['object_id'] ) ) {
 			$delete_button = '<button type="submit" class="rwmb-button rwmb-button--delete" name="rwmb_delete" value="1">' . $this->config['delete_button'] . '</button>';
 		}
 
@@ -81,11 +80,15 @@ class Form {
 
 			// Make sure Meta Box script is enqueued first.
 			foreach ( $this->meta_boxes as $meta_box ) {
-				$meta_box->enqueue();
+				$meta_box->enqueue( [
+					'for' => 'frontend',
+				] );
 			}
 
 			// Output post fields and assets.
-			$this->post->render();
+			if ( $this->config['object_type'] === 'post' ) {
+				$this->post->render();
+			}
 
 			foreach ( $this->meta_boxes as $meta_box ) {
 				$meta_box->show();
@@ -112,20 +115,40 @@ class Form {
 			do_action( 'rwmb_frontend_after_submit_button', $this->config );
 		}
 
+		wp_localize_jquery_ui_datepicker();
+
 		echo '</form>';
 
 		do_action( 'rwmb_frontend_after_form', $this->config );
 	}
 
 	private function user_can_edit() {
-		if ( empty( $this->config['post_id'] ) ) {
+		if ( empty( $this->config['object_id'] ) ) {
 			return true;
 		}
 		if ( ! is_user_logged_in() ) {
 			return false;
 		}
-		$post = get_post( $this->config['post_id'] );
-		return $post && ( $post->post_status !== 'trash' ) && ( $post->post_author == get_current_user_id() || current_user_can( 'edit_post', $post->ID ) );
+
+		if ( $this->config['object_type'] === 'post' ) {
+			$post = get_post( $this->config['object_id'] );
+
+			return $post && ( $post->post_status !== 'trash' ) && ( $post->post_author == get_current_user_id() || current_user_can( 'edit_post', $post->ID ) );
+		}
+
+		// Model
+		// Get related model
+		$first_meta_box_id = explode( ',', $this->config['id'] )[0];
+		$meta_box          = rwmb_get_registry( 'meta_box' )->get( $first_meta_box_id );
+
+		if ( ! class_exists( \MetaBox\CustomTable\Model\Factory::class ) || empty( $meta_box->meta_box['models'] ) ) {
+			return false;
+		}
+
+		$model_id = $meta_box->meta_box['models'][0];
+		$model    = \MetaBox\CustomTable\Model\Factory::get( $model_id );
+
+		return current_user_can( $model->capability );
 	}
 
 	/**
@@ -138,7 +161,7 @@ class Form {
 		if ( empty( $meta_box ) ) {
 			return false;
 		}
-		if ( is_callable( $meta_box, 'is_shown' ) ) {
+		if ( method_exists( $meta_box, 'is_shown' ) ) {
 			return $meta_box->is_shown();
 		}
 		$show = apply_filters( 'rwmb_show', true, $meta_box->meta_box );
@@ -152,6 +175,8 @@ class Form {
 	 * @return ?int Inserted object ID.
 	 */
 	public function process() {
+		global $wpdb;
+
 		$validate = true;
 		foreach ( $this->meta_boxes as $meta_box ) {
 			$validate = $validate && $meta_box->validate();
@@ -165,26 +190,36 @@ class Form {
 		}
 
 		do_action( 'rwmb_frontend_before_process', $this->config );
-		$post_id             = $this->post->save();
-		$this->post->post_id = $post_id;
-		do_action( 'rwmb_frontend_after_process', $this->config, $post_id );
 
-		return $post_id;
+		$object_id = -1;
+
+		if ( $this->config['object_type'] === 'post' ) {
+			$object_id           = $this->post->save();
+			$this->post->post_id = $object_id;
+		}
+
+		do_action( 'rwmb_frontend_save_model', $this->config );
+		if ( $this->config['object_type'] === 'model' ) {
+			$object_id = $wpdb->insert_id;
+		}
+		do_action( 'rwmb_frontend_after_process', $this->config, $object_id );
+
+		return $object_id;
 	}
 
 	/**
 	 * Handling deleting posts by id.
 	 */
 	public function delete() {
-		if ( empty( $this->config['post_id'] ) ) {
+		if ( empty( $this->config['object_id'] ) ) {
 			return;
 		}
 
 		$force_delete = 'true' === $this->config['force_delete'];
 
 		do_action( 'rwmb_frontend_before_delete', $this->config );
-		wp_delete_post( $this->config['post_id'], $force_delete );
-		do_action( 'rwmb_frontend_after_delete', $this->config, $this->config['post_id'] );
+		wp_delete_post( $this->config['object_id'], $force_delete );
+		do_action( 'rwmb_frontend_after_delete', $this->config, $this->config['object_id'] );
 	}
 
 	protected function display_errors() {
@@ -224,8 +259,8 @@ class Form {
 	}
 
 	private function enqueue() {
-		wp_enqueue_style( 'mbfs-form', MBFS_URL . 'assets/form.css', '', MBFS_VER );
-		wp_enqueue_script( 'mbfs', MBFS_URL . 'assets/frontend-submission.js', array( 'jquery' ), MBFS_VER, true );
+		wp_enqueue_style( 'mbfs-form', MBFS_URL . 'assets/form.css', [], MBFS_VER );
+		wp_enqueue_script( 'mbfs', MBFS_URL . 'assets/frontend-submission.js', [ 'jquery' ], MBFS_VER, true );
 
 		$this->localize_data = array_merge( $this->localize_data, [
 			'ajaxUrl'        => admin_url( 'admin-ajax.php' ),

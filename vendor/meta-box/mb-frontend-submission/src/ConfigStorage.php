@@ -1,14 +1,14 @@
 <?php
- /**
-  * Store form configs in a persistent option that can be retrieved on form requests.
-  */
+/**
+ * Store form configs in a persistent option that can be retrieved on form requests.
+ */
 
 namespace MBFS;
 
 class ConfigStorage {
 	const OPTION_NAME = 'mbfs_keys';
 
-	public static function get( string $key ) : array {
+	public static function get( string $key ): array {
 		$option = get_option( self::OPTION_NAME, [] );
 		return $option[ $key ] ?? [];
 	}
@@ -19,7 +19,7 @@ class ConfigStorage {
 		update_option( self::OPTION_NAME, $option );
 	}
 
-	public static function store( array $config ) : string {
+	public static function store( array $config ): string {
 		$option         = get_option( self::OPTION_NAME, [] );
 		$key            = self::get_key( $config );
 		$option[ $key ] = $config;
@@ -28,7 +28,7 @@ class ConfigStorage {
 		return $key;
 	}
 
-	public static function get_key( array $config ) : string {
+	public static function get_key( array $config ): string {
 		return md5( serialize( $config ) );
 	}
 }

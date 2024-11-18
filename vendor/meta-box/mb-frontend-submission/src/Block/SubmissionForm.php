@@ -21,8 +21,12 @@ class SubmissionForm {
 	public function admin_enqueue() {
 		$post_types    = wp_list_pluck( Data::get_post_types(), 'name' );
 		$post_statuses = get_post_statuses();
+		$object_types  = [
+			'post'  => __( 'Post', 'mb-frontend-submission' ),
+			'model' => __( 'Custom Model', 'mb-frontend-submission' ),
+		];
 
-		wp_localize_script( 'meta-box-submission-form-editor-script', 'mbfsData', compact( 'post_types', 'post_statuses' ) );
+		wp_localize_script( 'meta-box-submission-form-editor-script', 'mbfsData', compact( 'post_types', 'post_statuses', 'object_types' ) );
 	}
 
 	public function render_block( $attributes ): string {
@@ -34,6 +38,8 @@ class SubmissionForm {
 			'allow_delete'        => Helper::convert_boolean( $attributes['allow_delete'] ),
 			'force_delete'        => Helper::convert_boolean( $attributes['force_delete'] ),
 			'show_add_more'       => Helper::convert_boolean( $attributes['show_add_more'] ),
+			'object_type'         => $attributes['object_type'],
+			'object_id'           => $attributes['object_id'],
 			'post_type'           => $attributes['post_type'],
 			'post_id'             => $attributes['post_id'],
 			'post_status'         => $attributes['post_status'],
@@ -52,7 +58,8 @@ class SubmissionForm {
 			'recaptcha_key'       => $attributes['recaptcha_key'],
 			'recaptcha_secret'    => $attributes['recaptcha_secret'],
 		] );
-		if ( empty( $form ) || ( empty( $form->config['id'] ) && empty( $form->config['post_fields'] ) ) ) {
+
+		if ( empty( $form ) || ( empty( $form->config['id'] ) ) ) {
 			return '';
 		}
 		ob_start();

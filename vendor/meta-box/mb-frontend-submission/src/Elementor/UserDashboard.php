@@ -37,6 +37,7 @@ class UserDashboard extends \Elementor\Widget_Base {
 			]
 		);
 
+		
 		$pages = get_pages();
 		if ( isset( $pages ) ) {
 			$args = [];
@@ -52,6 +53,41 @@ class UserDashboard extends \Elementor\Widget_Base {
 					'multiple'    => true,
 					'options'     => $args,
 					'description' => esc_html__( 'Choose a page where users can submit posts.', 'mb-frontend-submission' ),
+				]
+			);
+		}
+
+		$object_types = [
+			''      => __( '-', 'mb-frontend-submission' ),
+			'post'  => __( 'Post', 'mb-frontend-submission' ),
+			'model' => __( 'Custom Model', 'mb-frontend-submission' ),
+		];
+
+		$this->add_control(
+			'object_type',
+			[
+				'type'        => Controls_Manager::SELECT,
+				'label'       => esc_html__( 'Object type', 'mb-frontend-submission' ),
+				'options'     => $object_types,
+				'default'     => '',
+				'description' => esc_html__( 'Object type of the submissions', 'mb-frontend-submission' ),
+			]
+		);
+
+		if ( class_exists( \MetaBox\CustomTable\Model\Factory::class ) ) {
+			$all_models  = [ '' => __( 'Select', 'mb-frontend-submission' ) ];
+			$models      = \MetaBox\CustomTable\Model\Factory::get();
+			$model_names = array_combine( array_keys( $models ), array_keys( $models ) );
+			$all_models  = array_merge( $all_models, $model_names );
+
+			$this->add_control(
+				'model_name',
+				[
+					'type'        => Controls_Manager::SELECT,
+					'label'       => esc_html__( 'Model name', 'mb-frontend-submission' ),
+					'options'     => $all_models,
+					'default'     => '',
+					'description' => esc_html__( 'Select related model for the submissions.', 'mb-frontend-submission' ),
 				]
 			);
 		}
@@ -89,17 +125,28 @@ class UserDashboard extends \Elementor\Widget_Base {
 			]
 		);
 
+		$fields_suggestion = [
+			'title'  => esc_html__( 'Title', 'mb-frontend-submission' ),
+			'date'   => esc_html__( 'Date', 'mb-frontend-submission' ),
+			'status' => esc_html__( 'Status', 'mb-frontend-submission' ),
+		];
+
+		$field_registry = rwmb_get_registry( 'field' );
+		$object_types   = $field_registry->get_by_object_type( 'model' );
+
+		$fields = Helper::get_field_suggestions();
+
+		foreach ( $fields as $name ) {
+			$fields_suggestion[ $name ] = $name;
+		}
+
 		$this->add_control(
 			'columns',
 			[
 				'type'        => Controls_Manager::SELECT2,
 				'label'       => esc_html__( 'Columns', 'mb-frontend-submission' ),
 				'multiple'    => true,
-				'options'     => [
-					'title'  => esc_html__( 'Title', 'mb-frontend-submission' ),
-					'date'   => esc_html__( 'Date', 'mb-frontend-submission' ),
-					'status' => esc_html__( 'Status', 'mb-frontend-submission' ),
-				],
+				'options'     => $fields_suggestion,
 				'default'     => [ 'title', 'date', 'status' ],
 				'description' => esc_html__( 'List of columns to be displayed in the dashboard.', 'mb-frontend-submission' ),
 			]
@@ -160,7 +207,7 @@ class UserDashboard extends \Elementor\Widget_Base {
 		);
 
 		$this->add_control(
-			'label_actions',
+			'add_new',
 			[
 				'label'       => esc_html__( 'Add New Button Text', 'mb-frontend-submission' ),
 				'type'        => Controls_Manager::TEXT,

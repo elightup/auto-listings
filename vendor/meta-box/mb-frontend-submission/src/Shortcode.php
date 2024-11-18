@@ -27,7 +27,7 @@ class Shortcode {
 			return '';
 		}
 
-		$form = FormFactory::make( $atts );
+		$form = FormFactory::make( $atts, 'mb_frontend_form' );
 		if ( empty( $form ) || ( empty( $form->config['id'] ) && empty( $form->config['post_fields'] ) && $form->config['only_delete'] === 'false' ) ) {
 			return '';
 		}
@@ -55,7 +55,7 @@ class Shortcode {
 			require_once ABSPATH . 'wp-admin/includes/media.php';
 		}
 
-		$this->config['post_id'] = $this->form->process();
+		$this->config['object_id'] = $this->form->process();
 
 		// Don't redirect if errors to get the same form object in handle_request() and render().
 		if ( $this->form->error->has_errors() ) {
@@ -77,7 +77,7 @@ class Shortcode {
 
 		// Allow to re-edit the submitted post.
 		if ( 'true' === $this->config['edit'] ) {
-			$redirect = add_query_arg( 'rwmb_frontend_field_post_id', $this->config['post_id'], $redirect );
+			$redirect = add_query_arg( 'rwmb_frontend_field_object_id', $this->config['object_id'], $redirect );
 		}
 
 		$redirect = apply_filters( 'rwmb_frontend_redirect', $redirect, $this->config );
@@ -156,8 +156,8 @@ class Shortcode {
 			return;
 		}
 		wp_send_json_success( [
-			'message'  => $message,
-			'redirect' => $this->form->config['redirect'],
+			'message'     => $message,
+			'redirect'    => $this->form->config['redirect'],
 			'allowScroll' => $this->config['allow_scroll'],
 		] );
 	}

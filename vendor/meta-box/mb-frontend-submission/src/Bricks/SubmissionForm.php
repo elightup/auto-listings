@@ -70,6 +70,28 @@ class SubmissionForm extends \Bricks\Element {
 			'description' => esc_html__( 'Show add new button after submit.', 'mb-frontend-submission' ),
 		];
 
+		$object_types = [
+			'post'  => __( 'Post', 'mb-frontend-submission' ),
+			'model' => __( 'Custom Model', 'mb-frontend-submission' ),
+		];
+
+		$this->controls['object_type'] = [
+			'tab'         => 'content',
+			'label'       => esc_html__( 'Object type', 'mb-frontend-submission' ),
+			'type'        => 'select',
+			'options'     => $object_types,
+			'default'     => 'post',
+			'description' => esc_html__( 'Object type to submit.', 'mb-frontend-submission' ),
+		];
+
+		$this->controls['object_id'] = [
+			'tab'         => 'content',
+			'label'       => esc_html__( 'Object ID', 'mb-frontend-submission' ),
+			'type'        => 'text',
+			'default'     => '',
+			'description' => esc_html__( 'The object ID. Used when you want to update an existing object. If you want to pass the ID of the current post, set it to "current".', 'mb-frontend-submission' ),
+		];
+
 		$post_types                  = wp_list_pluck( Data::get_post_types(), 'name' );
 		$this->controls['post_type'] = [
 			'tab'         => 'content',
@@ -78,14 +100,6 @@ class SubmissionForm extends \Bricks\Element {
 			'options'     => $post_types,
 			'default'     => 'post',
 			'description' => esc_html__( 'The submitted post type. Default is the first post type defined in the meta box. If meta box is made for multiple post types, you should set this attribute to the correct one.', 'mb-frontend-submission' ),
-		];
-
-		$this->controls['post_id'] = [
-			'tab'         => 'content',
-			'label'       => esc_html__( 'Post ID', 'mb-frontend-submission' ),
-			'type'        => 'text',
-			'default'     => '',
-			'description' => esc_html__( 'The post ID. Used when you want to update an existing post. If you want to pass the ID of the current post, set it to "current".', 'mb-frontend-submission' ),
 		];
 
 		$post_statuses                 = get_post_statuses();
@@ -231,8 +245,10 @@ class SubmissionForm extends \Bricks\Element {
 			'allow_delete'        => isset( $settings['allow_delete'] ) ? Helper::convert_boolean( $settings['allow_delete'] ) : 'false',
 			'force_delete'        => isset( $settings['force_delete'] ) ? Helper::convert_boolean( $settings['force_delete'] ) : 'false',
 			'show_add_more'       => isset( $settings['show_add_more'] ) ? Helper::convert_boolean( $settings['show_add_more'] ) : 'false',
+			'object_type'         => $settings['object_type'] ?? '',
 			'post_type'           => $settings['post_type'] ?? '',
 			'post_id'             => $settings['post_id'] ?? '',
+			'object_id'           => $settings['object_id'] ?? '',
 			'post_status'         => $settings['post_status'],
 			'post_fields'         => implode( ',', $settings['post_fields'] ),
 			'label_title'         => $settings['label_title'],

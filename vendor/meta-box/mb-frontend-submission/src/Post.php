@@ -38,7 +38,7 @@ class Post {
 
 		// Set value to metabox fields by post fields.
 		foreach ( $this->fields as $field ) {
-			add_filter( "rwmb_{$field}_field_meta", function() use ( $field ) {
+			add_filter( "rwmb_{$field}_field_meta", function () use ( $field ) {
 				return $this->post_id ? get_post_field( $field, $this->post_id ) : '';
 			} );
 		}
@@ -65,7 +65,9 @@ class Post {
 		}
 
 		$this->save_thumbnail();
+
 		do_action( 'rwmb_frontend_after_save_post', $this );
+
 		return $this->post_id;
 	}
 

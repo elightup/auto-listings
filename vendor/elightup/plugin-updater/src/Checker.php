@@ -70,6 +70,7 @@ class Checker {
 		] );
 
 		// Get from cache first.
+		// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize
 		$cache_key = 'elightup_' . md5( serialize( $args ) );
 		$cache     = get_transient( $cache_key );
 		if ( $cache ) {
@@ -81,7 +82,8 @@ class Checker {
 			'body' => $args,
 		] );
 
-		$response       = wp_remote_retrieve_body( $request );
+		$response = wp_remote_retrieve_body( $request );
+		// phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged, WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize
 		$this->response = $response ? @unserialize( $response ) : null;
 
 		// Cache requests.

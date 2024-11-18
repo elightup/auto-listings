@@ -55,6 +55,30 @@ class SubmissionForm extends \Elementor\Widget_Base {
 			]
 		);
 
+		$object_types = [
+			'post'  => __( 'Post', 'mb-frontend-submission' ),
+			'model' => __( 'Custom Model', 'mb-frontend-submission' ),
+		];
+
+		$this->add_control(
+			'object_type',
+			[
+				'type'    => Controls_Manager::SELECT,
+				'label'   => esc_html__( 'Object type', 'mb-frontend-submission' ),
+				'options' => $object_types,
+				'default' => 'post',
+			]
+		);
+
+		$this->add_control(
+			'object_id',
+			[
+				'type'    => Controls_Manager::TEXT,
+				'label'   => esc_html__( 'Object ID', 'mb-frontend-submission' ),
+				'default' => '',
+			]
+		);
+
 		$post_types = wp_list_pluck( Data::get_post_types(), 'name' );
 		$this->add_control(
 			'post_type',
@@ -171,6 +195,14 @@ class SubmissionForm extends \Elementor\Widget_Base {
 
 		if ( isset( $settings['title'] ) ) {
 			echo '<h3>' . esc_html( $settings['title'] ) . '</h3>';
+		}
+
+		if ( $settings['object_type'] ) {
+			$atts['object_type'] = $settings['object_type'];
+		}
+
+		if ( $settings['object_id'] ) {
+			$atts['object_id'] = $settings['object_id'];
 		}
 
 		if ( $settings['post_type'] ) {

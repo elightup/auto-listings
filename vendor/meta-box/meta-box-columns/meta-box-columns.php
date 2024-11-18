@@ -3,14 +3,16 @@
  * Plugin Name: Meta Box Columns
  * Plugin URI:  https://metabox.io/plugins/meta-box-columns/
  * Description: Display fields more beautiful by putting them into 12-columns grid.
- * Version:     1.2.15
+ * Version:     1.2.16
  * Author:      MetaBox.io
  * Author URI:  https://metabox.io
  * License:     GPL2+
  */
 
 // Prevent loading this file directly.
-defined( 'ABSPATH' ) || die;
+if ( ! defined( 'ABSPATH' ) ) {
+	return;
+}
 
 if ( ! function_exists( 'mb_columns_add_markup' ) ) {
 	if ( file_exists( __DIR__ . '/vendor' ) ) {
@@ -36,6 +38,6 @@ if ( ! function_exists( 'mb_columns_add_markup' ) ) {
 
 	function mb_columns_enqueue() {
 		list( , $url ) = RWMB_Loader::get_path( __DIR__ );
-		wp_enqueue_style( 'rwmb-columns', $url . 'columns.css', '', '1.2.15' );
+		wp_enqueue_style( 'rwmb-columns', $url . 'columns.css', [], '1.2.16' );
 	}
 }
