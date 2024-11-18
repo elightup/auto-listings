@@ -24,16 +24,16 @@ $speed = auto_listings_option( 'slider_speed' );
 <div class="gallery-wrap">
 
 	<?php if ( $new ) : ?>
-		<span style="background:<?= esc_attr( $new ); ?>;" class="highlight-new">
+		<span style="background:<?php echo esc_attr( $new ); ?>;" class="highlight-new">
 			<i class="fa fa-star"></i>
 			<?php esc_html_e( 'New Listing', 'auto-listings' ); ?>
 		</span>
 	<?php endif; ?>
 
-	<ul id="image-gallery" data-auto="<?= $auto ? 'true' : 'false'; ?>" data-speed="<?= esc_attr( $speed ); ?>">
+	<ul id="image-gallery" data-auto="<?php echo $auto ? 'true' : 'false'; ?>" data-speed="<?php echo esc_attr( $speed ); ?>">
 		<?php foreach ( $gallery as $image_id => $image ) : ?>
-			<li data-thumb="<?= esc_url( $image['url'] ); ?>" data-src="<?= esc_url( $image['full_url'] ); ?>">
-				<img src="<?= esc_url( $image['full_url'] ); ?>">
+			<li data-thumb="<?php echo esc_url( $image['url'] ); ?>" data-src="<?php echo esc_url( $image['full_url'] ); ?>">
+				<img src="<?php echo esc_url( $image['full_url'] ); ?>">
 			</li>
 		<?php endforeach; ?>
 	</ul>

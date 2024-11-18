@@ -21,7 +21,7 @@ class Control {
 		ob_start();
 		?>
 
-		<div class="als-field als-field--<?= esc_attr( str_replace( '_', '-', $args['name'] ) ); ?> <?= esc_attr( $class_selected ); ?>">
+		<div class="als-field als-field--<?php echo esc_attr( str_replace( '_', '-', $args['name'] ) ); ?> <?php echo esc_attr( $class_selected ); ?>">
 			<?php
 			if ( $args['label'] ) {
 				echo '<label for="', esc_attr( $args['id'] ), '" class="als-field__label">', esc_html( $args['label'] ), '</label>';
@@ -53,16 +53,16 @@ class Control {
 		?>
 
 		<select
-			id="<?= esc_attr( $args['id'] ); ?>"
-			<?= $is_multiple ? 'multiple' : ''; ?>
-			<?= $is_disabled ? 'disabled' : ''; ?>
-			data-placeholder="<?= esc_attr( $args['placeholder'] ); ?>"
-			name="<?= esc_attr( $name ); ?>"
+			id="<?php echo esc_attr( $args['id'] ); ?>"
+			<?php echo $is_multiple ? 'multiple' : ''; ?>
+			<?php echo $is_disabled ? 'disabled' : ''; ?>
+			data-placeholder="<?php echo esc_attr( $args['placeholder'] ); ?>"
+			name="<?php echo esc_attr( $name ); ?>"
 		>
 
 			<?php foreach ( $options as $value => $label ) : ?>
 
-				<option value="<?= esc_attr( $value ); ?>" <?php selected( in_array( $value, $selected ) ); ?>><?= esc_html( $label ); ?></option>
+				<option value="<?php echo esc_attr( $value ); ?>" <?php selected( in_array( $value, $selected ) ); ?>><?php echo esc_html( $label ); ?></option>
 
 			<?php endforeach; ?>
 
@@ -79,8 +79,8 @@ class Control {
 		<span class="als-field__radio">
 			<?php foreach ( $options as $val => $text ) : ?>
 				<label>
-					<input type="radio" <?php checked( $selected_option, $val ); ?> name="<?= esc_attr( $args['name'] ); ?>" value="<?= esc_attr( $val ); ?>">
-					<span><?= esc_html( $text ); ?></span>
+					<input type="radio" <?php checked( $selected_option, $val ); ?> name="<?php echo esc_attr( $args['name'] ); ?>" value="<?php echo esc_attr( $val ); ?>">
+					<span><?php echo esc_html( $text ); ?></span>
 				</label>
 			<?php endforeach; ?>
 		</span>

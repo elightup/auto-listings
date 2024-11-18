@@ -13,7 +13,7 @@ class Settings extends PluginUpdaterSettings {
 		?>
 		<table class="form-table">
 			<tr>
-				<th scope="row"><?= esc_html( $this->manager->plugin->Name ); ?></th>
+				<th scope="row"><?php echo esc_html( $this->manager->plugin->Name ); ?></th>
 				<td>
 					<?php $this->render_input() ?>
 				</td>
