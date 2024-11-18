@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @see auto_listings_default_tabs()
  */
-$listing_tabs = apply_filters( 'auto_listings_single_tabs', array() );
+$listing_tabs = apply_filters( 'auto_listings_single_tabs', [] );
 
 if ( ! empty( $listing_tabs ) ) : ?>
 

@@ -2,7 +2,7 @@
 // TODO: bỏ hết các function này, chuyển thành các method của Shortcode.
 function auto_listings_search_mileage_max() {
 	$miles_kms = auto_listings_miles_kms_label_short();
-	$numbers   = array(
+	$numbers   = [
 		'10000',
 		'20000',
 		'30000',
@@ -12,7 +12,7 @@ function auto_listings_search_mileage_max() {
 		'100000',
 		'150000',
 		'200000',
-	);
+	];
 
 	foreach ( $numbers as $val ) {
 		// translators: %1 is the mileage value, %2 is the unit.
@@ -29,7 +29,7 @@ function auto_listings_search_within_radius() {
 	}
 
 	$miles_kms = auto_listings_miles_kms_label_short();
-	$numbers   = array(
+	$numbers   = [
 		'10',
 		'20',
 		'30',
@@ -39,7 +39,7 @@ function auto_listings_search_within_radius() {
 		'150',
 		'250',
 		'500',
-	);
+	];
 
 	foreach ( $numbers as $val ) {
 		// translators: %1 is the radius value, %2 is the unit.
@@ -51,7 +51,7 @@ function auto_listings_search_within_radius() {
 
 function auto_listings_search_price_min_max() {
 	$price_range = auto_listings_option( 'price_range' );
-	$options = array(
+	$options     = [
 		'3000'   => auto_listings_raw_price( '3000' ),
 		'5000'   => auto_listings_raw_price( '5000' ),
 		'10000'  => auto_listings_raw_price( '10000' ),
@@ -68,8 +68,8 @@ function auto_listings_search_price_min_max() {
 		'100000' => auto_listings_raw_price( '100000' ),
 		'125000' => auto_listings_raw_price( '125000' ),
 		'150000' => auto_listings_raw_price( '150000' ),
-	);
-	$options = empty( $price_range ) ? $options : auto_listings_get_price_from_price_range( $price_range );
+	];
+	$options     = empty( $price_range ) ? $options : auto_listings_get_price_from_price_range( $price_range );
 	return apply_filters( 'auto_listings_search_price_min_max', $options );
 }
 
@@ -78,7 +78,7 @@ function auto_listings_get_price_from_price_range( $price_range ) {
 	$prices = array_values( $prices );
 	sort( $prices );
 
-	$raw_prices = array_map( function( $price ) {
+	$raw_prices = array_map( function ( $price ) {
 		return auto_listings_raw_price( $price );
 	}, $prices );
 
@@ -98,16 +98,16 @@ function auto_listings_search_get_vehicle_data() {
 		return $data;
 	}
 
-	$args = apply_filters(
+	$args  = apply_filters(
 		'auto_listings_search_get_vehicle_data_args',
-		array(
+		[
 			'post_type'              => 'auto-listing',
 			'posts_per_page'         => -1,
-			'post_status'            => array( 'publish' ),
+			'post_status'            => [ 'publish' ],
 			'fields'                 => 'ids',
 			'no_found_rows'          => true,
 			'update_post_term_cache' => false,
-		)
+		]
 	);
 	$items = new WP_Query( $args );
 
@@ -116,7 +116,7 @@ function auto_listings_search_get_vehicle_data() {
 	}
 	update_postmeta_cache( $items->posts );
 
-	foreach( $items->posts as $id ) {
+	foreach ( $items->posts as $id ) {
 		$data['the_year'][]     = auto_listings_meta( 'model_year', $id );
 		$data['make'][]         = auto_listings_meta( 'make_display', $id );
 		$data['model'][]        = auto_listings_meta( 'model_name', $id );
@@ -145,16 +145,16 @@ function auto_listings_search_get_vehicle_data() {
 
 function get_body_type_options() {
 	$terms = get_terms(
-		array(
+		[
 			'taxonomy'   => 'body-type',
 			'hide_empty' => true,
-		)
+		]
 	);
 	if ( ! $terms || is_wp_error( $terms ) ) {
 		return [];
 	}
 
-	$options = array();
+	$options = [];
 	foreach ( $terms as $term ) {
 		$options[ $term->slug ] = $term->name;
 	}
@@ -166,11 +166,11 @@ function get_price_options() {
 	$data = auto_listings_search_price_min_max();
 
 	$price_chunks = array_chunk( $data, 2, true );
-	$options = [];
+	$options      = [];
 	foreach ( $price_chunks as $chunk ) {
-		$keys  = array_keys( $chunk );
-		$value = $keys[0] . '-' . $keys[1];
-		$label = $chunk[ $keys[0] ] . esc_html__( '-', 'auto-listings' ) . $chunk[ $keys[1] ];
+		$keys              = array_keys( $chunk );
+		$value             = $keys[0] . '-' . $keys[1];
+		$label             = $chunk[ $keys[0] ] . esc_html__( '-', 'auto-listings' ) . $chunk[ $keys[1] ];
 		$options[ $value ] = $label;
 	}
 

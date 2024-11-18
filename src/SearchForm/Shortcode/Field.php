@@ -43,7 +43,7 @@ class Field {
 			'the_year'     => __( 'Year', 'auto-listings' ),
 		];
 
-		add_shortcode( 'als_field', array( $this, 'render' ) );
+		add_shortcode( 'als_field', [ $this, 'render' ] );
 	}
 
 	public function render( $atts ) {
@@ -54,7 +54,7 @@ class Field {
 		$this->placeholders = apply_filters( 'als_field_placeholders', $this->placeholders );
 		$this->labels       = apply_filters( 'als_field_labels', $this->labels );
 
-		$default_label = ! empty( $this->labels[ $atts['name'] ] ) ? $this->labels[ $atts['name'] ] : '';
+		$default_label       = ! empty( $this->labels[ $atts['name'] ] ) ? $this->labels[ $atts['name'] ] : '';
 		$default_placeholder = ! empty( $this->placeholders[ $atts['name'] ] ) ? $this->placeholders[ $atts['name'] ] : '';
 
 		$atts = shortcode_atts(
@@ -102,16 +102,16 @@ class Field {
 				break;
 			default:
 				$options = $this->get_default_options( $atts['name'] );
-			break;
+				break;
 		}
 
 		$options = apply_filters( 'als_field_options', $options, $atts );
 
 		// Insert placeholder option for normal select field
 		$placeholder_option = [];
-		if ( $atts[ 'multiple' ] === 'false' ) {
+		if ( $atts['multiple'] === 'false' ) {
 			$placeholder_option[''] = $atts['placeholder'];
-			$options = $placeholder_option + $options;
+			$options                = $placeholder_option + $options;
 		}
 
 		$output = $this->control->render( $options, $atts );
@@ -126,7 +126,7 @@ class Field {
 
 	private function get_default_options( $name ) {
 		switch ( $name ) {
-			case 'condition' :
+			case 'condition':
 				$data = auto_listings_available_listing_conditions();
 				break;
 			default:
@@ -139,7 +139,7 @@ class Field {
 			return [];
 		}
 
-		$options = array();
+		$options = [];
 		if ( $name === 'condition' ) {
 			foreach ( $data as $value => $label ) {
 				$options[ $value ] = $label;
@@ -154,16 +154,16 @@ class Field {
 
 	private function get_body_type_options() {
 		$terms = get_terms(
-			array(
+			[
 				'taxonomy'   => 'body-type',
 				'hide_empty' => true,
-			)
+			]
 		);
 		if ( ! $terms || is_wp_error( $terms ) ) {
 			return [];
 		}
 
-		$options = array();
+		$options = [];
 		foreach ( $terms as $term ) {
 			$options[ $term->slug ] = $term->name;
 		}
@@ -175,11 +175,11 @@ class Field {
 		$data = auto_listings_search_price_min_max();
 
 		$price_chunks = array_chunk( $data, 2, true );
-		$options = [];
+		$options      = [];
 		foreach ( $price_chunks as $chunk ) {
-			$keys  = array_keys( $chunk );
-			$value = $keys[0] . '-' . $keys[1];
-			$label = $chunk[ $keys[0] ] . esc_html__( '-', 'auto-listings' ) . $chunk[ $keys[1] ];
+			$keys              = array_keys( $chunk );
+			$value             = $keys[0] . '-' . $keys[1];
+			$label             = $chunk[ $keys[0] ] . esc_html__( '-', 'auto-listings' ) . $chunk[ $keys[1] ];
 			$options[ $value ] = $label;
 		}
 

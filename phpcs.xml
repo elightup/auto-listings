@@ -63,10 +63,18 @@
 		<exclude name="WordPress.PHP.YodaConditions.NotYoda" />
 	</rule>
 
+	<rule ref="Generic.Arrays.DisallowLongArraySyntax" />
+
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array" value="auto-listings"/>
+		</properties>
+	</rule>
+
 	<!-- Set the minimum supported WP version. This is used by several sniffs.
 		 The minimum version set here should be in line with the minimum WP version
 		 as set in the "Requires at least" tag in the readme.txt file. -->
-	<config name="minimum_supported_wp_version" value="4.5"/>
+	<config name="minimum_supported_wp_version" value="6.2"/>
 
 	<!--
 	#############################################################################

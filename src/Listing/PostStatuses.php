@@ -27,7 +27,7 @@ class PostStatuses {
 	public function register_post_statuses() {
 		register_post_status(
 			'archive',
-			[ 
+			[
 				'label'                     => _x( 'Archive', 'post', 'auto-listings' ),
 				'public'                    => false,
 				'private'                   => false,
@@ -113,10 +113,9 @@ class PostStatuses {
 
 		return array_merge(
 			$post_states,
-			[ 
+			[
 				'archive' => '<span class="dashicons dashicons-portfolio"></span>',
 			]
 		);
 	}
-
 }

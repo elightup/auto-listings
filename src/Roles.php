@@ -24,8 +24,8 @@ class Roles {
 	}
 
 	public function remove_caps() {
-		$caps = self::get_listings_caps();
-		$admin_role  = get_role( 'administrator' );
+		$caps       = self::get_listings_caps();
+		$admin_role = get_role( 'administrator' );
 		array_walk( $caps, [ $admin_role, 'remove_cap' ] );
 	}
 

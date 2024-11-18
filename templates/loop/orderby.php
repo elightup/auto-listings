@@ -17,15 +17,15 @@ if ( 1 === $wp_query->found_posts ) {
 	return;
 }
 
-$orderby = isset( $_GET['orderby'] ) ? esc_html( $_GET['orderby'] ) : 'date';
+$orderby         = isset( $_GET['orderby'] ) ? esc_html( $_GET['orderby'] ) : 'date';
 $orderby_options = apply_filters(
 	'auto_listings_listings_orderby',
-	array(
+	[
 		'date'       => __( 'Newest Listings', 'auto-listings' ),
 		'date-old'   => __( 'Oldest Listings', 'auto-listings' ),
 		'price'      => __( 'Price (Low to High)', 'auto-listings' ),
 		'price-high' => __( 'Price (High to Low)', 'auto-listings' ),
-	)
+	]
 );
 
 ?>

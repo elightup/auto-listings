@@ -68,7 +68,6 @@ function auto_listings_shortcode_att( $attribute, $shortcode ) {
 			}
 		}
 	}
-
 }
 
 /**
@@ -147,7 +146,7 @@ add_action( 'init', 'auto_listings_add_new_image_sizes', 11 );
 
 function auto_listings_add_new_image_sizes(): void {
 	add_theme_support( 'post-thumbnails' );
-	add_image_size( 'al-sml', 400, 250, array( 'center', 'center' ) ); // thumb.
+	add_image_size( 'al-sml', 400, 250, [ 'center', 'center' ] ); // thumb.
 }
 
 

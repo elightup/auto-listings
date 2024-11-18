@@ -3,7 +3,7 @@ namespace AutoListings\SearchForm\Shortcode;
 
 class Form {
 	public function __construct() {
-		add_shortcode( 'als', array( $this, 'render' ) );
+		add_shortcode( 'als', [ $this, 'render' ] );
 	}
 
 	public function render( $atts ) {
@@ -51,7 +51,7 @@ class Form {
 		$form_attributes = apply_filters( 'als_form_atts', array_merge( $form_attributes, $atts ) );
 
 		$output .= '<form';
-		foreach( $form_attributes as $attr => $value ) {
+		foreach ( $form_attributes as $attr => $value ) {
 			$output .= ' ' . $attr . '=' . htmlspecialchars( $value );
 		}
 		$output .= '>';

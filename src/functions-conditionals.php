@@ -18,11 +18,11 @@ function is_auto_listings_admin() {
 	$screen    = get_current_screen();
 	$return    = false;
 
-	if ( in_array( $post_type, array( 'auto-listing', 'listing-enquiry' ), true ) ) {
+	if ( in_array( $post_type, [ 'auto-listing', 'listing-enquiry' ], true ) ) {
 		$return = true;
 	}
 
-	if ( in_array( $screen->id, array( 'auto-listing', 'edit-auto-listing', 'listing-enquiry', 'edit-listing-enquiry', 'settings_page_auto_listings_options' ), true ) ) {
+	if ( in_array( $screen->id, [ 'auto-listing', 'edit-auto-listing', 'listing-enquiry', 'edit-listing-enquiry', 'settings_page_auto_listings_options' ], true ) ) {
 		$return = true;
 	}
 

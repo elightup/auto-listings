@@ -140,7 +140,7 @@ class Shortcodes {
 		}
 
 		if ( ! empty( $atts['columns'] ) ) {
-			add_filter( 'auto_listings_columns', function() use ( $atts ) {
+			add_filter( 'auto_listings_columns', function () use ( $atts ) {
 				return $atts['columns'];
 			} );
 		}
@@ -169,8 +169,8 @@ class Shortcodes {
 	/**
 	 * Loop over found listings.
 	 *
-	 * @param  array  $query_args Query parameters.
-	 * @param  array  $atts Shortcode attributes.
+	 * @param  array $query_args Query parameters.
+	 * @param  array $atts Shortcode attributes.
 	 *
 	 * @return string
 	 */
@@ -182,12 +182,12 @@ class Shortcodes {
 			return ob_get_clean();
 		}
 
-		$view = ! empty( $atts['view'] ) ? $atts['view'] : 'list';
+		$view  = ! empty( $atts['view'] ) ? $atts['view'] : 'list';
 		$view .= '-view';
 
 		ob_start();
 		?>
-		<?php do_action( "auto_listings_shortcode_before_listings_loop" ); ?>
+		<?php do_action( 'auto_listings_shortcode_before_listings_loop' ); ?>
 
 		<?php
 		$cols  = ! empty( $atts['columns'] ) ? $atts['columns'] : auto_listings_columns();
@@ -207,7 +207,7 @@ class Shortcodes {
 				echo '</ul>';
 			}
 
-			$count++;
+			++$count;
 		endwhile;
 
 		if ( 1 !== $count % $cols ) {
@@ -215,7 +215,7 @@ class Shortcodes {
 		}
 
 		do_action( 'auto_listings_after_listings_loop', [ 'query' => $query ] );
-		do_action( "auto_listings_shortcode_after_listings_loop" );
+		do_action( 'auto_listings_shortcode_after_listings_loop' );
 
 		wp_reset_postdata();
 		return apply_filters( 'auto_listings_listings_shortcode_output', ob_get_clean(), $query, $view, $cols );

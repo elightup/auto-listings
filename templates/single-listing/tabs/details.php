@@ -16,7 +16,7 @@ global $post;
 $heading = apply_filters( 'auto_listings_details_heading', __( 'Details', 'auto-listings' ) );
 
 // An array of our details that we can loop through.
-$details_array = array(
+$details_array = [
 	__( 'Vehicle', 'auto-listings' )               => auto_listings_vehicle(),
 	__( 'Price', 'auto-listings' )                 => auto_listings_price(),
 	auto_listings_miles_kms_label()                => auto_listings_odometer(),
@@ -27,7 +27,7 @@ $details_array = array(
 	__( 'Drive Type', 'auto-listings' )            => auto_listings_drive_type(),
 	__( 'Engine', 'auto-listings' )                => auto_listings_engine(),
 	__( 'Fuel Economy Combined', 'auto-listings' ) => auto_listings_fuel_economy(),
-);
+];
 if ( auto_listings_hide_item( 'price' ) ) {
 	unset( $details_array[ __( 'Price', 'auto-listings' ) ] );
 }

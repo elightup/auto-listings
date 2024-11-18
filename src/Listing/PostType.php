@@ -27,7 +27,7 @@ class PostType {
 	public function register_post_type() {
 		$slug = auto_listings_option( 'single_url' ) ? auto_listings_option( 'single_url' ) : 'listing';
 
-		$labels = [ 
+		$labels = [
 			'name'                  => _x( 'Listings', 'Listing post type name', 'auto-listings' ),
 			'singular_name'         => _x( 'Listing', 'Singular listing post type name', 'auto-listings' ),
 			'add_new'               => __( 'New Listing', 'auto-listings' ),
@@ -47,7 +47,7 @@ class PostType {
 		];
 
 		$archive_page = auto_listings_option( 'archives_page' );
-		$args         = [ 
+		$args         = [
 			'labels'             => $labels,
 			'public'             => true,
 			'publicly_queryable' => true,
@@ -56,7 +56,7 @@ class PostType {
 			'menu_icon'          => 'dashicons-dashboard',
 			'menu_position'      => 56,
 			'query_var'          => true,
-			'rewrite'            => [ 
+			'rewrite'            => [
 				'slug'       => untrailingslashit( $slug ),
 				'with_front' => false,
 				'feeds'      => true,
@@ -75,7 +75,7 @@ class PostType {
 	 * Register Body Type Taxonomy.
 	 */
 	public function register_taxonomy() {
-		$labels = [ 
+		$labels = [
 			'name'                  => _x( 'Body Types', 'body-type general name', 'auto-listings' ),
 			'singular_name'         => _x( 'Body Type', 'body-type singular name', 'auto-listings' ),
 			'add_new'               => __( 'New Body Type', 'auto-listings' ),
@@ -97,7 +97,7 @@ class PostType {
 		register_taxonomy(
 			'body-type',
 			'auto-listing',
-			[ 
+			[
 				'labels'            => $labels,
 				'hierarchical'      => true,
 				'public'            => true,
@@ -117,5 +117,4 @@ class PostType {
 	public function disable_block_editor( $enabled, $post_type ) {
 		return 'auto-listing' === $post_type ? false : $enabled;
 	}
-
 }

@@ -3,14 +3,14 @@ namespace AutoListings\SearchForm;
 
 class PostType {
 	public function __construct() {
-		add_action( 'init', array( $this, 'register_post_type' ) );
-		add_filter( 'post_updated_messages', array( $this, 'updated_messages' ) );
+		add_action( 'init', [ $this, 'register_post_type' ] );
+		add_filter( 'post_updated_messages', [ $this, 'updated_messages' ] );
 	}
 
 	public function register_post_type() {
 		$post_type = 'auto-listings-search';
 
-		$labels = array(
+		$labels = [
 			'name'               => _x( 'Search Forms', 'post type general name', 'auto-listings' ),
 			'singular_name'      => _x( 'Search Form', 'post type singular name', 'auto-listings' ),
 			'menu_name'          => _x( 'Search Forms', 'admin menu', 'auto-listings' ),
@@ -25,9 +25,9 @@ class PostType {
 			'parent_item_colon'  => __( 'Parent search form:', 'auto-listings' ),
 			'not_found'          => __( 'No search forms found.', 'auto-listings' ),
 			'not_found_in_trash' => __( 'No search forms found in Trash.', 'auto-listings' ),
-		);
+		];
 
-		$args = array(
+		$args = [
 			'labels'          => $labels,
 			'public'          => false,
 			'show_ui'         => true,
@@ -36,10 +36,10 @@ class PostType {
 			'capability_type' => 'post',
 			'hierarchical'    => false,
 			'menu_position'   => 58,
-			'supports'        => array( 'title' ),
+			'supports'        => [ 'title' ],
 			'menu_icon'       => 'dashicons-search',
 			'map_meta_cap'    => true,
-			'capabilities'    => array(
+			'capabilities'    => [
 				// Meta capabilities.
 				'edit_post'              => 'edit_auto_listings_search',
 				'read_post'              => 'read_auto_listings_search',
@@ -60,14 +60,14 @@ class PostType {
 				'edit_private_posts'     => 'manage_options',
 				'edit_published_posts'   => 'manage_options',
 				'create_posts'           => 'manage_options',
-			),
-		);
+			],
+		];
 
 		register_post_type( $post_type, $args );
 	}
 
 	public function updated_messages( $messages ) {
-		$messages['auto_listings_search'] = array(
+		$messages['auto_listings_search'] = [
 			0  => '', // Unused. Messages start at index 1.
 			1  => __( 'Form updated.', 'auto_listings_search' ),
 			2  => __( 'Form updated.', 'auto_listings_search' ),
@@ -79,7 +79,7 @@ class PostType {
 			8  => __( 'Form submitted.', 'auto_listings_search' ),
 			9  => __( 'Form scheduled.', 'auto_listings_search' ),
 			10 => __( 'Form draft updated.', 'auto_listings_search' ),
-		);
+		];
 
 		return $messages;
 	}

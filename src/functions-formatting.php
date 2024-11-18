@@ -162,7 +162,7 @@ function auto_listings_trim_zeros( $price ) {
  * @param array $args (default: array()) format price arguments.
  * @return string
  */
-function auto_listings_format_price( $price, array $args = [] ) : string {
+function auto_listings_format_price( $price, array $args = [] ): string {
 	$args = wp_parse_args( $args, [
 		'currency_symbol'    => auto_listings_currency_symbol(),
 		'decimal_separator'  => auto_listings_decimal_separator(),

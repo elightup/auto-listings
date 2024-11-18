@@ -380,7 +380,7 @@ function auto_listings_highlight_new() {
 	return $color;
 }
 
-function auto_listings_price( $price = null ) : string {
+function auto_listings_price( $price = null ): string {
 	if ( ! $price ) {
 		$price = auto_listings_meta( 'price' );
 	}
@@ -403,14 +403,14 @@ function auto_listings_vehicle() {
 	return auto_listings_meta( 'model_vehicle' );
 }
 
-function auto_listings_year_make_model() : string {
+function auto_listings_year_make_model(): string {
 	$year  = auto_listings_meta( 'model_year' );
 	$make  = auto_listings_meta( 'make_display' );
 	$model = auto_listings_meta( 'model_name' );
 	return $year . ' ' . $make . ' ' . $model;
 }
 
-function auto_listings_engine() : string {
+function auto_listings_engine(): string {
 	$cylinders   = auto_listings_meta( 'model_engine_cyl' ) ? auto_listings_meta( 'model_engine_cyl' ) . __( ' cylinder', 'auto-listings' ) : '';
 	$engine_type = auto_listings_meta( 'model_engine_type' ) ?: '';
 	$engine_l    = auto_listings_meta( 'model_engine_l' ) ? auto_listings_meta( 'model_engine_l' ) . 'L' : '';
@@ -418,7 +418,7 @@ function auto_listings_engine() : string {
 	return implode( ' ', array_filter( [ $cylinders, $engine_type, $engine_l ] ) );
 }
 
-function auto_listings_fuel_economy() : string {
+function auto_listings_fuel_economy(): string {
 	if ( auto_listings_metric() === 'yes' ) {
 		return auto_listings_meta( 'model_lkm_mixed' ) ? auto_listings_meta( 'model_lkm_mixed' ) . __( 'L/km', 'auto-listings' ) : '';
 	}
@@ -448,6 +448,6 @@ function auto_listings_drive_type() {
 	return auto_listings_meta( 'model_drive' );
 }
 
-function auto_listings_body_type() : string {
+function auto_listings_body_type(): string {
 	return (string) get_the_term_list( get_the_ID(), 'body-type', '', ', ' );
 }

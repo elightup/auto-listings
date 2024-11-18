@@ -37,4 +37,4 @@ get_header( 'listings' );
 	do_action( 'auto_listings_after_main_content' );
 
 
-get_footer( 'listings' );
+	get_footer( 'listings' );

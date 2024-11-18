@@ -14,12 +14,12 @@ class Tab {
 		add_filter( 'rwmb_meta_boxes', [ $this, 'add_pane' ], 99 );
 	}
 
-	public function add_tab( array $settings_pages ) : array {
+	public function add_tab( array $settings_pages ): array {
 		$settings_pages['auto-listings']['tabs']['license'] = __( 'License', 'auto-listings' );
 		return $settings_pages;
 	}
 
-	public function add_pane( array $meta_boxes ) : array {
+	public function add_pane( array $meta_boxes ): array {
 		$meta_boxes[] = [
 			'title'          => __( 'License', 'auto-listings' ),
 			'id'             => 'auto-listings-license',
@@ -53,7 +53,7 @@ class Tab {
 		return ob_get_clean();
 	}
 
-	private function is_premium() : bool {
+	private function is_premium(): bool {
 		return apply_filters( 'auto_listings_premium', false );
 	}
 }

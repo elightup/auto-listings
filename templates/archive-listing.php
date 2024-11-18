@@ -59,7 +59,7 @@ do_action( 'auto_listings_before_main_content' ); ?>
 					echo '</ul>';
 				}
 
-				$count++;
+				++$count;
 			endwhile;
 
 			if ( 1 !== $count % $cols ) {

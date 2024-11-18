@@ -174,7 +174,6 @@ function auto_listings_admin_listing_map( $field_args, $field ) {
 	</div>
 
 	<?php
-
 }
 
 /**
@@ -305,7 +304,7 @@ function auto_listings_wpai_import_gallery( $post_id ) {
 	if ( empty( $images ) ) {
 		return;
 	}
-	$images = array_map( function( $image ) {
+	$images = array_map( function ( $image ) {
 		$image_parts = pathinfo( $image );
 		if ( empty( $image_parts ) ) {
 			return;
@@ -327,7 +326,7 @@ function auto_listings_wpai_get_image_url( $value ) {
 		return $value;
 	}
 	$images = explode( '|', $value );
-	$images = array_map( function( $image_id ) {
+	$images = array_map( function ( $image_id ) {
 		return wp_get_attachment_url( $image_id );
 	}, $images );
 
@@ -351,9 +350,9 @@ add_action( 'rwmb__al_listing_images_after_save_post', 'auto_listings_update_fea
  */
 function auto_listings_remove_redirect_canonical( $redirect_url ) {
 	global $post;
-    if ( is_page() && has_shortcode( $post->post_content, 'auto_listings_listings' ) )  {
+	if ( is_page() && has_shortcode( $post->post_content, 'auto_listings_listings' ) ) {
 		$redirect_url = false;
 	}
 	return $redirect_url;
 }
-add_filter( 'redirect_canonical','auto_listings_remove_redirect_canonical' );
+add_filter( 'redirect_canonical', 'auto_listings_remove_redirect_canonical' );

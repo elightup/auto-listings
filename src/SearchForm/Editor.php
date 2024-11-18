@@ -3,25 +3,25 @@ namespace AutoListings\SearchForm;
 
 class Editor {
 	public function __construct() {
-		add_filter( 'rwmb_meta_boxes', array( $this, 'register_meta_boxes' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue' ), 99 );
+		add_filter( 'rwmb_meta_boxes', [ $this, 'register_meta_boxes' ] );
+		add_action( 'admin_enqueue_scripts', [ $this, 'admin_enqueue' ], 99 );
 	}
 
 	public function register_meta_boxes( $meta_boxes ) {
-		$meta_boxes[] = array(
+		$meta_boxes[] = [
 			'title'      => __( 'Template Editor', 'auto-listings' ),
 			'id'         => 'als-template-editor',
 			'class'      => 'als-editors',
-			'post_types' => array( 'auto-listings-search' ),
+			'post_types' => [ 'auto-listings-search' ],
 			'style'      => 'seamless',
-			'fields'     => array(
-				array(
+			'fields'     => [
+				[
 					'type'     => 'custom_html',
-					'callback' => array( $this, 'render_editors' ),
+					'callback' => [ $this, 'render_editors' ],
 					'before'   => $this->render_inserter_and_toolbar(),
-				),
-			),
-		);
+				],
+			],
+		];
 
 		$post_id = rwmb_request()->filter_get( 'post', FILTER_SANITIZE_NUMBER_INT );
 		if ( ! $post_id ) {
@@ -29,19 +29,19 @@ class Editor {
 		}
 
 		$shortcode    = '[als id="' . $post_id . '"]';
-		$meta_boxes[] = array(
+		$meta_boxes[] = [
 			'title'      => __( 'Shortcode', 'auto-listings' ),
 			'id'         => 'als-shortcode',
 			'context'    => 'side',
 			'priority'   => 'low',
-			'post_types' => array( 'auto-listings-search' ),
-			'fields'     => array(
-				array(
+			'post_types' => [ 'auto-listings-search' ],
+			'fields'     => [
+				[
 					'type' => 'custom_html',
 					'std'  => '<input type="text" class="regular-text" value="' . esc_attr( $shortcode ) . '" onclick="this.select()">',
-				),
-			),
-		);
+				],
+			],
+		];
 
 		return $meta_boxes;
 	}
@@ -68,42 +68,42 @@ class Editor {
 			return;
 		}
 		wp_enqueue_code_editor(
-			array(
+			[
 				'type' => 'application/x-httpd-php',
-			)
+			]
 		);
 
 		wp_enqueue_style( 'als-admin', AUTO_LISTINGS_URL . 'assets/admin/css/search-form.css', AUTO_LISTINGS_VERSION );
-		wp_enqueue_script( 'als-admin', AUTO_LISTINGS_URL . 'assets/admin/js/search-form.js', array( 'code-editor', 'underscore', 'wp-element' ), AUTO_LISTINGS_VERSION, true );
+		wp_enqueue_script( 'als-admin', AUTO_LISTINGS_URL . 'assets/admin/js/search-form.js', [ 'code-editor', 'underscore', 'wp-element' ], AUTO_LISTINGS_VERSION, true );
 
 		wp_localize_script(
 			'als-admin',
 			'als_admin',
-			array(
-				'fields'       => apply_filters( 'als_fields', array(
-					'keyword'         => __( 'Keyword', 'auto-listings' ),
-					'make'            => __( 'Make', 'auto-listings' ),
-					'model'           => __( 'Model', 'auto-listings' ),
-					'condition'       => __( 'Condition', 'auto-listings' ),
-					'body_type'       => __( 'Body Type', 'auto-listings' ),
-					'model_drive'     => __( 'Drive Type', 'auto-listings' ),
-					'engine'          => __( 'Engine', 'auto-listings' ),
-					'odometer'        => __( 'Odometer', 'auto-listings' ),
-					'transmission'    => __( 'Transmission', 'auto-listings' ),
-					'fuel_type'       => __( 'Fuel Type', 'auto-listings' ),
-					'the_year'        => __( 'Year', 'auto-listings' ),
-					'within'          => __( 'Within', 'auto-listings' ),
-					'max_price'       => __( 'Max Price', 'auto-listings' ),
-					'min_price'       => __( 'Min Price', 'auto-listings' ),
-					'price'           => __( 'Price', 'auto-listings' ),
-					'button'          => __( 'Button', 'auto-listings' ),
-					) ),
-				'fields_extra' => array(
+			[
+				'fields'       => apply_filters( 'als_fields', [
+					'keyword'      => __( 'Keyword', 'auto-listings' ),
+					'make'         => __( 'Make', 'auto-listings' ),
+					'model'        => __( 'Model', 'auto-listings' ),
+					'condition'    => __( 'Condition', 'auto-listings' ),
+					'body_type'    => __( 'Body Type', 'auto-listings' ),
+					'model_drive'  => __( 'Drive Type', 'auto-listings' ),
+					'engine'       => __( 'Engine', 'auto-listings' ),
+					'odometer'     => __( 'Odometer', 'auto-listings' ),
+					'transmission' => __( 'Transmission', 'auto-listings' ),
+					'fuel_type'    => __( 'Fuel Type', 'auto-listings' ),
+					'the_year'     => __( 'Year', 'auto-listings' ),
+					'within'       => __( 'Within', 'auto-listings' ),
+					'max_price'    => __( 'Max Price', 'auto-listings' ),
+					'min_price'    => __( 'Min Price', 'auto-listings' ),
+					'price'        => __( 'Price', 'auto-listings' ),
+					'button'       => __( 'Button', 'auto-listings' ),
+				] ),
+				'fields_extra' => [
 					'toggle_wrapper' => __( 'Toggle Wrapper', 'auto-listings' ),
 					'total_listings' => __( 'Total Listings', 'auto-listings' ),
 					'selected'       => __( 'Selected Values', 'auto-listings' ),
-				),
-				'translate'    => array(
+				],
+				'translate'    => [
 					'label'               => __( 'Label', 'auto-listings' ),
 					'type'                => __( 'Type', 'auto-listings' ),
 					'placeholder'         => __( 'Placeholder', 'auto-listings' ),
@@ -119,8 +119,8 @@ class Editor {
 					'radio'               => __( 'Single Choice', 'auto-listings' ),
 					'toggle_button_label' => __( 'Toggle Button Label', 'auto-listings' ),
 					'notice'              => __( 'Leave empty to use the default values', 'auto-listings' ),
-				),
-			)
+				],
+			]
 		);
 	}
 

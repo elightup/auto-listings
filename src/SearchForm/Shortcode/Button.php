@@ -3,15 +3,15 @@ namespace AutoListings\SearchForm\Shortcode;
 
 class Button {
 	public function __construct() {
-		add_shortcode( 'als_button', array( $this, 'render' ) );
+		add_shortcode( 'als_button', [ $this, 'render' ] );
 	}
 
 	public function render( $atts ) {
 		$atts = shortcode_atts(
-			array(
+			[
 				'type'  => 'submit',
 				'label' => __( 'Submit', 'auto-listings' ),
-			),
+			],
 			$atts
 		);
 

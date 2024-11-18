@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 global $wp_query;
-$query = ( empty( $data->query ) ) ? $wp_query : $data->query ;
+$query = ( empty( $data->query ) ) ? $wp_query : $data->query;
 if ( $query->max_num_pages <= 1 ) {
 	return;
 }
@@ -22,8 +22,8 @@ if ( $query->max_num_pages <= 1 ) {
 	$pagination = paginate_links(
 		apply_filters(
 			'auto_listings_pagination_args',
-			array(
-				'base'      => @add_query_arg( 'paged','%#%' ),
+			[
+				'base'      => @add_query_arg( 'paged', '%#%' ),
 				'format'    => '?paged=%#%',
 				'mid-size'  => 1,
 				'add_args'  => false,
@@ -33,7 +33,7 @@ if ( $query->max_num_pages <= 1 ) {
 				'next_text' => '&rarr;',
 				'type'      => 'list',
 				'end_size'  => 3,
-			)
+			]
 		)
 	);
 	echo $pagination; // wpcs xss: ok.

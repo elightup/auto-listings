@@ -3,14 +3,14 @@ namespace AutoListings\SearchForm;
 
 class AdminColumns {
 	public function __construct() {
-		add_filter( 'manage_auto-listings-search_posts_columns', array( $this, 'add_columns' ) );
-		add_action( 'manage_auto-listings-search_posts_custom_column', array( $this, 'show_column' ) );
+		add_filter( 'manage_auto-listings-search_posts_columns', [ $this, 'add_columns' ] );
+		add_action( 'manage_auto-listings-search_posts_custom_column', [ $this, 'show_column' ] );
 	}
 
 	public function add_columns( $columns ) {
-		$new_columns = array(
+		$new_columns = [
 			'shortcode' => __( 'Shortcode', 'auto-listings' ),
-		);
+		];
 		$columns     = array_slice( $columns, 0, 2, true ) + $new_columns + array_slice( $columns, 2, null, true );
 		return $columns;
 	}

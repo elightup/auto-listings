@@ -11,7 +11,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 }
 
 // Load Auto_Listings file.
-include_once( 'auto-listings.php' );
+require_once 'auto-listings.php';
 
 global $wpdb, $wp_roles;
 

@@ -36,7 +36,8 @@ $new            = auto_listings_highlight_new();
 			</span>
 		<?php } ?>
 
-		<?php if ( $image && isset ( $image['alt'] ) && isset ( $image['sml'] ) ) :
+		<?php
+		if ( $image && isset( $image['alt'] ) && isset( $image['sml'] ) ) :
 			$image_alt = $image['alt'] ?? '';
 			$image_src = $image['sml'] ?? '';
 			?>

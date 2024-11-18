@@ -59,22 +59,21 @@ class SearchQuery {
 		}
 
 		if ( ! empty( $_GET['s'] ) ) {
-			$query_2['relation']    = 'OR';
-			$meta_query[]           = $query_1;
+			$query_2['relation'] = 'OR';
+			$meta_query[]        = $query_1;
 
 			global $wpdb;
 			$title = sanitize_text_field( strtolower( $_GET['s'] ) );
-			$ids = $wpdb->get_col( "SELECT ID FROM $wpdb->posts WHERE LOWER(post_title) LIKE '%$title%' AND post_type='auto-listing' AND post_status='publish'" );
+			$ids   = $wpdb->get_col( "SELECT ID FROM $wpdb->posts WHERE LOWER(post_title) LIKE '%$title%' AND post_type='auto-listing' AND post_status='publish'" );
 
 			if ( $ids ) {
 				$query->set( 'post__in', $ids );
 			} else {
-				$meta_query[]           = $query_2;
+				$meta_query[] = $query_2;
 			}
 
 			$meta_query['relation'] = 'AND';
 		}
-
 
 		$query->set( 'meta_query', $meta_query );
 		$query->set( 'tax_query', $body_type_query );
@@ -283,7 +282,6 @@ class SearchQuery {
 			'type'         => 'DECIMAL',
 			'price_filter' => true,
 		];
-
 	}
 
 	/**
