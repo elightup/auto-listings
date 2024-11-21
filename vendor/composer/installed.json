@@ -112,7 +112,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:wpmetabox/mb-frontend-submission.git",
-                "reference": "2e8bf61fdb46a7be2f9139ce5172cc6e2c32d409"
+                "reference": "fd43abb2e1a7fcf836034f61783d46d6d74fb06a"
             },
             "require": {
                 "gamajo/template-loader": "^1.3"
@@ -120,7 +120,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^11.3"
             },
-            "time": "2024-11-08T10:04:34+00:00",
+            "time": "2024-11-20T07:11:06+00:00",
             "default-branch": true,
             "type": "wordpress-plugin",
             "extra": {
@@ -264,9 +264,9 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:wpmetabox/meta-box-group.git",
-                "reference": "34cce69d70d9e4a77a1b489f5bcff664f7b57940"
+                "reference": "badb92dfa065e1745b57521f411b056a8804cf6f"
             },
-            "time": "2024-11-08T03:47:46+00:00",
+            "time": "2024-11-19T04:31:41+00:00",
             "default-branch": true,
             "type": "wordpress-plugin",
             "installation-source": "source",

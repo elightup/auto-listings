@@ -30,11 +30,11 @@ class Post {
 	 * Render post fields in the frontend.
 	 */
 	public function render() {
-		$data = array(
+		$data = [
 			'post_id'   => $this->post_id,
 			'post_type' => $this->post_type,
 			'config'    => $this->config,
-		);
+		];
 
 		// Set value to metabox fields by post fields.
 		foreach ( $this->fields as $field ) {
@@ -122,7 +122,7 @@ class Post {
 		$field = RWMB_Field::call( 'normalize', $field );
 
 		$old = RWMB_Field::call( $field, 'raw_meta', $this->post_id );
-		$new = isset( $_POST[ $field['id'] ] ) ? $_POST[ $field['id'] ] : array();
+		$new = isset( $_POST[ $field['id'] ] ) ? $_POST[ $field['id'] ] : [];
 
 		$new = RWMB_Field::process_value( $new, $this->post_id, $field );
 

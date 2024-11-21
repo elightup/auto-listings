@@ -45,7 +45,7 @@ class ConvertToBlocks {
 		wp_enqueue_script(
 			'mbfs-convert-to-blocks',
 			MBFS_URL . 'assets/convert-to-blocks.js',
-			['wp-data', 'wp-blocks', 'wp-dom-ready', 'wp-url' ],
+			[ 'wp-data', 'wp-blocks', 'wp-dom-ready', 'wp-url' ],
 			filemtime( MBFS_DIR . '/assets/convert-to-blocks.js' ),
 			true
 		);

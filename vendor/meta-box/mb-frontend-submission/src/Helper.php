@@ -43,12 +43,12 @@ class Helper {
 	}
 
 	public static function get_field_suggestions() {
-        $field_suggestions = [ 'title', 'date', 'status' ];
+		$field_suggestions = [ 'title', 'date', 'status' ];
 
-        foreach ( rwmb_get_registry( 'field' )->get_by_object_type( 'model' ) as $fields ) {
-            $field_suggestions = array_merge($field_suggestions, array_keys($fields));
-        }
+		foreach ( rwmb_get_registry( 'field' )->get_by_object_type( 'model' ) as $fields ) {
+			$field_suggestions = array_merge( $field_suggestions, array_keys( $fields ) );
+		}
 
-        return $field_suggestions;
-    }
+		return $field_suggestions;
+	}
 }

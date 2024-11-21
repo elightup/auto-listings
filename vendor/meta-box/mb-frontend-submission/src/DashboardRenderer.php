@@ -81,12 +81,14 @@ class DashboardRenderer {
 			}
 
 			if ( ! class_exists( \MetaBox\CustomTable\Model\Factory::class ) ) {
+				// Translators: %s - model name.
 				return '<div class="rwmb-error">' . sprintf( __( 'Model %s not found', 'mb-frontend-submission' ), $model_name ) . '</div>';
 			}
 
 			$model = \MetaBox\CustomTable\Model\Factory::get( $model_name );
 
 			if ( ! $model ) {
+				// Translators: %s - model name.
 				return '<div class="rwmb-error">' . sprintf( __( 'Model %s not found', 'mb-frontend-submission' ), $model_name ) . '</div>';
 			}
 
@@ -213,7 +215,7 @@ class DashboardRenderer {
 			<?php foreach ( $this->model_result_set['results'] as $model ) : ?>
 				<tr>
 					<?php foreach ( Arr::from_csv( $columns ) as $column ) : ?>
-						<td><?= esc_html( $model?->$column ); ?></td>
+						<td><?= esc_html( $model->$column ?? '' ); ?></td>
 					<?php endforeach; ?>
 					<td align="center" class="mbfs-actions">
 						<?php

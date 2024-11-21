@@ -42,7 +42,7 @@ class UserDashboard {
 				];
 			}
 		}
-		
+
 		$object_types = [
 			'post'  => __( 'Post', 'mb-frontend-submission' ),
 			'model' => __( 'Custom Model', 'mb-frontend-submission' ),

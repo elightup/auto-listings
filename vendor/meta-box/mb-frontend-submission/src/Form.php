@@ -20,7 +20,7 @@ class Form {
 	 * @param TemplateLoader $template_loader Template loader for loading form templates.
 	 */
 	public function __construct( $meta_boxes, $post, $config, $template_loader ) {
-		$this->meta_boxes      = array_filter( $meta_boxes, array( $this, 'is_meta_box_visible' ) );
+		$this->meta_boxes      = array_filter( $meta_boxes, [ $this, 'is_meta_box_visible' ] );
 		$this->post            = $post;
 		$this->config          = $config;
 		$this->template_loader = $template_loader;
@@ -235,26 +235,26 @@ class Form {
 		wp_register_script(
 			'iris',
 			admin_url( 'js/iris.min.js' ),
-			array(
+			[
 				'jquery-ui-draggable',
 				'jquery-ui-slider',
 				'jquery-touch-punch',
-			),
+			],
 			'1.0.7',
 			true
 		);
-		wp_register_script( 'wp-color-picker', admin_url( 'js/color-picker.min.js' ), array( 'iris', 'wp-i18n' ), '', true );
+		wp_register_script( 'wp-color-picker', admin_url( 'js/color-picker.min.js' ), [ 'iris', 'wp-i18n' ], '', true );
 		wp_localize_script(
 			'wp-color-picker',
 			'wpColorPickerL10n',
-			array(
+			[
 				'clear'            => __( 'Clear', 'mb-frontend-submission' ),
 				'clearAriaLabel'   => __( 'Clear color', 'mb-frontend-submission' ),
 				'defaultString'    => __( 'Default', 'mb-frontend-submission' ),
 				'defaultAriaLabel' => __( 'Select default color', 'mb-frontend-submission' ),
 				'pick'             => __( 'Select Color', 'mb-frontend-submission' ),
 				'defaultLabel'     => __( 'Color value', 'mb-frontend-submission' ),
-			)
+			]
 		);
 	}
 
@@ -279,10 +279,10 @@ class Form {
 
 		$this->localize_data = array_merge(
 			$this->localize_data,
-			array(
+			[
 				'recaptchaKey'        => $this->config['recaptcha_key'],
 				'captchaExecuteError' => __( 'Error trying to execute grecaptcha.', 'mb-frontend-submission' ),
-			)
+			]
 		);
 	}
 

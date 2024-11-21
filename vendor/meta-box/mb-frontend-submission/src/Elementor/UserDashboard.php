@@ -37,9 +37,8 @@ class UserDashboard extends \Elementor\Widget_Base {
 			]
 		);
 
-		
 		$pages = get_pages();
-		if ( isset( $pages ) ) {
+		if ( ! empty( $pages ) ) {
 			$args = [];
 			foreach ( $pages as $item ) {
 				$args [ $item->ID ] = $item->post_title;

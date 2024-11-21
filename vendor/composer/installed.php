@@ -3,7 +3,7 @@
         'name' => 'auto-listings/auto-listings',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'b76e796f6c081a045c4a84acad469e6d856ab8ca',
+        'reference' => 'd8b8b0fa0231a005f3530784d87c51dffdfaed2b',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'auto-listings/auto-listings' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'b76e796f6c081a045c4a84acad469e6d856ab8ca',
+            'reference' => 'd8b8b0fa0231a005f3530784d87c51dffdfaed2b',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -53,7 +53,7 @@
         'meta-box/mb-frontend-submission' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '2e8bf61fdb46a7be2f9139ce5172cc6e2c32d409',
+            'reference' => 'fd43abb2e1a7fcf836034f61783d46d6d74fb06a',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../meta-box/mb-frontend-submission',
             'aliases' => array(
@@ -97,7 +97,7 @@
         'meta-box/meta-box-group' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '34cce69d70d9e4a77a1b489f5bcff664f7b57940',
+            'reference' => 'badb92dfa065e1745b57521f411b056a8804cf6f',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../meta-box/meta-box-group',
             'aliases' => array(

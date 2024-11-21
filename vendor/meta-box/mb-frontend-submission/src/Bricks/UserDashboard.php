@@ -164,7 +164,7 @@ class UserDashboard extends \Bricks\Element {
 	}
 
 	public function enqueue_scripts() {
-		wp_enqueue_style( 'mbfs-dashboard', MBFS_URL . 'assets/dashboard.css', '', MBFS_VER );
+		wp_enqueue_style( 'mbfs-dashboard', MBFS_URL . 'assets/dashboard.css', [], MBFS_VER );
 	}
 
 	public function render() {
