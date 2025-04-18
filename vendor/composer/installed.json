@@ -1,29 +1,6 @@
 {
     "packages": [
         {
-            "name": "elightup/plugin-search",
-            "version": "dev-master",
-            "version_normalized": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:elightup/plugin-search.git",
-                "reference": "f5f317fb991cc11760ce9f63a423d62f844523c4"
-            },
-            "time": "2023-09-16T07:09:15+00:00",
-            "default-branch": true,
-            "type": "library",
-            "installation-source": "source",
-            "autoload": {
-                "psr-4": {
-                    "eLightUp\\PluginSearch\\": "src/"
-                },
-                "files": [
-                    "bootstrap.php"
-                ]
-            },
-            "install-path": "../elightup/plugin-search"
-        },
-        {
             "name": "elightup/plugin-updater",
             "version": "dev-master",
             "version_normalized": "dev-master",

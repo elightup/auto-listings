@@ -6,7 +6,6 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    '4423a9a7b9dcbfb1adf6e69b6c55b0d3' => $vendorDir . '/elightup/plugin-search/bootstrap.php',
     '4f6bfac5880e9e16cb1be3bf40865224' => $baseDir . '/src/functions.php',
     'ca86bebd7a7adda372be9e92f0622477' => $baseDir . '/src/functions-conditionals.php',
     '9ea25700a020167978a87e756a7c2e27' => $baseDir . '/src/functions-enquiry.php',

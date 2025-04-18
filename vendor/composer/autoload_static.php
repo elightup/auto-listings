@@ -7,7 +7,6 @@ namespace Composer\Autoload;
 class ComposerStaticInit1ba6dcb9f4bcd8faad86bb0a7492d91b
 {
     public static $files = array (
-        '4423a9a7b9dcbfb1adf6e69b6c55b0d3' => __DIR__ . '/..' . '/elightup/plugin-search/bootstrap.php',
         '4f6bfac5880e9e16cb1be3bf40865224' => __DIR__ . '/../..' . '/src/functions.php',
         'ca86bebd7a7adda372be9e92f0622477' => __DIR__ . '/../..' . '/src/functions-conditionals.php',
         '9ea25700a020167978a87e756a7c2e27' => __DIR__ . '/../..' . '/src/functions-enquiry.php',
@@ -24,7 +23,6 @@ class ComposerStaticInit1ba6dcb9f4bcd8faad86bb0a7492d91b
         'e' => 
         array (
             'eLightUp\\PluginUpdater\\' => 23,
-            'eLightUp\\PluginSearch\\' => 22,
         ),
         'M' => 
         array (
@@ -42,10 +40,6 @@ class ComposerStaticInit1ba6dcb9f4bcd8faad86bb0a7492d91b
         'eLightUp\\PluginUpdater\\' => 
         array (
             0 => __DIR__ . '/..' . '/elightup/plugin-updater/src',
-        ),
-        'eLightUp\\PluginSearch\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/elightup/plugin-search/src',
         ),
         'MetaBox\\Columns\\' => 
         array (

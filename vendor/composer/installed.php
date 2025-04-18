@@ -3,7 +3,7 @@
         'name' => 'auto-listings/auto-listings',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'd8b8b0fa0231a005f3530784d87c51dffdfaed2b',
+        'reference' => '64eb835f0e7332b933427a22d44c739c27630b44',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,21 +13,10 @@
         'auto-listings/auto-listings' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'd8b8b0fa0231a005f3530784d87c51dffdfaed2b',
+            'reference' => '64eb835f0e7332b933427a22d44c739c27630b44',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'dev_requirement' => false,
-        ),
-        'elightup/plugin-search' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => 'f5f317fb991cc11760ce9f63a423d62f844523c4',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../elightup/plugin-search',
-            'aliases' => array(
-                0 => '9999999-dev',
-            ),
             'dev_requirement' => false,
         ),
         'elightup/plugin-updater' => array(
