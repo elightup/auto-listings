@@ -5,7 +5,7 @@
  * Author:           WP Auto Listings
  * Author URI:       https://wpautolistings.com
  * Plugin URI:       https://wpautolistings.com
- * Version:          2.6.15
+ * Version:          2.6.16
  * Text Domain:      auto-listings
  * License:          GPLv3
  * Requires Plugins: meta-box
