@@ -10,23 +10,23 @@
 	"repositories": [
 		{
 			"type": "git",
-			"url": "git@github.com:wpmetabox/mb-frontend-submission.git"
+			"url": "https://github.com/wpmetabox/mb-frontend-submission.git"
 		},
 		{
 			"type": "git",
-			"url": "git@github.com:wpmetabox/mb-settings-page.git"
+			"url": "https://github.com/wpmetabox/mb-settings-page.git"
 		},
 		{
 			"type": "git",
-			"url": "git@github.com:wpmetabox/meta-box-columns.git"
+			"url": "https://github.com/wpmetabox/meta-box-columns.git"
 		},
 		{
 			"type": "git",
-			"url": "git@github.com:wpmetabox/meta-box-geolocation.git"
+			"url": "https://github.com/wpmetabox/meta-box-geolocation.git"
 		},
 		{
 			"type": "git",
-			"url": "git@github.com:wpmetabox/meta-box-group.git"
+			"url": "https://github.com/wpmetabox/meta-box-group.git"
 		},
 		{
 			"type": "git",
@@ -34,7 +34,7 @@
 		},
 		{
 			"type": "git",
-			"url": "git@github.com:elightup/plugin-updater.git"
+			"url": "https://github.com/elightup/plugin-updater.git"
 		}
 	],
 	"require": {

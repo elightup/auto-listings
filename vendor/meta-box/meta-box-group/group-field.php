@@ -1,18 +1,4 @@
 <?php
-/**
- * Group field class.
- *
- * @package    Meta Box
- * @subpackage Meta Box Group
- */
-
-/**
- * Class for group field.
- *
- * @package    Meta Box
- * @subpackage Meta Box Group
- */
-
 use MetaBox\Support\Arr;
 
 class RWMB_Group_Field extends RWMB_Field {

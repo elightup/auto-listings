@@ -2,7 +2,7 @@
 namespace MBFS;
 
 use WP_Error;
-use MetaBox\Support\Arr;
+
 class Form {
 	public $error;
 	public $config;

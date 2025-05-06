@@ -7,6 +7,7 @@ class Manager {
 	public $my_account_url;
 	public $buy_url;
 	public $slug;
+	public $plugin_id;
 	public $plugin;
 	public $parent_page;
 	public $settings_page;
@@ -22,6 +23,7 @@ class Manager {
 		$this->my_account_url = $args['my_account_url'];
 		$this->buy_url        = $args['buy_url'];
 		$this->slug           = $args['slug'];
+		$this->plugin_id      = $args['plugin_id'] ?? $args['slug'];
 		$this->option_name    = $this->slug . '_license';
 
 		// Settings page.
@@ -38,6 +40,10 @@ class Manager {
 	}
 
 	public function setup(): void {
+		if ( apply_filters( 'elightup_plugin_updater_disallow_setup', false, $this->plugin_id ) ) {
+			return;
+		}
+
 		$this->settings->setup();
 		$this->checker->setup();
 		$this->notification->setup();

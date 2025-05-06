@@ -6,10 +6,10 @@
             "version_normalized": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@github.com:elightup/plugin-updater.git",
-                "reference": "2822c48724fbc9e4c7798c96366929ff3ce5a1b5"
+                "url": "https://github.com/elightup/plugin-updater.git",
+                "reference": "d0f6cd7d08a59f1d34eb8f99767c217b27588db0"
             },
-            "time": "2024-11-15T05:30:26+00:00",
+            "time": "2025-04-01T14:02:54+00:00",
             "default-branch": true,
             "type": "library",
             "installation-source": "source",
@@ -88,8 +88,8 @@
             "version_normalized": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@github.com:wpmetabox/mb-frontend-submission.git",
-                "reference": "fd43abb2e1a7fcf836034f61783d46d6d74fb06a"
+                "url": "https://github.com/wpmetabox/mb-frontend-submission.git",
+                "reference": "ab4d9a60e49954c66547032da20d57ca5af002ea"
             },
             "require": {
                 "gamajo/template-loader": "^1.3"
@@ -97,7 +97,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^11.3"
             },
-            "time": "2024-11-20T07:11:06+00:00",
+            "time": "2024-12-16T06:40:57+00:00",
             "default-branch": true,
             "type": "wordpress-plugin",
             "extra": {
@@ -182,10 +182,10 @@
             "version_normalized": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@github.com:wpmetabox/mb-settings-page.git",
-                "reference": "33677f7060a77561d3b6e7d72e4e646017a79f78"
+                "url": "https://github.com/wpmetabox/mb-settings-page.git",
+                "reference": "3e1d543568c2bebf427277096f289cdfecaf9a2e"
             },
-            "time": "2024-08-19T07:15:28+00:00",
+            "time": "2025-03-19T04:38:27+00:00",
             "default-branch": true,
             "type": "wordpress-plugin",
             "installation-source": "source",
@@ -205,10 +205,10 @@
             "version_normalized": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@github.com:wpmetabox/meta-box-columns.git",
-                "reference": "0fcdbd347e975fa75a5f368ba35bd0b6a3e0192e"
+                "url": "https://github.com/wpmetabox/meta-box-columns.git",
+                "reference": "0d6a91d039fb35bb127ebe0fd05379d82410e47d"
             },
-            "time": "2024-08-19T07:17:28+00:00",
+            "time": "2025-02-04T07:08:55+00:00",
             "default-branch": true,
             "type": "wordpress-plugin",
             "installation-source": "source",
@@ -225,10 +225,10 @@
             "version_normalized": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@github.com:wpmetabox/meta-box-geolocation.git",
-                "reference": "12e3aa07a65193a3e77de956e2d6cc939af22836"
+                "url": "https://github.com/wpmetabox/meta-box-geolocation.git",
+                "reference": "8cf19b342a5060cd235fbd95bd4144f65237a538"
             },
-            "time": "2024-08-19T07:36:47+00:00",
+            "time": "2025-02-04T06:48:53+00:00",
             "default-branch": true,
             "type": "wordpress-plugin",
             "installation-source": "source",
@@ -240,10 +240,10 @@
             "version_normalized": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@github.com:wpmetabox/meta-box-group.git",
-                "reference": "badb92dfa065e1745b57521f411b056a8804cf6f"
+                "url": "https://github.com/wpmetabox/meta-box-group.git",
+                "reference": "e1944cee2d510a6a957888faa48ba0d40a608bd0"
             },
-            "time": "2024-11-19T04:31:41+00:00",
+            "time": "2025-02-04T07:20:33+00:00",
             "default-branch": true,
             "type": "wordpress-plugin",
             "installation-source": "source",

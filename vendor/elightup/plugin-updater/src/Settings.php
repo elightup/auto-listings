@@ -78,7 +78,7 @@ class Settings {
 		$status      = $this->option->get_license_status();
 		$license_key = 'active' === $status || $this->option->get_license_key_constant() ? $this->fake_api_key : $this->option->get_license_key();
 		?>
-		<input class="regular-text" name="<?= esc_attr( $this->manager->option_name ) ?>[api_key]" value="<?= esc_attr( $license_key ) ?>" type="password" autocomplete="autocomplete_off_license">
+		<input class="regular-text" name="<?= esc_attr( $this->manager->option_name ) ?>[api_key]" value="<?= esc_attr( $license_key ) ?>" type="password" autocomplete="new-password">
 		<?php if ( isset( $messages[ $status ] ) ) : ?>
 			<p class="description"><?= wp_kses_post( sprintf( $messages[ $status ], $this->manager->buy_url, $this->manager->my_account_url ) ); ?></p>
 		<?php endif; ?>

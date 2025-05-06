@@ -46,6 +46,10 @@
       "type": "string",
       "default": "post"
     },
+    "model": {
+      "type": "string",
+      "default": ""
+    },
     "object_id": {
       "type": "string",
       "default": ""

@@ -23,6 +23,8 @@ class Factory {
 		if ( ! $args['customizer_only'] ) {
 			self::$data['normal'][ $args['id'] ] = new SettingsPage( $args );
 		}
+
+		do_action( 'mb_settings_page_register', $args );
 	}
 
 	private static function normalize( $args ) {
