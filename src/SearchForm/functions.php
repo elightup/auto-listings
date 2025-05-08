@@ -98,7 +98,7 @@ function auto_listings_search_get_vehicle_data() {
 		return $data;
 	}
 
-	$cache_key   = 'al_vehicle_filter_data_v2';
+	$cache_key   = 'al_vehicle_filter_data';
 	$cached_data = get_site_transient( $cache_key );
 	if ( false !== $cached_data ) {
 		$data = $cached_data;
@@ -123,7 +123,7 @@ function auto_listings_search_get_vehicle_data() {
 	}
 
 	$post_ids = $query->posts;
-	// Chỉ load các meta cần thiết
+	// only the keys we actually use
 	$meta_keys_needed = [
 		'model_year',
 		'make_display',
@@ -150,37 +150,34 @@ function auto_listings_search_get_vehicle_data() {
 		$data[ 'fuel_type' ][]    = auto_listings_meta( 'model_engine_fuel', $id );
 	}
 
-	// Cho phép tuỳ biến sau khi lấy data
+	// Allow customization after data fetching
 	$data = apply_filters( 'auto_listings_search_get_vehicle_data', $data, $post_ids );
 
-	// Làm sạch dữ liệu
+	// Data cleaning
 	foreach ( $data as $key => $value ) {
-		$data[ $key ] = array_map( 'trim', $data[ $key ] );
-		$data[ $key ] = array_filter( $data[ $key ] );
-		$data[ $key ] = array_unique( $data[ $key ] );
-		if ( 'year' === $key ) {
-			rsort( $data[ $key ] );
+		$value = array_unique( array_filter( array_map( 'trim', $value ) ) );
+		if ( 'the_year' === $key ) {
+			rsort( $value, SORT_NUMERIC );
 		} else {
-			sort( $data[ $key ] );
+			sort( $value, SORT_NATURAL );
 		}
+		$data[ $key ] = $value;
 	}
-	//unset( $value );
+	unset( $value );
 
 	$data[ 'total' ] = count( $post_ids );
 
-	// Cache trong 12h
+	// Cache for 12 hours
 	set_site_transient( $cache_key, $data, 12 * HOUR_IN_SECONDS );
-
-	// Đảm bảo xóa cache khi cập nhật listing
-	if ( ! has_action( 'save_post_auto-listing', 'auto_listings_clear_filter_cache' ) ) {
-		add_action( 'save_post_auto-listing', 'auto_listings_clear_filter_cache' );
-	}
 
 	return $data;
 }
-
-function auto_listings_clear_filter_cache() {
-	delete_site_transient( 'al_vehicle_filter_data_v2' );
+// Make sure to clear cache when updating listing
+add_action( 'save_post_auto-listing', 'auto_listings_clear_filter_cache' );
+function auto_listings_clear_filter_cache( $post_id ) {
+	error_log( '[TEST] save_post_auto-listing called with ID ' . $post_id );
+	delete_site_transient( 'al_vehicle_filter_data' );
+	error_log( '[AUTO LISTING] Cache cleared by save_post_auto-listing hook' );
 }
 
 function get_body_type_options() {
