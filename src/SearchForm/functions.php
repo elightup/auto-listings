@@ -175,9 +175,7 @@ function auto_listings_search_get_vehicle_data() {
 // Make sure to clear cache when updating listing
 add_action( 'save_post_auto-listing', 'auto_listings_clear_filter_cache' );
 function auto_listings_clear_filter_cache( $post_id ) {
-	error_log( '[TEST] save_post_auto-listing called with ID ' . $post_id );
 	delete_site_transient( 'al_vehicle_filter_data' );
-	error_log( '[AUTO LISTING] Cache cleared by save_post_auto-listing hook' );
 }
 
 function get_body_type_options() {
