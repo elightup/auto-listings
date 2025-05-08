@@ -99,7 +99,7 @@ function auto_listings_search_get_vehicle_data() {
 	}
 
 	$cache_key   = 'al_vehicle_filter_data';
-	$cached_data = get_site_transient( $cache_key );
+	$cached_data = get_transient( $cache_key );
 	if ( false !== $cached_data ) {
 		$data = $cached_data;
 		return $data;
@@ -168,14 +168,14 @@ function auto_listings_search_get_vehicle_data() {
 	$data[ 'total' ] = count( $post_ids );
 
 	// Cache for 12 hours
-	set_site_transient( $cache_key, $data, 12 * HOUR_IN_SECONDS );
+	set_transient( $cache_key, $data, 12 * HOUR_IN_SECONDS );
 
 	return $data;
 }
 // Make sure to clear cache when updating listing
 add_action( 'save_post_auto-listing', 'auto_listings_clear_filter_cache' );
 function auto_listings_clear_filter_cache( $post_id ) {
-	delete_site_transient( 'al_vehicle_filter_data' );
+	delete_transient( 'al_vehicle_filter_data' );
 }
 
 function get_body_type_options() {
