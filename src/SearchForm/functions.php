@@ -98,7 +98,14 @@ function auto_listings_search_get_vehicle_data() {
 		return $data;
 	}
 
-	$args  = apply_filters(
+	$cache_key   = 'al_vehicle_filter_data';
+	$cached_data = get_transient( $cache_key );
+	if ( false !== $cached_data ) {
+		$data = $cached_data;
+		return $data;
+	}
+
+	$args = apply_filters(
 		'auto_listings_search_get_vehicle_data_args',
 		[
 			'post_type'              => 'auto-listing',
@@ -109,38 +116,66 @@ function auto_listings_search_get_vehicle_data() {
 			'update_post_term_cache' => false,
 		]
 	);
-	$items = new WP_Query( $args );
 
-	if ( ! $items->have_posts() ) {
+	$query = new WP_Query( $args );
+	if ( ! $query->have_posts() ) {
 		return [];
 	}
-	update_postmeta_cache( $items->posts );
 
-	foreach ( $items->posts as $id ) {
-		$data['the_year'][]     = auto_listings_meta( 'model_year', $id );
-		$data['make'][]         = auto_listings_meta( 'make_display', $id );
-		$data['model'][]        = auto_listings_meta( 'model_name', $id );
-		$data['transmission'][] = auto_listings_meta( 'model_transmission_type', $id );
-		$data['model_drive'][]  = auto_listings_meta( 'model_drive', $id );
-		$data['engine'][]       = auto_listings_meta( 'model_engine_type', $id );
-		$data['fuel_type'][]    = auto_listings_meta( 'model_engine_fuel', $id );
+	$post_ids = $query->posts;
+	// only the keys we actually use
+	$meta_keys_needed = [
+		'model_year',
+		'make_display',
+		'model_name',
+		'model_transmission_type',
+		'model_drive',
+		'model_engine_type',
+		'model_engine_fuel',
+	];
+
+	$chunk = 2000;
+	foreach ( array_chunk( $post_ids, $chunk ) as $chunk_ids ) {
+		update_meta_cache( 'post', $chunk_ids, $meta_keys_needed );
 	}
 
-	$data = apply_filters( 'auto_listings_search_get_vehicle_data', $data, $items->posts );
+	// Collect data
+	foreach ( $post_ids as $id ) {
+		$data[ 'the_year' ][]     = auto_listings_meta( 'model_year', $id );
+		$data[ 'make' ][]         = auto_listings_meta( 'make_display', $id );
+		$data[ 'model' ][]        = auto_listings_meta( 'model_name', $id );
+		$data[ 'transmission' ][] = auto_listings_meta( 'model_transmission_type', $id );
+		$data[ 'model_drive' ][]  = auto_listings_meta( 'model_drive', $id );
+		$data[ 'engine' ][]       = auto_listings_meta( 'model_engine_type', $id );
+		$data[ 'fuel_type' ][]    = auto_listings_meta( 'model_engine_fuel', $id );
+	}
 
-	// remove empties and make unique.
+	// Allow customization after data fetching
+	$data = apply_filters( 'auto_listings_search_get_vehicle_data', $data, $post_ids );
+
+	// Data cleaning
 	foreach ( $data as $key => $value ) {
-		$data[ $key ] = array_map( 'trim', $data[ $key ] );
-		$data[ $key ] = array_filter( $data[ $key ] );
-		$data[ $key ] = array_unique( $data[ $key ] );
-		if ( 'year' === $key ) {
-			rsort( $data[ $key ] );
+		$value = array_unique( array_filter( array_map( 'trim', $value ) ) );
+		if ( 'the_year' === $key ) {
+			rsort( $value, SORT_NUMERIC );
 		} else {
-			sort( $data[ $key ] );
+			sort( $value, SORT_NATURAL );
 		}
+		$data[ $key ] = $value;
 	}
-	$data['total'] = count( $items->posts );
+	unset( $value );
+
+	$data[ 'total' ] = count( $post_ids );
+
+	// Cache for 12 hours
+	set_transient( $cache_key, $data, 12 * HOUR_IN_SECONDS );
+
 	return $data;
+}
+// Make sure to clear cache when updating listing
+add_action( 'save_post_auto-listing', 'auto_listings_clear_filter_cache' );
+function auto_listings_clear_filter_cache( $post_id ) {
+	delete_transient( 'al_vehicle_filter_data' );
 }
 
 function get_body_type_options() {
