@@ -63,6 +63,12 @@ if ( auto_listings_option( 'opening_html' ) ) {
 		case 'twentytwentyfour':
 			echo '<div class="wrap has-global-padding is-layout-constrained"><div id="primary" class="content-area alignwide"><main id="main" class="site-main" role="main">';
 			break;
+		case 'twentytwentyfive':
+			echo '<div class="wrap has-global-padding is-layout-constrained"><div id="primary" class="content-area alignwide"><main id="main" class="site-main" role="main">';
+			break;
+		case 'astra':
+			echo '<div class="wrap has-global-padding is-layout-constrained"><div id="primary" class="content-area alignwide"><main id="main" class="site-main" role="main">';
+			break;
 		default:
 			echo apply_filters( 'auto_listings_wrapper_start', '<div id="container" class="container"><div id="content" class="content" role="main">' ); // wpcs xss: ok.
 			break;
