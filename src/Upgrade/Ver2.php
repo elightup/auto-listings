@@ -12,6 +12,10 @@ class Ver2 {
 		$caps = Roles::get_seller_caps();
 		$role = get_role( 'auto_listings_seller' );
 
+		if ( empty( $role ) || empty( $caps ) ) {
+			return;
+		}
+
 		$remove = array_keys( $role->capabilities );
 		array_walk( $remove, [ $role, 'remove_cap' ] );
 
