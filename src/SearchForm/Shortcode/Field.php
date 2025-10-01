@@ -3,13 +3,19 @@ namespace AutoListings\SearchForm\Shortcode;
 
 class Field {
 	private $control;
-	private $placeholders;
-	private $labels;
 
 	public function __construct( $control ) {
 		$this->control = $control;
 
-		$this->placeholders = [
+		add_shortcode( 'als_field', [ $this, 'render' ] );
+	}
+
+	public function render( $atts ) {
+		if ( empty( $atts['name'] ) ) {
+			return;
+		}
+
+		$placeholders = [
 			'body_type'    => __( 'All body types', 'auto-listings' ),
 			'condition'    => __( 'All conditions', 'auto-listings' ),
 			'model_drive'  => __( 'All drive types', 'auto-listings' ),
@@ -26,8 +32,8 @@ class Field {
 			'the_year'     => __( 'All years', 'auto-listings' ),
 		];
 
-		$this->labels = [
-			'body_type'    => __( 'Body Type', 'auto-listings' ),
+		$labels = [
+			'body_type'    => __( 'Body Type111222', 'auto-listings' ),
 			'condition'    => __( 'Condition', 'auto-listings' ),
 			'model_drive'  => __( 'Drive Types', 'auto-listings' ),
 			'engine'       => __( 'Engine', 'auto-listings' ),
@@ -43,19 +49,11 @@ class Field {
 			'the_year'     => __( 'Year', 'auto-listings' ),
 		];
 
-		add_shortcode( 'als_field', [ $this, 'render' ] );
-	}
+		$placeholders = apply_filters( 'als_field_placeholders', $placeholders );
+		$labels       = apply_filters( 'als_field_labels', $labels );
 
-	public function render( $atts ) {
-		if ( empty( $atts['name'] ) ) {
-			return;
-		}
-
-		$this->placeholders = apply_filters( 'als_field_placeholders', $this->placeholders );
-		$this->labels       = apply_filters( 'als_field_labels', $this->labels );
-
-		$default_label       = ! empty( $this->labels[ $atts['name'] ] ) ? $this->labels[ $atts['name'] ] : '';
-		$default_placeholder = ! empty( $this->placeholders[ $atts['name'] ] ) ? $this->placeholders[ $atts['name'] ] : '';
+		$default_label       = ! empty( $labels[ $atts['name'] ] ) ? $labels[ $atts['name'] ] : '';
+		$default_placeholder = ! empty( $placeholders[ $atts['name'] ] ) ? $placeholders[ $atts['name'] ] : '';
 
 		$atts = shortcode_atts(
 			apply_filters( 'als_field_shortcode_atts', [
@@ -74,7 +72,7 @@ class Field {
 
 		$atts = apply_filters( 'als_field_atts', $atts );
 
-		if ( ! in_array( $atts['name'], array_keys( $this->placeholders ) ) ) {
+		if ( ! in_array( $atts['name'], array_keys( $placeholders ) ) ) {
 			return;
 		}
 
