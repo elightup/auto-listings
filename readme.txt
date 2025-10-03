@@ -2,8 +2,8 @@
 Contributors:      elightup, autolistings, rilwis, hungviet91
 Tags:              car dealer, car listings, auto listings, car dealership
 Requires at least: 6.2
-Tested up to:      6.8.1
-Stable tag:        2.6.18
+Tested up to:      6.8.3
+Stable tag:        2.6.19
 Requires PHP:      7.2
 License:           GPLv3
 License URI:       https://www.gnu.org/licenses/gpl-3.0.html
@@ -131,6 +131,10 @@ It is perfect for car dealers and car dealerships, car classifieds websites or a
 6. Auto Listings settings pages
 
 == Changelog ==
+
+= 2.6.19 - 2025-10-03 =
+- Fix threw an error on activation
+- Fix function load_plugin_textdomain was called incorrectly
 
 = 2.6.18 - 2025-06-25 =
 Fix slider compatible with default and Astra theme
