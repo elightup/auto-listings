@@ -19,6 +19,7 @@ new Query();
 new SearchForm();
 new SearchQuery();
 new Upgrade\Manager();
+new TemplateSettings();
 
 if ( is_admin() ) {
 	new Admin\Main();
@@ -44,4 +45,18 @@ if ( ( ! is_admin() || wp_doing_ajax() ) && ! wp_doing_cron() ) {
 	new SearchForm\Shortcode\Field( $control );
 	new SearchForm\Shortcode\Extras();
 	new SearchForm\Shortcode\Button();
+}
+
+if ( ! wp_doing_cron() ) {
+	$register_elementor = static function() {
+		if ( class_exists( '\Elementor\Plugin' ) ) {
+			new Elementor\Register();
+		}
+	};
+
+	if ( did_action( 'elementor/loaded' ) ) {
+		$register_elementor();
+	} else {
+		add_action( 'elementor/loaded', $register_elementor );
+	}
 }
