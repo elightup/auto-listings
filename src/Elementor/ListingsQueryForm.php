@@ -1291,6 +1291,58 @@ class ListingsQueryForm extends Base {
 		);
 
 		$this->add_control(
+			'search_button_width',
+			[
+				'label'      => esc_html__( 'Width', 'auto-listings' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em' ],
+				'range'      => [
+					'px' => [
+						'min' => 50,
+						'max' => 500,
+					],
+					'%' => [
+						'min' => 10,
+						'max' => 100,
+					],
+					'em' => [
+						'min' => 1,
+						'max' => 30,
+					],
+				],
+				'selectors'  => [
+					'{{WRAPPER}} .auto-listings-query-form__search-btn' => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'search_button_height',
+			[
+				'label'      => esc_html__( 'Height', 'auto-listings' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em' ],
+				'range'      => [
+					'px' => [
+						'min' => 30,
+						'max' => 200,
+					],
+					'em' => [
+						'min' => 1,
+						'max' => 10,
+					],
+				],
+				'default'    => [
+					'size' => 56,
+					'unit' => 'px',
+				],
+				'selectors'  => [
+					'{{WRAPPER}} .auto-listings-query-form__search-btn' => 'height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_control(
 			'search_button_border_radius',
 			[
 				'label'      => esc_html__( 'Border Radius', 'auto-listings' ),
