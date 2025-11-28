@@ -11,19 +11,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+$odometer     = auto_listings_odometer();
+$transmission = auto_listings_transmission();
 ?>
 
-
-<div class="at-a-glance">
-
-	<ul>
-		<li class="odomoter"><i class="auto-icon-odometer"></i> <?php echo esc_html( auto_listings_odometer() ); ?></li>
-	<?php if ( auto_listings_transmission() ) { ?>
-		<li class="transmission"><i class="auto-icon-transmission"></i> <?php echo esc_html( auto_listings_transmission() ); ?></li>
+<div class="listing__details">
+	<?php if ( $odometer ) { ?>
+		<span class="listing__detail-item"><?php echo esc_html( $odometer ); ?></span>
 	<?php } ?>
-	<?php if ( auto_listings_body_type() ) { ?>
-		<li class="body"><i class="auto-icon-trunk"></i> <?php echo auto_listings_body_type(); // wpcs xss: ok. ?></li>
+	<?php if ( $odometer && $transmission ) { ?>
+		<span class="listing__detail-separator">•</span>
 	<?php } ?>
-	</ul>
-
+	<?php if ( $transmission ) { ?>
+		<span class="listing__detail-item"><?php echo esc_html( $transmission ); ?></span>
+	<?php } ?>
 </div>
