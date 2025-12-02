@@ -61,7 +61,7 @@ $fields[] = [
 	'name'             => __( 'Listing State', 'auto-listings' ),
 	'id'               => $prefix . 'listing_state',
 	'type'             => 'select',
-	'placeholder'      => __( 'Available', 'auto-listings' ),
+	'placeholder'      => __( 'State', 'auto-listings' ),
 	'show_option_none' => true,
 	'options'          => auto_listings_available_listing_states(),
 ];
