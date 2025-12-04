@@ -1,91 +1,94 @@
-/* global CarQuery, AlCarQuery */
+/* global AlCarQuery */
 jQuery( function ( $ ) {
-	//var carQuery = new CarQuery();
 	var $populateButton = $( '#cq-show-data' ),
 		$populateDesc = $( '#cq-show-data-description' );
 
 	function populateYearSelect( $yearSelect ) {
 		//Set a loading message while we retrieve the data
-		$yearSelect.html( "<option value=''>Loading Years...</option>" );
+		$yearSelect.html( `<option value=''>${ AlCarQuery.loading }</option>` );
 
 		$.ajax( {
-			url: 'https://eu.titanweb.vn/autolisting_api/wp-json/autolisting/car-year',
+			url: 'https://api.wpautolistings.com/wp-json/autolisting/car-year',
 			method: 'GET',
 			success: function ( data ) {
-				let options = '<option value="">Select Year</option>';
-				data.forEach( function ( item ) {
-					options += `<option value="${ item.year }">${ item.year }</option>`;
+				let options = `<option value="">${ AlCarQuery.select }</option>`;
+				data.forEach( function ( year ) {
+					options += `<option value="${ year }">${ year }</option>`;
 				} );
 				$yearSelect.html( options );
 			},
 			error: function () {
-				$yearSelect.html( "<option value=''>Failed to load years</option>" );
+				alert( AlCarQuery.errorNoData );
+				return;
 			}
 		} );
 	}
 
 	function populateMakeSelect( selectedYear, $makeSelect ) {
-		$makeSelect.html( "<option value=''>Loading Makes...</option>" );
+		$makeSelect.html( `<option value=''>${ AlCarQuery.loading }</option>` );
 
 		$.ajax( {
-			url: 'https://eu.titanweb.vn/autolisting_api/wp-json/autolisting/car-makes',
+			url: 'https://api.wpautolistings.com/wp-json/autolisting/car-makes',
 			method: 'GET',
 			data: { year: selectedYear },
 			success: function ( data ) {
-				let options = '<option value="">Select Make</option>';
+				let options = `<option value="">${ AlCarQuery.select }</option>`;
 				data.forEach( function ( item ) {
 					options += `<option value="${ item.make_id }">${ item.make }</option>`;
 				} );
 				$makeSelect.html( options );
 			},
 			error: function () {
-				$makeSelect.html( "<option value=''>Failed to load makes</option>" );
+				alert( AlCarQuery.errorNoData );
+				return;
 			}
 		} );
 	}
 
 	function populateModelSelect( year, makeId, $modelSelect ) {
-		$modelSelect.html( "<option value=''>Loading Models...</option>" );
+		$modelSelect.html( `<option value=''>${ AlCarQuery.loading }</option>` );
 
 		$.ajax( {
-			url: 'https://eu.titanweb.vn/autolisting_api/wp-json/autolisting/car-models',
+			url: 'https://api.wpautolistings.com/wp-json/autolisting/car-models',
 			method: 'GET',
 			data: {
 				year: year,
 				make_id: makeId
 			},
 			success: function ( data ) {
-				let options = '<option value="">Select Model</option>';
+				let options = `<option value="">${ AlCarQuery.select }</option>`;
 				data.forEach( function ( item ) {
 					options += `<option value="${ item.model_id }">${ item.model }</option>`;
 				} );
 				$modelSelect.html( options );
 			},
 			error: function () {
-				$modelSelect.html( "<option value=''>Failed to load models</option>" );
+				alert( AlCarQuery.errorNoData );
+				return;
 			}
 		} );
 	}
 
 	function populateTrimSelect( year, makeId, $trimSelect ) {
-		$trimSelect.html( "<option value=''>Loading Trims...</option>" );
+		$trimSelect.html( `<option value=''>${ AlCarQuery.loading }</option>` );
 
 		$.ajax( {
-			url: 'https://eu.titanweb.vn/autolisting_api/wp-json/autolisting/car-trims',
+			url: 'https://api.wpautolistings.com/wp-json/autolisting/car-trims',
 			method: 'GET',
 			data: {
 				year: year,
 				make_id: makeId
 			},
 			success: function ( data ) {
-				let options = '<option value="">Select Trim</option>';
+				let options = `<option value="">${ AlCarQuery.select }</option>`;
 				data.forEach( function ( item ) {
 					options += `<option value="${ item.trim_id }">${ item.trim }</option>`;
 				} );
 				$trimSelect.html( options );
 			},
 			error: function () {
-				$trimSelect.html( "<option value=''>Failed to load trims</option>" );
+				alert( AlCarQuery.errorNoData );
+				return;
 			}
 		} );
 	}
@@ -102,9 +105,9 @@ jQuery( function ( $ ) {
 
 		$yearSelect.off( "change" ).on( "change", function () {
 			const year = $( this ).val();
-			$makeSelect.html( '<option value="">Select Make</option>' );
+			$makeSelect.html( `<option value="">${ AlCarQuery.select }</option>` );
 
-			if( year ) {
+			if ( year ) {
 				populateMakeSelect( year, $makeSelect );
 			}
 		} );
@@ -113,10 +116,10 @@ jQuery( function ( $ ) {
 			const year = $yearSelect.val();
 			const makeId = $( this ).val();
 
-			$modelSelect.html( '<option value="">Select Model</option>' );
-			$trimSelect.html( '<option value="">Select Trim</option>' );
+			$modelSelect.html( `<option value="">${ AlCarQuery.select }</option>` );
+			$trimSelect.html( `<option value="">${ AlCarQuery.select }</option>` );
 
-			if( year && makeId ) {
+			if ( year && makeId ) {
 				populateModelSelect( year, makeId, $modelSelect );
 				populateTrimSelect( year, makeId, $trimSelect );
 			}
@@ -130,41 +133,39 @@ jQuery( function ( $ ) {
 
 	function populateModelData() {
 		const year = $( '#car-years' ).val();
-		const makeText = $( '#car-makes option:selected' ).text();
-		const modelText = $( '#car-models option:selected' ).text();
-		const trimText = $( '#car-model-trims option:selected' ).text();
+		const makeId = $( '#car-makes' ).val();
+		const modelId = $( '#car-models' ).val();
+		const trimId = $( '#car-model-trims' ).val();
 
-		if( !year || !makeText || !modelText || !trimText ) {
-			alert( 'Please select Year, Make, Model, and Trim before proceeding.' );
+		if ( !year || !makeId || !modelId || !trimId ) {
+			alert( AlCarQuery.errorNoSelected );
 			return;
 		}
 
 		$.ajax( {
-			url: 'https://eu.titanweb.vn/autolisting_api/wp-json/autolisting/entries',
+			url: 'https://api.wpautolistings.com/wp-json/autolisting/entries',
 			method: 'GET',
 			data: {
 				year: year,
-				make: makeText,
-				model: modelText,
-				trim: trimText
+				make_id: makeId,
+				model_id: modelId,
+				trim_id: trimId
 			},
 			success: function ( data ) {
-				if( !data || data.length === 0 ) {
-					alert( 'No data found for selected vehicle.' );
+				if ( !data || data.length === 0 ) {
+					alert( AlCarQuery.errorNoData );
 					return;
 				}
-
-				const vehicle = data[ 0 ];
-				console.log(vehicle);
-
+				let trimText = $( '#car-model-trims option:selected' ).text();
 				$( '#_al_listing_model_vehicle' ).val( trimText );
 
-				$.each( vehicle, function ( id, value ) {
+				$.each( data[ 0 ], function ( id, value ) {
 					$( '#_al_listing_' + id ).val( value );
 				} );
 			},
 			error: function () {
-				alert( 'Failed to fetch vehicle data from server.' );
+				alert( AlCarQuery.errorNoData );
+				return;
 			}
 		} );
 
