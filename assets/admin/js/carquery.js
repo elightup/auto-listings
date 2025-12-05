@@ -8,7 +8,7 @@ jQuery( function ( $ ) {
 		$yearSelect.html( `<option value=''>${ AlCarQuery.loading }</option>` );
 
 		$.ajax( {
-			url: 'https://api.wpautolistings.com/wp-json/autolisting/year',
+			url: 'https://api.wpautolistings.com/wp-json/data/years',
 			method: 'GET',
 			success: function ( data ) {
 				let options = `<option value="">${ AlCarQuery.select }</option>`;
@@ -28,7 +28,7 @@ jQuery( function ( $ ) {
 		$makeSelect.html( `<option value=''>${ AlCarQuery.loading }</option>` );
 
 		$.ajax( {
-			url: 'https://api.wpautolistings.com/wp-json/autolisting/makes',
+			url: 'https://api.wpautolistings.com/wp-json/data/makes',
 			method: 'GET',
 			data: { year: selectedYear },
 			success: function ( data ) {
@@ -49,7 +49,7 @@ jQuery( function ( $ ) {
 		$modelSelect.html( `<option value=''>${ AlCarQuery.loading }</option>` );
 
 		$.ajax( {
-			url: 'https://api.wpautolistings.com/wp-json/autolisting/models',
+			url: 'https://api.wpautolistings.com/wp-json/data/models',
 			method: 'GET',
 			data: {
 				year: year,
@@ -73,7 +73,7 @@ jQuery( function ( $ ) {
 		$trimSelect.html( `<option value=''>${ AlCarQuery.loading }</option>` );
 
 		$.ajax( {
-			url: 'https://api.wpautolistings.com/wp-json/autolisting/trims',
+			url: 'https://api.wpautolistings.com/wp-json/data/trims',
 			method: 'GET',
 			data: {
 				year: year,
@@ -143,7 +143,7 @@ jQuery( function ( $ ) {
 		}
 
 		$.ajax( {
-			url: 'https://api.wpautolistings.com/wp-json/autolisting/entries',
+			url: 'https://api.wpautolistings.com/wp-json/data/entries',
 			method: 'GET',
 			data: {
 				year: year,
