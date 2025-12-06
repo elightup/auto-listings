@@ -10,12 +10,13 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
-$condition = auto_listings_condition();
 ?>
 
-<div class="bottom-wrap">
-	<a class="al-button" href="<?php esc_url( the_permalink() ); ?>" title="<?php esc_html_e( 'View', 'auto-listings' ); ?> <?php esc_attr( the_title() ); ?>"><?php esc_html_e( 'More Details', 'auto-listings' ); ?> &nbsp; <i class="fa fa-angle-right"></i></a>
-	<?php if ( $condition ) { ?>
-		<span class="condition"><?php echo esc_html( $condition ) . esc_html__( ' Vehicle', 'auto-listings' ); ?></span>
-	<?php } ?>
+<div class="listing__actions">
+	<a class="listing__btn listing__btn-primary" href="<?php the_permalink(); ?>" title="<?php esc_html_e( 'View', 'auto-listings' ); ?> <?php the_title_attribute(); ?>">
+		<?php esc_html_e( 'View Details', 'auto-listings' ); ?>
+	</a>
+	<a class="listing__btn listing__btn-secondary" href="<?php the_permalink(); ?>#contact" title="<?php esc_html_e( 'Contact about', 'auto-listings' ); ?> <?php the_title_attribute(); ?>">
+		<?php esc_html_e( 'Contact Us', 'auto-listings' ); ?>
+	</a>
 </div>

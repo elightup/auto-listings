@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name:      Auto Listings
- * Description:      The best car listings and car dealership plugin for WordPress
+ * Plugin Name:      Auto Listings with Elementor Integration - Merto Software Solutions
+ * Description:      The best car listings and car dealership plugin for WordPress with Elementor Integration by Merto Software Solutions
  * Author:           WP Auto Listings
  * Author URI:       https://wpautolistings.com
  * Plugin URI:       https://wpautolistings.com
- * Version:          2.6.19
+ * Version:          2.6.19-elementor
  * Text Domain:      auto-listings
  * License:          GPLv3
  *
@@ -48,6 +48,23 @@ function auto_listings_load() {
 		'meta-box-geolocation',
 		'meta-box-group',
 	];
+
+	$compat_dir = __DIR__ . '/src/Compatibility/MetaBox/Support';
+
+	if ( ! class_exists( '\MetaBox\Support\Arr' ) ) {
+		$arr_file = $compat_dir . '/Arr.php';
+		if ( file_exists( $arr_file ) ) {
+			require_once $arr_file;
+		}
+	}
+
+	if ( ! class_exists( '\MetaBox\Support\Data' ) ) {
+		$data_file = $compat_dir . '/Data.php';
+		if ( file_exists( $data_file ) ) {
+			require_once $data_file;
+		}
+	}
+
 	foreach ( $plugins as $plugin ) {
 		require __DIR__ . "/vendor/meta-box/$plugin/$plugin.php";
 	}

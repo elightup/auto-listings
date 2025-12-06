@@ -13,4 +13,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $price = auto_listings_meta( 'price' );
 ?>
-<span class="price"><?php echo auto_listings_price( $price ); // wpcs xss: ok. ?></span>
+<div class="listing__price"><?php echo auto_listings_price( $price ); // wpcs xss: ok. ?></div>
