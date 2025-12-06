@@ -69,7 +69,7 @@ jQuery( function ( $ ) {
 		} );
 	}
 
-	function populateTrimSelect( year, makeId, $trimSelect ) {
+	function populateTrimSelect( year, makeId, modelId, $trimSelect ) {
 		$trimSelect.html( `<option value=''>${ AlCarQuery.loading }</option>` );
 
 		$.ajax( {
@@ -77,7 +77,8 @@ jQuery( function ( $ ) {
 			method: 'GET',
 			data: {
 				year: year,
-				make_id: makeId
+				make_id: makeId,
+				model_id: modelId,
 			},
 			success: function ( data ) {
 				let options = `<option value="">${ AlCarQuery.select }</option>`;
@@ -117,11 +118,20 @@ jQuery( function ( $ ) {
 			const makeId = $( this ).val();
 
 			$modelSelect.html( `<option value="">${ AlCarQuery.select }</option>` );
-			$trimSelect.html( `<option value="">${ AlCarQuery.select }</option>` );
 
 			if ( year && makeId ) {
 				populateModelSelect( year, makeId, $modelSelect );
-				populateTrimSelect( year, makeId, $trimSelect );
+			}
+		} );
+
+		$modelSelect.off( "change" ).on( "change", function () {
+			const year = $yearSelect.val();
+			const makeId = $makeSelect.val();
+			const modelId = $( this ).val();
+			$trimSelect.html( `<option value="">${ AlCarQuery.select }</option>` );
+
+			if ( year && makeId && modelId ) {
+				populateTrimSelect( year, makeId, modelId, $trimSelect );
 			}
 		} );
 
