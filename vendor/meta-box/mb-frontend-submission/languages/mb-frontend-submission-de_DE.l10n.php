@@ -1,0 +1,2 @@
+<?php
+return ['domain'=>NULL,'plural-forms'=>'nplurals=2; plural=(n != 1);','language'=>'de_DE','project-id-version'=>'MB Frontend Submission','pot-creation-date'=>'2025-04-06 08:13+0000','po-revision-date'=>'2025-04-06 08:15+0000','x-generator'=>'Loco https://localise.biz/','messages'=>['Actions'=>'Aktionen','Add New'=>'Hinzufügen','Date'=>'Datum','Delete'=>'Löschen','Edit'=>'Berbeiten','Howdie, %s!'=>'Moin, %s!','Submit'=>'Senden','Title'=>'Titel','draft'=>'Entwurf','pending'=>'ausstehende','published'=>'veröffentlicht']];

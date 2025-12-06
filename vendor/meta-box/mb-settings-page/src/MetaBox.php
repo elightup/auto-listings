@@ -15,11 +15,14 @@ class MetaBox extends \RW_Meta_Box {
 		$this->object_type = 'setting';
 	}
 
-	protected function object_hooks() {
-		add_action( 'mb_settings_page_load', array( $this, 'load' ) );
+	protected function object_hooks(): void {
+		add_action( 'mb_settings_page_load', [ $this, 'load' ] );
+
+		// Hide meta box if it's set 'default_hidden'.
+		add_filter( 'default_hidden_meta_boxes', [ $this, 'hide' ], 10, 2 );
 
 		if ( $this->tab ) {
- 			add_action( "rwmb_before_{$this->id}", array( $this, 'show_tab' ) );
+ 			add_action( "rwmb_before_{$this->id}", [ $this, 'show_tab' ] );
  		}
 	}
 
@@ -37,12 +40,13 @@ class MetaBox extends \RW_Meta_Box {
 		$this->set_object_id( $object_id );
 
 		// Add meta boxes.
+		$context = in_array( $this->context, [ 'normal', 'advanced', 'side' ], true ) ? $this->context : 'normal';
 		add_meta_box(
 			$this->id,
 			$this->title,
 			array( $this, 'show' ),
 			null, // Current page.
-			$this->context,
+			$context,
 			$this->priority
 		);
 

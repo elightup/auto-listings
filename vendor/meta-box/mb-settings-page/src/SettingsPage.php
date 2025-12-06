@@ -6,6 +6,8 @@ class SettingsPage {
 	public $page_hook;
 	protected $type;
 
+	private $font_awesome_classes = [ 'fa', 'fa-classic', 'fa-sharp', 'fas', 'fa-solid', 'far', 'fa-regular', 'fab', 'fa-brands' ];
+
 	public function __construct( $args = [] ) {
 		$this->args = $args;
 		$this->register_hooks();
@@ -179,9 +181,8 @@ class SettingsPage {
 			return false;
 		}
 
-		$strpos   = [ 'fa', 'fas', 'fa-solid', 'fab', 'fa-brand', 'far', 'fa-regular' ];
-		foreach ( $strpos as $value ) {
-			if ( strpos( $icon_url, $value ) !== false ) {
+		foreach ( $this->font_awesome_classes as $class ) {
+			if ( str_contains( $icon_url, $class ) ) {
 				return true;
 			}
 		}
@@ -189,11 +190,17 @@ class SettingsPage {
 	}
 
 	public function enqueue_font_awesome() {
-		wp_enqueue_style( 'font-awesome', 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css', [], ' 6.2.1' );
+		wp_enqueue_style( 'font-awesome', 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css', [], ' 6.7.2' );
+		$selectors = [];
+		foreach ( $this->font_awesome_classes as $class ) {
+			$selectors[] = ".$class:before";
+		}
+		$selectors = implode( ', ', $selectors );
 		wp_add_inline_style(
 			'font-awesome',
-			'.fa:before, fas, .fa-solid:before, .fab:before, .fa-brand:before, .far:before, .fa-regular:before {
+			$selectors . ' {
 				font-size: 16px;
+				line-height: 20px;
 				font-family: inherit;
 				font-weight: inherit;
 			}'

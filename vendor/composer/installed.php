@@ -3,17 +3,17 @@
         'name' => 'auto-listings/auto-listings',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'eb422bc10715b98d03f3c7782380af148556504d',
+        'reference' => '01e5766e4096a84c04d5d637823c337ba9ab2a42',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'dev' => true,
+        'dev' => false,
     ),
     'versions' => array(
         'auto-listings/auto-listings' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'eb422bc10715b98d03f3c7782380af148556504d',
+            'reference' => '01e5766e4096a84c04d5d637823c337ba9ab2a42',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -22,7 +22,7 @@
         'elightup/plugin-updater' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'd0f6cd7d08a59f1d34eb8f99767c217b27588db0',
+            'reference' => 'bc340dc57485b6c06bb193f919779ad4ed7cfb7d',
             'type' => 'library',
             'install_path' => __DIR__ . '/../elightup/plugin-updater',
             'aliases' => array(
@@ -42,7 +42,7 @@
         'meta-box/mb-frontend-submission' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'ab4d9a60e49954c66547032da20d57ca5af002ea',
+            'reference' => 'f96b8a62db35994ceced1df59cc69de1ede70c4f',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../meta-box/mb-frontend-submission',
             'aliases' => array(
@@ -53,7 +53,7 @@
         'meta-box/mb-settings-page' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '3e1d543568c2bebf427277096f289cdfecaf9a2e',
+            'reference' => '2baf9f08759c743a6661fb5223ef2a320f2401f0',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../meta-box/mb-settings-page',
             'aliases' => array(
@@ -86,7 +86,7 @@
         'meta-box/meta-box-group' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'e1944cee2d510a6a957888faa48ba0d40a608bd0',
+            'reference' => 'efade09ca70528749b5daae0416ce33b8457f08c',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../meta-box/meta-box-group',
             'aliases' => array(

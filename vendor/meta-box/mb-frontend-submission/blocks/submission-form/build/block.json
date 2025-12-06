@@ -1,0 +1,130 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "meta-box/submission-form",
+  "version": "4.2.0",
+  "title": "Submission Form",
+  "category": "meta-box",
+  "icon": "feedback",
+  "description": "Submit posts on the front end.",
+  "supports": {
+    "html": false
+  },
+  "textdomain": "mb-frontend-submission",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "attributes": {
+    "meta_box_id": {
+      "type": "string",
+      "default": ""
+    },
+    "id": {
+      "type": "array",
+      "default": []
+    },
+    "ajax": {
+      "type": "boolean",
+      "default": false
+    },
+    "allow_scroll": {
+      "type": "boolean",
+      "default": true
+    },
+    "edit": {
+      "type": "boolean",
+      "default": false
+    },
+    "allow_delete": {
+      "type": "boolean",
+      "default": false
+    },
+    "force_delete": {
+      "type": "boolean",
+      "default": false
+    },
+    "show_add_more": {
+      "type": "boolean",
+      "default": false
+    },
+    "object_type": {
+      "type": "string",
+      "default": "post"
+    },
+    "model": {
+      "type": "string",
+      "default": ""
+    },
+    "object_id": {
+      "type": "string",
+      "default": ""
+    },
+    "post_id": {
+      "type": "string",
+      "default": ""
+    },
+    "post_type": {
+      "type": "string",
+      "default": ""
+    },
+    "post_status": {
+      "type": "string",
+      "default": ""
+    },
+    "post_fields": {
+      "type": "array",
+      "default": []
+    },
+    "label_title": {
+      "type": "string",
+      "default": "Title"
+    },
+    "label_content": {
+      "type": "string",
+      "default": "Content"
+    },
+    "label_excerpt": {
+      "type": "string",
+      "default": "Excerpt"
+    },
+    "label_date": {
+      "type": "string",
+      "default": "Date"
+    },
+    "label_thumbnail": {
+      "type": "string",
+      "default": "Thumbnail"
+    },
+    "submit_button": {
+      "type": "string",
+      "default": "Submit"
+    },
+    "add_button": {
+      "type": "string",
+      "default": "Add new"
+    },
+    "delete_button": {
+      "type": "string",
+      "default": "Delete"
+    },
+    "confirmation": {
+      "type": "string",
+      "default": "Your post has been successfully submitted. Thank you."
+    },
+    "delete_confirmation": {
+      "type": "string",
+      "default": "Your post has been successfully deleted."
+    },
+    "redirect": {
+      "type": "string",
+      "default": ""
+    },
+    "recaptcha_key": {
+      "type": "string",
+      "default": ""
+    },
+    "recaptcha_secret": {
+      "type": "string",
+      "default": ""
+    }
+  }
+}

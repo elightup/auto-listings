@@ -5,12 +5,12 @@ use MetaBox\Support\Arr;
 
 class FormFactory {
 	private static $forms = [];
-	
+
 	public static function make( $config, $shortcode = '' ) {
 		$config = (array) $config;
 		$config = self::normalize( $config, $shortcode );
 		Arr::set( $config, 'object_id', $config['object_id'] > 0 ? $config['object_id'] : $config['post_id'] );
-		
+
 		$key = ConfigStorage::get_key( $config );
 		if ( ! isset( self::$forms[ $key ] ) ) {
 			self::$forms[ $key ] = self::get_form( $config );

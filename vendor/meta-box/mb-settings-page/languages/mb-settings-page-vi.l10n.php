@@ -1,0 +1,2 @@
+<?php
+return ['domain'=>NULL,'plural-forms'=>'nplurals=1; plural=0;','language'=>'vi','project-id-version'=>'MB Settings Page 1.1.3','pot-creation-date'=>'2016-06-07 08:53+0700','po-revision-date'=>'2016-06-07 08:53+0700','x-generator'=>'Poedit 1.8.8','messages'=>['Save Settings'=>'Lưu thiết lập','Settings saved.'=>'Thiết đặt đã được lưu.']];

@@ -201,6 +201,12 @@ class Form {
 		do_action( 'rwmb_frontend_save_model', $this->config );
 		if ( $this->config['object_type'] === 'model' ) {
 			$object_id = $wpdb->insert_id;
+
+			// If users edit the submitted entry, the object_id will be 0 as the entry has been created.
+			// So we need to get the object_id from the config, which has the object_id populated via the query string.
+			if ( 0 === $object_id ) {
+				$object_id = $this->config['object_id'];
+			}
 		}
 		do_action( 'rwmb_frontend_after_process', $this->config, $object_id );
 

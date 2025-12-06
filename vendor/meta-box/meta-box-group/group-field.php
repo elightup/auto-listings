@@ -391,7 +391,7 @@ class RWMB_Group_Field extends RWMB_Field {
 	 */
 	protected static function child_field_std( $parent, $child, $meta ) {
 		// Respect 'std' value set in child field.
-		if ( ! empty( $child['std'] ) ) {
+		if ( isset( $child['std'] ) ) {
 			return $child['std'];
 		}
 

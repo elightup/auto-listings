@@ -27,14 +27,6 @@
 		{
 			"type": "git",
 			"url": "https://github.com/wpmetabox/meta-box-group.git"
-		},
-		{
-			"type": "git",
-			"url": "https://github.com/wpmetabox/support.git"
-		},
-		{
-			"type": "git",
-			"url": "https://github.com/elightup/plugin-updater.git"
 		}
 	],
 	"require": {

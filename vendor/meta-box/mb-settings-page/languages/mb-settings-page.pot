@@ -1,0 +1,52 @@
+# Copyright (C) 2025 MetaBox.io
+# This file is distributed under the GPL2+.
+msgid ""
+msgstr ""
+"Project-Id-Version: MB Settings Page 2.2.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mb-settings-page\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-11-11T03:33:38+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: mb-settings-page\n"
+
+#. Plugin Name of the plugin
+#: mb-settings-page.php
+msgid "MB Settings Page"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: mb-settings-page.php
+msgid "https://metabox.io/plugins/mb-settings-page/"
+msgstr ""
+
+#. Description of the plugin
+#: mb-settings-page.php
+msgid "Add-on for meta box plugin which helps you create settings pages easily."
+msgstr ""
+
+#. Author of the plugin
+#: mb-settings-page.php
+msgid "MetaBox.io"
+msgstr ""
+
+#. Author URI of the plugin
+#: mb-settings-page.php
+msgid "https://metabox.io"
+msgstr ""
+
+#: src/BackupField.php:20
+msgid "To export settings, copy the content of this field and save to a file. To import settings, paste the content of the backup file here."
+msgstr ""
+
+#: src/Factory.php:47
+msgid "Save Settings"
+msgstr ""
+
+#: src/Factory.php:48
+msgid "Settings saved."
+msgstr ""

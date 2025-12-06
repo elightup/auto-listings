@@ -3,10 +3,12 @@
  * Plugin Name: MB Group
  * Plugin URI:  https://metabox.io/plugins/meta-box-group/
  * Description: Put fields into groups for better organization
- * Version:     1.4.5
+ * Version:     1.4.6
  * Author:      MetaBox.io
  * Author URI:  https://metabox.io
  * License:     GPL2+
+ * Text Domain: meta-box-group
+ * Domain Path: /languages/
  *
  * Copyright (C) 2010-2025 Tran Ngoc Tuan Anh. All rights reserved.
  *
@@ -50,6 +52,8 @@ if ( ! class_exists( 'RWMB_Group' ) ) {
 		public function load_files() {
 			if ( class_exists( 'RWMB_Field' ) && ! class_exists( 'RWMB_Group_Field' ) ) {
 				require_once __DIR__ . '/group-field.php';
+
+				load_plugin_textdomain( 'meta-box-group', false, plugin_basename( __DIR__ ) . '/languages/' );
 			}
 		}
 

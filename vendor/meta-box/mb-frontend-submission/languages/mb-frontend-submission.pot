@@ -1,144 +1,683 @@
-# Copyright (C) 2022 MetaBox.io
+# Copyright (C) 2025 MetaBox.io
 # This file is distributed under the GPL2+.
 msgid ""
 msgstr ""
-"Project-Id-Version: MB Frontend Submission 3.1.5\n"
+"Project-Id-Version: MB Frontend Submission 4.5.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mb-frontend-submission\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-02-14T02:08:43+00:00\n"
+"POT-Creation-Date: 2025-11-11T03:54:05+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.5.0\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: mb-frontend-submission\n"
 
 #. Plugin Name of the plugin
+#: mb-frontend-submission.php
 msgid "MB Frontend Submission"
 msgstr ""
 
 #. Plugin URI of the plugin
+#: mb-frontend-submission.php
 msgid "https://metabox.io/plugins/mb-frontend-submission"
 msgstr ""
 
 #. Description of the plugin
+#: mb-frontend-submission.php
 msgid "Submit posts and custom fields in the frontend."
 msgstr ""
 
 #. Author of the plugin
+#: mb-frontend-submission.php
 msgid "MetaBox.io"
 msgstr ""
 
 #. Author URI of the plugin
+#: mb-frontend-submission.php
 msgid "https://metabox.io"
 msgstr ""
 
-#: src/Dashboard.php:26
+#: src/Blocks/DataTrait.php:16
+#: src/Integrations/Bricks/SubmissionForm.php:74
+#: src/Integrations/Bricks/UserDashboard.php:43
+#: src/Integrations/Elementor/SubmissionForm.php:59
+#: src/Integrations/Elementor/UserDashboard.php:61
+msgid "Post"
+msgstr ""
+
+#: src/Blocks/DataTrait.php:17
+#: src/Integrations/Bricks/SubmissionForm.php:75
+#: src/Integrations/Bricks/UserDashboard.php:44
+#: src/Integrations/Elementor/SubmissionForm.php:60
+#: src/Integrations/Elementor/UserDashboard.php:62
+msgid "Custom Model"
+msgstr ""
+
+#: src/Dashboard/Delete.php:73
+#: src/Dashboard/Delete.php:81
+msgid "Failed to delete the record."
+msgstr ""
+
+#: src/Dashboard/Renderer.php:17
 msgid "Please login to view the dashboard."
 msgstr ""
 
-#: src/Dashboard.php:42
+#. Translators: %d - page ID.
+#: src/Dashboard/Renderer.php:24
+#, php-format
+msgid "Something is wrong with the edit page with ID #%d. Please check again"
+msgstr ""
+
+#: src/Dashboard/Renderer.php:32
+#: src/Integrations/Bricks/UserDashboard.php:162
+#: src/Integrations/Elementor/UserDashboard.php:214
 msgid "Add New"
 msgstr ""
 
-#: src/Dashboard.php:51
-#: src/FormFactory.php:45
+#: src/Dashboard/Renderer.php:44
+#: src/FormFactory.php:56
+#: src/Integrations/Bricks/SubmissionForm.php:120
+#: src/Integrations/Bricks/SubmissionForm.php:138
+#: src/Integrations/Bricks/UserDashboard.php:89
+#: src/Integrations/Bricks/UserDashboard.php:118
+#: src/Integrations/Elementor/SubmissionForm.php:43
+#: src/Integrations/Elementor/SubmissionForm.php:100
+#: src/Integrations/Elementor/UserDashboard.php:128
+#: src/Integrations/Elementor/UserDashboard.php:159
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:266
 msgid "Title"
 msgstr ""
 
-#: src/Dashboard.php:52
+#: src/Dashboard/Renderer.php:45
+#: src/Integrations/Bricks/SubmissionForm.php:123
+#: src/Integrations/Bricks/SubmissionForm.php:159
+#: src/Integrations/Bricks/UserDashboard.php:90
+#: src/Integrations/Bricks/UserDashboard.php:126
+#: src/Integrations/Elementor/SubmissionForm.php:104
+#: src/Integrations/Elementor/UserDashboard.php:129
+#: src/Integrations/Elementor/UserDashboard.php:169
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:293
 msgid "Date"
 msgstr ""
 
-#: src/Dashboard.php:53
+#: src/Dashboard/Renderer.php:46
+#: src/Integrations/Bricks/UserDashboard.php:91
+#: src/Integrations/Bricks/UserDashboard.php:134
+#: src/Integrations/Elementor/UserDashboard.php:130
+#: src/Integrations/Elementor/UserDashboard.php:179
 msgid "Status"
 msgstr ""
 
-#: src/Dashboard.php:54
+#: src/Dashboard/Renderer.php:47
+#: src/Integrations/Bricks/UserDashboard.php:142
+#: src/Integrations/Elementor/UserDashboard.php:189
 msgid "Actions"
 msgstr ""
 
+#: src/Dashboard/Renderer.php:80
+msgid "Model name is required"
+msgstr ""
+
+#. Translators: %s - model name.
+#: src/Dashboard/Renderer.php:85
+#: src/Dashboard/Renderer.php:92
+#, php-format
+msgid "Model %s not found"
+msgstr ""
+
 #. Translators: %s - user display name.
-#: src/Dashboard.php:97
+#: src/Dashboard/Renderer.php:154
+#: src/Dashboard/Renderer.php:165
+#, php-format
 msgid "Howdie, %s!"
 msgstr ""
 
 #. Translators: %1$d - number of posts, %2$s - post label name.
-#: src/Dashboard.php:99
+#: src/Dashboard/Renderer.php:156
+#: src/Dashboard/Renderer.php:167
+#, php-format
 msgid "You have %1$d %2$s."
 msgstr ""
 
-#. Translators: %d - page ID.
-#: src/Dashboard.php:111
-msgid "Something is not right with the shortcode on page ID: %d"
-msgstr ""
-
-#: src/Dashboard.php:198
+#: src/Dashboard/Renderer.php:228
+#: src/Dashboard/Renderer.php:315
+#: src/Integrations/Bricks/SubmissionForm.php:43
+#: src/Integrations/Bricks/UserDashboard.php:152
+#: src/Integrations/Elementor/UserDashboard.php:201
+#: blocks/user-dashboard/build/index.js:1
+#: blocks/user-dashboard/src/edit.js:85
 msgid "Edit"
 msgstr ""
 
-#: src/Form.php:47
+#: src/Dashboard/Renderer.php:354
+msgid "&laquo; Previous"
+msgstr ""
+
+#: src/Dashboard/Renderer.php:355
+msgid "Next &raquo;"
+msgstr ""
+
+#: src/Dashboard/Renderer.php:370
+msgid "Are you sure to delete this record?"
+msgstr ""
+
+#: src/Form.php:46
 msgid "You are not allowed to edit this post."
 msgstr ""
 
-#: src/Form.php:158
+#: src/Form.php:188
 msgid "Invalid form submission"
 msgstr ""
 
-#: src/Form.php:211
+#: src/Form.php:257
 msgid "Clear"
 msgstr ""
 
-#: src/Form.php:212
+#: src/Form.php:258
 msgid "Clear color"
 msgstr ""
 
-#: src/Form.php:213
+#: src/Form.php:259
 msgid "Default"
 msgstr ""
 
-#: src/Form.php:214
+#: src/Form.php:260
 msgid "Select default color"
 msgstr ""
 
-#: src/Form.php:215
+#: src/Form.php:261
 msgid "Select Color"
 msgstr ""
 
-#: src/Form.php:216
+#: src/Form.php:262
 msgid "Color value"
 msgstr ""
 
-#: src/Form.php:230
+#: src/Form.php:276
 msgid "Are you sure to delete this post?"
 msgstr ""
 
-#: src/Form.php:244
+#: src/Form.php:290
 msgid "Error trying to execute grecaptcha."
 msgstr ""
 
-#: src/FormFactory.php:52
+#: src/FormFactory.php:63
+#: src/Integrations/Bricks/SubmissionForm.php:173
 msgid "Submit"
 msgstr ""
 
-#: src/FormFactory.php:53
+#: src/FormFactory.php:64
+#: src/Integrations/Bricks/SubmissionForm.php:180
+msgid "Add new"
+msgstr ""
+
+#: src/FormFactory.php:65
+#: src/Integrations/Bricks/SubmissionForm.php:187
 msgid "Delete"
 msgstr ""
 
-#: src/FormFactory.php:54
+#: src/FormFactory.php:66
+#: src/Integrations/Elementor/SubmissionForm.php:127
 msgid "Your post has been successfully submitted. Thank you."
 msgstr ""
 
-#: src/FormFactory.php:55
+#: src/FormFactory.php:67
 msgid "Your post has been successfully deleted."
 msgstr ""
 
-#: src/Post.php:83
+#: src/Integrations/Bricks/SubmissionForm.php:14
+#: src/Integrations/Elementor/SubmissionForm.php:15
+msgid "Submission Form"
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:20
+msgid "ID"
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:23
+msgid "Field group ID(s). If multiple field groups, enter their IDs separated by commas."
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:28
+msgid "Enable Ajax submission"
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:35
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:227
+msgid "Allow scroll"
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:38
+msgid "Enable scroll to message after ajax submission."
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:46
+msgid "Allow users to edit the post after submitting. If enabled then ajax attribute will be disabled."
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:51
+msgid "Allow delete"
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:54
+msgid "Allow users to delete the submitted post."
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:59
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:150
+msgid "Force delete"
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:62
+msgid "Whether to delete the submitted post permanently or temporarily (move to Trash)."
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:67
+msgid "Show add more"
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:70
+msgid "Show add new button after submit."
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:80
+#: src/Integrations/Bricks/UserDashboard.php:48
+#: src/Integrations/Elementor/SubmissionForm.php:67
+#: src/Integrations/Elementor/UserDashboard.php:69
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:165
+#: blocks/user-dashboard/build/index.js:1
+#: blocks/user-dashboard/src/edit.js:144
+msgid "Object type"
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:84
+msgid "Object type to submit."
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:89
+#: src/Integrations/Elementor/SubmissionForm.php:77
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:173
+msgid "Object ID"
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:92
+msgid "The object ID. Used when you want to update an existing object. If you want to pass the ID of the current post, set it to \"current\"."
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:98
+#: src/Integrations/Bricks/UserDashboard.php:74
+#: src/Integrations/Elementor/SubmissionForm.php:87
+#: src/Integrations/Elementor/UserDashboard.php:108
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:184
+#: blocks/user-dashboard/build/index.js:1
+#: blocks/user-dashboard/src/edit.js:172
+msgid "Post type"
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:102
+msgid "The submitted post type. Default is the first post type defined in the meta box. If meta box is made for multiple post types, you should set this attribute to the correct one."
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:108
+#: src/Integrations/Elementor/SubmissionForm.php:116
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:195
+msgid "Post status"
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:112
+msgid "The status for submitted posts."
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:117
+msgid "Post Fields"
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:121
+#: src/Integrations/Bricks/SubmissionForm.php:145
+#: src/Integrations/Elementor/SubmissionForm.php:34
+#: src/Integrations/Elementor/SubmissionForm.php:101
+#: src/Integrations/Elementor/UserDashboard.php:35
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:275
+msgid "Content"
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:122
+#: src/Integrations/Bricks/SubmissionForm.php:152
+#: src/Integrations/Elementor/SubmissionForm.php:102
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:284
+msgid "Excerpt"
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:124
+#: src/Integrations/Bricks/SubmissionForm.php:166
+#: src/Integrations/Elementor/SubmissionForm.php:103
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:302
+msgid "Thumbnail"
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:131
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:209
+msgid "List of post fields you want to show in the frontend."
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:136
+msgid "Title field label"
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:143
+msgid "Content field label"
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:150
+msgid "Excerpt field label"
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:157
+msgid "Date field label"
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:164
+msgid "Thumbnail field label"
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:171
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:245
+msgid "Submit button text"
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:178
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:250
+msgid "Add new button text"
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:185
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:255
+msgid "Delete button text"
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:192
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:220
+msgid "Custom redirect URL"
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:199
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:233
+msgid "Confirmation text"
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:202
+#: src/Integrations/Elementor/SubmissionForm.php:129
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:234
+msgid "The text for the confirmation message when the form is successfully submitted."
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:207
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:239
+msgid "Delete confirmation text"
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:210
+msgid "The text for the confirmation message when the post is deleted."
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:215
+msgid "Recaptcha key"
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:218
+msgid "Google reCaptcha site key (version 3)."
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:223
+msgid "Recaptcha secret"
+msgstr ""
+
+#: src/Integrations/Bricks/SubmissionForm.php:226
+msgid "Google reCaptcha secret key (version 3)."
+msgstr ""
+
+#: src/Integrations/Bricks/UserDashboard.php:14
+#: src/Integrations/Elementor/UserDashboard.php:16
+msgid "User Dashboard"
+msgstr ""
+
+#: src/Integrations/Bricks/UserDashboard.php:27
+msgid "Edit Page"
+msgstr ""
+
+#: src/Integrations/Bricks/UserDashboard.php:31
+#: src/Integrations/Elementor/UserDashboard.php:54
+msgid "Choose a page where users can submit posts."
+msgstr ""
+
+#: src/Integrations/Bricks/UserDashboard.php:36
+#: src/Integrations/Elementor/SubmissionForm.php:52
+#: src/Integrations/Elementor/UserDashboard.php:97
+msgid "Field group ID(s)"
+msgstr ""
+
+#: src/Integrations/Bricks/UserDashboard.php:39
+#: src/Integrations/Elementor/UserDashboard.php:99
+msgid "Overwrite field group ID(s) from the edit page. If multiple field groups, enter their IDs separated by commas."
+msgstr ""
+
+#: src/Integrations/Bricks/UserDashboard.php:52
+msgid "Object type of the submissions."
+msgstr ""
+
+#: src/Integrations/Bricks/UserDashboard.php:56
+#: src/Integrations/Elementor/UserDashboard.php:77
+msgid "Select"
+msgstr ""
+
+#: src/Integrations/Bricks/UserDashboard.php:63
+#: src/Integrations/Elementor/UserDashboard.php:86
+#: blocks/user-dashboard/build/index.js:1
+#: blocks/user-dashboard/src/edit.js:158
+msgid "Model name"
+msgstr ""
+
+#: src/Integrations/Bricks/UserDashboard.php:67
+#: src/Integrations/Elementor/UserDashboard.php:89
+msgid "Select related model for the submissions."
+msgstr ""
+
+#: src/Integrations/Bricks/UserDashboard.php:78
+#: src/Integrations/Elementor/UserDashboard.php:111
+#: blocks/user-dashboard/build/index.js:1
+#: blocks/user-dashboard/src/edit.js:173
+msgid "Overwrite the submitted post type from the edit page."
+msgstr ""
+
+#: src/Integrations/Bricks/UserDashboard.php:83
+#: src/Integrations/Elementor/UserDashboard.php:119
+#: blocks/user-dashboard/build/index.js:1
+#: blocks/user-dashboard/src/edit.js:99
+msgid "Show welcome message"
+msgstr ""
+
+#: src/Integrations/Bricks/UserDashboard.php:102
+#: src/Integrations/Elementor/UserDashboard.php:146
+#: blocks/user-dashboard/build/index.js:1
+#: blocks/user-dashboard/src/edit.js:72
+msgid "Columns"
+msgstr ""
+
+#: src/Integrations/Bricks/UserDashboard.php:111
+#: src/Integrations/Elementor/UserDashboard.php:150
+msgid "List of columns to be displayed in the dashboard."
+msgstr ""
+
+#: src/Integrations/Bricks/UserDashboard.php:116
+#: src/Integrations/Elementor/UserDashboard.php:157
+msgid "Title Column Label"
+msgstr ""
+
+#: src/Integrations/Bricks/UserDashboard.php:119
+#: src/Integrations/Elementor/UserDashboard.php:160
+msgid "The label for the title column."
+msgstr ""
+
+#: src/Integrations/Bricks/UserDashboard.php:124
+#: src/Integrations/Elementor/UserDashboard.php:167
+msgid "Date Column Label"
+msgstr ""
+
+#: src/Integrations/Bricks/UserDashboard.php:127
+#: src/Integrations/Elementor/UserDashboard.php:170
+msgid "The label for the date column."
+msgstr ""
+
+#: src/Integrations/Bricks/UserDashboard.php:132
+#: src/Integrations/Elementor/UserDashboard.php:177
+msgid "Status Column Label"
+msgstr ""
+
+#: src/Integrations/Bricks/UserDashboard.php:135
+#: src/Integrations/Elementor/UserDashboard.php:180
+msgid "The label for the status column."
+msgstr ""
+
+#: src/Integrations/Bricks/UserDashboard.php:140
+#: src/Integrations/Elementor/UserDashboard.php:187
+msgid "Actions Column Label"
+msgstr ""
+
+#: src/Integrations/Bricks/UserDashboard.php:143
+#: src/Integrations/Elementor/UserDashboard.php:190
+#: src/Integrations/Elementor/UserDashboard.php:213
+msgid "The label for the actions column."
+msgstr ""
+
+#: src/Integrations/Bricks/UserDashboard.php:148
+#: src/Integrations/Elementor/UserDashboard.php:198
+msgid "Post Action Link"
+msgstr ""
+
+#: src/Integrations/Bricks/UserDashboard.php:151
+#: src/Integrations/Elementor/UserDashboard.php:200
+#: blocks/user-dashboard/build/index.js:1
+#: blocks/user-dashboard/src/edit.js:84
+msgid "View"
+msgstr ""
+
+#: src/Integrations/Bricks/UserDashboard.php:155
+#: src/Integrations/Elementor/UserDashboard.php:204
+#: blocks/user-dashboard/build/index.js:1
+#: blocks/user-dashboard/src/edit.js:81
+msgid "The link action when clicking post titles."
+msgstr ""
+
+#: src/Integrations/Bricks/UserDashboard.php:160
+#: src/Integrations/Elementor/UserDashboard.php:211
+msgid "Add New Button Text"
+msgstr ""
+
+#: src/Integrations/Elementor/SubmissionForm.php:44
+msgid "Enter the form title"
+msgstr ""
+
+#: src/Integrations/Elementor/SubmissionForm.php:54
+msgid "If multiple field groups, enter their IDs separated by commas."
+msgstr ""
+
+#: src/Integrations/Elementor/SubmissionForm.php:97
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:208
+msgid "Post fields"
+msgstr ""
+
+#: src/Integrations/Elementor/SubmissionForm.php:106
+msgid "Choose post fields to show on the form"
+msgstr ""
+
+#: src/Integrations/Elementor/SubmissionForm.php:125
+msgid "Confirmation message"
+msgstr ""
+
+#: src/Integrations/Elementor/SubmissionForm.php:128
+msgid "Type your description here"
+msgstr ""
+
+#: src/Integrations/Elementor/SubmissionForm.php:137
+msgid "Use Google reCaptcha"
+msgstr ""
+
+#: src/Integrations/Elementor/SubmissionForm.php:138
+#: src/Integrations/Elementor/SubmissionForm.php:174
+#: src/Integrations/Elementor/UserDashboard.php:120
+msgid "True"
+msgstr ""
+
+#: src/Integrations/Elementor/SubmissionForm.php:139
+#: src/Integrations/Elementor/SubmissionForm.php:175
+#: src/Integrations/Elementor/UserDashboard.php:121
+msgid "False"
+msgstr ""
+
+#: src/Integrations/Elementor/SubmissionForm.php:149
+msgid "reCaptcha key"
+msgstr ""
+
+#: src/Integrations/Elementor/SubmissionForm.php:161
+msgid "reCaptcha secret"
+msgstr ""
+
+#: src/Integrations/Elementor/SubmissionForm.php:172
+msgid "Ajax"
+msgstr ""
+
+#: src/Integrations/Elementor/SubmissionForm.php:184
+msgid "Custom Redirect URL"
+msgstr ""
+
+#: src/Integrations/Elementor/UserDashboard.php:51
+#: blocks/user-dashboard/build/index.js:1
+#: blocks/user-dashboard/src/edit.js:60
+msgid "Edit page"
+msgstr ""
+
+#: src/Integrations/Elementor/UserDashboard.php:60
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:187
+#: blocks/user-dashboard/build/index.js:1
+#: blocks/user-dashboard/src/edit.js:64
+#: blocks/user-dashboard/src/edit.js:176
+msgid "-"
+msgstr ""
+
+#: src/Integrations/Elementor/UserDashboard.php:72
+#: blocks/user-dashboard/build/index.js:1
+#: blocks/user-dashboard/src/edit.js:145
+msgid "Object type of the submissions"
+msgstr ""
+
+#: src/Post.php:85
 msgid "(No title)"
 msgstr ""
 
-#: src/Shortcode.php:104
+#: src/Shortcode.php:108
 msgid "Invalid request. Please try again."
 msgstr ""
 
@@ -149,4 +688,134 @@ msgstr ""
 #: src/Shortcode.php:130
 #: src/Shortcode.php:143
 msgid "Invalid captcha token."
+msgstr ""
+
+#: templates/post/content.php:13
+msgid "This content field will be replaced by a WYSIWYG (visual) editor on the front end."
+msgstr ""
+
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:119
+msgid "Settings"
+msgstr ""
+
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:123
+#: blocks/user-dashboard/build/index.js:1
+#: blocks/user-dashboard/src/edit.js:134
+msgid "Field group"
+msgstr ""
+
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:131
+msgid "Enable ajax submission"
+msgstr ""
+
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:136
+msgid "Allow to edit after submitting"
+msgstr ""
+
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:137
+msgid "If enabled, then ajax submission will be disabled."
+msgstr ""
+
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:142
+msgid "Allow to delete the entry"
+msgstr ""
+
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:143
+msgid "Allow users to delete the submitted entry."
+msgstr ""
+
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:151
+msgid "Whether to delete the submitted entry permanently or temporarily (move to Trash)."
+msgstr ""
+
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:158
+msgid "Allow to add more entries"
+msgstr ""
+
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:174
+msgid "The object id, used when you want to update an existing entry."
+msgstr ""
+
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:225
+msgid "Appearance"
+msgstr ""
+
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:228
+msgid "Enable scroll to the message after ajax submission."
+msgstr ""
+
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:240
+msgid "The text for the confirmation message when the entry is deleted."
+msgstr ""
+
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:262
+msgid "Post fields labels"
+msgstr ""
+
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:311
+msgid "Google reCaptcha (v3)"
+msgstr ""
+
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:313
+msgid "Site key"
+msgstr ""
+
+#: blocks/submission-form/build/index.js:1
+#: blocks/submission-form/src/edit.js:318
+msgid "Secret key"
+msgstr ""
+
+#: blocks/user-dashboard/build/index.js:1
+#: blocks/user-dashboard/src/edit.js:61
+msgid "Choose a page where users can edit their submissions."
+msgstr ""
+
+#: blocks/user-dashboard/build/index.js:1
+#: blocks/user-dashboard/src/edit.js:80
+msgid "Title link"
+msgstr ""
+
+#: blocks/user-dashboard/build/index.js:1
+#: blocks/user-dashboard/src/edit.js:159
+msgid "Select related model for the submissions"
+msgstr ""
+
+#: blocks/submission-form/build/block.json
+#: blocks/submission-form/src/block.json
+msgctxt "block title"
+msgid "Submission Form"
+msgstr ""
+
+#: blocks/submission-form/build/block.json
+#: blocks/submission-form/src/block.json
+msgctxt "block description"
+msgid "Submit posts on the front end."
+msgstr ""
+
+#: blocks/user-dashboard/build/block.json
+#: blocks/user-dashboard/src/block.json
+msgctxt "block title"
+msgid "User Dashboard"
+msgstr ""
+
+#: blocks/user-dashboard/build/block.json
+#: blocks/user-dashboard/src/block.json
+msgctxt "block description"
+msgid "User dashboard."
 msgstr ""

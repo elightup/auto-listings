@@ -1,0 +1,78 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "meta-box/user-dashboard",
+    "version": "4.2.0",
+    "title": "User Dashboard",
+    "category": "meta-box",
+    "icon": "dashboard",
+    "description": "User dashboard.",
+    "supports": {
+        "html": false
+    },
+    "textdomain": "mb-frontend-submission",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "attributes": {
+		"edit_page": {
+            "type": "string",
+			"default": ""
+        },
+        "meta_box_id": {
+            "type": "string",
+            "default": ""
+        },
+        "id": {
+            "type": "array",
+            "default": []
+        },
+        "object_type": {
+            "type": "string",
+            "default": "post"
+        },
+        "model_name": {
+            "type": "string",
+            "default": ""
+        },
+        "post_type": {
+            "type": "string",
+            "default": ""
+        },
+        "show_welcome_message": {
+            "type": "boolean",
+            "default": true
+        },
+        "columns": {
+            "type": "array",
+			"default": [
+                "title",
+                "date",
+				"status"
+            ]
+        },
+        "label_title": {
+            "type": "string",
+            "default": "Title"
+        },
+        "label_date": {
+            "type": "string",
+            "default": "Date"
+        },
+        "label_status": {
+            "type": "string",
+            "default": "Status"
+        },
+        "label_actions": {
+            "type": "string",
+            "default": "Actions"
+        },
+        "title_link": {
+            "type": "string",
+            "default": "view"
+        },
+        "add_new": {
+            "type": "string",
+            "default": "Add New"
+        }
+    }
+}
