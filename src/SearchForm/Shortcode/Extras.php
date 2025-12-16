@@ -38,7 +38,7 @@ class Extras {
 			$atts
 		);
 
-		$label = $atts['label'] ? '<label class="als-field__label" for="' . esc_attr( $id ) . '">' . $atts['label'] . '</label>' : '';
+		$label = $atts['label'] ? '<label class="als-field__label" for="' . esc_attr( $id ) . '">' . esc_attr( $atts['label'] ) . '</label>' : '';
 
 		$output  = '<div class="als-field als-field--keyword ">';
 		$output .= sprintf( '%1s<input id="%2s" type="text" name="s" placeholder="%3s" />', $label, esc_attr( $id ), esc_attr( $atts['placeholder'] ) );
