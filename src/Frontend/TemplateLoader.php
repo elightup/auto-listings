@@ -24,16 +24,29 @@ class TemplateLoader {
 	 * @param string $template template part.
 	 */
 	public function template_include( $template ) {
+
+		if ( class_exists( '\ElementorPro\Modules\ThemeBuilder\Module' ) ) {
+			$location = '';
+			if ( is_single() && get_post_type() === 'auto-listing' ) {
+				$location = 'single';
+			} elseif ( is_post_type_archive( 'auto-listing' ) || is_listing_search() || is_listing_taxonomy() ) {
+				$location = 'archive';
+			}
+
+			if ( ! empty( $location ) ) {
+				$document = \ElementorPro\Modules\ThemeBuilder\Module::instance()->get_conditions_manager()->get_documents_for_location( $location );
+				if ( ! empty( $document ) ) {
+					return $template;
+				}
+			}
+		}
 		$file = '';
 
 		if ( is_single() && get_post_type() === 'auto-listing' ) {
 			$file = 'single-listing.php';
 		}
 
-		if ( is_post_type_archive( 'auto-listing' ) ||
-			is_listing_search() ||
-			is_listing_taxonomy()
-		) {
+		if ( is_post_type_archive( 'auto-listing' ) || is_listing_search() || is_listing_taxonomy() ) {
 			$file = 'archive-listing.php';
 		}
 
