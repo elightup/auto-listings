@@ -7,10 +7,6 @@ class Form {
 	}
 
 	public function render( $atts ) {
-		if ( is_admin() ) {
-			return '';
-		}
-
 		$atts = shortcode_atts(
 			apply_filters( 'als_shortcode_atts', [
 				'id' => '',
