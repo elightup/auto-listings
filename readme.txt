@@ -2,8 +2,8 @@
 Contributors:      elightup, autolistings, rilwis, hungviet91
 Tags:              car dealer, car listings, auto listings, car dealership
 Requires at least: 6.2
-Tested up to:      6.9
-Stable tag:        2.7.2
+Tested up to:      6.9.1
+Stable tag:        2.7.3
 Requires PHP:      7.2
 License:           GPLv3
 License URI:       https://www.gnu.org/licenses/gpl-3.0.html
@@ -89,8 +89,8 @@ If you like this plugin, you might also like our other WordPress products:
 
 - [Meta Box](https://metabox.io) - A powerful WordPress plugin for creating custom post types and custom fields.
 - [Slim SEO](https://wpslimseo.com) - A fast, lightweight and full-featured SEO plugin for WordPress with minimal configuration.
+- [Falcon](https://wpfalcon.pro) - A lightweight companion for making WordPress faster, cleaner, and more secure.
 - [GretaThemes](https://gretathemes.com) - Free and premium WordPress themes that clean, simple and just work.
-
 
 == Installation ==
 
@@ -131,6 +131,10 @@ It is perfect for car dealers and car dealerships, car classifieds websites or a
 6. Auto Listings settings pages
 
 == Changelog ==
+
+= 2.7.3 - 2026-03-09 =
+- Supports Elementor Pro template overrides
+- Support search form for Elementor
 
 = 2.7.2 - 2025-12-16 =
 - Fix cross site scripting
