@@ -20,40 +20,40 @@ class ComposerStaticInitfb8197bcf1ef21ed8eb500523d53e595
     );
 
     public static $prefixLengthsPsr4 = array (
-        'e' => 
+        'e' =>
         array (
             'eLightUp\\PluginUpdater\\' => 23,
         ),
-        'M' => 
+        'M' =>
         array (
             'MetaBox\\Columns\\' => 16,
             'MBSP\\' => 5,
             'MBFS\\' => 5,
         ),
-        'A' => 
+        'A' =>
         array (
             'AutoListings\\' => 13,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'eLightUp\\PluginUpdater\\' => 
+        'eLightUp\\PluginUpdater\\' =>
         array (
             0 => __DIR__ . '/..' . '/elightup/plugin-updater/src',
         ),
-        'MetaBox\\Columns\\' => 
+        'MetaBox\\Columns\\' =>
         array (
             0 => __DIR__ . '/..' . '/meta-box/meta-box-columns/src',
         ),
-        'MBSP\\' => 
+        'MBSP\\' =>
         array (
             0 => __DIR__ . '/..' . '/meta-box/mb-settings-page/src',
         ),
-        'MBFS\\' => 
+        'MBFS\\' =>
         array (
             0 => __DIR__ . '/..' . '/meta-box/mb-frontend-submission/src',
         ),
-        'AutoListings\\' => 
+        'AutoListings\\' =>
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),

@@ -91,6 +91,10 @@ class Shortcode {
 
 		$this->form->delete();
 
+		if ( $this->form->error->has_errors() ) {
+			$this->send_error_message( $this->form->error->get_error_message() );
+		}
+
 		$this->send_success_message( $this->config['delete_confirmation'] );
 
 		$redirect = empty( $this->config['redirect'] ) ? add_query_arg( 'rwmb-form-deleted', $this->key ) : $this->config['redirect'];
@@ -108,15 +112,15 @@ class Shortcode {
 			$this->send_error_message( __( 'Invalid request. Please try again.', 'mb-frontend-submission' ) );
 		}
 
-		$this->check_ajax();
+		$this->check_nonce();
 		$this->check_recaptcha( $this->config );
 
 		$this->form = FormFactory::make( $this->config );
 	}
 
-	private function check_ajax() {
-		if ( $this->is_ajax() && ! check_ajax_referer( 'ajax_nonce' ) ) {
-			$this->send_error_message( __( 'Invalid ajax request. Please try again.', 'mb-frontend-submission' ) );
+	private function check_nonce() {
+		if ( ! check_ajax_referer( 'ajax_nonce', false, false ) ) {
+			$this->send_error_message( __( 'Invalid request. Please try again.', 'mb-frontend-submission' ) );
 		}
 	}
 

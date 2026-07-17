@@ -14,11 +14,12 @@ class Delete {
 		add_action( 'rest_api_init', [ $this, 'register_routes' ] );
 	}
 
-	public function register_routes() {
+	public function register_routes(): void {
 		register_rest_route( 'mbfs', 'dashboard/delete', [
 			'methods'             => WP_REST_Server::DELETABLE,
 			'callback'            => [ $this, 'delete' ],
 			'permission_callback' => [ $this, 'permission_check' ],
+			'show_in_index'       => false,
 			'args'                => [
 				'id' => [
 					'type'              => 'integer',

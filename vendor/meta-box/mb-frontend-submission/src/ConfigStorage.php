@@ -47,7 +47,8 @@ class ConfigStorage {
 		$config_with_timestamp                    = $config;
 		$config_with_timestamp['_mbfs_timestamp'] = time();
 
-		update_option( $option_key, $config_with_timestamp );
+		// Do not autoload: these options are only needed on form submit, and many can accumulate.
+		update_option( $option_key, $config_with_timestamp, false );
 
 		self::cleanup_old_options();
 	}

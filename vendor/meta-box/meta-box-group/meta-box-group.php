@@ -3,7 +3,7 @@
  * Plugin Name: MB Group
  * Plugin URI:  https://metabox.io/plugins/meta-box-group/
  * Description: Put fields into groups for better organization
- * Version:     1.4.6
+ * Version:     1.4.7
  * Author:      MetaBox.io
  * Author URI:  https://metabox.io
  * License:     GPL2+

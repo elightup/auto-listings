@@ -1,0 +1,2 @@
+<?php
+return ['domain'=>'meta-box-group','plural-forms'=>'nplurals=2; plural=n != 1;','language'=>'de_DE_formal','project-id-version'=>'Meta Box Group','pot-creation-date'=>'2026-07-07 13:46+0000','po-revision-date'=>'2026-07-07 13:47+0000','x-generator'=>'Twinpictures https://twinpictures.de/','messages'=>['Are you sure you want to remove %s?'=>'Sind Sie sicher, dass Sie %s entfernen möchten?','Entry'=>'Eintrag','Entry {#}'=>'Eintrag {#}','No'=>'Nein','Off'=>'Aus','On'=>'An','Remove'=>'Entfernen','this group'=>'diese Gruppe','Yes'=>'Ja']];

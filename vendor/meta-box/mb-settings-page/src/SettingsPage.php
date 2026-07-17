@@ -190,7 +190,7 @@ class SettingsPage {
 	}
 
 	public function enqueue_font_awesome() {
-		wp_enqueue_style( 'font-awesome', 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css', [], ' 6.7.2' );
+		wp_enqueue_style( 'font-awesome', 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css', [], '6.7.2' );
 		$selectors = [];
 		foreach ( $this->font_awesome_classes as $class ) {
 			$selectors[] = ".$class:before";

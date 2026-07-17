@@ -32,13 +32,15 @@ class Notification {
 
 		$messages = [
 			// Translators: %1$s - URL to the settings page, %2$s - URL to the buy page, %3$s - plugin name.
-			'no_key'  => __( 'You have not set a license key for %3$s yet, which means you are missing out on automatic updates and support! Please <a href="%1$s">enter your license key</a> or <a href="%2$s" target="_blank">get a new one here</a>.', 'elightup-plugin-updater' ),
+			'no_key'   => __( 'You have not entered a license key for %3$s yet. Please <a href="%1$s">enter your license key</a> or <a href="%2$s" target="_blank">purchase a license</a> to enable premium features.', 'elightup-plugin-updater' ),
 			// Translators: %1$s - URL to the settings page, %2$s - URL to the buy page, %3$s - plugin name.
-			'invalid' => __( 'Your license key for %3$s is <b>invalid</b>. Please <a href="%1$s">update your license key</a> or <a href="%2$s" target="_blank">get a new one</a> to enable automatic updates.', 'elightup-plugin-updater' ),
+			'invalid'  => __( 'Your license key for %3$s is <b>invalid</b>. Please <a href="%1$s">update your license key</a> or <a href="%2$s" target="_blank">get a new one</a> to enable automatic updates.', 'elightup-plugin-updater' ),
 			// Translators: %1$s - URL to the settings page, %2$s - URL to the buy page, %3$s - plugin name.
-			'error'   => __( 'Your license key for %3$s is <b>invalid</b>. Please <a href="%1$s">update your license key</a> or <a href="%2$s" target="_blank">get a new one</a> to enable automatic updates.', 'elightup-plugin-updater' ),
+			'error'    => __( 'Your license key for %3$s is <b>invalid</b>. Please <a href="%1$s">update your license key</a> or <a href="%2$s" target="_blank">get a new one</a> to enable automatic updates.', 'elightup-plugin-updater' ),
 			// Translators: %1$s - URL to the settings page, %2$s - URL to the buy page, %3$s - plugin name.
-			'expired' => __( 'Your license key for %3$s is <b>expired</b>. Please renew your license to get automatic updates and premium support.', 'elightup-plugin-updater' ),
+			'expired'  => __( 'Your license key for %3$s is <b>expired</b>. Please renew your license to get automatic updates and premium support.', 'elightup-plugin-updater' ),
+			// Translators: %1$s - URL to the settings page, %2$s - URL to the buy page, %3$s - plugin name.
+			'refunded' => __( 'Your %3$s license has been <b>refunded</b>. To continue using premium features and receive updates, please <a href="%2$s" target="_blank">purchase a new license</a>. Otherwise, premium features will be disabled.', 'elightup-plugin-updater' ),
 		];
 		$status   = $this->option->get_license_status();
 		if ( ! isset( $messages[ $status ] ) ) {
@@ -62,13 +64,15 @@ class Notification {
 
 		$messages = [
 			// Translators: %1$s - URL to the settings page, %2$s - URL to the buy page.
-			'no_key'  => __( 'Please <a href="%1$s">enter your license key</a> or <a href="%2$s" target="_blank">get a new one here</a>.', 'elightup-plugin-updater' ),
+			'no_key'   => __( 'Please <a href="%1$s">enter your license key</a> or <a href="%2$s" target="_blank">get a new one here</a>.', 'elightup-plugin-updater' ),
 			// Translators: %1$s - URL to the settings page, %2$s - URL to the buy page.
-			'invalid' => __( 'Your license key is <b>invalid</b>. Please <a href="%1$s">update your license key</a> or <a href="%2$s" target="_blank">get a new one here</a>.', 'elightup-plugin-updater' ),
+			'invalid'  => __( 'Your license key is <b>invalid</b>. Please <a href="%1$s">update your license key</a> or <a href="%2$s" target="_blank">get a new one here</a>.', 'elightup-plugin-updater' ),
 			// Translators: %1$s - URL to the settings page, %2$s - URL to the buy page.
-			'error'   => __( 'Your license key is <b>invalid</b>. Please <a href="%1$s">update your license key</a> or <a href="%2$s" target="_blank">get a new one here</a>.', 'elightup-plugin-updater' ),
+			'error'    => __( 'Your license key is <b>invalid</b>. Please <a href="%1$s">update your license key</a> or <a href="%2$s" target="_blank">get a new one here</a>.', 'elightup-plugin-updater' ),
 			// Translators: %3$s - URL to the My Account page.
-			'expired' => __( 'Your license key is <b>expired</b>. Please <a href="%3$s" target="_blank">renew your license</a>.', 'elightup-plugin-updater' ),
+			'expired'  => __( 'Your license key is <b>expired</b>. Please <a href="%3$s" target="_blank">renew your license</a>.', 'elightup-plugin-updater' ),
+			// Translators: %2$s - URL to the pricing page.
+			'refunded' => __( 'Your license has been <b>refunded</b>. Please <a href="%2$s" target="_blank">purchase a new license</a> to enable premium features.', 'elightup-plugin-updater' ),
 		];
 		$status   = $this->option->get_license_status();
 		if ( ! isset( $messages[ $status ] ) ) {

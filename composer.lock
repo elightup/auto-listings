@@ -4,23 +4,22 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fb8197bcf1ef21ed8eb500523d53e595",
+    "content-hash": "f15af7933e588dbf7dcc9a9d0bb12578",
     "packages": [
         {
             "name": "elightup/plugin-updater",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/elightup/plugin-updater.git",
-                "reference": "bc340dc57485b6c06bb193f919779ad4ed7cfb7d"
+                "reference": "b4241623b256bc1105a0cadef2df892369da5619"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elightup/plugin-updater/zipball/bc340dc57485b6c06bb193f919779ad4ed7cfb7d",
-                "reference": "bc340dc57485b6c06bb193f919779ad4ed7cfb7d",
+                "url": "https://api.github.com/repos/elightup/plugin-updater/zipball/b4241623b256bc1105a0cadef2df892369da5619",
+                "reference": "b4241623b256bc1105a0cadef2df892369da5619",
                 "shasum": ""
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -32,9 +31,9 @@
             "notification-url": "https://packagist.org/downloads/",
             "support": {
                 "issues": "https://github.com/elightup/plugin-updater/issues",
-                "source": "https://github.com/elightup/plugin-updater/tree/master"
+                "source": "https://github.com/elightup/plugin-updater/tree/1.0.0"
             },
-            "time": "2025-12-06T01:49:28+00:00"
+            "time": "2026-07-17T02:19:46+00:00"
         },
         {
             "name": "gamajo/template-loader",
@@ -95,11 +94,11 @@
         },
         {
             "name": "meta-box/mb-frontend-submission",
-            "version": "dev-master",
+            "version": "4.5.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wpmetabox/mb-frontend-submission.git",
-                "reference": "f96b8a62db35994ceced1df59cc69de1ede70c4f"
+                "reference": "e6277f4678b533423b1df72a2fd7d97b8c7501fb"
             },
             "require": {
                 "gamajo/template-loader": "^1.3"
@@ -107,7 +106,6 @@
             "require-dev": {
                 "phpunit/phpunit": "^11.3"
             },
-            "default-branch": true,
             "type": "wordpress-plugin",
             "extra": {
                 "dev-files": {
@@ -188,17 +186,16 @@
                     "phpcbf --standard=../meta-box-aio/phpcs.xml.dist"
                 ]
             },
-            "time": "2025-11-11T02:59:43+00:00"
+            "time": "2026-07-17T01:17:36+00:00"
         },
         {
             "name": "meta-box/mb-settings-page",
-            "version": "dev-master",
+            "version": "2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wpmetabox/mb-settings-page.git",
-                "reference": "2baf9f08759c743a6661fb5223ef2a320f2401f0"
+                "reference": "a62a28592505b1f50b6f3543b52a24600aa5c98c"
             },
-            "default-branch": true,
             "type": "wordpress-plugin",
             "autoload": {
                 "psr-4": {
@@ -208,17 +205,16 @@
                     "src/BackupField.php"
                 ]
             },
-            "time": "2025-11-11T03:00:53+00:00"
+            "time": "2026-06-12T01:45:25+00:00"
         },
         {
             "name": "meta-box/meta-box-columns",
-            "version": "dev-master",
+            "version": "1.2.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wpmetabox/meta-box-columns.git",
                 "reference": "0d6a91d039fb35bb127ebe0fd05379d82410e47d"
             },
-            "default-branch": true,
             "type": "wordpress-plugin",
             "autoload": {
                 "psr-4": {
@@ -229,43 +225,42 @@
         },
         {
             "name": "meta-box/meta-box-geolocation",
-            "version": "dev-master",
+            "version": "1.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wpmetabox/meta-box-geolocation.git",
-                "reference": "8cf19b342a5060cd235fbd95bd4144f65237a538"
+                "reference": "02122b656dbd6c14f148b3b29ba9a0d8b7bd3101"
             },
-            "default-branch": true,
             "type": "wordpress-plugin",
-            "time": "2025-02-04T06:48:53+00:00"
+            "scripts": {
+                "phpcbf": [
+                    "phpcbf src/ --standard=../meta-box-aio/phpcs.xml"
+                ],
+                "phpcs": [
+                    "phpcs src/ --standard=../meta-box-aio/phpcs.xml"
+                ]
+            },
+            "time": "2026-03-24T07:45:11+00:00"
         },
         {
             "name": "meta-box/meta-box-group",
-            "version": "dev-master",
+            "version": "1.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wpmetabox/meta-box-group.git",
-                "reference": "efade09ca70528749b5daae0416ce33b8457f08c"
+                "reference": "1bebda5d9de0158be02af1814a763855b6facb94"
             },
-            "default-branch": true,
             "type": "wordpress-plugin",
-            "time": "2025-07-15T08:51:35+00:00"
+            "time": "2026-07-17T01:03:52+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "elightup/plugin-updater": 20,
-        "meta-box/mb-frontend-submission": 20,
-        "meta-box/mb-settings-page": 20,
-        "meta-box/meta-box-columns": 20,
-        "meta-box/meta-box-geolocation": 20,
-        "meta-box/meta-box-group": 20
-    },
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {},
     "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }

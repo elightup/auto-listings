@@ -35,7 +35,7 @@ class Settings {
 	public function render() {
 		?>
 		<div class="wrap">
-			<h1><?= esc_html( get_admin_page_title() ) ?></h1>
+			<h1><?= esc_html( get_admin_page_title() ); ?></h1>
 			<p>
 				<?php
 				printf(
@@ -68,17 +68,18 @@ class Settings {
 	protected function render_input() {
 		$messages    = [
 			// Translators: %1$s - URL to the buy page.
-			'invalid' => __( 'Your license key is <b style="color: #d63638">invalid</b>.', 'elightup-plugin-updater' ),
+			'invalid'  => __( 'Your license key is <b style="color: #d63638">invalid</b>.', 'elightup-plugin-updater' ),
 			// Translators: %1$s - URL to the buy page.
-			'error'   => __( 'Your license key is <b style="color: #d63638">invalid</b>.', 'elightup-plugin-updater' ),
+			'error'    => __( 'Your license key is <b style="color: #d63638">invalid</b>.', 'elightup-plugin-updater' ),
 			// Translators: %2$s - URL to the My Account page.
-			'expired' => __( 'Your license key is <b style="color: #d63638">expired</b>. Please <a href="%2$s" target="_blank">renew your license</a>.', 'elightup-plugin-updater' ),
-			'active'  => __( 'Your license key is <b style="color: #00a32a">active</b>.', 'elightup-plugin-updater' ),
+			'expired'  => __( 'Your license key is <b style="color: #d63638">expired</b>. Please <a href="%2$s" target="_blank">renew your license</a>.', 'elightup-plugin-updater' ),
+			'active'   => __( 'Your license key is <b style="color: #00a32a">active</b>.', 'elightup-plugin-updater' ),
+			'refunded' => __( 'Your license has been <b style="color: #d63638">refunded</b>.', 'elightup-plugin-updater' ),
 		];
 		$status      = $this->option->get_license_status();
 		$license_key = 'active' === $status || $this->option->get_license_key_constant() ? $this->fake_api_key : $this->option->get_license_key();
 		?>
-		<input class="regular-text" name="<?= esc_attr( $this->manager->option_name ) ?>[api_key]" value="<?= esc_attr( $license_key ) ?>" type="password" autocomplete="new-password">
+		<input class="regular-text" name="<?= esc_attr( $this->manager->option_name ); ?>[api_key]" value="<?= esc_attr( $license_key ); ?>" type="password" autocomplete="new-password">
 		<?php if ( isset( $messages[ $status ] ) ) : ?>
 			<p class="description"><?= wp_kses_post( sprintf( $messages[ $status ], $this->manager->buy_url, $this->manager->my_account_url ) ); ?></p>
 		<?php endif; ?>

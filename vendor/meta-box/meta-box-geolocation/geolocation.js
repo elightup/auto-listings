@@ -51,8 +51,24 @@
 		populateField = ( field, data ) => {
 			const value = this.getFieldData( field.dataset.binding, field.dataset.bind_if_empty, data );
 
+			const parent = field.parentElement;
+			if ( ! parent ) {
+				return;
+			}
+
+			// Get input of parent
+			const input = parent.querySelector( 'input, select, textarea' );
+
+			// Handle if input not found (DOM error or conditional logic )
+			if ( ! input ) {
+				console.warn( 'MB Geolocation: No input found for binding:', field.dataset.binding );
+				return;
+			}
+
 			if ( value || field.dataset.bind_if_empty ) {
-				field.previousSibling.firstChild.value = value;
+				input.value = value;
+				// Trigger change event for conditional logic to work
+				$( input ).trigger( 'change' );
 			}
 		};
 

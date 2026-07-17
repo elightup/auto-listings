@@ -3,7 +3,7 @@
  * Plugin Name: MB Geolocation
  * Plugin URI:  https://metabox.io/plugins/meta-box-geolocation/
  * Description: Auto fill location data with details from Google Maps / Open Street Map
- * Version:     1.3.6
+ * Version:     1.3.7
  * Author:      MetaBox.io
  * Author URI:  https://metabox.io
  * License:     GPL2+

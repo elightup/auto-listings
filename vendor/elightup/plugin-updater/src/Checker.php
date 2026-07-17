@@ -27,7 +27,7 @@ class Checker {
 		}
 
 		if ( empty( $data ) ) {
-			$data = new \stdClass;
+			$data = new \stdClass();
 		}
 		if ( ! isset( $data->response ) ) {
 			$data->response = [];
@@ -58,15 +58,20 @@ class Checker {
 	}
 
 	public function request( $args = [] ) {
+		global $wp_version;
+
 		if ( null !== $this->response ) {
 			return $this->response;
 		}
 
 		$args = wp_parse_args( $args, [
-			'action'  => 'get_info',
-			'api_key' => $this->option->get_license_key(),
-			'product' => $this->manager->slug,
-			'url'     => home_url(),
+			'action'      => 'get_info',
+			'api_key'     => $this->option->get_license_key(),
+			'product'     => $this->manager->slug,
+			'url'         => home_url(),
+			'wp_version'  => $wp_version,
+			'language'    => get_locale(),
+			'php_version' => PHP_VERSION,
 		] );
 
 		// Get from cache first.

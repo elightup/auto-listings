@@ -30,12 +30,12 @@
 		}
 	],
 	"require": {
-		"meta-box/mb-frontend-submission": "dev-master",
-		"meta-box/mb-settings-page": "dev-master",
-		"meta-box/meta-box-columns": "dev-master",
-		"meta-box/meta-box-geolocation": "dev-master",
-		"meta-box/meta-box-group": "dev-master",
-		"elightup/plugin-updater": "dev-master"
+		"meta-box/mb-frontend-submission": "^4",
+		"meta-box/mb-settings-page": "^2",
+		"meta-box/meta-box-columns": "^1",
+		"meta-box/meta-box-geolocation": "^1",
+		"meta-box/meta-box-group": "^1",
+		"elightup/plugin-updater": "^1"
 	},
 	"minimum-stability": "dev",
 	"prefer-stable": true,

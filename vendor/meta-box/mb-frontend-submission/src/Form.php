@@ -221,6 +221,11 @@ class Form {
 			return;
 		}
 
+		if ( ! $this->user_can_edit() ) {
+			$this->error->add( 'unauthorized', __( 'You are not allowed to delete this post.', 'mb-frontend-submission' ) );
+			return;
+		}
+
 		$force_delete = 'true' === $this->config['force_delete'];
 
 		do_action( 'rwmb_frontend_before_delete', $this->config );
@@ -300,6 +305,7 @@ class Form {
 		$key = ConfigStorage::store( $this->config );
 		echo '<input type="hidden" name="mbfs_key" value="', esc_attr( $key ), '">';
 		echo '<input type="hidden" name="action" value="mbfs_submit">';
+		echo '<input type="hidden" name="_ajax_nonce" value="', esc_attr( wp_create_nonce( 'ajax_nonce' ) ), '">';
 
 		// Add hidden input if has recaptcha v3
 		if ( $this->config['recaptcha_key'] ) {
